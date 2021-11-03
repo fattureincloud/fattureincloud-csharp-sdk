@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>It.FattureInCloud.Sdk</AssemblyName>
+    <PackageId>It.FattureInCloud.Sdk</PackageId>
+    <OutputType>Library</OutputType>
+    <Authors>Fatture in Cloud API Team</Authors>
+    <Company>Fatture in Cloud</Company>
+    <AssemblyTitle>OpenAPI Library</AssemblyTitle>
+    <Description>{PACKAGE_DESCRIPTION}</Description>
+    <Copyright>No Copyright</Copyright>
+    <RootNamespace>It.FattureInCloud.Sdk</RootNamespace>
+    <Version>1.0.0</Version>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\It.FattureInCloud.Sdk.xml</DocumentationFile>
+    <RepositoryUrl>https://github.com/fattureincloud/fattureincloud-csharp-sdk.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>bumping version to 2.0.1</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JsonSubTypes" Version="1.8.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="RestSharp" Version="106.11.7" />
+    <PackageReference Include="Polly" Version="7.2.1" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+  </ItemGroup>
+
+</Project>
