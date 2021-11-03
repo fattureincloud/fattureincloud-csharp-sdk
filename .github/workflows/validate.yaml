@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        dotnet: [ '2.0.x', '2.1.x', '3.1.x', '5.0.x' ]
+        dotnet: [ '2.1.x', '3.1.x', '5.0.x' ]
         
     name: Dotnet ${{ matrix.dotnet }} valiation
     
