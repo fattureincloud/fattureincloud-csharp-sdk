@@ -19,13 +19,13 @@ jobs:
         name: Checkout repo
         uses: actions/checkout@v2
       
-      - id: setup
+      - id: setup-31
         name: Setup dotnet 3.1.x
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.x
 
-      - id: setup
+      - id: setup-50
         name: Setup dotnet 5.0.x
         uses: actions/setup-dotnet@v1
         with:
