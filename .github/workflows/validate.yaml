@@ -33,7 +33,12 @@ jobs:
 
       - id: clean
         name: Clean
-        run: dotnet clean
+        run: | 
+          ls
+          echo "###"
+          pwd
+          echo "###"
+          dotnet clean
           
       - id: restore
         name: Restore dependencies
