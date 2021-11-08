@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class VerifyEInvoiceXmlErrorResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for VerifyEInvoiceXmlErrorResponse
-        //private VerifyEInvoiceXmlErrorResponse instance;
+        private VerifyEInvoiceXmlErrorResponse instance;
 
         public VerifyEInvoiceXmlErrorResponseTests()
         {
-            // TODO uncomment below to create an instance of VerifyEInvoiceXmlErrorResponse
-            //instance = new VerifyEInvoiceXmlErrorResponse();
+            var body = "{'error':{'message':'errore','validation_result':{'success':false}},'extra':{'errors':['errore brutto']}}";
+            instance = JsonConvert.DeserializeObject<VerifyEInvoiceXmlErrorResponse>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VerifyEInvoiceXmlErrorResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" VerifyEInvoiceXmlErrorResponse
-            //Assert.IsType<VerifyEInvoiceXmlErrorResponse>(instance);
+            Assert.IsType<VerifyEInvoiceXmlErrorResponse>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ErrorTest()
         {
-            // TODO unit test for the property 'Error'
+            Assert.IsType<VerifyEInvoiceXmlErrorResponseError>(instance.Error);
         }
         /// <summary>
         /// Test the property 'Extra'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ExtraTest()
         {
-            // TODO unit test for the property 'Extra'
+            Assert.IsType<VerifyEInvoiceXmlErrorResponseExtra>(instance.Extra);
         }
 
     }

@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class EmailDataTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for EmailData
-        //private EmailData instance;
+        private EmailData instance;
 
         public EmailDataTests()
         {
-            // TODO uncomment below to create an instance of EmailData
-            //instance = new EmailData();
+            var body = "{ 'recipient_email': 'mary.red@example.com', 'cc_email': 'm.rossi@exxample.com', 'subject': 'Nostra pro forma nr. 1', 'body': 'Gentile Mario Rossi,<br>per vedere la nostra pro forma di o per scaricarne una copia in versione PDF prema sul bottone sottoastante.<br><br>{{allegati}}<br><br>Cordiali saluti,<br><b>Mario Rossi</b>', 'document_exists': true, 'delivery_note_exists': false, 'attachment_exists': false, 'accompanying_invoice_exists': false, 'default_attach_pdf': false, 'default_sender_email': { 'id': 0, 'email': 'no-reply@fattureincloud.it' }, 'sender_emails_list': [ { 'id': 0, 'email': 'no-reply@fattureincloud.it' }, { 'id': 888, 'email': 'mariorossi@fattureincloud.it' } ] }";
+            instance = JsonConvert.DeserializeObject<EmailData>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EmailDataInstanceTest()
         {
-            // TODO uncomment below to test "IsType" EmailData
-            //Assert.IsType<EmailData>(instance);
+            Assert.IsType<EmailData>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void RecipientEmailTest()
         {
-            // TODO unit test for the property 'RecipientEmail'
+            Assert.IsType<string>(instance.RecipientEmail);
         }
         /// <summary>
         /// Test the property 'DefaultSenderEmail'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DefaultSenderEmailTest()
         {
-            // TODO unit test for the property 'DefaultSenderEmail'
+            Assert.IsType<EmailDataDefaultSenderEmail>(instance.DefaultSenderEmail);
         }
         /// <summary>
         /// Test the property 'SenderEmailsList'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SenderEmailsListTest()
         {
-            // TODO unit test for the property 'SenderEmailsList'
+            Assert.IsType<List<EmailDataSenderEmailsList>>(instance.SenderEmailsList);
         }
         /// <summary>
         /// Test the property 'CcEmail'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CcEmailTest()
         {
-            // TODO unit test for the property 'CcEmail'
+            Assert.IsType<string>(instance.CcEmail);
         }
         /// <summary>
         /// Test the property 'Subject'
@@ -95,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SubjectTest()
         {
-            // TODO unit test for the property 'Subject'
+            Assert.IsType<string>(instance.Subject);
         }
         /// <summary>
         /// Test the property 'Body'
@@ -103,7 +101,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void BodyTest()
         {
-            // TODO unit test for the property 'Body'
+            Assert.IsType<string>(instance.Body);
         }
         /// <summary>
         /// Test the property 'DocumentExists'
@@ -111,7 +109,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DocumentExistsTest()
         {
-            // TODO unit test for the property 'DocumentExists'
+            Assert.IsType<bool>(instance.DocumentExists);
         }
         /// <summary>
         /// Test the property 'DeliveryNoteExists'
@@ -119,7 +117,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DeliveryNoteExistsTest()
         {
-            // TODO unit test for the property 'DeliveryNoteExists'
+            Assert.IsType<bool>(instance.DeliveryNoteExists);
         }
         /// <summary>
         /// Test the property 'AttachmentExists'
@@ -127,7 +125,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AttachmentExistsTest()
         {
-            // TODO unit test for the property 'AttachmentExists'
+            Assert.IsType<bool>(instance.AttachmentExists);
         }
         /// <summary>
         /// Test the property 'AccompanyingInvoiceExists'
@@ -135,7 +133,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AccompanyingInvoiceExistsTest()
         {
-            // TODO unit test for the property 'AccompanyingInvoiceExists'
+            Assert.IsType<bool>(instance.AccompanyingInvoiceExists);
         }
         /// <summary>
         /// Test the property 'DefaultAttachPdf'
@@ -143,7 +141,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DefaultAttachPdfTest()
         {
-            // TODO unit test for the property 'DefaultAttachPdf'
+            Assert.IsType<bool>(instance.DefaultAttachPdf);
         }
 
     }

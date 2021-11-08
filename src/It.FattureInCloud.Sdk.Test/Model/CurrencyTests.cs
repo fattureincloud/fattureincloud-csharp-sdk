@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class CurrencyTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for Currency
-        //private Currency instance;
+        private Currency instance;
 
         public CurrencyTests()
         {
-            // TODO uncomment below to create an instance of Currency
-            //instance = new Currency();
+            var body = "{ 'id': 'EUR', 'symbol': '€', 'html_symbol': '€', 'exchange_rate': '1.00000' }";
+            instance = JsonConvert.DeserializeObject<Currency>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CurrencyInstanceTest()
         {
-            // TODO uncomment below to test "IsType" Currency
-            //Assert.IsType<Currency>(instance);
+            Assert.IsType<Currency>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IdTest()
         {
-            // TODO unit test for the property 'Id'
+            Assert.IsType<string>(instance.Id);
         }
         /// <summary>
         /// Test the property 'Symbol'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SymbolTest()
         {
-            // TODO unit test for the property 'Symbol'
+            Assert.IsType<string>(instance.Symbol);
         }
         /// <summary>
         /// Test the property 'ExchangeRate'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ExchangeRateTest()
         {
-            // TODO unit test for the property 'ExchangeRate'
+            Assert.IsType<string>(instance.ExchangeRate);
         }
         /// <summary>
         /// Test the property 'HtmlSymbol'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void HtmlSymbolTest()
         {
-            // TODO unit test for the property 'HtmlSymbol'
+            Assert.IsType<string>(instance.HtmlSymbol);
         }
 
     }

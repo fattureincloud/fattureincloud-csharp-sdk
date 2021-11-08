@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class SendEInvoiceResponseDataTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for SendEInvoiceResponseData
-        //private SendEInvoiceResponseData instance;
+        private SendEInvoiceResponseData instance;
 
         public SendEInvoiceResponseDataTests()
         {
-            // TODO uncomment below to create an instance of SendEInvoiceResponseData
-            //instance = new SendEInvoiceResponseData();
+            var body = "{'name':'CARICATO','date':'2021-08-23 10:38:03'}";
+            instance = JsonConvert.DeserializeObject<SendEInvoiceResponseData>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SendEInvoiceResponseDataInstanceTest()
         {
-            // TODO uncomment below to test "IsType" SendEInvoiceResponseData
-            //Assert.IsType<SendEInvoiceResponseData>(instance);
+            Assert.IsType<SendEInvoiceResponseData>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NameTest()
         {
-            // TODO unit test for the property 'Name'
+            Assert.IsType<string>(instance.Name);
         }
         /// <summary>
         /// Test the property 'Date'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DateTest()
         {
-            // TODO unit test for the property 'Date'
+            Assert.IsType<string>(instance.Date);
         }
 
     }

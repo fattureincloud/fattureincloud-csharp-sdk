@@ -32,13 +32,14 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class CashbookEntryDataDocumentTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for CashbookEntryDataDocument
-        //private CashbookEntryDataDocument instance;
+        private CashbookEntryDataDocument instance;
 
         public CashbookEntryDataDocumentTests()
         {
-            // TODO uncomment below to create an instance of CashbookEntryDataDocument
-            //instance = new CashbookEntryDataDocument();
+            instance = new CashbookEntryDataDocument();
+            instance.Id = 12345;
+            instance.Type = "issued_document";
+            instance.Path = "/doc1.pdf";
         }
 
         public void Dispose()
@@ -52,8 +53,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CashbookEntryDataDocumentInstanceTest()
         {
-            // TODO uncomment below to test "IsType" CashbookEntryDataDocument
-            //Assert.IsType<CashbookEntryDataDocument>(instance);
+            Assert.IsType<CashbookEntryDataDocument>(instance);
         }
 
 
@@ -63,7 +63,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IdTest()
         {
-            // TODO unit test for the property 'Id'
+            Assert.IsType<int>(instance.Id);
         }
         /// <summary>
         /// Test the property 'Type'
@@ -71,7 +71,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TypeTest()
         {
-            // TODO unit test for the property 'Type'
+            Assert.IsType<string>(instance.Type);
         }
         /// <summary>
         /// Test the property 'Path'
@@ -79,7 +79,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PathTest()
         {
-            // TODO unit test for the property 'Path'
+            Assert.IsType<string>(instance.Path);
         }
 
     }

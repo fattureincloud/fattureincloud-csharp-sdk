@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class PermissionsTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for Permissions
-        //private Permissions instance;
+        private Permissions instance;
 
         public PermissionsTests()
         {
-            // TODO uncomment below to create an instance of Permissions
-            //instance = new Permissions();
+            var body = "{ 'fic_situation': 'write', 'fic_clients': 'write', 'fic_suppliers': 'write', 'fic_products': 'write', 'fic_issued_documents': 'write', 'fic_received_documents': 'write', 'fic_receipts': 'write', 'fic_calendar': 'write', 'fic_archive': 'write', 'fic_taxes': 'write', 'fic_stock': 'write', 'fic_cashbook': 'write', 'fic_settings': 'write', 'fic_emails': 'write', 'dic_employees': 'write', 'dic_timesheet': 'write', 'dic_settings': 'write', 'fic_export': 'write', 'fic_import_bankstatements': 'write', 'fic_import_clients_suppliers': 'write', 'fic_import_issued_documents': 'write', 'fic_import_products': 'write', 'fic_recurring': 'write', 'fic_riba': 'write', 'fic_issued_documents_detailed': { 'quotes': 'write', 'proformas': 'write', 'invoices': 'write', 'receipts': 'write', 'delivery_notes': 'write', 'credit_notes': 'write', 'orders': 'write', 'work_reports': 'write', 'supplier_orders': 'write', 'self_invoices': 'write' } }";
+            instance = JsonConvert.DeserializeObject<Permissions>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PermissionsInstanceTest()
         {
-            // TODO uncomment below to test "IsType" Permissions
-            //Assert.IsType<Permissions>(instance);
+            Assert.IsType<Permissions>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicSituationTest()
         {
-            // TODO unit test for the property 'FicSituation'
+            Assert.IsType<PermissionLevel>(instance.FicSituation);
         }
         /// <summary>
         /// Test the property 'FicClients'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicClientsTest()
         {
-            // TODO unit test for the property 'FicClients'
+            Assert.IsType<PermissionLevel>(instance.FicClients);
         }
         /// <summary>
         /// Test the property 'FicSuppliers'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicSuppliersTest()
         {
-            // TODO unit test for the property 'FicSuppliers'
+            Assert.IsType<PermissionLevel>(instance.FicSuppliers);
         }
         /// <summary>
         /// Test the property 'FicProducts'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicProductsTest()
         {
-            // TODO unit test for the property 'FicProducts'
+            Assert.IsType<PermissionLevel>(instance.FicProducts);
         }
         /// <summary>
         /// Test the property 'FicIssuedDocuments'
@@ -95,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicIssuedDocumentsTest()
         {
-            // TODO unit test for the property 'FicIssuedDocuments'
+            Assert.IsType<PermissionLevel>(instance.FicIssuedDocuments);
         }
         /// <summary>
         /// Test the property 'FicReceivedDocuments'
@@ -103,7 +101,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicReceivedDocumentsTest()
         {
-            // TODO unit test for the property 'FicReceivedDocuments'
+            Assert.IsType<PermissionLevel>(instance.FicReceivedDocuments);
         }
         /// <summary>
         /// Test the property 'FicReceipts'
@@ -111,7 +109,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicReceiptsTest()
         {
-            // TODO unit test for the property 'FicReceipts'
+            Assert.IsType<PermissionLevel>(instance.FicReceipts);
         }
         /// <summary>
         /// Test the property 'FicCalendar'
@@ -119,7 +117,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicCalendarTest()
         {
-            // TODO unit test for the property 'FicCalendar'
+            Assert.IsType<PermissionLevel>(instance.FicCalendar);
         }
         /// <summary>
         /// Test the property 'FicArchive'
@@ -127,7 +125,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicArchiveTest()
         {
-            // TODO unit test for the property 'FicArchive'
+            Assert.IsType<PermissionLevel>(instance.FicArchive);
         }
         /// <summary>
         /// Test the property 'FicTaxes'
@@ -135,7 +133,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicTaxesTest()
         {
-            // TODO unit test for the property 'FicTaxes'
+            Assert.IsType<PermissionLevel>(instance.FicTaxes);
         }
         /// <summary>
         /// Test the property 'FicStock'
@@ -143,7 +141,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicStockTest()
         {
-            // TODO unit test for the property 'FicStock'
+            Assert.IsType<PermissionLevel>(instance.FicStock);
         }
         /// <summary>
         /// Test the property 'FicCashbook'
@@ -151,7 +149,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicCashbookTest()
         {
-            // TODO unit test for the property 'FicCashbook'
+            Assert.IsType<PermissionLevel>(instance.FicCashbook);
         }
         /// <summary>
         /// Test the property 'FicSettings'
@@ -159,7 +157,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicSettingsTest()
         {
-            // TODO unit test for the property 'FicSettings'
+            Assert.IsType<PermissionLevel>(instance.FicSettings);
         }
         /// <summary>
         /// Test the property 'FicEmails'
@@ -167,7 +165,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicEmailsTest()
         {
-            // TODO unit test for the property 'FicEmails'
+            Assert.IsType<PermissionLevel>(instance.FicEmails);
         }
         /// <summary>
         /// Test the property 'FicExport'
@@ -175,7 +173,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicExportTest()
         {
-            // TODO unit test for the property 'FicExport'
+            Assert.IsType<PermissionLevel>(instance.FicExport);
         }
         /// <summary>
         /// Test the property 'FicImportBankstatements'
@@ -183,7 +181,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicImportBankstatementsTest()
         {
-            // TODO unit test for the property 'FicImportBankstatements'
+            Assert.IsType<PermissionLevel>(instance.FicImportBankstatements);
         }
         /// <summary>
         /// Test the property 'FicImportClientsSuppliers'
@@ -191,7 +189,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicImportClientsSuppliersTest()
         {
-            // TODO unit test for the property 'FicImportClientsSuppliers'
+            Assert.IsType<PermissionLevel>(instance.FicImportClientsSuppliers);
         }
         /// <summary>
         /// Test the property 'FicImportIssuedDocuments'
@@ -199,7 +197,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicImportIssuedDocumentsTest()
         {
-            // TODO unit test for the property 'FicImportIssuedDocuments'
+            Assert.IsType<PermissionLevel>(instance.FicImportIssuedDocuments);
         }
         /// <summary>
         /// Test the property 'FicImportProducts'
@@ -207,7 +205,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicImportProductsTest()
         {
-            // TODO unit test for the property 'FicImportProducts'
+            Assert.IsType<PermissionLevel>(instance.FicImportProducts);
         }
         /// <summary>
         /// Test the property 'FicRecurring'
@@ -215,7 +213,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicRecurringTest()
         {
-            // TODO unit test for the property 'FicRecurring'
+            Assert.IsType<PermissionLevel>(instance.FicRecurring);
         }
         /// <summary>
         /// Test the property 'FicRiba'
@@ -223,7 +221,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicRibaTest()
         {
-            // TODO unit test for the property 'FicRiba'
+            Assert.IsType<PermissionLevel>(instance.FicRiba);
         }
         /// <summary>
         /// Test the property 'DicEmployees'
@@ -231,7 +229,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DicEmployeesTest()
         {
-            // TODO unit test for the property 'DicEmployees'
+            Assert.IsType<PermissionLevel>(instance.DicEmployees);
         }
         /// <summary>
         /// Test the property 'DicSettings'
@@ -239,7 +237,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DicSettingsTest()
         {
-            // TODO unit test for the property 'DicSettings'
+            Assert.IsType<PermissionLevel>(instance.DicSettings);
         }
         /// <summary>
         /// Test the property 'DicTimesheet'
@@ -247,7 +245,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DicTimesheetTest()
         {
-            // TODO unit test for the property 'DicTimesheet'
+            Assert.IsType<PermissionLevel>(instance.DicTimesheet);
         }
         /// <summary>
         /// Test the property 'FicIssuedDocumentsDetailed'
@@ -255,7 +253,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FicIssuedDocumentsDetailedTest()
         {
-            // TODO unit test for the property 'FicIssuedDocumentsDetailed'
+            Assert.IsType<PermissionsFicIssuedDocumentsDetailed>(instance.FicIssuedDocumentsDetailed);
         }
 
     }

@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class CompanyInfoPlanInfoTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for CompanyInfoPlanInfo
-        //private CompanyInfoPlanInfo instance;
+        private CompanyInfoPlanInfo instance;
 
         public CompanyInfoPlanInfoTests()
         {
-            // TODO uncomment below to create an instance of CompanyInfoPlanInfo
-            //instance = new CompanyInfoPlanInfo();
+            var body = "{ 'limits': { 'clients': 5000, 'suppliers': 5000, 'products': 5000, 'documents': 3000 }, 'functions': { 'document_attachments': true, 'archive': true, 'payment_notifications': true, 'paypal': true, 'receipts': true, 'e_invoice': true, 'genius': true, 'stock': true, 'smtp': true, 'mail_tracking': true, 'subaccounts': true, 'tessera_sanitaria': true, 'recurring': true, 'sofort': false, 'cerved': true, 'ts_digital': true, 'ts_pay': true, 'ts_invoice_trading': true }, 'functions_status': { 'ts_digital': { 'active': true }, 'ts_pay': { 'active': true } } }";
+            instance = JsonConvert.DeserializeObject<CompanyInfoPlanInfo>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CompanyInfoPlanInfoInstanceTest()
         {
-            // TODO uncomment below to test "IsType" CompanyInfoPlanInfo
-            //Assert.IsType<CompanyInfoPlanInfo>(instance);
+            Assert.IsType<CompanyInfoPlanInfo>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void LimitsTest()
         {
-            // TODO unit test for the property 'Limits'
+            Assert.IsType<CompanyInfoPlanInfoLimits>(instance.Limits);
         }
         /// <summary>
         /// Test the property 'Functions'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FunctionsTest()
         {
-            // TODO unit test for the property 'Functions'
+            Assert.IsType<CompanyInfoPlanInfoFunctions>(instance.Functions);
         }
         /// <summary>
         /// Test the property 'FunctionsStatus'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FunctionsStatusTest()
         {
-            // TODO unit test for the property 'FunctionsStatus'
+            Assert.IsType<CompanyInfoPlanInfoFunctionsStatus>(instance.FunctionsStatus);
         }
 
     }

@@ -16,11 +16,12 @@ using System.Linq;
 using System.Reflection;
 using RestSharp;
 using Xunit;
-
+using Moq;
 using It.FattureInCloud.Sdk.Client;
 using It.FattureInCloud.Sdk.Api;
-// uncomment below to import models
-//using It.FattureInCloud.Sdk.Model;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using It.FattureInCloud.Sdk.Model;
 
 namespace It.FattureInCloud.Sdk.Test.Api
 {
@@ -33,11 +34,16 @@ namespace It.FattureInCloud.Sdk.Test.Api
     /// </remarks>
     public class CompaniesApiTests : IDisposable
     {
-        private CompaniesApi instance;
+        Mock<ICompaniesApi> instance = new Mock<ICompaniesApi>();
+        string getCompanyInfoResponseBody;
 
         public CompaniesApiTests()
         {
-            instance = new CompaniesApi();
+            getCompanyInfoResponseBody = "{ 'data': { 'type': 'accountant', 'fic_plan_name': 'premium_plus', 'id': 12345, 'name': 'Studio Commercialista', 'email': 'mario.rossi@examplea.com', 'fic': true, 'fic_license_type': 'coupon_b', 'fic_payment_subject': 'client', 'fic_license_expire': '2030-12-31', 'fic_signup_date': '2013-11-01', 'use_fic': true, 'fic_need_setup': false, 'dic': true, 'dic_license_expire': '2022-12-31', 'use_dic': true, 'dic_need_setup': false, 'access_info': { 'role': 'master', 'permissions': { 'fic_situation': 'read', 'fic_clients': 'write', 'fic_suppliers': 'write', 'fic_products': 'write', 'fic_issued_documents': 'detailed', 'fic_received_documents': 'write', 'fic_receipts': 'write', 'fic_calendar': 'write', 'fic_archive': 'write', 'fic_taxes': 'write', 'fic_stock': 'write', 'fic_cashbook': 'write', 'fic_settings': 'write', 'fic_emails': 'read', 'fic_export': 'write', 'fic_import_bankstatements': 'none', 'fic_import_clients_suppliers': 'write', 'fic_import_issued_documents': 'none', 'fic_import_products': 'write', 'fic_recurring': 'write', 'fic_riba': 'write', 'dic_employees': 'none', 'dic_settings': 'none', 'dic_timesheet': 'none', 'fic_issued_documents_detailed': { 'quotes': 'write', 'proformas': 'write', 'invoices': 'write', 'receipts': 'write', 'delivery_notes': 'write', 'credit_notes': 'write', 'orders': 'write', 'work_reports': 'write', 'supplier_orders': 'write', 'self_invoices': 'write' } }, 'through_accountant': false }, 'plan_info': { 'limits': { 'clients': 5000, 'suppliers': 5000, 'products': 5000, 'documents': 3000 }, 'functions': { 'archive': true, 'cerved': true, 'document_attachments': true, 'e_invoice': true, 'genius': true, 'mail_tracking': true, 'payment_notifications': true, 'paypal': true, 'receipts': true, 'recurring': true, 'smtp': true, 'sofort': false, 'stock': true, 'subaccounts': true, 'tessera_sanitaria': true, 'ts_digital': true, 'ts_invoice_trading': true, 'ts_pay': true }, 'functions_status': { 'ts_digital': { 'active': true }, 'ts_pay': { 'active': true } } }, 'can_use_coupon': false, 'accountant_id': 12345, 'dic_license_type': null, 'dic_payment_subject': 'client', 'dic_plan_name': 'trial', 'dic_signup_date': '2018-03-26', 'is_accountant': true, 'registration_service': 'fic'} }";
+            var getCompanyInfoResponse = JsonConvert.DeserializeObject<GetCompanyInfoResponse>(getCompanyInfoResponseBody);
+            instance
+                .Setup(p => p.GetCompanyInfo(Moq.It.IsAny<int>()))
+                .Returns(getCompanyInfoResponse);
         }
 
         public void Dispose()
@@ -51,8 +57,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void InstanceTest()
         {
-            // TODO uncomment below to test 'IsType' CompaniesApi
-            //Assert.IsType<CompaniesApi>(instance);
+            Assert.IsType<Mock<ICompaniesApi>>(instance);
         }
 
         /// <summary>
@@ -61,10 +66,12 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void GetCompanyInfoTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //var response = instance.GetCompanyInfo(companyId);
-            //Assert.IsType<GetCompanyInfoResponse>(response);
+            int companyId = 2;
+
+            var response = instance.Object.GetCompanyInfo(companyId);
+            JObject obj = JObject.Parse(getCompanyInfoResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
     }
 }

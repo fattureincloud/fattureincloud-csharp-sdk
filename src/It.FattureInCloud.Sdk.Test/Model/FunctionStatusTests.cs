@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class FunctionStatusTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for FunctionStatus
-        //private FunctionStatus instance;
+        private FunctionStatus instance;
 
         public FunctionStatusTests()
         {
-            // TODO uncomment below to create an instance of FunctionStatus
-            //instance = new FunctionStatus();
+            var body = "{ 'active' : true }";
+            instance = JsonConvert.DeserializeObject<FunctionStatus>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FunctionStatusInstanceTest()
         {
-            // TODO uncomment below to test "IsType" FunctionStatus
-            //Assert.IsType<FunctionStatus>(instance);
+            Assert.IsType<FunctionStatus>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ActiveTest()
         {
-            // TODO unit test for the property 'Active'
+            Assert.IsType<bool>(instance.Active);
         }
 
     }

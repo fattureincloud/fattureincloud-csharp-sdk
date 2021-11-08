@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ListVatTypesResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ListVatTypesResponse
-        //private ListVatTypesResponse instance;
+        private ListVatTypesResponse instance;
 
         public ListVatTypesResponseTests()
         {
-            // TODO uncomment below to create an instance of ListVatTypesResponse
-            //instance = new ListVatTypesResponse();
+            var body = "{ 'data': [ { 'id': 0, 'value': 22, 'description': 'Non imponibile art. 123', 'notes': 'IVA non imponibile ai sensi dell articolo 123, comma 2', 'e_invoice': false, 'ei_type': 2, 'ei_description': 'string', 'editable': true }, { 'id': 1010, 'value': 0, 'description': 'NON IMPONIBILE IVA EX ART. 8 COMMA 1 LETT.A', 'notes': '', 'e_invoice': false, 'ei_type': 0, 'ei_description': null, 'is_disabled': false, 'editable': true } ] }";
+            instance = JsonConvert.DeserializeObject<ListVatTypesResponse>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ListVatTypesResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ListVatTypesResponse
-            //Assert.IsType<ListVatTypesResponse>(instance);
+            Assert.IsType<ListVatTypesResponse>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<List<VatType>>(instance.Data);
         }
 
     }

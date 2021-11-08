@@ -32,13 +32,15 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ArchiveDocumentTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ArchiveDocument
-        //private ArchiveDocument instance;
+        ArchiveDocument instance = new ArchiveDocument();
 
         public ArchiveDocumentTests()
         {
-            // TODO uncomment below to create an instance of ArchiveDocument
-            //instance = new ArchiveDocument();
+            instance.Id = 12345;
+            instance.Date = new DateTime(2021, 8, 21);
+            instance.Category = "Altri documenti";
+            instance.Description = "spesa 2";
+            instance.AttachmentToken = "jwfbaiuwbfoiewfoa8weohafw7gefa9we";
         }
 
         public void Dispose()
@@ -52,8 +54,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ArchiveDocumentInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ArchiveDocument
-            //Assert.IsType<ArchiveDocument>(instance);
+            Assert.IsType<ArchiveDocument>(instance);
         }
 
 
@@ -63,7 +64,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IdTest()
         {
-            // TODO unit test for the property 'Id'
+            Assert.IsType<int>(instance.Id);
         }
         /// <summary>
         /// Test the property 'Date'
@@ -71,7 +72,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DateTest()
         {
-            // TODO unit test for the property 'Date'
+            Assert.IsType<DateTimeOffset>(instance.Date);
         }
         /// <summary>
         /// Test the property 'Description'
@@ -79,7 +80,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DescriptionTest()
         {
-            // TODO unit test for the property 'Description'
+            Assert.IsType<string>(instance.Description);
         }
         /// <summary>
         /// Test the property 'AttachmentUrl'
@@ -87,7 +88,6 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AttachmentUrlTest()
         {
-            // TODO unit test for the property 'AttachmentUrl'
         }
         /// <summary>
         /// Test the property 'Category'
@@ -95,7 +95,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CategoryTest()
         {
-            // TODO unit test for the property 'Category'
+            Assert.IsType<string>(instance.Category);
         }
         /// <summary>
         /// Test the property 'AttachmentToken'
@@ -103,7 +103,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AttachmentTokenTest()
         {
-            // TODO unit test for the property 'AttachmentToken'
+            Assert.IsType<string>(instance.AttachmentToken);
         }
 
     }

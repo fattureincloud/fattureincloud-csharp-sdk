@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class GetReceivedDocumentPreCreateInfoResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for GetReceivedDocumentPreCreateInfoResponse
-        //private GetReceivedDocumentPreCreateInfoResponse instance;
+        private GetReceivedDocumentPreCreateInfoResponse instance;
 
         public GetReceivedDocumentPreCreateInfoResponseTests()
         {
-            // TODO uncomment below to create an instance of GetReceivedDocumentPreCreateInfoResponse
-            //instance = new GetReceivedDocumentPreCreateInfoResponse();
+            var body = "{ 'data': { 'default_values': { 'detailed': false }, 'items_default_values': { 'vat': null }, 'countries_list': [ 'Italia', 'Afghanistan', 'Albania' ], 'currencies_list': [ { 'id': 'AED', 'symbol': 'AED', 'html_symbol': 'AED', 'exchange_rate': '4.09500' }, { 'id': 'ALL', 'symbol': 'ALL', 'html_symbol': 'ALL', 'exchange_rate': '121.50000' } ], 'categories_list': [ 'Auto', 'Telefono e internet' ], 'payment_accounts_list': [ { 'id': 111, 'name': 'Indesa - carta conto' } ] } }";
+            instance = JsonConvert.DeserializeObject<GetReceivedDocumentPreCreateInfoResponse>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void GetReceivedDocumentPreCreateInfoResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" GetReceivedDocumentPreCreateInfoResponse
-            //Assert.IsType<GetReceivedDocumentPreCreateInfoResponse>(instance);
+            Assert.IsType<GetReceivedDocumentPreCreateInfoResponse>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<ReceivedDocumentInfo>(instance.Data);
         }
 
     }

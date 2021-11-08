@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class CreateArchiveDocumentRequestTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for CreateArchiveDocumentRequest
-        //private CreateArchiveDocumentRequest instance;
+        private CreateArchiveDocumentRequest instance;
 
         public CreateArchiveDocumentRequestTests()
         {
-            // TODO uncomment below to create an instance of CreateArchiveDocumentRequest
-            //instance = new CreateArchiveDocumentRequest();
+            var body = "{ 'data': { 'date': '2021-08-20', 'category': 'Altri documenti', 'description': 'spesa 1', 'attachment_token': 'ibfjdbf94ey9w94g3w894qbasrga' } }";
+            instance = JsonConvert.DeserializeObject<CreateArchiveDocumentRequest>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CreateArchiveDocumentRequestInstanceTest()
         {
-            // TODO uncomment below to test "IsType" CreateArchiveDocumentRequest
-            //Assert.IsType<CreateArchiveDocumentRequest>(instance);
+            Assert.IsType<CreateArchiveDocumentRequest>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<ArchiveDocument>(instance.Data);
         }
 
     }

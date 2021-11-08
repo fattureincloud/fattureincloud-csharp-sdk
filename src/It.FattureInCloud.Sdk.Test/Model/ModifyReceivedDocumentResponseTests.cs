@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ModifyReceivedDocumentResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ModifyReceivedDocumentResponse
-        //private ModifyReceivedDocumentResponse instance;
+        private ModifyReceivedDocumentResponse instance;
 
         public ModifyReceivedDocumentResponseTests()
         {
-            // TODO uncomment below to create an instance of ModifyReceivedDocumentResponse
-            //instance = new ModifyReceivedDocumentResponse();
+            var body = "{ 'data': { 'type': 'expense', 'description': 'Soggiorno di lavoro', 'amortization': 1, 'rc_center': '', 'invoice_number': '', 'is_marked': false, 'is_detailed': false, 'e_invoice': false, 'entity': { 'id': 111, 'name': 'Hotel Rubino Palace' }, 'date': '2021-08-15', 'next_due_date': '2021-08-15', 'currency': { 'id': 'EUR', 'exchange_rate': '1.00000', 'symbol': '€' }, 'amount_net': 592, 'amount_vat': 0, 'amount_gross': 592, 'amount_withholding_tax': 0, 'amount_other_withholding_tax': 0, 'tax_deductibility': 50, 'vat_deductibility': 100, 'payments_list': [ { 'amount': 592, 'due_date': '2021-08-15', 'paid_date': '2021-08-15', 'id': 777, 'payment_terms': { 'days': 0, 'type': 'standard' }, 'status': 'paid', 'payment_account': { 'id': 222, 'name': 'Contanti', 'virtual': false } } ] } }";
+            instance = JsonConvert.DeserializeObject<ModifyReceivedDocumentResponse>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ModifyReceivedDocumentResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ModifyReceivedDocumentResponse
-            //Assert.IsType<ModifyReceivedDocumentResponse>(instance);
+            Assert.IsType<ModifyReceivedDocumentResponse>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<ReceivedDocument>(instance.Data);
         }
 
     }

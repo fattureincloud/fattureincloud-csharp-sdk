@@ -16,11 +16,12 @@ using System.Linq;
 using System.Reflection;
 using RestSharp;
 using Xunit;
-
+using Moq;
 using It.FattureInCloud.Sdk.Client;
 using It.FattureInCloud.Sdk.Api;
-// uncomment below to import models
-//using It.FattureInCloud.Sdk.Model;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using It.FattureInCloud.Sdk.Model;
 
 namespace It.FattureInCloud.Sdk.Test.Api
 {
@@ -33,11 +34,51 @@ namespace It.FattureInCloud.Sdk.Test.Api
     /// </remarks>
     public class SettingsApiTests : IDisposable
     {
-        private SettingsApi instance;
+        Mock<ISettingsApi> instance = new Mock<ISettingsApi>();
+        string createPaymentAccountResponseBody;
+        string getPaymentAccountResponseBody;
+        string modifyPaymentAccountResponseBody;
+        string createPaymentMethodResponseBody;
+        string getPaymentMethodResponseBody;
+        string modifyPaymentMethodResponseBody;
 
         public SettingsApiTests()
         {
-            instance = new SettingsApi();
+            createPaymentAccountResponseBody = "{ 'data': { 'type': 'standard', 'name': 'Conto Banca Intesa', 'iban': 'string', 'sia': 'string', 'cuc': 'string', 'virtual': true } }";
+            var createPaymentAccountResponse = JsonConvert.DeserializeObject<CreatePaymentAccountResponse>(createPaymentAccountResponseBody);
+            instance
+                .Setup(p => p.CreatePaymentAccount(Moq.It.IsAny<int>(), Moq.It.IsAny<CreatePaymentAccountRequest>()))
+                .Returns(createPaymentAccountResponse);
+
+            getPaymentAccountResponseBody = "{ 'data': { 'type': 'standard', 'name': 'Conto Banca Intesa', 'iban': 'string', 'sia': 'string', 'cuc': 'string', 'virtual': true } }";
+            var getPaymentAccountResponse = JsonConvert.DeserializeObject<GetPaymentAccountResponse>(getPaymentAccountResponseBody);
+            instance
+                .Setup(p => p.GetPaymentAccount(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<object>()))
+                .Returns(getPaymentAccountResponse);
+
+            modifyPaymentAccountResponseBody = "{ 'data': { 'type': 'standard', 'name': 'Conto Banca Intesa', 'iban': 'string', 'sia': 'string', 'cuc': 'string', 'virtual': true } }";
+            var modifyPaymentAccountResponse = JsonConvert.DeserializeObject<ModifyPaymentAccountResponse>(modifyPaymentAccountResponseBody);
+            instance
+                .Setup(p => p.ModifyPaymentAccount(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<ModifyPaymentAccountRequest>()))
+                .Returns(modifyPaymentAccountResponse);
+
+            createPaymentMethodResponseBody = "{ 'data': { 'type': 'standard', 'id': 386683, 'name': 'Bonifico bancario', 'is_default': true, 'default_payment_account': { 'id': 12345, 'name': 'conto banca SP', 'iban': null, 'sia': null, 'virtual': false }, 'details': [ { 'title': 'Banca', 'description': 'Sao Paulo' } ], 'bank_iban': null, 'bank_name': null, 'bank_beneficiary': null } }";
+            var createPaymentMethodResponse = JsonConvert.DeserializeObject<CreatePaymentMethodResponse>(createPaymentMethodResponseBody);
+            instance
+                .Setup(p => p.CreatePaymentMethod(Moq.It.IsAny<int>(), Moq.It.IsAny<CreatePaymentMethodRequest>()))
+                .Returns(createPaymentMethodResponse);
+
+            getPaymentMethodResponseBody = "{ 'data': { 'type': 'standard', 'id': 386683, 'name': 'Bonifico bancario', 'is_default': true, 'default_payment_account': { 'id': 12345, 'name': 'conto banca SP', 'iban': null, 'sia': null, 'virtual': false }, 'details': [ { 'title': 'Banca', 'description': 'Sao Paulo' } ], 'bank_iban': null, 'bank_name': null, 'bank_beneficiary': null } }";
+            var getPaymentMethodResponse = JsonConvert.DeserializeObject<GetPaymentMethodResponse>(getPaymentMethodResponseBody);
+            instance
+                .Setup(p => p.GetPaymentMethod(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
+                .Returns(getPaymentMethodResponse);
+
+            modifyPaymentMethodResponseBody = "{ 'data': { 'type': 'standard', 'id': 386683, 'name': 'Bonifico bancario', 'is_default': true, 'default_payment_account': { 'id': 12345, 'name': 'conto banca SP', 'iban': null, 'sia': null, 'virtual': false }, 'details': [ { 'title': 'Banca', 'description': 'Sao Paulo' } ], 'bank_iban': null, 'bank_name': null, 'bank_beneficiary': null } }";
+            var modifyPaymentMethodResponse = JsonConvert.DeserializeObject<ModifyPaymentMethodResponse>(modifyPaymentMethodResponseBody);
+            instance
+                .Setup(p => p.ModifyPaymentMethod(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifyPaymentMethodRequest>()))
+                .Returns(modifyPaymentMethodResponse);
         }
 
         public void Dispose()
@@ -51,8 +92,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void InstanceTest()
         {
-            // TODO uncomment below to test 'IsType' SettingsApi
-            //Assert.IsType<SettingsApi>(instance);
+            Assert.IsType<Mock<ISettingsApi>>(instance);
         }
 
         /// <summary>
@@ -61,11 +101,13 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void CreatePaymentAccountTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //CreatePaymentAccountRequest createPaymentAccountRequest = null;
-            //var response = instance.CreatePaymentAccount(companyId, createPaymentAccountRequest);
-            //Assert.IsType<CreatePaymentAccountResponse>(response);
+            int companyId = 2;
+            CreatePaymentAccountRequest createPaymentAccountRequest = new CreatePaymentAccountRequest();
+
+            var response = instance.Object.CreatePaymentAccount(companyId, createPaymentAccountRequest);
+            JObject obj = JObject.Parse(createPaymentAccountResponseBody);
+ 
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -74,11 +116,13 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void CreatePaymentMethodTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //CreatePaymentMethodRequest createPaymentMethodRequest = null;
-            //var response = instance.CreatePaymentMethod(companyId, createPaymentMethodRequest);
-            //Assert.IsType<CreatePaymentMethodResponse>(response);
+            int companyId = 2;
+            CreatePaymentMethodRequest createPaymentMethodRequest = new CreatePaymentMethodRequest();
+
+            var response = instance.Object.CreatePaymentMethod(companyId, createPaymentMethodRequest);
+            JObject obj = JObject.Parse(createPaymentMethodResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -87,10 +131,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void DeletePaymentAccountTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //string paymentAccountId = null;
-            //instance.DeletePaymentAccount(companyId, paymentAccountId);
+            Assert.True(true);
         }
 
         /// <summary>
@@ -99,10 +140,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void DeletePaymentMethodTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int paymentMethodId = null;
-            //instance.DeletePaymentMethod(companyId, paymentMethodId);
+            Assert.True(true);
         }
 
         /// <summary>
@@ -111,14 +149,16 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void GetPaymentAccountTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //string paymentAccountId = null;
-            //string fields = null;
-            //string fieldset = null;
-            //Object body = null;
-            //var response = instance.GetPaymentAccount(companyId, paymentAccountId, fields, fieldset, body);
-            //Assert.IsType<GetPaymentAccountResponse>(response);
+            int companyId = 2;
+            string paymentAccountId = "12345";
+            string fields = "";
+            string fieldset = "";
+            Object body = new object();
+
+            var response = instance.Object.GetPaymentAccount(companyId, paymentAccountId, fields, fieldset, body);
+            JObject obj = JObject.Parse(getPaymentAccountResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -127,13 +167,15 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void GetPaymentMethodTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int paymentMethodId = null;
-            //string fields = null;
-            //string fieldset = null;
-            //var response = instance.GetPaymentMethod(companyId, paymentMethodId, fields, fieldset);
-            //Assert.IsType<GetPaymentMethodResponse>(response);
+            int companyId = 2;
+            int paymentMethodId = 12345;
+            string fields = "";
+            string fieldset = "";
+
+            var response = instance.Object.GetPaymentMethod(companyId, paymentMethodId, fields, fieldset);
+            JObject obj = JObject.Parse(getPaymentMethodResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -142,12 +184,14 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void ModifyPaymentAccountTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //string paymentAccountId = null;
-            //ModifyPaymentAccountRequest modifyPaymentAccountRequest = null;
-            //var response = instance.ModifyPaymentAccount(companyId, paymentAccountId, modifyPaymentAccountRequest);
-            //Assert.IsType<ModifyPaymentAccountResponse>(response);
+            int companyId = 2;
+            string paymentAccountId = "12345";
+            ModifyPaymentAccountRequest modifyPaymentAccountRequest = new ModifyPaymentAccountRequest();
+
+            var response = instance.Object.ModifyPaymentAccount(companyId, paymentAccountId, modifyPaymentAccountRequest);
+            JObject obj = JObject.Parse(modifyPaymentAccountResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -156,12 +200,14 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void ModifyPaymentMethodTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int paymentMethodId = null;
-            //ModifyPaymentMethodRequest modifyPaymentMethodRequest = null;
-            //var response = instance.ModifyPaymentMethod(companyId, paymentMethodId, modifyPaymentMethodRequest);
-            //Assert.IsType<ModifyPaymentMethodResponse>(response);
+            int companyId = 2;
+            int paymentMethodId = 12345;
+            ModifyPaymentMethodRequest modifyPaymentMethodRequest = new ModifyPaymentMethodRequest();
+
+            var response = instance.Object.ModifyPaymentMethod(companyId, paymentMethodId, modifyPaymentMethodRequest);
+            JObject obj = JObject.Parse(modifyPaymentMethodResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
     }
 }

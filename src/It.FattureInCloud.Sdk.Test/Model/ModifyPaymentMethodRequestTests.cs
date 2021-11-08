@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ModifyPaymentMethodRequestTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ModifyPaymentMethodRequest
-        //private ModifyPaymentMethodRequest instance;
+        private ModifyPaymentMethodRequest instance;
 
         public ModifyPaymentMethodRequestTests()
         {
-            // TODO uncomment below to create an instance of ModifyPaymentMethodRequest
-            //instance = new ModifyPaymentMethodRequest();
+            var body = "{ 'data': { 'id': 386683, 'name': 'Bonifico bancario', 'is_default': true, 'type': 'standard', 'details': [ { 'title': 'Banca', 'description': 'Sao Paulo' } ], 'default_payment_account': { 'id': 12345, 'name': 'conto banca SP' } } }";
+            instance = JsonConvert.DeserializeObject<ModifyPaymentMethodRequest>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ModifyPaymentMethodRequestInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ModifyPaymentMethodRequest
-            //Assert.IsType<ModifyPaymentMethodRequest>(instance);
+            Assert.IsType<ModifyPaymentMethodRequest>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<PaymentMethod>(instance.Data);
         }
 
     }

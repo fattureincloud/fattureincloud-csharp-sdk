@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class SendEInvoiceRequestDataTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for SendEInvoiceRequestData
-        //private SendEInvoiceRequestData instance;
+        private SendEInvoiceRequestData instance;
 
         public SendEInvoiceRequestDataTests()
         {
-            // TODO uncomment below to create an instance of SendEInvoiceRequestData
-            //instance = new SendEInvoiceRequestData();
+            var body = "{'cassa_type':'ct','withholding_tax_causal':'causale'}";
+            instance = JsonConvert.DeserializeObject<SendEInvoiceRequestData>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SendEInvoiceRequestDataInstanceTest()
         {
-            // TODO uncomment below to test "IsType" SendEInvoiceRequestData
-            //Assert.IsType<SendEInvoiceRequestData>(instance);
+            Assert.IsType<SendEInvoiceRequestData>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CassaTypeTest()
         {
-            // TODO unit test for the property 'CassaType'
+            Assert.IsType<string>(instance.CassaType);
         }
         /// <summary>
         /// Test the property 'WithholdingTaxCausal'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void WithholdingTaxCausalTest()
         {
-            // TODO unit test for the property 'WithholdingTaxCausal'
+            Assert.IsType<string>(instance.WithholdingTaxCausal);
         }
 
     }

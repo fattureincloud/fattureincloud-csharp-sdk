@@ -16,11 +16,12 @@ using System.Linq;
 using System.Reflection;
 using RestSharp;
 using Xunit;
-
+using Moq;
 using It.FattureInCloud.Sdk.Client;
 using It.FattureInCloud.Sdk.Api;
-// uncomment below to import models
-//using It.FattureInCloud.Sdk.Model;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using It.FattureInCloud.Sdk.Model; 
 
 namespace It.FattureInCloud.Sdk.Test.Api
 {
@@ -33,11 +34,38 @@ namespace It.FattureInCloud.Sdk.Test.Api
     /// </remarks>
     public class ProductsApiTests : IDisposable
     {
-        private ProductsApi instance;
+        Mock<IProductsApi> instance = new Mock<IProductsApi>();
+        string createProductResponseBody;
+        string getProductResponseBody;
+        string listProductsResponseBody;
+        string modifyProductResponseBody;
 
         public ProductsApiTests()
         {
-            instance = new ProductsApi();
+            createProductResponseBody = "{'data':{'id':12345,'name':'Tavolo di marmo','code':'TAVOLO003','net_price':240.0,'gross_price':280.0,'use_gross_price':false,'default_vat':{'id':3,'value':22.0,'description':'Non imponibile art. 123','notes':'IVA non imponibile ai sensi dell articolo 123, comma 2','e_invoice':false,'is_disabled':false},'net_cost':0.0,'measure':'','description':'Tavolo in marmo pregiato','category':'arredamento','notes':null,'in_stock':true,'created_at':null,'updated_at':null}}";
+            var createProductResponse = JsonConvert.DeserializeObject<CreateProductResponse>(createProductResponseBody);
+            instance
+                .Setup(p => p.CreateProduct(Moq.It.IsAny<int>(), Moq.It.IsAny<CreateProductRequest>()))
+                .Returns(createProductResponse);
+
+            getProductResponseBody = "{'data':{'id':12345,'name':'Tavolo di marmo','code':'TAVOLO003','net_price':240.0,'gross_price':280.0,'use_gross_price':false,'default_vat':{'id':3,'value':22.0,'description':'Non imponibile art. 123','notes':'IVA non imponibile ai sensi dell articolo 123, comma 2','e_invoice':false,'is_disabled':false},'net_cost':0.0,'measure':'','description':'Tavolo in marmo pregiato','category':'arredamento','notes':null,'in_stock':true,'created_at':null,'updated_at':null}}";
+            var getProductResponse = JsonConvert.DeserializeObject<GetProductResponse>(getProductResponseBody);
+            instance
+                .Setup(p => p.GetProduct(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
+                .Returns(getProductResponse);
+
+            listProductsResponseBody = "{ 'current_page': 1, 'first_page_url': 'page=1', 'from': 1, 'last_page': 1, 'last_page_url': 'page=1', 'next_page_url': 'page=2', 'path': 'products', 'per_page': 50, 'prev_page_url': null, 'to': 55, 'total': 55, 'data': [ { 'id': 12345, 'name': 'Tavolo di marmo', 'code': 'TAVOLO003', 'net_price': 240.0, 'gross_price': 280.0, 'use_gross_price': false, 'default_vat': { 'id': 3, 'value': 22.0, 'description': 'Non imponibile art. 123', 'notes': 'IVA non imponibile ai sensi dell articolo 123, comma 2', 'e_invoice': false, 'is_disabled': false }, 'net_cost': 0.0, 'measure': '', 'description': 'Tavolo in marmo pregiato', 'category': 'arredamento', 'notes': null, 'in_stock': true, 'created_at': null, 'updated_at': null }, { 'id': 12346, 'name': 'Tavolo di legno', 'code': 'TAVOLO001', 'net_price': 120.0, 'gross_price': 160.0, 'use_gross_price': false, 'default_vat': { 'id': 3, 'value': 22.0, 'description': 'Non imponibile art. 123', 'notes': 'IVA non imponibile ai sensi dell articolo 123, comma 2', 'e_invoice': false, 'is_disabled': false }, 'net_cost': 0.0, 'measure': '', 'description': 'Tavolo in legno pregiato', 'category': 'arredamento', 'notes': null, 'in_stock': true, 'created_at': null, 'updated_at': null } ]}";
+            var listProductsResponse = JsonConvert.DeserializeObject<ListProductsResponse>(listProductsResponseBody);
+            instance
+                .Setup(p => p.ListProducts(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<int>(), Moq.It.IsAny<int>()))
+                .Returns(listProductsResponse);
+
+            modifyProductResponseBody = "{'data':{'id':12345,'name':'Tavolo di marmo','code':'TAVOLO003','net_price':240.0,'gross_price':280.0,'use_gross_price':false,'default_vat':{'id':3,'value':22.0,'description':'Non imponibile art. 123','notes':'IVA non imponibile ai sensi dell articolo 123, comma 2','e_invoice':false,'is_disabled':false},'net_cost':0.0,'measure':'','description':'Tavolo in marmo pregiato','category':'arredamento','notes':null,'in_stock':true,'created_at':null,'updated_at':null}}";
+            var modifyProductResponse = JsonConvert.DeserializeObject<ModifyProductResponse>(modifyProductResponseBody);
+            instance
+                .Setup(p => p.ModifyProduct(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifyProductRequest>()))
+                .Returns(modifyProductResponse);
+
         }
 
         public void Dispose()
@@ -51,8 +79,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void InstanceTest()
         {
-            // TODO uncomment below to test 'IsType' ProductsApi
-            //Assert.IsType<ProductsApi>(instance);
+            Assert.IsType<Mock<IProductsApi>>(instance);
         }
 
         /// <summary>
@@ -61,11 +88,13 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void CreateProductTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //CreateProductRequest createProductRequest = null;
-            //var response = instance.CreateProduct(companyId, createProductRequest);
-            //Assert.IsType<CreateProductResponse>(response);
+            int companyId = 2;
+            CreateProductRequest createProductRequest = new CreateProductRequest();
+
+            var response = instance.Object.CreateProduct(companyId, createProductRequest);
+            JObject obj = JObject.Parse(createProductResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -74,10 +103,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void DeleteProductTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int productId = null;
-            //instance.DeleteProduct(companyId, productId);
+            Assert.True(true);
         }
 
         /// <summary>
@@ -86,13 +112,15 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void GetProductTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int productId = null;
-            //string fields = null;
-            //string fieldset = null;
-            //var response = instance.GetProduct(companyId, productId, fields, fieldset);
-            //Assert.IsType<GetProductResponse>(response);
+            int companyId = 2;
+            int productId = 12345;
+            string fields = "";
+            string fieldset = "";
+
+            var response = instance.Object.GetProduct(companyId, productId, fields, fieldset);
+            JObject obj = JObject.Parse(getProductResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -101,15 +129,17 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void ListProductsTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //string fields = null;
-            //string fieldset = null;
-            //string sort = null;
-            //int? page = null;
-            //int? perPage = null;
-            //var response = instance.ListProducts(companyId, fields, fieldset, sort, page, perPage);
-            //Assert.IsType<ListProductsResponse>(response);
+            int companyId = 2;
+            string fields = "";
+            string fieldset = "";
+            string sort = "";
+            int? page = 60;
+            int? perPage = 5;
+
+            var response = instance.Object.ListProducts(companyId, fields, fieldset, sort, page, perPage);
+            JObject obj = JObject.Parse(listProductsResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -118,12 +148,14 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void ModifyProductTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int productId = null;
-            //ModifyProductRequest modifyProductRequest = null;
-            //var response = instance.ModifyProduct(companyId, productId, modifyProductRequest);
-            //Assert.IsType<ModifyProductResponse>(response);
+            int companyId = 2;
+            int productId = 12345;
+            ModifyProductRequest modifyProductRequest = new ModifyProductRequest();
+
+            var response = instance.Object.ModifyProduct(companyId, productId, modifyProductRequest);
+            JObject obj = JObject.Parse(getProductResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
     }
 }

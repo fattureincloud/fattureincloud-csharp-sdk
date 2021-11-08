@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class CreateReceiptResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for CreateReceiptResponse
-        //private CreateReceiptResponse instance;
+        private CreateReceiptResponse instance;
 
         public CreateReceiptResponseTests()
         {
-            // TODO uncomment below to create an instance of CreateReceiptResponse
-            //instance = new CreateReceiptResponse();
+            var body = "{ 'data': { 'id': 12346, 'date': '2021-08-19', 'number': 6, 'numeration': 'REC006', 'amount_net': 8.2, 'amount_vat': 1.8, 'amount_gross': 10, 'use_gross_prices': true, 'type': 'sales_receipt', 'description': 'cassa 1', 'rc_center': '', 'created_at': '2021-08-19 17:57:56', 'updated_at': '2021-08-19 17:57:56', 'payment_account': { 'id': 555, 'name': 'contanti' }, 'items_list': [ { 'id': 888, 'amount_net': 8.2, 'amount_vat': 1.8, 'amount_gross': 10, 'category': 'altro', 'vat': { 'id': 0, 'value': 22, 'description': 'iva' } } ] } }";
+            instance = JsonConvert.DeserializeObject<CreateReceiptResponse>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CreateReceiptResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" CreateReceiptResponse
-            //Assert.IsType<CreateReceiptResponse>(instance);
+            Assert.IsType<CreateReceiptResponse>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<Receipt>(instance.Data);
         }
 
     }

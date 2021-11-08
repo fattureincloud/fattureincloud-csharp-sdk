@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class CompanyInfoAccessInfoTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for CompanyInfoAccessInfo
-        //private CompanyInfoAccessInfo instance;
+        private CompanyInfoAccessInfo instance;
 
         public CompanyInfoAccessInfoTests()
         {
-            // TODO uncomment below to create an instance of CompanyInfoAccessInfo
-            //instance = new CompanyInfoAccessInfo();
+            var body = "{ 'role': 'master', 'through_accountant': false, 'permissions': { 'fic_situation': 'read', 'fic_clients': 'write', 'fic_suppliers': 'write', 'fic_products': 'write', 'fic_issued_documents': 'detailed' } }";
+            instance = JsonConvert.DeserializeObject<CompanyInfoAccessInfo>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CompanyInfoAccessInfoInstanceTest()
         {
-            // TODO uncomment below to test "IsType" CompanyInfoAccessInfo
-            //Assert.IsType<CompanyInfoAccessInfo>(instance);
+            Assert.IsType<CompanyInfoAccessInfo>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void RoleTest()
         {
-            // TODO unit test for the property 'Role'
+            Assert.IsType<CompanyInfoAccessInfo.RoleEnum>(instance.Role);
         }
         /// <summary>
         /// Test the property 'Permissions'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PermissionsTest()
         {
-            // TODO unit test for the property 'Permissions'
+            Assert.IsType<Permissions>(instance.Permissions);
         }
         /// <summary>
         /// Test the property 'ThroughAccountant'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ThroughAccountantTest()
         {
-            // TODO unit test for the property 'ThroughAccountant'
+            Assert.IsType<bool>(instance.ThroughAccountant);
         }
 
     }

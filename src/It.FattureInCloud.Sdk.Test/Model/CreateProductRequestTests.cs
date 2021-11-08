@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class CreateProductRequestTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for CreateProductRequest
-        //private CreateProductRequest instance;
+        private CreateProductRequest instance;
 
         public CreateProductRequestTests()
         {
-            // TODO uncomment below to create an instance of CreateProductRequest
-            //instance = new CreateProductRequest();
+            var body = "{ 'data': { 'id': 12345, 'name': 'Tavolo di marmo', 'code': 'TAVOLO003', 'net_price': 240, 'gross_price': 280, 'use_gross_price': false, 'net_cost': 0, 'measure': '', 'description': 'Tavolo in marmo pregiato', 'category': 'arredamento', 'in_stock': true, 'default_vat': { 'id': 3, 'value': 22, 'description': 'Non imponibile art. 123', 'notes': 'IVA non imponibile ai sensi dell articolo 123, comma 2', 'is_disabled': false } } }";
+            instance = JsonConvert.DeserializeObject<CreateProductRequest>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CreateProductRequestInstanceTest()
         {
-            // TODO uncomment below to test "IsType" CreateProductRequest
-            //Assert.IsType<CreateProductRequest>(instance);
+            Assert.IsType<CreateProductRequest>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<Product>(instance.Data);
         }
 
     }

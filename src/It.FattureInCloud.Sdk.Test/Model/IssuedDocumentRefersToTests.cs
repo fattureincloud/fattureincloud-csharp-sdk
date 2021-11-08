@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class IssuedDocumentRefersToTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for IssuedDocumentRefersTo
-        //private IssuedDocumentRefersTo instance;
+        private IssuedDocumentRefersTo instance;
 
         public IssuedDocumentRefersToTests()
         {
-            // TODO uncomment below to create an instance of IssuedDocumentRefersTo
-            //instance = new IssuedDocumentRefersTo();
+            var body = "{ 'id': 12345, 'date': '2020-12-10', 'number': 2, 'numeration': 'num2', 'description': '' }";
+            instance = JsonConvert.DeserializeObject<IssuedDocumentRefersTo>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IssuedDocumentRefersToInstanceTest()
         {
-            // TODO uncomment below to test "IsType" IssuedDocumentRefersTo
-            //Assert.IsType<IssuedDocumentRefersTo>(instance);
+            Assert.IsType<IssuedDocumentRefersTo>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IdTest()
         {
-            // TODO unit test for the property 'Id'
+            Assert.IsType<int>(instance.Id);
         }
         /// <summary>
         /// Test the property 'Date'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DateTest()
         {
-            // TODO unit test for the property 'Date'
+            Assert.IsType<DateTimeOffset>(instance.Date);
         }
         /// <summary>
         /// Test the property 'Number'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NumberTest()
         {
-            // TODO unit test for the property 'Number'
+            Assert.IsType<int>(instance.Number);
         }
         /// <summary>
         /// Test the property 'Numeration'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NumerationTest()
         {
-            // TODO unit test for the property 'Numeration'
+            Assert.IsType<string>(instance.Numeration);
         }
         /// <summary>
         /// Test the property 'Description'
@@ -95,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DescriptionTest()
         {
-            // TODO unit test for the property 'Description'
+            Assert.IsType<string>(instance.Description);
         }
 
     }

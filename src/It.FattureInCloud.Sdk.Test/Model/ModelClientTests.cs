@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ModelClientTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ModelClient
-        //private ModelClient instance;
+        private ModelClient instance;
 
         public ModelClientTests()
         {
-            // TODO uncomment below to create an instance of ModelClient
-            //instance = new ModelClient();
+            var body = "{ 'id': 16451, 'code': 'AE86', 'name': 'Avv. Maria Rossi', 'type': 'person', 'first_name': 'Maria', 'last_name': 'Rossi', 'contact_person': '', 'vat_number': 'IT12345640962', 'tax_code': 'BLTGNI5ABCDA794E', 'address_street': 'Via Roma, 1', 'address_postal_code': '20900', 'address_city': 'Milano', 'address_province': 'MI', 'address_extra': '', 'country': 'Italia', 'email': 'maria.rossi@example.com', 'certified_email': 'maria.rossi@pec.example.com', 'phone': '1234567890', 'fax': '', 'notes': '', 'created_at': '2021-04-29 08:53:07', 'updated_at': '2021-04-29 08:53:07', 'default_payment_terms': 1, 'default_payment_terms_type': 'standard', 'bank_name': 'Indesa', 'bank_iban': 'IT40P123456781000000123456', 'bank_swift_code': 'AK86PCT', 'shipping_address': 'Corso Magellano 4', 'e_invoice': true, 'ei_code': '111111', 'default_vat': { 'id': 54321, 'value': 45, 'description': '', 'is_disabled': false }, 'default_payment_method': { 'id': 386092, 'name': 'Credit card' } }";
+            instance = JsonConvert.DeserializeObject<ModelClient>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ModelClientInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ModelClient
-            //Assert.IsType<ModelClient>(instance);
+            Assert.IsType<ModelClient>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IdTest()
         {
-            // TODO unit test for the property 'Id'
+            Assert.IsType<int>(instance.Id);
         }
         /// <summary>
         /// Test the property 'Code'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CodeTest()
         {
-            // TODO unit test for the property 'Code'
+            Assert.IsType<string>(instance.Code);
         }
         /// <summary>
         /// Test the property 'Name'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NameTest()
         {
-            // TODO unit test for the property 'Name'
+            Assert.IsType<string>(instance.Name);
         }
         /// <summary>
         /// Test the property 'Type'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TypeTest()
         {
-            // TODO unit test for the property 'Type'
+            Assert.IsType<ModelClient.TypeEnum>(instance.Type);
         }
         /// <summary>
         /// Test the property 'FirstName'
@@ -95,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FirstNameTest()
         {
-            // TODO unit test for the property 'FirstName'
+            Assert.IsType<string>(instance.FirstName);
         }
         /// <summary>
         /// Test the property 'LastName'
@@ -103,7 +101,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void LastNameTest()
         {
-            // TODO unit test for the property 'LastName'
+            Assert.IsType<string>(instance.LastName);
         }
         /// <summary>
         /// Test the property 'ContactPerson'
@@ -111,7 +109,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ContactPersonTest()
         {
-            // TODO unit test for the property 'ContactPerson'
+            Assert.IsType<string>(instance.ContactPerson);
         }
         /// <summary>
         /// Test the property 'VatNumber'
@@ -119,7 +117,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VatNumberTest()
         {
-            // TODO unit test for the property 'VatNumber'
+            Assert.IsType<string>(instance.VatNumber);
         }
         /// <summary>
         /// Test the property 'TaxCode'
@@ -127,7 +125,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TaxCodeTest()
         {
-            // TODO unit test for the property 'TaxCode'
+            Assert.IsType<string>(instance.TaxCode);
         }
         /// <summary>
         /// Test the property 'AddressStreet'
@@ -135,7 +133,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AddressStreetTest()
         {
-            // TODO unit test for the property 'AddressStreet'
+            Assert.IsType<string>(instance.AddressStreet);
         }
         /// <summary>
         /// Test the property 'AddressPostalCode'
@@ -143,7 +141,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AddressPostalCodeTest()
         {
-            // TODO unit test for the property 'AddressPostalCode'
+            Assert.IsType<string>(instance.AddressPostalCode);
         }
         /// <summary>
         /// Test the property 'AddressCity'
@@ -151,7 +149,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AddressCityTest()
         {
-            // TODO unit test for the property 'AddressCity'
+            Assert.IsType<string>(instance.AddressCity);
         }
         /// <summary>
         /// Test the property 'AddressProvince'
@@ -159,7 +157,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AddressProvinceTest()
         {
-            // TODO unit test for the property 'AddressProvince'
+            Assert.IsType<string>(instance.AddressProvince);
         }
         /// <summary>
         /// Test the property 'AddressExtra'
@@ -167,7 +165,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AddressExtraTest()
         {
-            // TODO unit test for the property 'AddressExtra'
+            Assert.IsType<string>(instance.AddressExtra);
         }
         /// <summary>
         /// Test the property 'Country'
@@ -175,7 +173,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CountryTest()
         {
-            // TODO unit test for the property 'Country'
+            Assert.IsType<string>(instance.Country);
         }
         /// <summary>
         /// Test the property 'Email'
@@ -183,7 +181,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EmailTest()
         {
-            // TODO unit test for the property 'Email'
+            Assert.IsType<string>(instance.Email);
         }
         /// <summary>
         /// Test the property 'CertifiedEmail'
@@ -191,7 +189,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CertifiedEmailTest()
         {
-            // TODO unit test for the property 'CertifiedEmail'
+            Assert.IsType<string>(instance.CertifiedEmail);
         }
         /// <summary>
         /// Test the property 'Phone'
@@ -199,7 +197,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PhoneTest()
         {
-            // TODO unit test for the property 'Phone'
+            Assert.IsType<string>(instance.Phone);
         }
         /// <summary>
         /// Test the property 'Fax'
@@ -207,7 +205,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FaxTest()
         {
-            // TODO unit test for the property 'Fax'
+            Assert.IsType<string>(instance.Fax);
         }
         /// <summary>
         /// Test the property 'Notes'
@@ -215,7 +213,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NotesTest()
         {
-            // TODO unit test for the property 'Notes'
+            Assert.IsType<string>(instance.Notes);
         }
         /// <summary>
         /// Test the property 'DefaultVat'
@@ -223,7 +221,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DefaultVatTest()
         {
-            // TODO unit test for the property 'DefaultVat'
+            Assert.IsType<VatType>(instance.DefaultVat);
         }
         /// <summary>
         /// Test the property 'DefaultPaymentTerms'
@@ -231,7 +229,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DefaultPaymentTermsTest()
         {
-            // TODO unit test for the property 'DefaultPaymentTerms'
+            Assert.IsType<int>(instance.DefaultPaymentTerms);
         }
         /// <summary>
         /// Test the property 'DefaultPaymentTermsType'
@@ -239,7 +237,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DefaultPaymentTermsTypeTest()
         {
-            // TODO unit test for the property 'DefaultPaymentTermsType'
+            Assert.IsType<ModelClient.DefaultPaymentTermsTypeEnum>(instance.DefaultPaymentTermsType);
         }
         /// <summary>
         /// Test the property 'DefaultPaymentMethod'
@@ -247,7 +245,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DefaultPaymentMethodTest()
         {
-            // TODO unit test for the property 'DefaultPaymentMethod'
+            Assert.IsType<PaymentMethod>(instance.DefaultPaymentMethod);
         }
         /// <summary>
         /// Test the property 'BankName'
@@ -255,7 +253,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void BankNameTest()
         {
-            // TODO unit test for the property 'BankName'
+            Assert.IsType<string>(instance.BankName);
         }
         /// <summary>
         /// Test the property 'BankIban'
@@ -263,7 +261,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void BankIbanTest()
         {
-            // TODO unit test for the property 'BankIban'
+            Assert.IsType<string>(instance.BankName);
         }
         /// <summary>
         /// Test the property 'BankSwiftCode'
@@ -271,7 +269,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void BankSwiftCodeTest()
         {
-            // TODO unit test for the property 'BankSwiftCode'
+            Assert.IsType<string>(instance.BankSwiftCode);
         }
         /// <summary>
         /// Test the property 'ShippingAddress'
@@ -279,7 +277,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ShippingAddressTest()
         {
-            // TODO unit test for the property 'ShippingAddress'
+            Assert.IsType<string>(instance.ShippingAddress);
         }
         /// <summary>
         /// Test the property 'EInvoice'
@@ -287,7 +285,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EInvoiceTest()
         {
-            // TODO unit test for the property 'EInvoice'
+            Assert.IsType<bool>(instance.EInvoice);
         }
         /// <summary>
         /// Test the property 'EiCode'
@@ -295,7 +293,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EiCodeTest()
         {
-            // TODO unit test for the property 'EiCode'
+            Assert.IsType<string>(instance.EiCode);
         }
         /// <summary>
         /// Test the property 'CreatedAt'
@@ -303,7 +301,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CreatedAtTest()
         {
-            // TODO unit test for the property 'CreatedAt'
+            Assert.IsType<string>(instance.CreatedAt);
         }
         /// <summary>
         /// Test the property 'UpdatedAt'
@@ -311,7 +309,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void UpdatedAtTest()
         {
-            // TODO unit test for the property 'UpdatedAt'
+            Assert.IsType<string>(instance.UpdatedAt);
         }
 
     }

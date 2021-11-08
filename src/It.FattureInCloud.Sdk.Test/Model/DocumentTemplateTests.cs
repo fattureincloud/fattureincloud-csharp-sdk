@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class DocumentTemplateTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for DocumentTemplate
-        //private DocumentTemplate instance;
+        private DocumentTemplate instance;
 
         public DocumentTemplateTests()
         {
-            // TODO uncomment below to create an instance of DocumentTemplate
-            //instance = new DocumentTemplate();
+            var body = "{ 'id': 10, 'name': 'New Standard S1', 'type': '' }";
+            instance = JsonConvert.DeserializeObject<DocumentTemplate>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DocumentTemplateInstanceTest()
         {
-            // TODO uncomment below to test "IsType" DocumentTemplate
-            //Assert.IsType<DocumentTemplate>(instance);
+            Assert.IsType<DocumentTemplate>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IdTest()
         {
-            // TODO unit test for the property 'Id'
+            Assert.IsType<int>(instance.Id);
         }
         /// <summary>
         /// Test the property 'Name'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NameTest()
         {
-            // TODO unit test for the property 'Name'
+            Assert.IsType<string>(instance.Name);
         }
         /// <summary>
         /// Test the property 'Type'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TypeTest()
         {
-            // TODO unit test for the property 'Type'
+            Assert.IsType<string>(instance.Type);
         }
 
     }

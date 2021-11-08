@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class CreateF24RequestTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for CreateF24Request
-        //private CreateF24Request instance;
+        private CreateF24Request instance;
 
         public CreateF24RequestTests()
         {
-            // TODO uncomment below to create an instance of CreateF24Request
-            //instance = new CreateF24Request();
+            var body = "{ 'data': { 'amount': 840.36, 'description': 'PAGAMENTO IVA 2021', 'due_date': '2021-12-31', 'status': 'paid', 'payment_account': { 'id': 111 }, 'attachment_token': 'b19c01da9b1688fb73d0d9e8ad' } }";
+            instance = JsonConvert.DeserializeObject<CreateF24Request>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CreateF24RequestInstanceTest()
         {
-            // TODO uncomment below to test "IsType" CreateF24Request
-            //Assert.IsType<CreateF24Request>(instance);
+            Assert.IsType<CreateF24Request>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<F24>(instance.Data);
         }
 
     }

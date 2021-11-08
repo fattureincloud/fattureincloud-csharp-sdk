@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ReceivedDocumentItemsListTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ReceivedDocumentItemsList
-        //private ReceivedDocumentItemsList instance;
+        private ReceivedDocumentItemsList instance;
 
         public ReceivedDocumentItemsListTests()
         {
-            // TODO uncomment below to create an instance of ReceivedDocumentItemsList
-            //instance = new ReceivedDocumentItemsList();
+            var body = "{ 'id': 12345, 'product_id': 54321, 'code': 'pdr01', 'measure': 'very big', 'name': 'prod uan', 'net_price': 100, 'category': 'other', 'qty': 1, 'stock': 99, 'vat': { 'id': 1020, 'value': 0, 'description': 'PA Non imp art. 2', 'is_disabled': false } }";
+            instance = JsonConvert.DeserializeObject<ReceivedDocumentItemsList>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ReceivedDocumentItemsListInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ReceivedDocumentItemsList
-            //Assert.IsType<ReceivedDocumentItemsList>(instance);
+            Assert.IsType<ReceivedDocumentItemsList>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IdTest()
         {
-            // TODO unit test for the property 'Id'
+            Assert.IsType<int>(instance.Id);
         }
         /// <summary>
         /// Test the property 'ProductId'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ProductIdTest()
         {
-            // TODO unit test for the property 'ProductId'
+            Assert.IsType<int>(instance.ProductId);
         }
         /// <summary>
         /// Test the property 'Code'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CodeTest()
         {
-            // TODO unit test for the property 'Code'
+            Assert.IsType<string>(instance.Code);
         }
         /// <summary>
         /// Test the property 'Name'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NameTest()
         {
-            // TODO unit test for the property 'Name'
+            Assert.IsType<string>(instance.Name);
         }
         /// <summary>
         /// Test the property 'Measure'
@@ -95,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void MeasureTest()
         {
-            // TODO unit test for the property 'Measure'
+            Assert.IsType<string>(instance.Measure);
         }
         /// <summary>
         /// Test the property 'NetPrice'
@@ -103,7 +101,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NetPriceTest()
         {
-            // TODO unit test for the property 'NetPrice'
+            Assert.IsType<decimal>(instance.NetPrice);
         }
         /// <summary>
         /// Test the property 'Category'
@@ -111,7 +109,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CategoryTest()
         {
-            // TODO unit test for the property 'Category'
+            Assert.IsType<string>(instance.Category);
         }
         /// <summary>
         /// Test the property 'Qty'
@@ -119,7 +117,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void QtyTest()
         {
-            // TODO unit test for the property 'Qty'
+            Assert.IsType<int>(instance.Id);
         }
         /// <summary>
         /// Test the property 'Vat'
@@ -127,7 +125,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VatTest()
         {
-            // TODO unit test for the property 'Vat'
+            Assert.IsType<decimal>(instance.Qty);
         }
         /// <summary>
         /// Test the property 'Stock'
@@ -135,7 +133,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void StockTest()
         {
-            // TODO unit test for the property 'Stock'
+            Assert.IsType<decimal>(instance.Stock);
         }
 
     }

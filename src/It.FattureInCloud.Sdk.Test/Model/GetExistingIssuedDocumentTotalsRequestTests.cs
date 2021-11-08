@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class GetExistingIssuedDocumentTotalsRequestTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for GetExistingIssuedDocumentTotalsRequest
-        //private GetExistingIssuedDocumentTotalsRequest instance;
+        private GetExistingIssuedDocumentTotalsRequest instance;
 
         public GetExistingIssuedDocumentTotalsRequestTests()
         {
-            // TODO uncomment below to create an instance of GetExistingIssuedDocumentTotalsRequest
-            //instance = new GetExistingIssuedDocumentTotalsRequest();
+            var body = "{ 'data': { 'rivalsa': 20 } }";
+            instance = JsonConvert.DeserializeObject<GetExistingIssuedDocumentTotalsRequest>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void GetExistingIssuedDocumentTotalsRequestInstanceTest()
         {
-            // TODO uncomment below to test "IsType" GetExistingIssuedDocumentTotalsRequest
-            //Assert.IsType<GetExistingIssuedDocumentTotalsRequest>(instance);
+            Assert.IsType<GetExistingIssuedDocumentTotalsRequest>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<IssuedDocument>(instance.Data);
         }
 
     }

@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class GetSupplierResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for GetSupplierResponse
-        //private GetSupplierResponse instance;
+        private GetSupplierResponse instance;
 
         public GetSupplierResponseTests()
         {
-            // TODO uncomment below to create an instance of GetSupplierResponse
-            //instance = new GetSupplierResponse();
+            var body = "{ 'data': { 'id': 12345, 'code': 'AE86', 'name': 'Mario Rossi S.R.L.', 'type': 'company', 'first_name': 'Mario', 'last_name': 'Rossi', 'contact_person': '', 'vat_number': '111222333', 'tax_code': '111122233', 'address_street': 'Corso Magellano, 46', 'address_postal_code': '20146', 'address_city': 'Milano', 'address_province': 'MI', 'address_extra': '', 'country': 'Italia', 'email': 'mario.rossi@example.com', 'certified_email': 'mario.rossi@pec.example.com', 'phone': '1234567890', 'fax': '123456789', 'notes': '', 'created_at': '2021-15-08', 'updated_at': '2021-15-08' } }";
+            instance = JsonConvert.DeserializeObject<GetSupplierResponse>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void GetSupplierResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" GetSupplierResponse
-            //Assert.IsType<GetSupplierResponse>(instance);
+            Assert.IsType<GetSupplierResponse>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<Supplier>(instance.Data);
         }
 
     }

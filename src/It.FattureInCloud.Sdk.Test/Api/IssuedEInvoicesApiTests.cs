@@ -16,11 +16,12 @@ using System.Linq;
 using System.Reflection;
 using RestSharp;
 using Xunit;
-
+using Moq;
 using It.FattureInCloud.Sdk.Client;
 using It.FattureInCloud.Sdk.Api;
-// uncomment below to import models
-//using It.FattureInCloud.Sdk.Model;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using It.FattureInCloud.Sdk.Model;
 
 namespace It.FattureInCloud.Sdk.Test.Api
 {
@@ -33,11 +34,24 @@ namespace It.FattureInCloud.Sdk.Test.Api
     /// </remarks>
     public class IssuedEInvoicesApiTests : IDisposable
     {
-        private IssuedEInvoicesApi instance;
+        Mock<IIssuedEInvoicesApi> instance = new Mock<IIssuedEInvoicesApi>();
+        string sendEInvoiceResponseBody;
+        string verifyEInvoiceXmlResponseBody;
 
         public IssuedEInvoicesApiTests()
         {
-            instance = new IssuedEInvoicesApi();
+            sendEInvoiceResponseBody = "{'data':{'name':'CARICATO','date':'2021-08-23 10:38:03'}}";
+            var sendEInvoiceResponse = JsonConvert.DeserializeObject<SendEInvoiceResponse>(sendEInvoiceResponseBody);
+            instance
+                .Setup(p => p.SendEInvoice(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<SendEInvoiceRequest>()))
+                .Returns(sendEInvoiceResponse);
+
+            verifyEInvoiceXmlResponseBody = "{'data':{'success':true}}";
+            var verifyEInvoiceXmlResponse = JsonConvert.DeserializeObject<VerifyEInvoiceXmlResponse>(verifyEInvoiceXmlResponseBody);
+            instance
+                .Setup(p => p.VerifyEInvoiceXml(Moq.It.IsAny<int>(), Moq.It.IsAny<int>()))
+                .Returns(verifyEInvoiceXmlResponse);
+
         }
 
         public void Dispose()
@@ -51,8 +65,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void InstanceTest()
         {
-            // TODO uncomment below to test 'IsType' IssuedEInvoicesApi
-            //Assert.IsType<IssuedEInvoicesApi>(instance);
+            Assert.IsType<Mock<IIssuedEInvoicesApi>>(instance);
         }
 
         /// <summary>
@@ -61,12 +74,14 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void SendEInvoiceTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int documentId = null;
-            //SendEInvoiceRequest sendEInvoiceRequest = null;
-            //var response = instance.SendEInvoice(companyId, documentId, sendEInvoiceRequest);
-            //Assert.IsType<SendEInvoiceResponse>(response);
+            int companyId = 2;
+            int documentId = 1234;
+            SendEInvoiceRequest sendEInvoiceRequest = new SendEInvoiceRequest();
+
+            var response = instance.Object.SendEInvoice(companyId, documentId, sendEInvoiceRequest);
+            JObject obj = JObject.Parse(sendEInvoiceResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -75,11 +90,14 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void VerifyEInvoiceXmlTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int documentId = null;
-            //var response = instance.VerifyEInvoiceXml(companyId, documentId);
-            //Assert.IsType<VerifyEInvoiceXmlResponse>(response);
+            int companyId = 2;
+            int documentId = 12345;
+
+            var response = instance.Object.VerifyEInvoiceXml(companyId, documentId);
+            JObject obj = JObject.Parse(verifyEInvoiceXmlResponseBody);
+
+            var jobj = JObject.FromObject(response.GetVerifyEInvoiceXmlSuccessResponse());
+            Assert.True(JToken.DeepEquals(obj, jobj));
         }
     }
 }

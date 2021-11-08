@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ReceivedDocumentPaymentTermsTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ReceivedDocumentPaymentTerms
-        //private ReceivedDocumentPaymentTerms instance;
+        private ReceivedDocumentPaymentTerms instance;
 
         public ReceivedDocumentPaymentTermsTests()
         {
-            // TODO uncomment below to create an instance of ReceivedDocumentPaymentTerms
-            //instance = new ReceivedDocumentPaymentTerms();
+            var body = "{'days':0,'type':'standard'}";
+            instance = JsonConvert.DeserializeObject<ReceivedDocumentPaymentTerms>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ReceivedDocumentPaymentTermsInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ReceivedDocumentPaymentTerms
-            //Assert.IsType<ReceivedDocumentPaymentTerms>(instance);
+            Assert.IsType<ReceivedDocumentPaymentTerms>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DaysTest()
         {
-            // TODO unit test for the property 'Days'
+            Assert.IsType<decimal>(instance.Days);
         }
         /// <summary>
         /// Test the property 'Type'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TypeTest()
         {
-            // TODO unit test for the property 'Type'
+            Assert.IsType<string>(instance.Type);
         }
 
     }

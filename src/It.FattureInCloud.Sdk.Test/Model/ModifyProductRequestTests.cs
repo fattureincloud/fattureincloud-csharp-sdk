@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ModifyProductRequestTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ModifyProductRequest
-        //private ModifyProductRequest instance;
+        private ModifyProductRequest instance;
 
         public ModifyProductRequestTests()
         {
-            // TODO uncomment below to create an instance of ModifyProductRequest
-            //instance = new ModifyProductRequest();
+            var body = "{ 'data': { 'id': 12345, 'name': 'Tavolo di marmo', 'code': 'TAVOLO003', 'net_price': 240, 'gross_price': 280, 'use_gross_price': false, 'net_cost': 0, 'measure': '', 'description': 'Tavolo in marmo pregiato', 'category': 'arredamento', 'in_stock': true, 'created_at': '2021-08-09 08:57:14', 'updated_at': '2021-08-15 08:57:14', 'default_vat': { 'id': 3, 'value': 22, 'description': 'Non imponibile art. 123', 'notes': 'IVA non imponibile ai sensi dell articolo 123, comma 2', 'is_disabled': false }, 'stock_initial': 123, 'stock_current': 123 } }";
+            instance = JsonConvert.DeserializeObject<ModifyProductRequest>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ModifyProductRequestInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ModifyProductRequest
-            //Assert.IsType<ModifyProductRequest>(instance);
+            Assert.IsType<ModifyProductRequest>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<Product>(instance.Data);
         }
 
     }

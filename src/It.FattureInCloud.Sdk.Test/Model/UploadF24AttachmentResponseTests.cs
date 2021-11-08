@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class UploadF24AttachmentResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for UploadF24AttachmentResponse
-        //private UploadF24AttachmentResponse instance;
+        private UploadF24AttachmentResponse instance;
 
         public UploadF24AttachmentResponseTests()
         {
-            // TODO uncomment below to create an instance of UploadF24AttachmentResponse
-            //instance = new UploadF24AttachmentResponse();
+            var body = "{ 'data': { 'attachment_token': 'YmMyNWYxYzIwMTU3N2Y4ZGE3ZjZiMzg5OWY0ODNkZDQveXl5LmRvYw' } }";
+            instance = JsonConvert.DeserializeObject<UploadF24AttachmentResponse>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void UploadF24AttachmentResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" UploadF24AttachmentResponse
-            //Assert.IsType<UploadF24AttachmentResponse>(instance);
+            Assert.IsType<UploadF24AttachmentResponse>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<UploadIssuedDocumentAttachmentResponseData>(instance.Data);
         }
 
     }

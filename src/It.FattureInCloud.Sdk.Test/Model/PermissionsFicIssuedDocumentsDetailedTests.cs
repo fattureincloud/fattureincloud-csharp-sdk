@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class PermissionsFicIssuedDocumentsDetailedTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for PermissionsFicIssuedDocumentsDetailed
-        //private PermissionsFicIssuedDocumentsDetailed instance;
+        private PermissionsFicIssuedDocumentsDetailed instance;
 
         public PermissionsFicIssuedDocumentsDetailedTests()
         {
-            // TODO uncomment below to create an instance of PermissionsFicIssuedDocumentsDetailed
-            //instance = new PermissionsFicIssuedDocumentsDetailed();
+            var body = "{ 'quotes': 'write', 'proformas': 'write', 'invoices': 'write', 'receipts': 'write', 'delivery_notes': 'write', 'credit_notes': 'write', 'orders': 'write', 'work_reports': 'write', 'supplier_orders': 'write', 'self_invoices': 'write' }";
+            instance = JsonConvert.DeserializeObject<PermissionsFicIssuedDocumentsDetailed>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PermissionsFicIssuedDocumentsDetailedInstanceTest()
         {
-            // TODO uncomment below to test "IsType" PermissionsFicIssuedDocumentsDetailed
-            //Assert.IsType<PermissionsFicIssuedDocumentsDetailed>(instance);
+            Assert.IsType<PermissionsFicIssuedDocumentsDetailed>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void QuotesTest()
         {
-            // TODO unit test for the property 'Quotes'
+            Assert.IsType<PermissionLevel>(instance.Quotes);
         }
         /// <summary>
         /// Test the property 'Proformas'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ProformasTest()
         {
-            // TODO unit test for the property 'Proformas'
+            Assert.IsType<PermissionLevel>(instance.Proformas);
         }
         /// <summary>
         /// Test the property 'Invoices'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void InvoicesTest()
         {
-            // TODO unit test for the property 'Invoices'
+            Assert.IsType<PermissionLevel>(instance.Invoices);
         }
         /// <summary>
         /// Test the property 'Receipts'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ReceiptsTest()
         {
-            // TODO unit test for the property 'Receipts'
+            Assert.IsType<PermissionLevel>(instance.Receipts);
         }
         /// <summary>
         /// Test the property 'DeliveryNotes'
@@ -95,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DeliveryNotesTest()
         {
-            // TODO unit test for the property 'DeliveryNotes'
+            Assert.IsType<PermissionLevel>(instance.DeliveryNotes);
         }
         /// <summary>
         /// Test the property 'CreditNotes'
@@ -103,7 +101,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CreditNotesTest()
         {
-            // TODO unit test for the property 'CreditNotes'
+            Assert.IsType<PermissionLevel>(instance.CreditNotes);
         }
         /// <summary>
         /// Test the property 'Orders'
@@ -111,7 +109,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void OrdersTest()
         {
-            // TODO unit test for the property 'Orders'
+            Assert.IsType<PermissionLevel>(instance.Orders);
         }
         /// <summary>
         /// Test the property 'WorkReports'
@@ -119,7 +117,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void WorkReportsTest()
         {
-            // TODO unit test for the property 'WorkReports'
+            Assert.IsType<PermissionLevel>(instance.WorkReports);
         }
         /// <summary>
         /// Test the property 'SupplierOrders'
@@ -127,7 +125,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SupplierOrdersTest()
         {
-            // TODO unit test for the property 'SupplierOrders'
+            Assert.IsType<PermissionLevel>(instance.SupplierOrders);
         }
         /// <summary>
         /// Test the property 'SelfInvoices'
@@ -135,7 +133,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SelfInvoicesTest()
         {
-            // TODO unit test for the property 'SelfInvoices'
+            Assert.IsType<PermissionLevel>(instance.SelfInvoices);
         }
 
     }

@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ModifyClientRequestTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ModifyClientRequest
-        //private ModifyClientRequest instance;
+        private ModifyClientRequest instance;
 
         public ModifyClientRequestTests()
         {
-            // TODO uncomment below to create an instance of ModifyClientRequest
-            //instance = new ModifyClientRequest();
+            var body = "{ 'data': { 'code': 'AE86', 'name': 'Avv. Maria Rossi', 'type': 'person', 'first_name': 'Maria', 'last_name': 'Rossi', 'contact_person': '', 'vat_number': 'IT12345640962', 'tax_code': 'BLTGNI5ABCDA794E', 'address_street': 'Via Roma, 1', 'address_postal_code': '20900', 'address_city': 'Milano', 'address_province': 'MI', 'address_extra': '', 'country': 'Italia', 'email': 'maria.rossi@example.com', 'certified_email': 'maria.rossi@pec.example.com', 'phone': '1234567890', 'fax': '', 'notes': '', 'default_payment_terms': 1, 'default_payment_terms_type': 'standard', 'bank_name': 'Indesa', 'bank_iban': 'IT40P123456781000000123456', 'bank_swift_code': 'AK86PCT', 'shipping_address': 'Corso Magellano 4', 'e_invoice': true, 'ei_code': '111111', 'default_vat': { 'id': 54321, 'value': 45, 'description': '', 'is_disabled': false } } }";
+            instance = JsonConvert.DeserializeObject<ModifyClientRequest>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ModifyClientRequestInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ModifyClientRequest
-            //Assert.IsType<ModifyClientRequest>(instance);
+            Assert.IsType<ModifyClientRequest>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<ModelClient>(instance.Data);
         }
 
     }

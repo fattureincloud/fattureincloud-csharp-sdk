@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ListReceivedDocumentsResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ListReceivedDocumentsResponse
-        //private ListReceivedDocumentsResponse instance;
+        private ListReceivedDocumentsResponse instance;
 
         public ListReceivedDocumentsResponseTests()
         {
-            // TODO uncomment below to create an instance of ListReceivedDocumentsResponse
-            //instance = new ListReceivedDocumentsResponse();
+            var body = "{ 'current_page': 2, 'first_page_url': 'page=1', 'from': 1, 'last_page': 3, 'last_page_url': 'page=3', 'next_page_url': 'page=3', 'path': '/archive', 'per_page': 50, 'prev_page_url': 'page=1', 'to': 3, 'total': 155, 'data': [ { 'id': 12345, 'type': 'expense', 'description': 'Soggiorno di lavoro', 'amortization': 1, 'rc_center': '', 'invoice_number': '', 'is_marked': false, 'is_detailed': false, 'e_invoice': false, 'created_at': '2021-08-15 14:02:02', 'updated_at': '2021-08-15 14:02:02', 'entity': { 'id': 111, 'name': 'Hotel Rubino Palace' }, 'date': '2021-08-15', 'next_due_date': '2021-08-15', 'currency': { 'id': 'EUR', 'exchange_rate': '1.00000', 'symbol': '€' }, 'amount_net': 592, 'amount_vat': 0, 'amount_gross': 592, 'amount_withholding_tax': 0, 'amount_other_withholding_tax': 0, 'tax_deductibility': 50, 'vat_deductibility': 100, 'items_list': null, 'payments_list': [ { 'amount': 592, 'due_date': '2021-08-15', 'paid_date': '2021-08-15', 'id': 777, 'payment_terms': { 'days': 0, 'type': 'standard' }, 'status': 'paid', 'payment_account': { 'id': 222, 'name': 'Contanti', 'virtual': false } } ], 'attachment_url': 'spesa_ger5i783t45hu6ti.pdf', 'attachment_preview_url': null, 'extra_data': null }, { 'id': 12346, 'type': 'expense', 'description': 'Assicurazione RCA', 'iamortization': 1, 'rc_center': '', 'invoice_number': '', 'is_marked': false, 'is_detailed': false, 'e_invoice': false, 'created_at': '2021-08-09 14:02:02', 'updated_at': '2021-08-09 14:02:02', 'entity': { 'id': 89, 'name': 'Indesa Assicurazioni S.P.A.' }, 'date': '2021-08-08', 'next_due_date': '2021-08-08', 'currency': { 'id': 'EUR', 'exchange_rate': '1.00000', 'symbol': '€' }, 'amount_net': 645.69, 'amount_vat': 0, 'amount_gross': 645.69, 'amount_withholding_tax': 0, 'amount_other_withholding_tax': 0, 'tax_deductibility': 50, 'vat_deductibility': 100, 'items_list': null, 'payments_list': [ { 'amount': 645.69, 'due_date': '2021-08-08', 'paid_date': '2021-08-08', 'id': 999, 'payment_terms': { 'days': 0, 'type': 'standard' }, 'status': 'paid', 'payment_account': { 'id': 333, 'name': 'Carta conto', 'virtual': false } } ], 'attachment_url': 'spesa_gjsd567e5hu6ti.pdf', 'attachment_preview_url': null, 'extra_data': null } ] }";
+            instance = JsonConvert.DeserializeObject<ListReceivedDocumentsResponse>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ListReceivedDocumentsResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ListReceivedDocumentsResponse
-            //Assert.IsType<ListReceivedDocumentsResponse>(instance);
+            Assert.IsType<ListReceivedDocumentsResponse>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CurrentPageTest()
         {
-            // TODO unit test for the property 'CurrentPage'
+            Assert.IsType<int>(instance.CurrentPage);
         }
         /// <summary>
         /// Test the property 'FirstPageUrl'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FirstPageUrlTest()
         {
-            // TODO unit test for the property 'FirstPageUrl'
+            Assert.IsType<string>(instance.FirstPageUrl);
         }
         /// <summary>
         /// Test the property 'From'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FromTest()
         {
-            // TODO unit test for the property 'From'
+            Assert.IsType<int>(instance.From);
         }
         /// <summary>
         /// Test the property 'LastPage'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void LastPageTest()
         {
-            // TODO unit test for the property 'LastPage'
+            Assert.IsType<int>(instance.LastPage);
         }
         /// <summary>
         /// Test the property 'LastPageUrl'
@@ -95,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void LastPageUrlTest()
         {
-            // TODO unit test for the property 'LastPageUrl'
+            Assert.IsType<string>(instance.LastPageUrl);
         }
         /// <summary>
         /// Test the property 'NextPageUrl'
@@ -103,7 +101,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NextPageUrlTest()
         {
-            // TODO unit test for the property 'NextPageUrl'
+            Assert.IsType<string>(instance.NextPageUrl);
         }
         /// <summary>
         /// Test the property 'Path'
@@ -111,7 +109,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PathTest()
         {
-            // TODO unit test for the property 'Path'
+            Assert.IsType<string>(instance.Path);
         }
         /// <summary>
         /// Test the property 'PerPage'
@@ -119,7 +117,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PerPageTest()
         {
-            // TODO unit test for the property 'PerPage'
+            Assert.IsType<int>(instance.PerPage);
         }
         /// <summary>
         /// Test the property 'PrevPageUrl'
@@ -127,7 +125,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PrevPageUrlTest()
         {
-            // TODO unit test for the property 'PrevPageUrl'
+            Assert.IsType<string>(instance.PrevPageUrl);
         }
         /// <summary>
         /// Test the property 'To'
@@ -135,7 +133,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ToTest()
         {
-            // TODO unit test for the property 'To'
+            Assert.IsType<int>(instance.To);
         }
         /// <summary>
         /// Test the property 'Total'
@@ -143,7 +141,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TotalTest()
         {
-            // TODO unit test for the property 'Total'
+            Assert.IsType<int>(instance.Total);
         }
         /// <summary>
         /// Test the property 'Data'
@@ -151,7 +149,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<List<ReceivedDocument>>(instance.Data);
         }
 
     }

@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class CompanyInfoPlanInfoLimitsTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for CompanyInfoPlanInfoLimits
-        //private CompanyInfoPlanInfoLimits instance;
+        private CompanyInfoPlanInfoLimits instance;
 
         public CompanyInfoPlanInfoLimitsTests()
         {
-            // TODO uncomment below to create an instance of CompanyInfoPlanInfoLimits
-            //instance = new CompanyInfoPlanInfoLimits();
+            var body = "{ 'clients': 5000, 'suppliers': 5000, 'products': 5000, 'documents': 3000 }";
+            instance = JsonConvert.DeserializeObject<CompanyInfoPlanInfoLimits>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CompanyInfoPlanInfoLimitsInstanceTest()
         {
-            // TODO uncomment below to test "IsType" CompanyInfoPlanInfoLimits
-            //Assert.IsType<CompanyInfoPlanInfoLimits>(instance);
+            Assert.IsType<CompanyInfoPlanInfoLimits>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ClientsTest()
         {
-            // TODO unit test for the property 'Clients'
+            Assert.IsType<int>(instance.Clients);
         }
         /// <summary>
         /// Test the property 'Suppliers'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SuppliersTest()
         {
-            // TODO unit test for the property 'Suppliers'
+            Assert.IsType<int>(instance.Suppliers);
         }
         /// <summary>
         /// Test the property 'Products'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ProductsTest()
         {
-            // TODO unit test for the property 'Products'
+            Assert.IsType<int>(instance.Products);
         }
         /// <summary>
         /// Test the property 'Documents'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DocumentsTest()
         {
-            // TODO unit test for the property 'Documents'
+            Assert.IsType<int>(instance.Documents);
         }
 
     }

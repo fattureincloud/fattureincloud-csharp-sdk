@@ -16,11 +16,12 @@ using System.Linq;
 using System.Reflection;
 using RestSharp;
 using Xunit;
-
+using Moq;
 using It.FattureInCloud.Sdk.Client;
 using It.FattureInCloud.Sdk.Api;
-// uncomment below to import models
-//using It.FattureInCloud.Sdk.Model;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using It.FattureInCloud.Sdk.Model;
 
 namespace It.FattureInCloud.Sdk.Test.Api
 {
@@ -33,11 +34,37 @@ namespace It.FattureInCloud.Sdk.Test.Api
     /// </remarks>
     public class SuppliersApiTests : IDisposable
     {
-        private SuppliersApi instance;
+        Mock<ISuppliersApi> instance = new Mock<ISuppliersApi>();
+        string createSupplierResponseBody;
+        string getSupplierResponseBody;
+        string listSuppliersResponseBody;
+        string modifySupplierResponseBody;
 
         public SuppliersApiTests()
         {
-            instance = new SuppliersApi();
+            createSupplierResponseBody = "{ 'data': { 'type': 'company', 'id': 12345, 'code': 'AE86', 'name': 'Mario Rossi S.R.L.', 'first_name': 'Mario', 'last_name': 'Rossi', 'contact_person': '', 'vat_number': '111222333', 'tax_code': '111122233', 'address_street': 'Corso Magellano, 46', 'address_postal_code': '20146', 'address_city': 'Milano', 'address_province': 'MI', 'address_extra': '', 'country': 'Italia', 'email': 'mario.rossi@example.com', 'certified_email': 'mario.rossi@pec.example.com', 'phone': '1234567890', 'fax': '123456789', 'notes': '', 'created_at': null, 'updated_at': null }}";
+            var createSupplierResponse = JsonConvert.DeserializeObject<CreateSupplierResponse>(createSupplierResponseBody);
+            instance
+                .Setup(p => p.CreateSupplier(Moq.It.IsAny<int>(), Moq.It.IsAny<CreateSupplierRequest>()))
+                .Returns(createSupplierResponse);
+
+            getSupplierResponseBody = "{ 'data': { 'type': 'company', 'id': 12345, 'code': 'AE86', 'name': 'Mario Rossi S.R.L.', 'first_name': 'Mario', 'last_name': 'Rossi', 'contact_person': '', 'vat_number': '111222333', 'tax_code': '111122233', 'address_street': 'Corso Magellano, 46', 'address_postal_code': '20146', 'address_city': 'Milano', 'address_province': 'MI', 'address_extra': '', 'country': 'Italia', 'email': 'mario.rossi@example.com', 'certified_email': 'mario.rossi@pec.example.com', 'phone': '1234567890', 'fax': '123456789', 'notes': '', 'created_at': null, 'updated_at': null }}";
+            var getSupplierResponse = JsonConvert.DeserializeObject<GetSupplierResponse>(getSupplierResponseBody);
+            instance
+                .Setup(p => p.GetSupplier(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
+                .Returns(getSupplierResponse);
+
+            listSuppliersResponseBody = "{'first_page_url':'page=1','from':1,'last_page':2,'last_page_url':'page=2','next_page_url':'page=2','path':'/entities/suppliers','per_page':50,'prev_page_url':null,'to':55,'total':55,'data':[{'id':12345,'code':'AE86','name':'Mario Rossi S.R.L.','type':'company','first_name':'Mario','last_name':'Rossi','contact_person':'','vat_number':'111222333','tax_code':'111122233','address_street':'Corso Magellano, 46','address_postal_code':'20146','address_city':'Milano','address_province':'MI','address_extra':'','country':'Italia','email':'mario.rossi@example.com','certified_email':'mario.rossi@pec.example.com','phone':'1234567890','fax':'123456789','notes':'','created_at':'2021-15-08','updated_at':'2021-15-08'},{'id':12346,'code':'GT86','name':'Maria Grossi S.R.L.','type':'company','first_name':'','last_name':'','contact_person':'','vat_number':'200020102020','tax_code':'200020102020','address_street':'Vicolo stretto, 32','address_postal_code':'20146','address_city':'Milano','address_province':'MI','address_extra':'','country':'Italia','email':'maria.grossi@example.com','certified_email':'maria.grossi@pec.example.com','phone':'0987654321','fax':'098765432','notes':'','created_at':'2021-15-09','updated_at':'2021-15-09'}]}";
+            var listSuppliersResponse = JsonConvert.DeserializeObject<ListSuppliersResponse>(listSuppliersResponseBody);
+            instance
+                .Setup(p => p.ListSuppliers(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<int>(), Moq.It.IsAny<int>()))
+                .Returns(listSuppliersResponse);
+
+            modifySupplierResponseBody = "{ 'data': { 'type': 'company', 'id': 12345, 'code': 'AE86', 'name': 'Mario Rossi S.R.L.', 'first_name': 'Mario', 'last_name': 'Rossi', 'contact_person': '', 'vat_number': '111222333', 'tax_code': '111122233', 'address_street': 'Corso Magellano, 46', 'address_postal_code': '20146', 'address_city': 'Milano', 'address_province': 'MI', 'address_extra': '', 'country': 'Italia', 'email': 'mario.rossi@example.com', 'certified_email': 'mario.rossi@pec.example.com', 'phone': '1234567890', 'fax': '123456789', 'notes': '', 'created_at': null, 'updated_at': null }}";
+            var modifySupplierResponse = JsonConvert.DeserializeObject<ModifySupplierResponse>(modifySupplierResponseBody);
+            instance
+                .Setup(p => p.ModifySupplier(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifySupplierRequest>()))
+                .Returns(modifySupplierResponse);
         }
 
         public void Dispose()
@@ -51,8 +78,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void InstanceTest()
         {
-            // TODO uncomment below to test 'IsType' SuppliersApi
-            //Assert.IsType<SuppliersApi>(instance);
+            Assert.IsType<Mock<ISuppliersApi>>(instance);
         }
 
         /// <summary>
@@ -61,11 +87,13 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void CreateSupplierTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //CreateSupplierRequest createSupplierRequest = null;
-            //var response = instance.CreateSupplier(companyId, createSupplierRequest);
-            //Assert.IsType<CreateSupplierResponse>(response);
+            int companyId = 2;
+            CreateSupplierRequest createSupplierRequest = new CreateSupplierRequest();
+
+            var response = instance.Object.CreateSupplier(companyId, createSupplierRequest);
+            JObject obj = JObject.Parse(createSupplierResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -74,10 +102,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void DeleteSupplierTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int supplierId = null;
-            //instance.DeleteSupplier(companyId, supplierId);
+            Assert.True(true);
         }
 
         /// <summary>
@@ -86,13 +111,15 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void GetSupplierTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int supplierId = null;
-            //string fields = null;
-            //string fieldset = null;
-            //var response = instance.GetSupplier(companyId, supplierId, fields, fieldset);
-            //Assert.IsType<GetSupplierResponse>(response);
+            int companyId = 2;
+            int supplierId = 12345;
+            string fields = "";
+            string fieldset = "";
+
+            var response = instance.Object.GetSupplier(companyId, supplierId, fields, fieldset);
+            JObject obj = JObject.Parse(getSupplierResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -101,15 +128,16 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void ListSuppliersTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //string fields = null;
-            //string fieldset = null;
-            //string sort = null;
-            //int? page = null;
-            //int? perPage = null;
-            //var response = instance.ListSuppliers(companyId, fields, fieldset, sort, page, perPage);
-            //Assert.IsType<ListSuppliersResponse>(response);
+            int companyId = 1;
+            string fields = "";
+            string fieldset = "";
+            string sort = "";
+            int? page = 5;
+            int? perPage = 5;
+            var response = instance.Object.ListSuppliers(companyId, fields, fieldset, sort, page, perPage);
+            JObject obj = JObject.Parse(listSuppliersResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -118,12 +146,14 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void ModifySupplierTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int supplierId = null;
-            //ModifySupplierRequest modifySupplierRequest = null;
-            //var response = instance.ModifySupplier(companyId, supplierId, modifySupplierRequest);
-            //Assert.IsType<ModifySupplierResponse>(response);
+            int companyId = 2;
+            int supplierId = 12345;
+            ModifySupplierRequest modifySupplierRequest = new ModifySupplierRequest();
+
+            var response = instance.Object.ModifySupplier(companyId, supplierId, modifySupplierRequest);
+            JObject obj = JObject.Parse(modifySupplierResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
     }
 }

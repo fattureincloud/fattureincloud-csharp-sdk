@@ -32,13 +32,15 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class VerifyEInvoiceXmlResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for VerifyEInvoiceXmlResponse
-        //private VerifyEInvoiceXmlResponse instance;
+        private VerifyEInvoiceXmlResponse instance;
+        private VerifyEInvoiceXmlResponse instance_err;
 
         public VerifyEInvoiceXmlResponseTests()
         {
-            // TODO uncomment below to create an instance of VerifyEInvoiceXmlResponse
-            //instance = new VerifyEInvoiceXmlResponse();
+            var body = "{ 'data': { 'success': true } }";
+            var body_err = "{ 'error': { 'message': 'errore', 'validation_result': { 'success': false } }, 'extra': { 'errors': [ 'errore brutto' ] } }";
+            instance = JsonConvert.DeserializeObject<VerifyEInvoiceXmlResponse>(body);
+            instance_err = JsonConvert.DeserializeObject<VerifyEInvoiceXmlResponse>(body_err);
         }
 
         public void Dispose()
@@ -52,8 +54,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VerifyEInvoiceXmlResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" VerifyEInvoiceXmlResponse
-            //Assert.IsType<VerifyEInvoiceXmlResponse>(instance);
+            Assert.IsType<VerifyEInvoiceXmlResponse>(instance);
         }
 
 
@@ -63,7 +64,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<VerifyEInvoiceXmlSuccessResponseData>(instance.GetVerifyEInvoiceXmlSuccessResponse().Data);
         }
         /// <summary>
         /// Test the property 'Error'
@@ -71,7 +72,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ErrorTest()
         {
-            // TODO unit test for the property 'Error'
+            Assert.IsType<VerifyEInvoiceXmlErrorResponseError>(instance_err.GetVerifyEInvoiceXmlErrorResponse().Error);
         }
         /// <summary>
         /// Test the property 'Extra'
@@ -79,7 +80,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ExtraTest()
         {
-            // TODO unit test for the property 'Extra'
+            Assert.IsType<VerifyEInvoiceXmlErrorResponseExtra>(instance_err.GetVerifyEInvoiceXmlErrorResponse().Extra);
         }
 
     }

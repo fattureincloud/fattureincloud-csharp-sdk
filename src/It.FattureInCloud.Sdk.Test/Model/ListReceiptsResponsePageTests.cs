@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ListReceiptsResponsePageTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ListReceiptsResponsePage
-        //private ListReceiptsResponsePage instance;
+        private ListReceiptsResponsePage instance;
 
         public ListReceiptsResponsePageTests()
         {
-            // TODO uncomment below to create an instance of ListReceiptsResponsePage
-            //instance = new ListReceiptsResponsePage();
+            var body = "{ 'data': [ { 'id': 12345, 'date': '2021-08-20', 'number': 5, 'numeration': 'REC005', 'amount_net': 16.39, 'amount_vat': 3.61, 'amount_gross': 20, 'use_gross_prices': true, 'type': 'sales_receipt', 'description': 'cassa 1', 'rc_center': '', 'created_at': '2021-08-20 13:56:56', 'updated_at': '2021-08-20 13:56:56', 'payment_account': { 'id': 222, 'name': 'carta di credito' }, 'items_list': [ { 'id': 666, 'amount_net': 10, 'amount_vat': 2.2, 'amount_gross': 12.2, 'category': 'altro', 'vat': { 'id': 0, 'value': 22, 'description': 'iva' } }, { 'id': 777, 'amount_net': 100, 'amount_vat': 4, 'amount_gross': 104, 'category': 'altro', 'vat': { 'id': 0, 'value': 22, 'description': 'iva' } } ] }, { 'id': 12346, 'date': '2021-08-19', 'number': 6, 'numeration': 'REC006', 'amount_net': 8.2, 'amount_vat': 1.8, 'amount_gross': 10, 'use_gross_prices': true, 'type': 'sales_receipt', 'description': 'cassa 1', 'rc_center': '', 'created_at': '2021-08-19 17:57:56', 'updated_at': '2021-08-19 17:57:56', 'payment_account': { 'id': 555, 'name': 'contanti' }, 'items_list': [ { 'id': 888, 'amount_net': 8.2, 'amount_vat': 1.8, 'amount_gross': 10, 'category': 'altro', 'vat': { 'id': 0, 'value': 22, 'description': 'iva' } } ] } ] }";
+            instance = JsonConvert.DeserializeObject<ListReceiptsResponsePage>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ListReceiptsResponsePageInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ListReceiptsResponsePage
-            //Assert.IsType<ListReceiptsResponsePage>(instance);
+            Assert.IsType<ListReceiptsResponsePage>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<List<Receipt>>(instance.Data);
         }
 
     }

@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ListDeliveryNotesDefaultCausalsResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ListDeliveryNotesDefaultCausalsResponse
-        //private ListDeliveryNotesDefaultCausalsResponse instance;
+        private ListDeliveryNotesDefaultCausalsResponse instance;
 
         public ListDeliveryNotesDefaultCausalsResponseTests()
         {
-            // TODO uncomment below to create an instance of ListDeliveryNotesDefaultCausalsResponse
-            //instance = new ListDeliveryNotesDefaultCausalsResponse();
+            var body = "{ 'data': [ 'Vendita', 'Conto visione', 'Conto deposito', 'Conto vendita', 'Tentata vendita', 'Prestito d uso', 'Conto lavorazione', 'Omaggio', 'Riparazione', 'Reso per accredito', 'Reso per sostituzione' ] }";
+            instance = JsonConvert.DeserializeObject<ListDeliveryNotesDefaultCausalsResponse>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ListDeliveryNotesDefaultCausalsResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ListDeliveryNotesDefaultCausalsResponse
-            //Assert.IsType<ListDeliveryNotesDefaultCausalsResponse>(instance);
+            Assert.IsType<ListDeliveryNotesDefaultCausalsResponse>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<List<string>>(instance.Data);
         }
 
     }

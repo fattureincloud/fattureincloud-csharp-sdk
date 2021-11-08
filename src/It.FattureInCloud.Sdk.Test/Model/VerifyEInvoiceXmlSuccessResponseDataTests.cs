@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class VerifyEInvoiceXmlSuccessResponseDataTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for VerifyEInvoiceXmlSuccessResponseData
-        //private VerifyEInvoiceXmlSuccessResponseData instance;
+        private VerifyEInvoiceXmlSuccessResponseData instance;
 
         public VerifyEInvoiceXmlSuccessResponseDataTests()
         {
-            // TODO uncomment below to create an instance of VerifyEInvoiceXmlSuccessResponseData
-            //instance = new VerifyEInvoiceXmlSuccessResponseData();
+            var body = "{ 'success' : true }";
+            instance = JsonConvert.DeserializeObject<VerifyEInvoiceXmlSuccessResponseData>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VerifyEInvoiceXmlSuccessResponseDataInstanceTest()
         {
-            // TODO uncomment below to test "IsType" VerifyEInvoiceXmlSuccessResponseData
-            //Assert.IsType<VerifyEInvoiceXmlSuccessResponseData>(instance);
+            Assert.IsType<VerifyEInvoiceXmlSuccessResponseData>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SuccessTest()
         {
-            // TODO unit test for the property 'Success'
+            Assert.IsType<bool>(instance.Success);
         }
 
     }

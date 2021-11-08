@@ -16,11 +16,12 @@ using System.Linq;
 using System.Reflection;
 using RestSharp;
 using Xunit;
-
+using Moq;
 using It.FattureInCloud.Sdk.Client;
 using It.FattureInCloud.Sdk.Api;
-// uncomment below to import models
-//using It.FattureInCloud.Sdk.Model;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using It.FattureInCloud.Sdk.Model;
 
 namespace It.FattureInCloud.Sdk.Test.Api
 {
@@ -33,11 +34,66 @@ namespace It.FattureInCloud.Sdk.Test.Api
     /// </remarks>
     public class ReceivedDocumentsApiTests : IDisposable
     {
-        private ReceivedDocumentsApi instance;
+        Mock<IReceivedDocumentsApi> instance = new Mock<IReceivedDocumentsApi>();
+        string createReceivedDocumentResponseBody;
+        string getReceivedDocumentResponseBody;
+        string getReceivedDocumentPreCreateInfoResponseBody;
+        string getExistingReceivedDocumentTotalsResponseBody;
+        string getNewReceivedDocumentTotalsResponseBody;
+        string listReceivedDocumentsResponseBody;
+        string modifyReceivedDocumentResponseBody;
+        string uploadReceivedDocumentAttachmentResponseBody;
 
         public ReceivedDocumentsApiTests()
         {
-            instance = new ReceivedDocumentsApi();
+            createReceivedDocumentResponseBody = "{ 'data': { 'type': 'expense', 'entity': { 'id': 111, 'name': 'Hotel Rubino Palace' }, 'date': '2021-08-15', 'category': null, 'description': 'Soggiorno di lavoro', 'amount_net': 592.0, 'amortization': 1.0, 'rc_center': '', 'invoice_number': '', 'is_marked': false, 'is_detailed': false, 'e_invoice': false, 'currency': { 'id': 'EUR', 'symbol': '€', 'exchange_rate': '1.00000' }, 'tax_deductibility': 50.0, 'vat_deductibility': 100.0, 'items_list': null, 'payments_list': [ { 'id': 777, 'amount': 592.0, 'due_date': '2021-08-15', 'paid_date': '2021-08-15', 'payment_terms': { 'type': 'standard' }, 'status': 'paid', 'payment_account': { 'id': 222, 'name': 'Contanti', 'iban': null, 'sia': null, 'virtual': false } } ], 'attachment_token': 'bnopjao8gvydtgnewgiovs74yrfqwefEF' }}";
+            var createReceivedDocumentResponse = JsonConvert.DeserializeObject<CreateReceivedDocumentResponse>(createReceivedDocumentResponseBody);
+            instance
+                .Setup(p => p.CreateReceivedDocument(Moq.It.IsAny<int>(), Moq.It.IsAny<CreateReceivedDocumentRequest>()))
+                .Returns(createReceivedDocumentResponse);
+
+            getReceivedDocumentResponseBody = "{ 'data': { 'type': 'expense', 'entity': { 'id': 111, 'name': 'Hotel Rubino Palace' }, 'date': '2021-08-15', 'category': null, 'description': 'Soggiorno di lavoro', 'amount_net': 592.0, 'amortization': 1.0, 'rc_center': '', 'invoice_number': '', 'is_marked': false, 'is_detailed': false, 'e_invoice': false, 'currency': { 'id': 'EUR', 'symbol': '€', 'exchange_rate': '1.00000' }, 'tax_deductibility': 50.0, 'vat_deductibility': 100.0, 'items_list': null, 'payments_list': [ { 'id': 777, 'amount': 592.0, 'due_date': '2021-08-15', 'paid_date': '2021-08-15', 'payment_terms': { 'type': 'standard' }, 'status': 'paid', 'payment_account': { 'id': 222, 'name': 'Contanti', 'iban': null, 'sia': null, 'virtual': false } } ], 'attachment_token': 'bnopjao8gvydtgnewgiovs74yrfqwefEF' }}";
+            var getReceivedDocumentResponse = JsonConvert.DeserializeObject<GetReceivedDocumentResponse>(getReceivedDocumentResponseBody);
+            instance
+                .Setup(p => p.GetReceivedDocument(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
+                .Returns(getReceivedDocumentResponse);
+
+            getReceivedDocumentPreCreateInfoResponseBody = "{ 'data': { 'default_values': { 'detailed': false }, 'items_default_values': { 'vat': null }, 'countries_list': [ 'Italia', 'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Anguilla', 'Antartide', 'Antigua e Barbuda', 'Antille Olandesi', 'Arabia Saudita', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaigian', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belgio', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bielorussia', 'Bolivia', 'Bosnia ed Erzegovina', 'Botswana', 'Brasile', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambogia', 'Camerun', 'Canada', 'Capo Verde', 'Ciad', 'Cile', 'Cina', 'Cipro', 'Città del Vaticano', 'Colombia', 'Comore', 'Corea del Nord', 'Corea del Sud', 'Costa Rica', 'Costa d Avorio', 'Croazia', 'Cuba', 'Danimarca', 'Dominica', 'Ecuador', 'Egitto', 'El Salvador', 'Emirati Arabi Uniti', 'Eritrea', 'Estonia', 'Etiopia', 'Fiji', 'Filippine', 'Finlandia', 'Francia', 'Gabon', 'Gambia', 'Georgia', 'Georgia del Sud e isole Sandwich', 'Germania', 'Ghana', 'Giamaica', 'Giappone', 'Gibilterra', 'Gibuti', 'Giordania', 'Grecia', 'Grenada', 'Groenlandia', 'Guadalupa', 'Guam', 'Guatemala', 'Guernsey - Channel Islands', 'Guinea', 'Guinea Equatoriale', 'Guinea-Bissau', 'Guyana', 'Guyana Francese', 'Haiti', 'Heard Island e McDonald Islands', 'Honduras', 'Hong Kong', 'India', 'Indonesia', 'Iran', 'Iraq', 'Irlanda', 'Islanda', 'Isola Bouvet', 'Isola Christmas', 'Isola di Man', 'Isola Norfolk', 'Isole Canarie (Spagna)', 'Isole Cayman', 'Isole Cocos e Keeling', 'Isole Cook', 'Isole Falkland', 'Isole Fær Øer', 'Isole Marianne Settentrionali', 'Isole Marshall', 'Isole Minori Esterne degli USA', 'Isole Pitcairn', 'Isole Salomone', 'Isole Vergini Americane', 'Isole Vergini Britanniche', 'Isole Åland', 'Israele', 'Jersey - Channel Islands', 'Kazakistan', 'Kenia', 'Kirghizistan', 'Kiribati', 'Kosovo', 'Kuwait', 'Laos', 'Lesotho', 'Lettonia', 'Libano', 'Liberia', 'Libia', 'Liechtenstein', 'Lituania', 'Lussemburgo', 'Macao', 'Macedonia', 'Macedonia del Nord', 'Madagascar', 'Malawi', 'Malaysia', 'Maldive', 'Mali', 'Malta', 'Marocco', 'Martinica', 'Mauritania', 'Mauritius', 'Mayotte', 'Messico', 'Micronesia', 'Moldavia', 'Monaco', 'Mongolia', 'Montenegro', 'Montserrat', 'Mozambico', 'Myanmar', 'Namibia', 'Nauru', 'Nepal', 'Nicaragua', 'Niger', 'Nigeria', 'Niue', 'Norvegia', 'Nuova Caledonia', 'Nuova Zelanda', 'Oman', 'Paesi Bassi', 'Pakistan', 'Palau', 'Panama', 'Papua Nuova Guinea', 'Paraguay', 'Perù', 'Polinesia Francese', 'Polonia', 'Porto Rico', 'Portogallo', 'Qatar', 'Regno Unito', 'Repubblica Ceca', 'Repubblica Centrafricana', 'Repubblica Democratica del Congo', 'Repubblica Dominicana', 'Repubblica del Congo', 'Riunione', 'Romania', 'Ruanda', 'Russia', 'Sahara Occidentale', 'Saint Barthelemy', 'Saint Kitts e Nevis', 'Saint Pierre e Miquelon', 'Saint Vincent e Grenadine', 'Samoa', 'Samoa Americane', 'San Marino', 'Sant Elena', 'Santa Lucia', 'Senegal', 'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Siria', 'Slovacchia', 'Slovenia', 'Somalia', 'Spagna', 'Sri Lanka', 'Stato di Palestina', 'Stati Uniti', 'Sudafrica', 'Sud Sudan', 'Sudan', 'Suriname', 'Svalbard e Jan Mayen', 'Svezia', 'Svizzera', 'Swaziland', 'São Tomé e Príncipe', 'Tagikistan', 'Taiwan', 'Tanzania', 'Terre australi e ant. francesi', 'Terr. Britannico dell Oc. Ind.', 'Thailandia', 'Timor Est', 'Togo', 'Tokelau', 'Tonga', 'Trinidad e Tobago', 'Tunisia', 'Turchia', 'Turkmenistan', 'Turks e Caicos', 'Tuvalu', 'Ucraina', 'Uganda', 'Ungheria', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Venezuela', 'Vietnam', 'Wallis e Futuna', 'Yemen', 'Zambia', 'Zimbabwe' ], 'currencies_list': [ { 'id': 'AED', 'symbol': 'AED', 'exchange_rate': '4.09500', 'html_symbol': 'AED' }, { 'id': 'ALL', 'symbol': 'ALL', 'exchange_rate': '121.50000', 'html_symbol': 'ALL' }, { 'id': 'AUD', 'symbol': 'AUD', 'exchange_rate': '1.62094', 'html_symbol': 'AUD' }, { 'id': 'AZN', 'symbol': 'AZN', 'exchange_rate': '2.00130', 'html_symbol': 'AZN' }, { 'id': 'BGN', 'symbol': 'лв', 'exchange_rate': '1.95583', 'html_symbol': 'BGN' }, { 'id': 'BRL', 'symbol': 'R$', 'exchange_rate': '4.50410', 'html_symbol': 'R$' }, { 'id': 'BYN', 'symbol': 'BYN', 'exchange_rate': '2.41000', 'html_symbol': 'BYN' }, { 'id': 'CAD', 'symbol': 'CAD', 'exchange_rate': '1.49841', 'html_symbol': 'CAD' }, { 'id': 'CFA', 'symbol': 'CFA', 'exchange_rate': '656.68000', 'html_symbol': 'CFA' }, { 'id': 'CHF', 'symbol': 'Fr.', 'exchange_rate': '1.12559', 'html_symbol': 'Fr.' }, { 'id': 'CNY', 'symbol': 'CNY', 'exchange_rate': '7.70160', 'html_symbol': 'CNY' }, { 'id': 'CRC', 'symbol': '₡', 'exchange_rate': '659.17000', 'html_symbol': '₡' }, { 'id': 'CZK', 'symbol': 'Kč', 'exchange_rate': '25.80600', 'html_symbol': 'CZK' }, { 'id': 'DKK', 'symbol': 'kr.', 'exchange_rate': '7.46750', 'html_symbol': 'kr.' }, { 'id': 'DOP', 'symbol': 'DOP', 'exchange_rate': '56.50000', 'html_symbol': 'DOP' }, { 'id': 'DZD', 'symbol': 'DZD', 'exchange_rate': '134.28300', 'html_symbol': 'DZD' }, { 'id': 'EGP', 'symbol': 'EGP', 'exchange_rate': '18.98030', 'html_symbol': 'EGP' }, { 'id': 'EUR', 'symbol': '€', 'exchange_rate': '1.00000', 'html_symbol': '€' }, { 'id': 'GBP', 'symbol': '£', 'exchange_rate': '0.88096', 'html_symbol': '£' }, { 'id': 'GHS', 'symbol': 'GHS', 'exchange_rate': '5.45834', 'html_symbol': 'GHS' }, { 'id': 'HKD', 'symbol': 'HK$', 'exchange_rate': '8.75450', 'html_symbol': 'HK$' }, { 'id': 'HRK', 'symbol': 'HRK', 'exchange_rate': '7.42640', 'html_symbol': 'HRK' }, { 'id': 'HUF', 'symbol': 'HUF', 'exchange_rate': '326.24000', 'html_symbol': 'HUF' }, { 'id': 'ILS', 'symbol': '₪', 'exchange_rate': '4.02680', 'html_symbol': '₪' }, { 'id': 'INR', 'symbol': 'INR', 'exchange_rate': '77.76050', 'html_symbol': 'INR' }, { 'id': 'ISK', 'symbol': 'ISK', 'exchange_rate': '135.94600', 'html_symbol': 'ISK' }, { 'id': 'JPY', 'symbol': '¥', 'exchange_rate': '123.05800', 'html_symbol': '¥' }, { 'id': 'KRW', 'symbol': 'KRW', 'exchange_rate': '1329.20000', 'html_symbol': 'KRW' }, { 'id': 'MAD', 'symbol': 'MAD', 'exchange_rate': '10.78900', 'html_symbol': 'MAD' }, { 'id': 'MKD', 'symbol': 'MKD', 'exchange_rate': '61.36700', 'html_symbol': 'MKD' }, { 'id': 'MXN', 'symbol': 'Mex$', 'exchange_rate': '21.17900', 'html_symbol': 'Mex$' }, { 'id': 'MYR', 'symbol': 'MYR', 'exchange_rate': '4.67310', 'html_symbol': 'MYR' }, { 'id': 'NGN', 'symbol': 'NGN', 'exchange_rate': '405.17000', 'html_symbol': 'NGN' }, { 'id': 'NIS', 'symbol': 'NIS', 'exchange_rate': '4020.00000', 'html_symbol': 'NIS' }, { 'id': 'NOK', 'symbol': 'kr', 'exchange_rate': '9.76270', 'html_symbol': 'kr' }, { 'id': 'NZD', 'symbol': 'NZD', 'exchange_rate': '1.71687', 'html_symbol': 'NZD' }, { 'id': 'OMR', 'symbol': 'OMR', 'exchange_rate': '0.42950', 'html_symbol': 'OMR' }, { 'id': 'PEN', 'symbol': 'PEN', 'exchange_rate': '3.73400', 'html_symbol': 'PEN' }, { 'id': 'PLN', 'symbol': 'zł', 'exchange_rate': '4.30330', 'html_symbol': 'PLN' }, { 'id': 'QAR', 'symbol': 'QAR', 'exchange_rate': '4.06270', 'html_symbol': 'QAR' }, { 'id': 'RON', 'symbol': 'RON', 'exchange_rate': '4.66891', 'html_symbol': 'RON' }, { 'id': 'RSD', 'symbol': 'RSD', 'exchange_rate': '117.39414', 'html_symbol': 'RSD' }, { 'id': 'RUB', 'symbol': '₽', 'exchange_rate': '71.70370', 'html_symbol': '₽' }, { 'id': 'SAR', 'symbol': 'SAR', 'exchange_rate': '4.18520', 'html_symbol': 'SAR' }, { 'id': 'SEK', 'symbol': 'SEK', 'exchange_rate': '10.73374', 'html_symbol': 'SEK' }, { 'id': 'SGD', 'symbol': 'SGD', 'exchange_rate': '1.53800', 'html_symbol': 'SGD' }, { 'id': 'THB', 'symbol': 'THB', 'exchange_rate': '35.56400', 'html_symbol': 'THB' }, { 'id': 'TND', 'symbol': 'TND', 'exchange_rate': '3.34010', 'html_symbol': 'TND' }, { 'id': 'TRY', 'symbol': 'TRY', 'exchange_rate': '6.81590', 'html_symbol': 'TRY' }, { 'id': 'TWD', 'symbol': 'TWD', 'exchange_rate': '35.14200', 'html_symbol': 'TWD' }, { 'id': 'UAH', 'symbol': 'UAH', 'exchange_rate': '29.31490', 'html_symbol': 'UAH' }, { 'id': 'USD', 'symbol': '$', 'exchange_rate': '1.11570', 'html_symbol': '$' }, { 'id': 'VND', 'symbol': '₫', 'exchange_rate': '26100.00000', 'html_symbol': '₫' }, { 'id': 'ZAR', 'symbol': 'R', 'exchange_rate': '16.03080', 'html_symbol': 'R' } ], 'categories_list': [ 'Auto', 'Telefono e internet', 'Assicurazioni e quote', 'Auto ed altri veicoli', 'Computer e accessori', 'Server e hosting', 'merda', 'Prva', 'Farina etc.', 'Cat', 'Cibo', 'gigi d asti', 'banca d asti', 'Varie', 'zzzzz', 'ooooo', 'aaa', 'ffff', 'www', 'bbb' ], 'payment_accounts_list': [ { 'id': 111, 'name': 'Indesa - carta conto', 'iban': null, 'sia': null, 'virtual': false }, { 'id': 222, 'name': 'Contanti', 'iban': null, 'sia': null, 'virtual': false }, { 'id': 333, 'name': 'Bonifico_Bancario', 'iban': null, 'sia': null, 'virtual': false } ], 'vat_types_list': [ { 'id': 1334, 'description': 'Non imp. art. 17 c. 6 DPR 633/72 e s.m.i.', 'e_invoice': false, 'is_disabled': false }, { 'id': 1333, 'description': 'Non sogg. art. 74 c. 7 e 8 DPR 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 1332, 'description': 'Non imp. art. 17 c. 6 lett. A TER DPR 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 1020, 'description': 'PA Non imp art. 2', 'e_invoice': false, 'is_disabled': false }, { 'id': 1018, 'description': 'Aliq. 22% reverse charge', 'e_invoice': false, 'is_disabled': false }, { 'id': 1015, 'value': 22.0, 'description': 'Speciale prova', 'e_invoice': false, 'is_disabled': false }, { 'id': 1014, 'description': 'Ai sensi dellarticolo 123', 'e_invoice': false, 'is_disabled': false }, { 'id': 1013, 'description': 'Non imponibile art. 8 lett. A DPR 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 1010, 'description': 'NON IMPONIBILE IVA EX ART. 8 COMMA 1 LETT.A', 'e_invoice': false, 'is_disabled': false }, { 'id': 1009, 'value': 20.0, 'description': 'Aliquota 20%', 'e_invoice': false, 'is_disabled': false }, { 'id': 1008, 'description': 'Non imp. art. 41 D.L. 427/93', 'e_invoice': false, 'is_disabled': false }, { 'id': 1007, 'description': 'Non imp. art. 71 DPR 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 1006, 'description': 'Escl. art. 15 DPR 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 1004, 'description': 'Non imp. art. 1 L. 244/2007', 'e_invoice': false, 'is_disabled': false }, { 'id': 1003, 'description': 'Non imp. art. 8 DPR 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 1002, 'description': 'Omaggi art. 2 c. 2 n. 4 DPR 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 1000, 'description': 'art.26 COMMA 3 DPR 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 7, 'description': 'Regime dei minimi', 'e_invoice': false, 'is_disabled': false }, { 'id': 9, 'description': 'Fuori campo IVA', 'e_invoice': false, 'is_disabled': false }, { 'id': 10, 'description': 'Oper. non soggetta, art.7 ter', 'e_invoice': false, 'is_disabled': false }, { 'id': 11, 'description': 'Inversione contabile, art.7 ter', 'e_invoice': false, 'is_disabled': false }, { 'id': 12, 'description': 'Non Imponibile', 'e_invoice': false, 'is_disabled': false }, { 'id': 13, 'description': 'Non Imp. Art.8', 'e_invoice': false, 'is_disabled': false }, { 'id': 14, 'description': 'Non Imp. Art.9 1C', 'e_invoice': false, 'is_disabled': false }, { 'id': 15, 'description': 'Non Imp. Art.14 Legge 537/93', 'e_invoice': false, 'is_disabled': false }, { 'id': 16, 'description': 'Non Imp. Art.41 D.P.R. 331/93', 'e_invoice': false, 'is_disabled': false }, { 'id': 17, 'description': 'Non Imp. Art.72, D.P.R. 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 18, 'description': 'Non Imp. Art.74 quotidiani/libri', 'e_invoice': false, 'is_disabled': false }, { 'id': 19, 'description': 'Escluso Art.10', 'e_invoice': false, 'is_disabled': false }, { 'id': 20, 'description': 'Escluso Art.13 5C DPR 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 21, 'description': 'Escluso Art.15', 'e_invoice': false, 'is_disabled': false }, { 'id': 23, 'description': 'Escluso Art.74 ter D.P.R. 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 24, 'description': 'Escluso Art.10 comma 1', 'e_invoice': false, 'is_disabled': false }, { 'id': 25, 'description': 'Escluso Art.10 comma 20', 'e_invoice': false, 'is_disabled': false }, { 'id': 26, 'description': 'Non Imp. Art.9', 'e_invoice': false, 'is_disabled': false }, { 'id': 27, 'description': 'Escluso Art.10 n.27 D.P.R 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 30, 'description': 'Regime del margine art.36 41/95', 'e_invoice': false, 'is_disabled': false }, { 'id': 31, 'description': 'Escluso Art.3 comma 4 D.P.R 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 32, 'description': 'Escluso Art.15/1c D.P.R 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 33, 'description': 'Non imp. Art.8/c D.P.R. 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 34, 'description': 'Non Imp. Art.7 ter', 'e_invoice': false, 'is_disabled': false }, { 'id': 35, 'description': 'Escluso Art.7 D.P.R 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 36, 'value': 22.0, 'description': 'Esigibilita differita Art. 6 comma 5 D.P.R 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 37, 'description': 'Escluso Art.10 comma 9', 'e_invoice': false, 'is_disabled': false }, { 'id': 38, 'description': 'Non imp. Art.7 quater DPR 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 39, 'description': 'Non Imp. Art.8 comma 1A', 'e_invoice': false, 'is_disabled': false }, { 'id': 44, 'description': 'Fuori Campo IVA Art.7 ter D.P.R 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 45, 'description': 'Non Imp. Art.10 n.18 DPR 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 46, 'description': 'Esente Art.10 DPR 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 48, 'description': 'Non imp. art.40 D.L. 427/93', 'e_invoice': false, 'is_disabled': false }, { 'id': 49, 'description': 'Non imp. art.41 D.L. 427/93', 'e_invoice': false, 'is_disabled': false }, { 'id': 51, 'description': 'Non imp. art.8 DPR 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 52, 'description': 'Non imp. art.9 DPR 633/72', 'e_invoice': false, 'is_disabled': false }, { 'id': 53, 'description': 'Regime minimi 2015', 'e_invoice': false, 'is_disabled': false }, { 'id': 55, 'description': 'Non soggetta IVA', 'e_invoice': false, 'is_disabled': false }, { 'id': 56, 'description': 'R.C. art. 74/7-8 rottami e metalli ferrosi e non', 'e_invoice': false, 'is_disabled': false }, { 'id': 57, 'description': 'R.C. art. 17/5 materiale oro e argento', 'e_invoice': false, 'is_disabled': false }, { 'id': 58, 'description': 'R.C. art. 17/6/a settore edile subappalto', 'e_invoice': false, 'is_disabled': false }, { 'id': 59, 'description': 'R.C. art. 17/6/a-bis fabbricati', 'e_invoice': false, 'is_disabled': false }, { 'id': 60, 'description': 'R.C. art. 17/6/b telefoni cellulari', 'e_invoice': false, 'is_disabled': false }, { 'id': 61, 'description': 'R.C. art. 17/6/c prodotti elettronici', 'e_invoice': false, 'is_disabled': false }, { 'id': 62, 'description': 'R.C. art. 17/6/a-ter servizi comparto edile e settori connessi', 'e_invoice': false, 'is_disabled': false }, { 'id': 63, 'description': 'R.C. art. 17/6/d-bis,d-ter,d-quater gas/energia elettrica', 'e_invoice': false, 'is_disabled': false }, { 'id': 64, 'description': 'Non imp. art.71 DPR 633/72 (Vaticano)', 'e_invoice': false, 'is_disabled': false }, { 'id': 65, 'description': 'Non imp. art.71 DPR 633/72 (RSM)', 'e_invoice': false, 'is_disabled': false }, { 'id': 66, 'description': 'Contribuenti forfettari', 'e_invoice': false, 'is_disabled': false } ] }}";
+            var getReceivedDocumentPreCreateInfoResponse = JsonConvert.DeserializeObject<GetReceivedDocumentPreCreateInfoResponse>(getReceivedDocumentPreCreateInfoResponseBody);
+            instance
+                .Setup(p => p.GetReceivedDocumentPreCreateInfo(Moq.It.IsAny<int>(), Moq.It.IsAny<string>()))
+                .Returns(getReceivedDocumentPreCreateInfoResponse);
+
+            getExistingReceivedDocumentTotalsResponseBody = "{ 'data': { 'amount_net': 592.0, 'amount_vat': 20.0, 'amount_gross': 612.0, 'amount_due': 612.0, 'payments_sum': 592.0 }}";
+            var getExistingReceivedDocumentsTotalsResponse = JsonConvert.DeserializeObject<GetExistingReceivedDocumentTotalsResponse>(getExistingReceivedDocumentTotalsResponseBody);
+            instance
+                .Setup(p => p.GetExistingReceivedDocumentTotals(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<GetExistingReceivedDocumentTotalsRequest>()))
+                .Returns(getExistingReceivedDocumentsTotalsResponse);
+
+            getNewReceivedDocumentTotalsResponseBody = "{ 'data': { 'amount_net': 592.0, 'amount_vat': 20.0, 'amount_gross': 612.0, 'amount_due': 612.0, 'payments_sum': 592.0 }}";
+            var getNewReceivedDocumentsTotalsResponse = JsonConvert.DeserializeObject<GetNewReceivedDocumentTotalsResponse>(getNewReceivedDocumentTotalsResponseBody);
+            instance
+                .Setup(p => p.GetNewReceivedDocumentTotals(Moq.It.IsAny<int>(), Moq.It.IsAny<GetNewReceivedDocumentTotalsRequest>()))
+                .Returns(getNewReceivedDocumentsTotalsResponse);
+
+            listReceivedDocumentsResponseBody = "{ 'current_page': 1, 'first_page_url': 'page=1', 'from': 1, 'last_page': 2, 'last_page_url': 'page=2', 'next_page_url': 'page=2', 'path': 'received_documents', 'per_page': 50, 'prev_page_url': null, 'to': 50, 'total': 123, 'data': [ { 'type': 'expense', 'id': 12345, 'entity': { 'id': 111, 'name': 'Hotel Rubino Palace' }, 'date': '2021-08-15', 'category': null, 'description': 'Soggiorno di lavoro', 'amount_net': 592.0, 'amortization': 1.0, 'rc_center': '', 'invoice_number': '', 'is_marked': false, 'is_detailed': false, 'e_invoice': false, 'currency': { 'id': 'EUR', 'symbol': '€', 'exchange_rate': '1.00000' }, 'tax_deductibility': 50.0, 'vat_deductibility': 100.0, 'items_list': null, 'payments_list': [ { 'id': 777, 'amount': 592.0, 'due_date': '2021-08-15', 'paid_date': '2021-08-15', 'payment_terms': { 'type': 'standard' }, 'status': 'paid', 'payment_account': { 'id': 222, 'name': 'Contanti', 'iban': null, 'sia': null, 'virtual': false } } ], 'attachment_token': null }, { 'id': 12346, 'type': 'expense', 'entity': { 'id': 89, 'name': 'Indesa Assicurazioni S.P.A.' }, 'category': null, 'date': '2021-08-08', 'description': 'Assicurazione RCA', 'amount_net': 645.69, 'rc_center': '', 'invoice_number': '', 'is_marked': false, 'is_detailed': false, 'e_invoice': false, 'currency': { 'id': 'EUR', 'symbol': '€', 'exchange_rate': '1.00000' }, 'tax_deductibility': 50.0, 'vat_deductibility': 100.0, 'items_list': null, 'payments_list': [ { 'id': 999, 'amount': 645.69, 'due_date': '2021-08-08', 'paid_date': '2021-08-08', 'payment_terms': { 'type': 'standard' }, 'status': 'paid', 'payment_account': { 'id': 333, 'name': 'Carta conto', 'iban': null, 'sia': null, 'virtual': false } } ], 'attachment_token': null } ]}";
+            var listReceivedDocumentsResponse = JsonConvert.DeserializeObject<ListReceivedDocumentsResponse>(listReceivedDocumentsResponseBody);
+            instance
+                .Setup(p => p.ListReceivedDocuments(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<int>(), Moq.It.IsAny<int>()))
+                .Returns(listReceivedDocumentsResponse);
+
+            modifyReceivedDocumentResponseBody = "{ 'data': { 'type': 'expense', 'entity': { 'id': 111, 'name': 'Hotel Rubino Palace' }, 'date': '2021-08-15', 'category': null, 'description': 'Soggiorno di lavoro', 'amount_net': 592.0, 'amortization': 1.0, 'rc_center': '', 'invoice_number': '', 'is_marked': false, 'is_detailed': false, 'e_invoice': false, 'currency': { 'id': 'EUR', 'symbol': '€', 'exchange_rate': '1.00000' }, 'tax_deductibility': 50.0, 'vat_deductibility': 100.0, 'items_list': null, 'payments_list': [ { 'id': 777, 'amount': 592.0, 'due_date': '2021-08-15', 'paid_date': '2021-08-15', 'payment_terms': { 'type': 'standard' }, 'status': 'paid', 'payment_account': { 'id': 222, 'name': 'Contanti', 'iban': null, 'sia': null, 'virtual': false } } ], 'attachment_token': 'bnopjao8gvydtgnewgiovs74yrfqwefEF' }}";
+            var modifyReceivedDocumentResponse = JsonConvert.DeserializeObject<ModifyReceivedDocumentResponse>(modifyReceivedDocumentResponseBody);
+            instance
+                .Setup(p => p.ModifyReceivedDocument(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifyReceivedDocumentRequest>()))
+                .Returns(modifyReceivedDocumentResponse);
+
+            uploadReceivedDocumentAttachmentResponseBody = "{'data':{'attachment_token':'YmMyNWYxYzIwMTU3N2Y4ZGE3ZjZiMzg5OWY0ODNkZDQveXl5LmRvYw'}}";
+            var uploadReceivedDocumentAttachmentResponse = JsonConvert.DeserializeObject<UploadReceivedDocumentAttachmentResponse>(uploadReceivedDocumentAttachmentResponseBody);
+            instance
+                .Setup(p => p.UploadReceivedDocumentAttachment(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<Stream>()))
+                .Returns(uploadReceivedDocumentAttachmentResponse);
+
         }
 
         public void Dispose()
@@ -51,8 +107,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void InstanceTest()
         {
-            // TODO uncomment below to test 'IsType' ReceivedDocumentsApi
-            //Assert.IsType<ReceivedDocumentsApi>(instance);
+            Assert.IsType<Mock<IReceivedDocumentsApi>>(instance);
         }
 
         /// <summary>
@@ -61,11 +116,13 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void CreateReceivedDocumentTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //CreateReceivedDocumentRequest createReceivedDocumentRequest = null;
-            //var response = instance.CreateReceivedDocument(companyId, createReceivedDocumentRequest);
-            //Assert.IsType<CreateReceivedDocumentResponse>(response);
+            int companyId = 2;
+            CreateReceivedDocumentRequest createReceivedDocumentRequest = new CreateReceivedDocumentRequest();
+
+            var response = instance.Object.CreateReceivedDocument(companyId, createReceivedDocumentRequest);
+            JObject obj = JObject.Parse(createReceivedDocumentResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -74,10 +131,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void DeleteReceivedDocumentTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int documentId = null;
-            //instance.DeleteReceivedDocument(companyId, documentId);
+            Assert.True(true);
         }
 
         /// <summary>
@@ -86,10 +140,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void DeleteReceivedDocumentAttachmentTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int documentId = null;
-            //instance.DeleteReceivedDocumentAttachment(companyId, documentId);
+            Assert.True(true);
         }
 
         /// <summary>
@@ -98,12 +149,14 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void GetExistingReceivedDocumentTotalsTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int documentId = null;
-            //GetExistingReceivedDocumentTotalsRequest getExistingReceivedDocumentTotalsRequest = null;
-            //var response = instance.GetExistingReceivedDocumentTotals(companyId, documentId, getExistingReceivedDocumentTotalsRequest);
-            //Assert.IsType<GetExistingReceivedDocumentTotalsResponse>(response);
+            int companyId = 2;
+            int documentId = 12345;
+            GetExistingReceivedDocumentTotalsRequest getExistingReceivedDocumentTotalsRequest = new GetExistingReceivedDocumentTotalsRequest();
+
+            var response = instance.Object.GetExistingReceivedDocumentTotals(companyId, documentId, getExistingReceivedDocumentTotalsRequest);
+            JObject obj = JObject.Parse(getExistingReceivedDocumentTotalsResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -112,11 +165,13 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void GetNewReceivedDocumentTotalsTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //GetNewReceivedDocumentTotalsRequest getNewReceivedDocumentTotalsRequest = null;
-            //var response = instance.GetNewReceivedDocumentTotals(companyId, getNewReceivedDocumentTotalsRequest);
-            //Assert.IsType<GetNewReceivedDocumentTotalsResponse>(response);
+            int companyId = 2;
+            GetNewReceivedDocumentTotalsRequest getNewReceivedDocumentTotalsRequest = new GetNewReceivedDocumentTotalsRequest();
+
+            var response = instance.Object.GetNewReceivedDocumentTotals(companyId, getNewReceivedDocumentTotalsRequest);
+            JObject obj = JObject.Parse(getNewReceivedDocumentTotalsResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -125,13 +180,15 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void GetReceivedDocumentTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int documentId = null;
-            //string fields = null;
-            //string fieldset = null;
-            //var response = instance.GetReceivedDocument(companyId, documentId, fields, fieldset);
-            //Assert.IsType<GetReceivedDocumentResponse>(response);
+            int companyId = 2;
+            int documentId = 12345;
+            string fields = "";
+            string fieldset = "";
+
+            var response = instance.Object.GetReceivedDocument(companyId, documentId, fields, fieldset);
+            JObject obj = JObject.Parse(getReceivedDocumentResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -140,11 +197,14 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void GetReceivedDocumentPreCreateInfoTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //string type = null;
-            //var response = instance.GetReceivedDocumentPreCreateInfo(companyId, type);
-            //Assert.IsType<GetReceivedDocumentPreCreateInfoResponse>(response);
+            int companyId = 2;
+            string type = "";
+
+            var response = instance.Object.GetReceivedDocumentPreCreateInfo(companyId, type);
+            JObject obj = JObject.Parse(getReceivedDocumentPreCreateInfoResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
+
         }
 
         /// <summary>
@@ -153,16 +213,18 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void ListReceivedDocumentsTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //string type = null;
-            //string fields = null;
-            //string fieldset = null;
-            //string sort = null;
-            //int? page = null;
-            //int? perPage = null;
-            //var response = instance.ListReceivedDocuments(companyId, type, fields, fieldset, sort, page, perPage);
-            //Assert.IsType<ListReceivedDocumentsResponse>(response);
+            int companyId = 2;
+            string type = "";
+            string fields = "";
+            string fieldset = "";
+            string sort = "";
+            int? page = 5;
+            int? perPage = 5;
+
+            var response = instance.Object.ListReceivedDocuments(companyId, type, fields, fieldset, sort, page, perPage);
+            JObject obj = JObject.Parse(listReceivedDocumentsResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -171,12 +233,14 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void ModifyReceivedDocumentTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int documentId = null;
-            //ModifyReceivedDocumentRequest modifyReceivedDocumentRequest = null;
-            //var response = instance.ModifyReceivedDocument(companyId, documentId, modifyReceivedDocumentRequest);
-            //Assert.IsType<ModifyReceivedDocumentResponse>(response);
+            int companyId = 2;
+            int documentId = 12345;
+            ModifyReceivedDocumentRequest modifyReceivedDocumentRequest = new ModifyReceivedDocumentRequest();
+
+            var response = instance.Object.ModifyReceivedDocument(companyId, documentId, modifyReceivedDocumentRequest);
+            JObject obj = JObject.Parse(modifyReceivedDocumentResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -185,12 +249,14 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void UploadReceivedDocumentAttachmentTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //string filename = null;
-            //System.IO.Stream attachment = null;
-            //var response = instance.UploadReceivedDocumentAttachment(companyId, filename, attachment);
-            //Assert.IsType<UploadReceivedDocumentAttachmentResponse>(response);
+            int companyId = 2;
+            string filename = "";
+            Stream attachment = new MemoryStream();
+
+            var response = instance.Object.UploadReceivedDocumentAttachment(companyId, filename, attachment);
+            JObject obj = JObject.Parse(uploadReceivedDocumentAttachmentResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
     }
 }

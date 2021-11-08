@@ -32,13 +32,13 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class GetNewReceivedDocumentTotalsRequestTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for GetNewReceivedDocumentTotalsRequest
-        //private GetNewReceivedDocumentTotalsRequest instance;
+        private GetNewReceivedDocumentTotalsRequest instance;
 
         public GetNewReceivedDocumentTotalsRequestTests()
         {
-            // TODO uncomment below to create an instance of GetNewReceivedDocumentTotalsRequest
-            //instance = new GetNewReceivedDocumentTotalsRequest();
+            var body = "{ 'data': { 'id': 12345, 'type': 'expense', 'description': 'Soggiorno di lavoro', 'category': 'cat', 'amortization': 1, 'rc_center': 'rcc', 'invoice_number': 'inv12345', 'is_marked': false, 'is_detailed': false, 'e_invoice': false, 'entity': { 'id': 111, 'name': 'Hotel Rubino Palace' }, 'date': '2021-08-15', 'next_due_date': '2021-08-15', 'currency': { 'id': 'EUR', 'exchange_rate': '1.00000', 'symbol': '€' }, 'amount_net': 592, 'amount_vat': 0, 'amount_gross': 592, 'amount_withholding_tax': 0, 'amount_other_withholding_tax': 0, 'tax_deductibility': 50, 'vat_deductibility': 100, 'attachment_url': 'spesa_ger5i783t45hu6ti.pdf', 'attachment_preview_url': '/preview.pdf', 'payments_list': [ { 'amount': 592, 'due_date': '2021-08-15', 'paid_date': '2021-08-15', 'id': 777, 'payment_terms': { 'days': 0, 'type': 'standard' }, 'status': 'paid' } ] } }";
+            instance = JsonConvert.DeserializeObject<GetNewReceivedDocumentTotalsRequest>(body);
+
         }
 
         public void Dispose()
@@ -52,8 +52,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void GetNewReceivedDocumentTotalsRequestInstanceTest()
         {
-            // TODO uncomment below to test "IsType" GetNewReceivedDocumentTotalsRequest
-            //Assert.IsType<GetNewReceivedDocumentTotalsRequest>(instance);
+            Assert.IsType<GetNewReceivedDocumentTotalsRequest>(instance);
         }
 
 
@@ -63,7 +62,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<ReceivedDocument>(instance.Data);
         }
 
     }

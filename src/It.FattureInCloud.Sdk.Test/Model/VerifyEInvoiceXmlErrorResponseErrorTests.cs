@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class VerifyEInvoiceXmlErrorResponseErrorTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for VerifyEInvoiceXmlErrorResponseError
-        //private VerifyEInvoiceXmlErrorResponseError instance;
+        private VerifyEInvoiceXmlErrorResponseError instance;
 
         public VerifyEInvoiceXmlErrorResponseErrorTests()
         {
-            // TODO uncomment below to create an instance of VerifyEInvoiceXmlErrorResponseError
-            //instance = new VerifyEInvoiceXmlErrorResponseError();
+            var body = "{'message':'validato','validation_result':{'prop':true}}";
+            instance = JsonConvert.DeserializeObject<VerifyEInvoiceXmlErrorResponseError>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VerifyEInvoiceXmlErrorResponseErrorInstanceTest()
         {
-            // TODO uncomment below to test "IsType" VerifyEInvoiceXmlErrorResponseError
-            //Assert.IsType<VerifyEInvoiceXmlErrorResponseError>(instance);
+            Assert.IsType<VerifyEInvoiceXmlErrorResponseError>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void MessageTest()
         {
-            // TODO unit test for the property 'Message'
+            Assert.IsType<string>(instance.Message);
         }
         /// <summary>
         /// Test the property 'ValidationResult'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ValidationResultTest()
         {
-            // TODO unit test for the property 'ValidationResult'
+            Assert.IsType<Newtonsoft.Json.Linq.JObject>(instance.ValidationResult);
         }
 
     }

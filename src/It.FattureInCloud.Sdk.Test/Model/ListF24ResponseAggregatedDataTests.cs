@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ListF24ResponseAggregatedDataTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ListF24ResponseAggregatedData
-        //private ListF24ResponseAggregatedData instance;
+        private ListF24ResponseAggregatedData instance;
 
         public ListF24ResponseAggregatedDataTests()
         {
-            // TODO uncomment below to create an instance of ListF24ResponseAggregatedData
-            //instance = new ListF24ResponseAggregatedData();
+            var body = "{ 'aggregated_data': { 'amount': 5 } }";
+            instance = JsonConvert.DeserializeObject<ListF24ResponseAggregatedData>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ListF24ResponseAggregatedDataInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ListF24ResponseAggregatedData
-            //Assert.IsType<ListF24ResponseAggregatedData>(instance);
+            Assert.IsType<ListF24ResponseAggregatedData>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AggregatedDataTest()
         {
-            // TODO unit test for the property 'AggregatedData'
+            Assert.IsType<ListF24ResponseAggregatedDataAggregatedData>(instance.AggregatedData);
         }
 
     }

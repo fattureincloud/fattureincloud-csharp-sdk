@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class EmailDataDefaultSenderEmailTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for EmailDataDefaultSenderEmail
-        //private EmailDataDefaultSenderEmail instance;
+        private EmailDataDefaultSenderEmail instance;
 
         public EmailDataDefaultSenderEmailTests()
         {
-            // TODO uncomment below to create an instance of EmailDataDefaultSenderEmail
-            //instance = new EmailDataDefaultSenderEmail();
+            var body = "{ 'id': 0, 'email': 'no-reply@fattureincloud.it' }";
+            instance = JsonConvert.DeserializeObject<EmailDataDefaultSenderEmail>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EmailDataDefaultSenderEmailInstanceTest()
         {
-            // TODO uncomment below to test "IsType" EmailDataDefaultSenderEmail
-            //Assert.IsType<EmailDataDefaultSenderEmail>(instance);
+            Assert.IsType<EmailDataDefaultSenderEmail>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IdTest()
         {
-            // TODO unit test for the property 'Id'
+            Assert.IsType<decimal>(instance.Id);
         }
         /// <summary>
         /// Test the property 'Email'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EmailTest()
         {
-            // TODO unit test for the property 'Email'
+            Assert.IsType<string>(instance.Email);
         }
 
     }

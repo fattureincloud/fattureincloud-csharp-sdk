@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class LanguageTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for Language
-        //private Language instance;
+        private Language instance;
 
         public LanguageTests()
         {
-            // TODO uncomment below to create an instance of Language
-            //instance = new Language();
+            var body = "{ 'code': 'it', 'name': 'Italiano' }";
+            instance = JsonConvert.DeserializeObject<Language>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void LanguageInstanceTest()
         {
-            // TODO uncomment below to test "IsType" Language
-            //Assert.IsType<Language>(instance);
+            Assert.IsType<Language>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CodeTest()
         {
-            // TODO unit test for the property 'Code'
+            Assert.IsType<string>(instance.Code);
         }
         /// <summary>
         /// Test the property 'Name'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NameTest()
         {
-            // TODO unit test for the property 'Name'
+            Assert.IsType<string>(instance.Name);
         }
 
     }

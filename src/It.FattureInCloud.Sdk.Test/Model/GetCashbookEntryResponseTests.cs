@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class GetCashbookEntryResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for GetCashbookEntryResponse
-        //private GetCashbookEntryResponse instance;
+        private GetCashbookEntryResponse instance;
 
         public GetCashbookEntryResponseTests()
         {
-            // TODO uncomment below to create an instance of GetCashbookEntryResponse
-            //instance = new GetCashbookEntryResponse();
+            var body = "{'data' : { 'id': 12345, 'date': '2021-08-24', 'description': 'Fattura n. 201/2021', 'entity_name': 'Rossi S.r.l.', 'kind': 'issued_document', 'type': 'in', 'amount_in': 100, 'payment_account_in': { 'id': 333 }, 'document': { 'id': 12345, 'type': 'issued_document', 'path': '/doc1.pdf' } } }";
+            instance = JsonConvert.DeserializeObject<GetCashbookEntryResponse>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void GetCashbookEntryResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" GetCashbookEntryResponse
-            //Assert.IsType<GetCashbookEntryResponse>(instance);
+            Assert.IsType<GetCashbookEntryResponse>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<CashbookEntry>(instance.Data);
         }
 
     }

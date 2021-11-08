@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ReceivedDocumentEntityTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ReceivedDocumentEntity
-        //private ReceivedDocumentEntity instance;
+        private ReceivedDocumentEntity instance;
 
         public ReceivedDocumentEntityTests()
         {
-            // TODO uncomment below to create an instance of ReceivedDocumentEntity
-            //instance = new ReceivedDocumentEntity();
+            var body = "{'id':111,'name':'Hotel Rubino Palace'}";
+            instance = JsonConvert.DeserializeObject<ReceivedDocumentEntity>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ReceivedDocumentEntityInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ReceivedDocumentEntity
-            //Assert.IsType<ReceivedDocumentEntity>(instance);
+            Assert.IsType<ReceivedDocumentEntity>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IdTest()
         {
-            // TODO unit test for the property 'Id'
+            Assert.IsType<int>(instance.Id);
         }
         /// <summary>
         /// Test the property 'Name'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NameTest()
         {
-            // TODO unit test for the property 'Name'
+            Assert.IsType<string>(instance.Name);
         }
 
     }

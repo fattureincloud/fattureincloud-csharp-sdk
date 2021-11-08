@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ListRevenueCentersResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ListRevenueCentersResponse
-        //private ListRevenueCentersResponse instance;
+        private ListRevenueCentersResponse instance;
 
         public ListRevenueCentersResponseTests()
         {
-            // TODO uncomment below to create an instance of ListRevenueCentersResponse
-            //instance = new ListRevenueCentersResponse();
+            var body = "{ 'data': [ 'Negozio Bergamo', 'Negozio Milano' ] }";
+            instance = JsonConvert.DeserializeObject<ListRevenueCentersResponse>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ListRevenueCentersResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ListRevenueCentersResponse
-            //Assert.IsType<ListRevenueCentersResponse>(instance);
+            Assert.IsType<ListRevenueCentersResponse>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<List<string>>(instance.Data);
         }
 
     }

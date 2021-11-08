@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class CashbookEntryDataTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for CashbookEntryData
-        //private CashbookEntryData instance;
+        private CashbookEntryData instance;
 
         public CashbookEntryDataTests()
         {
-            // TODO uncomment below to create an instance of CashbookEntryData
-            //instance = new CashbookEntryData();
+            var body = "{ 'id': 12345, 'date': '2021-08-24', 'description': 'Fattura n. 201/2021', 'entity_name': 'Rossi S.r.l.', 'kind': 'issued_document', 'type': 'in', 'document': { 'id': 12345, 'type': 'issued_document', 'path': '/doc1.pdf' } }";
+            instance = JsonConvert.DeserializeObject<CashbookEntryData>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CashbookEntryDataInstanceTest()
         {
-            // TODO uncomment below to test "IsType" CashbookEntryData
-            //Assert.IsType<CashbookEntryData>(instance);
+            Assert.IsType<CashbookEntryData>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IdTest()
         {
-            // TODO unit test for the property 'Id'
+            Assert.IsType<string>(instance.Id);
         }
         /// <summary>
         /// Test the property 'Date'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DateTest()
         {
-            // TODO unit test for the property 'Date'
+            Assert.IsType<DateTimeOffset>(instance.Date);
         }
         /// <summary>
         /// Test the property 'Description'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DescriptionTest()
         {
-            // TODO unit test for the property 'Description'
+            Assert.IsType<string>(instance.Description);
         }
         /// <summary>
         /// Test the property 'Kind'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void KindTest()
         {
-            // TODO unit test for the property 'Kind'
+            Assert.IsType<CashbookEntryData.KindEnum>(instance.Kind);
         }
         /// <summary>
         /// Test the property 'Type'
@@ -95,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TypeTest()
         {
-            // TODO unit test for the property 'Type'
+            Assert.IsType<CashbookEntryData.TypeEnum>(instance.Type);
         }
         /// <summary>
         /// Test the property 'EntityName'
@@ -103,7 +101,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EntityNameTest()
         {
-            // TODO unit test for the property 'EntityName'
+            Assert.IsType<string>(instance.EntityName);
         }
         /// <summary>
         /// Test the property 'Document'
@@ -111,7 +109,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DocumentTest()
         {
-            // TODO unit test for the property 'Document'
+            Assert.IsType<CashbookEntryDataDocument>(instance.Document);
         }
 
     }

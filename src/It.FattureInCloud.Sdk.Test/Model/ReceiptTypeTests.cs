@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ReceiptTypeTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ReceiptType
-        //private ReceiptType instance;
+        private Receipt instance;
 
         public ReceiptTypeTests()
         {
-            // TODO uncomment below to create an instance of ReceiptType
-            //instance = new ReceiptType();
+            var body = "{'type':'sales_receipt'}";
+            instance = JsonConvert.DeserializeObject<Receipt>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ReceiptTypeInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ReceiptType
-            //Assert.IsType<ReceiptType>(instance);
+            Assert.IsType<ReceiptType>(instance.Type);
         }
 
 

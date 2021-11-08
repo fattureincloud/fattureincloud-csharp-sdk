@@ -16,11 +16,12 @@ using System.Linq;
 using System.Reflection;
 using RestSharp;
 using Xunit;
-
+using Moq;
 using It.FattureInCloud.Sdk.Client;
 using It.FattureInCloud.Sdk.Api;
-// uncomment below to import models
-//using It.FattureInCloud.Sdk.Model;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using It.FattureInCloud.Sdk.Model;
 
 namespace It.FattureInCloud.Sdk.Test.Api
 {
@@ -33,11 +34,44 @@ namespace It.FattureInCloud.Sdk.Test.Api
     /// </remarks>
     public class TaxesApiTests : IDisposable
     {
-        private TaxesApi instance;
+        Mock<ITaxesApi> instance = new Mock<ITaxesApi>();
+        string createF24ResponseBody;
+        string getF24ResponseBody;
+        string listF24ResponseBody;
+        string modifyF24ResponseBody;
+        string uploadF24AttachmentResponseBody;
 
         public TaxesApiTests()
         {
-            instance = new TaxesApi();
+            createF24ResponseBody = "{ 'data': { 'status': 'paid', 'due_date': '2021-12-31', 'payment_account': { 'id': 111, 'iban': null, 'sia': null, 'virtual': false }, 'amount': 840.36, 'attachment_token': 'b19c01da9b1688fb73d0d9e8ad', 'description': 'PAGAMENTO IVA 2021' }}";
+            var createF24Response = JsonConvert.DeserializeObject<CreateF24Response>(createF24ResponseBody);
+            instance
+                .Setup(p => p.CreateF24(Moq.It.IsAny<int>(), Moq.It.IsAny<CreateF24Request>()))
+                .Returns(createF24Response);
+
+            getF24ResponseBody = "{ 'data': { 'status': 'paid', 'due_date': '2021-12-31', 'payment_account': { 'id': 111, 'iban': null, 'sia': null, 'virtual': false }, 'amount': 840.36, 'attachment_token': 'b19c01da9b1688fb73d0d9e8ad', 'description': 'PAGAMENTO IVA 2021' }}";
+            var getF24Response = JsonConvert.DeserializeObject<GetF24Response>(getF24ResponseBody);
+            instance
+                .Setup(p => p.GetF24(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
+                .Returns(getF24Response);
+
+            listF24ResponseBody = "{ 'current_page': 1, 'first_page_url': 'page=1', 'from': 1, 'last_page': 1, 'last_page_url': 'page=1', 'next_page_url': null, 'path': 'taxes', 'per_page': 50, 'prev_page_url': null, 'to': 2, 'total': 2, 'data': [ { 'status': 'paid', 'id': 12345, 'due_date': '2021-12-31', 'payment_account': { 'id': 111, 'name': 'Indesa - carta conto', 'iban': null, 'sia': null, 'virtual': false }, 'amount': 840.36, 'attachment_token': null, 'description': 'PAGAMENTO IVA 2021' }, { 'status': 'paid', 'id': 12346, 'due_date': '2020-12-31', 'payment_account': { 'id': 111, 'name': 'Indesa - carta conto', 'iban': null, 'sia': null, 'virtual': false }, 'amount': 810.62, 'attachment_token': null, 'description': 'PAGAMENTO IVA 2020' } ], 'aggregated_data': { 'amount': '6438.96' }}";
+            var listF24sResponse = JsonConvert.DeserializeObject<ListF24Response>(listF24ResponseBody);
+            instance
+                .Setup(p => p.ListF24(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<int>(), Moq.It.IsAny<int>()))
+                .Returns(listF24sResponse);
+
+            modifyF24ResponseBody = "{ 'data': { 'status': 'paid', 'due_date': '2021-12-31', 'payment_account': { 'id': 111, 'iban': null, 'sia': null, 'virtual': false }, 'amount': 840.36, 'attachment_token': 'b19c01da9b1688fb73d0d9e8ad', 'description': 'PAGAMENTO IVA 2021' }}";
+            var modifyF24Response = JsonConvert.DeserializeObject<ModifyF24Response>(modifyF24ResponseBody);
+            instance
+                .Setup(p => p.ModifyF24(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifyF24Request>()))
+                .Returns(modifyF24Response);
+
+            uploadF24AttachmentResponseBody = "{'data':{'attachment_token':'YmMyNWYxYzIwMTU3N2Y4ZGE3ZjZiMzg5OWY0ODNkZDQveXl5LmRvYw'}}";
+            var uploadF24AttachmentResponse = JsonConvert.DeserializeObject<UploadF24AttachmentResponse>(uploadF24AttachmentResponseBody);
+            instance
+                .Setup(p => p.UploadF24Attachment(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<Stream>()))
+                .Returns(uploadF24AttachmentResponse);
         }
 
         public void Dispose()
@@ -51,8 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void InstanceTest()
         {
-            // TODO uncomment below to test 'IsType' TaxesApi
-            //Assert.IsType<TaxesApi>(instance);
+            Assert.IsType<Mock<ITaxesApi>>(instance);
         }
 
         /// <summary>
@@ -61,11 +94,13 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void CreateF24Test()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //CreateF24Request createF24Request = null;
-            //var response = instance.CreateF24(companyId, createF24Request);
-            //Assert.IsType<CreateF24Response>(response);
+            int companyId = 2;
+            CreateF24Request createF24Request = new CreateF24Request();
+
+            var response = instance.Object.CreateF24(companyId, createF24Request);
+            JObject obj = JObject.Parse(createF24ResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -74,10 +109,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void DeleteF24Test()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int documentId = null;
-            //instance.DeleteF24(companyId, documentId);
+            Assert.True(true);
         }
 
         /// <summary>
@@ -86,10 +118,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void DeleteF24AttachmentTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int documentId = null;
-            //instance.DeleteF24Attachment(companyId, documentId);
+            Assert.True(true);
         }
 
         /// <summary>
@@ -98,13 +127,15 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void GetF24Test()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int documentId = null;
-            //string fields = null;
-            //string fieldset = null;
-            //var response = instance.GetF24(companyId, documentId, fields, fieldset);
-            //Assert.IsType<GetF24Response>(response);
+            int companyId = 2;
+            int documentId = 12345;
+            string fields = "";
+            string fieldset = "";
+
+            var response = instance.Object.GetF24(companyId, documentId, fields, fieldset);
+            JObject obj = JObject.Parse(getF24ResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -113,15 +144,17 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void ListF24Test()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //string fields = null;
-            //string fieldset = null;
-            //string sort = null;
-            //int? page = null;
-            //int? perPage = null;
-            //var response = instance.ListF24(companyId, fields, fieldset, sort, page, perPage);
-            //Assert.IsType<ListF24Response>(response);
+            int companyId = 2;
+            string fields = "";
+            string fieldset = "";
+            string sort = "";
+            int? page = 20;
+            int? perPage = 5;
+
+            var response = instance.Object.ListF24(companyId, fields, fieldset, sort, page, perPage);
+            JObject obj = JObject.Parse(listF24ResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -130,12 +163,14 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void ModifyF24Test()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //int documentId = null;
-            //ModifyF24Request modifyF24Request = null;
-            //var response = instance.ModifyF24(companyId, documentId, modifyF24Request);
-            //Assert.IsType<ModifyF24Response>(response);
+            int companyId = 2;
+            int documentId = 12345;
+            ModifyF24Request modifyF24Request = new ModifyF24Request();
+
+            var response = instance.Object.ModifyF24(companyId, documentId, modifyF24Request);
+            JObject obj = JObject.Parse(modifyF24ResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -144,12 +179,14 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void UploadF24AttachmentTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //string filename = null;
-            //System.IO.Stream attachment = null;
-            //var response = instance.UploadF24Attachment(companyId, filename, attachment);
-            //Assert.IsType<UploadF24AttachmentResponse>(response);
+            int companyId = 2;
+            string filename = "";
+            Stream attachment = new MemoryStream();
+
+            var response = instance.Object.UploadF24Attachment(companyId, filename, attachment);
+            JObject obj = JObject.Parse(uploadF24AttachmentResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
     }
 }

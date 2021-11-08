@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class CompanyInfoPlanInfoFunctionsStatusTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for CompanyInfoPlanInfoFunctionsStatus
-        //private CompanyInfoPlanInfoFunctionsStatus instance;
+        private CompanyInfoPlanInfoFunctionsStatus instance;
 
         public CompanyInfoPlanInfoFunctionsStatusTests()
         {
-            // TODO uncomment below to create an instance of CompanyInfoPlanInfoFunctionsStatus
-            //instance = new CompanyInfoPlanInfoFunctionsStatus();
+            var body = "{ 'ts_digital': { 'active': true }, 'ts_pay': { 'active': true } }";
+            instance = JsonConvert.DeserializeObject<CompanyInfoPlanInfoFunctionsStatus>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CompanyInfoPlanInfoFunctionsStatusInstanceTest()
         {
-            // TODO uncomment below to test "IsType" CompanyInfoPlanInfoFunctionsStatus
-            //Assert.IsType<CompanyInfoPlanInfoFunctionsStatus>(instance);
+            Assert.IsType<CompanyInfoPlanInfoFunctionsStatus>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TsDigitalTest()
         {
-            // TODO unit test for the property 'TsDigital'
+            Assert.IsType<FunctionStatus>(instance.TsDigital);
         }
         /// <summary>
         /// Test the property 'TsPay'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TsPayTest()
         {
-            // TODO unit test for the property 'TsPay'
+            Assert.IsType<FunctionStatus>(instance.TsPay);
         }
 
     }

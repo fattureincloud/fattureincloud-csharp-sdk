@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class IssuedDocumentPreCreateInfoItemsDefaultValuesTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for IssuedDocumentPreCreateInfoItemsDefaultValues
-        //private IssuedDocumentPreCreateInfoItemsDefaultValues instance;
+        private IssuedDocumentPreCreateInfoItemsDefaultValues instance;
 
         public IssuedDocumentPreCreateInfoItemsDefaultValuesTests()
         {
-            // TODO uncomment below to create an instance of IssuedDocumentPreCreateInfoItemsDefaultValues
-            //instance = new IssuedDocumentPreCreateInfoItemsDefaultValues();
+            var body = "{'vat':{'id':0,'value':22,'description':'iva','notes':'','e_invoice':true,'ei_type':'0','ei_description':'','is_disabled':false,'editable':false}}";
+            instance = JsonConvert.DeserializeObject<IssuedDocumentPreCreateInfoItemsDefaultValues>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IssuedDocumentPreCreateInfoItemsDefaultValuesInstanceTest()
         {
-            // TODO uncomment below to test "IsType" IssuedDocumentPreCreateInfoItemsDefaultValues
-            //Assert.IsType<IssuedDocumentPreCreateInfoItemsDefaultValues>(instance);
+            Assert.IsType<IssuedDocumentPreCreateInfoItemsDefaultValues>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VatTest()
         {
-            // TODO unit test for the property 'Vat'
+            Assert.IsType<VatType>(instance.Vat);
         }
 
     }

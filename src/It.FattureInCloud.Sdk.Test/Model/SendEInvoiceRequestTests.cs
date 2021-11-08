@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class SendEInvoiceRequestTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for SendEInvoiceRequest
-        //private SendEInvoiceRequest instance;
+        private SendEInvoiceRequest instance;
 
         public SendEInvoiceRequestTests()
         {
-            // TODO uncomment below to create an instance of SendEInvoiceRequest
-            //instance = new SendEInvoiceRequest();
+            var body = "{ 'data': { 'withholding_tax_causal': 'causale' } }";
+            instance = JsonConvert.DeserializeObject<SendEInvoiceRequest>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SendEInvoiceRequestInstanceTest()
         {
-            // TODO uncomment below to test "IsType" SendEInvoiceRequest
-            //Assert.IsType<SendEInvoiceRequest>(instance);
+            Assert.IsType<SendEInvoiceRequest>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<SendEInvoiceRequestData>(instance.Data);
         }
 
     }

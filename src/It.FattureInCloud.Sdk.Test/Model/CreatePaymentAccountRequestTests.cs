@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class CreatePaymentAccountRequestTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for CreatePaymentAccountRequest
-        //private CreatePaymentAccountRequest instance;
+        private CreatePaymentAccountRequest instance;
 
         public CreatePaymentAccountRequestTests()
         {
-            // TODO uncomment below to create an instance of CreatePaymentAccountRequest
-            //instance = new CreatePaymentAccountRequest();
+            var body = "{ 'data': { 'id': 12345, 'name': 'Tavolo di marmo', 'code': 'TAVOLO003', 'net_price': 240, 'gross_price': 280, 'use_gross_price': false, 'net_cost': 0, 'measure': '', 'description': 'Tavolo in marmo pregiato', 'category': 'arredamento', 'in_stock': true, 'default_vat': { 'id': 3, 'value': 22, 'description': 'Non imponibile art. 123', 'notes': 'IVA non imponibile ai sensi dell articolo 123, comma 2', 'is_disabled': false } } }";
+            instance = JsonConvert.DeserializeObject<CreatePaymentAccountRequest>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CreatePaymentAccountRequestInstanceTest()
         {
-            // TODO uncomment below to test "IsType" CreatePaymentAccountRequest
-            //Assert.IsType<CreatePaymentAccountRequest>(instance);
+            Assert.IsType<CreatePaymentAccountRequest>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<PaymentAccount>(instance.Data);
         }
 
     }

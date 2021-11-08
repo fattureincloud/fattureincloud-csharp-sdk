@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class GetUserInfoResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for GetUserInfoResponse
-        //private GetUserInfoResponse instance;
+        private GetUserInfoResponse instance;
 
         public GetUserInfoResponseTests()
         {
-            // TODO uncomment below to create an instance of GetUserInfoResponse
-            //instance = new GetUserInfoResponse();
+            var body = "{'data':{'id':12345,'name':'Mario Rossi','first_name':'Mario','last_name':'Rossi','email':'mario.rossi@example.com','hash':'5add29e1234532a1bf2ed7b612043029','picture':'picture.jpg'},'info':{'need_marketing_consents_confirmation':false,'need_password_change':false,'need_terms_of_service_confirmation':false},'email_confirmation_state':{'need_confirmation':false}}";
+            instance = JsonConvert.DeserializeObject<GetUserInfoResponse>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void GetUserInfoResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" GetUserInfoResponse
-            //Assert.IsType<GetUserInfoResponse>(instance);
+            Assert.IsType<GetUserInfoResponse>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<User>(instance.Data);
         }
         /// <summary>
         /// Test the property 'Info'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void InfoTest()
         {
-            // TODO unit test for the property 'Info'
+            Assert.IsType<GetUserInfoResponseInfo>(instance.Info);
         }
         /// <summary>
         /// Test the property 'EmailConfirmationState'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EmailConfirmationStateTest()
         {
-            // TODO unit test for the property 'EmailConfirmationState'
+            Assert.IsType<GetUserInfoResponseEmailConfirmationState>(instance.EmailConfirmationState);
         }
 
     }

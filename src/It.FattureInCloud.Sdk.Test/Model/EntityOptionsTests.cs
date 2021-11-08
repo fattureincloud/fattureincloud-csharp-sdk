@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class EntityOptionsTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for EntityOptions
-        //private EntityOptions instance;
+        private EntityOptions instance;
 
         public EntityOptionsTests()
         {
-            // TODO uncomment below to create an instance of EntityOptions
-            //instance = new EntityOptions();
+            var body = "{ 'entity_search_fields': 'id', 'entity_autocomplete': true, 'entity_create': false, 'entity_update': '' }";
+            instance = JsonConvert.DeserializeObject<EntityOptions>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EntityOptionsInstanceTest()
         {
-            // TODO uncomment below to test "IsType" EntityOptions
-            //Assert.IsType<EntityOptions>(instance);
+            Assert.IsType<EntityOptions>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EntitySearchFieldsTest()
         {
-            // TODO unit test for the property 'EntitySearchFields'
+            Assert.IsType<string>(instance.EntitySearchFields);
         }
         /// <summary>
         /// Test the property 'EntityAutocomplete'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EntityAutocompleteTest()
         {
-            // TODO unit test for the property 'EntityAutocomplete'
+            Assert.IsType<bool>(instance.EntityAutocomplete);
         }
         /// <summary>
         /// Test the property 'EntityCreate'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EntityCreateTest()
         {
-            // TODO unit test for the property 'EntityCreate'
+            Assert.IsType<bool>(instance.EntityCreate);
         }
         /// <summary>
         /// Test the property 'EntityUpdate'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EntityUpdateTest()
         {
-            // TODO unit test for the property 'EntityUpdate'
+            Assert.IsType<string>(instance.EntityUpdate);
         }
 
     }

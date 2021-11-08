@@ -32,13 +32,11 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class PermissionLevelTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for PermissionLevel
-        //private PermissionLevel instance;
+        private PermissionLevel instance;
 
         public PermissionLevelTests()
         {
-            // TODO uncomment below to create an instance of PermissionLevel
-            //instance = new PermissionLevel();
+            instance = new PermissionLevel();
         }
 
         public void Dispose()
@@ -52,8 +50,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PermissionLevelInstanceTest()
         {
-            // TODO uncomment below to test "IsType" PermissionLevel
-            //Assert.IsType<PermissionLevel>(instance);
+            Assert.IsType<PermissionLevel>(instance);
         }
 
 

@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ReceivedDocumentTypeTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ReceivedDocumentType
-        //private ReceivedDocumentType instance;
+        private ReceivedDocument instance;
 
         public ReceivedDocumentTypeTests()
         {
-            // TODO uncomment below to create an instance of ReceivedDocumentType
-            //instance = new ReceivedDocumentType();
+            var body = "{ 'type': 'expense'}";
+            instance = JsonConvert.DeserializeObject<ReceivedDocument>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ReceivedDocumentTypeInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ReceivedDocumentType
-            //Assert.IsType<ReceivedDocumentType>(instance);
+           Assert.IsType<ReceivedDocumentType>(instance.Type);
         }
 
 

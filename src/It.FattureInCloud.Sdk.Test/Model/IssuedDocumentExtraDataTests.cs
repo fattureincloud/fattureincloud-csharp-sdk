@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class IssuedDocumentExtraDataTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for IssuedDocumentExtraData
-        //private IssuedDocumentExtraData instance;
+        private IssuedDocumentExtraData instance;
 
         public IssuedDocumentExtraDataTests()
         {
-            // TODO uncomment below to create an instance of IssuedDocumentExtraData
-            //instance = new IssuedDocumentExtraData();
+            var body = "{'show_sofort_button':true,'multifatture_sent':3,'ts_communication':true,'ts_flag_tipo_spesa':1,'ts_pagamento_tracciato':true,'ts_tipo_spesa':'TK','ts_opposizione':true,'ts_status':1,'ts_file_id':'file.png','ts_sent_date':'2020-10-10','ts_full_amount':true,'imported_by':'jss','ts_single_sending':false}";
+            instance = JsonConvert.DeserializeObject<IssuedDocumentExtraData>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IssuedDocumentExtraDataInstanceTest()
         {
-            // TODO uncomment below to test "IsType" IssuedDocumentExtraData
-            //Assert.IsType<IssuedDocumentExtraData>(instance);
+            Assert.IsType<IssuedDocumentExtraData>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ShowSofortButtonTest()
         {
-            // TODO unit test for the property 'ShowSofortButton'
+            Assert.IsType<bool>(instance.ShowSofortButton);
         }
         /// <summary>
         /// Test the property 'MultifattureSent'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void MultifattureSentTest()
         {
-            // TODO unit test for the property 'MultifattureSent'
+            Assert.IsType<int>(instance.MultifattureSent);
         }
         /// <summary>
         /// Test the property 'TsCommunication'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TsCommunicationTest()
         {
-            // TODO unit test for the property 'TsCommunication'
+            Assert.IsType<bool>(instance.TsCommunication);
         }
         /// <summary>
         /// Test the property 'TsFlagTipoSpesa'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TsFlagTipoSpesaTest()
         {
-            // TODO unit test for the property 'TsFlagTipoSpesa'
+            Assert.IsType<decimal>(instance.TsFlagTipoSpesa);
         }
         /// <summary>
         /// Test the property 'TsPagamentoTracciato'
@@ -95,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TsPagamentoTracciatoTest()
         {
-            // TODO unit test for the property 'TsPagamentoTracciato'
+            Assert.IsType<bool>(instance.TsPagamentoTracciato);
         }
         /// <summary>
         /// Test the property 'TsTipoSpesa'
@@ -103,7 +101,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TsTipoSpesaTest()
         {
-            // TODO unit test for the property 'TsTipoSpesa'
+            Assert.IsType<string>(instance.TsTipoSpesa);
         }
         /// <summary>
         /// Test the property 'TsOpposizione'
@@ -111,7 +109,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TsOpposizioneTest()
         {
-            // TODO unit test for the property 'TsOpposizione'
+            Assert.IsType<bool>(instance.TsOpposizione);
         }
         /// <summary>
         /// Test the property 'TsStatus'
@@ -119,7 +117,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TsStatusTest()
         {
-            // TODO unit test for the property 'TsStatus'
+            Assert.IsType<int>(instance.TsStatus);
         }
         /// <summary>
         /// Test the property 'TsFileId'
@@ -127,7 +125,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TsFileIdTest()
         {
-            // TODO unit test for the property 'TsFileId'
+            Assert.IsType<string>(instance.TsFileId);
         }
         /// <summary>
         /// Test the property 'TsSentDate'
@@ -135,7 +133,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TsSentDateTest()
         {
-            // TODO unit test for the property 'TsSentDate'
+            Assert.IsType<string>(instance.TsSentDate);
         }
         /// <summary>
         /// Test the property 'TsFullAmount'
@@ -143,7 +141,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TsFullAmountTest()
         {
-            // TODO unit test for the property 'TsFullAmount'
+            Assert.IsType<bool>(instance.TsFullAmount);
         }
         /// <summary>
         /// Test the property 'ImportedBy'
@@ -151,7 +149,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ImportedByTest()
         {
-            // TODO unit test for the property 'ImportedBy'
+            Assert.IsType<string>(instance.ImportedBy);
         }
         /// <summary>
         /// Test the property 'TsSingleSending'
@@ -159,7 +157,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TsSingleSendingTest()
         {
-            // TODO unit test for the property 'TsSingleSending'
+            Assert.IsType<bool>(instance.TsSingleSending);
         }
 
     }

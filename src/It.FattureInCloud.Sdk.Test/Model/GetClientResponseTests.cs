@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class GetClientResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for GetClientResponse
-        //private GetClientResponse instance;
+        private GetClientResponse instance;
 
         public GetClientResponseTests()
         {
-            // TODO uncomment below to create an instance of GetClientResponse
-            //instance = new GetClientResponse();
+            var body = "{ 'data': { 'id': 16451, 'code': 'AE86', 'name': 'Avv. Maria Rossi', 'type': 'person', 'first_name': 'Maria', 'last_name': 'Rossi', 'contact_person': '', 'vat_number': 'IT12345640962', 'tax_code': 'BLTGNI5ABCDA794E', 'address_street': 'Via Roma, 1', 'address_postal_code': '20900', 'address_city': 'Milano', 'address_province': 'MI', 'address_extra': '', 'country': 'Italia', 'email': 'maria.rossi@example.com', 'certified_email': 'maria.rossi@pec.example.com', 'phone': '1234567890', 'fax': '', 'notes': '', 'created_at': '2021-04-29 08:53:07', 'updated_at': '2021-04-29 08:53:07', 'default_payment_terms': 1, 'default_payment_terms_type': 'standard', 'bank_name': 'Indesa', 'bank_iban': 'IT40P123456781000000123456', 'bank_swift_code': 'AK86PCT', 'shipping_address': 'Corso Magellano 4', 'e_invoice': true, 'ei_code': '111111', 'default_vat': { 'id': 54321, 'value': 45, 'description': '', 'is_disabled': false }, 'default_payment_method': { 'id': 386092, 'name': 'Credit card' } } }";
+            instance = JsonConvert.DeserializeObject<GetClientResponse>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void GetClientResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" GetClientResponse
-            //Assert.IsType<GetClientResponse>(instance);
+            Assert.IsType<GetClientResponse>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<ModelClient>(instance.Data);
         }
 
     }

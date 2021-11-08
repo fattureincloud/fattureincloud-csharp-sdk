@@ -32,13 +32,13 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ModifyCashbookEntryRequestTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ModifyCashbookEntryRequest
-        //private ModifyCashbookEntryRequest instance;
+        private ModifyCashbookEntryRequest instance;
 
         public ModifyCashbookEntryRequestTests()
         {
-            // TODO uncomment below to create an instance of ModifyCashbookEntryRequest
-            //instance = new ModifyCashbookEntryRequest();
+            var body = "{ 'data': { 'date': '2021-08-24', 'amount_in': 122, 'payment_account_in': { 'id': 333 }, 'description': 'Fattura n. 201/2021', 'entity_name': 'Rossi S.r.l.' } }";
+            instance = JsonConvert.DeserializeObject<ModifyCashbookEntryRequest>(body);
+
         }
 
         public void Dispose()
@@ -52,8 +52,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ModifyCashbookEntryRequestInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ModifyCashbookEntryRequest
-            //Assert.IsType<ModifyCashbookEntryRequest>(instance);
+            Assert.IsType<ModifyCashbookEntryRequest>(instance);
         }
 
 
@@ -63,7 +62,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<CashbookEntry>(instance.Data);
         }
 
     }

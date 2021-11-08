@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class GetUserInfoResponseInfoTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for GetUserInfoResponseInfo
-        //private GetUserInfoResponseInfo instance;
+        private GetUserInfoResponseInfo instance;
 
         public GetUserInfoResponseInfoTests()
         {
-            // TODO uncomment below to create an instance of GetUserInfoResponseInfo
-            //instance = new GetUserInfoResponseInfo();
+            var body = "{ 'need_marketing_consents_confirmation': false, 'need_password_change': false, 'need_terms_of_service_confirmation': false }";
+            instance = JsonConvert.DeserializeObject<GetUserInfoResponseInfo>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void GetUserInfoResponseInfoInstanceTest()
         {
-            // TODO uncomment below to test "IsType" GetUserInfoResponseInfo
-            //Assert.IsType<GetUserInfoResponseInfo>(instance);
+            Assert.IsType<GetUserInfoResponseInfo>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NeedMarketingConsentsConfirmationTest()
         {
-            // TODO unit test for the property 'NeedMarketingConsentsConfirmation'
+            Assert.IsType<bool>(instance.NeedMarketingConsentsConfirmation);
         }
         /// <summary>
         /// Test the property 'NeedPasswordChange'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NeedPasswordChangeTest()
         {
-            // TODO unit test for the property 'NeedPasswordChange'
+            Assert.IsType<bool>(instance.NeedPasswordChange);
         }
         /// <summary>
         /// Test the property 'NeedTermsOfServiceConfirmation'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NeedTermsOfServiceConfirmationTest()
         {
-            // TODO unit test for the property 'NeedTermsOfServiceConfirmation'
+            Assert.IsType<bool>(instance.NeedTermsOfServiceConfirmation);
         }
 
     }

@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class CreateReceiptRequestTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for CreateReceiptRequest
-        //private CreateReceiptRequest instance;
+        private CreateReceiptRequest instance;
 
         public CreateReceiptRequestTests()
         {
-            // TODO uncomment below to create an instance of CreateReceiptRequest
-            //instance = new CreateReceiptRequest();
+            var body = "{ 'data': { 'date': '2021-08-19', 'number': 6, 'numeration': 'REC006', 'amount_net': 8.2, 'amount_vat': 1.8, 'amount_gross': 10, 'use_gross_prices': true, 'type': 'sales_receipt', 'description': 'cassa 1', 'rc_center': '', 'payment_account': { 'id': 555, 'name': 'contanti' }, 'items_list': [ { 'id': 888, 'amount_net': 8.2, 'amount_vat': 1.8, 'amount_gross': 10, 'category': 'altro', 'vat': { 'id': 0, 'value': 22, 'description': 'iva' } } ] }, 'autocomplete_number': true }";
+            instance = JsonConvert.DeserializeObject<CreateReceiptRequest>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CreateReceiptRequestInstanceTest()
         {
-            // TODO uncomment below to test "IsType" CreateReceiptRequest
-            //Assert.IsType<CreateReceiptRequest>(instance);
+            Assert.IsType<CreateReceiptRequest>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<Receipt>(instance.Data);
         }
         /// <summary>
         /// Test the property 'AutocompleteNumber'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AutocompleteNumberTest()
         {
-            // TODO unit test for the property 'AutocompleteNumber'
+            Assert.IsType<bool>(instance.AutocompleteNumber);
         }
 
     }

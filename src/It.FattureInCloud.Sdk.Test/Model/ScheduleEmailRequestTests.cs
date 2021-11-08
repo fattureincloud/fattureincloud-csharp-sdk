@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ScheduleEmailRequestTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ScheduleEmailRequest
-        //private ScheduleEmailRequest instance;
+        private ScheduleEmailRequest instance;
 
         public ScheduleEmailRequestTests()
         {
-            // TODO uncomment below to create an instance of ScheduleEmailRequest
-            //instance = new ScheduleEmailRequest();
+            var body = "{ 'data': { 'sender_email': 'mariorossi@fattureincloud.it', 'recipient_email': 'mary.red@example.com', 'subject': 'Nostra pro forma nr. 1', 'body': 'Gentile Mario Rossi,<br>per vedere la nostra pro forma di o per scaricarne una copia in versione PDF prema sul bottone sottostante.<br><br>{{allegati}}<br><br>Cordiali saluti,<br><b>Mario Rossi</b>', 'include': { 'document': false, 'delivery_note': false, 'attachment': false, 'accompanying_invoice': false }, 'attach_pdf': true, 'send_copy': false } }";
+            instance = JsonConvert.DeserializeObject<ScheduleEmailRequest>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ScheduleEmailRequestInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ScheduleEmailRequest
-            //Assert.IsType<ScheduleEmailRequest>(instance);
+            Assert.IsType<ScheduleEmailRequest>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<EmailSchedule>(instance.Data);
         }
 
     }

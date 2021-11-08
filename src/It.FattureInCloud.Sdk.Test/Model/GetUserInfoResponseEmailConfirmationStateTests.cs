@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class GetUserInfoResponseEmailConfirmationStateTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for GetUserInfoResponseEmailConfirmationState
-        //private GetUserInfoResponseEmailConfirmationState instance;
+        private GetUserInfoResponseEmailConfirmationState instance;
 
         public GetUserInfoResponseEmailConfirmationStateTests()
         {
-            // TODO uncomment below to create an instance of GetUserInfoResponseEmailConfirmationState
-            //instance = new GetUserInfoResponseEmailConfirmationState();
+            var body = "{'need_confirmation':true}";
+            instance = JsonConvert.DeserializeObject<GetUserInfoResponseEmailConfirmationState>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void GetUserInfoResponseEmailConfirmationStateInstanceTest()
         {
-            // TODO uncomment below to test "IsType" GetUserInfoResponseEmailConfirmationState
-            //Assert.IsType<GetUserInfoResponseEmailConfirmationState>(instance);
+            Assert.IsType<GetUserInfoResponseEmailConfirmationState>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NeedConfirmationTest()
         {
-            // TODO unit test for the property 'NeedConfirmation'
+            Assert.IsType<bool>(instance.NeedConfirmation);
         }
 
     }

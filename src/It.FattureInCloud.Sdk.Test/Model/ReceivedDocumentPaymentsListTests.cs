@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ReceivedDocumentPaymentsListTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ReceivedDocumentPaymentsList
-        //private ReceivedDocumentPaymentsList instance;
+        private ReceivedDocumentPaymentsList instance;
 
         public ReceivedDocumentPaymentsListTests()
         {
-            // TODO uncomment below to create an instance of ReceivedDocumentPaymentsList
-            //instance = new ReceivedDocumentPaymentsList();
+            var body = "{'amount':592,'due_date':'2021-08-15','paid_date':'2021-08-15','id':777,'payment_terms':{'days':0,'type':'standard'},'status':'paid','payment_account':{'id':222,'name':'Contanti','virtual':false}}";
+            instance = JsonConvert.DeserializeObject<ReceivedDocumentPaymentsList>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ReceivedDocumentPaymentsListInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ReceivedDocumentPaymentsList
-            //Assert.IsType<ReceivedDocumentPaymentsList>(instance);
+            Assert.IsType<ReceivedDocumentPaymentsList>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IdTest()
         {
-            // TODO unit test for the property 'Id'
+            Assert.IsType<int>(instance.Id);
         }
         /// <summary>
         /// Test the property 'Amount'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AmountTest()
         {
-            // TODO unit test for the property 'Amount'
+            Assert.IsType<decimal>(instance.Amount);
         }
         /// <summary>
         /// Test the property 'DueDate'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DueDateTest()
         {
-            // TODO unit test for the property 'DueDate'
+            Assert.IsType<string>(instance.DueDate);
         }
         /// <summary>
         /// Test the property 'PaidDate'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PaidDateTest()
         {
-            // TODO unit test for the property 'PaidDate'
+            Assert.IsType<string>(instance.PaidDate);
         }
         /// <summary>
         /// Test the property 'PaymentTerms'
@@ -95,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PaymentTermsTest()
         {
-            // TODO unit test for the property 'PaymentTerms'
+            Assert.IsType<ReceivedDocumentPaymentTerms>(instance.PaymentTerms);
         }
         /// <summary>
         /// Test the property 'Status'
@@ -103,7 +101,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void StatusTest()
         {
-            // TODO unit test for the property 'Status'
+            Assert.IsType<string>(instance.Status);
         }
         /// <summary>
         /// Test the property 'PaymentAccount'
@@ -111,7 +109,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PaymentAccountTest()
         {
-            // TODO unit test for the property 'PaymentAccount'
+            Assert.IsType<PaymentAccount>(instance.PaymentAccount);
         }
 
     }

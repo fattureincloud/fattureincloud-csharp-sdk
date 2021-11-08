@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class MonthlyTotalTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for MonthlyTotal
-        //private MonthlyTotal instance;
+        private MonthlyTotal instance;
 
         public MonthlyTotalTests()
         {
-            // TODO uncomment below to create an instance of MonthlyTotal
-            //instance = new MonthlyTotal();
+            var body = "{ 'net': 15000, 'gross': 18000, 'count': 10 }";
+            instance = JsonConvert.DeserializeObject<MonthlyTotal>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void MonthlyTotalInstanceTest()
         {
-            // TODO uncomment below to test "IsType" MonthlyTotal
-            //Assert.IsType<MonthlyTotal>(instance);
+            Assert.IsType<MonthlyTotal>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NetTest()
         {
-            // TODO unit test for the property 'Net'
+            Assert.IsType<decimal>(instance.Net);
         }
         /// <summary>
         /// Test the property 'Gross'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void GrossTest()
         {
-            // TODO unit test for the property 'Gross'
+            Assert.IsType<decimal>(instance.Gross);
         }
         /// <summary>
         /// Test the property 'Count'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CountTest()
         {
-            // TODO unit test for the property 'Count'
+            Assert.IsType<decimal>(instance.Count);
         }
 
     }

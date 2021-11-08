@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class IssuedDocumentTotalsTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for IssuedDocumentTotals
-        //private IssuedDocumentTotals instance;
+        private IssuedDocumentTotals instance;
 
         public IssuedDocumentTotalsTests()
         {
-            // TODO uncomment below to create an instance of IssuedDocumentTotals
-            //instance = new IssuedDocumentTotals();
+            var body = "{ 'amount_net': 68.18, 'taxable_amount': 68.18, 'amount_vat': 6.82, 'amount_gross': 75, 'amount_due': 75, 'payments_sum': 75, 'amount_rivalsa': 10, 'amount_net_with_rivalsa': 10, 'amount_cassa': 10, 'not_taxable_amount': 10, 'taxable_amount_withholding_tax': 10, 'amount_withholding_tax': 10, 'taxable_amount_other_withholding_tax': 10, 'amount_other_withholding_tax': 10, 'stamp_duty': 10, 'is_enasarco_maximal_exceeded': false, 'payments_sum': 2, 'vat_list': { 'vat_item': { 'amount_net': 68.18, 'amount_vat': 6.82 } } }";
+            instance = JsonConvert.DeserializeObject<IssuedDocumentTotals>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IssuedDocumentTotalsInstanceTest()
         {
-            // TODO uncomment below to test "IsType" IssuedDocumentTotals
-            //Assert.IsType<IssuedDocumentTotals>(instance);
+            Assert.IsType<IssuedDocumentTotals>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AmountNetTest()
         {
-            // TODO unit test for the property 'AmountNet'
+            Assert.IsType<decimal>(instance.AmountNet);
         }
         /// <summary>
         /// Test the property 'AmountRivalsa'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AmountRivalsaTest()
         {
-            // TODO unit test for the property 'AmountRivalsa'
+            Assert.IsType<decimal>(instance.AmountRivalsa);
         }
         /// <summary>
         /// Test the property 'AmountNetWithRivalsa'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AmountNetWithRivalsaTest()
         {
-            // TODO unit test for the property 'AmountNetWithRivalsa'
+            Assert.IsType<decimal>(instance.AmountNetWithRivalsa);
         }
         /// <summary>
         /// Test the property 'AmountCassa'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AmountCassaTest()
         {
-            // TODO unit test for the property 'AmountCassa'
+            Assert.IsType<decimal>(instance.AmountCassa);
         }
         /// <summary>
         /// Test the property 'TaxableAmount'
@@ -95,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TaxableAmountTest()
         {
-            // TODO unit test for the property 'TaxableAmount'
+            Assert.IsType<decimal>(instance.TaxableAmount);
         }
         /// <summary>
         /// Test the property 'NotTaxableAmount'
@@ -103,7 +101,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NotTaxableAmountTest()
         {
-            // TODO unit test for the property 'NotTaxableAmount'
+            Assert.IsType<decimal>(instance.NotTaxableAmount);
         }
         /// <summary>
         /// Test the property 'AmountVat'
@@ -111,7 +109,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AmountVatTest()
         {
-            // TODO unit test for the property 'AmountVat'
+            Assert.IsType<decimal>(instance.AmountVat);
         }
         /// <summary>
         /// Test the property 'AmountGross'
@@ -119,7 +117,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AmountGrossTest()
         {
-            // TODO unit test for the property 'AmountGross'
+            Assert.IsType<decimal>(instance.AmountGross);
         }
         /// <summary>
         /// Test the property 'TaxableAmountWithholdingTax'
@@ -127,7 +125,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TaxableAmountWithholdingTaxTest()
         {
-            // TODO unit test for the property 'TaxableAmountWithholdingTax'
+            Assert.IsType<decimal>(instance.TaxableAmountWithholdingTax);
         }
         /// <summary>
         /// Test the property 'AmountWithholdingTax'
@@ -135,7 +133,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AmountWithholdingTaxTest()
         {
-            // TODO unit test for the property 'AmountWithholdingTax'
+            Assert.IsType<decimal>(instance.AmountWithholdingTax);
         }
         /// <summary>
         /// Test the property 'TaxableAmountOtherWithholdingTax'
@@ -143,7 +141,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TaxableAmountOtherWithholdingTaxTest()
         {
-            // TODO unit test for the property 'TaxableAmountOtherWithholdingTax'
+            Assert.IsType<decimal>(instance.TaxableAmountOtherWithholdingTax);
         }
         /// <summary>
         /// Test the property 'AmountOtherWithholdingTax'
@@ -151,7 +149,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AmountOtherWithholdingTaxTest()
         {
-            // TODO unit test for the property 'AmountOtherWithholdingTax'
+            Assert.IsType<decimal>(instance.AmountOtherWithholdingTax);
         }
         /// <summary>
         /// Test the property 'StampDuty'
@@ -159,7 +157,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void StampDutyTest()
         {
-            // TODO unit test for the property 'StampDuty'
+            Assert.IsType<decimal>(instance.StampDuty);
         }
         /// <summary>
         /// Test the property 'AmountDue'
@@ -167,7 +165,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AmountDueTest()
         {
-            // TODO unit test for the property 'AmountDue'
+            Assert.IsType<decimal>(instance.AmountDue);
         }
         /// <summary>
         /// Test the property 'IsEnasarcoMaximalExceeded'
@@ -175,7 +173,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IsEnasarcoMaximalExceededTest()
         {
-            // TODO unit test for the property 'IsEnasarcoMaximalExceeded'
+            Assert.IsType<bool>(instance.IsEnasarcoMaximalExceeded);
         }
         /// <summary>
         /// Test the property 'PaymentsSum'
@@ -183,7 +181,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PaymentsSumTest()
         {
-            // TODO unit test for the property 'PaymentsSum'
+            Assert.IsType<decimal>(instance.PaymentsSum);
         }
         /// <summary>
         /// Test the property 'VatList'
@@ -191,7 +189,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VatListTest()
         {
-            // TODO unit test for the property 'VatList'
+            Assert.IsType<IssuedDocumentTotalsVatList>(instance.VatList);
         }
 
     }

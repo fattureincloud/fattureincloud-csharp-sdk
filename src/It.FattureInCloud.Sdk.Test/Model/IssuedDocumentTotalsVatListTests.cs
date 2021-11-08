@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class IssuedDocumentTotalsVatListTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for IssuedDocumentTotalsVatList
-        //private IssuedDocumentTotalsVatList instance;
+        private IssuedDocumentTotalsVatList instance;
 
         public IssuedDocumentTotalsVatListTests()
         {
-            // TODO uncomment below to create an instance of IssuedDocumentTotalsVatList
-            //instance = new IssuedDocumentTotalsVatList();
+            var body = "{ 'vat_item': { 'amount_net': 68.18, 'amount_vat': 6.82 } }";
+            instance = JsonConvert.DeserializeObject<IssuedDocumentTotalsVatList>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IssuedDocumentTotalsVatListInstanceTest()
         {
-            // TODO uncomment below to test "IsType" IssuedDocumentTotalsVatList
-            //Assert.IsType<IssuedDocumentTotalsVatList>(instance);
+            Assert.IsType<IssuedDocumentTotalsVatList>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VatItemTest()
         {
-            // TODO unit test for the property 'VatItem'
+            Assert.IsType<IssuedDocumentTotalsVatListVatItem>(instance.VatItem);
         }
 
     }

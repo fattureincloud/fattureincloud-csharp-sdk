@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class EmailScheduleIncludeTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for EmailScheduleInclude
-        //private EmailScheduleInclude instance;
+        private EmailScheduleInclude instance;
 
         public EmailScheduleIncludeTests()
         {
-            // TODO uncomment below to create an instance of EmailScheduleInclude
-            //instance = new EmailScheduleInclude();
+            var body = "{ 'document': false, 'delivery_note': false, 'attachment': false, 'accompanying_invoice': false }";
+            instance = JsonConvert.DeserializeObject<EmailScheduleInclude>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EmailScheduleIncludeInstanceTest()
         {
-            // TODO uncomment below to test "IsType" EmailScheduleInclude
-            //Assert.IsType<EmailScheduleInclude>(instance);
+            Assert.IsType<EmailScheduleInclude>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DocumentTest()
         {
-            // TODO unit test for the property 'Document'
+            Assert.IsType<bool>(instance.Document);
         }
         /// <summary>
         /// Test the property 'DeliveryNote'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DeliveryNoteTest()
         {
-            // TODO unit test for the property 'DeliveryNote'
+            Assert.IsType<bool>(instance.DeliveryNote);
         }
         /// <summary>
         /// Test the property 'Attachment'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AttachmentTest()
         {
-            // TODO unit test for the property 'Attachment'
+            Assert.IsType<bool>(instance.Attachment);
         }
         /// <summary>
         /// Test the property 'AccompanyingInvoice'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AccompanyingInvoiceTest()
         {
-            // TODO unit test for the property 'AccompanyingInvoice'
+            Assert.IsType<bool>(instance.AccompanyingInvoice);
         }
 
     }

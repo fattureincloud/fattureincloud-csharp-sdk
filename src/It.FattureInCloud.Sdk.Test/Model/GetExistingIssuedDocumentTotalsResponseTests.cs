@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class GetExistingIssuedDocumentTotalsResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for GetExistingIssuedDocumentTotalsResponse
-        //private GetExistingIssuedDocumentTotalsResponse instance;
+        private GetExistingIssuedDocumentTotalsResponse instance;
 
         public GetExistingIssuedDocumentTotalsResponseTests()
         {
-            // TODO uncomment below to create an instance of GetExistingIssuedDocumentTotalsResponse
-            //instance = new GetExistingIssuedDocumentTotalsResponse();
+            var body = "{ 'data': { 'amount_net': 68.18, 'amount_rivalsa': 13.64, 'amount_net_with_rivalsa': 81.82000000000001, 'taxable_amount': 81.82, 'vat_list': { '10': { 'amount_net': 81.82, 'amount_vat': 8.18 } }, 'amount_vat': 8.18, 'amount_gross': 90, 'amount_due': 90, 'payments_sum': 75 } }";
+            instance = JsonConvert.DeserializeObject<GetExistingIssuedDocumentTotalsResponse>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void GetExistingIssuedDocumentTotalsResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" GetExistingIssuedDocumentTotalsResponse
-            //Assert.IsType<GetExistingIssuedDocumentTotalsResponse>(instance);
+            Assert.IsType<GetExistingIssuedDocumentTotalsResponse>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<IssuedDocumentTotals>(instance.Data);
         }
 
     }

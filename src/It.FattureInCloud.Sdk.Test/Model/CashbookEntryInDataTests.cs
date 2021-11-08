@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class CashbookEntryInDataTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for CashbookEntryInData
-        //private CashbookEntryInData instance;
+        private CashbookEntryInData instance;
 
         public CashbookEntryInDataTests()
         {
-            // TODO uncomment below to create an instance of CashbookEntryInData
-            //instance = new CashbookEntryInData();
+            var body = "{ 'amount_in': 12345, 'payment_account_in': { 'id': 333 } }";
+            instance = JsonConvert.DeserializeObject<CashbookEntryInData>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CashbookEntryInDataInstanceTest()
         {
-            // TODO uncomment below to test "IsType" CashbookEntryInData
-            //Assert.IsType<CashbookEntryInData>(instance);
+            Assert.IsType<CashbookEntryInData>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AmountInTest()
         {
-            // TODO unit test for the property 'AmountIn'
+            Assert.IsType<decimal>(instance.AmountIn);
         }
         /// <summary>
         /// Test the property 'PaymentAccountIn'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PaymentAccountInTest()
         {
-            // TODO unit test for the property 'PaymentAccountIn'
+            Assert.IsType<PaymentAccount>(instance.PaymentAccountIn);
         }
 
     }

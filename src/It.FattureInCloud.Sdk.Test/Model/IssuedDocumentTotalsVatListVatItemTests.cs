@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class IssuedDocumentTotalsVatListVatItemTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for IssuedDocumentTotalsVatListVatItem
-        //private IssuedDocumentTotalsVatListVatItem instance;
+        private IssuedDocumentTotalsVatListVatItem instance;
 
         public IssuedDocumentTotalsVatListVatItemTests()
         {
-            // TODO uncomment below to create an instance of IssuedDocumentTotalsVatListVatItem
-            //instance = new IssuedDocumentTotalsVatListVatItem();
+            var body = "{ 'amount_net': 68.18, 'amount_vat': 6.82 }";
+            instance = JsonConvert.DeserializeObject<IssuedDocumentTotalsVatListVatItem>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IssuedDocumentTotalsVatListVatItemInstanceTest()
         {
-            // TODO uncomment below to test "IsType" IssuedDocumentTotalsVatListVatItem
-            //Assert.IsType<IssuedDocumentTotalsVatListVatItem>(instance);
+            Assert.IsType<IssuedDocumentTotalsVatListVatItem>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AmountNetTest()
         {
-            // TODO unit test for the property 'AmountNet'
+            Assert.IsType<decimal>(instance.AmountNet);
         }
         /// <summary>
         /// Test the property 'AmountVat'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AmountVatTest()
         {
-            // TODO unit test for the property 'AmountVat'
+            Assert.IsType<decimal>(instance.AmountVat);
         }
 
     }

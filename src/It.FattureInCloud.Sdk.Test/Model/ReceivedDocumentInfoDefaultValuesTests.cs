@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ReceivedDocumentInfoDefaultValuesTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ReceivedDocumentInfoDefaultValues
-        //private ReceivedDocumentInfoDefaultValues instance;
+        private ReceivedDocumentInfoDefaultValues instance;
 
         public ReceivedDocumentInfoDefaultValuesTests()
         {
-            // TODO uncomment below to create an instance of ReceivedDocumentInfoDefaultValues
-            //instance = new ReceivedDocumentInfoDefaultValues();
+            var body = "{'detailed': false}";
+            instance = JsonConvert.DeserializeObject<ReceivedDocumentInfoDefaultValues>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ReceivedDocumentInfoDefaultValuesInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ReceivedDocumentInfoDefaultValues
-            //Assert.IsType<ReceivedDocumentInfoDefaultValues>(instance);
+            Assert.IsType<ReceivedDocumentInfoDefaultValues>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DetailedTest()
         {
-            // TODO unit test for the property 'Detailed'
+            Assert.IsType<bool>(instance.Detailed);
         }
 
     }
