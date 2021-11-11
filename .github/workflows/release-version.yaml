@@ -1,0 +1,59 @@
+name: Release C# SDK version
+on: [workflow_dispatch]
+
+jobs:
+  release-version:
+    runs-on: ubuntu-latest
+    name: Update NuGet package
+    steps:
+
+      - id: checkout
+        name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+
+      - id: setup-net
+        name: Setup .NET  
+        uses: actions/setup-dotnet@v1    
+
+      - id: setup-libraries
+        name: Install libraries
+        run: |
+          sudo add-apt-repository ppa:rmescandon/yq -y
+          sudo apt update
+          sudo apt install yq -y
+
+      # We read the version from the sdk-version.yaml file and create the tag
+      # If it is needed to bump version, launch the related workflow
+      - id: read-csharp-sdk-version
+        name: Read C# SDK version
+        run: |
+          SDK_VERSION=$(yq e '.info.version' ./sdk-version.yaml)
+          echo "Releasing version: $SDK_VERSION"
+          echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
+
+      - id: create-tag
+        name: Create tag
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            github.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/v${{ env.sdk_version }}",
+              sha: context.sha
+            })  
+          
+      - id: generate-package
+        name: Build solution and generate NuGet package
+        run: |  
+          cd ./src/It.FattureInCloud.Sdk/
+          dotnet pack -c Release -o out  
+
+      - id: publish
+        name: Publish the package to nuget.org
+        run: dotnet nuget push ./src/It.FattureInCloud.Sdk/out/*.nupkg -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.FATTUREINCLOUD_NUGET_API_KEY}}
