@@ -13,9 +13,9 @@ jobs:
         with:
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
 
-      - id: setup-node
-        name: Setup Node.js
-        uses: actions/setup-node@v2
+      - id: setup-net
+        name: Setup .NET  
+        uses: actions/setup-dotnet@v1    
 
       - id: setup-libraries
         name: Install libraries
@@ -44,11 +44,7 @@ jobs:
               repo: context.repo.repo,
               ref: "refs/tags/v${{ env.sdk_version }}",
               sha: context.sha
-            })
-
-      - id: setup-net
-        name: Setup .NET  
-        uses: actions/setup-dotnet@v1      
+            })  
           
       - id: generate-package
         name: Build solution and generate NuGet package
