@@ -5,7 +5,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetUserInfo**](UserApi.md#getuserinfo) | **GET** /user/info | Get User Info
-[**ListUserCompanies**](UserApi.md#listusercompanies) | **GET** /user/companies | Get User Companies
+[**ListUserCompanies**](UserApi.md#listusercompanies) | **GET** /user/companies | List User Companies
 
 
 <a name="getuserinfo"></a>
@@ -83,7 +83,7 @@ This endpoint does not need any parameter.
 # **ListUserCompanies**
 > ListUserCompaniesResponse ListUserCompanies ()
 
-Get User Companies
+List User Companies
 
 Lists the companies controlled by the current user.
 
@@ -110,7 +110,7 @@ namespace Example
 
             try
             {
-                // Get User Companies
+                // List User Companies
                 ListUserCompaniesResponse result = apiInstance.ListUserCompanies();
                 Debug.WriteLine(result);
             }

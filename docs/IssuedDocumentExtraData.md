@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **TsOpposizione** | **bool?** |  | [optional] 
 **TsStatus** | **int?** |  | [optional] 
 **TsFileId** | **string** |  | [optional] 
-**TsSentDate** | **string** |  | [optional] 
+**TsSentDate** | **DateTime?** |  | [optional] 
 **TsFullAmount** | **bool?** |  | [optional] 
 **ImportedBy** | **string** |  | [optional] 
 **TsSingleSending** | **bool?** |  | [optional] 
