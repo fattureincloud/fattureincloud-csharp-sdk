@@ -5,8 +5,8 @@ E-invoice data. [Only if e_invoice=true]
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VatKind** | **string** | Vat kind (esigibilità IVA). | [optional] 
-**OriginalDocumentType** | **string** | Type of document followed by the the current invoice. | [optional] [default to OriginalDocumentTypeEnum.Ordine]
+**VatKind** | **VatKind** |  | [optional] 
+**OriginalDocumentType** | **OriginalDocumentType** |  | [optional] 
 **OdNumber** | **string** | Original document number. | [optional] 
 **OdDate** | **DateTime?** | Original document date. | [optional] 
 **Cig** | **string** | CIG. | [optional] 
