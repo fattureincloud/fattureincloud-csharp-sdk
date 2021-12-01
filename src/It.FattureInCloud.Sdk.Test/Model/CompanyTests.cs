@@ -72,28 +72,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
             Assert.IsType<string>(instance.Name);
         }
         /// <summary>
-        /// Test the property 'Type'
-        /// </summary>
-        [Fact]
-        public void TypeTest()
-        {
-            Assert.IsType<Company.TypeEnum>(instance.Type);
-        }
-        /// <summary>
         /// Test the property 'AccessToken'
         /// </summary>
         [Fact]
         public void AccessTokenTest()
         {
             Assert.IsType<string>(instance.AccessToken);
-        }
-        /// <summary>
-        /// Test the property 'Permissions'
-        /// </summary>
-        [Fact]
-        public void PermissionsTest()
-        {
-            Assert.IsType<Permissions>(instance.Permissions);
         }
         /// <summary>
         /// Test the property 'ControlledCompanies'
@@ -110,38 +94,6 @@ namespace It.FattureInCloud.Sdk.Test.Model
         public void ConnectionIdTest()
         {
             Assert.IsType<decimal>(instance.ConnectionId);
-        }
-        /// <summary>
-        /// Test the property 'Dic'
-        /// </summary>
-        [Fact]
-        public void DicTest()
-        {
-            Assert.IsType<bool>(instance.Dic);
-        }
-        /// <summary>
-        /// Test the property 'Fic'
-        /// </summary>
-        [Fact]
-        public void FicTest()
-        {
-            Assert.IsType<bool>(instance.Fic);
-        }
-        /// <summary>
-        /// Test the property 'FicLicenseExpire'
-        /// </summary>
-        [Fact]
-        public void FicLicenseExpireTest()
-        {
-            Assert.IsType<DateTimeOffset>(instance.FicLicenseExpire);
-        }
-        /// <summary>
-        /// Test the property 'FicPlan'
-        /// </summary>
-        [Fact]
-        public void FicPlanTest()
-        {
-            Assert.IsType<string>(instance.FicPlan);
         }
         /// <summary>
         /// Test the property 'TaxCode'

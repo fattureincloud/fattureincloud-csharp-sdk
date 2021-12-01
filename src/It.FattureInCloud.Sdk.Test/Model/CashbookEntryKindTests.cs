@@ -32,13 +32,11 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class CashbookEntryKindTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for CashbookEntryKind
-        //private CashbookEntryKind instance;
+        private CashbookEntryKind instance;
 
         public CashbookEntryKindTests()
         {
-            // TODO uncomment below to create an instance of CashbookEntryKind
-            //instance = new CashbookEntryKind();
+            instance =  CashbookEntryKind.Cashbook;
         }
 
         public void Dispose()
@@ -52,11 +50,8 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CashbookEntryKindInstanceTest()
         {
-            // TODO uncomment below to test "IsType" CashbookEntryKind
-            //Assert.IsType<CashbookEntryKind>(instance);
+            Assert.IsType<CashbookEntryKind>(instance);
         }
-
-
 
     }
 

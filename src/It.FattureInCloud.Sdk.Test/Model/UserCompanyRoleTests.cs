@@ -32,13 +32,11 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class UserCompanyRoleTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for UserCompanyRole
-        //private UserCompanyRole instance;
+        private UserCompanyRole instance;
 
         public UserCompanyRoleTests()
         {
-            // TODO uncomment below to create an instance of UserCompanyRole
-            //instance = new UserCompanyRole();
+           instance = UserCompanyRole.Employee;
         }
 
         public void Dispose()
@@ -52,8 +50,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void UserCompanyRoleInstanceTest()
         {
-            // TODO uncomment below to test "IsType" UserCompanyRole
-            //Assert.IsType<UserCompanyRole>(instance);
+            Assert.IsType<UserCompanyRole>(instance);
         }
 
 

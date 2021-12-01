@@ -32,13 +32,11 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class F24StatusTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for F24Status
-        //private F24Status instance;
+        private F24Status instance;
 
         public F24StatusTests()
         {
-            // TODO uncomment below to create an instance of F24Status
-            //instance = new F24Status();
+            instance = F24Status.Paid;
         }
 
         public void Dispose()
@@ -52,8 +50,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void F24StatusInstanceTest()
         {
-            // TODO uncomment below to test "IsType" F24Status
-            //Assert.IsType<F24Status>(instance);
+            Assert.IsType<F24Status>(instance);
         }
 
 

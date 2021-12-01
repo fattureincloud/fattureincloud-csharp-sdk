@@ -85,135 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TypeTest()
         {
-            Assert.IsType<CompanyInfo.TypeEnum>(instance.Type);
-        }
-        /// <summary>
-        /// Test the property 'Fic'
-        /// </summary>
-        [Fact]
-        public void FicTest()
-        {
-            Assert.IsType<bool>(instance.Fic);
-        }
-        /// <summary>
-        /// Test the property 'FicPlanName'
-        /// </summary>
-        [Fact]
-        public void FicPlanNameTest()
-        {
-            Assert.IsType<CompanyInfo.FicPlanNameEnum>(instance.FicPlanName);
-        }
-        /// <summary>
-        /// Test the property 'FicLicenseType'
-        /// </summary>
-        [Fact]
-        public void FicLicenseTypeTest()
-        {
-            Assert.IsType<string>(instance.FicLicenseType);
-        }
-        /// <summary>
-        /// Test the property 'FicPaymentSubject'
-        /// </summary>
-        [Fact]
-        public void FicPaymentSubjectTest()
-        {
-            Assert.IsType<string>(instance.FicPaymentSubject);
-        }
-        /// <summary>
-        /// Test the property 'FicLicenseExpire'
-        /// </summary>
-        [Fact]
-        public void FicLicenseExpireTest()
-        {
-            Assert.IsType<DateTime>(instance.FicLicenseExpire);
-        }
-        /// <summary>
-        /// Test the property 'FicSignupDate'
-        /// </summary>
-        [Fact]
-        public void FicSignupDateTest()
-        {
-            Assert.IsType<string>(instance.FicSignupDate);
-        }
-        /// <summary>
-        /// Test the property 'UseFic'
-        /// </summary>
-        [Fact]
-        public void UseFicTest()
-        {
-            Assert.IsType<bool>(instance.UseFic);
-        }
-        /// <summary>
-        /// Test the property 'FicNeedSetup'
-        /// </summary>
-        [Fact]
-        public void FicNeedSetupTest()
-        {
-            Assert.IsType<bool>(instance.FicNeedSetup);
-        }
-        /// <summary>
-        /// Test the property 'Dic'
-        /// </summary>
-        [Fact]
-        public void DicTest()
-        {
-            Assert.IsType<bool>(instance.Dic);
-        }
-        /// <summary>
-        /// Test the property 'DicPlan'
-        /// </summary>
-        [Fact]
-        public void DicPlanTest()
-        {
-            Assert.IsType<CompanyInfo.DicPlanEnum>(instance.DicPlan);
-        }
-        /// <summary>
-        /// Test the property 'DicLicenseExpire'
-        /// </summary>
-        [Fact]
-        public void DicLicenseExpireTest()
-        {
-            Assert.IsType<DateTime>(instance.DicLicenseExpire);
-        }
-        /// <summary>
-        /// Test the property 'UseDic'
-        /// </summary>
-        [Fact]
-        public void UseDicTest()
-        {
-            Assert.IsType<bool>(instance.UseDic);
-        }
-        /// <summary>
-        /// Test the property 'DicNeedSetup'
-        /// </summary>
-        [Fact]
-        public void DicNeedSetupTest()
-        {
-            Assert.IsType<bool>(instance.DicNeedSetup);
-        }
-        /// <summary>
-        /// Test the property 'AccessInfo'
-        /// </summary>
-        [Fact]
-        public void AccessInfoTest()
-        {
-            Assert.IsType<CompanyInfoAccessInfo>(instance.AccessInfo);
-        }
-        /// <summary>
-        /// Test the property 'PlanInfo'
-        /// </summary>
-        [Fact]
-        public void PlanInfoTest()
-        {
-            Assert.IsType<CompanyInfoPlanInfo>(instance.PlanInfo);
-        }
-        /// <summary>
-        /// Test the property 'CanUseCoupon'
-        /// </summary>
-        [Fact]
-        public void CanUseCouponTest()
-        {
-            Assert.IsType<bool>(instance.CanUseCoupon);
+            Assert.IsType<CompanyType>(instance.Type);
         }
         /// <summary>
         /// Test the property 'AccountantId'
@@ -224,52 +96,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
             Assert.IsType<int>(instance.AccountantId);
         }
         /// <summary>
-        /// Test the property 'DicLicenseType'
-        /// </summary>
-        [Fact]
-        public void DicLicenseTypeTest()
-        {
-            Assert.IsType<string>(instance.DicLicenseType);
-        }
-        /// <summary>
-        /// Test the property 'DicPaymentSubject'
-        /// </summary>
-        [Fact]
-        public void DicPaymentSubjectTest()
-        {
-            Assert.IsType<string>(instance.DicPaymentSubject);
-        }
-        /// <summary>
-        /// Test the property 'DicPlanName'
-        /// </summary>
-        [Fact]
-        public void DicPlanNameTest()
-        {
-            Assert.IsType<string>(instance.DicPlanName);
-        }
-        /// <summary>
-        /// Test the property 'DicSignupDate'
-        /// </summary>
-        [Fact]
-        public void DicSignupDateTest()
-        {
-            Assert.IsType<string>(instance.DicSignupDate);
-        }
-        /// <summary>
         /// Test the property 'IsAccountant'
         /// </summary>
         [Fact]
         public void IsAccountantTest()
         {
             Assert.IsType<bool>(instance.IsAccountant);
-        }
-        /// <summary>
-        /// Test the property 'RegistrationService'
-        /// </summary>
-        [Fact]
-        public void RegistrationServiceTest()
-        {
-            Assert.IsType<string>(instance.RegistrationService);
         }
 
     }

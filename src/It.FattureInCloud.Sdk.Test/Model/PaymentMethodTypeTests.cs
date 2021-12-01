@@ -32,13 +32,11 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class PaymentMethodTypeTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for PaymentMethodType
-        //private PaymentMethodType instance;
+        private PaymentMethodType instance;
 
         public PaymentMethodTypeTests()
         {
-            // TODO uncomment below to create an instance of PaymentMethodType
-            //instance = new PaymentMethodType();
+             instance = PaymentMethodType.Standard;
         }
 
         public void Dispose()
@@ -52,8 +50,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PaymentMethodTypeInstanceTest()
         {
-            // TODO uncomment below to test "IsType" PaymentMethodType
-            //Assert.IsType<PaymentMethodType>(instance);
+            Assert.IsType<PaymentMethodType>(instance);
         }
 
 

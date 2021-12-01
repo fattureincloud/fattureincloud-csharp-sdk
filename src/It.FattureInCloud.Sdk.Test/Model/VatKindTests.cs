@@ -32,13 +32,11 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class VatKindTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for VatKind
-        //private VatKind instance;
+        private VatKind instance;
 
         public VatKindTests()
         {
-            // TODO uncomment below to create an instance of VatKind
-            //instance = new VatKind();
+            instance = VatKind.I;
         }
 
         public void Dispose()
@@ -52,11 +50,8 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VatKindInstanceTest()
         {
-            // TODO uncomment below to test "IsType" VatKind
-            //Assert.IsType<VatKind>(instance);
+            Assert.IsType<VatKind>(instance);
         }
-
-
 
     }
 

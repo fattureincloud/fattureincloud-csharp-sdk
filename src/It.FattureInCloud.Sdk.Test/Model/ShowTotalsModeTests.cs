@@ -32,13 +32,11 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ShowTotalsModeTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ShowTotalsMode
-        //private ShowTotalsMode instance;
+        private ShowTotalsMode instance;
 
         public ShowTotalsModeTests()
         {
-            // TODO uncomment below to create an instance of ShowTotalsMode
-            //instance = new ShowTotalsMode();
+            instance = ShowTotalsMode.All;
         }
 
         public void Dispose()
@@ -52,8 +50,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ShowTotalsModeInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ShowTotalsMode
-            //Assert.IsType<ShowTotalsMode>(instance);
+            Assert.IsType<ShowTotalsMode>(instance);
         }
 
 

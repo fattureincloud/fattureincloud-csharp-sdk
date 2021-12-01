@@ -32,13 +32,11 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class DefaultPaymentTermsTypeTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for DefaultPaymentTermsType
-        //private DefaultPaymentTermsType instance;
+        private DefaultPaymentTermsType instance;
 
         public DefaultPaymentTermsTypeTests()
         {
-            // TODO uncomment below to create an instance of DefaultPaymentTermsType
-            //instance = new DefaultPaymentTermsType();
+            instance = DefaultPaymentTermsType.Standard;
         }
 
         public void Dispose()
@@ -52,8 +50,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DefaultPaymentTermsTypeInstanceTest()
         {
-            // TODO uncomment below to test "IsType" DefaultPaymentTermsType
-            //Assert.IsType<DefaultPaymentTermsType>(instance);
+            Assert.IsType<DefaultPaymentTermsType>(instance);
         }
 
 

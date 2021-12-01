@@ -77,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TypeTest()
         {
-            Assert.IsType<PaymentAccount.TypeEnum>(instance.Type);
+            Assert.IsType<PaymentAccountType>(instance.Type);
         }
         /// <summary>
         /// Test the property 'Iban'

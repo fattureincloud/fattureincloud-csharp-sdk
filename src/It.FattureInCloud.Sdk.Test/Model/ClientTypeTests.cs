@@ -32,13 +32,11 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ClientTypeTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ClientType
-        //private ClientType instance;
+        private ClientType instance;
 
         public ClientTypeTests()
         {
-            // TODO uncomment below to create an instance of ClientType
-            //instance = new ClientType();
+            instance = ClientType.Company;
         }
 
         public void Dispose()
@@ -52,8 +50,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ClientTypeInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ClientType
-            //Assert.IsType<ClientType>(instance);
+            Assert.IsType<ClientType>(instance);
         }
 
 

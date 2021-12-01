@@ -85,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void KindTest()
         {
-            Assert.IsType<CashbookEntryData.KindEnum>(instance.Kind);
+            Assert.IsType<CashbookEntryKind>(instance.Kind);
         }
         /// <summary>
         /// Test the property 'Type'
@@ -93,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TypeTest()
         {
-            Assert.IsType<CashbookEntryData.TypeEnum>(instance.Type);
+            Assert.IsType<CashbookEntryType>(instance.Type);
         }
         /// <summary>
         /// Test the property 'EntityName'

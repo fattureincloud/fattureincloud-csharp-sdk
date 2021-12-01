@@ -61,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VatKindTest()
         {
-            Assert.IsType<IssuedDocumentEiData.VatKindEnum>(instance.VatKind);
+            Assert.IsType<VatKind>(instance.VatKind);
         }
         /// <summary>
         /// Test the property 'OriginalDocumentType'
@@ -69,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void OriginalDocumentTypeTest()
         {
-            Assert.IsType<IssuedDocumentEiData.OriginalDocumentTypeEnum>(instance.OriginalDocumentType);
+            Assert.IsType<OriginalDocumentType>(instance.OriginalDocumentType);
         }
         /// <summary>
         /// Test the property 'OdNumber'

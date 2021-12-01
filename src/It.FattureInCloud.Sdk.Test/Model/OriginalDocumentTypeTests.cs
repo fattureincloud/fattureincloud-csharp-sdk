@@ -32,13 +32,11 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class OriginalDocumentTypeTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for OriginalDocumentType
-        //private OriginalDocumentType instance;
+        private OriginalDocumentType instance;
 
         public OriginalDocumentTypeTests()
         {
-            // TODO uncomment below to create an instance of OriginalDocumentType
-            //instance = new OriginalDocumentType();
+            instance = OriginalDocumentType.Ordine;
         }
 
         public void Dispose()
@@ -52,8 +50,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void OriginalDocumentTypeInstanceTest()
         {
-            // TODO uncomment below to test "IsType" OriginalDocumentType
-            //Assert.IsType<OriginalDocumentType>(instance);
+            Assert.IsType<OriginalDocumentType>(instance);
         }
 
 
