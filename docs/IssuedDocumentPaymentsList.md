@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DueDate** | **DateTimeOffset** | Due date. | [optional] 
 **Amount** | **decimal** | Payment amount. | [optional] 
-**Status** | **string** | Payment status. | [optional] [default to StatusEnum.NotPaid]
+**Status** | **IssuedDocumentStatus** |  | [optional] 
 **PaymentAccount** | [**PaymentAccount**](PaymentAccount.md) |  | [optional] 
 **PaidDate** | **DateTimeOffset** | Payment date. [Only if status is paid] | [optional] 
 **EiRaw** | **Object** | Advanced raw attributes for e-invoices. | [optional] 

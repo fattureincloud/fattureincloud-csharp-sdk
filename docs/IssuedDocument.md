@@ -35,7 +35,7 @@ Name | Type | Description | Notes
 **HMargins** | **int** | Horizontal margins. | [optional] 
 **ShowPayments** | **bool** | Shows the expiration dates of the payments on the document. | [optional] 
 **ShowPaymentMethod** | **bool** | Show the payment method details on the document. | [optional] 
-**ShowTotals** | **string** | Totals mode. | [optional] [default to ShowTotalsEnum.All]
+**ShowTotals** | **ShowTotalsMode** |  | [optional] 
 **VMargins** | **int** | Vertical margins. | [optional] 
 **ShowPaypalButton** | **bool** |  | [optional] [default to false]
 **ShowNotificationButton** | **bool** |  | [optional] [default to false]
@@ -80,7 +80,7 @@ Name | Type | Description | Notes
 **EiWithholdingTaxCausal** | **string** |  | [optional] 
 **EiOtherWithholdingTaxType** | **string** |  | [optional] 
 **EiOtherWithholdingTaxCausal** | **string** |  | [optional] 
-**AmountDueDiscount** | **decimal?** |  | [optional] 
+**AmountDueDiscount** | **decimal** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int** | Unique identifier | [optional] 
 **Name** | **string** | Payment account name. | [optional] 
-**Type** | **string** | Payment account type. | [optional] [default to TypeEnum.Standard]
+**Type** | **PaymentAccountType** |  | [optional] 
 **Iban** | **string** | Payment account iban. | [optional] 
 **Sia** | **string** | Payment account sia. | [optional] 
 **Cuc** | **string** | Payment account cuc. | [optional] 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Role** | **string** | Role of the user in this company. | [optional] 
+**Role** | **UserCompanyRole** |  | [optional] 
 **Permissions** | [**Permissions**](Permissions.md) |  | [optional] 
 **ThroughAccountant** | **bool** |  | [optional] 
 

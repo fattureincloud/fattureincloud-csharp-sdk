@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Id** | **string** | Cashbook unique identifier. | [optional] 
 **Date** | **DateTimeOffset** | Cashbook date. | [optional] 
 **Description** | **string** | Cashbook description. | [optional] 
-**Kind** | **string** | Cashbook kind. | [optional] 
-**Type** | **string** | Cashbook type. | [optional] 
+**Kind** | **CashbookEntryKind** |  | [optional] 
+**Type** | **CashbookEntryType** |  | [optional] 
 **EntityName** | **string** | Entity name. | [optional] 
 **Document** | [**CashbookEntryDataDocument**](CashbookEntryDataDocument.md) |  | [optional] 
 

@@ -5,7 +5,7 @@ Receipt
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **decimal** | Receipt unique identifier. | [optional] 
+**Id** | **int** | Receipt unique identifier. | [optional] 
 **Date** | **DateTimeOffset** | Receipt date. | [optional] 
 **Number** | **decimal?** | Receipt number. | [optional] 
 **Numeration** | **string** | If it&#39;s null or empty string use the default numeration. | [optional] 
