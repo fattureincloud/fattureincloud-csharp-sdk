@@ -77,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void StatusTest()
         {
-            Assert.IsType<F24.StatusEnum>(instance.Status);
+            Assert.IsType<F24Status>(instance.Status);
         }
         /// <summary>
         /// Test the property 'PaymentAccount'

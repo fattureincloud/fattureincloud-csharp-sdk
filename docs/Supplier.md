@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Id** | **int** | Unique identifier | [optional] 
 **Code** | **string** | Supplier code. | [optional] 
 **Name** | **string** | Supplier name. | [optional] 
-**Type** | **string** | Supplier type. | [optional] 
+**Type** | **SupplierType** |  | [optional] 
 **FirstName** | **string** | Supplier first name. | [optional] 
 **LastName** | **string** | Supplier last name. | [optional] 
 **ContactPerson** | **string** |  | [optional] 

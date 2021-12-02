@@ -61,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void RoleTest()
         {
-            Assert.IsType<CompanyInfoAccessInfo.RoleEnum>(instance.Role);
+            Assert.IsType<UserCompanyRole>(instance.Role);
         }
         /// <summary>
         /// Test the property 'Permissions'

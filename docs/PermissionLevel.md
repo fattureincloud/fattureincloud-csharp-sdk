@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.PermissionLevel
-Level of the permission
+Level of the permission.
 
 ## Properties
 
