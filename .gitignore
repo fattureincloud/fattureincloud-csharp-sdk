@@ -360,3 +360,12 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# PHP Storm
+.idea/*
+
+# macOS
+.DS_Store
+
+# VisualStudioCode
+.vscode/* 
