@@ -77,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TypeTest()
         {
-            Assert.IsType<PaymentMethod.TypeEnum>(instance.Type);
+            Assert.IsType<PaymentMethodType>(instance.Type);
         }
         /// <summary>
         /// Test the property 'IsDefault'

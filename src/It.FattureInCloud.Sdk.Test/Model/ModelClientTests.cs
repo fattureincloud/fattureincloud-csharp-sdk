@@ -85,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TypeTest()
         {
-            Assert.IsType<ModelClient.TypeEnum>(instance.Type);
+            Assert.IsType<ClientType>(instance.Type);
         }
         /// <summary>
         /// Test the property 'FirstName'
@@ -237,7 +237,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DefaultPaymentTermsTypeTest()
         {
-            Assert.IsType<ModelClient.DefaultPaymentTermsTypeEnum>(instance.DefaultPaymentTermsType);
+            Assert.IsType<DefaultPaymentTermsType>(instance.DefaultPaymentTermsType);
         }
         /// <summary>
         /// Test the property 'DefaultPaymentMethod'

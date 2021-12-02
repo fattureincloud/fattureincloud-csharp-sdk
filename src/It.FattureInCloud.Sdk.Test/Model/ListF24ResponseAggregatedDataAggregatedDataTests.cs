@@ -61,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AmountTest()
         {
-            Assert.IsType<string>(instance.Amount);
+            Assert.IsType<decimal>(instance.Amount);
         }
 
     }
