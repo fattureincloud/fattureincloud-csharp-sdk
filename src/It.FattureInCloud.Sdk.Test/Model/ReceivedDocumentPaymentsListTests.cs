@@ -77,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DueDateTest()
         {
-            Assert.IsType<string>(instance.DueDate);
+            Assert.IsType<DateTimeOffset>(instance.DueDate);
         }
         /// <summary>
         /// Test the property 'PaidDate'
@@ -85,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PaidDateTest()
         {
-            Assert.IsType<string>(instance.PaidDate);
+            Assert.IsType<DateTimeOffset>(instance.PaidDate);
         }
         /// <summary>
         /// Test the property 'PaymentTerms'

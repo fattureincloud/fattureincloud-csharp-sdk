@@ -85,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TypeTest()
         {
-            Assert.IsType<Supplier.TypeEnum>(instance.Type);
+            Assert.IsType<SupplierType>(instance.Type);
         }
         /// <summary>
         /// Test the property 'FirstName'

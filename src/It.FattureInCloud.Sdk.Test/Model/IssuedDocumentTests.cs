@@ -309,7 +309,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ShowTotalsTest()
         {
-            Assert.IsType<IssuedDocument.ShowTotalsEnum>(instance.ShowTotals);
+            Assert.IsType<ShowTotalsMode>(instance.ShowTotals);
         }
         /// <summary>
         /// Test the property 'VMargins'

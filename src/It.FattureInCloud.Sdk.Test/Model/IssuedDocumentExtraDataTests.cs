@@ -133,7 +133,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TsSentDateTest()
         {
-            Assert.IsType<string>(instance.TsSentDate);
+            Assert.IsType<DateTime>(instance.TsSentDate);
         }
         /// <summary>
         /// Test the property 'TsFullAmount'
