@@ -33,14 +33,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     public class VerifyEInvoiceXmlResponseTests : IDisposable
     {
         private VerifyEInvoiceXmlResponse instance;
-        private VerifyEInvoiceXmlResponse instance_err;
 
         public VerifyEInvoiceXmlResponseTests()
         {
-            var body = "{ 'data': { 'success': true } }";
-            var body_err = "{ 'error': { 'message': 'errore', 'validation_result': { 'success': false } }, 'extra': { 'errors': [ 'errore brutto' ] } }";
+            var body = "{'data':{'success':true}}";
             instance = JsonConvert.DeserializeObject<VerifyEInvoiceXmlResponse>(body);
-            instance_err = JsonConvert.DeserializeObject<VerifyEInvoiceXmlResponse>(body_err);
+
         }
 
         public void Dispose()
@@ -64,23 +62,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            Assert.IsType<VerifyEInvoiceXmlSuccessResponseData>(instance.GetVerifyEInvoiceXmlSuccessResponse().Data);
-        }
-        /// <summary>
-        /// Test the property 'Error'
-        /// </summary>
-        [Fact]
-        public void ErrorTest()
-        {
-            Assert.IsType<VerifyEInvoiceXmlErrorResponseError>(instance_err.GetVerifyEInvoiceXmlErrorResponse().Error);
-        }
-        /// <summary>
-        /// Test the property 'Extra'
-        /// </summary>
-        [Fact]
-        public void ExtraTest()
-        {
-            Assert.IsType<VerifyEInvoiceXmlErrorResponseExtra>(instance_err.GetVerifyEInvoiceXmlErrorResponse().Extra);
+            Assert.IsType<VerifyEInvoiceXmlResponseData>(instance.Data);
         }
 
     }

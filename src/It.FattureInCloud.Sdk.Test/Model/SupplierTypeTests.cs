@@ -32,13 +32,11 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class SupplierTypeTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for SupplierType
-        //private SupplierType instance;
+        private SupplierType instance;
 
         public SupplierTypeTests()
         {
-            // TODO uncomment below to create an instance of SupplierType
-            //instance = new SupplierType();
+            instance = SupplierType.Company;
         }
 
         public void Dispose()
@@ -52,8 +50,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SupplierTypeInstanceTest()
         {
-            // TODO uncomment below to test "IsType" SupplierType
-            //Assert.IsType<SupplierType>(instance);
+            Assert.IsType<SupplierType>(instance);
         }
 
 

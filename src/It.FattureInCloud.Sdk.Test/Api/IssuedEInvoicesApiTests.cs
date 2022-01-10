@@ -96,7 +96,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
             var response = instance.Object.VerifyEInvoiceXml(companyId, documentId);
             JObject obj = JObject.Parse(verifyEInvoiceXmlResponseBody);
 
-            var jobj = JObject.FromObject(response.GetVerifyEInvoiceXmlSuccessResponse());
+            var jobj = JObject.FromObject(response);
             Assert.True(JToken.DeepEquals(obj, jobj));
         }
     }

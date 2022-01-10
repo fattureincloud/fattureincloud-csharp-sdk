@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ModifyVatTypeRequestTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ModifyVatTypeRequest
-        //private ModifyVatTypeRequest instance;
+        private ModifyVatTypeRequest instance;
 
         public ModifyVatTypeRequestTests()
         {
-            // TODO uncomment below to create an instance of ModifyVatTypeRequest
-            //instance = new ModifyVatTypeRequest();
+            var body = "{'data':{'id':0,'value':22,'description':'Non imponibile art. 123','notes':'IVA non imponibile ai sensi dell articolo 123, comma 2','e_invoice':true,'ei_type':2,'ei_description':'string','editable':true,'is_disabled':true}}";
+            instance = JsonConvert.DeserializeObject<ModifyVatTypeRequest>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ModifyVatTypeRequestInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ModifyVatTypeRequest
-            //Assert.IsType<ModifyVatTypeRequest>(instance);
+            Assert.IsType<ModifyVatTypeRequest>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<VatType>(instance.Data);
         }
 
     }
