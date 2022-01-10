@@ -1,5 +1,4 @@
 # It.FattureInCloud.Sdk.Model.EmailData
-Email
 
 ## Properties
 

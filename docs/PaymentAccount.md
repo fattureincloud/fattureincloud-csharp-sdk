@@ -1,5 +1,4 @@
 # It.FattureInCloud.Sdk.Model.PaymentAccount
-Payment account.
 
 ## Properties
 

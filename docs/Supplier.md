@@ -1,5 +1,4 @@
 # It.FattureInCloud.Sdk.Model.Supplier
-Supplier.
 
 ## Properties
 

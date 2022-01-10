@@ -1,5 +1,4 @@
 # It.FattureInCloud.Sdk.Model.Company
-Description of a company.
 
 ## Properties
 

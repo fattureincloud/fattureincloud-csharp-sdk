@@ -4,14 +4,18 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreatePaymentAccount**](SettingsApi.md#createpaymentaccount) | **POST** /c/{companyId}/settings/payment_accounts | Create Payment Account
-[**CreatePaymentMethod**](SettingsApi.md#createpaymentmethod) | **POST** /c/{companyId}/settings/payment_methods | Create Payment Method
-[**DeletePaymentAccount**](SettingsApi.md#deletepaymentaccount) | **DELETE** /c/{companyId}/settings/payment_accounts/{paymentAccountId} | Delete Payment Account
-[**DeletePaymentMethod**](SettingsApi.md#deletepaymentmethod) | **DELETE** /c/{companyId}/settings/payment_method/{paymentMethodId} | Delete Payment Method
-[**GetPaymentAccount**](SettingsApi.md#getpaymentaccount) | **GET** /c/{companyId}/settings/payment_accounts/{paymentAccountId} | Get Payment Account
-[**GetPaymentMethod**](SettingsApi.md#getpaymentmethod) | **GET** /c/{companyId}/settings/payment_method/{paymentMethodId} | Get Payment Method
-[**ModifyPaymentAccount**](SettingsApi.md#modifypaymentaccount) | **PUT** /c/{companyId}/settings/payment_accounts/{paymentAccountId} | Modify Payment Account
-[**ModifyPaymentMethod**](SettingsApi.md#modifypaymentmethod) | **PUT** /c/{companyId}/settings/payment_method/{paymentMethodId} | Modify Payment Method
+[**CreatePaymentAccount**](SettingsApi.md#createpaymentaccount) | **POST** /c/{company_id}/settings/payment_accounts | Create Payment Account
+[**CreatePaymentMethod**](SettingsApi.md#createpaymentmethod) | **POST** /c/{company_id}/settings/payment_methods | Create Payment Method
+[**CreateVatType**](SettingsApi.md#createvattype) | **POST** /c/{company_id}/settings/vat_types | Create Vat Type
+[**DeletePaymentAccount**](SettingsApi.md#deletepaymentaccount) | **DELETE** /c/{company_id}/settings/payment_accounts/{payment_account_id} | Delete Payment Account
+[**DeletePaymentMethod**](SettingsApi.md#deletepaymentmethod) | **DELETE** /c/{company_id}/settings/payment_methods/{payment_method_id} | Delete Payment Method
+[**DeleteVatType**](SettingsApi.md#deletevattype) | **DELETE** /c/{company_id}/settings/vat_types/{vat_type_id} | Delete Vat Type
+[**GetPaymentAccount**](SettingsApi.md#getpaymentaccount) | **GET** /c/{company_id}/settings/payment_accounts/{payment_account_id} | Get Payment Account
+[**GetPaymentMethod**](SettingsApi.md#getpaymentmethod) | **GET** /c/{company_id}/settings/payment_methods/{payment_method_id} | Get Payment Method
+[**GetVatType**](SettingsApi.md#getvattype) | **GET** /c/{company_id}/settings/vat_types/{vat_type_id} | Get Vat Type
+[**ModifyPaymentAccount**](SettingsApi.md#modifypaymentaccount) | **PUT** /c/{company_id}/settings/payment_accounts/{payment_account_id} | Modify Payment Account
+[**ModifyPaymentMethod**](SettingsApi.md#modifypaymentmethod) | **PUT** /c/{company_id}/settings/payment_methods/{payment_method_id} | Modify Payment Method
+[**ModifyVatType**](SettingsApi.md#modifyvattype) | **PUT** /c/{company_id}/settings/vat_types/{vat_type_id} | Modify Vat Type
 
 
 <a name="createpaymentaccount"></a>
@@ -166,9 +170,85 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="createvattype"></a>
+# **CreateVatType**
+> CreateVatTypeResponse CreateVatType (int companyId, CreateVatTypeRequest createVatTypeRequest = null)
+
+Create Vat Type
+
+Creates a vat type.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using It.FattureInCloud.Sdk.Api;
+using It.FattureInCloud.Sdk.Client;
+using It.FattureInCloud.Sdk.Model;
+
+namespace Example
+{
+    public class CreateVatTypeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api-v2.fattureincloud.it";
+            // Configure OAuth2 access token for authorization: OAuth2AuthenticationCodeFlow
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new SettingsApi(config);
+            var companyId = 12345;  // int | The ID of the company.
+            var createVatTypeRequest = new CreateVatTypeRequest(); // CreateVatTypeRequest |  (optional) 
+
+            try
+            {
+                // Create Vat Type
+                CreateVatTypeResponse result = apiInstance.CreateVatType(companyId, createVatTypeRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling SettingsApi.CreateVatType: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **companyId** | **int**| The ID of the company. | 
+ **createVatTypeRequest** | [**CreateVatTypeRequest**](CreateVatTypeRequest.md)|  | [optional] 
+
+### Return type
+
+[**CreateVatTypeResponse**](CreateVatTypeResponse.md)
+
+### Authorization
+
+[OAuth2AuthenticationCodeFlow](../README.md#OAuth2AuthenticationCodeFlow)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Example response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="deletepaymentaccount"></a>
 # **DeletePaymentAccount**
-> void DeletePaymentAccount (int companyId, string paymentAccountId)
+> void DeletePaymentAccount (int companyId, int paymentAccountId)
 
 Delete Payment Account
 
@@ -195,7 +275,7 @@ namespace Example
 
             var apiInstance = new SettingsApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var paymentAccountId = 1;  // string | The Referred Payment Account Id.
+            var paymentAccountId = 56;  // int | The Referred Payment Account Id.
 
             try
             {
@@ -218,7 +298,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **companyId** | **int**| The ID of the company. | 
- **paymentAccountId** | **string**| The Referred Payment Account Id. | 
+ **paymentAccountId** | **int**| The Referred Payment Account Id. | 
 
 ### Return type
 
@@ -270,7 +350,7 @@ namespace Example
 
             var apiInstance = new SettingsApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var paymentMethodId = 1;  // int | The Referred Payment Method Id.
+            var paymentMethodId = 56;  // int | The Referred Payment Method Id.
 
             try
             {
@@ -316,9 +396,84 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="deletevattype"></a>
+# **DeleteVatType**
+> void DeleteVatType (int companyId, int vatTypeId)
+
+Delete Vat Type
+
+Deletes the specified vat type.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using It.FattureInCloud.Sdk.Api;
+using It.FattureInCloud.Sdk.Client;
+using It.FattureInCloud.Sdk.Model;
+
+namespace Example
+{
+    public class DeleteVatTypeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api-v2.fattureincloud.it";
+            // Configure OAuth2 access token for authorization: OAuth2AuthenticationCodeFlow
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new SettingsApi(config);
+            var companyId = 12345;  // int | The ID of the company.
+            var vatTypeId = 56;  // int | The Referred Vat Type Id.
+
+            try
+            {
+                // Delete Vat Type
+                apiInstance.DeleteVatType(companyId, vatTypeId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling SettingsApi.DeleteVatType: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **companyId** | **int**| The ID of the company. | 
+ **vatTypeId** | **int**| The Referred Vat Type Id. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[OAuth2AuthenticationCodeFlow](../README.md#OAuth2AuthenticationCodeFlow)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getpaymentaccount"></a>
 # **GetPaymentAccount**
-> GetPaymentAccountResponse GetPaymentAccount (int companyId, string paymentAccountId, string fields = null, string fieldset = null, Object body = null)
+> GetPaymentAccountResponse GetPaymentAccount (int companyId, int paymentAccountId, string fields = null, string fieldset = null)
 
 Get Payment Account
 
@@ -345,15 +500,14 @@ namespace Example
 
             var apiInstance = new SettingsApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var paymentAccountId = 1;  // string | The Referred Payment Account Id.
+            var paymentAccountId = 56;  // int | The Referred Payment Account Id.
             var fields = fields_example;  // string | List of comma-separated fields. (optional) 
             var fieldset = fieldset_example;  // string | Name of the fieldset. (optional) 
-            var body = ;  // Object |  (optional) 
 
             try
             {
                 // Get Payment Account
-                GetPaymentAccountResponse result = apiInstance.GetPaymentAccount(companyId, paymentAccountId, fields, fieldset, body);
+                GetPaymentAccountResponse result = apiInstance.GetPaymentAccount(companyId, paymentAccountId, fields, fieldset);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -372,10 +526,9 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **companyId** | **int**| The ID of the company. | 
- **paymentAccountId** | **string**| The Referred Payment Account Id. | 
+ **paymentAccountId** | **int**| The Referred Payment Account Id. | 
  **fields** | **string**| List of comma-separated fields. | [optional] 
  **fieldset** | **string**| Name of the fieldset. | [optional] 
- **body** | **Object**|  | [optional] 
 
 ### Return type
 
@@ -387,7 +540,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
@@ -427,7 +580,7 @@ namespace Example
 
             var apiInstance = new SettingsApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var paymentMethodId = 1;  // int | The Referred Payment Method Id.
+            var paymentMethodId = 56;  // int | The Referred Payment Method Id.
             var fields = fields_example;  // string | List of comma-separated fields. (optional) 
             var fieldset = fieldset_example;  // string | Name of the fieldset. (optional) 
 
@@ -478,9 +631,85 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="getvattype"></a>
+# **GetVatType**
+> GetVatTypeResponse GetVatType (int companyId, int vatTypeId)
+
+Get Vat Type
+
+Gets the specified vat type.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using It.FattureInCloud.Sdk.Api;
+using It.FattureInCloud.Sdk.Client;
+using It.FattureInCloud.Sdk.Model;
+
+namespace Example
+{
+    public class GetVatTypeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api-v2.fattureincloud.it";
+            // Configure OAuth2 access token for authorization: OAuth2AuthenticationCodeFlow
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new SettingsApi(config);
+            var companyId = 12345;  // int | The ID of the company.
+            var vatTypeId = 56;  // int | The Referred Vat Type Id.
+
+            try
+            {
+                // Get Vat Type
+                GetVatTypeResponse result = apiInstance.GetVatType(companyId, vatTypeId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling SettingsApi.GetVatType: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **companyId** | **int**| The ID of the company. | 
+ **vatTypeId** | **int**| The Referred Vat Type Id. | 
+
+### Return type
+
+[**GetVatTypeResponse**](GetVatTypeResponse.md)
+
+### Authorization
+
+[OAuth2AuthenticationCodeFlow](../README.md#OAuth2AuthenticationCodeFlow)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Example response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="modifypaymentaccount"></a>
 # **ModifyPaymentAccount**
-> ModifyPaymentAccountResponse ModifyPaymentAccount (int companyId, string paymentAccountId, ModifyPaymentAccountRequest modifyPaymentAccountRequest = null)
+> ModifyPaymentAccountResponse ModifyPaymentAccount (int companyId, int paymentAccountId, ModifyPaymentAccountRequest modifyPaymentAccountRequest = null)
 
 Modify Payment Account
 
@@ -507,7 +736,7 @@ namespace Example
 
             var apiInstance = new SettingsApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var paymentAccountId = 1;  // string | The Referred Payment Account Id.
+            var paymentAccountId = 56;  // int | The Referred Payment Account Id.
             var modifyPaymentAccountRequest = new ModifyPaymentAccountRequest(); // ModifyPaymentAccountRequest |  (optional) 
 
             try
@@ -532,7 +761,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **companyId** | **int**| The ID of the company. | 
- **paymentAccountId** | **string**| The Referred Payment Account Id. | 
+ **paymentAccountId** | **int**| The Referred Payment Account Id. | 
  **modifyPaymentAccountRequest** | [**ModifyPaymentAccountRequest**](ModifyPaymentAccountRequest.md)|  | [optional] 
 
 ### Return type
@@ -585,7 +814,7 @@ namespace Example
 
             var apiInstance = new SettingsApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var paymentMethodId = 1;  // int | The Referred Payment Method Id.
+            var paymentMethodId = 56;  // int | The Referred Payment Method Id.
             var modifyPaymentMethodRequest = new ModifyPaymentMethodRequest(); // ModifyPaymentMethodRequest |  (optional) 
 
             try
@@ -616,6 +845,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModifyPaymentMethodResponse**](ModifyPaymentMethodResponse.md)
+
+### Authorization
+
+[OAuth2AuthenticationCodeFlow](../README.md#OAuth2AuthenticationCodeFlow)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Example response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="modifyvattype"></a>
+# **ModifyVatType**
+> ModifyVatTypeResponse ModifyVatType (int companyId, int vatTypeId, ModifyVatTypeRequest modifyVatTypeRequest = null)
+
+Modify Vat Type
+
+Modifies the specified vat type.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using It.FattureInCloud.Sdk.Api;
+using It.FattureInCloud.Sdk.Client;
+using It.FattureInCloud.Sdk.Model;
+
+namespace Example
+{
+    public class ModifyVatTypeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api-v2.fattureincloud.it";
+            // Configure OAuth2 access token for authorization: OAuth2AuthenticationCodeFlow
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new SettingsApi(config);
+            var companyId = 12345;  // int | The ID of the company.
+            var vatTypeId = 56;  // int | The Referred Vat Type Id.
+            var modifyVatTypeRequest = new ModifyVatTypeRequest(); // ModifyVatTypeRequest |  (optional) 
+
+            try
+            {
+                // Modify Vat Type
+                ModifyVatTypeResponse result = apiInstance.ModifyVatType(companyId, vatTypeId, modifyVatTypeRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling SettingsApi.ModifyVatType: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **companyId** | **int**| The ID of the company. | 
+ **vatTypeId** | **int**| The Referred Vat Type Id. | 
+ **modifyVatTypeRequest** | [**ModifyVatTypeRequest**](ModifyVatTypeRequest.md)|  | [optional] 
+
+### Return type
+
+[**ModifyVatTypeResponse**](ModifyVatTypeResponse.md)
 
 ### Authorization
 

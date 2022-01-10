@@ -1,5 +1,4 @@
 # It.FattureInCloud.Sdk.Model.User
-The current user.
 
 ## Properties
 
