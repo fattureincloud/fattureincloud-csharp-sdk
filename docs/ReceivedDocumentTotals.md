@@ -1,5 +1,4 @@
 # It.FattureInCloud.Sdk.Model.ReceivedDocumentTotals
-Document Totals.
 
 ## Properties
 

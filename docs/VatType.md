@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int** | Unique identifier | [optional] 
-**Value** | **decimal** | Percentual value. | [optional] 
+**Value** | **decimal** | [Read Only] Percentual value. | [optional] 
 **Description** | **string** | Short description. | [optional] 
 **Notes** | **string** | Long description and notes shown in documents. | [optional] 
 **EInvoice** | **bool** | Usable for e-invoices. | [optional] 

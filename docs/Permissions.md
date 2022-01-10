@@ -1,5 +1,4 @@
 # It.FattureInCloud.Sdk.Model.Permissions
-Set of permissions.
 
 ## Properties
 

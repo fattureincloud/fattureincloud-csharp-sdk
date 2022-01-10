@@ -1,5 +1,4 @@
 # It.FattureInCloud.Sdk.Model.Receipt
-Receipt
 
 ## Properties
 

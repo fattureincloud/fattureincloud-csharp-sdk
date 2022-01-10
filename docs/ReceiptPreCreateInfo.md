@@ -1,5 +1,4 @@
 # It.FattureInCloud.Sdk.Model.ReceiptPreCreateInfo
-Pre-create info.
 
 ## Properties
 
