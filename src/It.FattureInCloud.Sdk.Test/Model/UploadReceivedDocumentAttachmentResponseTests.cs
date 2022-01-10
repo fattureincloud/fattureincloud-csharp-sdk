@@ -61,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            Assert.IsType<UploadReceivedDocumentAttachmentResponseData>(instance.Data);
+            Assert.IsType<AttachmentData>(instance.Data);
         }
 
     }

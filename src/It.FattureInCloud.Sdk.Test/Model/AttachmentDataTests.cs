@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class AttachmentDataTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for AttachmentData
-        //private AttachmentData instance;
+        private AttachmentData instance;
 
         public AttachmentDataTests()
         {
-            // TODO uncomment below to create an instance of AttachmentData
-            //instance = new AttachmentData();
+            var body = "{ 'attachment_token': 'YmMyNWYxYzIwMTU3N2Y4ZGE3ZjZiMzg5OWY0ODNkZDQveXl5LmRvYw' }";
+            instance = JsonConvert.DeserializeObject<AttachmentData>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AttachmentDataInstanceTest()
         {
-            // TODO uncomment below to test "IsType" AttachmentData
-            //Assert.IsType<AttachmentData>(instance);
+            Assert.IsType<AttachmentData>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AttachmentTokenTest()
         {
-            // TODO unit test for the property 'AttachmentToken'
+            Assert.IsType<string>(instance.AttachmentToken);
         }
 
     }

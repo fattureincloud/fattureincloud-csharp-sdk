@@ -53,13 +53,13 @@ namespace It.FattureInCloud.Sdk.Test.Api
             getPaymentAccountResponseBody = "{ 'data': { 'type': 'standard', 'name': 'Conto Banca Intesa', 'iban': 'string', 'sia': 'string', 'cuc': 'string', 'virtual': true } }";
             var getPaymentAccountResponse = JsonConvert.DeserializeObject<GetPaymentAccountResponse>(getPaymentAccountResponseBody);
             instance
-                .Setup(p => p.GetPaymentAccount(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<object>()))
+                .Setup(p => p.GetPaymentAccount(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
                 .Returns(getPaymentAccountResponse);
 
             modifyPaymentAccountResponseBody = "{ 'data': { 'type': 'standard', 'name': 'Conto Banca Intesa', 'iban': 'string', 'sia': 'string', 'cuc': 'string', 'virtual': true } }";
             var modifyPaymentAccountResponse = JsonConvert.DeserializeObject<ModifyPaymentAccountResponse>(modifyPaymentAccountResponseBody);
             instance
-                .Setup(p => p.ModifyPaymentAccount(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<ModifyPaymentAccountRequest>()))
+                .Setup(p => p.ModifyPaymentAccount(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifyPaymentAccountRequest>()))
                 .Returns(modifyPaymentAccountResponse);
 
             createPaymentMethodResponseBody = "{ 'data': { 'type': 'standard', 'id': 386683, 'name': 'Bonifico bancario', 'is_default': true, 'default_payment_account': { 'id': 12345, 'name': 'conto banca SP', 'iban': null, 'sia': null, 'virtual': false }, 'details': [ { 'title': 'Banca', 'description': 'Sao Paulo' } ], 'bank_iban': null, 'bank_name': null, 'bank_beneficiary': null } }";
@@ -150,12 +150,11 @@ namespace It.FattureInCloud.Sdk.Test.Api
         public void GetPaymentAccountTest()
         {
             int companyId = 2;
-            string paymentAccountId = "12345";
+            int paymentAccountId = 12345;
             string fields = "";
             string fieldset = "";
-            Object body = new object();
 
-            var response = instance.Object.GetPaymentAccount(companyId, paymentAccountId, fields, fieldset, body);
+            var response = instance.Object.GetPaymentAccount(companyId, paymentAccountId, fields, fieldset);
             JObject obj = JObject.Parse(getPaymentAccountResponseBody);
 
             Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
@@ -185,7 +184,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         public void ModifyPaymentAccountTest()
         {
             int companyId = 2;
-            string paymentAccountId = "12345";
+            int paymentAccountId = 12345;
             ModifyPaymentAccountRequest modifyPaymentAccountRequest = new ModifyPaymentAccountRequest();
 
             var response = instance.Object.ModifyPaymentAccount(companyId, paymentAccountId, modifyPaymentAccountRequest);

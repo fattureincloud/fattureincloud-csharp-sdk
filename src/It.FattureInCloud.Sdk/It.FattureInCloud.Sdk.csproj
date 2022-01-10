@@ -27,7 +27,7 @@
     <PackageReference Include="RestSharp" Version="106.13.0" />
     <PackageReference Include="Polly" Version="7.2.2" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
-    <None Include="README.md" Pack="true" PackagePath="\"/>
+    <None Include="../../README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>
