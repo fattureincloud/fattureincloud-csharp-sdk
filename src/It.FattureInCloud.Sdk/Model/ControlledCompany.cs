@@ -27,10 +27,10 @@ using OpenAPIDateConverter = It.FattureInCloud.Sdk.Client.OpenAPIDateConverter;
 namespace It.FattureInCloud.Sdk.Model
 {
     /// <summary>
-    /// CompanyInfo
+    /// ControlledCompany
     /// </summary>
-    [DataContract(Name = "CompanyInfo")]
-    public partial class CompanyInfo : IEquatable<CompanyInfo>, IValidatableObject
+    [DataContract(Name = "ControlledCompany")]
+    public partial class ControlledCompany : IEquatable<ControlledCompany>, IValidatableObject
     {
 
         /// <summary>
@@ -39,26 +39,22 @@ namespace It.FattureInCloud.Sdk.Model
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public CompanyType? Type { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="CompanyInfo" /> class.
+        /// Initializes a new instance of the <see cref="ControlledCompany" /> class.
         /// </summary>
         /// <param name="id">Company unique identifier..</param>
         /// <param name="name">Company name..</param>
-        /// <param name="email">Company email..</param>
         /// <param name="type">type.</param>
-        /// <param name="accessInfo">accessInfo.</param>
-        /// <param name="planInfo">planInfo.</param>
-        /// <param name="accountantId">Accountant unique identifier..</param>
-        /// <param name="isAccountant">Determine if the logged account is an accountant..</param>
-        public CompanyInfo(int id = default(int), string name = default(string), string email = default(string), CompanyType? type = default(CompanyType?), CompanyInfoAccessInfo accessInfo = default(CompanyInfoAccessInfo), CompanyInfoPlanInfo planInfo = default(CompanyInfoPlanInfo), int? accountantId = default(int?), bool isAccountant = default(bool))
+        /// <param name="accessToken">CompanyAuthentication token for this company. [Only if type&#x3D;company].</param>
+        /// <param name="connectionId">Company connection id..</param>
+        /// <param name="taxCode">Tax code..</param>
+        public ControlledCompany(int id = default(int), string name = default(string), CompanyType? type = default(CompanyType?), string accessToken = default(string), decimal connectionId = default(decimal), string taxCode = default(string))
         {
             this.Id = id;
             this.Name = name;
-            this.Email = email;
             this.Type = type;
-            this.AccessInfo = accessInfo;
-            this.PlanInfo = planInfo;
-            this.AccountantId = accountantId;
-            this.IsAccountant = isAccountant;
+            this.AccessToken = accessToken;
+            this.ConnectionId = connectionId;
+            this.TaxCode = taxCode;
         }
 
         /// <summary>
@@ -76,37 +72,25 @@ namespace It.FattureInCloud.Sdk.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Company email.
+        /// CompanyAuthentication token for this company. [Only if type&#x3D;company]
         /// </summary>
-        /// <value>Company email.</value>
-        [DataMember(Name = "email", EmitDefaultValue = false)]
-        public string Email { get; set; }
+        /// <value>CompanyAuthentication token for this company. [Only if type&#x3D;company]</value>
+        [DataMember(Name = "access_token", EmitDefaultValue = false)]
+        public string AccessToken { get; set; }
 
         /// <summary>
-        /// Gets or Sets AccessInfo
+        /// Company connection id.
         /// </summary>
-        [DataMember(Name = "access_info", EmitDefaultValue = false)]
-        public CompanyInfoAccessInfo AccessInfo { get; set; }
+        /// <value>Company connection id.</value>
+        [DataMember(Name = "connection_id", EmitDefaultValue = false)]
+        public decimal ConnectionId { get; set; }
 
         /// <summary>
-        /// Gets or Sets PlanInfo
+        /// Tax code.
         /// </summary>
-        [DataMember(Name = "plan_info", EmitDefaultValue = false)]
-        public CompanyInfoPlanInfo PlanInfo { get; set; }
-
-        /// <summary>
-        /// Accountant unique identifier.
-        /// </summary>
-        /// <value>Accountant unique identifier.</value>
-        [DataMember(Name = "accountant_id", EmitDefaultValue = true)]
-        public int? AccountantId { get; set; }
-
-        /// <summary>
-        /// Determine if the logged account is an accountant.
-        /// </summary>
-        /// <value>Determine if the logged account is an accountant.</value>
-        [DataMember(Name = "is_accountant", EmitDefaultValue = true)]
-        public bool IsAccountant { get; set; }
+        /// <value>Tax code.</value>
+        [DataMember(Name = "tax_code", EmitDefaultValue = false)]
+        public string TaxCode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -115,15 +99,13 @@ namespace It.FattureInCloud.Sdk.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class CompanyInfo {\n");
+            sb.Append("class ControlledCompany {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  AccessInfo: ").Append(AccessInfo).Append("\n");
-            sb.Append("  PlanInfo: ").Append(PlanInfo).Append("\n");
-            sb.Append("  AccountantId: ").Append(AccountantId).Append("\n");
-            sb.Append("  IsAccountant: ").Append(IsAccountant).Append("\n");
+            sb.Append("  AccessToken: ").Append(AccessToken).Append("\n");
+            sb.Append("  ConnectionId: ").Append(ConnectionId).Append("\n");
+            sb.Append("  TaxCode: ").Append(TaxCode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -144,15 +126,15 @@ namespace It.FattureInCloud.Sdk.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CompanyInfo);
+            return this.Equals(input as ControlledCompany);
         }
 
         /// <summary>
-        /// Returns true if CompanyInfo instances are equal
+        /// Returns true if ControlledCompany instances are equal
         /// </summary>
-        /// <param name="input">Instance of CompanyInfo to be compared</param>
+        /// <param name="input">Instance of ControlledCompany to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CompanyInfo input)
+        public bool Equals(ControlledCompany input)
         {
             if (input == null)
             {
@@ -169,32 +151,22 @@ namespace It.FattureInCloud.Sdk.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Email == input.Email ||
-                    (this.Email != null &&
-                    this.Email.Equals(input.Email))
-                ) && 
-                (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
                 ) && 
                 (
-                    this.AccessInfo == input.AccessInfo ||
-                    (this.AccessInfo != null &&
-                    this.AccessInfo.Equals(input.AccessInfo))
+                    this.AccessToken == input.AccessToken ||
+                    (this.AccessToken != null &&
+                    this.AccessToken.Equals(input.AccessToken))
                 ) && 
                 (
-                    this.PlanInfo == input.PlanInfo ||
-                    (this.PlanInfo != null &&
-                    this.PlanInfo.Equals(input.PlanInfo))
+                    this.ConnectionId == input.ConnectionId ||
+                    this.ConnectionId.Equals(input.ConnectionId)
                 ) && 
                 (
-                    this.AccountantId == input.AccountantId ||
-                    (this.AccountantId != null &&
-                    this.AccountantId.Equals(input.AccountantId))
-                ) && 
-                (
-                    this.IsAccountant == input.IsAccountant ||
-                    this.IsAccountant.Equals(input.IsAccountant)
+                    this.TaxCode == input.TaxCode ||
+                    (this.TaxCode != null &&
+                    this.TaxCode.Equals(input.TaxCode))
                 );
         }
 
@@ -212,24 +184,16 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
-                if (this.Email != null)
-                {
-                    hashCode = (hashCode * 59) + this.Email.GetHashCode();
-                }
                 hashCode = (hashCode * 59) + this.Type.GetHashCode();
-                if (this.AccessInfo != null)
+                if (this.AccessToken != null)
                 {
-                    hashCode = (hashCode * 59) + this.AccessInfo.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AccessToken.GetHashCode();
                 }
-                if (this.PlanInfo != null)
+                hashCode = (hashCode * 59) + this.ConnectionId.GetHashCode();
+                if (this.TaxCode != null)
                 {
-                    hashCode = (hashCode * 59) + this.PlanInfo.GetHashCode();
+                    hashCode = (hashCode * 59) + this.TaxCode.GetHashCode();
                 }
-                if (this.AccountantId != null)
-                {
-                    hashCode = (hashCode * 59) + this.AccountantId.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.IsAccountant.GetHashCode();
                 return hashCode;
             }
         }

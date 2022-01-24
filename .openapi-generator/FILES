@@ -27,6 +27,7 @@ docs/CompanyInfoPlanInfoFunctions.md
 docs/CompanyInfoPlanInfoFunctionsStatus.md
 docs/CompanyInfoPlanInfoLimits.md
 docs/CompanyType.md
+docs/ControlledCompany.md
 docs/CreateArchiveDocumentRequest.md
 docs/CreateArchiveDocumentResponse.md
 docs/CreateCashbookEntryRequest.md
@@ -227,13 +228,7 @@ docs/VerifyEInvoiceXmlErrorResponseExtra.md
 docs/VerifyEInvoiceXmlResponse.md
 docs/VerifyEInvoiceXmlResponseData.md
 src/It.FattureInCloud.Sdk.Test/It.FattureInCloud.Sdk.Test.csproj
-src/It.FattureInCloud.Sdk.Test/Model/AttachmentDataTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/CreateVatTypeRequestTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/CreateVatTypeResponseTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/GetVatTypeResponseTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/ModifyVatTypeRequestTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/ModifyVatTypeResponseTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/VerifyEInvoiceXmlResponseDataTests.cs
+src/It.FattureInCloud.Sdk.Test/Model/ControlledCompanyTests.cs
 src/It.FattureInCloud.Sdk/Api/ArchiveApi.cs
 src/It.FattureInCloud.Sdk/Api/CashbookApi.cs
 src/It.FattureInCloud.Sdk/Api/ClientsApi.cs
@@ -288,6 +283,7 @@ src/It.FattureInCloud.Sdk/Model/CompanyInfoPlanInfoFunctions.cs
 src/It.FattureInCloud.Sdk/Model/CompanyInfoPlanInfoFunctionsStatus.cs
 src/It.FattureInCloud.Sdk/Model/CompanyInfoPlanInfoLimits.cs
 src/It.FattureInCloud.Sdk/Model/CompanyType.cs
+src/It.FattureInCloud.Sdk/Model/ControlledCompany.cs
 src/It.FattureInCloud.Sdk/Model/CreateArchiveDocumentRequest.cs
 src/It.FattureInCloud.Sdk/Model/CreateArchiveDocumentResponse.cs
 src/It.FattureInCloud.Sdk/Model/CreateCashbookEntryRequest.cs
