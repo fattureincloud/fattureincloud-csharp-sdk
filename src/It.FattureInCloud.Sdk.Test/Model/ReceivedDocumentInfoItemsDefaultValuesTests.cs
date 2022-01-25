@@ -61,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VatTest()
         {
-            Assert.IsType<int>(instance.Vat);
+            Assert.IsType<Decimal>(instance.Vat);
         }
 
     }

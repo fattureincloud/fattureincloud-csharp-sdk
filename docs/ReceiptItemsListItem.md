@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **decimal** | Item unique identifier. | [optional] 
+**Id** | **int** | Item unique identifier. | [optional] 
 **AmountNet** | **decimal** | Item total net amount. | [optional] 
 **AmountGross** | **decimal** | Item total gross amount. | [optional] 
 **Category** | **string** | Item category. | [optional] 

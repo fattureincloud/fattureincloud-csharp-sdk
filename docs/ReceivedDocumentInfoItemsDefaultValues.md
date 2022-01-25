@@ -5,7 +5,7 @@ Default values for the document items.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Vat** | **int?** | Default vat value. | [optional] 
+**Vat** | **decimal?** | Default vat value. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
