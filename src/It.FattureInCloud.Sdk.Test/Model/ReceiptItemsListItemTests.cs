@@ -61,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IdTest()
         {
-            Assert.IsType<decimal>(instance.Id);
+            Assert.IsType<int>(instance.Id);
         }
         /// <summary>
         /// Test the property 'AmountNet'

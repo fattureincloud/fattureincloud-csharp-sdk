@@ -37,6 +37,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         Mock<IIssuedEInvoicesApi> instance = new Mock<IIssuedEInvoicesApi>();
         string sendEInvoiceResponseBody;
         string verifyEInvoiceXmlResponseBody;
+        string getEInvoiceXmlResponseBody;
 
         public IssuedEInvoicesApiTests()
         {
@@ -51,6 +52,12 @@ namespace It.FattureInCloud.Sdk.Test.Api
             instance
                 .Setup(p => p.VerifyEInvoiceXml(Moq.It.IsAny<int>(), Moq.It.IsAny<int>()))
                 .Returns(verifyEInvoiceXmlResponse);
+
+            getEInvoiceXmlResponseBody = "<xmlFattura>fields</xmlFattura>";
+            var getEInvoiceXmlResponse = getEInvoiceXmlResponseBody;
+            instance
+                .Setup(p => p.GetEInvoiceXml(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), true))
+                .Returns(getEInvoiceXmlResponse);
 
         }
 
@@ -98,6 +105,20 @@ namespace It.FattureInCloud.Sdk.Test.Api
 
             var jobj = JObject.FromObject(response);
             Assert.True(JToken.DeepEquals(obj, jobj));
+        }
+
+        /// <summary>
+        /// Test GetEInvoiceXml
+        /// </summary>
+        [Fact]
+        public void GetEInvoiceXmlTest()
+        {
+            int companyId = 2;
+            int documentId = 12345;
+
+            var response = instance.Object.GetEInvoiceXml(companyId, documentId, true);
+
+            Assert.True(response == getEInvoiceXmlResponseBody);
         }
     }
 }

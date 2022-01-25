@@ -36,7 +36,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
 
         public IssuedDocumentItemsListTests()
         {
-            var body = "{ 'product_id': 12345, 'code': 'cod3', 'name': 'prod 1', 'description': 'product number uan', 'qty': 44, 'measure': 'very big', 'net_price': 10, 'gross_price': 12.2, 'not_taxable': false, 'apply_withholding_taxes': true, 'discount': 0, 'discount_highlight': true, 'in_ddt': false, 'stock': 89, 'vat': { 'id': 21 }, 'ei_raw': { 'prop': true } }";
+            var body = "{ 'product_id': 12345, 'code': 'cod3', 'name': 'prod 1', 'description': 'product number uan', 'category': 'cat5','qty': 44, 'measure': 'very big', 'net_price': 10, 'gross_price': 12.2, 'not_taxable': false, 'apply_withholding_taxes': true, 'discount': 0, 'discount_highlight': true, 'in_ddt': false, 'stock': 89, 'vat': { 'id': 21 }, 'ei_raw': { 'prop': true } }";
             instance = JsonConvert.DeserializeObject<IssuedDocumentItemsList>(body);
         }
 
@@ -86,6 +86,14 @@ namespace It.FattureInCloud.Sdk.Test.Model
         public void DescriptionTest()
         {
             Assert.IsType<string>(instance.Description);
+        }
+        /// <summary>
+        /// Test the property 'Category'
+        /// </summary>
+        [Fact]
+        public void CategoryTest()
+        {
+            Assert.IsType<string>(instance.Category);
         }
         /// <summary>
         /// Test the property 'Qty'

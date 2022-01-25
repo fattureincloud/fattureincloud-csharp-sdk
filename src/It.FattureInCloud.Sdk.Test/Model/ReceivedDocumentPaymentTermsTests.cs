@@ -61,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DaysTest()
         {
-            Assert.IsType<decimal>(instance.Days);
+            Assert.IsType<int>(instance.Days);
         }
         /// <summary>
         /// Test the property 'Type'

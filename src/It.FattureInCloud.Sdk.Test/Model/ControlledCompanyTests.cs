@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ControlledCompanyTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ControlledCompany
-        //private ControlledCompany instance;
+        private ControlledCompany instance;
 
         public ControlledCompanyTests()
         {
-            // TODO uncomment below to create an instance of ControlledCompany
-            //instance = new ControlledCompany();
+            var body = "{ 'id': 12345, 'name': 'Studio Commercialista', 'tax_code': 'ABCSFN94T17A794K', 'type': 'accountant', 'access_token': '4ff5f0fe5abcd1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4f7362a848fa32dbb8c3a3f94c34f3df95', 'connection_id': 94566, 'access_token': 'ergaegwergq53wh65je5j' }";
+            instance = JsonConvert.DeserializeObject<ControlledCompany>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ControlledCompanyInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ControlledCompany
-            //Assert.IsType<ControlledCompany>(instance);
+            Assert.IsType<ControlledCompany>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IdTest()
         {
-            // TODO unit test for the property 'Id'
+            Assert.IsType<int>(instance.Id);
         }
         /// <summary>
         /// Test the property 'Name'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NameTest()
         {
-            // TODO unit test for the property 'Name'
+            Assert.IsType<string>(instance.Name);
         }
         /// <summary>
         /// Test the property 'Type'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TypeTest()
         {
-            // TODO unit test for the property 'Type'
+            Assert.IsType<CompanyType>(instance.Type);
         }
         /// <summary>
         /// Test the property 'AccessToken'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AccessTokenTest()
         {
-            // TODO unit test for the property 'AccessToken'
+            Assert.IsType<string>(instance.AccessToken);
         }
         /// <summary>
         /// Test the property 'ConnectionId'
@@ -95,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ConnectionIdTest()
         {
-            // TODO unit test for the property 'ConnectionId'
+            Assert.IsType<decimal>(instance.ConnectionId);
         }
         /// <summary>
         /// Test the property 'TaxCode'
@@ -103,7 +101,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TaxCodeTest()
         {
-            // TODO unit test for the property 'TaxCode'
+            Assert.IsType<string>(instance.TaxCode);
         }
 
     }
