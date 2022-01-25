@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.4 (2022-01-25)
+
+
+### Bug Fixes
+
+* added get xml method ([f58645d](https://github.com/fattureincloud/fattureincloud-csharp-sdk/commit/f58645dfcf8c061eb5eea38c77c92c2e0d76c64a))
+
 ### 2.0.3 (2022-01-10)
 
 ### 2.0.2 (2021-12-02)
