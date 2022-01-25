@@ -61,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SenderIdTest()
         {
-            Assert.IsType<decimal>(instance.SenderId);
+            Assert.IsType<int>(instance.SenderId);
         }
         /// <summary>
         /// Test the property 'SenderEmail'

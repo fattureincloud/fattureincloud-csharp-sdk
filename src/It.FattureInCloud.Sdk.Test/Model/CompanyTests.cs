@@ -85,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ControlledCompaniesTest()
         {
-            Assert.IsType<List<Company>>(instance.ControlledCompanies);
+            Assert.IsType<List<ControlledCompany>>(instance.ControlledCompanies);
         }
         /// <summary>
         /// Test the property 'ConnectionId'
@@ -93,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ConnectionIdTest()
         {
-            Assert.IsType<decimal>(instance.ConnectionId);
+            Assert.IsType<int>(instance.ConnectionId);
         }
         /// <summary>
         /// Test the property 'TaxCode'
