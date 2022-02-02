@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "It.FattureInCloud.Sdk", "src\It.FattureInCloud.Sdk\It.FattureInCloud.Sdk.csproj", "{741EC148-3984-4597-8C0A-7636F89B0E0A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "It.FattureInCloud.Sdk", "src\It.FattureInCloud.Sdk\It.FattureInCloud.Sdk.csproj", "{05DE26E4-6E99-42DD-A786-62C758AB7B0B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "It.FattureInCloud.Sdk.Test", "src\It.FattureInCloud.Sdk.Test\It.FattureInCloud.Sdk.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
@@ -12,10 +12,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{741EC148-3984-4597-8C0A-7636F89B0E0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{741EC148-3984-4597-8C0A-7636F89B0E0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{741EC148-3984-4597-8C0A-7636F89B0E0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{741EC148-3984-4597-8C0A-7636F89B0E0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05DE26E4-6E99-42DD-A786-62C758AB7B0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05DE26E4-6E99-42DD-A786-62C758AB7B0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05DE26E4-6E99-42DD-A786-62C758AB7B0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05DE26E4-6E99-42DD-A786-62C758AB7B0B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU

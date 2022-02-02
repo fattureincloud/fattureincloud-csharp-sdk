@@ -194,8 +194,8 @@ namespace Example
             var apiInstance = new SuppliersApi(config);
             var companyId = 12345;  // int | The ID of the company.
             var supplierId = 56;  // int | The ID of the supplier.
-            var fields = fields_example;  // string | List of comma-separated fields. (optional) 
-            var fieldset = fieldset_example;  // string | Name of the fieldset. (optional) 
+            var fields = "fields_example";  // string | List of comma-separated fields. (optional) 
+            var fieldset = "basic";  // string | Name of the fieldset. (optional) 
 
             try
             {
@@ -275,11 +275,11 @@ namespace Example
 
             var apiInstance = new SuppliersApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var fields = fields_example;  // string | List of comma-separated fields. (optional) 
-            var fieldset = fieldset_example;  // string | Name of the fieldset. (optional) 
-            var sort = sort_example;  // string | List of comma-separated fields for result sorting (minus for desc sorting). (optional) 
-            var page = 56;  // int? | The page to retrieve. (optional)  (default to 1)
-            var perPage = 56;  // int? | The size of the page. (optional)  (default to 5)
+            var fields = "fields_example";  // string | List of comma-separated fields. (optional) 
+            var fieldset = "basic";  // string | Name of the fieldset. (optional) 
+            var sort = "sort_example";  // string | List of comma-separated fields for result sorting (minus for desc sorting). (optional) 
+            var page = 1;  // int? | The page to retrieve. (optional)  (default to 1)
+            var perPage = 5;  // int? | The size of the page. (optional)  (default to 5)
 
             try
             {

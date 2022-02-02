@@ -275,8 +275,8 @@ namespace Example
             var apiInstance = new TaxesApi(config);
             var companyId = 12345;  // int | The ID of the company.
             var documentId = 56;  // int | The ID of the document.
-            var fields = fields_example;  // string | List of comma-separated fields. (optional) 
-            var fieldset = fieldset_example;  // string | Name of the fieldset. (optional) 
+            var fields = "fields_example";  // string | List of comma-separated fields. (optional) 
+            var fieldset = "basic";  // string | Name of the fieldset. (optional) 
 
             try
             {
@@ -356,11 +356,11 @@ namespace Example
 
             var apiInstance = new TaxesApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var fields = fields_example;  // string | List of comma-separated fields. (optional) 
-            var fieldset = fieldset_example;  // string | Name of the fieldset. (optional) 
-            var sort = sort_example;  // string | List of comma-separated fields for result sorting (minus for desc sorting). (optional) 
-            var page = 56;  // int? | The page to retrieve. (optional)  (default to 1)
-            var perPage = 56;  // int? | The size of the page. (optional)  (default to 5)
+            var fields = "fields_example";  // string | List of comma-separated fields. (optional) 
+            var fieldset = "basic";  // string | Name of the fieldset. (optional) 
+            var sort = "sort_example";  // string | List of comma-separated fields for result sorting (minus for desc sorting). (optional) 
+            var page = 1;  // int? | The page to retrieve. (optional)  (default to 1)
+            var perPage = 5;  // int? | The size of the page. (optional)  (default to 5)
 
             try
             {
@@ -521,8 +521,8 @@ namespace Example
 
             var apiInstance = new TaxesApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var filename = filename_example;  // string | Name of the file. (optional) 
-            var attachment = BINARY_DATA_HERE;  // System.IO.Stream | Valid format: .png, .jpg, .gif, .pdf, .zip, .xls, .xlsx, .doc, .docx (optional) 
+            var filename = "filename_example";  // string | Name of the file. (optional) 
+            var attachment = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream | Valid format: .png, .jpg, .gif, .pdf, .zip, .xls, .xlsx, .doc, .docx (optional) 
 
             try
             {
