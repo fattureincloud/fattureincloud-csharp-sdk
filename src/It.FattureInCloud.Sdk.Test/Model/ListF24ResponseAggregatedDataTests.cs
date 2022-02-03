@@ -56,12 +56,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
 
 
         /// <summary>
-        /// Test the property 'AggregatedData'
+        /// Test the property 'Amount'
         /// </summary>
         [Fact]
         public void AggregatedDataTest()
         {
-            Assert.IsType<ListF24ResponseAggregatedDataAggregatedData>(instance.AggregatedData);
+            Assert.IsType<Decimal>(instance.Amount);
         }
 
     }

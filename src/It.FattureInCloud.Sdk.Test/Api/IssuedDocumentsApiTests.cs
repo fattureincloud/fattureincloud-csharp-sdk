@@ -261,7 +261,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
 
             var response = instance.Object.ModifyIssuedDocument(companyId, documentId, modifyIssuedDocumentRequest);
             JObject obj = JObject.Parse(modifyIssuedDocumentResponseBody);
-            Console.Write(JObject.FromObject(response));
+
             Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
