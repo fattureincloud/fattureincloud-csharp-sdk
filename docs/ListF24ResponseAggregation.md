@@ -1,10 +1,10 @@
-# It.FattureInCloud.Sdk.Model.UploadReceivedDocumentAttachmentResponseData
+# It.FattureInCloud.Sdk.Model.ListF24ResponseAggregation
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AttachmentToken** | **string** | Uploaded attachment token. | [optional] 
+**AggregatedData** | [**ListF24ResponseAggregatedData**](ListF24ResponseAggregatedData.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

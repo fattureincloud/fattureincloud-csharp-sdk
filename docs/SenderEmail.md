@@ -1,10 +1,11 @@
-# It.FattureInCloud.Sdk.Model.UploadIssuedDocumentAttachmentResponseData
+# It.FattureInCloud.Sdk.Model.SenderEmail
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AttachmentToken** | **string** | Uploaded attachment token. | [optional] 
+**Id** | **int** | Id | [optional] 
+**Email** | **string** | Email address | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

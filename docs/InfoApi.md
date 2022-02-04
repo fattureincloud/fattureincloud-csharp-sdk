@@ -125,8 +125,8 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new InfoApi(config);
-            var postalCode = postalCode_example;  // string | Postal code for filtering. (optional) 
-            var city = city_example;  // string | City for filtering (ignored if postal_code is passed). (optional) 
+            var postalCode = "postalCode_example";  // string | Postal code for filtering. (optional) 
+            var city = "city_example";  // string | City for filtering (ignored if postal_code is passed). (optional) 
 
             try
             {
@@ -562,9 +562,9 @@ namespace Example
 
             var apiInstance = new InfoApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var fields = fields_example;  // string | List of comma-separated fields. (optional) 
-            var fieldset = fieldset_example;  // string | Name of the fieldset. (optional) 
-            var sort = sort_example;  // string | List of comma-separated fields for result sorting (minus for desc sorting). (optional) 
+            var fields = "fields_example";  // string | List of comma-separated fields. (optional) 
+            var fieldset = "basic";  // string | Name of the fieldset. (optional) 
+            var sort = "sort_example";  // string | List of comma-separated fields for result sorting (minus for desc sorting). (optional) 
 
             try
             {
@@ -644,9 +644,9 @@ namespace Example
 
             var apiInstance = new InfoApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var fields = fields_example;  // string | List of comma-separated fields. (optional) 
-            var fieldset = fieldset_example;  // string | Name of the fieldset. (optional) 
-            var sort = sort_example;  // string | List of comma-separated fields for result sorting (minus for desc sorting). (optional) 
+            var fields = "fields_example";  // string | List of comma-separated fields. (optional) 
+            var fieldset = "basic";  // string | Name of the fieldset. (optional) 
+            var sort = "sort_example";  // string | List of comma-separated fields for result sorting (minus for desc sorting). (optional) 
 
             try
             {
@@ -726,7 +726,7 @@ namespace Example
 
             var apiInstance = new InfoApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var context = context_example;  // string | 
+            var context = "products";  // string | 
 
             try
             {
@@ -953,8 +953,8 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new InfoApi(config);
-            var type = type_example;  // string | Type of the templates. (optional)  (default to all)
-            var byType = true;  // bool? | [Only if type=all] If true, splits the list in objects, grouping templates by type. (optional)  (default to false)
+            var type = "all";  // string | Type of the templates. (optional)  (default to all)
+            var byType = false;  // bool? | [Only if type=all] If true, splits the list in objects, grouping templates by type. (optional)  (default to false)
 
             try
             {
@@ -1102,7 +1102,7 @@ namespace Example
 
             var apiInstance = new InfoApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var fieldset = fieldset_example;  // string | Name of the fieldset. (optional) 
+            var fieldset = "basic";  // string | Name of the fieldset. (optional) 
 
             try
             {

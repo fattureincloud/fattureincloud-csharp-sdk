@@ -1,4 +1,4 @@
-# It.FattureInCloud.Sdk.Model.ReceivedDocumentPaymentsList
+# It.FattureInCloud.Sdk.Model.ReceivedDocumentPaymentsListItem
 
 ## Properties
 
@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Amount** | **decimal** | Amount of items. | [optional] 
 **DueDate** | **DateTimeOffset** | Due date | [optional] 
 **PaidDate** | **DateTimeOffset** | Paid date | [optional] 
-**PaymentTerms** | [**ReceivedDocumentPaymentTerms**](ReceivedDocumentPaymentTerms.md) |  | [optional] 
+**PaymentTerms** | [**ReceivedDocumentPaymentsListItemPaymentTerms**](ReceivedDocumentPaymentsListItemPaymentTerms.md) |  | [optional] 
 **Status** | **string** | Payment status. | [optional] 
 **PaymentAccount** | [**PaymentAccount**](PaymentAccount.md) |  | [optional] 
 

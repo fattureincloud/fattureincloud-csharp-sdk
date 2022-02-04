@@ -1,9 +1,10 @@
-# It.FattureInCloud.Sdk.Model.IssuedDocumentItemsList
+# It.FattureInCloud.Sdk.Model.IssuedDocumentItemsListItem
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | **int** | Unique identifier. | [optional] 
 **ProductId** | **int?** | Unique identifier of the product. | [optional] 
 **Code** | **string** | Product code. | [optional] 
 **Name** | **string** | Product name. | [optional] 

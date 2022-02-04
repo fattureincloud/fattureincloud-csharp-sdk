@@ -501,8 +501,8 @@ namespace Example
             var apiInstance = new SettingsApi(config);
             var companyId = 12345;  // int | The ID of the company.
             var paymentAccountId = 56;  // int | The Referred Payment Account Id.
-            var fields = fields_example;  // string | List of comma-separated fields. (optional) 
-            var fieldset = fieldset_example;  // string | Name of the fieldset. (optional) 
+            var fields = "fields_example";  // string | List of comma-separated fields. (optional) 
+            var fieldset = "basic";  // string | Name of the fieldset. (optional) 
 
             try
             {
@@ -581,8 +581,8 @@ namespace Example
             var apiInstance = new SettingsApi(config);
             var companyId = 12345;  // int | The ID of the company.
             var paymentMethodId = 56;  // int | The Referred Payment Method Id.
-            var fields = fields_example;  // string | List of comma-separated fields. (optional) 
-            var fieldset = fieldset_example;  // string | Name of the fieldset. (optional) 
+            var fields = "fields_example";  // string | List of comma-separated fields. (optional) 
+            var fieldset = "basic";  // string | Name of the fieldset. (optional) 
 
             try
             {

@@ -197,8 +197,8 @@ namespace Example
             var apiInstance = new ReceiptsApi(config);
             var companyId = 12345;  // int | The ID of the company.
             var documentId = 56;  // int | The ID of the document.
-            var fields = fields_example;  // string | List of comma-separated fields. (optional) 
-            var fieldset = fieldset_example;  // string | Name of the fieldset. (optional) 
+            var fields = "fields_example";  // string | List of comma-separated fields. (optional) 
+            var fieldset = "basic";  // string | Name of the fieldset. (optional) 
 
             try
             {
@@ -354,8 +354,8 @@ namespace Example
 
             var apiInstance = new ReceiptsApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var type = type_example;  // string | Receipt Type
-            var year = year_example;  // string | Year for which you want monthly totals
+            var type = "sales_receipt";  // string | Receipt Type
+            var year = "year_example";  // string | Year for which you want monthly totals
 
             try
             {
@@ -434,11 +434,11 @@ namespace Example
 
             var apiInstance = new ReceiptsApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var fields = fields_example;  // string | List of comma-separated fields. (optional) 
-            var fieldset = fieldset_example;  // string | Name of the fieldset. (optional) 
-            var page = 56;  // int? | The page to retrieve. (optional)  (default to 1)
-            var perPage = 56;  // int? | The size of the page. (optional)  (default to 5)
-            var sort = sort_example;  // string | List of comma-separated fields for result sorting (minus for desc sorting). (optional) 
+            var fields = "fields_example";  // string | List of comma-separated fields. (optional) 
+            var fieldset = "basic";  // string | Name of the fieldset. (optional) 
+            var page = 1;  // int? | The page to retrieve. (optional)  (default to 1)
+            var perPage = 5;  // int? | The size of the page. (optional)  (default to 5)
+            var sort = "sort_example";  // string | List of comma-separated fields for result sorting (minus for desc sorting). (optional) 
 
             try
             {

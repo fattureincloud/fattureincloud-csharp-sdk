@@ -1,10 +1,10 @@
-# It.FattureInCloud.Sdk.Model.ReceivedDocumentItemsList
+# It.FattureInCloud.Sdk.Model.ReceivedDocumentItemsListItem
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int** |  | [optional] 
+**Id** | **int** | Unique identifier. | [optional] 
 **ProductId** | **int** | Unique identifier of the product | [optional] 
 **Code** | **string** | Product code. | [optional] 
 **Name** | **string** | Product name. | [optional] 

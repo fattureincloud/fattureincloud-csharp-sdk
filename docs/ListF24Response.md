@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **To** | **int?** | Last result of the page. | [optional] 
 **Total** | **int** | Total number of results | [optional] 
 **Data** | [**List&lt;F24&gt;**](F24.md) |  | [optional] 
-**AggregatedData** | [**ListF24ResponseAggregatedDataAggregatedData**](ListF24ResponseAggregatedDataAggregatedData.md) |  | [optional] 
+**AggregatedData** | [**ListF24ResponseAggregatedData**](ListF24ResponseAggregatedData.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
