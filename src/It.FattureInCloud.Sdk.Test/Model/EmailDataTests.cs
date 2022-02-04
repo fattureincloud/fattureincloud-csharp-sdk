@@ -77,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SenderEmailsListTest()
         {
-            Assert.IsType<List<EmailDataSenderEmailsList>>(instance.SenderEmailsList);
+            Assert.IsType<List<SenderEmail>>(instance.SenderEmailsList);
         }
         /// <summary>
         /// Test the property 'CcEmail'

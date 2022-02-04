@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class IssuedDocumentItemsListItemTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for IssuedDocumentItemsListItem
-        //private IssuedDocumentItemsListItem instance;
+        private IssuedDocumentItemsListItem instance;
 
         public IssuedDocumentItemsListItemTests()
         {
-            // TODO uncomment below to create an instance of IssuedDocumentItemsListItem
-            //instance = new IssuedDocumentItemsListItem();
+            var body = "{ 'product_id': 12345, 'code': 'cod3', 'name': 'prod 1', 'description': 'product number uan', 'category': 'cat5','qty': 44, 'measure': 'very big', 'net_price': 10, 'gross_price': 12.2, 'not_taxable': false, 'apply_withholding_taxes': true, 'discount': 0, 'discount_highlight': true, 'in_ddt': false, 'stock': 89, 'vat': { 'id': 21 }, 'ei_raw': { 'prop': true } }";
+            instance = JsonConvert.DeserializeObject<IssuedDocumentItemsListItem>(body);
         }
 
         public void Dispose()
@@ -50,28 +49,19 @@ namespace It.FattureInCloud.Sdk.Test.Model
         /// Test an instance of IssuedDocumentItemsListItem
         /// </summary>
         [Fact]
-        public void IssuedDocumentItemsListItemInstanceTest()
+        public void IssuedDocumentItemsListInstanceTest()
         {
-            // TODO uncomment below to test "IsType" IssuedDocumentItemsListItem
-            //Assert.IsType<IssuedDocumentItemsListItem>(instance);
+            Assert.IsType<IssuedDocumentItemsListItem>(instance);
         }
 
 
-        /// <summary>
-        /// Test the property 'Id'
-        /// </summary>
-        [Fact]
-        public void IdTest()
-        {
-            // TODO unit test for the property 'Id'
-        }
         /// <summary>
         /// Test the property 'ProductId'
         /// </summary>
         [Fact]
         public void ProductIdTest()
         {
-            // TODO unit test for the property 'ProductId'
+            Assert.IsType<int>(instance.ProductId);
         }
         /// <summary>
         /// Test the property 'Code'
@@ -79,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CodeTest()
         {
-            // TODO unit test for the property 'Code'
+            Assert.IsType<string>(instance.Code);
         }
         /// <summary>
         /// Test the property 'Name'
@@ -87,15 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NameTest()
         {
-            // TODO unit test for the property 'Name'
-        }
-        /// <summary>
-        /// Test the property 'Category'
-        /// </summary>
-        [Fact]
-        public void CategoryTest()
-        {
-            // TODO unit test for the property 'Category'
+            Assert.IsType<string>(instance.Name);
         }
         /// <summary>
         /// Test the property 'Description'
@@ -103,7 +85,15 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DescriptionTest()
         {
-            // TODO unit test for the property 'Description'
+            Assert.IsType<string>(instance.Description);
+        }
+        /// <summary>
+        /// Test the property 'Category'
+        /// </summary>
+        [Fact]
+        public void CategoryTest()
+        {
+            Assert.IsType<string>(instance.Category);
         }
         /// <summary>
         /// Test the property 'Qty'
@@ -111,7 +101,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void QtyTest()
         {
-            // TODO unit test for the property 'Qty'
+            Assert.IsType<decimal>(instance.Qty);
         }
         /// <summary>
         /// Test the property 'Measure'
@@ -119,7 +109,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void MeasureTest()
         {
-            // TODO unit test for the property 'Measure'
+            Assert.IsType<string>(instance.Measure);
         }
         /// <summary>
         /// Test the property 'NetPrice'
@@ -127,7 +117,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NetPriceTest()
         {
-            // TODO unit test for the property 'NetPrice'
+            Assert.IsType<decimal>(instance.NetPrice);
         }
         /// <summary>
         /// Test the property 'GrossPrice'
@@ -135,7 +125,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void GrossPriceTest()
         {
-            // TODO unit test for the property 'GrossPrice'
+            Assert.IsType<decimal>(instance.GrossPrice);
         }
         /// <summary>
         /// Test the property 'Vat'
@@ -143,7 +133,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VatTest()
         {
-            // TODO unit test for the property 'Vat'
+            Assert.IsType<VatType>(instance.Vat);
         }
         /// <summary>
         /// Test the property 'NotTaxable'
@@ -151,7 +141,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NotTaxableTest()
         {
-            // TODO unit test for the property 'NotTaxable'
+            Assert.IsType<bool>(instance.NotTaxable);
         }
         /// <summary>
         /// Test the property 'ApplyWithholdingTaxes'
@@ -159,7 +149,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ApplyWithholdingTaxesTest()
         {
-            // TODO unit test for the property 'ApplyWithholdingTaxes'
+            Assert.IsType<bool>(instance.ApplyWithholdingTaxes);
         }
         /// <summary>
         /// Test the property 'Discount'
@@ -167,7 +157,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DiscountTest()
         {
-            // TODO unit test for the property 'Discount'
+            Assert.IsType<decimal>(instance.Discount);
         }
         /// <summary>
         /// Test the property 'DiscountHighlight'
@@ -175,7 +165,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DiscountHighlightTest()
         {
-            // TODO unit test for the property 'DiscountHighlight'
+            Assert.IsType<bool>(instance.DiscountHighlight);
         }
         /// <summary>
         /// Test the property 'InDdt'
@@ -183,7 +173,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void InDdtTest()
         {
-            // TODO unit test for the property 'InDdt'
+            Assert.IsType<bool>(instance.InDdt);
         }
         /// <summary>
         /// Test the property 'Stock'
@@ -191,7 +181,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void StockTest()
         {
-            // TODO unit test for the property 'Stock'
+            Assert.IsType<bool>(instance.Stock);
         }
         /// <summary>
         /// Test the property 'EiRaw'
@@ -199,7 +189,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EiRawTest()
         {
-            // TODO unit test for the property 'EiRaw'
+            Assert.IsType<Newtonsoft.Json.Linq.JObject>(instance.EiRaw);
         }
 
     }

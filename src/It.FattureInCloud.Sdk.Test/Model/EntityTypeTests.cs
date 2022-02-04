@@ -32,13 +32,11 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class EntityTypeTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for EntityType
-        //private EntityType instance;
+        private EntityType instance;
 
         public EntityTypeTests()
         {
-            // TODO uncomment below to create an instance of EntityType
-            //instance = new EntityType();
+            instance = EntityType.Person;
         }
 
         public void Dispose()
@@ -52,11 +50,8 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EntityTypeInstanceTest()
         {
-            // TODO uncomment below to test "IsType" EntityType
-            //Assert.IsType<EntityType>(instance);
+            Assert.IsType<EntityType>(instance);
         }
-
-
 
     }
 

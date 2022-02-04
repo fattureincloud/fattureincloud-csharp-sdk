@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ReceivedDocumentPaymentsListItemPaymentTermsTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ReceivedDocumentPaymentsListItemPaymentTerms
-        //private ReceivedDocumentPaymentsListItemPaymentTerms instance;
+        private ReceivedDocumentPaymentsListItemPaymentTerms instance;
 
         public ReceivedDocumentPaymentsListItemPaymentTermsTests()
         {
-            // TODO uncomment below to create an instance of ReceivedDocumentPaymentsListItemPaymentTerms
-            //instance = new ReceivedDocumentPaymentsListItemPaymentTerms();
+            var body = "{'days':0,'type':'standard'}";
+            instance = JsonConvert.DeserializeObject<ReceivedDocumentPaymentsListItemPaymentTerms>(body);
         }
 
         public void Dispose()
@@ -50,10 +49,9 @@ namespace It.FattureInCloud.Sdk.Test.Model
         /// Test an instance of ReceivedDocumentPaymentsListItemPaymentTerms
         /// </summary>
         [Fact]
-        public void ReceivedDocumentPaymentsListItemPaymentTermsInstanceTest()
+        public void ReceivedDocumentPaymentTermsInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ReceivedDocumentPaymentsListItemPaymentTerms
-            //Assert.IsType<ReceivedDocumentPaymentsListItemPaymentTerms>(instance);
+            Assert.IsType<ReceivedDocumentPaymentsListItemPaymentTerms>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DaysTest()
         {
-            // TODO unit test for the property 'Days'
+            Assert.IsType<int>(instance.Days);
         }
         /// <summary>
         /// Test the property 'Type'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TypeTest()
         {
-            // TODO unit test for the property 'Type'
+            Assert.IsType<string>(instance.Type);
         }
 
     }

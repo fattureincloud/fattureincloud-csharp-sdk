@@ -157,7 +157,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AggregatedDataTest()
         {
-            Assert.IsType<ListF24ResponseAggregatedDataAggregatedData>(instance.AggregatedData);
+            Assert.IsType<ListF24ResponseAggregatedData>(instance.AggregatedData);
         }
 
     }

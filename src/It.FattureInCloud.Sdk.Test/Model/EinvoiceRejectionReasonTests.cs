@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class EinvoiceRejectionReasonTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for EinvoiceRejectionReason
-        //private EinvoiceRejectionReason instance;
+        private EinvoiceRejectionReason instance;
 
         public EinvoiceRejectionReasonTests()
         {
-            // TODO uncomment below to create an instance of EinvoiceRejectionReason
-            //instance = new EinvoiceRejectionReason();
+            var body = "{ 'reason': 'invalid date', 'ei_status': 'rejected', 'solution': 'set a valid date', 'code': 'c001', 'date':  '2021-10-10' }";
+            instance = JsonConvert.DeserializeObject<EinvoiceRejectionReason>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EinvoiceRejectionReasonInstanceTest()
         {
-            // TODO uncomment below to test "IsType" EinvoiceRejectionReason
-            //Assert.IsType<EinvoiceRejectionReason>(instance);
+            Assert.IsType<EinvoiceRejectionReason>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ReasonTest()
         {
-            // TODO unit test for the property 'Reason'
+            Assert.IsType<string>(instance.Reason);
         }
         /// <summary>
         /// Test the property 'EiStatus'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EiStatusTest()
         {
-            // TODO unit test for the property 'EiStatus'
+            Assert.IsType<string>(instance.EiStatus);
         }
         /// <summary>
         /// Test the property 'Solution'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SolutionTest()
         {
-            // TODO unit test for the property 'Solution'
+            Assert.IsType<string>(instance.Solution);
         }
         /// <summary>
         /// Test the property 'Code'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CodeTest()
         {
-            // TODO unit test for the property 'Code'
+            Assert.IsType<string>(instance.Code);
         }
         /// <summary>
         /// Test the property 'Date'
@@ -95,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DateTest()
         {
-            // TODO unit test for the property 'Date'
+            Assert.IsType<DateTime>(instance.Date);
         }
 
     }

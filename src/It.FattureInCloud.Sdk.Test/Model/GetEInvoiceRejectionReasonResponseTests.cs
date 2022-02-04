@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class GetEInvoiceRejectionReasonResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for GetEInvoiceRejectionReasonResponse
-        //private GetEInvoiceRejectionReasonResponse instance;
+        private GetEInvoiceRejectionReasonResponse instance;
 
         public GetEInvoiceRejectionReasonResponseTests()
         {
-            // TODO uncomment below to create an instance of GetEInvoiceRejectionReasonResponse
-            //instance = new GetEInvoiceRejectionReasonResponse();
+            var body = "{ 'data': { 'reason': 'invalid date', 'ei_status': 'rejected', 'solution': 'set a valid date', 'code': 'c001', 'date':  '2021-10-10' }}";
+            instance = JsonConvert.DeserializeObject<GetEInvoiceRejectionReasonResponse>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void GetEInvoiceRejectionReasonResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" GetEInvoiceRejectionReasonResponse
-            //Assert.IsType<GetEInvoiceRejectionReasonResponse>(instance);
+            Assert.IsType<GetEInvoiceRejectionReasonResponse>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<EinvoiceRejectionReason>(instance.Data);
         }
 
     }
