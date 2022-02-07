@@ -32,12 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class CashbookEntryTests : IDisposable
     {
-        private CashbookEntryInOut instance;
+        private CashbookEntry instance;
 
         public CashbookEntryTests()
         {
             var body = "{ 'id': 12345, 'date': '2021-08-24', 'description': 'Fattura n. 201/2021', 'entity_name': 'Rossi S.r.l.', 'kind': 'issued_document', 'type': 'in', 'amount_in': 100, 'amount_out': 0, 'document': { 'id': 12345, 'type': 'issued_document', 'path': '/doc1.pdf' }, 'payment_account_in': { 'id': 333 }, 'payment_account_out': { 'id': 333 } }";
-            instance = JsonConvert.DeserializeObject<CashbookEntryInOut>(body);
+            instance = JsonConvert.DeserializeObject<CashbookEntry>(body);
         }
 
         public void Dispose()
@@ -51,7 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CashbookEntryInstanceTest()
         {
-            Assert.IsType<CashbookEntryInOut>(instance);
+            Assert.IsType<CashbookEntry>(instance);
         }
 
 
@@ -109,23 +109,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DocumentTest()
         {
-            Assert.IsType<CashbookEntryDataDocument>(instance.Document);
-        }
-        /// <summary>
-        /// Test the property 'AmountIn'
-        /// </summary>
-        [Fact]
-        public void AmountInTest()
-        {
-            Assert.IsType<decimal>(instance.AmountIn);
-        }
-        /// <summary>
-        /// Test the property 'PaymentAccountIn'
-        /// </summary>
-        [Fact]
-        public void PaymentAccountInTest()
-        {
-            Assert.IsType<PaymentAccount>(instance.PaymentAccountIn);
+            Assert.IsType<CashbookEntryDocument>(instance.Document);
         }
         /// <summary>
         /// Test the property 'AmountOut'
@@ -142,6 +126,22 @@ namespace It.FattureInCloud.Sdk.Test.Model
         public void PaymentAccountOutTest()
         {
             Assert.IsType<PaymentAccount>(instance.PaymentAccountOut);
+        }
+        /// <summary>
+        /// Test the property 'AmountIn'
+        /// </summary>
+        [Fact]
+        public void AmountInTest()
+        {
+            Assert.IsType<decimal>(instance.AmountIn);
+        }
+        /// <summary>
+        /// Test the property 'PaymentAccountIn'
+        /// </summary>
+        [Fact]
+        public void PaymentAccountInTest()
+        {
+            Assert.IsType<PaymentAccount>(instance.PaymentAccountIn);
         }
 
     }

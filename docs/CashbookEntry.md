@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 **Kind** | **CashbookEntryKind** |  | [optional] 
 **Type** | **CashbookEntryType** |  | [optional] 
 **EntityName** | **string** | Entity name. | [optional] 
-**Document** | [**CashbookEntryDataDocument**](CashbookEntryDataDocument.md) |  | [optional] 
-**AmountIn** | **decimal** | Total amount in. | [optional] 
+**Document** | [**CashbookEntryDocument**](CashbookEntryDocument.md) |  | [optional] 
+**AmountIn** | **decimal?** | [Only for cashbook entry in] Total amount in. | [optional] 
 **PaymentAccountIn** | [**PaymentAccount**](PaymentAccount.md) |  | [optional] 
-**AmountOut** | **decimal** | Total amount out. | [optional] 
+**AmountOut** | **decimal?** | [Only for cashbook entry out] Total amount out. | [optional] 
 **PaymentAccountOut** | [**PaymentAccount**](PaymentAccount.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
