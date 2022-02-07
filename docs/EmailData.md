@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RecipientEmail** | **string** | Recipient&#39;s email | [optional] 
 **DefaultSenderEmail** | [**EmailDataDefaultSenderEmail**](EmailDataDefaultSenderEmail.md) |  | [optional] 
-**SenderEmailsList** | [**List&lt;EmailDataSenderEmailsList&gt;**](EmailDataSenderEmailsList.md) | List of all emails from which the document can be sent | [optional] 
+**SenderEmailsList** | [**List&lt;SenderEmail&gt;**](SenderEmail.md) | List of all emails from which the document can be sent | [optional] 
 **CcEmail** | **string** | By default is the logged company email. This is the email address to which a copy will be sent. | [optional] 
 **Subject** | **string** | Email subject | [optional] 
 **Body** | **string** | Email body | [optional] 

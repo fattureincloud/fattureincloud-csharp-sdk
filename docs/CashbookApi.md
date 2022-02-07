@@ -196,8 +196,8 @@ namespace Example
             var apiInstance = new CashbookApi(config);
             var companyId = 12345;  // int | The ID of the company.
             var documentId = 56;  // int | The ID of the document.
-            var fields = fields_example;  // string | List of comma-separated fields. (optional) 
-            var fieldset = fieldset_example;  // string | Name of the fieldset. (optional) 
+            var fields = "fields_example";  // string | List of comma-separated fields. (optional) 
+            var fieldset = "basic";  // string | Name of the fieldset. (optional) 
 
             try
             {
@@ -277,10 +277,10 @@ namespace Example
 
             var apiInstance = new CashbookApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var dateFrom = dateFrom_example;  // string | Start date.
-            var dateTo = dateTo_example;  // string | End date.
+            var dateFrom = "dateFrom_example";  // string | Start date.
+            var dateTo = "dateTo_example";  // string | End date.
             var year = 56;  // int? | Filter cashbook by year. (optional) 
-            var type = type_example;  // string | Filter cashbook by type. (optional) 
+            var type = "all";  // string | Filter cashbook by type. (optional) 
             var paymentAccountId = 56;  // int? | Filter by payment account. (optional) 
 
             try
