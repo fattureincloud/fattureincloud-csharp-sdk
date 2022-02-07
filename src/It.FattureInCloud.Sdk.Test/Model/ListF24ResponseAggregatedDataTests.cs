@@ -36,7 +36,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
 
         public ListF24ResponseAggregatedDataTests()
         {
-            var body = "{ 'aggregated_data': { 'amount': 5 } }";
+            var body = "{ 'amount': 6438.96 }";
             instance = JsonConvert.DeserializeObject<ListF24ResponseAggregatedData>(body);
         }
 
@@ -56,12 +56,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
 
 
         /// <summary>
-        /// Test the property 'AggregatedData'
+        /// Test the property 'Amount'
         /// </summary>
         [Fact]
-        public void AggregatedDataTest()
+        public void AmountTest()
         {
-            Assert.IsType<ListF24ResponseAggregatedDataAggregatedData>(instance.AggregatedData);
+            Assert.IsType<decimal>(instance.Amount);
         }
 
     }

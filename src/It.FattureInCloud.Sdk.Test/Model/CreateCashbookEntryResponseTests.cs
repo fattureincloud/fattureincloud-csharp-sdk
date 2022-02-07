@@ -61,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            Assert.IsType<CashbookEntryInOut>(instance.Data);
+            Assert.IsType<CashbookEntry>(instance.Data);
         }
 
     }
