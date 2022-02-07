@@ -42,25 +42,25 @@ namespace It.FattureInCloud.Sdk.Test.Api
 
         public CashbookApiTests()
         {
-            createCashbookResponseBody = "{'data': { 'kind': 'issued_document', 'type': 'out', 'date': '2021-10-10', 'description': 'Fattura n. 201/2021', 'entity_name': 'Rossi S.r.l.', 'document': { 'id': 54321 }, 'amount_out': 122.0, 'payment_account_out': { 'id': 333, 'iban': null, 'sia': null, 'virtual': false }, 'payment_account_in': null}}";
+            createCashbookResponseBody = "{ 'data': { 'kind': 'issued_document', 'type': 'out', 'date': '2021-10-10', 'description': 'Fattura n. 201/2021', 'entity_name': 'Rossi S.r.l.', 'document': { 'id': 54321 }, 'amount_in': null, 'payment_account_in': null, 'amount_out': 122.0, 'payment_account_out': { 'id': 21, 'iban': null, 'sia': null, 'virtual': false } } }";
             var createCashbookResponse = JsonConvert.DeserializeObject<CreateCashbookEntryResponse>(createCashbookResponseBody);
             instance
                 .Setup(p => p.CreateCashbookEntry(Moq.It.IsAny<int>(), Moq.It.IsAny<CreateCashbookEntryRequest>()))
                 .Returns(createCashbookResponse);
 
-            getCashbookResponseBody = "{ 'data': {'kind':'issued_document','type':'out','date':'2021-10-10','description':'Fattura n. 201/2021','entity_name':'Rossi S.r.l.','document':{'id':54321},'amount_out':122.0,'payment_account_out':{'id':21,'iban':null,'sia':null,'virtual':false}}}";
+            getCashbookResponseBody = "{ 'data': { 'kind': 'issued_document', 'type': 'out', 'date': '2021-10-10', 'description': 'Fattura n. 201/2021', 'entity_name': 'Rossi S.r.l.', 'document': { 'id': 54321 }, 'amount_in': null, 'payment_account_in': null, 'amount_out': 122.0, 'payment_account_out': { 'id': 21, 'iban': null, 'sia': null, 'virtual': false } } }";
             var getCashbookResponse = JsonConvert.DeserializeObject<GetCashbookEntryResponse>(getCashbookResponseBody);
             instance
                 .Setup(p => p.GetCashbookEntry(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
                 .Returns(getCashbookResponse);
 
-            listCashbookResponseBody = "{ 'data': [ {'kind':'issued_document','type':'in','date':'2021-08-24','description':'Fattura n. 201/2021','entity_name':'Rossi S.r.l.','document':{'id':54321},'amount_in':122.0,'payment_account_in':{'id':333,'iban':null,'sia':null,'virtual':false}}, {'kind':'issued_document','type':'out','date':'2021-08-29','description':'Fattura n. 202/2021','entity_name':'Red S.r.l.','document':{'id':12345},'amount_out':211.0,'payment_account_out':{'id':444,'iban':null,'sia':null,'virtual':false}} ] }";
+            listCashbookResponseBody = "{ 'data': [{ 'kind': 'issued_document', 'type': 'out', 'date': '2021-10-10', 'description': 'Fattura n. 201/2021', 'entity_name': 'Rossi S.r.l.', 'document': { 'id': 54321 }, 'amount_in': null, 'payment_account_in': null, 'amount_out': 122.0, 'payment_account_out': { 'id': 21, 'iban': null, 'sia': null, 'virtual': false } } ,{ 'kind': 'issued_document', 'type': 'out', 'date': '2021-10-10', 'description': 'Fattura n. 201/2021', 'entity_name': 'Rossi S.r.l.', 'document': { 'id': 54321 }, 'amount_in': null, 'payment_account_in': null, 'amount_out': 122.0, 'payment_account_out': { 'id': 21, 'iban': null, 'sia': null, 'virtual': false } } ] }";
             var listCashbookResponse = JsonConvert.DeserializeObject<ListCashbookEntriesResponse>(listCashbookResponseBody);
             instance
                 .Setup(p => p.ListCashbookEntries(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<int>()))
                 .Returns(listCashbookResponse);
 
-            modifyCashbookResponseBody = "{ 'data': {'kind':'issued_document','type':'out','date':'2021-10-10','description':'Fattura n. 201/2021','entity_name':'Rossi S.r.l.','document':{'id':54321},'amount_out':122.0,'payment_account_out':{'id':21,'iban':null,'sia':null,'virtual':false}}}";
+            modifyCashbookResponseBody = "{ 'data': { 'kind': 'issued_document', 'type': 'out', 'date': '2021-10-10', 'description': 'Fattura n. 201/2021', 'entity_name': 'Rossi S.r.l.', 'document': { 'id': 54321 }, 'amount_in': null, 'payment_account_in': null, 'amount_out': 122.0, 'payment_account_out': { 'id': 21, 'iban': null, 'sia': null, 'virtual': false } } }";
             var modifyCashbookResponse = JsonConvert.DeserializeObject<ModifyCashbookEntryResponse>(modifyCashbookResponseBody);
             instance
                 .Setup(p => p.ModifyCashbookEntry(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifyCashbookEntryRequest>()))
@@ -120,7 +120,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
             var response = instance.Object.GetCashbookEntry(companyId, documentId, fields, fieldset);
             JObject obj = JObject.Parse(getCashbookResponseBody);
 
-            Assert.True(JToken.DeepEquals(obj, JObject.Parse(response.ToJson())));
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -138,8 +138,8 @@ namespace It.FattureInCloud.Sdk.Test.Api
 
             var response = instance.Object.ListCashbookEntries(companyId, dateFrom, dateTo, year, type, paymentAccountId);
             JObject obj = JObject.Parse(listCashbookResponseBody);
-
-            Assert.True(JToken.DeepEquals(obj, JObject.Parse(response.ToJson())));
+            Console.Write(JObject.FromObject(response));
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
             var response = instance.Object.ModifyCashbookEntry(companyId, documentId, modifyCashbookEntryRequest);
             JObject obj = JObject.Parse(modifyCashbookResponseBody);
 
-            Assert.True(JToken.DeepEquals(obj, JObject.Parse(response.ToJson())));
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
     }
 }

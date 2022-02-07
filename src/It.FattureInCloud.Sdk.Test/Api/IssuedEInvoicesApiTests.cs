@@ -38,6 +38,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         string sendEInvoiceResponseBody;
         string verifyEInvoiceXmlResponseBody;
         string getEInvoiceXmlResponseBody;
+        string getEInvoiceRejectionReasonResponseBody;
 
         public IssuedEInvoicesApiTests()
         {
@@ -58,6 +59,12 @@ namespace It.FattureInCloud.Sdk.Test.Api
             instance
                 .Setup(p => p.GetEInvoiceXml(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), true))
                 .Returns(getEInvoiceXmlResponse);
+
+            getEInvoiceRejectionReasonResponseBody = "{'data': {'reason': 'invalid date', 'ei_status': null, 'solution': null, 'code': null, 'date': null }}";
+            var getEInvoiceRejectionReason = JsonConvert.DeserializeObject<GetEInvoiceRejectionReasonResponse>(getEInvoiceRejectionReasonResponseBody); ;
+            instance
+                .Setup(p => p.GetEInvoiceRejectionReason(Moq.It.IsAny<int>(), Moq.It.IsAny<int>()))
+                .Returns(getEInvoiceRejectionReason);
 
         }
 
@@ -119,6 +126,22 @@ namespace It.FattureInCloud.Sdk.Test.Api
             var response = instance.Object.GetEInvoiceXml(companyId, documentId, true);
 
             Assert.True(response == getEInvoiceXmlResponseBody);
+        }
+
+        /// <summary>
+        /// Test GetEInvoiceRejectionReason
+        /// </summary>
+        [Fact]
+        public void GetEInvoiceRejectionReasonTest()
+        {
+            int companyId = 2;
+            int documentId = 12345;
+
+            var response = instance.Object.GetEInvoiceRejectionReason(companyId, documentId);
+            JObject obj = JObject.Parse(getEInvoiceRejectionReasonResponseBody);
+
+            var jobj = JObject.FromObject(response);
+            Assert.True(JToken.DeepEquals(obj, jobj));
         }
     }
 }
