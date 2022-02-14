@@ -38,15 +38,33 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="companies">companies.</param>
         public ListUserCompaniesResponseData(List<Company> companies = default(List<Company>))
         {
-            this.Companies = companies;
+            this._Companies = companies;
         }
 
         /// <summary>
         /// Gets or Sets Companies
         /// </summary>
-        [DataMember(Name = "companies", EmitDefaultValue = false)]
-        public List<Company> Companies { get; set; }
+        [DataMember(Name = "companies", EmitDefaultValue = true)]
+        public List<Company> Companies
+        {
+            get{ return _Companies;}
+            set
+            {
+                _Companies = value;
+                _flagCompanies = true;
+            }
+        }
+        private List<Company> _Companies;
+        private bool _flagCompanies;
 
+        /// <summary>
+        /// Returns false as Companies should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCompanies()
+        {
+            return _flagCompanies;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

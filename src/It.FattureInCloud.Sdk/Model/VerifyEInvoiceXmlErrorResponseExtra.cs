@@ -38,15 +38,33 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="errors">errors.</param>
         public VerifyEInvoiceXmlErrorResponseExtra(List<string> errors = default(List<string>))
         {
-            this.Errors = errors;
+            this._Errors = errors;
         }
 
         /// <summary>
         /// Gets or Sets Errors
         /// </summary>
-        [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public List<string> Errors { get; set; }
+        [DataMember(Name = "errors", EmitDefaultValue = true)]
+        public List<string> Errors
+        {
+            get{ return _Errors;}
+            set
+            {
+                _Errors = value;
+                _flagErrors = true;
+            }
+        }
+        private List<string> _Errors;
+        private bool _flagErrors;
 
+        /// <summary>
+        /// Returns false as Errors should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeErrors()
+        {
+            return _flagErrors;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

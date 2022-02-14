@@ -38,15 +38,33 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="vatItem">vatItem.</param>
         public IssuedDocumentTotalsVatList(IssuedDocumentTotalsVatListVatItem vatItem = default(IssuedDocumentTotalsVatListVatItem))
         {
-            this.VatItem = vatItem;
+            this._VatItem = vatItem;
         }
 
         /// <summary>
         /// Gets or Sets VatItem
         /// </summary>
-        [DataMember(Name = "vat_item", EmitDefaultValue = false)]
-        public IssuedDocumentTotalsVatListVatItem VatItem { get; set; }
+        [DataMember(Name = "vat_item", EmitDefaultValue = true)]
+        public IssuedDocumentTotalsVatListVatItem VatItem
+        {
+            get{ return _VatItem;}
+            set
+            {
+                _VatItem = value;
+                _flagVatItem = true;
+            }
+        }
+        private IssuedDocumentTotalsVatListVatItem _VatItem;
+        private bool _flagVatItem;
 
+        /// <summary>
+        /// Returns false as VatItem should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeVatItem()
+        {
+            return _flagVatItem;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

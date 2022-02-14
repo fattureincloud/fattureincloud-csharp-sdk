@@ -39,8 +39,8 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="description">Details description..</param>
         public PaymentMethodDetails(string title = default(string), string description = default(string))
         {
-            this.Title = title;
-            this.Description = description;
+            this._Title = title;
+            this._Description = description;
         }
 
         /// <summary>
@@ -48,15 +48,51 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>Details title.</value>
         [DataMember(Name = "title", EmitDefaultValue = false)]
-        public string Title { get; set; }
+        public string Title
+        {
+            get{ return _Title;}
+            set
+            {
+                _Title = value;
+                _flagTitle = true;
+            }
+        }
+        private string _Title;
+        private bool _flagTitle;
 
+        /// <summary>
+        /// Returns false as Title should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeTitle()
+        {
+            return _flagTitle;
+        }
         /// <summary>
         /// Details description.
         /// </summary>
         /// <value>Details description.</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
-        public string Description { get; set; }
+        public string Description
+        {
+            get{ return _Description;}
+            set
+            {
+                _Description = value;
+                _flagDescription = true;
+            }
+        }
+        private string _Description;
+        private bool _flagDescription;
 
+        /// <summary>
+        /// Returns false as Description should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDescription()
+        {
+            return _flagDescription;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

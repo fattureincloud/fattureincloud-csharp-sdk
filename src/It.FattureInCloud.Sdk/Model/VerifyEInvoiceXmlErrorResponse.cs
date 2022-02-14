@@ -39,22 +39,58 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="extra">extra.</param>
         public VerifyEInvoiceXmlErrorResponse(VerifyEInvoiceXmlErrorResponseError error = default(VerifyEInvoiceXmlErrorResponseError), VerifyEInvoiceXmlErrorResponseExtra extra = default(VerifyEInvoiceXmlErrorResponseExtra))
         {
-            this.Error = error;
-            this.Extra = extra;
+            this._Error = error;
+            this._Extra = extra;
         }
 
         /// <summary>
         /// Gets or Sets Error
         /// </summary>
-        [DataMember(Name = "error", EmitDefaultValue = false)]
-        public VerifyEInvoiceXmlErrorResponseError Error { get; set; }
+        [DataMember(Name = "error", EmitDefaultValue = true)]
+        public VerifyEInvoiceXmlErrorResponseError Error
+        {
+            get{ return _Error;}
+            set
+            {
+                _Error = value;
+                _flagError = true;
+            }
+        }
+        private VerifyEInvoiceXmlErrorResponseError _Error;
+        private bool _flagError;
 
+        /// <summary>
+        /// Returns false as Error should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeError()
+        {
+            return _flagError;
+        }
         /// <summary>
         /// Gets or Sets Extra
         /// </summary>
-        [DataMember(Name = "extra", EmitDefaultValue = false)]
-        public VerifyEInvoiceXmlErrorResponseExtra Extra { get; set; }
+        [DataMember(Name = "extra", EmitDefaultValue = true)]
+        public VerifyEInvoiceXmlErrorResponseExtra Extra
+        {
+            get{ return _Extra;}
+            set
+            {
+                _Extra = value;
+                _flagExtra = true;
+            }
+        }
+        private VerifyEInvoiceXmlErrorResponseExtra _Extra;
+        private bool _flagExtra;
 
+        /// <summary>
+        /// Returns false as Extra should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeExtra()
+        {
+            return _flagExtra;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

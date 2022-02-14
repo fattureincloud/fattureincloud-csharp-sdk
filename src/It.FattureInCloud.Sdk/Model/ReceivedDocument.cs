@@ -36,8 +36,28 @@ namespace It.FattureInCloud.Sdk.Model
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
+
         [DataMember(Name = "type", EmitDefaultValue = false)]
-        public ReceivedDocumentType? Type { get; set; }
+        public ReceivedDocumentType? Type
+        {
+            get{ return _Type;}
+            set
+            {
+                _Type = value;
+                _flagType = true;
+            }
+        }
+        private ReceivedDocumentType? _Type;
+        private bool _flagType;
+
+        /// <summary>
+        /// Returns false as Type should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeType()
+        {
+            return _flagType;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="ReceivedDocument" /> class.
         /// </summary>
@@ -63,101 +83,263 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="itemsList">itemsList.</param>
         /// <param name="paymentsList">paymentsList.</param>
         /// <param name="attachmentToken">Uploaded attachement token..</param>
-        public ReceivedDocument(int id = default(int), ReceivedDocumentType? type = default(ReceivedDocumentType?), ReceivedDocumentEntity entity = default(ReceivedDocumentEntity), DateTimeOffset date = default(DateTimeOffset), string category = default(string), string description = default(string), decimal amountNet = default(decimal), decimal amountVat = default(decimal), decimal amountWithholdingTax = default(decimal), decimal amountOtherWithholdingTax = default(decimal), decimal amortization = default(decimal), string rcCenter = default(string), string invoiceNumber = default(string), bool isMarked = default(bool), bool isDetailed = default(bool), bool eInvoice = default(bool), Currency currency = default(Currency), decimal taxDeductibility = default(decimal), decimal vatDeductibility = default(decimal), List<ReceivedDocumentItemsListItem> itemsList = default(List<ReceivedDocumentItemsListItem>), List<ReceivedDocumentPaymentsListItem> paymentsList = default(List<ReceivedDocumentPaymentsListItem>), string attachmentToken = default(string))
+        public ReceivedDocument(int? id = default(int?), ReceivedDocumentType? type = default(ReceivedDocumentType?), ReceivedDocumentEntity entity = default(ReceivedDocumentEntity), DateTime? date = default(DateTime?), string category = default(string), string description = default(string), decimal? amountNet = default(decimal?), decimal? amountVat = default(decimal?), decimal? amountWithholdingTax = default(decimal?), decimal? amountOtherWithholdingTax = default(decimal?), decimal? amortization = default(decimal?), string rcCenter = default(string), string invoiceNumber = default(string), bool? isMarked = default(bool?), bool? isDetailed = default(bool?), bool? eInvoice = default(bool?), Currency currency = default(Currency), decimal? taxDeductibility = default(decimal?), decimal? vatDeductibility = default(decimal?), List<ReceivedDocumentItemsListItem> itemsList = default(List<ReceivedDocumentItemsListItem>), List<ReceivedDocumentPaymentsListItem> paymentsList = default(List<ReceivedDocumentPaymentsListItem>), string attachmentToken = default(string))
         {
-            this.Id = id;
-            this.Type = type;
-            this.Entity = entity;
-            this.Date = date;
-            this.Category = category;
-            this.Description = description;
-            this.AmountNet = amountNet;
-            this.AmountVat = amountVat;
-            this.AmountWithholdingTax = amountWithholdingTax;
-            this.AmountOtherWithholdingTax = amountOtherWithholdingTax;
-            this.Amortization = amortization;
-            this.RcCenter = rcCenter;
-            this.InvoiceNumber = invoiceNumber;
-            this.IsMarked = isMarked;
-            this.IsDetailed = isDetailed;
-            this.EInvoice = eInvoice;
-            this.Currency = currency;
-            this.TaxDeductibility = taxDeductibility;
-            this.VatDeductibility = vatDeductibility;
-            this.ItemsList = itemsList;
-            this.PaymentsList = paymentsList;
-            this.AttachmentToken = attachmentToken;
+            this._Id = id;
+            this._Type = type;
+            this._Entity = entity;
+            this._Date = date;
+            this._Category = category;
+            this._Description = description;
+            this._AmountNet = amountNet;
+            this._AmountVat = amountVat;
+            this._AmountWithholdingTax = amountWithholdingTax;
+            this._AmountOtherWithholdingTax = amountOtherWithholdingTax;
+            this._Amortization = amortization;
+            this._RcCenter = rcCenter;
+            this._InvoiceNumber = invoiceNumber;
+            this._IsMarked = isMarked;
+            this._IsDetailed = isDetailed;
+            this._EInvoice = eInvoice;
+            this._Currency = currency;
+            this._TaxDeductibility = taxDeductibility;
+            this._VatDeductibility = vatDeductibility;
+            this._ItemsList = itemsList;
+            this._PaymentsList = paymentsList;
+            this._AttachmentToken = attachmentToken;
         }
 
         /// <summary>
         /// Unique identifier of the document.
         /// </summary>
         /// <value>Unique identifier of the document.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id
+        {
+            get{ return _Id;}
+            set
+            {
+                _Id = value;
+                _flagId = true;
+            }
+        }
+        private int? _Id;
+        private bool _flagId;
 
+        /// <summary>
+        /// Returns false as Id should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeId()
+        {
+            return _flagId;
+        }
         /// <summary>
         /// Gets or Sets Entity
         /// </summary>
-        [DataMember(Name = "entity", EmitDefaultValue = false)]
-        public ReceivedDocumentEntity Entity { get; set; }
+        [DataMember(Name = "entity", EmitDefaultValue = true)]
+        public ReceivedDocumentEntity Entity
+        {
+            get{ return _Entity;}
+            set
+            {
+                _Entity = value;
+                _flagEntity = true;
+            }
+        }
+        private ReceivedDocumentEntity _Entity;
+        private bool _flagEntity;
 
+        /// <summary>
+        /// Returns false as Entity should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeEntity()
+        {
+            return _flagEntity;
+        }
         /// <summary>
         /// Date of the document [If not specified, today date is used].
         /// </summary>
         /// <value>Date of the document [If not specified, today date is used].</value>
-        [DataMember(Name = "date", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTimeOffset Date { get; set; }
+        [DataMember(Name = "date", EmitDefaultValue = true)]
+        public DateTime? Date
+        {
+            get{ return _Date;}
+            set
+            {
+                _Date = value;
+                _flagDate = true;
+            }
+        }
+        private DateTime? _Date;
+        private bool _flagDate;
 
+        /// <summary>
+        /// Returns false as Date should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDate()
+        {
+            return _flagDate;
+        }
         /// <summary>
         /// Document category.
         /// </summary>
         /// <value>Document category.</value>
         [DataMember(Name = "category", EmitDefaultValue = true)]
-        public string Category { get; set; }
+        public string Category
+        {
+            get{ return _Category;}
+            set
+            {
+                _Category = value;
+                _flagCategory = true;
+            }
+        }
+        private string _Category;
+        private bool _flagCategory;
 
+        /// <summary>
+        /// Returns false as Category should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCategory()
+        {
+            return _flagCategory;
+        }
         /// <summary>
         /// Document description.
         /// </summary>
         /// <value>Document description.</value>
-        [DataMember(Name = "description", EmitDefaultValue = false)]
-        public string Description { get; set; }
+        [DataMember(Name = "description", EmitDefaultValue = true)]
+        public string Description
+        {
+            get{ return _Description;}
+            set
+            {
+                _Description = value;
+                _flagDescription = true;
+            }
+        }
+        private string _Description;
+        private bool _flagDescription;
 
+        /// <summary>
+        /// Returns false as Description should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDescription()
+        {
+            return _flagDescription;
+        }
         /// <summary>
         /// Total net amount.
         /// </summary>
         /// <value>Total net amount.</value>
-        [DataMember(Name = "amount_net", EmitDefaultValue = false)]
-        public decimal AmountNet { get; set; }
+        [DataMember(Name = "amount_net", EmitDefaultValue = true)]
+        public decimal? AmountNet
+        {
+            get{ return _AmountNet;}
+            set
+            {
+                _AmountNet = value;
+                _flagAmountNet = true;
+            }
+        }
+        private decimal? _AmountNet;
+        private bool _flagAmountNet;
 
+        /// <summary>
+        /// Returns false as AmountNet should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAmountNet()
+        {
+            return _flagAmountNet;
+        }
         /// <summary>
         /// Total vat amount.
         /// </summary>
         /// <value>Total vat amount.</value>
-        [DataMember(Name = "amount_vat", EmitDefaultValue = false)]
-        public decimal AmountVat { get; set; }
+        [DataMember(Name = "amount_vat", EmitDefaultValue = true)]
+        public decimal? AmountVat
+        {
+            get{ return _AmountVat;}
+            set
+            {
+                _AmountVat = value;
+                _flagAmountVat = true;
+            }
+        }
+        private decimal? _AmountVat;
+        private bool _flagAmountVat;
 
+        /// <summary>
+        /// Returns false as AmountVat should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAmountVat()
+        {
+            return _flagAmountVat;
+        }
         /// <summary>
         /// Withholding tax amount.
         /// </summary>
         /// <value>Withholding tax amount.</value>
-        [DataMember(Name = "amount_withholding_tax", EmitDefaultValue = false)]
-        public decimal AmountWithholdingTax { get; set; }
+        [DataMember(Name = "amount_withholding_tax", EmitDefaultValue = true)]
+        public decimal? AmountWithholdingTax
+        {
+            get{ return _AmountWithholdingTax;}
+            set
+            {
+                _AmountWithholdingTax = value;
+                _flagAmountWithholdingTax = true;
+            }
+        }
+        private decimal? _AmountWithholdingTax;
+        private bool _flagAmountWithholdingTax;
 
+        /// <summary>
+        /// Returns false as AmountWithholdingTax should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAmountWithholdingTax()
+        {
+            return _flagAmountWithholdingTax;
+        }
         /// <summary>
         /// Other withholding tax amount.
         /// </summary>
         /// <value>Other withholding tax amount.</value>
-        [DataMember(Name = "amount_other_withholding_tax", EmitDefaultValue = false)]
-        public decimal AmountOtherWithholdingTax { get; set; }
+        [DataMember(Name = "amount_other_withholding_tax", EmitDefaultValue = true)]
+        public decimal? AmountOtherWithholdingTax
+        {
+            get{ return _AmountOtherWithholdingTax;}
+            set
+            {
+                _AmountOtherWithholdingTax = value;
+                _flagAmountOtherWithholdingTax = true;
+            }
+        }
+        private decimal? _AmountOtherWithholdingTax;
+        private bool _flagAmountOtherWithholdingTax;
 
+        /// <summary>
+        /// Returns false as AmountOtherWithholdingTax should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAmountOtherWithholdingTax()
+        {
+            return _flagAmountOtherWithholdingTax;
+        }
         /// <summary>
         /// [Read Only] Total gross amount.
         /// </summary>
         /// <value>[Read Only] Total gross amount.</value>
-        [DataMember(Name = "amount_gross", EmitDefaultValue = false)]
-        public decimal AmountGross { get; private set; }
+        [DataMember(Name = "amount_gross", EmitDefaultValue = true)]
+        public decimal? AmountGross { get; private set; }
 
         /// <summary>
         /// Returns false as AmountGross should not be serialized given that it's read-only.
@@ -171,42 +353,150 @@ namespace It.FattureInCloud.Sdk.Model
         /// Amortization value
         /// </summary>
         /// <value>Amortization value</value>
-        [DataMember(Name = "amortization", EmitDefaultValue = false)]
-        public decimal Amortization { get; set; }
+        [DataMember(Name = "amortization", EmitDefaultValue = true)]
+        public decimal? Amortization
+        {
+            get{ return _Amortization;}
+            set
+            {
+                _Amortization = value;
+                _flagAmortization = true;
+            }
+        }
+        private decimal? _Amortization;
+        private bool _flagAmortization;
 
+        /// <summary>
+        /// Returns false as Amortization should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAmortization()
+        {
+            return _flagAmortization;
+        }
         /// <summary>
         /// Revenue center.
         /// </summary>
         /// <value>Revenue center.</value>
-        [DataMember(Name = "rc_center", EmitDefaultValue = false)]
-        public string RcCenter { get; set; }
+        [DataMember(Name = "rc_center", EmitDefaultValue = true)]
+        public string RcCenter
+        {
+            get{ return _RcCenter;}
+            set
+            {
+                _RcCenter = value;
+                _flagRcCenter = true;
+            }
+        }
+        private string _RcCenter;
+        private bool _flagRcCenter;
 
+        /// <summary>
+        /// Returns false as RcCenter should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRcCenter()
+        {
+            return _flagRcCenter;
+        }
         /// <summary>
         /// Invoice number
         /// </summary>
         /// <value>Invoice number</value>
-        [DataMember(Name = "invoice_number", EmitDefaultValue = false)]
-        public string InvoiceNumber { get; set; }
+        [DataMember(Name = "invoice_number", EmitDefaultValue = true)]
+        public string InvoiceNumber
+        {
+            get{ return _InvoiceNumber;}
+            set
+            {
+                _InvoiceNumber = value;
+                _flagInvoiceNumber = true;
+            }
+        }
+        private string _InvoiceNumber;
+        private bool _flagInvoiceNumber;
 
+        /// <summary>
+        /// Returns false as InvoiceNumber should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeInvoiceNumber()
+        {
+            return _flagInvoiceNumber;
+        }
         /// <summary>
         /// Gets or Sets IsMarked
         /// </summary>
         [DataMember(Name = "is_marked", EmitDefaultValue = true)]
-        public bool IsMarked { get; set; }
+        public bool? IsMarked
+        {
+            get{ return _IsMarked;}
+            set
+            {
+                _IsMarked = value;
+                _flagIsMarked = true;
+            }
+        }
+        private bool? _IsMarked;
+        private bool _flagIsMarked;
 
+        /// <summary>
+        /// Returns false as IsMarked should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeIsMarked()
+        {
+            return _flagIsMarked;
+        }
         /// <summary>
         /// Gets or Sets IsDetailed
         /// </summary>
         [DataMember(Name = "is_detailed", EmitDefaultValue = true)]
-        public bool IsDetailed { get; set; }
+        public bool? IsDetailed
+        {
+            get{ return _IsDetailed;}
+            set
+            {
+                _IsDetailed = value;
+                _flagIsDetailed = true;
+            }
+        }
+        private bool? _IsDetailed;
+        private bool _flagIsDetailed;
 
+        /// <summary>
+        /// Returns false as IsDetailed should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeIsDetailed()
+        {
+            return _flagIsDetailed;
+        }
         /// <summary>
         /// [Read Only] Indicates if this is an e-invoice.
         /// </summary>
         /// <value>[Read Only] Indicates if this is an e-invoice.</value>
         [DataMember(Name = "e_invoice", EmitDefaultValue = true)]
-        public bool EInvoice { get; set; }
+        public bool? EInvoice
+        {
+            get{ return _EInvoice;}
+            set
+            {
+                _EInvoice = value;
+                _flagEInvoice = true;
+            }
+        }
+        private bool? _EInvoice;
+        private bool _flagEInvoice;
 
+        /// <summary>
+        /// Returns false as EInvoice should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeEInvoice()
+        {
+            return _flagEInvoice;
+        }
         /// <summary>
         /// [Read Only] Next due date.
         /// </summary>
@@ -227,39 +517,129 @@ namespace It.FattureInCloud.Sdk.Model
         /// Gets or Sets Currency
         /// </summary>
         [DataMember(Name = "currency", EmitDefaultValue = false)]
-        public Currency Currency { get; set; }
+        public Currency Currency
+        {
+            get{ return _Currency;}
+            set
+            {
+                _Currency = value;
+                _flagCurrency = true;
+            }
+        }
+        private Currency _Currency;
+        private bool _flagCurrency;
 
+        /// <summary>
+        /// Returns false as Currency should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCurrency()
+        {
+            return _flagCurrency;
+        }
         /// <summary>
         /// Tax deducibility percentage.
         /// </summary>
         /// <value>Tax deducibility percentage.</value>
-        [DataMember(Name = "tax_deductibility", EmitDefaultValue = false)]
-        public decimal TaxDeductibility { get; set; }
+        [DataMember(Name = "tax_deductibility", EmitDefaultValue = true)]
+        public decimal? TaxDeductibility
+        {
+            get{ return _TaxDeductibility;}
+            set
+            {
+                _TaxDeductibility = value;
+                _flagTaxDeductibility = true;
+            }
+        }
+        private decimal? _TaxDeductibility;
+        private bool _flagTaxDeductibility;
 
+        /// <summary>
+        /// Returns false as TaxDeductibility should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeTaxDeductibility()
+        {
+            return _flagTaxDeductibility;
+        }
         /// <summary>
         /// Vat deducibility percentage.
         /// </summary>
         /// <value>Vat deducibility percentage.</value>
-        [DataMember(Name = "vat_deductibility", EmitDefaultValue = false)]
-        public decimal VatDeductibility { get; set; }
+        [DataMember(Name = "vat_deductibility", EmitDefaultValue = true)]
+        public decimal? VatDeductibility
+        {
+            get{ return _VatDeductibility;}
+            set
+            {
+                _VatDeductibility = value;
+                _flagVatDeductibility = true;
+            }
+        }
+        private decimal? _VatDeductibility;
+        private bool _flagVatDeductibility;
 
+        /// <summary>
+        /// Returns false as VatDeductibility should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeVatDeductibility()
+        {
+            return _flagVatDeductibility;
+        }
         /// <summary>
         /// Gets or Sets ItemsList
         /// </summary>
         [DataMember(Name = "items_list", EmitDefaultValue = true)]
-        public List<ReceivedDocumentItemsListItem> ItemsList { get; set; }
+        public List<ReceivedDocumentItemsListItem> ItemsList
+        {
+            get{ return _ItemsList;}
+            set
+            {
+                _ItemsList = value;
+                _flagItemsList = true;
+            }
+        }
+        private List<ReceivedDocumentItemsListItem> _ItemsList;
+        private bool _flagItemsList;
 
+        /// <summary>
+        /// Returns false as ItemsList should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeItemsList()
+        {
+            return _flagItemsList;
+        }
         /// <summary>
         /// Gets or Sets PaymentsList
         /// </summary>
-        [DataMember(Name = "payments_list", EmitDefaultValue = false)]
-        public List<ReceivedDocumentPaymentsListItem> PaymentsList { get; set; }
+        [DataMember(Name = "payments_list", EmitDefaultValue = true)]
+        public List<ReceivedDocumentPaymentsListItem> PaymentsList
+        {
+            get{ return _PaymentsList;}
+            set
+            {
+                _PaymentsList = value;
+                _flagPaymentsList = true;
+            }
+        }
+        private List<ReceivedDocumentPaymentsListItem> _PaymentsList;
+        private bool _flagPaymentsList;
 
+        /// <summary>
+        /// Returns false as PaymentsList should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePaymentsList()
+        {
+            return _flagPaymentsList;
+        }
         /// <summary>
         /// [Read Only] Attachment url.
         /// </summary>
         /// <value>[Read Only] Attachment url.</value>
-        [DataMember(Name = "attachment_url", EmitDefaultValue = false)]
+        [DataMember(Name = "attachment_url", EmitDefaultValue = true)]
         public string AttachmentUrl { get; private set; }
 
         /// <summary>
@@ -274,7 +654,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// [Read Only] Attachment preview url.
         /// </summary>
         /// <value>[Read Only] Attachment preview url.</value>
-        [DataMember(Name = "attachment_preview_url", EmitDefaultValue = false)]
+        [DataMember(Name = "attachment_preview_url", EmitDefaultValue = true)]
         public string AttachmentPreviewUrl { get; private set; }
 
         /// <summary>
@@ -290,8 +670,26 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>Uploaded attachement token.</value>
         [DataMember(Name = "attachment_token", EmitDefaultValue = true)]
-        public string AttachmentToken { get; set; }
+        public string AttachmentToken
+        {
+            get{ return _AttachmentToken;}
+            set
+            {
+                _AttachmentToken = value;
+                _flagAttachmentToken = true;
+            }
+        }
+        private string _AttachmentToken;
+        private bool _flagAttachmentToken;
 
+        /// <summary>
+        /// Returns false as AttachmentToken should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAttachmentToken()
+        {
+            return _flagAttachmentToken;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -363,7 +761,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.Type == input.Type ||
@@ -391,27 +790,33 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.AmountNet == input.AmountNet ||
-                    this.AmountNet.Equals(input.AmountNet)
+                    (this.AmountNet != null &&
+                    this.AmountNet.Equals(input.AmountNet))
                 ) && 
                 (
                     this.AmountVat == input.AmountVat ||
-                    this.AmountVat.Equals(input.AmountVat)
+                    (this.AmountVat != null &&
+                    this.AmountVat.Equals(input.AmountVat))
                 ) && 
                 (
                     this.AmountWithholdingTax == input.AmountWithholdingTax ||
-                    this.AmountWithholdingTax.Equals(input.AmountWithholdingTax)
+                    (this.AmountWithholdingTax != null &&
+                    this.AmountWithholdingTax.Equals(input.AmountWithholdingTax))
                 ) && 
                 (
                     this.AmountOtherWithholdingTax == input.AmountOtherWithholdingTax ||
-                    this.AmountOtherWithholdingTax.Equals(input.AmountOtherWithholdingTax)
+                    (this.AmountOtherWithholdingTax != null &&
+                    this.AmountOtherWithholdingTax.Equals(input.AmountOtherWithholdingTax))
                 ) && 
                 (
                     this.AmountGross == input.AmountGross ||
-                    this.AmountGross.Equals(input.AmountGross)
+                    (this.AmountGross != null &&
+                    this.AmountGross.Equals(input.AmountGross))
                 ) && 
                 (
                     this.Amortization == input.Amortization ||
-                    this.Amortization.Equals(input.Amortization)
+                    (this.Amortization != null &&
+                    this.Amortization.Equals(input.Amortization))
                 ) && 
                 (
                     this.RcCenter == input.RcCenter ||
@@ -425,15 +830,18 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.IsMarked == input.IsMarked ||
-                    this.IsMarked.Equals(input.IsMarked)
+                    (this.IsMarked != null &&
+                    this.IsMarked.Equals(input.IsMarked))
                 ) && 
                 (
                     this.IsDetailed == input.IsDetailed ||
-                    this.IsDetailed.Equals(input.IsDetailed)
+                    (this.IsDetailed != null &&
+                    this.IsDetailed.Equals(input.IsDetailed))
                 ) && 
                 (
                     this.EInvoice == input.EInvoice ||
-                    this.EInvoice.Equals(input.EInvoice)
+                    (this.EInvoice != null &&
+                    this.EInvoice.Equals(input.EInvoice))
                 ) && 
                 (
                     this.NextDueDate == input.NextDueDate ||
@@ -447,11 +855,13 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.TaxDeductibility == input.TaxDeductibility ||
-                    this.TaxDeductibility.Equals(input.TaxDeductibility)
+                    (this.TaxDeductibility != null &&
+                    this.TaxDeductibility.Equals(input.TaxDeductibility))
                 ) && 
                 (
                     this.VatDeductibility == input.VatDeductibility ||
-                    this.VatDeductibility.Equals(input.VatDeductibility)
+                    (this.VatDeductibility != null &&
+                    this.VatDeductibility.Equals(input.VatDeductibility))
                 ) && 
                 (
                     this.ItemsList == input.ItemsList ||
@@ -491,7 +901,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 if (this.Entity != null)
                 {
@@ -509,12 +922,30 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AmountNet.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountVat.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountWithholdingTax.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountOtherWithholdingTax.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountGross.GetHashCode();
-                hashCode = (hashCode * 59) + this.Amortization.GetHashCode();
+                if (this.AmountNet != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountNet.GetHashCode();
+                }
+                if (this.AmountVat != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountVat.GetHashCode();
+                }
+                if (this.AmountWithholdingTax != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountWithholdingTax.GetHashCode();
+                }
+                if (this.AmountOtherWithholdingTax != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountOtherWithholdingTax.GetHashCode();
+                }
+                if (this.AmountGross != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountGross.GetHashCode();
+                }
+                if (this.Amortization != null)
+                {
+                    hashCode = (hashCode * 59) + this.Amortization.GetHashCode();
+                }
                 if (this.RcCenter != null)
                 {
                     hashCode = (hashCode * 59) + this.RcCenter.GetHashCode();
@@ -523,9 +954,18 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.InvoiceNumber.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.IsMarked.GetHashCode();
-                hashCode = (hashCode * 59) + this.IsDetailed.GetHashCode();
-                hashCode = (hashCode * 59) + this.EInvoice.GetHashCode();
+                if (this.IsMarked != null)
+                {
+                    hashCode = (hashCode * 59) + this.IsMarked.GetHashCode();
+                }
+                if (this.IsDetailed != null)
+                {
+                    hashCode = (hashCode * 59) + this.IsDetailed.GetHashCode();
+                }
+                if (this.EInvoice != null)
+                {
+                    hashCode = (hashCode * 59) + this.EInvoice.GetHashCode();
+                }
                 if (this.NextDueDate != null)
                 {
                     hashCode = (hashCode * 59) + this.NextDueDate.GetHashCode();
@@ -534,8 +974,14 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Currency.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.TaxDeductibility.GetHashCode();
-                hashCode = (hashCode * 59) + this.VatDeductibility.GetHashCode();
+                if (this.TaxDeductibility != null)
+                {
+                    hashCode = (hashCode * 59) + this.TaxDeductibility.GetHashCode();
+                }
+                if (this.VatDeductibility != null)
+                {
+                    hashCode = (hashCode * 59) + this.VatDeductibility.GetHashCode();
+                }
                 if (this.ItemsList != null)
                 {
                     hashCode = (hashCode * 59) + this.ItemsList.GetHashCode();
@@ -567,30 +1013,6 @@ namespace It.FattureInCloud.Sdk.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // TaxDeductibility (decimal) maximum
-            if (this.TaxDeductibility > (decimal)100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TaxDeductibility, must be a value less than or equal to 100.", new [] { "TaxDeductibility" });
-            }
-
-            // TaxDeductibility (decimal) minimum
-            if (this.TaxDeductibility < (decimal)0)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TaxDeductibility, must be a value greater than or equal to 0.", new [] { "TaxDeductibility" });
-            }
-
-            // VatDeductibility (decimal) maximum
-            if (this.VatDeductibility > (decimal)100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for VatDeductibility, must be a value less than or equal to 100.", new [] { "VatDeductibility" });
-            }
-
-            // VatDeductibility (decimal) minimum
-            if (this.VatDeductibility < (decimal)0)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for VatDeductibility, must be a value greater than or equal to 0.", new [] { "VatDeductibility" });
-            }
-
             yield break;
         }
     }

@@ -39,24 +39,60 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="date">E-invoice sent date..</param>
         public SendEInvoiceResponseData(string name = default(string), string date = default(string))
         {
-            this.Name = name;
-            this.Date = date;
+            this._Name = name;
+            this._Date = date;
         }
 
         /// <summary>
         /// Response message.
         /// </summary>
         /// <value>Response message.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        [DataMember(Name = "name", EmitDefaultValue = true)]
+        public string Name
+        {
+            get{ return _Name;}
+            set
+            {
+                _Name = value;
+                _flagName = true;
+            }
+        }
+        private string _Name;
+        private bool _flagName;
 
+        /// <summary>
+        /// Returns false as Name should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeName()
+        {
+            return _flagName;
+        }
         /// <summary>
         /// E-invoice sent date.
         /// </summary>
         /// <value>E-invoice sent date.</value>
-        [DataMember(Name = "date", EmitDefaultValue = false)]
-        public string Date { get; set; }
+        [DataMember(Name = "date", EmitDefaultValue = true)]
+        public string Date
+        {
+            get{ return _Date;}
+            set
+            {
+                _Date = value;
+                _flagDate = true;
+            }
+        }
+        private string _Date;
+        private bool _flagDate;
 
+        /// <summary>
+        /// Returns false as Date should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDate()
+        {
+            return _flagDate;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

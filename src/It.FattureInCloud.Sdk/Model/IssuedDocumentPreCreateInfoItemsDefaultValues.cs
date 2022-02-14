@@ -38,15 +38,33 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="vat">vat.</param>
         public IssuedDocumentPreCreateInfoItemsDefaultValues(VatType vat = default(VatType))
         {
-            this.Vat = vat;
+            this._Vat = vat;
         }
 
         /// <summary>
         /// Gets or Sets Vat
         /// </summary>
         [DataMember(Name = "vat", EmitDefaultValue = true)]
-        public VatType Vat { get; set; }
+        public VatType Vat
+        {
+            get{ return _Vat;}
+            set
+            {
+                _Vat = value;
+                _flagVat = true;
+            }
+        }
+        private VatType _Vat;
+        private bool _flagVat;
 
+        /// <summary>
+        /// Returns false as Vat should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeVat()
+        {
+            return _flagVat;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

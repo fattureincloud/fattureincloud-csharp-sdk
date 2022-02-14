@@ -36,17 +36,35 @@ namespace It.FattureInCloud.Sdk.Model
         /// Initializes a new instance of the <see cref="ReceivedDocumentInfoDefaultValues" /> class.
         /// </summary>
         /// <param name="detailed">detailed.</param>
-        public ReceivedDocumentInfoDefaultValues(bool detailed = default(bool))
+        public ReceivedDocumentInfoDefaultValues(bool? detailed = default(bool?))
         {
-            this.Detailed = detailed;
+            this._Detailed = detailed;
         }
 
         /// <summary>
         /// Gets or Sets Detailed
         /// </summary>
         [DataMember(Name = "detailed", EmitDefaultValue = true)]
-        public bool Detailed { get; set; }
+        public bool? Detailed
+        {
+            get{ return _Detailed;}
+            set
+            {
+                _Detailed = value;
+                _flagDetailed = true;
+            }
+        }
+        private bool? _Detailed;
+        private bool _flagDetailed;
 
+        /// <summary>
+        /// Returns false as Detailed should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDetailed()
+        {
+            return _flagDetailed;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -93,7 +111,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Detailed == input.Detailed ||
-                    this.Detailed.Equals(input.Detailed)
+                    (this.Detailed != null &&
+                    this.Detailed.Equals(input.Detailed))
                 );
         }
 
@@ -106,7 +125,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Detailed.GetHashCode();
+                if (this.Detailed != null)
+                {
+                    hashCode = (hashCode * 59) + this.Detailed.GetHashCode();
+                }
                 return hashCode;
             }
         }

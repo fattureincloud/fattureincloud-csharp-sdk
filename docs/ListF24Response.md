@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CurrentPage** | **int** | Current page number. | [optional] 
+**CurrentPage** | **int?** | Current page number. | [optional] 
 **FirstPageUrl** | **string** | First page url. | [optional] 
 **From** | **int?** | First result of the page. | [optional] 
-**LastPage** | **int** | Last page number. | [optional] 
+**LastPage** | **int?** | Last page number. | [optional] 
 **LastPageUrl** | **string** | Last page url. | [optional] 
 **NextPageUrl** | **string** | Next page url | [optional] 
 **Path** | **string** | Request path. | [optional] 
-**PerPage** | **int** | Number of result per page. | [optional] 
+**PerPage** | **int?** | Number of result per page. | [optional] 
 **PrevPageUrl** | **string** | Previous page url. | [optional] 
 **To** | **int?** | Last result of the page. | [optional] 
-**Total** | **int** | Total number of results | [optional] 
+**Total** | **int?** | Total number of results | [optional] 
 **Data** | [**List&lt;F24&gt;**](F24.md) |  | [optional] 
 **AggregatedData** | [**ListF24ResponseAggregatedData**](ListF24ResponseAggregatedData.md) |  | [optional] 
 

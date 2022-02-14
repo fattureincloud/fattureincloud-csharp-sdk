@@ -36,8 +36,28 @@ namespace It.FattureInCloud.Sdk.Model
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
+
         [DataMember(Name = "type", EmitDefaultValue = false)]
-        public CompanyType? Type { get; set; }
+        public CompanyType? Type
+        {
+            get{ return _Type;}
+            set
+            {
+                _Type = value;
+                _flagType = true;
+            }
+        }
+        private CompanyType? _Type;
+        private bool _flagType;
+
+        /// <summary>
+        /// Returns false as Type should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeType()
+        {
+            return _flagType;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="ControlledCompany" /> class.
         /// </summary>
@@ -47,51 +67,141 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="accessToken">CompanyAuthentication token for this company. [Only if type&#x3D;company].</param>
         /// <param name="connectionId">Company connection id..</param>
         /// <param name="taxCode">Tax code..</param>
-        public ControlledCompany(int id = default(int), string name = default(string), CompanyType? type = default(CompanyType?), string accessToken = default(string), decimal connectionId = default(decimal), string taxCode = default(string))
+        public ControlledCompany(int? id = default(int?), string name = default(string), CompanyType? type = default(CompanyType?), string accessToken = default(string), decimal? connectionId = default(decimal?), string taxCode = default(string))
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
-            this.AccessToken = accessToken;
-            this.ConnectionId = connectionId;
-            this.TaxCode = taxCode;
+            this._Id = id;
+            this._Name = name;
+            this._Type = type;
+            this._AccessToken = accessToken;
+            this._ConnectionId = connectionId;
+            this._TaxCode = taxCode;
         }
 
         /// <summary>
         /// Company unique identifier.
         /// </summary>
         /// <value>Company unique identifier.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id
+        {
+            get{ return _Id;}
+            set
+            {
+                _Id = value;
+                _flagId = true;
+            }
+        }
+        private int? _Id;
+        private bool _flagId;
 
+        /// <summary>
+        /// Returns false as Id should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeId()
+        {
+            return _flagId;
+        }
         /// <summary>
         /// Company name.
         /// </summary>
         /// <value>Company name.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        [DataMember(Name = "name", EmitDefaultValue = true)]
+        public string Name
+        {
+            get{ return _Name;}
+            set
+            {
+                _Name = value;
+                _flagName = true;
+            }
+        }
+        private string _Name;
+        private bool _flagName;
 
+        /// <summary>
+        /// Returns false as Name should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeName()
+        {
+            return _flagName;
+        }
         /// <summary>
         /// CompanyAuthentication token for this company. [Only if type&#x3D;company]
         /// </summary>
         /// <value>CompanyAuthentication token for this company. [Only if type&#x3D;company]</value>
-        [DataMember(Name = "access_token", EmitDefaultValue = false)]
-        public string AccessToken { get; set; }
+        [DataMember(Name = "access_token", EmitDefaultValue = true)]
+        public string AccessToken
+        {
+            get{ return _AccessToken;}
+            set
+            {
+                _AccessToken = value;
+                _flagAccessToken = true;
+            }
+        }
+        private string _AccessToken;
+        private bool _flagAccessToken;
 
+        /// <summary>
+        /// Returns false as AccessToken should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAccessToken()
+        {
+            return _flagAccessToken;
+        }
         /// <summary>
         /// Company connection id.
         /// </summary>
         /// <value>Company connection id.</value>
-        [DataMember(Name = "connection_id", EmitDefaultValue = false)]
-        public decimal ConnectionId { get; set; }
+        [DataMember(Name = "connection_id", EmitDefaultValue = true)]
+        public decimal? ConnectionId
+        {
+            get{ return _ConnectionId;}
+            set
+            {
+                _ConnectionId = value;
+                _flagConnectionId = true;
+            }
+        }
+        private decimal? _ConnectionId;
+        private bool _flagConnectionId;
 
+        /// <summary>
+        /// Returns false as ConnectionId should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeConnectionId()
+        {
+            return _flagConnectionId;
+        }
         /// <summary>
         /// Tax code.
         /// </summary>
         /// <value>Tax code.</value>
-        [DataMember(Name = "tax_code", EmitDefaultValue = false)]
-        public string TaxCode { get; set; }
+        [DataMember(Name = "tax_code", EmitDefaultValue = true)]
+        public string TaxCode
+        {
+            get{ return _TaxCode;}
+            set
+            {
+                _TaxCode = value;
+                _flagTaxCode = true;
+            }
+        }
+        private string _TaxCode;
+        private bool _flagTaxCode;
 
+        /// <summary>
+        /// Returns false as TaxCode should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeTaxCode()
+        {
+            return _flagTaxCode;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -143,7 +253,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -161,7 +272,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.ConnectionId == input.ConnectionId ||
-                    this.ConnectionId.Equals(input.ConnectionId)
+                    (this.ConnectionId != null &&
+                    this.ConnectionId.Equals(input.ConnectionId))
                 ) && 
                 (
                     this.TaxCode == input.TaxCode ||
@@ -179,7 +291,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
@@ -189,7 +304,10 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.AccessToken.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.ConnectionId.GetHashCode();
+                if (this.ConnectionId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ConnectionId.GetHashCode();
+                }
                 if (this.TaxCode != null)
                 {
                     hashCode = (hashCode * 59) + this.TaxCode.GetHashCode();

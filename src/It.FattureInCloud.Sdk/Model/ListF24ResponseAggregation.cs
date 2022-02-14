@@ -38,15 +38,33 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="aggregatedData">aggregatedData.</param>
         public ListF24ResponseAggregation(ListF24ResponseAggregatedData aggregatedData = default(ListF24ResponseAggregatedData))
         {
-            this.AggregatedData = aggregatedData;
+            this._AggregatedData = aggregatedData;
         }
 
         /// <summary>
         /// Gets or Sets AggregatedData
         /// </summary>
         [DataMember(Name = "aggregated_data", EmitDefaultValue = false)]
-        public ListF24ResponseAggregatedData AggregatedData { get; set; }
+        public ListF24ResponseAggregatedData AggregatedData
+        {
+            get{ return _AggregatedData;}
+            set
+            {
+                _AggregatedData = value;
+                _flagAggregatedData = true;
+            }
+        }
+        private ListF24ResponseAggregatedData _AggregatedData;
+        private bool _flagAggregatedData;
 
+        /// <summary>
+        /// Returns false as AggregatedData should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAggregatedData()
+        {
+            return _flagAggregatedData;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

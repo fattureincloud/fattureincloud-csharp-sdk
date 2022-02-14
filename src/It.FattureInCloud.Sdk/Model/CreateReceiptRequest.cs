@@ -37,25 +37,61 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <param name="data">data.</param>
         /// <param name="autocompleteNumber">If true, the number is autocompleted progressively..</param>
-        public CreateReceiptRequest(Receipt data = default(Receipt), bool autocompleteNumber = default(bool))
+        public CreateReceiptRequest(Receipt data = default(Receipt), bool? autocompleteNumber = default(bool?))
         {
-            this.Data = data;
-            this.AutocompleteNumber = autocompleteNumber;
+            this._Data = data;
+            this._AutocompleteNumber = autocompleteNumber;
         }
 
         /// <summary>
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", EmitDefaultValue = false)]
-        public Receipt Data { get; set; }
+        public Receipt Data
+        {
+            get{ return _Data;}
+            set
+            {
+                _Data = value;
+                _flagData = true;
+            }
+        }
+        private Receipt _Data;
+        private bool _flagData;
 
+        /// <summary>
+        /// Returns false as Data should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeData()
+        {
+            return _flagData;
+        }
         /// <summary>
         /// If true, the number is autocompleted progressively.
         /// </summary>
         /// <value>If true, the number is autocompleted progressively.</value>
         [DataMember(Name = "autocomplete_number", EmitDefaultValue = true)]
-        public bool AutocompleteNumber { get; set; }
+        public bool? AutocompleteNumber
+        {
+            get{ return _AutocompleteNumber;}
+            set
+            {
+                _AutocompleteNumber = value;
+                _flagAutocompleteNumber = true;
+            }
+        }
+        private bool? _AutocompleteNumber;
+        private bool _flagAutocompleteNumber;
 
+        /// <summary>
+        /// Returns false as AutocompleteNumber should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAutocompleteNumber()
+        {
+            return _flagAutocompleteNumber;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -108,7 +144,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.AutocompleteNumber == input.AutocompleteNumber ||
-                    this.AutocompleteNumber.Equals(input.AutocompleteNumber)
+                    (this.AutocompleteNumber != null &&
+                    this.AutocompleteNumber.Equals(input.AutocompleteNumber))
                 );
         }
 
@@ -125,7 +162,10 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Data.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AutocompleteNumber.GetHashCode();
+                if (this.AutocompleteNumber != null)
+                {
+                    hashCode = (hashCode * 59) + this.AutocompleteNumber.GetHashCode();
+                }
                 return hashCode;
             }
         }

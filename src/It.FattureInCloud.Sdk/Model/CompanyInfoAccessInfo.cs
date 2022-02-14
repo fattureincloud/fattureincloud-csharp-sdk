@@ -36,33 +36,89 @@ namespace It.FattureInCloud.Sdk.Model
         /// <summary>
         /// Gets or Sets Role
         /// </summary>
+
         [DataMember(Name = "role", EmitDefaultValue = false)]
-        public UserCompanyRole? Role { get; set; }
+        public UserCompanyRole? Role
+        {
+            get{ return _Role;}
+            set
+            {
+                _Role = value;
+                _flagRole = true;
+            }
+        }
+        private UserCompanyRole? _Role;
+        private bool _flagRole;
+
+        /// <summary>
+        /// Returns false as Role should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRole()
+        {
+            return _flagRole;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="CompanyInfoAccessInfo" /> class.
         /// </summary>
         /// <param name="role">role.</param>
         /// <param name="permissions">permissions.</param>
         /// <param name="throughAccountant">throughAccountant.</param>
-        public CompanyInfoAccessInfo(UserCompanyRole? role = default(UserCompanyRole?), Permissions permissions = default(Permissions), bool throughAccountant = default(bool))
+        public CompanyInfoAccessInfo(UserCompanyRole? role = default(UserCompanyRole?), Permissions permissions = default(Permissions), bool? throughAccountant = default(bool?))
         {
-            this.Role = role;
-            this.Permissions = permissions;
-            this.ThroughAccountant = throughAccountant;
+            this._Role = role;
+            this._Permissions = permissions;
+            this._ThroughAccountant = throughAccountant;
         }
 
         /// <summary>
         /// Gets or Sets Permissions
         /// </summary>
         [DataMember(Name = "permissions", EmitDefaultValue = false)]
-        public Permissions Permissions { get; set; }
+        public Permissions Permissions
+        {
+            get{ return _Permissions;}
+            set
+            {
+                _Permissions = value;
+                _flagPermissions = true;
+            }
+        }
+        private Permissions _Permissions;
+        private bool _flagPermissions;
 
+        /// <summary>
+        /// Returns false as Permissions should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePermissions()
+        {
+            return _flagPermissions;
+        }
         /// <summary>
         /// Gets or Sets ThroughAccountant
         /// </summary>
         [DataMember(Name = "through_accountant", EmitDefaultValue = true)]
-        public bool ThroughAccountant { get; set; }
+        public bool? ThroughAccountant
+        {
+            get{ return _ThroughAccountant;}
+            set
+            {
+                _ThroughAccountant = value;
+                _flagThroughAccountant = true;
+            }
+        }
+        private bool? _ThroughAccountant;
+        private bool _flagThroughAccountant;
 
+        /// <summary>
+        /// Returns false as ThroughAccountant should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeThroughAccountant()
+        {
+            return _flagThroughAccountant;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -120,7 +176,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.ThroughAccountant == input.ThroughAccountant ||
-                    this.ThroughAccountant.Equals(input.ThroughAccountant)
+                    (this.ThroughAccountant != null &&
+                    this.ThroughAccountant.Equals(input.ThroughAccountant))
                 );
         }
 
@@ -138,7 +195,10 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Permissions.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.ThroughAccountant.GetHashCode();
+                if (this.ThroughAccountant != null)
+                {
+                    hashCode = (hashCode * 59) + this.ThroughAccountant.GetHashCode();
+                }
                 return hashCode;
             }
         }

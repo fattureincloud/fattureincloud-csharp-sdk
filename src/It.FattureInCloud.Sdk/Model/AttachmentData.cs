@@ -38,16 +38,34 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="attachmentToken">Uploaded attachment token..</param>
         public AttachmentData(string attachmentToken = default(string))
         {
-            this.AttachmentToken = attachmentToken;
+            this._AttachmentToken = attachmentToken;
         }
 
         /// <summary>
         /// Uploaded attachment token.
         /// </summary>
         /// <value>Uploaded attachment token.</value>
-        [DataMember(Name = "attachment_token", EmitDefaultValue = false)]
-        public string AttachmentToken { get; set; }
+        [DataMember(Name = "attachment_token", EmitDefaultValue = true)]
+        public string AttachmentToken
+        {
+            get{ return _AttachmentToken;}
+            set
+            {
+                _AttachmentToken = value;
+                _flagAttachmentToken = true;
+            }
+        }
+        private string _AttachmentToken;
+        private bool _flagAttachmentToken;
 
+        /// <summary>
+        /// Returns false as AttachmentToken should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAttachmentToken()
+        {
+            return _flagAttachmentToken;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

@@ -42,65 +42,191 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="email">Email of the user..</param>
         /// <param name="hash">hash.</param>
         /// <param name="picture">Picture of the user..</param>
-        public User(int id = default(int), string name = default(string), string firstName = default(string), string lastName = default(string), string email = default(string), string hash = default(string), string picture = default(string))
+        public User(int? id = default(int?), string name = default(string), string firstName = default(string), string lastName = default(string), string email = default(string), string hash = default(string), string picture = default(string))
         {
-            this.Id = id;
-            this.Name = name;
-            this.FirstName = firstName;
-            this.LastName = lastName;
-            this.Email = email;
-            this.Hash = hash;
-            this.Picture = picture;
+            this._Id = id;
+            this._Name = name;
+            this._FirstName = firstName;
+            this._LastName = lastName;
+            this._Email = email;
+            this._Hash = hash;
+            this._Picture = picture;
         }
 
         /// <summary>
         /// User identifier.
         /// </summary>
         /// <value>User identifier.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id
+        {
+            get{ return _Id;}
+            set
+            {
+                _Id = value;
+                _flagId = true;
+            }
+        }
+        private int? _Id;
+        private bool _flagId;
 
+        /// <summary>
+        /// Returns false as Id should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeId()
+        {
+            return _flagId;
+        }
         /// <summary>
         /// Full name of the user.
         /// </summary>
         /// <value>Full name of the user.</value>
         [DataMember(Name = "name", EmitDefaultValue = true)]
-        public string Name { get; set; }
+        public string Name
+        {
+            get{ return _Name;}
+            set
+            {
+                _Name = value;
+                _flagName = true;
+            }
+        }
+        private string _Name;
+        private bool _flagName;
 
+        /// <summary>
+        /// Returns false as Name should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeName()
+        {
+            return _flagName;
+        }
         /// <summary>
         /// First name of the user.
         /// </summary>
         /// <value>First name of the user.</value>
         [DataMember(Name = "first_name", EmitDefaultValue = true)]
-        public string FirstName { get; set; }
+        public string FirstName
+        {
+            get{ return _FirstName;}
+            set
+            {
+                _FirstName = value;
+                _flagFirstName = true;
+            }
+        }
+        private string _FirstName;
+        private bool _flagFirstName;
 
+        /// <summary>
+        /// Returns false as FirstName should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeFirstName()
+        {
+            return _flagFirstName;
+        }
         /// <summary>
         /// Last name of the user.
         /// </summary>
         /// <value>Last name of the user.</value>
         [DataMember(Name = "last_name", EmitDefaultValue = true)]
-        public string LastName { get; set; }
+        public string LastName
+        {
+            get{ return _LastName;}
+            set
+            {
+                _LastName = value;
+                _flagLastName = true;
+            }
+        }
+        private string _LastName;
+        private bool _flagLastName;
 
+        /// <summary>
+        /// Returns false as LastName should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeLastName()
+        {
+            return _flagLastName;
+        }
         /// <summary>
         /// Email of the user.
         /// </summary>
         /// <value>Email of the user.</value>
         [DataMember(Name = "email", EmitDefaultValue = true)]
-        public string Email { get; set; }
+        public string Email
+        {
+            get{ return _Email;}
+            set
+            {
+                _Email = value;
+                _flagEmail = true;
+            }
+        }
+        private string _Email;
+        private bool _flagEmail;
 
+        /// <summary>
+        /// Returns false as Email should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeEmail()
+        {
+            return _flagEmail;
+        }
         /// <summary>
         /// Gets or Sets Hash
         /// </summary>
-        [DataMember(Name = "hash", EmitDefaultValue = false)]
-        public string Hash { get; set; }
+        [DataMember(Name = "hash", EmitDefaultValue = true)]
+        public string Hash
+        {
+            get{ return _Hash;}
+            set
+            {
+                _Hash = value;
+                _flagHash = true;
+            }
+        }
+        private string _Hash;
+        private bool _flagHash;
 
+        /// <summary>
+        /// Returns false as Hash should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeHash()
+        {
+            return _flagHash;
+        }
         /// <summary>
         /// Picture of the user.
         /// </summary>
         /// <value>Picture of the user.</value>
         [DataMember(Name = "picture", EmitDefaultValue = true)]
-        public string Picture { get; set; }
+        public string Picture
+        {
+            get{ return _Picture;}
+            set
+            {
+                _Picture = value;
+                _flagPicture = true;
+            }
+        }
+        private string _Picture;
+        private bool _flagPicture;
 
+        /// <summary>
+        /// Returns false as Picture should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePicture()
+        {
+            return _flagPicture;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -153,7 +279,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -196,7 +323,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();

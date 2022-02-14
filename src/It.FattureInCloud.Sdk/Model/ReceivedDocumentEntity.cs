@@ -39,8 +39,8 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="name">Entity name..</param>
         public ReceivedDocumentEntity(int? id = default(int?), string name = default(string))
         {
-            this.Id = id;
-            this.Name = name;
+            this._Id = id;
+            this._Name = name;
         }
 
         /// <summary>
@@ -48,15 +48,51 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>Entity unique identifier.</value>
         [DataMember(Name = "id", EmitDefaultValue = true)]
-        public int? Id { get; set; }
+        public int? Id
+        {
+            get{ return _Id;}
+            set
+            {
+                _Id = value;
+                _flagId = true;
+            }
+        }
+        private int? _Id;
+        private bool _flagId;
 
+        /// <summary>
+        /// Returns false as Id should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeId()
+        {
+            return _flagId;
+        }
         /// <summary>
         /// Entity name.
         /// </summary>
         /// <value>Entity name.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        [DataMember(Name = "name", EmitDefaultValue = true)]
+        public string Name
+        {
+            get{ return _Name;}
+            set
+            {
+                _Name = value;
+                _flagName = true;
+            }
+        }
+        private string _Name;
+        private bool _flagName;
 
+        /// <summary>
+        /// Returns false as Name should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeName()
+        {
+            return _flagName;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

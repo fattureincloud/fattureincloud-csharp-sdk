@@ -38,15 +38,33 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="data">data.</param>
         public ListTemplatesResponse(List<DocumentTemplate> data = default(List<DocumentTemplate>))
         {
-            this.Data = data;
+            this._Data = data;
         }
 
         /// <summary>
         /// Gets or Sets Data
         /// </summary>
-        [DataMember(Name = "data", EmitDefaultValue = false)]
-        public List<DocumentTemplate> Data { get; set; }
+        [DataMember(Name = "data", EmitDefaultValue = true)]
+        public List<DocumentTemplate> Data
+        {
+            get{ return _Data;}
+            set
+            {
+                _Data = value;
+                _flagData = true;
+            }
+        }
+        private List<DocumentTemplate> _Data;
+        private bool _flagData;
 
+        /// <summary>
+        /// Returns false as Data should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeData()
+        {
+            return _flagData;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

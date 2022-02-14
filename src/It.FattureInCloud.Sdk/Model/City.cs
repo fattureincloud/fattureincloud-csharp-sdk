@@ -40,32 +40,86 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="province">Province..</param>
         public City(string postalCode = default(string), string city = default(string), string province = default(string))
         {
-            this.PostalCode = postalCode;
-            this._City = city;
-            this.Province = province;
+            this._PostalCode = postalCode;
+            this.__City = city;
+            this._Province = province;
         }
 
         /// <summary>
         /// City postal code.
         /// </summary>
         /// <value>City postal code.</value>
-        [DataMember(Name = "postal_code", EmitDefaultValue = false)]
-        public string PostalCode { get; set; }
+        [DataMember(Name = "postal_code", EmitDefaultValue = true)]
+        public string PostalCode
+        {
+            get{ return _PostalCode;}
+            set
+            {
+                _PostalCode = value;
+                _flagPostalCode = true;
+            }
+        }
+        private string _PostalCode;
+        private bool _flagPostalCode;
 
+        /// <summary>
+        /// Returns false as PostalCode should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePostalCode()
+        {
+            return _flagPostalCode;
+        }
         /// <summary>
         /// City name.
         /// </summary>
         /// <value>City name.</value>
-        [DataMember(Name = "city", EmitDefaultValue = false)]
-        public string _City { get; set; }
+        [DataMember(Name = "city", EmitDefaultValue = true)]
+        public string _City
+        {
+            get{ return __City;}
+            set
+            {
+                __City = value;
+                _flag_City = true;
+            }
+        }
+        private string __City;
+        private bool _flag_City;
 
+        /// <summary>
+        /// Returns false as _City should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerialize_City()
+        {
+            return _flag_City;
+        }
         /// <summary>
         /// Province.
         /// </summary>
         /// <value>Province.</value>
-        [DataMember(Name = "province", EmitDefaultValue = false)]
-        public string Province { get; set; }
+        [DataMember(Name = "province", EmitDefaultValue = true)]
+        public string Province
+        {
+            get{ return _Province;}
+            set
+            {
+                _Province = value;
+                _flagProvince = true;
+            }
+        }
+        private string _Province;
+        private bool _flagProvince;
 
+        /// <summary>
+        /// Returns false as Province should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeProvince()
+        {
+            return _flagProvince;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

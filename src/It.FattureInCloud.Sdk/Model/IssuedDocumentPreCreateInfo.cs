@@ -50,109 +50,343 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="vatTypesList">Vat types list..</param>
         public IssuedDocumentPreCreateInfo(Object numerations = default(Object), Object dnNumerations = default(Object), IssuedDocumentPreCreateInfoDefaultValues defaultValues = default(IssuedDocumentPreCreateInfoDefaultValues), IssuedDocumentPreCreateInfoExtraDataDefaultValues extraDataDefaultValues = default(IssuedDocumentPreCreateInfoExtraDataDefaultValues), IssuedDocumentPreCreateInfoItemsDefaultValues itemsDefaultValues = default(IssuedDocumentPreCreateInfoItemsDefaultValues), List<string> countriesList = default(List<string>), List<Currency> currenciesList = default(List<Currency>), List<DocumentTemplate> templatesList = default(List<DocumentTemplate>), List<DocumentTemplate> dnTemplatesList = default(List<DocumentTemplate>), List<DocumentTemplate> aiTemplatesList = default(List<DocumentTemplate>), List<PaymentMethod> paymentMethodsList = default(List<PaymentMethod>), List<PaymentAccount> paymentAccountsList = default(List<PaymentAccount>), List<VatType> vatTypesList = default(List<VatType>))
         {
-            this.Numerations = numerations;
-            this.DnNumerations = dnNumerations;
-            this.DefaultValues = defaultValues;
-            this.ExtraDataDefaultValues = extraDataDefaultValues;
-            this.ItemsDefaultValues = itemsDefaultValues;
-            this.CountriesList = countriesList;
-            this.CurrenciesList = currenciesList;
-            this.TemplatesList = templatesList;
-            this.DnTemplatesList = dnTemplatesList;
-            this.AiTemplatesList = aiTemplatesList;
-            this.PaymentMethodsList = paymentMethodsList;
-            this.PaymentAccountsList = paymentAccountsList;
-            this.VatTypesList = vatTypesList;
+            this._Numerations = numerations;
+            this._DnNumerations = dnNumerations;
+            this._DefaultValues = defaultValues;
+            this._ExtraDataDefaultValues = extraDataDefaultValues;
+            this._ItemsDefaultValues = itemsDefaultValues;
+            this._CountriesList = countriesList;
+            this._CurrenciesList = currenciesList;
+            this._TemplatesList = templatesList;
+            this._DnTemplatesList = dnTemplatesList;
+            this._AiTemplatesList = aiTemplatesList;
+            this._PaymentMethodsList = paymentMethodsList;
+            this._PaymentAccountsList = paymentAccountsList;
+            this._VatTypesList = vatTypesList;
         }
 
         /// <summary>
         /// Next numbers by year and numeration name (for the given document type).
         /// </summary>
         /// <value>Next numbers by year and numeration name (for the given document type).</value>
-        [DataMember(Name = "numerations", EmitDefaultValue = false)]
-        public Object Numerations { get; set; }
+        [DataMember(Name = "numerations", EmitDefaultValue = true)]
+        public Object Numerations
+        {
+            get{ return _Numerations;}
+            set
+            {
+                _Numerations = value;
+                _flagNumerations = true;
+            }
+        }
+        private Object _Numerations;
+        private bool _flagNumerations;
 
+        /// <summary>
+        /// Returns false as Numerations should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeNumerations()
+        {
+            return _flagNumerations;
+        }
         /// <summary>
         /// Next numbers by year and numeration name (for delivery_notes).
         /// </summary>
         /// <value>Next numbers by year and numeration name (for delivery_notes).</value>
-        [DataMember(Name = "dn_numerations", EmitDefaultValue = false)]
-        public Object DnNumerations { get; set; }
+        [DataMember(Name = "dn_numerations", EmitDefaultValue = true)]
+        public Object DnNumerations
+        {
+            get{ return _DnNumerations;}
+            set
+            {
+                _DnNumerations = value;
+                _flagDnNumerations = true;
+            }
+        }
+        private Object _DnNumerations;
+        private bool _flagDnNumerations;
 
+        /// <summary>
+        /// Returns false as DnNumerations should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDnNumerations()
+        {
+            return _flagDnNumerations;
+        }
         /// <summary>
         /// Gets or Sets DefaultValues
         /// </summary>
-        [DataMember(Name = "default_values", EmitDefaultValue = false)]
-        public IssuedDocumentPreCreateInfoDefaultValues DefaultValues { get; set; }
+        [DataMember(Name = "default_values", EmitDefaultValue = true)]
+        public IssuedDocumentPreCreateInfoDefaultValues DefaultValues
+        {
+            get{ return _DefaultValues;}
+            set
+            {
+                _DefaultValues = value;
+                _flagDefaultValues = true;
+            }
+        }
+        private IssuedDocumentPreCreateInfoDefaultValues _DefaultValues;
+        private bool _flagDefaultValues;
 
+        /// <summary>
+        /// Returns false as DefaultValues should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDefaultValues()
+        {
+            return _flagDefaultValues;
+        }
         /// <summary>
         /// Gets or Sets ExtraDataDefaultValues
         /// </summary>
-        [DataMember(Name = "extra_data_default_values", EmitDefaultValue = false)]
-        public IssuedDocumentPreCreateInfoExtraDataDefaultValues ExtraDataDefaultValues { get; set; }
+        [DataMember(Name = "extra_data_default_values", EmitDefaultValue = true)]
+        public IssuedDocumentPreCreateInfoExtraDataDefaultValues ExtraDataDefaultValues
+        {
+            get{ return _ExtraDataDefaultValues;}
+            set
+            {
+                _ExtraDataDefaultValues = value;
+                _flagExtraDataDefaultValues = true;
+            }
+        }
+        private IssuedDocumentPreCreateInfoExtraDataDefaultValues _ExtraDataDefaultValues;
+        private bool _flagExtraDataDefaultValues;
 
+        /// <summary>
+        /// Returns false as ExtraDataDefaultValues should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeExtraDataDefaultValues()
+        {
+            return _flagExtraDataDefaultValues;
+        }
         /// <summary>
         /// Gets or Sets ItemsDefaultValues
         /// </summary>
-        [DataMember(Name = "items_default_values", EmitDefaultValue = false)]
-        public IssuedDocumentPreCreateInfoItemsDefaultValues ItemsDefaultValues { get; set; }
+        [DataMember(Name = "items_default_values", EmitDefaultValue = true)]
+        public IssuedDocumentPreCreateInfoItemsDefaultValues ItemsDefaultValues
+        {
+            get{ return _ItemsDefaultValues;}
+            set
+            {
+                _ItemsDefaultValues = value;
+                _flagItemsDefaultValues = true;
+            }
+        }
+        private IssuedDocumentPreCreateInfoItemsDefaultValues _ItemsDefaultValues;
+        private bool _flagItemsDefaultValues;
 
+        /// <summary>
+        /// Returns false as ItemsDefaultValues should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeItemsDefaultValues()
+        {
+            return _flagItemsDefaultValues;
+        }
         /// <summary>
         /// Countries list.
         /// </summary>
         /// <value>Countries list.</value>
-        [DataMember(Name = "countries_list", EmitDefaultValue = false)]
-        public List<string> CountriesList { get; set; }
+        [DataMember(Name = "countries_list", EmitDefaultValue = true)]
+        public List<string> CountriesList
+        {
+            get{ return _CountriesList;}
+            set
+            {
+                _CountriesList = value;
+                _flagCountriesList = true;
+            }
+        }
+        private List<string> _CountriesList;
+        private bool _flagCountriesList;
 
+        /// <summary>
+        /// Returns false as CountriesList should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCountriesList()
+        {
+            return _flagCountriesList;
+        }
         /// <summary>
         /// Currencies list.
         /// </summary>
         /// <value>Currencies list.</value>
-        [DataMember(Name = "currencies_list", EmitDefaultValue = false)]
-        public List<Currency> CurrenciesList { get; set; }
+        [DataMember(Name = "currencies_list", EmitDefaultValue = true)]
+        public List<Currency> CurrenciesList
+        {
+            get{ return _CurrenciesList;}
+            set
+            {
+                _CurrenciesList = value;
+                _flagCurrenciesList = true;
+            }
+        }
+        private List<Currency> _CurrenciesList;
+        private bool _flagCurrenciesList;
 
+        /// <summary>
+        /// Returns false as CurrenciesList should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCurrenciesList()
+        {
+            return _flagCurrenciesList;
+        }
         /// <summary>
         /// Document templates list.
         /// </summary>
         /// <value>Document templates list.</value>
-        [DataMember(Name = "templates_list", EmitDefaultValue = false)]
-        public List<DocumentTemplate> TemplatesList { get; set; }
+        [DataMember(Name = "templates_list", EmitDefaultValue = true)]
+        public List<DocumentTemplate> TemplatesList
+        {
+            get{ return _TemplatesList;}
+            set
+            {
+                _TemplatesList = value;
+                _flagTemplatesList = true;
+            }
+        }
+        private List<DocumentTemplate> _TemplatesList;
+        private bool _flagTemplatesList;
 
+        /// <summary>
+        /// Returns false as TemplatesList should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeTemplatesList()
+        {
+            return _flagTemplatesList;
+        }
         /// <summary>
         /// Delivery note templates list.
         /// </summary>
         /// <value>Delivery note templates list.</value>
-        [DataMember(Name = "dn_templates_list", EmitDefaultValue = false)]
-        public List<DocumentTemplate> DnTemplatesList { get; set; }
+        [DataMember(Name = "dn_templates_list", EmitDefaultValue = true)]
+        public List<DocumentTemplate> DnTemplatesList
+        {
+            get{ return _DnTemplatesList;}
+            set
+            {
+                _DnTemplatesList = value;
+                _flagDnTemplatesList = true;
+            }
+        }
+        private List<DocumentTemplate> _DnTemplatesList;
+        private bool _flagDnTemplatesList;
 
+        /// <summary>
+        /// Returns false as DnTemplatesList should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDnTemplatesList()
+        {
+            return _flagDnTemplatesList;
+        }
         /// <summary>
         /// Accompanying invoice templates list.
         /// </summary>
         /// <value>Accompanying invoice templates list.</value>
-        [DataMember(Name = "ai_templates_list", EmitDefaultValue = false)]
-        public List<DocumentTemplate> AiTemplatesList { get; set; }
+        [DataMember(Name = "ai_templates_list", EmitDefaultValue = true)]
+        public List<DocumentTemplate> AiTemplatesList
+        {
+            get{ return _AiTemplatesList;}
+            set
+            {
+                _AiTemplatesList = value;
+                _flagAiTemplatesList = true;
+            }
+        }
+        private List<DocumentTemplate> _AiTemplatesList;
+        private bool _flagAiTemplatesList;
 
+        /// <summary>
+        /// Returns false as AiTemplatesList should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAiTemplatesList()
+        {
+            return _flagAiTemplatesList;
+        }
         /// <summary>
         /// Payment methods list.
         /// </summary>
         /// <value>Payment methods list.</value>
-        [DataMember(Name = "payment_methods_list", EmitDefaultValue = false)]
-        public List<PaymentMethod> PaymentMethodsList { get; set; }
+        [DataMember(Name = "payment_methods_list", EmitDefaultValue = true)]
+        public List<PaymentMethod> PaymentMethodsList
+        {
+            get{ return _PaymentMethodsList;}
+            set
+            {
+                _PaymentMethodsList = value;
+                _flagPaymentMethodsList = true;
+            }
+        }
+        private List<PaymentMethod> _PaymentMethodsList;
+        private bool _flagPaymentMethodsList;
 
+        /// <summary>
+        /// Returns false as PaymentMethodsList should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePaymentMethodsList()
+        {
+            return _flagPaymentMethodsList;
+        }
         /// <summary>
         /// Payment accounts list.
         /// </summary>
         /// <value>Payment accounts list.</value>
-        [DataMember(Name = "payment_accounts_list", EmitDefaultValue = false)]
-        public List<PaymentAccount> PaymentAccountsList { get; set; }
+        [DataMember(Name = "payment_accounts_list", EmitDefaultValue = true)]
+        public List<PaymentAccount> PaymentAccountsList
+        {
+            get{ return _PaymentAccountsList;}
+            set
+            {
+                _PaymentAccountsList = value;
+                _flagPaymentAccountsList = true;
+            }
+        }
+        private List<PaymentAccount> _PaymentAccountsList;
+        private bool _flagPaymentAccountsList;
 
+        /// <summary>
+        /// Returns false as PaymentAccountsList should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePaymentAccountsList()
+        {
+            return _flagPaymentAccountsList;
+        }
         /// <summary>
         /// Vat types list.
         /// </summary>
         /// <value>Vat types list.</value>
-        [DataMember(Name = "vat_types_list", EmitDefaultValue = false)]
-        public List<VatType> VatTypesList { get; set; }
+        [DataMember(Name = "vat_types_list", EmitDefaultValue = true)]
+        public List<VatType> VatTypesList
+        {
+            get{ return _VatTypesList;}
+            set
+            {
+                _VatTypesList = value;
+                _flagVatTypesList = true;
+            }
+        }
+        private List<VatType> _VatTypesList;
+        private bool _flagVatTypesList;
 
+        /// <summary>
+        /// Returns false as VatTypesList should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeVatTypesList()
+        {
+            return _flagVatTypesList;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

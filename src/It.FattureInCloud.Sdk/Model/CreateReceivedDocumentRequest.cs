@@ -37,25 +37,61 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <param name="pendingId">Pending received document id of the document from which the new document is created..</param>
         /// <param name="data">data.</param>
-        public CreateReceivedDocumentRequest(int pendingId = default(int), ReceivedDocument data = default(ReceivedDocument))
+        public CreateReceivedDocumentRequest(int? pendingId = default(int?), ReceivedDocument data = default(ReceivedDocument))
         {
-            this.PendingId = pendingId;
-            this.Data = data;
+            this._PendingId = pendingId;
+            this._Data = data;
         }
 
         /// <summary>
         /// Pending received document id of the document from which the new document is created.
         /// </summary>
         /// <value>Pending received document id of the document from which the new document is created.</value>
-        [DataMember(Name = "pending_id", EmitDefaultValue = false)]
-        public int PendingId { get; set; }
+        [DataMember(Name = "pending_id", EmitDefaultValue = true)]
+        public int? PendingId
+        {
+            get{ return _PendingId;}
+            set
+            {
+                _PendingId = value;
+                _flagPendingId = true;
+            }
+        }
+        private int? _PendingId;
+        private bool _flagPendingId;
 
+        /// <summary>
+        /// Returns false as PendingId should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePendingId()
+        {
+            return _flagPendingId;
+        }
         /// <summary>
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", EmitDefaultValue = false)]
-        public ReceivedDocument Data { get; set; }
+        public ReceivedDocument Data
+        {
+            get{ return _Data;}
+            set
+            {
+                _Data = value;
+                _flagData = true;
+            }
+        }
+        private ReceivedDocument _Data;
+        private bool _flagData;
 
+        /// <summary>
+        /// Returns false as Data should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeData()
+        {
+            return _flagData;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -103,7 +139,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.PendingId == input.PendingId ||
-                    this.PendingId.Equals(input.PendingId)
+                    (this.PendingId != null &&
+                    this.PendingId.Equals(input.PendingId))
                 ) && 
                 (
                     this.Data == input.Data ||
@@ -121,7 +158,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.PendingId.GetHashCode();
+                if (this.PendingId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PendingId.GetHashCode();
+                }
                 if (this.Data != null)
                 {
                     hashCode = (hashCode * 59) + this.Data.GetHashCode();

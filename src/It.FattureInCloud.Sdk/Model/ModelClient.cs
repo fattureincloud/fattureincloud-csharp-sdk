@@ -36,14 +36,54 @@ namespace It.FattureInCloud.Sdk.Model
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
+
         [DataMember(Name = "type", EmitDefaultValue = true)]
-        public ClientType? Type { get; set; }
+        public ClientType? Type
+        {
+            get{ return _Type;}
+            set
+            {
+                _Type = value;
+                _flagType = true;
+            }
+        }
+        private ClientType? _Type;
+        private bool _flagType;
+
+        /// <summary>
+        /// Returns false as Type should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeType()
+        {
+            return _flagType;
+        }
 
         /// <summary>
         /// Gets or Sets DefaultPaymentTermsType
         /// </summary>
+
         [DataMember(Name = "default_payment_terms_type", EmitDefaultValue = false)]
-        public DefaultPaymentTermsType? DefaultPaymentTermsType { get; set; }
+        public DefaultPaymentTermsType? DefaultPaymentTermsType
+        {
+            get{ return _DefaultPaymentTermsType;}
+            set
+            {
+                _DefaultPaymentTermsType = value;
+                _flagDefaultPaymentTermsType = true;
+            }
+        }
+        private DefaultPaymentTermsType? _DefaultPaymentTermsType;
+        private bool _flagDefaultPaymentTermsType;
+
+        /// <summary>
+        /// Returns false as DefaultPaymentTermsType should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDefaultPaymentTermsType()
+        {
+            return _flagDefaultPaymentTermsType;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="ModelClient" /> class.
         /// </summary>
@@ -61,7 +101,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="addressCity">Client city..</param>
         /// <param name="addressProvince">Client province..</param>
         /// <param name="addressExtra">Client address extra info..</param>
-        /// <param name="country">Client country (default to &quot;Italia&quot;).</param>
+        /// <param name="country">Client country.</param>
         /// <param name="email">Client email..</param>
         /// <param name="certifiedEmail">Client certified email..</param>
         /// <param name="phone">Client phone..</param>
@@ -75,269 +115,844 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="bankIban">Client iban..</param>
         /// <param name="bankSwiftCode">Client bank swift code..</param>
         /// <param name="shippingAddress">Client shipping address..</param>
-        /// <param name="eInvoice">Use e-invoices for this entity (default to false).</param>
+        /// <param name="eInvoice">Use e-invoices for this entity.</param>
         /// <param name="eiCode">E-invoice code.</param>
         /// <param name="discountHighlight">Discount Highlight..</param>
         /// <param name="defaultDiscount">Default discount..</param>
         /// <param name="createdAt">createdAt.</param>
         /// <param name="updatedAt">updatedAt.</param>
-        public ModelClient(int id = default(int), string code = default(string), string name = default(string), ClientType? type = default(ClientType?), string firstName = default(string), string lastName = default(string), string contactPerson = default(string), string vatNumber = default(string), string taxCode = default(string), string addressStreet = default(string), string addressPostalCode = default(string), string addressCity = default(string), string addressProvince = default(string), string addressExtra = default(string), string country = "Italia", string email = default(string), string certifiedEmail = default(string), string phone = default(string), string fax = default(string), string notes = default(string), VatType defaultVat = default(VatType), int defaultPaymentTerms = default(int), DefaultPaymentTermsType? defaultPaymentTermsType = default(DefaultPaymentTermsType?), PaymentMethod defaultPaymentMethod = default(PaymentMethod), string bankName = default(string), string bankIban = default(string), string bankSwiftCode = default(string), string shippingAddress = default(string), bool eInvoice = false, string eiCode = default(string), bool discountHighlight = default(bool), decimal defaultDiscount = default(decimal), string createdAt = default(string), string updatedAt = default(string))
+        public ModelClient(int? id = default(int?), string code = default(string), string name = default(string), ClientType? type = default(ClientType?), string firstName = default(string), string lastName = default(string), string contactPerson = default(string), string vatNumber = default(string), string taxCode = default(string), string addressStreet = default(string), string addressPostalCode = default(string), string addressCity = default(string), string addressProvince = default(string), string addressExtra = default(string), string country = default(string), string email = default(string), string certifiedEmail = default(string), string phone = default(string), string fax = default(string), string notes = default(string), VatType defaultVat = default(VatType), int? defaultPaymentTerms = default(int?), DefaultPaymentTermsType? defaultPaymentTermsType = default(DefaultPaymentTermsType?), PaymentMethod defaultPaymentMethod = default(PaymentMethod), string bankName = default(string), string bankIban = default(string), string bankSwiftCode = default(string), string shippingAddress = default(string), bool? eInvoice = default(bool?), string eiCode = default(string), bool? discountHighlight = default(bool?), decimal? defaultDiscount = default(decimal?), string createdAt = default(string), string updatedAt = default(string))
         {
-            this.Id = id;
-            this.Code = code;
-            this.Name = name;
-            this.Type = type;
-            this.FirstName = firstName;
-            this.LastName = lastName;
-            this.ContactPerson = contactPerson;
-            this.VatNumber = vatNumber;
-            this.TaxCode = taxCode;
-            this.AddressStreet = addressStreet;
-            this.AddressPostalCode = addressPostalCode;
-            this.AddressCity = addressCity;
-            this.AddressProvince = addressProvince;
-            this.AddressExtra = addressExtra;
-            // use default value if no "country" provided
-            this.Country = country ?? "Italia";
-            this.Email = email;
-            this.CertifiedEmail = certifiedEmail;
-            this.Phone = phone;
-            this.Fax = fax;
-            this.Notes = notes;
-            this.DefaultVat = defaultVat;
-            this.DefaultPaymentTerms = defaultPaymentTerms;
-            this.DefaultPaymentTermsType = defaultPaymentTermsType;
-            this.DefaultPaymentMethod = defaultPaymentMethod;
-            this.BankName = bankName;
-            this.BankIban = bankIban;
-            this.BankSwiftCode = bankSwiftCode;
-            this.ShippingAddress = shippingAddress;
-            this.EInvoice = eInvoice;
-            this.EiCode = eiCode;
-            this.DiscountHighlight = discountHighlight;
-            this.DefaultDiscount = defaultDiscount;
-            this.CreatedAt = createdAt;
-            this.UpdatedAt = updatedAt;
+            this._Id = id;
+            this._Code = code;
+            this._Name = name;
+            this._Type = type;
+            this._FirstName = firstName;
+            this._LastName = lastName;
+            this._ContactPerson = contactPerson;
+            this._VatNumber = vatNumber;
+            this._TaxCode = taxCode;
+            this._AddressStreet = addressStreet;
+            this._AddressPostalCode = addressPostalCode;
+            this._AddressCity = addressCity;
+            this._AddressProvince = addressProvince;
+            this._AddressExtra = addressExtra;
+            this._Country = country;
+            this._Email = email;
+            this._CertifiedEmail = certifiedEmail;
+            this._Phone = phone;
+            this._Fax = fax;
+            this._Notes = notes;
+            this._DefaultVat = defaultVat;
+            this._DefaultPaymentTerms = defaultPaymentTerms;
+            this._DefaultPaymentTermsType = defaultPaymentTermsType;
+            this._DefaultPaymentMethod = defaultPaymentMethod;
+            this._BankName = bankName;
+            this._BankIban = bankIban;
+            this._BankSwiftCode = bankSwiftCode;
+            this._ShippingAddress = shippingAddress;
+            this._EInvoice = eInvoice;
+            this._EiCode = eiCode;
+            this._DiscountHighlight = discountHighlight;
+            this._DefaultDiscount = defaultDiscount;
+            this._CreatedAt = createdAt;
+            this._UpdatedAt = updatedAt;
         }
 
         /// <summary>
         /// Unique identifier
         /// </summary>
         /// <value>Unique identifier</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id
+        {
+            get{ return _Id;}
+            set
+            {
+                _Id = value;
+                _flagId = true;
+            }
+        }
+        private int? _Id;
+        private bool _flagId;
 
+        /// <summary>
+        /// Returns false as Id should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeId()
+        {
+            return _flagId;
+        }
         /// <summary>
         /// Client code.
         /// </summary>
         /// <value>Client code.</value>
-        [DataMember(Name = "code", EmitDefaultValue = false)]
-        public string Code { get; set; }
+        [DataMember(Name = "code", EmitDefaultValue = true)]
+        public string Code
+        {
+            get{ return _Code;}
+            set
+            {
+                _Code = value;
+                _flagCode = true;
+            }
+        }
+        private string _Code;
+        private bool _flagCode;
 
+        /// <summary>
+        /// Returns false as Code should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCode()
+        {
+            return _flagCode;
+        }
         /// <summary>
         /// Client name
         /// </summary>
         /// <value>Client name</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        [DataMember(Name = "name", EmitDefaultValue = true)]
+        public string Name
+        {
+            get{ return _Name;}
+            set
+            {
+                _Name = value;
+                _flagName = true;
+            }
+        }
+        private string _Name;
+        private bool _flagName;
 
+        /// <summary>
+        /// Returns false as Name should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeName()
+        {
+            return _flagName;
+        }
         /// <summary>
         /// Client first name.
         /// </summary>
         /// <value>Client first name.</value>
-        [DataMember(Name = "first_name", EmitDefaultValue = false)]
-        public string FirstName { get; set; }
+        [DataMember(Name = "first_name", EmitDefaultValue = true)]
+        public string FirstName
+        {
+            get{ return _FirstName;}
+            set
+            {
+                _FirstName = value;
+                _flagFirstName = true;
+            }
+        }
+        private string _FirstName;
+        private bool _flagFirstName;
 
+        /// <summary>
+        /// Returns false as FirstName should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeFirstName()
+        {
+            return _flagFirstName;
+        }
         /// <summary>
         /// Client last name.
         /// </summary>
         /// <value>Client last name.</value>
-        [DataMember(Name = "last_name", EmitDefaultValue = false)]
-        public string LastName { get; set; }
+        [DataMember(Name = "last_name", EmitDefaultValue = true)]
+        public string LastName
+        {
+            get{ return _LastName;}
+            set
+            {
+                _LastName = value;
+                _flagLastName = true;
+            }
+        }
+        private string _LastName;
+        private bool _flagLastName;
 
+        /// <summary>
+        /// Returns false as LastName should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeLastName()
+        {
+            return _flagLastName;
+        }
         /// <summary>
         /// Gets or Sets ContactPerson
         /// </summary>
-        [DataMember(Name = "contact_person", EmitDefaultValue = false)]
-        public string ContactPerson { get; set; }
+        [DataMember(Name = "contact_person", EmitDefaultValue = true)]
+        public string ContactPerson
+        {
+            get{ return _ContactPerson;}
+            set
+            {
+                _ContactPerson = value;
+                _flagContactPerson = true;
+            }
+        }
+        private string _ContactPerson;
+        private bool _flagContactPerson;
 
+        /// <summary>
+        /// Returns false as ContactPerson should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeContactPerson()
+        {
+            return _flagContactPerson;
+        }
         /// <summary>
         /// Client vat number
         /// </summary>
         /// <value>Client vat number</value>
-        [DataMember(Name = "vat_number", EmitDefaultValue = false)]
-        public string VatNumber { get; set; }
+        [DataMember(Name = "vat_number", EmitDefaultValue = true)]
+        public string VatNumber
+        {
+            get{ return _VatNumber;}
+            set
+            {
+                _VatNumber = value;
+                _flagVatNumber = true;
+            }
+        }
+        private string _VatNumber;
+        private bool _flagVatNumber;
 
+        /// <summary>
+        /// Returns false as VatNumber should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeVatNumber()
+        {
+            return _flagVatNumber;
+        }
         /// <summary>
         /// Client tax code.
         /// </summary>
         /// <value>Client tax code.</value>
-        [DataMember(Name = "tax_code", EmitDefaultValue = false)]
-        public string TaxCode { get; set; }
+        [DataMember(Name = "tax_code", EmitDefaultValue = true)]
+        public string TaxCode
+        {
+            get{ return _TaxCode;}
+            set
+            {
+                _TaxCode = value;
+                _flagTaxCode = true;
+            }
+        }
+        private string _TaxCode;
+        private bool _flagTaxCode;
 
+        /// <summary>
+        /// Returns false as TaxCode should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeTaxCode()
+        {
+            return _flagTaxCode;
+        }
         /// <summary>
         /// Client street address.
         /// </summary>
         /// <value>Client street address.</value>
-        [DataMember(Name = "address_street", EmitDefaultValue = false)]
-        public string AddressStreet { get; set; }
+        [DataMember(Name = "address_street", EmitDefaultValue = true)]
+        public string AddressStreet
+        {
+            get{ return _AddressStreet;}
+            set
+            {
+                _AddressStreet = value;
+                _flagAddressStreet = true;
+            }
+        }
+        private string _AddressStreet;
+        private bool _flagAddressStreet;
 
+        /// <summary>
+        /// Returns false as AddressStreet should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAddressStreet()
+        {
+            return _flagAddressStreet;
+        }
         /// <summary>
         /// Client postal code.
         /// </summary>
         /// <value>Client postal code.</value>
-        [DataMember(Name = "address_postal_code", EmitDefaultValue = false)]
-        public string AddressPostalCode { get; set; }
+        [DataMember(Name = "address_postal_code", EmitDefaultValue = true)]
+        public string AddressPostalCode
+        {
+            get{ return _AddressPostalCode;}
+            set
+            {
+                _AddressPostalCode = value;
+                _flagAddressPostalCode = true;
+            }
+        }
+        private string _AddressPostalCode;
+        private bool _flagAddressPostalCode;
 
+        /// <summary>
+        /// Returns false as AddressPostalCode should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAddressPostalCode()
+        {
+            return _flagAddressPostalCode;
+        }
         /// <summary>
         /// Client city.
         /// </summary>
         /// <value>Client city.</value>
-        [DataMember(Name = "address_city", EmitDefaultValue = false)]
-        public string AddressCity { get; set; }
+        [DataMember(Name = "address_city", EmitDefaultValue = true)]
+        public string AddressCity
+        {
+            get{ return _AddressCity;}
+            set
+            {
+                _AddressCity = value;
+                _flagAddressCity = true;
+            }
+        }
+        private string _AddressCity;
+        private bool _flagAddressCity;
 
+        /// <summary>
+        /// Returns false as AddressCity should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAddressCity()
+        {
+            return _flagAddressCity;
+        }
         /// <summary>
         /// Client province.
         /// </summary>
         /// <value>Client province.</value>
-        [DataMember(Name = "address_province", EmitDefaultValue = false)]
-        public string AddressProvince { get; set; }
+        [DataMember(Name = "address_province", EmitDefaultValue = true)]
+        public string AddressProvince
+        {
+            get{ return _AddressProvince;}
+            set
+            {
+                _AddressProvince = value;
+                _flagAddressProvince = true;
+            }
+        }
+        private string _AddressProvince;
+        private bool _flagAddressProvince;
 
+        /// <summary>
+        /// Returns false as AddressProvince should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAddressProvince()
+        {
+            return _flagAddressProvince;
+        }
         /// <summary>
         /// Client address extra info.
         /// </summary>
         /// <value>Client address extra info.</value>
-        [DataMember(Name = "address_extra", EmitDefaultValue = false)]
-        public string AddressExtra { get; set; }
+        [DataMember(Name = "address_extra", EmitDefaultValue = true)]
+        public string AddressExtra
+        {
+            get{ return _AddressExtra;}
+            set
+            {
+                _AddressExtra = value;
+                _flagAddressExtra = true;
+            }
+        }
+        private string _AddressExtra;
+        private bool _flagAddressExtra;
 
+        /// <summary>
+        /// Returns false as AddressExtra should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAddressExtra()
+        {
+            return _flagAddressExtra;
+        }
         /// <summary>
         /// Client country
         /// </summary>
         /// <value>Client country</value>
-        [DataMember(Name = "country", EmitDefaultValue = false)]
-        public string Country { get; set; }
+        [DataMember(Name = "country", EmitDefaultValue = true)]
+        public string Country
+        {
+            get{ return _Country;}
+            set
+            {
+                _Country = value;
+                _flagCountry = true;
+            }
+        }
+        private string _Country;
+        private bool _flagCountry;
 
+        /// <summary>
+        /// Returns false as Country should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCountry()
+        {
+            return _flagCountry;
+        }
         /// <summary>
         /// Client email.
         /// </summary>
         /// <value>Client email.</value>
-        [DataMember(Name = "email", EmitDefaultValue = false)]
-        public string Email { get; set; }
+        [DataMember(Name = "email", EmitDefaultValue = true)]
+        public string Email
+        {
+            get{ return _Email;}
+            set
+            {
+                _Email = value;
+                _flagEmail = true;
+            }
+        }
+        private string _Email;
+        private bool _flagEmail;
 
+        /// <summary>
+        /// Returns false as Email should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeEmail()
+        {
+            return _flagEmail;
+        }
         /// <summary>
         /// Client certified email.
         /// </summary>
         /// <value>Client certified email.</value>
-        [DataMember(Name = "certified_email", EmitDefaultValue = false)]
-        public string CertifiedEmail { get; set; }
+        [DataMember(Name = "certified_email", EmitDefaultValue = true)]
+        public string CertifiedEmail
+        {
+            get{ return _CertifiedEmail;}
+            set
+            {
+                _CertifiedEmail = value;
+                _flagCertifiedEmail = true;
+            }
+        }
+        private string _CertifiedEmail;
+        private bool _flagCertifiedEmail;
 
+        /// <summary>
+        /// Returns false as CertifiedEmail should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCertifiedEmail()
+        {
+            return _flagCertifiedEmail;
+        }
         /// <summary>
         /// Client phone.
         /// </summary>
         /// <value>Client phone.</value>
-        [DataMember(Name = "phone", EmitDefaultValue = false)]
-        public string Phone { get; set; }
+        [DataMember(Name = "phone", EmitDefaultValue = true)]
+        public string Phone
+        {
+            get{ return _Phone;}
+            set
+            {
+                _Phone = value;
+                _flagPhone = true;
+            }
+        }
+        private string _Phone;
+        private bool _flagPhone;
 
+        /// <summary>
+        /// Returns false as Phone should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePhone()
+        {
+            return _flagPhone;
+        }
         /// <summary>
         /// Client fax.
         /// </summary>
         /// <value>Client fax.</value>
-        [DataMember(Name = "fax", EmitDefaultValue = false)]
-        public string Fax { get; set; }
+        [DataMember(Name = "fax", EmitDefaultValue = true)]
+        public string Fax
+        {
+            get{ return _Fax;}
+            set
+            {
+                _Fax = value;
+                _flagFax = true;
+            }
+        }
+        private string _Fax;
+        private bool _flagFax;
 
+        /// <summary>
+        /// Returns false as Fax should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeFax()
+        {
+            return _flagFax;
+        }
         /// <summary>
         /// Extra notes.
         /// </summary>
         /// <value>Extra notes.</value>
-        [DataMember(Name = "notes", EmitDefaultValue = false)]
-        public string Notes { get; set; }
+        [DataMember(Name = "notes", EmitDefaultValue = true)]
+        public string Notes
+        {
+            get{ return _Notes;}
+            set
+            {
+                _Notes = value;
+                _flagNotes = true;
+            }
+        }
+        private string _Notes;
+        private bool _flagNotes;
 
+        /// <summary>
+        /// Returns false as Notes should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeNotes()
+        {
+            return _flagNotes;
+        }
         /// <summary>
         /// Gets or Sets DefaultVat
         /// </summary>
         [DataMember(Name = "default_vat", EmitDefaultValue = true)]
-        public VatType DefaultVat { get; set; }
+        public VatType DefaultVat
+        {
+            get{ return _DefaultVat;}
+            set
+            {
+                _DefaultVat = value;
+                _flagDefaultVat = true;
+            }
+        }
+        private VatType _DefaultVat;
+        private bool _flagDefaultVat;
 
+        /// <summary>
+        /// Returns false as DefaultVat should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDefaultVat()
+        {
+            return _flagDefaultVat;
+        }
         /// <summary>
         /// Gets or Sets DefaultPaymentTerms
         /// </summary>
-        [DataMember(Name = "default_payment_terms", EmitDefaultValue = false)]
-        public int DefaultPaymentTerms { get; set; }
+        [DataMember(Name = "default_payment_terms", EmitDefaultValue = true)]
+        public int? DefaultPaymentTerms
+        {
+            get{ return _DefaultPaymentTerms;}
+            set
+            {
+                _DefaultPaymentTerms = value;
+                _flagDefaultPaymentTerms = true;
+            }
+        }
+        private int? _DefaultPaymentTerms;
+        private bool _flagDefaultPaymentTerms;
 
+        /// <summary>
+        /// Returns false as DefaultPaymentTerms should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDefaultPaymentTerms()
+        {
+            return _flagDefaultPaymentTerms;
+        }
         /// <summary>
         /// Gets or Sets DefaultPaymentMethod
         /// </summary>
         [DataMember(Name = "default_payment_method", EmitDefaultValue = false)]
-        public PaymentMethod DefaultPaymentMethod { get; set; }
+        public PaymentMethod DefaultPaymentMethod
+        {
+            get{ return _DefaultPaymentMethod;}
+            set
+            {
+                _DefaultPaymentMethod = value;
+                _flagDefaultPaymentMethod = true;
+            }
+        }
+        private PaymentMethod _DefaultPaymentMethod;
+        private bool _flagDefaultPaymentMethod;
 
+        /// <summary>
+        /// Returns false as DefaultPaymentMethod should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDefaultPaymentMethod()
+        {
+            return _flagDefaultPaymentMethod;
+        }
         /// <summary>
         /// Client bank name.
         /// </summary>
         /// <value>Client bank name.</value>
-        [DataMember(Name = "bank_name", EmitDefaultValue = false)]
-        public string BankName { get; set; }
+        [DataMember(Name = "bank_name", EmitDefaultValue = true)]
+        public string BankName
+        {
+            get{ return _BankName;}
+            set
+            {
+                _BankName = value;
+                _flagBankName = true;
+            }
+        }
+        private string _BankName;
+        private bool _flagBankName;
 
+        /// <summary>
+        /// Returns false as BankName should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeBankName()
+        {
+            return _flagBankName;
+        }
         /// <summary>
         /// Client iban.
         /// </summary>
         /// <value>Client iban.</value>
-        [DataMember(Name = "bank_iban", EmitDefaultValue = false)]
-        public string BankIban { get; set; }
+        [DataMember(Name = "bank_iban", EmitDefaultValue = true)]
+        public string BankIban
+        {
+            get{ return _BankIban;}
+            set
+            {
+                _BankIban = value;
+                _flagBankIban = true;
+            }
+        }
+        private string _BankIban;
+        private bool _flagBankIban;
 
+        /// <summary>
+        /// Returns false as BankIban should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeBankIban()
+        {
+            return _flagBankIban;
+        }
         /// <summary>
         /// Client bank swift code.
         /// </summary>
         /// <value>Client bank swift code.</value>
-        [DataMember(Name = "bank_swift_code", EmitDefaultValue = false)]
-        public string BankSwiftCode { get; set; }
+        [DataMember(Name = "bank_swift_code", EmitDefaultValue = true)]
+        public string BankSwiftCode
+        {
+            get{ return _BankSwiftCode;}
+            set
+            {
+                _BankSwiftCode = value;
+                _flagBankSwiftCode = true;
+            }
+        }
+        private string _BankSwiftCode;
+        private bool _flagBankSwiftCode;
 
+        /// <summary>
+        /// Returns false as BankSwiftCode should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeBankSwiftCode()
+        {
+            return _flagBankSwiftCode;
+        }
         /// <summary>
         /// Client shipping address.
         /// </summary>
         /// <value>Client shipping address.</value>
-        [DataMember(Name = "shipping_address", EmitDefaultValue = false)]
-        public string ShippingAddress { get; set; }
+        [DataMember(Name = "shipping_address", EmitDefaultValue = true)]
+        public string ShippingAddress
+        {
+            get{ return _ShippingAddress;}
+            set
+            {
+                _ShippingAddress = value;
+                _flagShippingAddress = true;
+            }
+        }
+        private string _ShippingAddress;
+        private bool _flagShippingAddress;
 
+        /// <summary>
+        /// Returns false as ShippingAddress should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeShippingAddress()
+        {
+            return _flagShippingAddress;
+        }
         /// <summary>
         /// Use e-invoices for this entity
         /// </summary>
         /// <value>Use e-invoices for this entity</value>
         [DataMember(Name = "e_invoice", EmitDefaultValue = true)]
-        public bool EInvoice { get; set; }
+        public bool? EInvoice
+        {
+            get{ return _EInvoice;}
+            set
+            {
+                _EInvoice = value;
+                _flagEInvoice = true;
+            }
+        }
+        private bool? _EInvoice;
+        private bool _flagEInvoice;
 
+        /// <summary>
+        /// Returns false as EInvoice should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeEInvoice()
+        {
+            return _flagEInvoice;
+        }
         /// <summary>
         /// E-invoice code
         /// </summary>
         /// <value>E-invoice code</value>
-        [DataMember(Name = "ei_code", EmitDefaultValue = false)]
-        public string EiCode { get; set; }
+        [DataMember(Name = "ei_code", EmitDefaultValue = true)]
+        public string EiCode
+        {
+            get{ return _EiCode;}
+            set
+            {
+                _EiCode = value;
+                _flagEiCode = true;
+            }
+        }
+        private string _EiCode;
+        private bool _flagEiCode;
 
+        /// <summary>
+        /// Returns false as EiCode should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeEiCode()
+        {
+            return _flagEiCode;
+        }
         /// <summary>
         /// Discount Highlight.
         /// </summary>
         /// <value>Discount Highlight.</value>
         [DataMember(Name = "discount_highlight", EmitDefaultValue = true)]
-        public bool DiscountHighlight { get; set; }
+        public bool? DiscountHighlight
+        {
+            get{ return _DiscountHighlight;}
+            set
+            {
+                _DiscountHighlight = value;
+                _flagDiscountHighlight = true;
+            }
+        }
+        private bool? _DiscountHighlight;
+        private bool _flagDiscountHighlight;
 
+        /// <summary>
+        /// Returns false as DiscountHighlight should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDiscountHighlight()
+        {
+            return _flagDiscountHighlight;
+        }
         /// <summary>
         /// Default discount.
         /// </summary>
         /// <value>Default discount.</value>
-        [DataMember(Name = "default_discount", EmitDefaultValue = false)]
-        public decimal DefaultDiscount { get; set; }
+        [DataMember(Name = "default_discount", EmitDefaultValue = true)]
+        public decimal? DefaultDiscount
+        {
+            get{ return _DefaultDiscount;}
+            set
+            {
+                _DefaultDiscount = value;
+                _flagDefaultDiscount = true;
+            }
+        }
+        private decimal? _DefaultDiscount;
+        private bool _flagDefaultDiscount;
 
+        /// <summary>
+        /// Returns false as DefaultDiscount should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDefaultDiscount()
+        {
+            return _flagDefaultDiscount;
+        }
         /// <summary>
         /// Gets or Sets CreatedAt
         /// </summary>
         [DataMember(Name = "created_at", EmitDefaultValue = true)]
-        public string CreatedAt { get; set; }
+        public string CreatedAt
+        {
+            get{ return _CreatedAt;}
+            set
+            {
+                _CreatedAt = value;
+                _flagCreatedAt = true;
+            }
+        }
+        private string _CreatedAt;
+        private bool _flagCreatedAt;
 
+        /// <summary>
+        /// Returns false as CreatedAt should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCreatedAt()
+        {
+            return _flagCreatedAt;
+        }
         /// <summary>
         /// Gets or Sets UpdatedAt
         /// </summary>
         [DataMember(Name = "updated_at", EmitDefaultValue = true)]
-        public string UpdatedAt { get; set; }
+        public string UpdatedAt
+        {
+            get{ return _UpdatedAt;}
+            set
+            {
+                _UpdatedAt = value;
+                _flagUpdatedAt = true;
+            }
+        }
+        private string _UpdatedAt;
+        private bool _flagUpdatedAt;
 
+        /// <summary>
+        /// Returns false as UpdatedAt should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeUpdatedAt()
+        {
+            return _flagUpdatedAt;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -417,7 +1032,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.Code == input.Code ||
@@ -520,7 +1136,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.DefaultPaymentTerms == input.DefaultPaymentTerms ||
-                    this.DefaultPaymentTerms.Equals(input.DefaultPaymentTerms)
+                    (this.DefaultPaymentTerms != null &&
+                    this.DefaultPaymentTerms.Equals(input.DefaultPaymentTerms))
                 ) && 
                 (
                     this.DefaultPaymentTermsType == input.DefaultPaymentTermsType ||
@@ -553,7 +1170,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.EInvoice == input.EInvoice ||
-                    this.EInvoice.Equals(input.EInvoice)
+                    (this.EInvoice != null &&
+                    this.EInvoice.Equals(input.EInvoice))
                 ) && 
                 (
                     this.EiCode == input.EiCode ||
@@ -562,11 +1180,13 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.DiscountHighlight == input.DiscountHighlight ||
-                    this.DiscountHighlight.Equals(input.DiscountHighlight)
+                    (this.DiscountHighlight != null &&
+                    this.DiscountHighlight.Equals(input.DiscountHighlight))
                 ) && 
                 (
                     this.DefaultDiscount == input.DefaultDiscount ||
-                    this.DefaultDiscount.Equals(input.DefaultDiscount)
+                    (this.DefaultDiscount != null &&
+                    this.DefaultDiscount.Equals(input.DefaultDiscount))
                 ) && 
                 (
                     this.CreatedAt == input.CreatedAt ||
@@ -589,7 +1209,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.Code != null)
                 {
                     hashCode = (hashCode * 59) + this.Code.GetHashCode();
@@ -667,7 +1290,10 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.DefaultVat.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.DefaultPaymentTerms.GetHashCode();
+                if (this.DefaultPaymentTerms != null)
+                {
+                    hashCode = (hashCode * 59) + this.DefaultPaymentTerms.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.DefaultPaymentTermsType.GetHashCode();
                 if (this.DefaultPaymentMethod != null)
                 {
@@ -689,13 +1315,22 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.ShippingAddress.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.EInvoice.GetHashCode();
+                if (this.EInvoice != null)
+                {
+                    hashCode = (hashCode * 59) + this.EInvoice.GetHashCode();
+                }
                 if (this.EiCode != null)
                 {
                     hashCode = (hashCode * 59) + this.EiCode.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.DiscountHighlight.GetHashCode();
-                hashCode = (hashCode * 59) + this.DefaultDiscount.GetHashCode();
+                if (this.DiscountHighlight != null)
+                {
+                    hashCode = (hashCode * 59) + this.DiscountHighlight.GetHashCode();
+                }
+                if (this.DefaultDiscount != null)
+                {
+                    hashCode = (hashCode * 59) + this.DefaultDiscount.GetHashCode();
+                }
                 if (this.CreatedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();

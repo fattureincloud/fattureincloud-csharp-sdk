@@ -43,56 +43,164 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="vatTypesList">List of user vat types with the default 22%, 10%, 4% and 0% vats..</param>
         public ReceiptPreCreateInfo(Object numerations = default(Object), List<string> numerationsList = default(List<string>), List<string> rcCentersList = default(List<string>), List<PaymentAccount> paymentAccountsList = default(List<PaymentAccount>), List<string> categoriesList = default(List<string>), List<VatType> vatTypesList = default(List<VatType>))
         {
-            this.Numerations = numerations;
-            this.NumerationsList = numerationsList;
-            this.RcCentersList = rcCentersList;
-            this.PaymentAccountsList = paymentAccountsList;
-            this.CategoriesList = categoriesList;
-            this.VatTypesList = vatTypesList;
+            this._Numerations = numerations;
+            this._NumerationsList = numerationsList;
+            this._RcCentersList = rcCentersList;
+            this._PaymentAccountsList = paymentAccountsList;
+            this._CategoriesList = categoriesList;
+            this._VatTypesList = vatTypesList;
         }
 
         /// <summary>
         /// Next number by year, receipt type and numeration name.
         /// </summary>
         /// <value>Next number by year, receipt type and numeration name.</value>
-        [DataMember(Name = "numerations", EmitDefaultValue = false)]
-        public Object Numerations { get; set; }
+        [DataMember(Name = "numerations", EmitDefaultValue = true)]
+        public Object Numerations
+        {
+            get{ return _Numerations;}
+            set
+            {
+                _Numerations = value;
+                _flagNumerations = true;
+            }
+        }
+        private Object _Numerations;
+        private bool _flagNumerations;
 
+        /// <summary>
+        /// Returns false as Numerations should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeNumerations()
+        {
+            return _flagNumerations;
+        }
         /// <summary>
         /// List of series used in the past.
         /// </summary>
         /// <value>List of series used in the past.</value>
-        [DataMember(Name = "numerations_list", EmitDefaultValue = false)]
-        public List<string> NumerationsList { get; set; }
+        [DataMember(Name = "numerations_list", EmitDefaultValue = true)]
+        public List<string> NumerationsList
+        {
+            get{ return _NumerationsList;}
+            set
+            {
+                _NumerationsList = value;
+                _flagNumerationsList = true;
+            }
+        }
+        private List<string> _NumerationsList;
+        private bool _flagNumerationsList;
 
+        /// <summary>
+        /// Returns false as NumerationsList should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeNumerationsList()
+        {
+            return _flagNumerationsList;
+        }
         /// <summary>
         /// List of revenue centers used in the past.
         /// </summary>
         /// <value>List of revenue centers used in the past.</value>
-        [DataMember(Name = "rc_centers_list", EmitDefaultValue = false)]
-        public List<string> RcCentersList { get; set; }
+        [DataMember(Name = "rc_centers_list", EmitDefaultValue = true)]
+        public List<string> RcCentersList
+        {
+            get{ return _RcCentersList;}
+            set
+            {
+                _RcCentersList = value;
+                _flagRcCentersList = true;
+            }
+        }
+        private List<string> _RcCentersList;
+        private bool _flagRcCentersList;
 
+        /// <summary>
+        /// Returns false as RcCentersList should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRcCentersList()
+        {
+            return _flagRcCentersList;
+        }
         /// <summary>
         /// User payment accounts list.
         /// </summary>
         /// <value>User payment accounts list.</value>
-        [DataMember(Name = "payment_accounts_list", EmitDefaultValue = false)]
-        public List<PaymentAccount> PaymentAccountsList { get; set; }
+        [DataMember(Name = "payment_accounts_list", EmitDefaultValue = true)]
+        public List<PaymentAccount> PaymentAccountsList
+        {
+            get{ return _PaymentAccountsList;}
+            set
+            {
+                _PaymentAccountsList = value;
+                _flagPaymentAccountsList = true;
+            }
+        }
+        private List<PaymentAccount> _PaymentAccountsList;
+        private bool _flagPaymentAccountsList;
 
+        /// <summary>
+        /// Returns false as PaymentAccountsList should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePaymentAccountsList()
+        {
+            return _flagPaymentAccountsList;
+        }
         /// <summary>
         /// List of categories used in the past.
         /// </summary>
         /// <value>List of categories used in the past.</value>
-        [DataMember(Name = "categories_list", EmitDefaultValue = false)]
-        public List<string> CategoriesList { get; set; }
+        [DataMember(Name = "categories_list", EmitDefaultValue = true)]
+        public List<string> CategoriesList
+        {
+            get{ return _CategoriesList;}
+            set
+            {
+                _CategoriesList = value;
+                _flagCategoriesList = true;
+            }
+        }
+        private List<string> _CategoriesList;
+        private bool _flagCategoriesList;
 
+        /// <summary>
+        /// Returns false as CategoriesList should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCategoriesList()
+        {
+            return _flagCategoriesList;
+        }
         /// <summary>
         /// List of user vat types with the default 22%, 10%, 4% and 0% vats.
         /// </summary>
         /// <value>List of user vat types with the default 22%, 10%, 4% and 0% vats.</value>
-        [DataMember(Name = "vat_types_list", EmitDefaultValue = false)]
-        public List<VatType> VatTypesList { get; set; }
+        [DataMember(Name = "vat_types_list", EmitDefaultValue = true)]
+        public List<VatType> VatTypesList
+        {
+            get{ return _VatTypesList;}
+            set
+            {
+                _VatTypesList = value;
+                _flagVatTypesList = true;
+            }
+        }
+        private List<VatType> _VatTypesList;
+        private bool _flagVatTypesList;
 
+        /// <summary>
+        /// Returns false as VatTypesList should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeVatTypesList()
+        {
+            return _flagVatTypesList;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

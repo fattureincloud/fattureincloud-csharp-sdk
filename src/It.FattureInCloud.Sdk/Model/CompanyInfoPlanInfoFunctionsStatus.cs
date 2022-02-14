@@ -39,22 +39,58 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="tsPay">tsPay.</param>
         public CompanyInfoPlanInfoFunctionsStatus(FunctionStatus tsDigital = default(FunctionStatus), FunctionStatus tsPay = default(FunctionStatus))
         {
-            this.TsDigital = tsDigital;
-            this.TsPay = tsPay;
+            this._TsDigital = tsDigital;
+            this._TsPay = tsPay;
         }
 
         /// <summary>
         /// Gets or Sets TsDigital
         /// </summary>
         [DataMember(Name = "ts_digital", EmitDefaultValue = false)]
-        public FunctionStatus TsDigital { get; set; }
+        public FunctionStatus TsDigital
+        {
+            get{ return _TsDigital;}
+            set
+            {
+                _TsDigital = value;
+                _flagTsDigital = true;
+            }
+        }
+        private FunctionStatus _TsDigital;
+        private bool _flagTsDigital;
 
+        /// <summary>
+        /// Returns false as TsDigital should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeTsDigital()
+        {
+            return _flagTsDigital;
+        }
         /// <summary>
         /// Gets or Sets TsPay
         /// </summary>
         [DataMember(Name = "ts_pay", EmitDefaultValue = false)]
-        public FunctionStatus TsPay { get; set; }
+        public FunctionStatus TsPay
+        {
+            get{ return _TsPay;}
+            set
+            {
+                _TsPay = value;
+                _flagTsPay = true;
+            }
+        }
+        private FunctionStatus _TsPay;
+        private bool _flagTsPay;
 
+        /// <summary>
+        /// Returns false as TsPay should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeTsPay()
+        {
+            return _flagTsPay;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

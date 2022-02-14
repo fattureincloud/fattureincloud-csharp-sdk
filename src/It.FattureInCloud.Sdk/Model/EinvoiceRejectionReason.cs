@@ -42,11 +42,11 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="date">Rejection date..</param>
         public EinvoiceRejectionReason(string reason = default(string), string eiStatus = default(string), string solution = default(string), string code = default(string), DateTime? date = default(DateTime?))
         {
-            this.Reason = reason;
-            this.EiStatus = eiStatus;
-            this.Solution = solution;
-            this.Code = code;
-            this.Date = date;
+            this._Reason = reason;
+            this._EiStatus = eiStatus;
+            this._Solution = solution;
+            this._Code = code;
+            this._Date = date;
         }
 
         /// <summary>
@@ -54,37 +54,127 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>Rejection reason.</value>
         [DataMember(Name = "reason", EmitDefaultValue = true)]
-        public string Reason { get; set; }
+        public string Reason
+        {
+            get{ return _Reason;}
+            set
+            {
+                _Reason = value;
+                _flagReason = true;
+            }
+        }
+        private string _Reason;
+        private bool _flagReason;
 
+        /// <summary>
+        /// Returns false as Reason should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeReason()
+        {
+            return _flagReason;
+        }
         /// <summary>
         /// EInvoice status.
         /// </summary>
         /// <value>EInvoice status.</value>
         [DataMember(Name = "ei_status", EmitDefaultValue = true)]
-        public string EiStatus { get; set; }
+        public string EiStatus
+        {
+            get{ return _EiStatus;}
+            set
+            {
+                _EiStatus = value;
+                _flagEiStatus = true;
+            }
+        }
+        private string _EiStatus;
+        private bool _flagEiStatus;
 
+        /// <summary>
+        /// Returns false as EiStatus should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeEiStatus()
+        {
+            return _flagEiStatus;
+        }
         /// <summary>
         /// Error solution.
         /// </summary>
         /// <value>Error solution.</value>
         [DataMember(Name = "solution", EmitDefaultValue = true)]
-        public string Solution { get; set; }
+        public string Solution
+        {
+            get{ return _Solution;}
+            set
+            {
+                _Solution = value;
+                _flagSolution = true;
+            }
+        }
+        private string _Solution;
+        private bool _flagSolution;
 
+        /// <summary>
+        /// Returns false as Solution should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeSolution()
+        {
+            return _flagSolution;
+        }
         /// <summary>
         /// Error code.
         /// </summary>
         /// <value>Error code.</value>
         [DataMember(Name = "code", EmitDefaultValue = true)]
-        public string Code { get; set; }
+        public string Code
+        {
+            get{ return _Code;}
+            set
+            {
+                _Code = value;
+                _flagCode = true;
+            }
+        }
+        private string _Code;
+        private bool _flagCode;
 
+        /// <summary>
+        /// Returns false as Code should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCode()
+        {
+            return _flagCode;
+        }
         /// <summary>
         /// Rejection date.
         /// </summary>
         /// <value>Rejection date.</value>
-        [DataMember(Name = "date", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTime? Date { get; set; }
+        [DataMember(Name = "date", EmitDefaultValue = true)]
+        public DateTime? Date
+        {
+            get{ return _Date;}
+            set
+            {
+                _Date = value;
+                _flagDate = true;
+            }
+        }
+        private DateTime? _Date;
+        private bool _flagDate;
 
+        /// <summary>
+        /// Returns false as Date should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDate()
+        {
+            return _flagDate;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

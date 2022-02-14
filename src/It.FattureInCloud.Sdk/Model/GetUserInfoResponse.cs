@@ -40,29 +40,83 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="emailConfirmationState">emailConfirmationState.</param>
         public GetUserInfoResponse(User data = default(User), GetUserInfoResponseInfo info = default(GetUserInfoResponseInfo), GetUserInfoResponseEmailConfirmationState emailConfirmationState = default(GetUserInfoResponseEmailConfirmationState))
         {
-            this.Data = data;
-            this.Info = info;
-            this.EmailConfirmationState = emailConfirmationState;
+            this._Data = data;
+            this._Info = info;
+            this._EmailConfirmationState = emailConfirmationState;
         }
 
         /// <summary>
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", EmitDefaultValue = false)]
-        public User Data { get; set; }
+        public User Data
+        {
+            get{ return _Data;}
+            set
+            {
+                _Data = value;
+                _flagData = true;
+            }
+        }
+        private User _Data;
+        private bool _flagData;
 
+        /// <summary>
+        /// Returns false as Data should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeData()
+        {
+            return _flagData;
+        }
         /// <summary>
         /// Gets or Sets Info
         /// </summary>
-        [DataMember(Name = "info", EmitDefaultValue = false)]
-        public GetUserInfoResponseInfo Info { get; set; }
+        [DataMember(Name = "info", EmitDefaultValue = true)]
+        public GetUserInfoResponseInfo Info
+        {
+            get{ return _Info;}
+            set
+            {
+                _Info = value;
+                _flagInfo = true;
+            }
+        }
+        private GetUserInfoResponseInfo _Info;
+        private bool _flagInfo;
 
+        /// <summary>
+        /// Returns false as Info should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeInfo()
+        {
+            return _flagInfo;
+        }
         /// <summary>
         /// Gets or Sets EmailConfirmationState
         /// </summary>
-        [DataMember(Name = "email_confirmation_state", EmitDefaultValue = false)]
-        public GetUserInfoResponseEmailConfirmationState EmailConfirmationState { get; set; }
+        [DataMember(Name = "email_confirmation_state", EmitDefaultValue = true)]
+        public GetUserInfoResponseEmailConfirmationState EmailConfirmationState
+        {
+            get{ return _EmailConfirmationState;}
+            set
+            {
+                _EmailConfirmationState = value;
+                _flagEmailConfirmationState = true;
+            }
+        }
+        private GetUserInfoResponseEmailConfirmationState _EmailConfirmationState;
+        private bool _flagEmailConfirmationState;
 
+        /// <summary>
+        /// Returns false as EmailConfirmationState should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeEmailConfirmationState()
+        {
+            return _flagEmailConfirmationState;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

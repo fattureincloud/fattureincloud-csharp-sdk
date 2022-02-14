@@ -46,94 +46,292 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="otherWithholdingTax">Default other withholding tax percentage..</param>
         /// <param name="useGrossPrices">Use gross price by default..</param>
         /// <param name="paymentMethod">paymentMethod.</param>
-        public IssuedDocumentPreCreateInfoDefaultValues(DocumentTemplate defaultTemplate = default(DocumentTemplate), DocumentTemplate dnTemplate = default(DocumentTemplate), DocumentTemplate aiTemplate = default(DocumentTemplate), string notes = default(string), decimal rivalsa = default(decimal), decimal cassa = default(decimal), decimal withholdingTax = default(decimal), decimal withholdingTaxTaxable = default(decimal), decimal otherWithholdingTax = default(decimal), bool useGrossPrices = default(bool), PaymentMethod paymentMethod = default(PaymentMethod))
+        public IssuedDocumentPreCreateInfoDefaultValues(DocumentTemplate defaultTemplate = default(DocumentTemplate), DocumentTemplate dnTemplate = default(DocumentTemplate), DocumentTemplate aiTemplate = default(DocumentTemplate), string notes = default(string), decimal? rivalsa = default(decimal?), decimal? cassa = default(decimal?), decimal? withholdingTax = default(decimal?), decimal? withholdingTaxTaxable = default(decimal?), decimal? otherWithholdingTax = default(decimal?), bool? useGrossPrices = default(bool?), PaymentMethod paymentMethod = default(PaymentMethod))
         {
-            this.DefaultTemplate = defaultTemplate;
-            this.DnTemplate = dnTemplate;
-            this.AiTemplate = aiTemplate;
-            this.Notes = notes;
-            this.Rivalsa = rivalsa;
-            this.Cassa = cassa;
-            this.WithholdingTax = withholdingTax;
-            this.WithholdingTaxTaxable = withholdingTaxTaxable;
-            this.OtherWithholdingTax = otherWithholdingTax;
-            this.UseGrossPrices = useGrossPrices;
-            this.PaymentMethod = paymentMethod;
+            this._DefaultTemplate = defaultTemplate;
+            this._DnTemplate = dnTemplate;
+            this._AiTemplate = aiTemplate;
+            this._Notes = notes;
+            this._Rivalsa = rivalsa;
+            this._Cassa = cassa;
+            this._WithholdingTax = withholdingTax;
+            this._WithholdingTaxTaxable = withholdingTaxTaxable;
+            this._OtherWithholdingTax = otherWithholdingTax;
+            this._UseGrossPrices = useGrossPrices;
+            this._PaymentMethod = paymentMethod;
         }
 
         /// <summary>
         /// Gets or Sets DefaultTemplate
         /// </summary>
         [DataMember(Name = "default_template", EmitDefaultValue = false)]
-        public DocumentTemplate DefaultTemplate { get; set; }
+        public DocumentTemplate DefaultTemplate
+        {
+            get{ return _DefaultTemplate;}
+            set
+            {
+                _DefaultTemplate = value;
+                _flagDefaultTemplate = true;
+            }
+        }
+        private DocumentTemplate _DefaultTemplate;
+        private bool _flagDefaultTemplate;
 
+        /// <summary>
+        /// Returns false as DefaultTemplate should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDefaultTemplate()
+        {
+            return _flagDefaultTemplate;
+        }
         /// <summary>
         /// Gets or Sets DnTemplate
         /// </summary>
         [DataMember(Name = "dn_template", EmitDefaultValue = false)]
-        public DocumentTemplate DnTemplate { get; set; }
+        public DocumentTemplate DnTemplate
+        {
+            get{ return _DnTemplate;}
+            set
+            {
+                _DnTemplate = value;
+                _flagDnTemplate = true;
+            }
+        }
+        private DocumentTemplate _DnTemplate;
+        private bool _flagDnTemplate;
 
+        /// <summary>
+        /// Returns false as DnTemplate should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDnTemplate()
+        {
+            return _flagDnTemplate;
+        }
         /// <summary>
         /// Gets or Sets AiTemplate
         /// </summary>
         [DataMember(Name = "ai_template", EmitDefaultValue = false)]
-        public DocumentTemplate AiTemplate { get; set; }
+        public DocumentTemplate AiTemplate
+        {
+            get{ return _AiTemplate;}
+            set
+            {
+                _AiTemplate = value;
+                _flagAiTemplate = true;
+            }
+        }
+        private DocumentTemplate _AiTemplate;
+        private bool _flagAiTemplate;
 
+        /// <summary>
+        /// Returns false as AiTemplate should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAiTemplate()
+        {
+            return _flagAiTemplate;
+        }
         /// <summary>
         /// Default notes.
         /// </summary>
         /// <value>Default notes.</value>
-        [DataMember(Name = "notes", EmitDefaultValue = false)]
-        public string Notes { get; set; }
+        [DataMember(Name = "notes", EmitDefaultValue = true)]
+        public string Notes
+        {
+            get{ return _Notes;}
+            set
+            {
+                _Notes = value;
+                _flagNotes = true;
+            }
+        }
+        private string _Notes;
+        private bool _flagNotes;
 
+        /// <summary>
+        /// Returns false as Notes should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeNotes()
+        {
+            return _flagNotes;
+        }
         /// <summary>
         /// Default rivalsa percentage.
         /// </summary>
         /// <value>Default rivalsa percentage.</value>
-        [DataMember(Name = "rivalsa", EmitDefaultValue = false)]
-        public decimal Rivalsa { get; set; }
+        [DataMember(Name = "rivalsa", EmitDefaultValue = true)]
+        public decimal? Rivalsa
+        {
+            get{ return _Rivalsa;}
+            set
+            {
+                _Rivalsa = value;
+                _flagRivalsa = true;
+            }
+        }
+        private decimal? _Rivalsa;
+        private bool _flagRivalsa;
 
+        /// <summary>
+        /// Returns false as Rivalsa should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRivalsa()
+        {
+            return _flagRivalsa;
+        }
         /// <summary>
         /// Default cassa percentage.
         /// </summary>
         /// <value>Default cassa percentage.</value>
-        [DataMember(Name = "cassa", EmitDefaultValue = false)]
-        public decimal Cassa { get; set; }
+        [DataMember(Name = "cassa", EmitDefaultValue = true)]
+        public decimal? Cassa
+        {
+            get{ return _Cassa;}
+            set
+            {
+                _Cassa = value;
+                _flagCassa = true;
+            }
+        }
+        private decimal? _Cassa;
+        private bool _flagCassa;
 
+        /// <summary>
+        /// Returns false as Cassa should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCassa()
+        {
+            return _flagCassa;
+        }
         /// <summary>
         /// Default withholding tax percentage.
         /// </summary>
         /// <value>Default withholding tax percentage.</value>
-        [DataMember(Name = "withholding_tax", EmitDefaultValue = false)]
-        public decimal WithholdingTax { get; set; }
+        [DataMember(Name = "withholding_tax", EmitDefaultValue = true)]
+        public decimal? WithholdingTax
+        {
+            get{ return _WithholdingTax;}
+            set
+            {
+                _WithholdingTax = value;
+                _flagWithholdingTax = true;
+            }
+        }
+        private decimal? _WithholdingTax;
+        private bool _flagWithholdingTax;
 
+        /// <summary>
+        /// Returns false as WithholdingTax should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeWithholdingTax()
+        {
+            return _flagWithholdingTax;
+        }
         /// <summary>
         /// Default withholding tax taxable percentage.
         /// </summary>
         /// <value>Default withholding tax taxable percentage.</value>
-        [DataMember(Name = "withholding_tax_taxable", EmitDefaultValue = false)]
-        public decimal WithholdingTaxTaxable { get; set; }
+        [DataMember(Name = "withholding_tax_taxable", EmitDefaultValue = true)]
+        public decimal? WithholdingTaxTaxable
+        {
+            get{ return _WithholdingTaxTaxable;}
+            set
+            {
+                _WithholdingTaxTaxable = value;
+                _flagWithholdingTaxTaxable = true;
+            }
+        }
+        private decimal? _WithholdingTaxTaxable;
+        private bool _flagWithholdingTaxTaxable;
 
+        /// <summary>
+        /// Returns false as WithholdingTaxTaxable should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeWithholdingTaxTaxable()
+        {
+            return _flagWithholdingTaxTaxable;
+        }
         /// <summary>
         /// Default other withholding tax percentage.
         /// </summary>
         /// <value>Default other withholding tax percentage.</value>
-        [DataMember(Name = "other_withholding_tax", EmitDefaultValue = false)]
-        public decimal OtherWithholdingTax { get; set; }
+        [DataMember(Name = "other_withholding_tax", EmitDefaultValue = true)]
+        public decimal? OtherWithholdingTax
+        {
+            get{ return _OtherWithholdingTax;}
+            set
+            {
+                _OtherWithholdingTax = value;
+                _flagOtherWithholdingTax = true;
+            }
+        }
+        private decimal? _OtherWithholdingTax;
+        private bool _flagOtherWithholdingTax;
 
+        /// <summary>
+        /// Returns false as OtherWithholdingTax should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeOtherWithholdingTax()
+        {
+            return _flagOtherWithholdingTax;
+        }
         /// <summary>
         /// Use gross price by default.
         /// </summary>
         /// <value>Use gross price by default.</value>
         [DataMember(Name = "use_gross_prices", EmitDefaultValue = true)]
-        public bool UseGrossPrices { get; set; }
+        public bool? UseGrossPrices
+        {
+            get{ return _UseGrossPrices;}
+            set
+            {
+                _UseGrossPrices = value;
+                _flagUseGrossPrices = true;
+            }
+        }
+        private bool? _UseGrossPrices;
+        private bool _flagUseGrossPrices;
 
+        /// <summary>
+        /// Returns false as UseGrossPrices should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeUseGrossPrices()
+        {
+            return _flagUseGrossPrices;
+        }
         /// <summary>
         /// Gets or Sets PaymentMethod
         /// </summary>
         [DataMember(Name = "payment_method", EmitDefaultValue = false)]
-        public PaymentMethod PaymentMethod { get; set; }
+        public PaymentMethod PaymentMethod
+        {
+            get{ return _PaymentMethod;}
+            set
+            {
+                _PaymentMethod = value;
+                _flagPaymentMethod = true;
+            }
+        }
+        private PaymentMethod _PaymentMethod;
+        private bool _flagPaymentMethod;
 
+        /// <summary>
+        /// Returns false as PaymentMethod should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePaymentMethod()
+        {
+            return _flagPaymentMethod;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -210,27 +408,33 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.Rivalsa == input.Rivalsa ||
-                    this.Rivalsa.Equals(input.Rivalsa)
+                    (this.Rivalsa != null &&
+                    this.Rivalsa.Equals(input.Rivalsa))
                 ) && 
                 (
                     this.Cassa == input.Cassa ||
-                    this.Cassa.Equals(input.Cassa)
+                    (this.Cassa != null &&
+                    this.Cassa.Equals(input.Cassa))
                 ) && 
                 (
                     this.WithholdingTax == input.WithholdingTax ||
-                    this.WithholdingTax.Equals(input.WithholdingTax)
+                    (this.WithholdingTax != null &&
+                    this.WithholdingTax.Equals(input.WithholdingTax))
                 ) && 
                 (
                     this.WithholdingTaxTaxable == input.WithholdingTaxTaxable ||
-                    this.WithholdingTaxTaxable.Equals(input.WithholdingTaxTaxable)
+                    (this.WithholdingTaxTaxable != null &&
+                    this.WithholdingTaxTaxable.Equals(input.WithholdingTaxTaxable))
                 ) && 
                 (
                     this.OtherWithholdingTax == input.OtherWithholdingTax ||
-                    this.OtherWithholdingTax.Equals(input.OtherWithholdingTax)
+                    (this.OtherWithholdingTax != null &&
+                    this.OtherWithholdingTax.Equals(input.OtherWithholdingTax))
                 ) && 
                 (
                     this.UseGrossPrices == input.UseGrossPrices ||
-                    this.UseGrossPrices.Equals(input.UseGrossPrices)
+                    (this.UseGrossPrices != null &&
+                    this.UseGrossPrices.Equals(input.UseGrossPrices))
                 ) && 
                 (
                     this.PaymentMethod == input.PaymentMethod ||
@@ -264,12 +468,30 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Notes.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Rivalsa.GetHashCode();
-                hashCode = (hashCode * 59) + this.Cassa.GetHashCode();
-                hashCode = (hashCode * 59) + this.WithholdingTax.GetHashCode();
-                hashCode = (hashCode * 59) + this.WithholdingTaxTaxable.GetHashCode();
-                hashCode = (hashCode * 59) + this.OtherWithholdingTax.GetHashCode();
-                hashCode = (hashCode * 59) + this.UseGrossPrices.GetHashCode();
+                if (this.Rivalsa != null)
+                {
+                    hashCode = (hashCode * 59) + this.Rivalsa.GetHashCode();
+                }
+                if (this.Cassa != null)
+                {
+                    hashCode = (hashCode * 59) + this.Cassa.GetHashCode();
+                }
+                if (this.WithholdingTax != null)
+                {
+                    hashCode = (hashCode * 59) + this.WithholdingTax.GetHashCode();
+                }
+                if (this.WithholdingTaxTaxable != null)
+                {
+                    hashCode = (hashCode * 59) + this.WithholdingTaxTaxable.GetHashCode();
+                }
+                if (this.OtherWithholdingTax != null)
+                {
+                    hashCode = (hashCode * 59) + this.OtherWithholdingTax.GetHashCode();
+                }
+                if (this.UseGrossPrices != null)
+                {
+                    hashCode = (hashCode * 59) + this.UseGrossPrices.GetHashCode();
+                }
                 if (this.PaymentMethod != null)
                 {
                     hashCode = (hashCode * 59) + this.PaymentMethod.GetHashCode();
