@@ -46,7 +46,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="otherWithholdingTax">Default other withholding tax percentage..</param>
         /// <param name="useGrossPrices">Use gross price by default..</param>
         /// <param name="paymentMethod">paymentMethod.</param>
-        public IssuedDocumentPreCreateInfoDefaultValues(DocumentTemplate defaultTemplate = default(DocumentTemplate), DocumentTemplate dnTemplate = default(DocumentTemplate), DocumentTemplate aiTemplate = default(DocumentTemplate), string notes = default(string), decimal rivalsa = default(decimal), decimal cassa = default(decimal), decimal withholdingTax = default(decimal), decimal withholdingTaxTaxable = default(decimal), decimal otherWithholdingTax = default(decimal), bool useGrossPrices = default(bool), PaymentMethod paymentMethod = default(PaymentMethod))
+        public IssuedDocumentPreCreateInfoDefaultValues(DocumentTemplate defaultTemplate = default(DocumentTemplate), DocumentTemplate dnTemplate = default(DocumentTemplate), DocumentTemplate aiTemplate = default(DocumentTemplate), string notes = default(string), decimal? rivalsa = default(decimal?), decimal? cassa = default(decimal?), decimal? withholdingTax = default(decimal?), decimal? withholdingTaxTaxable = default(decimal?), decimal? otherWithholdingTax = default(decimal?), bool? useGrossPrices = default(bool?), PaymentMethod paymentMethod = default(PaymentMethod))
         {
             this.DefaultTemplate = defaultTemplate;
             this.DnTemplate = dnTemplate;
@@ -83,50 +83,50 @@ namespace It.FattureInCloud.Sdk.Model
         /// Default notes.
         /// </summary>
         /// <value>Default notes.</value>
-        [DataMember(Name = "notes", EmitDefaultValue = false)]
+        [DataMember(Name = "notes", EmitDefaultValue = true)]
         public string Notes { get; set; }
 
         /// <summary>
         /// Default rivalsa percentage.
         /// </summary>
         /// <value>Default rivalsa percentage.</value>
-        [DataMember(Name = "rivalsa", EmitDefaultValue = false)]
-        public decimal Rivalsa { get; set; }
+        [DataMember(Name = "rivalsa", EmitDefaultValue = true)]
+        public decimal? Rivalsa { get; set; }
 
         /// <summary>
         /// Default cassa percentage.
         /// </summary>
         /// <value>Default cassa percentage.</value>
-        [DataMember(Name = "cassa", EmitDefaultValue = false)]
-        public decimal Cassa { get; set; }
+        [DataMember(Name = "cassa", EmitDefaultValue = true)]
+        public decimal? Cassa { get; set; }
 
         /// <summary>
         /// Default withholding tax percentage.
         /// </summary>
         /// <value>Default withholding tax percentage.</value>
-        [DataMember(Name = "withholding_tax", EmitDefaultValue = false)]
-        public decimal WithholdingTax { get; set; }
+        [DataMember(Name = "withholding_tax", EmitDefaultValue = true)]
+        public decimal? WithholdingTax { get; set; }
 
         /// <summary>
         /// Default withholding tax taxable percentage.
         /// </summary>
         /// <value>Default withholding tax taxable percentage.</value>
-        [DataMember(Name = "withholding_tax_taxable", EmitDefaultValue = false)]
-        public decimal WithholdingTaxTaxable { get; set; }
+        [DataMember(Name = "withholding_tax_taxable", EmitDefaultValue = true)]
+        public decimal? WithholdingTaxTaxable { get; set; }
 
         /// <summary>
         /// Default other withholding tax percentage.
         /// </summary>
         /// <value>Default other withholding tax percentage.</value>
-        [DataMember(Name = "other_withholding_tax", EmitDefaultValue = false)]
-        public decimal OtherWithholdingTax { get; set; }
+        [DataMember(Name = "other_withholding_tax", EmitDefaultValue = true)]
+        public decimal? OtherWithholdingTax { get; set; }
 
         /// <summary>
         /// Use gross price by default.
         /// </summary>
         /// <value>Use gross price by default.</value>
         [DataMember(Name = "use_gross_prices", EmitDefaultValue = true)]
-        public bool UseGrossPrices { get; set; }
+        public bool? UseGrossPrices { get; set; }
 
         /// <summary>
         /// Gets or Sets PaymentMethod
@@ -210,27 +210,33 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.Rivalsa == input.Rivalsa ||
-                    this.Rivalsa.Equals(input.Rivalsa)
+                    (this.Rivalsa != null &&
+                    this.Rivalsa.Equals(input.Rivalsa))
                 ) && 
                 (
                     this.Cassa == input.Cassa ||
-                    this.Cassa.Equals(input.Cassa)
+                    (this.Cassa != null &&
+                    this.Cassa.Equals(input.Cassa))
                 ) && 
                 (
                     this.WithholdingTax == input.WithholdingTax ||
-                    this.WithholdingTax.Equals(input.WithholdingTax)
+                    (this.WithholdingTax != null &&
+                    this.WithholdingTax.Equals(input.WithholdingTax))
                 ) && 
                 (
                     this.WithholdingTaxTaxable == input.WithholdingTaxTaxable ||
-                    this.WithholdingTaxTaxable.Equals(input.WithholdingTaxTaxable)
+                    (this.WithholdingTaxTaxable != null &&
+                    this.WithholdingTaxTaxable.Equals(input.WithholdingTaxTaxable))
                 ) && 
                 (
                     this.OtherWithholdingTax == input.OtherWithholdingTax ||
-                    this.OtherWithholdingTax.Equals(input.OtherWithholdingTax)
+                    (this.OtherWithholdingTax != null &&
+                    this.OtherWithholdingTax.Equals(input.OtherWithholdingTax))
                 ) && 
                 (
                     this.UseGrossPrices == input.UseGrossPrices ||
-                    this.UseGrossPrices.Equals(input.UseGrossPrices)
+                    (this.UseGrossPrices != null &&
+                    this.UseGrossPrices.Equals(input.UseGrossPrices))
                 ) && 
                 (
                     this.PaymentMethod == input.PaymentMethod ||
@@ -264,12 +270,30 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Notes.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Rivalsa.GetHashCode();
-                hashCode = (hashCode * 59) + this.Cassa.GetHashCode();
-                hashCode = (hashCode * 59) + this.WithholdingTax.GetHashCode();
-                hashCode = (hashCode * 59) + this.WithholdingTaxTaxable.GetHashCode();
-                hashCode = (hashCode * 59) + this.OtherWithholdingTax.GetHashCode();
-                hashCode = (hashCode * 59) + this.UseGrossPrices.GetHashCode();
+                if (this.Rivalsa != null)
+                {
+                    hashCode = (hashCode * 59) + this.Rivalsa.GetHashCode();
+                }
+                if (this.Cassa != null)
+                {
+                    hashCode = (hashCode * 59) + this.Cassa.GetHashCode();
+                }
+                if (this.WithholdingTax != null)
+                {
+                    hashCode = (hashCode * 59) + this.WithholdingTax.GetHashCode();
+                }
+                if (this.WithholdingTaxTaxable != null)
+                {
+                    hashCode = (hashCode * 59) + this.WithholdingTaxTaxable.GetHashCode();
+                }
+                if (this.OtherWithholdingTax != null)
+                {
+                    hashCode = (hashCode * 59) + this.OtherWithholdingTax.GetHashCode();
+                }
+                if (this.UseGrossPrices != null)
+                {
+                    hashCode = (hashCode * 59) + this.UseGrossPrices.GetHashCode();
+                }
                 if (this.PaymentMethod != null)
                 {
                     hashCode = (hashCode * 59) + this.PaymentMethod.GetHashCode();

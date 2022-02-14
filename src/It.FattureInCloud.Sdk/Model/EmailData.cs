@@ -46,7 +46,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="attachmentExists">If the document has one or more attachments, this flag will be set to true.</param>
         /// <param name="accompanyingInvoiceExists">If an accompanying invoice exists, this flag will be set to true.</param>
         /// <param name="defaultAttachPdf">If a pdf is attached, this flag will be set to true.</param>
-        public EmailData(string recipientEmail = default(string), EmailDataDefaultSenderEmail defaultSenderEmail = default(EmailDataDefaultSenderEmail), List<SenderEmail> senderEmailsList = default(List<SenderEmail>), string ccEmail = default(string), string subject = default(string), string body = default(string), bool documentExists = default(bool), bool deliveryNoteExists = default(bool), bool attachmentExists = default(bool), bool accompanyingInvoiceExists = default(bool), bool defaultAttachPdf = default(bool))
+        public EmailData(string recipientEmail = default(string), EmailDataDefaultSenderEmail defaultSenderEmail = default(EmailDataDefaultSenderEmail), List<SenderEmail> senderEmailsList = default(List<SenderEmail>), string ccEmail = default(string), string subject = default(string), string body = default(string), bool? documentExists = default(bool?), bool? deliveryNoteExists = default(bool?), bool? attachmentExists = default(bool?), bool? accompanyingInvoiceExists = default(bool?), bool? defaultAttachPdf = default(bool?))
         {
             this.RecipientEmail = recipientEmail;
             this.DefaultSenderEmail = defaultSenderEmail;
@@ -71,35 +71,35 @@ namespace It.FattureInCloud.Sdk.Model
         /// <summary>
         /// Gets or Sets DefaultSenderEmail
         /// </summary>
-        [DataMember(Name = "default_sender_email", EmitDefaultValue = false)]
+        [DataMember(Name = "default_sender_email", EmitDefaultValue = true)]
         public EmailDataDefaultSenderEmail DefaultSenderEmail { get; set; }
 
         /// <summary>
         /// List of all emails from which the document can be sent
         /// </summary>
         /// <value>List of all emails from which the document can be sent</value>
-        [DataMember(Name = "sender_emails_list", EmitDefaultValue = false)]
+        [DataMember(Name = "sender_emails_list", EmitDefaultValue = true)]
         public List<SenderEmail> SenderEmailsList { get; set; }
 
         /// <summary>
         /// By default is the logged company email. This is the email address to which a copy will be sent.
         /// </summary>
         /// <value>By default is the logged company email. This is the email address to which a copy will be sent.</value>
-        [DataMember(Name = "cc_email", EmitDefaultValue = false)]
+        [DataMember(Name = "cc_email", EmitDefaultValue = true)]
         public string CcEmail { get; set; }
 
         /// <summary>
         /// Email subject
         /// </summary>
         /// <value>Email subject</value>
-        [DataMember(Name = "subject", EmitDefaultValue = false)]
+        [DataMember(Name = "subject", EmitDefaultValue = true)]
         public string Subject { get; set; }
 
         /// <summary>
         /// Email body
         /// </summary>
         /// <value>Email body</value>
-        [DataMember(Name = "body", EmitDefaultValue = false)]
+        [DataMember(Name = "body", EmitDefaultValue = true)]
         public string Body { get; set; }
 
         /// <summary>
@@ -107,35 +107,35 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>If the document is not a delivery note, this flag will be set to true</value>
         [DataMember(Name = "document_exists", EmitDefaultValue = true)]
-        public bool DocumentExists { get; set; }
+        public bool? DocumentExists { get; set; }
 
         /// <summary>
         /// If the document is a delivery note, this flag will be set to true
         /// </summary>
         /// <value>If the document is a delivery note, this flag will be set to true</value>
         [DataMember(Name = "delivery_note_exists", EmitDefaultValue = true)]
-        public bool DeliveryNoteExists { get; set; }
+        public bool? DeliveryNoteExists { get; set; }
 
         /// <summary>
         /// If the document has one or more attachments, this flag will be set to true
         /// </summary>
         /// <value>If the document has one or more attachments, this flag will be set to true</value>
         [DataMember(Name = "attachment_exists", EmitDefaultValue = true)]
-        public bool AttachmentExists { get; set; }
+        public bool? AttachmentExists { get; set; }
 
         /// <summary>
         /// If an accompanying invoice exists, this flag will be set to true
         /// </summary>
         /// <value>If an accompanying invoice exists, this flag will be set to true</value>
         [DataMember(Name = "accompanying_invoice_exists", EmitDefaultValue = true)]
-        public bool AccompanyingInvoiceExists { get; set; }
+        public bool? AccompanyingInvoiceExists { get; set; }
 
         /// <summary>
         /// If a pdf is attached, this flag will be set to true
         /// </summary>
         /// <value>If a pdf is attached, this flag will be set to true</value>
         [DataMember(Name = "default_attach_pdf", EmitDefaultValue = true)]
-        public bool DefaultAttachPdf { get; set; }
+        public bool? DefaultAttachPdf { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -224,23 +224,28 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.DocumentExists == input.DocumentExists ||
-                    this.DocumentExists.Equals(input.DocumentExists)
+                    (this.DocumentExists != null &&
+                    this.DocumentExists.Equals(input.DocumentExists))
                 ) && 
                 (
                     this.DeliveryNoteExists == input.DeliveryNoteExists ||
-                    this.DeliveryNoteExists.Equals(input.DeliveryNoteExists)
+                    (this.DeliveryNoteExists != null &&
+                    this.DeliveryNoteExists.Equals(input.DeliveryNoteExists))
                 ) && 
                 (
                     this.AttachmentExists == input.AttachmentExists ||
-                    this.AttachmentExists.Equals(input.AttachmentExists)
+                    (this.AttachmentExists != null &&
+                    this.AttachmentExists.Equals(input.AttachmentExists))
                 ) && 
                 (
                     this.AccompanyingInvoiceExists == input.AccompanyingInvoiceExists ||
-                    this.AccompanyingInvoiceExists.Equals(input.AccompanyingInvoiceExists)
+                    (this.AccompanyingInvoiceExists != null &&
+                    this.AccompanyingInvoiceExists.Equals(input.AccompanyingInvoiceExists))
                 ) && 
                 (
                     this.DefaultAttachPdf == input.DefaultAttachPdf ||
-                    this.DefaultAttachPdf.Equals(input.DefaultAttachPdf)
+                    (this.DefaultAttachPdf != null &&
+                    this.DefaultAttachPdf.Equals(input.DefaultAttachPdf))
                 );
         }
 
@@ -277,11 +282,26 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Body.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.DocumentExists.GetHashCode();
-                hashCode = (hashCode * 59) + this.DeliveryNoteExists.GetHashCode();
-                hashCode = (hashCode * 59) + this.AttachmentExists.GetHashCode();
-                hashCode = (hashCode * 59) + this.AccompanyingInvoiceExists.GetHashCode();
-                hashCode = (hashCode * 59) + this.DefaultAttachPdf.GetHashCode();
+                if (this.DocumentExists != null)
+                {
+                    hashCode = (hashCode * 59) + this.DocumentExists.GetHashCode();
+                }
+                if (this.DeliveryNoteExists != null)
+                {
+                    hashCode = (hashCode * 59) + this.DeliveryNoteExists.GetHashCode();
+                }
+                if (this.AttachmentExists != null)
+                {
+                    hashCode = (hashCode * 59) + this.AttachmentExists.GetHashCode();
+                }
+                if (this.AccompanyingInvoiceExists != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccompanyingInvoiceExists.GetHashCode();
+                }
+                if (this.DefaultAttachPdf != null)
+                {
+                    hashCode = (hashCode * 59) + this.DefaultAttachPdf.GetHashCode();
+                }
                 return hashCode;
             }
         }

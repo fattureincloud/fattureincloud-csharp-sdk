@@ -51,14 +51,14 @@ namespace It.FattureInCloud.Sdk.Model
         /// Currency code.
         /// </summary>
         /// <value>Currency code.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
+        [DataMember(Name = "id", EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
         /// Currency symbol.
         /// </summary>
         /// <value>Currency symbol.</value>
-        [DataMember(Name = "symbol", EmitDefaultValue = false)]
+        [DataMember(Name = "symbol", EmitDefaultValue = true)]
         public string Symbol { get; set; }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Currency html code.
         /// </summary>
         /// <value>Currency html code.</value>
-        [DataMember(Name = "html_symbol", EmitDefaultValue = false)]
+        [DataMember(Name = "html_symbol", EmitDefaultValue = true)]
         public string HtmlSymbol { get; set; }
 
         /// <summary>

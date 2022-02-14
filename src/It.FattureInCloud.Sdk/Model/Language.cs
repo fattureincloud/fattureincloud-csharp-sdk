@@ -47,14 +47,14 @@ namespace It.FattureInCloud.Sdk.Model
         /// Language code.
         /// </summary>
         /// <value>Language code.</value>
-        [DataMember(Name = "code", EmitDefaultValue = false)]
+        [DataMember(Name = "code", EmitDefaultValue = true)]
         public string Code { get; set; }
 
         /// <summary>
         /// Language extended name.
         /// </summary>
         /// <value>Language extended name.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>

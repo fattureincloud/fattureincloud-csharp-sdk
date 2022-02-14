@@ -39,7 +39,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="suppliers">suppliers.</param>
         /// <param name="products">products.</param>
         /// <param name="documents">documents.</param>
-        public CompanyInfoPlanInfoLimits(int clients = default(int), int suppliers = default(int), int products = default(int), int documents = default(int))
+        public CompanyInfoPlanInfoLimits(int? clients = default(int?), int? suppliers = default(int?), int? products = default(int?), int? documents = default(int?))
         {
             this.Clients = clients;
             this.Suppliers = suppliers;
@@ -50,26 +50,26 @@ namespace It.FattureInCloud.Sdk.Model
         /// <summary>
         /// Gets or Sets Clients
         /// </summary>
-        [DataMember(Name = "clients", EmitDefaultValue = false)]
-        public int Clients { get; set; }
+        [DataMember(Name = "clients", EmitDefaultValue = true)]
+        public int? Clients { get; set; }
 
         /// <summary>
         /// Gets or Sets Suppliers
         /// </summary>
-        [DataMember(Name = "suppliers", EmitDefaultValue = false)]
-        public int Suppliers { get; set; }
+        [DataMember(Name = "suppliers", EmitDefaultValue = true)]
+        public int? Suppliers { get; set; }
 
         /// <summary>
         /// Gets or Sets Products
         /// </summary>
-        [DataMember(Name = "products", EmitDefaultValue = false)]
-        public int Products { get; set; }
+        [DataMember(Name = "products", EmitDefaultValue = true)]
+        public int? Products { get; set; }
 
         /// <summary>
         /// Gets or Sets Documents
         /// </summary>
-        [DataMember(Name = "documents", EmitDefaultValue = false)]
-        public int Documents { get; set; }
+        [DataMember(Name = "documents", EmitDefaultValue = true)]
+        public int? Documents { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,19 +120,23 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Clients == input.Clients ||
-                    this.Clients.Equals(input.Clients)
+                    (this.Clients != null &&
+                    this.Clients.Equals(input.Clients))
                 ) && 
                 (
                     this.Suppliers == input.Suppliers ||
-                    this.Suppliers.Equals(input.Suppliers)
+                    (this.Suppliers != null &&
+                    this.Suppliers.Equals(input.Suppliers))
                 ) && 
                 (
                     this.Products == input.Products ||
-                    this.Products.Equals(input.Products)
+                    (this.Products != null &&
+                    this.Products.Equals(input.Products))
                 ) && 
                 (
                     this.Documents == input.Documents ||
-                    this.Documents.Equals(input.Documents)
+                    (this.Documents != null &&
+                    this.Documents.Equals(input.Documents))
                 );
         }
 
@@ -145,10 +149,22 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Clients.GetHashCode();
-                hashCode = (hashCode * 59) + this.Suppliers.GetHashCode();
-                hashCode = (hashCode * 59) + this.Products.GetHashCode();
-                hashCode = (hashCode * 59) + this.Documents.GetHashCode();
+                if (this.Clients != null)
+                {
+                    hashCode = (hashCode * 59) + this.Clients.GetHashCode();
+                }
+                if (this.Suppliers != null)
+                {
+                    hashCode = (hashCode * 59) + this.Suppliers.GetHashCode();
+                }
+                if (this.Products != null)
+                {
+                    hashCode = (hashCode * 59) + this.Products.GetHashCode();
+                }
+                if (this.Documents != null)
+                {
+                    hashCode = (hashCode * 59) + this.Documents.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -48,7 +48,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="amountNet">Total net amount..</param>
         /// <param name="amountVat">Total vat amount..</param>
         /// <param name="amountGross">Total gross amount..</param>
-        /// <param name="useGrossPrices">useGrossPrices (default to false).</param>
+        /// <param name="useGrossPrices">useGrossPrices.</param>
         /// <param name="type">type.</param>
         /// <param name="description">Receipt description..</param>
         /// <param name="rcCenter">Revenue center..</param>
@@ -56,7 +56,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="updatedAt">updatedAt.</param>
         /// <param name="paymentAccount">paymentAccount.</param>
         /// <param name="itemsList">itemsList.</param>
-        public Receipt(int id = default(int), DateTimeOffset date = default(DateTimeOffset), decimal? number = default(decimal?), string numeration = default(string), decimal amountNet = default(decimal), decimal amountVat = default(decimal), decimal amountGross = default(decimal), bool useGrossPrices = false, ReceiptType? type = default(ReceiptType?), string description = default(string), string rcCenter = default(string), string createdAt = default(string), string updatedAt = default(string), PaymentAccount paymentAccount = default(PaymentAccount), List<ReceiptItemsListItem> itemsList = default(List<ReceiptItemsListItem>))
+        public Receipt(int? id = default(int?), DateTime? date = default(DateTime?), decimal? number = default(decimal?), string numeration = default(string), decimal? amountNet = default(decimal?), decimal? amountVat = default(decimal?), decimal? amountGross = default(decimal?), bool? useGrossPrices = default(bool?), ReceiptType? type = default(ReceiptType?), string description = default(string), string rcCenter = default(string), string createdAt = default(string), string updatedAt = default(string), PaymentAccount paymentAccount = default(PaymentAccount), List<ReceiptItemsListItem> itemsList = default(List<ReceiptItemsListItem>))
         {
             this.Id = id;
             this.Date = date;
@@ -79,16 +79,16 @@ namespace It.FattureInCloud.Sdk.Model
         /// Receipt unique identifier.
         /// </summary>
         /// <value>Receipt unique identifier.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id { get; set; }
 
         /// <summary>
         /// Receipt date.
         /// </summary>
         /// <value>Receipt date.</value>
-        [DataMember(Name = "date", EmitDefaultValue = false)]
+        [DataMember(Name = "date", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTimeOffset Date { get; set; }
+        public DateTime? Date { get; set; }
 
         /// <summary>
         /// Receipt number.
@@ -101,60 +101,60 @@ namespace It.FattureInCloud.Sdk.Model
         /// If it&#39;s null or empty string use the default numeration.
         /// </summary>
         /// <value>If it&#39;s null or empty string use the default numeration.</value>
-        [DataMember(Name = "numeration", EmitDefaultValue = false)]
+        [DataMember(Name = "numeration", EmitDefaultValue = true)]
         public string Numeration { get; set; }
 
         /// <summary>
         /// Total net amount.
         /// </summary>
         /// <value>Total net amount.</value>
-        [DataMember(Name = "amount_net", EmitDefaultValue = false)]
-        public decimal AmountNet { get; set; }
+        [DataMember(Name = "amount_net", EmitDefaultValue = true)]
+        public decimal? AmountNet { get; set; }
 
         /// <summary>
         /// Total vat amount.
         /// </summary>
         /// <value>Total vat amount.</value>
-        [DataMember(Name = "amount_vat", EmitDefaultValue = false)]
-        public decimal AmountVat { get; set; }
+        [DataMember(Name = "amount_vat", EmitDefaultValue = true)]
+        public decimal? AmountVat { get; set; }
 
         /// <summary>
         /// Total gross amount.
         /// </summary>
         /// <value>Total gross amount.</value>
-        [DataMember(Name = "amount_gross", EmitDefaultValue = false)]
-        public decimal AmountGross { get; set; }
+        [DataMember(Name = "amount_gross", EmitDefaultValue = true)]
+        public decimal? AmountGross { get; set; }
 
         /// <summary>
         /// Gets or Sets UseGrossPrices
         /// </summary>
         [DataMember(Name = "use_gross_prices", EmitDefaultValue = true)]
-        public bool UseGrossPrices { get; set; }
+        public bool? UseGrossPrices { get; set; }
 
         /// <summary>
         /// Receipt description.
         /// </summary>
         /// <value>Receipt description.</value>
-        [DataMember(Name = "description", EmitDefaultValue = false)]
+        [DataMember(Name = "description", EmitDefaultValue = true)]
         public string Description { get; set; }
 
         /// <summary>
         /// Revenue center.
         /// </summary>
         /// <value>Revenue center.</value>
-        [DataMember(Name = "rc_center", EmitDefaultValue = false)]
+        [DataMember(Name = "rc_center", EmitDefaultValue = true)]
         public string RcCenter { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedAt
         /// </summary>
-        [DataMember(Name = "created_at", EmitDefaultValue = false)]
+        [DataMember(Name = "created_at", EmitDefaultValue = true)]
         public string CreatedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets UpdatedAt
         /// </summary>
-        [DataMember(Name = "updated_at", EmitDefaultValue = false)]
+        [DataMember(Name = "updated_at", EmitDefaultValue = true)]
         public string UpdatedAt { get; set; }
 
         /// <summary>
@@ -229,7 +229,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.Date == input.Date ||
@@ -248,19 +249,23 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.AmountNet == input.AmountNet ||
-                    this.AmountNet.Equals(input.AmountNet)
+                    (this.AmountNet != null &&
+                    this.AmountNet.Equals(input.AmountNet))
                 ) && 
                 (
                     this.AmountVat == input.AmountVat ||
-                    this.AmountVat.Equals(input.AmountVat)
+                    (this.AmountVat != null &&
+                    this.AmountVat.Equals(input.AmountVat))
                 ) && 
                 (
                     this.AmountGross == input.AmountGross ||
-                    this.AmountGross.Equals(input.AmountGross)
+                    (this.AmountGross != null &&
+                    this.AmountGross.Equals(input.AmountGross))
                 ) && 
                 (
                     this.UseGrossPrices == input.UseGrossPrices ||
-                    this.UseGrossPrices.Equals(input.UseGrossPrices)
+                    (this.UseGrossPrices != null &&
+                    this.UseGrossPrices.Equals(input.UseGrossPrices))
                 ) && 
                 (
                     this.Type == input.Type ||
@@ -308,7 +313,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.Date != null)
                 {
                     hashCode = (hashCode * 59) + this.Date.GetHashCode();
@@ -321,10 +329,22 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Numeration.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AmountNet.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountVat.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountGross.GetHashCode();
-                hashCode = (hashCode * 59) + this.UseGrossPrices.GetHashCode();
+                if (this.AmountNet != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountNet.GetHashCode();
+                }
+                if (this.AmountVat != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountVat.GetHashCode();
+                }
+                if (this.AmountGross != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountGross.GetHashCode();
+                }
+                if (this.UseGrossPrices != null)
+                {
+                    hashCode = (hashCode * 59) + this.UseGrossPrices.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 if (this.Description != null)
                 {

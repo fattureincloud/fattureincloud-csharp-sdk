@@ -39,7 +39,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="deliveryNote">If set to true, the email will have a button to view the delivery note.</param>
         /// <param name="attachment">If set to true, the email will have a button to view the attachment.</param>
         /// <param name="accompanyingInvoice">If set to true, the email will have a button to view the accompanying invoice.</param>
-        public EmailScheduleInclude(bool document = default(bool), bool deliveryNote = default(bool), bool attachment = default(bool), bool accompanyingInvoice = default(bool))
+        public EmailScheduleInclude(bool? document = default(bool?), bool? deliveryNote = default(bool?), bool? attachment = default(bool?), bool? accompanyingInvoice = default(bool?))
         {
             this.Document = document;
             this.DeliveryNote = deliveryNote;
@@ -52,28 +52,28 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>If set to true, the email will have a button to view the document</value>
         [DataMember(Name = "document", EmitDefaultValue = true)]
-        public bool Document { get; set; }
+        public bool? Document { get; set; }
 
         /// <summary>
         /// If set to true, the email will have a button to view the delivery note
         /// </summary>
         /// <value>If set to true, the email will have a button to view the delivery note</value>
         [DataMember(Name = "delivery_note", EmitDefaultValue = true)]
-        public bool DeliveryNote { get; set; }
+        public bool? DeliveryNote { get; set; }
 
         /// <summary>
         /// If set to true, the email will have a button to view the attachment
         /// </summary>
         /// <value>If set to true, the email will have a button to view the attachment</value>
         [DataMember(Name = "attachment", EmitDefaultValue = true)]
-        public bool Attachment { get; set; }
+        public bool? Attachment { get; set; }
 
         /// <summary>
         /// If set to true, the email will have a button to view the accompanying invoice
         /// </summary>
         /// <value>If set to true, the email will have a button to view the accompanying invoice</value>
         [DataMember(Name = "accompanying_invoice", EmitDefaultValue = true)]
-        public bool AccompanyingInvoice { get; set; }
+        public bool? AccompanyingInvoice { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -124,19 +124,23 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Document == input.Document ||
-                    this.Document.Equals(input.Document)
+                    (this.Document != null &&
+                    this.Document.Equals(input.Document))
                 ) && 
                 (
                     this.DeliveryNote == input.DeliveryNote ||
-                    this.DeliveryNote.Equals(input.DeliveryNote)
+                    (this.DeliveryNote != null &&
+                    this.DeliveryNote.Equals(input.DeliveryNote))
                 ) && 
                 (
                     this.Attachment == input.Attachment ||
-                    this.Attachment.Equals(input.Attachment)
+                    (this.Attachment != null &&
+                    this.Attachment.Equals(input.Attachment))
                 ) && 
                 (
                     this.AccompanyingInvoice == input.AccompanyingInvoice ||
-                    this.AccompanyingInvoice.Equals(input.AccompanyingInvoice)
+                    (this.AccompanyingInvoice != null &&
+                    this.AccompanyingInvoice.Equals(input.AccompanyingInvoice))
                 );
         }
 
@@ -149,10 +153,22 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Document.GetHashCode();
-                hashCode = (hashCode * 59) + this.DeliveryNote.GetHashCode();
-                hashCode = (hashCode * 59) + this.Attachment.GetHashCode();
-                hashCode = (hashCode * 59) + this.AccompanyingInvoice.GetHashCode();
+                if (this.Document != null)
+                {
+                    hashCode = (hashCode * 59) + this.Document.GetHashCode();
+                }
+                if (this.DeliveryNote != null)
+                {
+                    hashCode = (hashCode * 59) + this.DeliveryNote.GetHashCode();
+                }
+                if (this.Attachment != null)
+                {
+                    hashCode = (hashCode * 59) + this.Attachment.GetHashCode();
+                }
+                if (this.AccompanyingInvoice != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccompanyingInvoice.GetHashCode();
+                }
                 return hashCode;
             }
         }

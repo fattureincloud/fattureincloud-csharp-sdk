@@ -36,7 +36,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Initializes a new instance of the <see cref="VerifyEInvoiceXmlResponseData" /> class.
         /// </summary>
         /// <param name="success">Determine if the invoice XML is valid..</param>
-        public VerifyEInvoiceXmlResponseData(bool success = default(bool))
+        public VerifyEInvoiceXmlResponseData(bool? success = default(bool?))
         {
             this.Success = success;
         }
@@ -46,7 +46,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>Determine if the invoice XML is valid.</value>
         [DataMember(Name = "success", EmitDefaultValue = true)]
-        public bool Success { get; set; }
+        public bool? Success { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -94,7 +94,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Success == input.Success ||
-                    this.Success.Equals(input.Success)
+                    (this.Success != null &&
+                    this.Success.Equals(input.Success))
                 );
         }
 
@@ -107,7 +108,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Success.GetHashCode();
+                if (this.Success != null)
+                {
+                    hashCode = (hashCode * 59) + this.Success.GetHashCode();
+                }
                 return hashCode;
             }
         }

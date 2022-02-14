@@ -44,7 +44,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="role">role.</param>
         /// <param name="permissions">permissions.</param>
         /// <param name="throughAccountant">throughAccountant.</param>
-        public CompanyInfoAccessInfo(UserCompanyRole? role = default(UserCompanyRole?), Permissions permissions = default(Permissions), bool throughAccountant = default(bool))
+        public CompanyInfoAccessInfo(UserCompanyRole? role = default(UserCompanyRole?), Permissions permissions = default(Permissions), bool? throughAccountant = default(bool?))
         {
             this.Role = role;
             this.Permissions = permissions;
@@ -61,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Gets or Sets ThroughAccountant
         /// </summary>
         [DataMember(Name = "through_accountant", EmitDefaultValue = true)]
-        public bool ThroughAccountant { get; set; }
+        public bool? ThroughAccountant { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,7 +120,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.ThroughAccountant == input.ThroughAccountant ||
-                    this.ThroughAccountant.Equals(input.ThroughAccountant)
+                    (this.ThroughAccountant != null &&
+                    this.ThroughAccountant.Equals(input.ThroughAccountant))
                 );
         }
 
@@ -138,7 +139,10 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Permissions.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.ThroughAccountant.GetHashCode();
+                if (this.ThroughAccountant != null)
+                {
+                    hashCode = (hashCode * 59) + this.ThroughAccountant.GetHashCode();
+                }
                 return hashCode;
             }
         }

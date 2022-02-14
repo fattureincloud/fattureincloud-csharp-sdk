@@ -44,7 +44,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <summary>
         /// Gets or Sets Errors
         /// </summary>
-        [DataMember(Name = "errors", EmitDefaultValue = false)]
+        [DataMember(Name = "errors", EmitDefaultValue = true)]
         public List<string> Errors { get; set; }
 
         /// <summary>

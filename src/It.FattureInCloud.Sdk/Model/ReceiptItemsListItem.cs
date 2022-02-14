@@ -40,7 +40,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="amountGross">Item total gross amount..</param>
         /// <param name="category">Item category..</param>
         /// <param name="vat">vat.</param>
-        public ReceiptItemsListItem(int id = default(int), decimal amountNet = default(decimal), decimal amountGross = default(decimal), string category = default(string), VatType vat = default(VatType))
+        public ReceiptItemsListItem(int? id = default(int?), decimal? amountNet = default(decimal?), decimal? amountGross = default(decimal?), string category = default(string), VatType vat = default(VatType))
         {
             this.Id = id;
             this.AmountNet = amountNet;
@@ -53,28 +53,28 @@ namespace It.FattureInCloud.Sdk.Model
         /// Item unique identifier.
         /// </summary>
         /// <value>Item unique identifier.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id { get; set; }
 
         /// <summary>
         /// Item total net amount.
         /// </summary>
         /// <value>Item total net amount.</value>
-        [DataMember(Name = "amount_net", EmitDefaultValue = false)]
-        public decimal AmountNet { get; set; }
+        [DataMember(Name = "amount_net", EmitDefaultValue = true)]
+        public decimal? AmountNet { get; set; }
 
         /// <summary>
         /// Item total gross amount.
         /// </summary>
         /// <value>Item total gross amount.</value>
-        [DataMember(Name = "amount_gross", EmitDefaultValue = false)]
-        public decimal AmountGross { get; set; }
+        [DataMember(Name = "amount_gross", EmitDefaultValue = true)]
+        public decimal? AmountGross { get; set; }
 
         /// <summary>
         /// Item category.
         /// </summary>
         /// <value>Item category.</value>
-        [DataMember(Name = "category", EmitDefaultValue = false)]
+        [DataMember(Name = "category", EmitDefaultValue = true)]
         public string Category { get; set; }
 
         /// <summary>
@@ -133,15 +133,18 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.AmountNet == input.AmountNet ||
-                    this.AmountNet.Equals(input.AmountNet)
+                    (this.AmountNet != null &&
+                    this.AmountNet.Equals(input.AmountNet))
                 ) && 
                 (
                     this.AmountGross == input.AmountGross ||
-                    this.AmountGross.Equals(input.AmountGross)
+                    (this.AmountGross != null &&
+                    this.AmountGross.Equals(input.AmountGross))
                 ) && 
                 (
                     this.Category == input.Category ||
@@ -164,9 +167,18 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountNet.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountGross.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.AmountNet != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountNet.GetHashCode();
+                }
+                if (this.AmountGross != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountGross.GetHashCode();
+                }
                 if (this.Category != null)
                 {
                     hashCode = (hashCode * 59) + this.Category.GetHashCode();

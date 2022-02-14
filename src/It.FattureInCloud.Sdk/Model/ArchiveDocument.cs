@@ -40,7 +40,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="description">Archive Document description..</param>
         /// <param name="category">Archive document category..</param>
         /// <param name="attachmentToken">[Write Only]  [Required] Attachment token returned by POST /archive/attachment. Used to attach the file already uploaded..</param>
-        public ArchiveDocument(int id = default(int), DateTimeOffset date = default(DateTimeOffset), string description = default(string), string category = default(string), string attachmentToken = default(string))
+        public ArchiveDocument(int? id = default(int?), DateTime? date = default(DateTime?), string description = default(string), string category = default(string), string attachmentToken = default(string))
         {
             this.Id = id;
             this.Date = date;
@@ -53,29 +53,29 @@ namespace It.FattureInCloud.Sdk.Model
         /// Archive document unique identifier.
         /// </summary>
         /// <value>Archive document unique identifier.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id { get; set; }
 
         /// <summary>
         /// Archive document date.
         /// </summary>
         /// <value>Archive document date.</value>
-        [DataMember(Name = "date", EmitDefaultValue = false)]
+        [DataMember(Name = "date", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTimeOffset Date { get; set; }
+        public DateTime? Date { get; set; }
 
         /// <summary>
         /// Archive Document description.
         /// </summary>
         /// <value>Archive Document description.</value>
-        [DataMember(Name = "description", EmitDefaultValue = false)]
+        [DataMember(Name = "description", EmitDefaultValue = true)]
         public string Description { get; set; }
 
         /// <summary>
         /// [Read Only] Absolute url of the attached file. Authomatically set if a valid attachment token is passed via POST /archive or PUT /archive/{documentId}.
         /// </summary>
         /// <value>[Read Only] Absolute url of the attached file. Authomatically set if a valid attachment token is passed via POST /archive or PUT /archive/{documentId}.</value>
-        [DataMember(Name = "attachment_url", EmitDefaultValue = false)]
+        [DataMember(Name = "attachment_url", EmitDefaultValue = true)]
         public string AttachmentUrl { get; private set; }
 
         /// <summary>
@@ -90,14 +90,14 @@ namespace It.FattureInCloud.Sdk.Model
         /// Archive document category.
         /// </summary>
         /// <value>Archive document category.</value>
-        [DataMember(Name = "category", EmitDefaultValue = false)]
+        [DataMember(Name = "category", EmitDefaultValue = true)]
         public string Category { get; set; }
 
         /// <summary>
         /// [Write Only]  [Required] Attachment token returned by POST /archive/attachment. Used to attach the file already uploaded.
         /// </summary>
         /// <value>[Write Only]  [Required] Attachment token returned by POST /archive/attachment. Used to attach the file already uploaded.</value>
-        [DataMember(Name = "attachment_token", EmitDefaultValue = false)]
+        [DataMember(Name = "attachment_token", EmitDefaultValue = true)]
         public string AttachmentToken { get; set; }
 
         /// <summary>
@@ -151,7 +151,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.Date == input.Date ||
@@ -189,7 +190,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.Date != null)
                 {
                     hashCode = (hashCode * 59) + this.Date.GetHashCode();

@@ -48,19 +48,19 @@ namespace It.FattureInCloud.Sdk.Model
         /// <summary>
         /// Gets or Sets Limits
         /// </summary>
-        [DataMember(Name = "limits", EmitDefaultValue = false)]
+        [DataMember(Name = "limits", EmitDefaultValue = true)]
         public CompanyInfoPlanInfoLimits Limits { get; set; }
 
         /// <summary>
         /// Gets or Sets Functions
         /// </summary>
-        [DataMember(Name = "functions", EmitDefaultValue = false)]
+        [DataMember(Name = "functions", EmitDefaultValue = true)]
         public CompanyInfoPlanInfoFunctions Functions { get; set; }
 
         /// <summary>
         /// Gets or Sets FunctionsStatus
         /// </summary>
-        [DataMember(Name = "functions_status", EmitDefaultValue = false)]
+        [DataMember(Name = "functions_status", EmitDefaultValue = true)]
         public CompanyInfoPlanInfoFunctionsStatus FunctionsStatus { get; set; }
 
         /// <summary>

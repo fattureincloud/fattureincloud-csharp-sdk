@@ -43,7 +43,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="eiType">E-invoice type (natura)..</param>
         /// <param name="eiDescription">E-invoice description..</param>
         /// <param name="isDisabled">Determine if the vat type is disabled..</param>
-        public VatType(int id = default(int), decimal value = default(decimal), string description = default(string), string notes = default(string), bool eInvoice = default(bool), string eiType = default(string), string eiDescription = default(string), bool isDisabled = default(bool))
+        public VatType(int? id = default(int?), decimal? value = default(decimal?), string description = default(string), string notes = default(string), bool? eInvoice = default(bool?), string eiType = default(string), string eiDescription = default(string), bool? isDisabled = default(bool?))
         {
             this.Id = id;
             this.Value = value;
@@ -59,28 +59,28 @@ namespace It.FattureInCloud.Sdk.Model
         /// Unique identifier
         /// </summary>
         /// <value>Unique identifier</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id { get; set; }
 
         /// <summary>
         /// [Read Only] Percentual value.
         /// </summary>
         /// <value>[Read Only] Percentual value.</value>
-        [DataMember(Name = "value", EmitDefaultValue = false)]
-        public decimal Value { get; set; }
+        [DataMember(Name = "value", EmitDefaultValue = true)]
+        public decimal? Value { get; set; }
 
         /// <summary>
         /// Short description.
         /// </summary>
         /// <value>Short description.</value>
-        [DataMember(Name = "description", EmitDefaultValue = false)]
+        [DataMember(Name = "description", EmitDefaultValue = true)]
         public string Description { get; set; }
 
         /// <summary>
         /// Long description and notes shown in documents.
         /// </summary>
         /// <value>Long description and notes shown in documents.</value>
-        [DataMember(Name = "notes", EmitDefaultValue = false)]
+        [DataMember(Name = "notes", EmitDefaultValue = true)]
         public string Notes { get; set; }
 
         /// <summary>
@@ -88,20 +88,20 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>Usable for e-invoices.</value>
         [DataMember(Name = "e_invoice", EmitDefaultValue = true)]
-        public bool EInvoice { get; set; }
+        public bool? EInvoice { get; set; }
 
         /// <summary>
         /// E-invoice type (natura).
         /// </summary>
         /// <value>E-invoice type (natura).</value>
-        [DataMember(Name = "ei_type", EmitDefaultValue = false)]
+        [DataMember(Name = "ei_type", EmitDefaultValue = true)]
         public string EiType { get; set; }
 
         /// <summary>
         /// E-invoice description.
         /// </summary>
         /// <value>E-invoice description.</value>
-        [DataMember(Name = "ei_description", EmitDefaultValue = false)]
+        [DataMember(Name = "ei_description", EmitDefaultValue = true)]
         public string EiDescription { get; set; }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>[Read Only] Determine if this vat type is editable.</value>
         [DataMember(Name = "editable", EmitDefaultValue = true)]
-        public bool Editable { get; private set; }
+        public bool? Editable { get; private set; }
 
         /// <summary>
         /// Returns false as Editable should not be serialized given that it's read-only.
@@ -124,7 +124,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>Determine if the vat type is disabled.</value>
         [DataMember(Name = "is_disabled", EmitDefaultValue = true)]
-        public bool IsDisabled { get; set; }
+        public bool? IsDisabled { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -180,11 +180,13 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.Value == input.Value ||
-                    this.Value.Equals(input.Value)
+                    (this.Value != null &&
+                    this.Value.Equals(input.Value))
                 ) && 
                 (
                     this.Description == input.Description ||
@@ -198,7 +200,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.EInvoice == input.EInvoice ||
-                    this.EInvoice.Equals(input.EInvoice)
+                    (this.EInvoice != null &&
+                    this.EInvoice.Equals(input.EInvoice))
                 ) && 
                 (
                     this.EiType == input.EiType ||
@@ -212,11 +215,13 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.Editable == input.Editable ||
-                    this.Editable.Equals(input.Editable)
+                    (this.Editable != null &&
+                    this.Editable.Equals(input.Editable))
                 ) && 
                 (
                     this.IsDisabled == input.IsDisabled ||
-                    this.IsDisabled.Equals(input.IsDisabled)
+                    (this.IsDisabled != null &&
+                    this.IsDisabled.Equals(input.IsDisabled))
                 );
         }
 
@@ -229,8 +234,14 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
-                hashCode = (hashCode * 59) + this.Value.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.Value != null)
+                {
+                    hashCode = (hashCode * 59) + this.Value.GetHashCode();
+                }
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
@@ -239,7 +250,10 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Notes.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.EInvoice.GetHashCode();
+                if (this.EInvoice != null)
+                {
+                    hashCode = (hashCode * 59) + this.EInvoice.GetHashCode();
+                }
                 if (this.EiType != null)
                 {
                     hashCode = (hashCode * 59) + this.EiType.GetHashCode();
@@ -248,8 +262,14 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.EiDescription.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Editable.GetHashCode();
-                hashCode = (hashCode * 59) + this.IsDisabled.GetHashCode();
+                if (this.Editable != null)
+                {
+                    hashCode = (hashCode * 59) + this.Editable.GetHashCode();
+                }
+                if (this.IsDisabled != null)
+                {
+                    hashCode = (hashCode * 59) + this.IsDisabled.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -261,18 +281,6 @@ namespace It.FattureInCloud.Sdk.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Value (decimal) maximum
-            if (this.Value > (decimal)100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Value, must be a value less than or equal to 100.", new [] { "Value" });
-            }
-
-            // Value (decimal) minimum
-            if (this.Value < (decimal)0)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Value, must be a value greater than or equal to 0.", new [] { "Value" });
-            }
-
             yield break;
         }
     }

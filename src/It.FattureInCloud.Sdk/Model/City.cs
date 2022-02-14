@@ -49,21 +49,21 @@ namespace It.FattureInCloud.Sdk.Model
         /// City postal code.
         /// </summary>
         /// <value>City postal code.</value>
-        [DataMember(Name = "postal_code", EmitDefaultValue = false)]
+        [DataMember(Name = "postal_code", EmitDefaultValue = true)]
         public string PostalCode { get; set; }
 
         /// <summary>
         /// City name.
         /// </summary>
         /// <value>City name.</value>
-        [DataMember(Name = "city", EmitDefaultValue = false)]
+        [DataMember(Name = "city", EmitDefaultValue = true)]
         public string _City { get; set; }
 
         /// <summary>
         /// Province.
         /// </summary>
         /// <value>Province.</value>
-        [DataMember(Name = "province", EmitDefaultValue = false)]
+        [DataMember(Name = "province", EmitDefaultValue = true)]
         public string Province { get; set; }
 
         /// <summary>

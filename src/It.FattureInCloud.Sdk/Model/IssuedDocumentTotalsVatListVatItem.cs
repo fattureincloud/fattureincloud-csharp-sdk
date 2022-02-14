@@ -37,7 +37,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <param name="amountNet">amountNet.</param>
         /// <param name="amountVat">amountVat.</param>
-        public IssuedDocumentTotalsVatListVatItem(decimal amountNet = default(decimal), decimal amountVat = default(decimal))
+        public IssuedDocumentTotalsVatListVatItem(decimal? amountNet = default(decimal?), decimal? amountVat = default(decimal?))
         {
             this.AmountNet = amountNet;
             this.AmountVat = amountVat;
@@ -46,14 +46,14 @@ namespace It.FattureInCloud.Sdk.Model
         /// <summary>
         /// Gets or Sets AmountNet
         /// </summary>
-        [DataMember(Name = "amount_net", EmitDefaultValue = false)]
-        public decimal AmountNet { get; set; }
+        [DataMember(Name = "amount_net", EmitDefaultValue = true)]
+        public decimal? AmountNet { get; set; }
 
         /// <summary>
         /// Gets or Sets AmountVat
         /// </summary>
-        [DataMember(Name = "amount_vat", EmitDefaultValue = false)]
-        public decimal AmountVat { get; set; }
+        [DataMember(Name = "amount_vat", EmitDefaultValue = true)]
+        public decimal? AmountVat { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -102,11 +102,13 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.AmountNet == input.AmountNet ||
-                    this.AmountNet.Equals(input.AmountNet)
+                    (this.AmountNet != null &&
+                    this.AmountNet.Equals(input.AmountNet))
                 ) && 
                 (
                     this.AmountVat == input.AmountVat ||
-                    this.AmountVat.Equals(input.AmountVat)
+                    (this.AmountVat != null &&
+                    this.AmountVat.Equals(input.AmountVat))
                 );
         }
 
@@ -119,8 +121,14 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.AmountNet.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountVat.GetHashCode();
+                if (this.AmountNet != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountNet.GetHashCode();
+                }
+                if (this.AmountVat != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountVat.GetHashCode();
+                }
                 return hashCode;
             }
         }

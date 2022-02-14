@@ -37,7 +37,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <param name="pendingId">Pending received document id of the document from which the new document is created..</param>
         /// <param name="data">data.</param>
-        public CreateReceivedDocumentRequest(int pendingId = default(int), ReceivedDocument data = default(ReceivedDocument))
+        public CreateReceivedDocumentRequest(int? pendingId = default(int?), ReceivedDocument data = default(ReceivedDocument))
         {
             this.PendingId = pendingId;
             this.Data = data;
@@ -47,8 +47,8 @@ namespace It.FattureInCloud.Sdk.Model
         /// Pending received document id of the document from which the new document is created.
         /// </summary>
         /// <value>Pending received document id of the document from which the new document is created.</value>
-        [DataMember(Name = "pending_id", EmitDefaultValue = false)]
-        public int PendingId { get; set; }
+        [DataMember(Name = "pending_id", EmitDefaultValue = true)]
+        public int? PendingId { get; set; }
 
         /// <summary>
         /// Gets or Sets Data
@@ -103,7 +103,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.PendingId == input.PendingId ||
-                    this.PendingId.Equals(input.PendingId)
+                    (this.PendingId != null &&
+                    this.PendingId.Equals(input.PendingId))
                 ) && 
                 (
                     this.Data == input.Data ||
@@ -121,7 +122,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.PendingId.GetHashCode();
+                if (this.PendingId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PendingId.GetHashCode();
+                }
                 if (this.Data != null)
                 {
                     hashCode = (hashCode * 59) + this.Data.GetHashCode();

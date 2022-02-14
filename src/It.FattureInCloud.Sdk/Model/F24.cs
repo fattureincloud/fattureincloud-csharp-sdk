@@ -48,7 +48,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="amount">Taxes amount..</param>
         /// <param name="attachmentToken">[Write Only] Attachment token returned by POST /taxes/attachment. Used to attach the file already uploaded..</param>
         /// <param name="description">Name or brief description..</param>
-        public F24(int id = default(int), DateTimeOffset dueDate = default(DateTimeOffset), F24Status? status = default(F24Status?), PaymentAccount paymentAccount = default(PaymentAccount), decimal amount = default(decimal), string attachmentToken = default(string), string description = default(string))
+        public F24(int? id = default(int?), DateTime? dueDate = default(DateTime?), F24Status? status = default(F24Status?), PaymentAccount paymentAccount = default(PaymentAccount), decimal? amount = default(decimal?), string attachmentToken = default(string), string description = default(string))
         {
             this.Id = id;
             this.DueDate = dueDate;
@@ -63,16 +63,16 @@ namespace It.FattureInCloud.Sdk.Model
         /// Unique F24 identifier.
         /// </summary>
         /// <value>Unique F24 identifier.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id { get; set; }
 
         /// <summary>
         /// Due date.
         /// </summary>
         /// <value>Due date.</value>
-        [DataMember(Name = "due_date", EmitDefaultValue = false)]
+        [DataMember(Name = "due_date", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTimeOffset DueDate { get; set; }
+        public DateTime? DueDate { get; set; }
 
         /// <summary>
         /// Gets or Sets PaymentAccount
@@ -84,8 +84,8 @@ namespace It.FattureInCloud.Sdk.Model
         /// Taxes amount.
         /// </summary>
         /// <value>Taxes amount.</value>
-        [DataMember(Name = "amount", EmitDefaultValue = false)]
-        public decimal Amount { get; set; }
+        [DataMember(Name = "amount", EmitDefaultValue = true)]
+        public decimal? Amount { get; set; }
 
         /// <summary>
         /// [Read Only] Absolute url of the attached file. Authomatically set if a valid attachment token is passed via POST /taxes or PUT /taxes/{documentId}.
@@ -113,7 +113,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Name or brief description.
         /// </summary>
         /// <value>Name or brief description.</value>
-        [DataMember(Name = "description", EmitDefaultValue = false)]
+        [DataMember(Name = "description", EmitDefaultValue = true)]
         public string Description { get; set; }
 
         /// <summary>
@@ -169,7 +169,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.DueDate == input.DueDate ||
@@ -187,7 +188,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.Amount == input.Amount ||
-                    this.Amount.Equals(input.Amount)
+                    (this.Amount != null &&
+                    this.Amount.Equals(input.Amount))
                 ) && 
                 (
                     this.AttachmentUrl == input.AttachmentUrl ||
@@ -215,7 +217,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.DueDate != null)
                 {
                     hashCode = (hashCode * 59) + this.DueDate.GetHashCode();
@@ -225,7 +230,10 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.PaymentAccount.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                if (this.Amount != null)
+                {
+                    hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                }
                 if (this.AttachmentUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.AttachmentUrl.GetHashCode();

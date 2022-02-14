@@ -47,7 +47,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="to">Last result of the page..</param>
         /// <param name="total">Total number of results.</param>
         /// <param name="data">data.</param>
-        public ListClientsResponse(int currentPage = default(int), string firstPageUrl = default(string), int? from = default(int?), int lastPage = default(int), string lastPageUrl = default(string), string nextPageUrl = default(string), string path = default(string), int perPage = default(int), string prevPageUrl = default(string), int? to = default(int?), int total = default(int), List<ModelClient> data = default(List<ModelClient>))
+        public ListClientsResponse(int? currentPage = default(int?), string firstPageUrl = default(string), int? from = default(int?), int? lastPage = default(int?), string lastPageUrl = default(string), string nextPageUrl = default(string), string path = default(string), int? perPage = default(int?), string prevPageUrl = default(string), int? to = default(int?), int? total = default(int?), List<ModelClient> data = default(List<ModelClient>))
         {
             this.CurrentPage = currentPage;
             this.FirstPageUrl = firstPageUrl;
@@ -67,14 +67,14 @@ namespace It.FattureInCloud.Sdk.Model
         /// Current page number.
         /// </summary>
         /// <value>Current page number.</value>
-        [DataMember(Name = "current_page", EmitDefaultValue = false)]
-        public int CurrentPage { get; set; }
+        [DataMember(Name = "current_page", EmitDefaultValue = true)]
+        public int? CurrentPage { get; set; }
 
         /// <summary>
         /// First page url.
         /// </summary>
         /// <value>First page url.</value>
-        [DataMember(Name = "first_page_url", EmitDefaultValue = false)]
+        [DataMember(Name = "first_page_url", EmitDefaultValue = true)]
         public string FirstPageUrl { get; set; }
 
         /// <summary>
@@ -88,14 +88,14 @@ namespace It.FattureInCloud.Sdk.Model
         /// Last page number.
         /// </summary>
         /// <value>Last page number.</value>
-        [DataMember(Name = "last_page", EmitDefaultValue = false)]
-        public int LastPage { get; set; }
+        [DataMember(Name = "last_page", EmitDefaultValue = true)]
+        public int? LastPage { get; set; }
 
         /// <summary>
         /// Last page url.
         /// </summary>
         /// <value>Last page url.</value>
-        [DataMember(Name = "last_page_url", EmitDefaultValue = false)]
+        [DataMember(Name = "last_page_url", EmitDefaultValue = true)]
         public string LastPageUrl { get; set; }
 
         /// <summary>
@@ -109,15 +109,15 @@ namespace It.FattureInCloud.Sdk.Model
         /// Request path.
         /// </summary>
         /// <value>Request path.</value>
-        [DataMember(Name = "path", EmitDefaultValue = false)]
+        [DataMember(Name = "path", EmitDefaultValue = true)]
         public string Path { get; set; }
 
         /// <summary>
         /// Number of result per page.
         /// </summary>
         /// <value>Number of result per page.</value>
-        [DataMember(Name = "per_page", EmitDefaultValue = false)]
-        public int PerPage { get; set; }
+        [DataMember(Name = "per_page", EmitDefaultValue = true)]
+        public int? PerPage { get; set; }
 
         /// <summary>
         /// Previous page url.
@@ -137,13 +137,13 @@ namespace It.FattureInCloud.Sdk.Model
         /// Total number of results
         /// </summary>
         /// <value>Total number of results</value>
-        [DataMember(Name = "total", EmitDefaultValue = false)]
-        public int Total { get; set; }
+        [DataMember(Name = "total", EmitDefaultValue = true)]
+        public int? Total { get; set; }
 
         /// <summary>
         /// Gets or Sets Data
         /// </summary>
-        [DataMember(Name = "data", EmitDefaultValue = false)]
+        [DataMember(Name = "data", EmitDefaultValue = true)]
         public List<ModelClient> Data { get; set; }
 
         /// <summary>
@@ -203,7 +203,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.CurrentPage == input.CurrentPage ||
-                    this.CurrentPage.Equals(input.CurrentPage)
+                    (this.CurrentPage != null &&
+                    this.CurrentPage.Equals(input.CurrentPage))
                 ) && 
                 (
                     this.FirstPageUrl == input.FirstPageUrl ||
@@ -217,7 +218,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.LastPage == input.LastPage ||
-                    this.LastPage.Equals(input.LastPage)
+                    (this.LastPage != null &&
+                    this.LastPage.Equals(input.LastPage))
                 ) && 
                 (
                     this.LastPageUrl == input.LastPageUrl ||
@@ -236,7 +238,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.PerPage == input.PerPage ||
-                    this.PerPage.Equals(input.PerPage)
+                    (this.PerPage != null &&
+                    this.PerPage.Equals(input.PerPage))
                 ) && 
                 (
                     this.PrevPageUrl == input.PrevPageUrl ||
@@ -250,7 +253,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.Total == input.Total ||
-                    this.Total.Equals(input.Total)
+                    (this.Total != null &&
+                    this.Total.Equals(input.Total))
                 ) && 
                 (
                     this.Data == input.Data ||
@@ -269,7 +273,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.CurrentPage.GetHashCode();
+                if (this.CurrentPage != null)
+                {
+                    hashCode = (hashCode * 59) + this.CurrentPage.GetHashCode();
+                }
                 if (this.FirstPageUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.FirstPageUrl.GetHashCode();
@@ -278,7 +285,10 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.From.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.LastPage.GetHashCode();
+                if (this.LastPage != null)
+                {
+                    hashCode = (hashCode * 59) + this.LastPage.GetHashCode();
+                }
                 if (this.LastPageUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.LastPageUrl.GetHashCode();
@@ -291,7 +301,10 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Path.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.PerPage.GetHashCode();
+                if (this.PerPage != null)
+                {
+                    hashCode = (hashCode * 59) + this.PerPage.GetHashCode();
+                }
                 if (this.PrevPageUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.PrevPageUrl.GetHashCode();
@@ -300,7 +313,10 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.To.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Total.GetHashCode();
+                if (this.Total != null)
+                {
+                    hashCode = (hashCode * 59) + this.Total.GetHashCode();
+                }
                 if (this.Data != null)
                 {
                     hashCode = (hashCode * 59) + this.Data.GetHashCode();

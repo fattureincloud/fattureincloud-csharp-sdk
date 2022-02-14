@@ -44,7 +44,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <summary>
         /// Gets or Sets Companies
         /// </summary>
-        [DataMember(Name = "companies", EmitDefaultValue = false)]
+        [DataMember(Name = "companies", EmitDefaultValue = true)]
         public List<Company> Companies { get; set; }
 
         /// <summary>

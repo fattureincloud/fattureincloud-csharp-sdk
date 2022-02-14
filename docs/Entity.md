@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int** | Unique identifier | [optional] 
+**Id** | **int?** | Unique identifier | [optional] 
 **Code** | **string** | Code. | [optional] 
 **Name** | **string** | Name | [optional] 
 **Type** | **EntityType** |  | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **AddressCity** | **string** | City. | [optional] 
 **AddressProvince** | **string** | Province. | [optional] 
 **AddressExtra** | **string** | Address extra info. | [optional] 
-**Country** | **string** | Country | [optional] [default to "Italia"]
+**Country** | **string** | Country | [optional] 
 **Email** | **string** | Email. | [optional] 
 **CertifiedEmail** | **string** | Certified email. | [optional] 
 **Phone** | **string** | Phone. | [optional] 
@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 **BankIban** | **string** | [Only for client] Iban. | [optional] 
 **BankSwiftCode** | **string** | [Only for client] Bank swift code. | [optional] 
 **ShippingAddress** | **string** | [Only for client] Shipping address. | [optional] 
-**EInvoice** | **bool?** | [Only for client] Use e-invoices. | [optional] [default to false]
+**EInvoice** | **bool?** | [Only for client] Use e-invoices. | [optional] 
 **EiCode** | **string** | [Only for client] E-invoices code. | [optional] 
 **CreatedAt** | **string** |  | [optional] 
 **UpdatedAt** | **string** |  | [optional] 

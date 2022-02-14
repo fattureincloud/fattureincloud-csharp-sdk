@@ -45,7 +45,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Uploaded attachment token.
         /// </summary>
         /// <value>Uploaded attachment token.</value>
-        [DataMember(Name = "attachment_token", EmitDefaultValue = false)]
+        [DataMember(Name = "attachment_token", EmitDefaultValue = true)]
         public string AttachmentToken { get; set; }
 
         /// <summary>

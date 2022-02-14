@@ -36,7 +36,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Initializes a new instance of the <see cref="GetUserInfoResponseEmailConfirmationState" /> class.
         /// </summary>
         /// <param name="needConfirmation">needConfirmation.</param>
-        public GetUserInfoResponseEmailConfirmationState(bool needConfirmation = default(bool))
+        public GetUserInfoResponseEmailConfirmationState(bool? needConfirmation = default(bool?))
         {
             this.NeedConfirmation = needConfirmation;
         }
@@ -45,7 +45,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Gets or Sets NeedConfirmation
         /// </summary>
         [DataMember(Name = "need_confirmation", EmitDefaultValue = true)]
-        public bool NeedConfirmation { get; set; }
+        public bool? NeedConfirmation { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -93,7 +93,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.NeedConfirmation == input.NeedConfirmation ||
-                    this.NeedConfirmation.Equals(input.NeedConfirmation)
+                    (this.NeedConfirmation != null &&
+                    this.NeedConfirmation.Equals(input.NeedConfirmation))
                 );
         }
 
@@ -106,7 +107,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.NeedConfirmation.GetHashCode();
+                if (this.NeedConfirmation != null)
+                {
+                    hashCode = (hashCode * 59) + this.NeedConfirmation.GetHashCode();
+                }
                 return hashCode;
             }
         }

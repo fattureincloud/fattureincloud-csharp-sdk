@@ -56,43 +56,43 @@ namespace It.FattureInCloud.Sdk.Model
         /// <summary>
         /// Gets or Sets DefaultValues
         /// </summary>
-        [DataMember(Name = "default_values", EmitDefaultValue = false)]
+        [DataMember(Name = "default_values", EmitDefaultValue = true)]
         public ReceivedDocumentInfoDefaultValues DefaultValues { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemsDefaultValues
         /// </summary>
-        [DataMember(Name = "items_default_values", EmitDefaultValue = false)]
+        [DataMember(Name = "items_default_values", EmitDefaultValue = true)]
         public ReceivedDocumentInfoItemsDefaultValues ItemsDefaultValues { get; set; }
 
         /// <summary>
         /// Gets or Sets CountriesList
         /// </summary>
-        [DataMember(Name = "countries_list", EmitDefaultValue = false)]
+        [DataMember(Name = "countries_list", EmitDefaultValue = true)]
         public List<string> CountriesList { get; set; }
 
         /// <summary>
         /// Gets or Sets CurrenciesList
         /// </summary>
-        [DataMember(Name = "currencies_list", EmitDefaultValue = false)]
+        [DataMember(Name = "currencies_list", EmitDefaultValue = true)]
         public List<Currency> CurrenciesList { get; set; }
 
         /// <summary>
         /// Gets or Sets CategoriesList
         /// </summary>
-        [DataMember(Name = "categories_list", EmitDefaultValue = false)]
+        [DataMember(Name = "categories_list", EmitDefaultValue = true)]
         public List<string> CategoriesList { get; set; }
 
         /// <summary>
         /// Gets or Sets PaymentAccountsList
         /// </summary>
-        [DataMember(Name = "payment_accounts_list", EmitDefaultValue = false)]
+        [DataMember(Name = "payment_accounts_list", EmitDefaultValue = true)]
         public List<PaymentAccount> PaymentAccountsList { get; set; }
 
         /// <summary>
         /// Gets or Sets VatTypesList
         /// </summary>
-        [DataMember(Name = "vat_types_list", EmitDefaultValue = false)]
+        [DataMember(Name = "vat_types_list", EmitDefaultValue = true)]
         public List<VatType> VatTypesList { get; set; }
 
         /// <summary>

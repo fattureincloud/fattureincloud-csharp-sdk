@@ -45,7 +45,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="qty">Product quantity..</param>
         /// <param name="vat">vat.</param>
         /// <param name="stock">Number of items in stock.</param>
-        public ReceivedDocumentItemsListItem(int id = default(int), int productId = default(int), string code = default(string), string name = default(string), string measure = default(string), decimal netPrice = default(decimal), string category = default(string), decimal qty = default(decimal), VatType vat = default(VatType), decimal stock = default(decimal))
+        public ReceivedDocumentItemsListItem(int? id = default(int?), int? productId = default(int?), string code = default(string), string name = default(string), string measure = default(string), decimal? netPrice = default(decimal?), string category = default(string), decimal? qty = default(decimal?), VatType vat = default(VatType), decimal? stock = default(decimal?))
         {
             this.Id = id;
             this.ProductId = productId;
@@ -63,57 +63,57 @@ namespace It.FattureInCloud.Sdk.Model
         /// Unique identifier.
         /// </summary>
         /// <value>Unique identifier.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id { get; set; }
 
         /// <summary>
         /// Unique identifier of the product
         /// </summary>
         /// <value>Unique identifier of the product</value>
-        [DataMember(Name = "product_id", EmitDefaultValue = false)]
-        public int ProductId { get; set; }
+        [DataMember(Name = "product_id", EmitDefaultValue = true)]
+        public int? ProductId { get; set; }
 
         /// <summary>
         /// Product code.
         /// </summary>
         /// <value>Product code.</value>
-        [DataMember(Name = "code", EmitDefaultValue = false)]
+        [DataMember(Name = "code", EmitDefaultValue = true)]
         public string Code { get; set; }
 
         /// <summary>
         /// Product name.
         /// </summary>
         /// <value>Product name.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
         /// Product measure.
         /// </summary>
         /// <value>Product measure.</value>
-        [DataMember(Name = "measure", EmitDefaultValue = false)]
+        [DataMember(Name = "measure", EmitDefaultValue = true)]
         public string Measure { get; set; }
 
         /// <summary>
         /// Product net price.
         /// </summary>
         /// <value>Product net price.</value>
-        [DataMember(Name = "net_price", EmitDefaultValue = false)]
-        public decimal NetPrice { get; set; }
+        [DataMember(Name = "net_price", EmitDefaultValue = true)]
+        public decimal? NetPrice { get; set; }
 
         /// <summary>
         /// Product category.
         /// </summary>
         /// <value>Product category.</value>
-        [DataMember(Name = "category", EmitDefaultValue = false)]
+        [DataMember(Name = "category", EmitDefaultValue = true)]
         public string Category { get; set; }
 
         /// <summary>
         /// Product quantity.
         /// </summary>
         /// <value>Product quantity.</value>
-        [DataMember(Name = "qty", EmitDefaultValue = false)]
-        public decimal Qty { get; set; }
+        [DataMember(Name = "qty", EmitDefaultValue = true)]
+        public decimal? Qty { get; set; }
 
         /// <summary>
         /// Gets or Sets Vat
@@ -125,8 +125,8 @@ namespace It.FattureInCloud.Sdk.Model
         /// Number of items in stock
         /// </summary>
         /// <value>Number of items in stock</value>
-        [DataMember(Name = "stock", EmitDefaultValue = false)]
-        public decimal Stock { get; set; }
+        [DataMember(Name = "stock", EmitDefaultValue = true)]
+        public decimal? Stock { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -183,11 +183,13 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.ProductId == input.ProductId ||
-                    this.ProductId.Equals(input.ProductId)
+                    (this.ProductId != null &&
+                    this.ProductId.Equals(input.ProductId))
                 ) && 
                 (
                     this.Code == input.Code ||
@@ -206,7 +208,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.NetPrice == input.NetPrice ||
-                    this.NetPrice.Equals(input.NetPrice)
+                    (this.NetPrice != null &&
+                    this.NetPrice.Equals(input.NetPrice))
                 ) && 
                 (
                     this.Category == input.Category ||
@@ -215,7 +218,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.Qty == input.Qty ||
-                    this.Qty.Equals(input.Qty)
+                    (this.Qty != null &&
+                    this.Qty.Equals(input.Qty))
                 ) && 
                 (
                     this.Vat == input.Vat ||
@@ -224,7 +228,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.Stock == input.Stock ||
-                    this.Stock.Equals(input.Stock)
+                    (this.Stock != null &&
+                    this.Stock.Equals(input.Stock))
                 );
         }
 
@@ -237,8 +242,14 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
-                hashCode = (hashCode * 59) + this.ProductId.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.ProductId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProductId.GetHashCode();
+                }
                 if (this.Code != null)
                 {
                     hashCode = (hashCode * 59) + this.Code.GetHashCode();
@@ -251,17 +262,26 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Measure.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.NetPrice.GetHashCode();
+                if (this.NetPrice != null)
+                {
+                    hashCode = (hashCode * 59) + this.NetPrice.GetHashCode();
+                }
                 if (this.Category != null)
                 {
                     hashCode = (hashCode * 59) + this.Category.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Qty.GetHashCode();
+                if (this.Qty != null)
+                {
+                    hashCode = (hashCode * 59) + this.Qty.GetHashCode();
+                }
                 if (this.Vat != null)
                 {
                     hashCode = (hashCode * 59) + this.Vat.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Stock.GetHashCode();
+                if (this.Stock != null)
+                {
+                    hashCode = (hashCode * 59) + this.Stock.GetHashCode();
+                }
                 return hashCode;
             }
         }

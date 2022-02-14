@@ -38,7 +38,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="id">Unique identifier..</param>
         /// <param name="name">Template name..</param>
         /// <param name="type">Template type..</param>
-        public DocumentTemplate(int id = default(int), string name = default(string), string type = default(string))
+        public DocumentTemplate(int? id = default(int?), string name = default(string), string type = default(string))
         {
             this.Id = id;
             this.Name = name;
@@ -49,21 +49,21 @@ namespace It.FattureInCloud.Sdk.Model
         /// Unique identifier.
         /// </summary>
         /// <value>Unique identifier.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id { get; set; }
 
         /// <summary>
         /// Template name.
         /// </summary>
         /// <value>Template name.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
         /// Template type.
         /// </summary>
         /// <value>Template type.</value>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
+        [DataMember(Name = "type", EmitDefaultValue = true)]
         public string Type { get; set; }
 
         /// <summary>
@@ -114,7 +114,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -137,7 +138,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();

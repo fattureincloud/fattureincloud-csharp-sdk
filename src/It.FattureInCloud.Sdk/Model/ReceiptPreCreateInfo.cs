@@ -55,42 +55,42 @@ namespace It.FattureInCloud.Sdk.Model
         /// Next number by year, receipt type and numeration name.
         /// </summary>
         /// <value>Next number by year, receipt type and numeration name.</value>
-        [DataMember(Name = "numerations", EmitDefaultValue = false)]
+        [DataMember(Name = "numerations", EmitDefaultValue = true)]
         public Object Numerations { get; set; }
 
         /// <summary>
         /// List of series used in the past.
         /// </summary>
         /// <value>List of series used in the past.</value>
-        [DataMember(Name = "numerations_list", EmitDefaultValue = false)]
+        [DataMember(Name = "numerations_list", EmitDefaultValue = true)]
         public List<string> NumerationsList { get; set; }
 
         /// <summary>
         /// List of revenue centers used in the past.
         /// </summary>
         /// <value>List of revenue centers used in the past.</value>
-        [DataMember(Name = "rc_centers_list", EmitDefaultValue = false)]
+        [DataMember(Name = "rc_centers_list", EmitDefaultValue = true)]
         public List<string> RcCentersList { get; set; }
 
         /// <summary>
         /// User payment accounts list.
         /// </summary>
         /// <value>User payment accounts list.</value>
-        [DataMember(Name = "payment_accounts_list", EmitDefaultValue = false)]
+        [DataMember(Name = "payment_accounts_list", EmitDefaultValue = true)]
         public List<PaymentAccount> PaymentAccountsList { get; set; }
 
         /// <summary>
         /// List of categories used in the past.
         /// </summary>
         /// <value>List of categories used in the past.</value>
-        [DataMember(Name = "categories_list", EmitDefaultValue = false)]
+        [DataMember(Name = "categories_list", EmitDefaultValue = true)]
         public List<string> CategoriesList { get; set; }
 
         /// <summary>
         /// List of user vat types with the default 22%, 10%, 4% and 0% vats.
         /// </summary>
         /// <value>List of user vat types with the default 22%, 10%, 4% and 0% vats.</value>
-        [DataMember(Name = "vat_types_list", EmitDefaultValue = false)]
+        [DataMember(Name = "vat_types_list", EmitDefaultValue = true)]
         public List<VatType> VatTypesList { get; set; }
 
         /// <summary>

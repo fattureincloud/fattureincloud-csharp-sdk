@@ -48,7 +48,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="controlledCompanies">List of controlled companies. [Only if type&#x3D;accountant].</param>
         /// <param name="connectionId">Company connection id..</param>
         /// <param name="taxCode">Tax code..</param>
-        public Company(int id = default(int), string name = default(string), CompanyType? type = default(CompanyType?), string accessToken = default(string), List<ControlledCompany> controlledCompanies = default(List<ControlledCompany>), int connectionId = default(int), string taxCode = default(string))
+        public Company(int? id = default(int?), string name = default(string), CompanyType? type = default(CompanyType?), string accessToken = default(string), List<ControlledCompany> controlledCompanies = default(List<ControlledCompany>), int? connectionId = default(int?), string taxCode = default(string))
         {
             this.Id = id;
             this.Name = name;
@@ -63,42 +63,42 @@ namespace It.FattureInCloud.Sdk.Model
         /// Company unique identifier.
         /// </summary>
         /// <value>Company unique identifier.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id { get; set; }
 
         /// <summary>
         /// Company name.
         /// </summary>
         /// <value>Company name.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
         /// CompanyAuthentication token for this company. [Only if type&#x3D;company]
         /// </summary>
         /// <value>CompanyAuthentication token for this company. [Only if type&#x3D;company]</value>
-        [DataMember(Name = "access_token", EmitDefaultValue = false)]
+        [DataMember(Name = "access_token", EmitDefaultValue = true)]
         public string AccessToken { get; set; }
 
         /// <summary>
         /// List of controlled companies. [Only if type&#x3D;accountant]
         /// </summary>
         /// <value>List of controlled companies. [Only if type&#x3D;accountant]</value>
-        [DataMember(Name = "controlled_companies", EmitDefaultValue = false)]
+        [DataMember(Name = "controlled_companies", EmitDefaultValue = true)]
         public List<ControlledCompany> ControlledCompanies { get; set; }
 
         /// <summary>
         /// Company connection id.
         /// </summary>
         /// <value>Company connection id.</value>
-        [DataMember(Name = "connection_id", EmitDefaultValue = false)]
-        public int ConnectionId { get; set; }
+        [DataMember(Name = "connection_id", EmitDefaultValue = true)]
+        public int? ConnectionId { get; set; }
 
         /// <summary>
         /// Tax code.
         /// </summary>
         /// <value>Tax code.</value>
-        [DataMember(Name = "tax_code", EmitDefaultValue = false)]
+        [DataMember(Name = "tax_code", EmitDefaultValue = true)]
         public string TaxCode { get; set; }
 
         /// <summary>
@@ -153,7 +153,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -177,7 +178,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.ConnectionId == input.ConnectionId ||
-                    this.ConnectionId.Equals(input.ConnectionId)
+                    (this.ConnectionId != null &&
+                    this.ConnectionId.Equals(input.ConnectionId))
                 ) && 
                 (
                     this.TaxCode == input.TaxCode ||
@@ -195,7 +197,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
@@ -209,7 +214,10 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.ControlledCompanies.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.ConnectionId.GetHashCode();
+                if (this.ConnectionId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ConnectionId.GetHashCode();
+                }
                 if (this.TaxCode != null)
                 {
                     hashCode = (hashCode * 59) + this.TaxCode.GetHashCode();

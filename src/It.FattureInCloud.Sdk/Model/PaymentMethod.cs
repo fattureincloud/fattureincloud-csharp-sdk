@@ -51,7 +51,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="bankName">Bank name.</param>
         /// <param name="bankBeneficiary">Bank beneficiary.</param>
         /// <param name="eiPaymentMethod">EInvoice payment method.</param>
-        public PaymentMethod(int? id = default(int?), string name = default(string), PaymentMethodType? type = default(PaymentMethodType?), bool isDefault = default(bool), PaymentAccount defaultPaymentAccount = default(PaymentAccount), List<PaymentMethodDetails> details = default(List<PaymentMethodDetails>), string bankIban = default(string), string bankName = default(string), string bankBeneficiary = default(string), string eiPaymentMethod = default(string))
+        public PaymentMethod(int? id = default(int?), string name = default(string), PaymentMethodType? type = default(PaymentMethodType?), bool? isDefault = default(bool?), PaymentAccount defaultPaymentAccount = default(PaymentAccount), List<PaymentMethodDetails> details = default(List<PaymentMethodDetails>), string bankIban = default(string), string bankName = default(string), string bankBeneficiary = default(string), string eiPaymentMethod = default(string))
         {
             this.Id = id;
             this.Name = name;
@@ -76,7 +76,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Name of the payment method
         /// </summary>
         /// <value>Name of the payment method</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>Determines if this is the default payment method.</value>
         [DataMember(Name = "is_default", EmitDefaultValue = true)]
-        public bool IsDefault { get; set; }
+        public bool? IsDefault { get; set; }
 
         /// <summary>
         /// Gets or Sets DefaultPaymentAccount
@@ -124,7 +124,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// EInvoice payment method
         /// </summary>
         /// <value>EInvoice payment method</value>
-        [DataMember(Name = "ei_payment_method", EmitDefaultValue = false)]
+        [DataMember(Name = "ei_payment_method", EmitDefaultValue = true)]
         public string EiPaymentMethod { get; set; }
 
         /// <summary>
@@ -196,7 +196,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.IsDefault == input.IsDefault ||
-                    this.IsDefault.Equals(input.IsDefault)
+                    (this.IsDefault != null &&
+                    this.IsDefault.Equals(input.IsDefault))
                 ) && 
                 (
                     this.DefaultPaymentAccount == input.DefaultPaymentAccount ||
@@ -249,7 +250,10 @@ namespace It.FattureInCloud.Sdk.Model
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Type.GetHashCode();
-                hashCode = (hashCode * 59) + this.IsDefault.GetHashCode();
+                if (this.IsDefault != null)
+                {
+                    hashCode = (hashCode * 59) + this.IsDefault.GetHashCode();
+                }
                 if (this.DefaultPaymentAccount != null)
                 {
                     hashCode = (hashCode * 59) + this.DefaultPaymentAccount.GetHashCode();

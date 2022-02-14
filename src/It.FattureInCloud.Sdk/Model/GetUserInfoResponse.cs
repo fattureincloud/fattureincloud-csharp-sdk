@@ -54,13 +54,13 @@ namespace It.FattureInCloud.Sdk.Model
         /// <summary>
         /// Gets or Sets Info
         /// </summary>
-        [DataMember(Name = "info", EmitDefaultValue = false)]
+        [DataMember(Name = "info", EmitDefaultValue = true)]
         public GetUserInfoResponseInfo Info { get; set; }
 
         /// <summary>
         /// Gets or Sets EmailConfirmationState
         /// </summary>
-        [DataMember(Name = "email_confirmation_state", EmitDefaultValue = false)]
+        [DataMember(Name = "email_confirmation_state", EmitDefaultValue = true)]
         public GetUserInfoResponseEmailConfirmationState EmailConfirmationState { get; set; }
 
         /// <summary>

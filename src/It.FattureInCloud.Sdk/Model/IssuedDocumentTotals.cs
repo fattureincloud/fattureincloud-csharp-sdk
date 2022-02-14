@@ -52,7 +52,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="isEnasarcoMaximalExceeded">isEnasarcoMaximalExceeded.</param>
         /// <param name="paymentsSum">Payments sum..</param>
         /// <param name="vatList">vatList.</param>
-        public IssuedDocumentTotals(decimal amountNet = default(decimal), decimal amountRivalsa = default(decimal), decimal amountNetWithRivalsa = default(decimal), decimal amountCassa = default(decimal), decimal taxableAmount = default(decimal), decimal notTaxableAmount = default(decimal), decimal amountVat = default(decimal), decimal amountGross = default(decimal), decimal taxableAmountWithholdingTax = default(decimal), decimal amountWithholdingTax = default(decimal), decimal taxableAmountOtherWithholdingTax = default(decimal), decimal amountOtherWithholdingTax = default(decimal), decimal stampDuty = default(decimal), decimal amountDue = default(decimal), bool? isEnasarcoMaximalExceeded = default(bool?), decimal paymentsSum = default(decimal), IssuedDocumentTotalsVatList vatList = default(IssuedDocumentTotalsVatList))
+        public IssuedDocumentTotals(decimal? amountNet = default(decimal?), decimal? amountRivalsa = default(decimal?), decimal? amountNetWithRivalsa = default(decimal?), decimal? amountCassa = default(decimal?), decimal? taxableAmount = default(decimal?), decimal? notTaxableAmount = default(decimal?), decimal? amountVat = default(decimal?), decimal? amountGross = default(decimal?), decimal? taxableAmountWithholdingTax = default(decimal?), decimal? amountWithholdingTax = default(decimal?), decimal? taxableAmountOtherWithholdingTax = default(decimal?), decimal? amountOtherWithholdingTax = default(decimal?), decimal? stampDuty = default(decimal?), decimal? amountDue = default(decimal?), bool? isEnasarcoMaximalExceeded = default(bool?), decimal? paymentsSum = default(decimal?), IssuedDocumentTotalsVatList vatList = default(IssuedDocumentTotalsVatList))
         {
             this.AmountNet = amountNet;
             this.AmountRivalsa = amountRivalsa;
@@ -77,99 +77,99 @@ namespace It.FattureInCloud.Sdk.Model
         /// Total net amount.
         /// </summary>
         /// <value>Total net amount.</value>
-        [DataMember(Name = "amount_net", EmitDefaultValue = false)]
-        public decimal AmountNet { get; set; }
+        [DataMember(Name = "amount_net", EmitDefaultValue = true)]
+        public decimal? AmountNet { get; set; }
 
         /// <summary>
         /// Rivalsa amount.
         /// </summary>
         /// <value>Rivalsa amount.</value>
-        [DataMember(Name = "amount_rivalsa", EmitDefaultValue = false)]
-        public decimal AmountRivalsa { get; set; }
+        [DataMember(Name = "amount_rivalsa", EmitDefaultValue = true)]
+        public decimal? AmountRivalsa { get; set; }
 
         /// <summary>
         /// Net amount with rivalsa.
         /// </summary>
         /// <value>Net amount with rivalsa.</value>
-        [DataMember(Name = "amount_net_with_rivalsa", EmitDefaultValue = false)]
-        public decimal AmountNetWithRivalsa { get; set; }
+        [DataMember(Name = "amount_net_with_rivalsa", EmitDefaultValue = true)]
+        public decimal? AmountNetWithRivalsa { get; set; }
 
         /// <summary>
         /// Cassa amount.
         /// </summary>
         /// <value>Cassa amount.</value>
-        [DataMember(Name = "amount_cassa", EmitDefaultValue = false)]
-        public decimal AmountCassa { get; set; }
+        [DataMember(Name = "amount_cassa", EmitDefaultValue = true)]
+        public decimal? AmountCassa { get; set; }
 
         /// <summary>
         /// Taxable amount.
         /// </summary>
         /// <value>Taxable amount.</value>
-        [DataMember(Name = "taxable_amount", EmitDefaultValue = false)]
-        public decimal TaxableAmount { get; set; }
+        [DataMember(Name = "taxable_amount", EmitDefaultValue = true)]
+        public decimal? TaxableAmount { get; set; }
 
         /// <summary>
         /// Not taxable amount.
         /// </summary>
         /// <value>Not taxable amount.</value>
-        [DataMember(Name = "not_taxable_amount", EmitDefaultValue = false)]
-        public decimal NotTaxableAmount { get; set; }
+        [DataMember(Name = "not_taxable_amount", EmitDefaultValue = true)]
+        public decimal? NotTaxableAmount { get; set; }
 
         /// <summary>
         /// Total vat amount.
         /// </summary>
         /// <value>Total vat amount.</value>
-        [DataMember(Name = "amount_vat", EmitDefaultValue = false)]
-        public decimal AmountVat { get; set; }
+        [DataMember(Name = "amount_vat", EmitDefaultValue = true)]
+        public decimal? AmountVat { get; set; }
 
         /// <summary>
         /// Total grosas amount.
         /// </summary>
         /// <value>Total grosas amount.</value>
-        [DataMember(Name = "amount_gross", EmitDefaultValue = false)]
-        public decimal AmountGross { get; set; }
+        [DataMember(Name = "amount_gross", EmitDefaultValue = true)]
+        public decimal? AmountGross { get; set; }
 
         /// <summary>
         /// Taxable withholding tax amount.
         /// </summary>
         /// <value>Taxable withholding tax amount.</value>
-        [DataMember(Name = "taxable_amount_withholding_tax", EmitDefaultValue = false)]
-        public decimal TaxableAmountWithholdingTax { get; set; }
+        [DataMember(Name = "taxable_amount_withholding_tax", EmitDefaultValue = true)]
+        public decimal? TaxableAmountWithholdingTax { get; set; }
 
         /// <summary>
         /// Withholding tax amount.
         /// </summary>
         /// <value>Withholding tax amount.</value>
-        [DataMember(Name = "amount_withholding_tax", EmitDefaultValue = false)]
-        public decimal AmountWithholdingTax { get; set; }
+        [DataMember(Name = "amount_withholding_tax", EmitDefaultValue = true)]
+        public decimal? AmountWithholdingTax { get; set; }
 
         /// <summary>
         /// Other withholding tax taxable amount.
         /// </summary>
         /// <value>Other withholding tax taxable amount.</value>
-        [DataMember(Name = "taxable_amount_other_withholding_tax", EmitDefaultValue = false)]
-        public decimal TaxableAmountOtherWithholdingTax { get; set; }
+        [DataMember(Name = "taxable_amount_other_withholding_tax", EmitDefaultValue = true)]
+        public decimal? TaxableAmountOtherWithholdingTax { get; set; }
 
         /// <summary>
         /// Other withholding tax amount.
         /// </summary>
         /// <value>Other withholding tax amount.</value>
-        [DataMember(Name = "amount_other_withholding_tax", EmitDefaultValue = false)]
-        public decimal AmountOtherWithholdingTax { get; set; }
+        [DataMember(Name = "amount_other_withholding_tax", EmitDefaultValue = true)]
+        public decimal? AmountOtherWithholdingTax { get; set; }
 
         /// <summary>
         /// Stamp duty value [0 if not present].
         /// </summary>
         /// <value>Stamp duty value [0 if not present].</value>
-        [DataMember(Name = "stamp_duty", EmitDefaultValue = false)]
-        public decimal StampDuty { get; set; }
+        [DataMember(Name = "stamp_duty", EmitDefaultValue = true)]
+        public decimal? StampDuty { get; set; }
 
         /// <summary>
         /// Total amount due.
         /// </summary>
         /// <value>Total amount due.</value>
-        [DataMember(Name = "amount_due", EmitDefaultValue = false)]
-        public decimal AmountDue { get; set; }
+        [DataMember(Name = "amount_due", EmitDefaultValue = true)]
+        public decimal? AmountDue { get; set; }
 
         /// <summary>
         /// Gets or Sets IsEnasarcoMaximalExceeded
@@ -181,8 +181,8 @@ namespace It.FattureInCloud.Sdk.Model
         /// Payments sum.
         /// </summary>
         /// <value>Payments sum.</value>
-        [DataMember(Name = "payments_sum", EmitDefaultValue = false)]
-        public decimal PaymentsSum { get; set; }
+        [DataMember(Name = "payments_sum", EmitDefaultValue = true)]
+        public decimal? PaymentsSum { get; set; }
 
         /// <summary>
         /// Gets or Sets VatList
@@ -252,59 +252,73 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.AmountNet == input.AmountNet ||
-                    this.AmountNet.Equals(input.AmountNet)
+                    (this.AmountNet != null &&
+                    this.AmountNet.Equals(input.AmountNet))
                 ) && 
                 (
                     this.AmountRivalsa == input.AmountRivalsa ||
-                    this.AmountRivalsa.Equals(input.AmountRivalsa)
+                    (this.AmountRivalsa != null &&
+                    this.AmountRivalsa.Equals(input.AmountRivalsa))
                 ) && 
                 (
                     this.AmountNetWithRivalsa == input.AmountNetWithRivalsa ||
-                    this.AmountNetWithRivalsa.Equals(input.AmountNetWithRivalsa)
+                    (this.AmountNetWithRivalsa != null &&
+                    this.AmountNetWithRivalsa.Equals(input.AmountNetWithRivalsa))
                 ) && 
                 (
                     this.AmountCassa == input.AmountCassa ||
-                    this.AmountCassa.Equals(input.AmountCassa)
+                    (this.AmountCassa != null &&
+                    this.AmountCassa.Equals(input.AmountCassa))
                 ) && 
                 (
                     this.TaxableAmount == input.TaxableAmount ||
-                    this.TaxableAmount.Equals(input.TaxableAmount)
+                    (this.TaxableAmount != null &&
+                    this.TaxableAmount.Equals(input.TaxableAmount))
                 ) && 
                 (
                     this.NotTaxableAmount == input.NotTaxableAmount ||
-                    this.NotTaxableAmount.Equals(input.NotTaxableAmount)
+                    (this.NotTaxableAmount != null &&
+                    this.NotTaxableAmount.Equals(input.NotTaxableAmount))
                 ) && 
                 (
                     this.AmountVat == input.AmountVat ||
-                    this.AmountVat.Equals(input.AmountVat)
+                    (this.AmountVat != null &&
+                    this.AmountVat.Equals(input.AmountVat))
                 ) && 
                 (
                     this.AmountGross == input.AmountGross ||
-                    this.AmountGross.Equals(input.AmountGross)
+                    (this.AmountGross != null &&
+                    this.AmountGross.Equals(input.AmountGross))
                 ) && 
                 (
                     this.TaxableAmountWithholdingTax == input.TaxableAmountWithholdingTax ||
-                    this.TaxableAmountWithholdingTax.Equals(input.TaxableAmountWithholdingTax)
+                    (this.TaxableAmountWithholdingTax != null &&
+                    this.TaxableAmountWithholdingTax.Equals(input.TaxableAmountWithholdingTax))
                 ) && 
                 (
                     this.AmountWithholdingTax == input.AmountWithholdingTax ||
-                    this.AmountWithholdingTax.Equals(input.AmountWithholdingTax)
+                    (this.AmountWithholdingTax != null &&
+                    this.AmountWithholdingTax.Equals(input.AmountWithholdingTax))
                 ) && 
                 (
                     this.TaxableAmountOtherWithholdingTax == input.TaxableAmountOtherWithholdingTax ||
-                    this.TaxableAmountOtherWithholdingTax.Equals(input.TaxableAmountOtherWithholdingTax)
+                    (this.TaxableAmountOtherWithholdingTax != null &&
+                    this.TaxableAmountOtherWithholdingTax.Equals(input.TaxableAmountOtherWithholdingTax))
                 ) && 
                 (
                     this.AmountOtherWithholdingTax == input.AmountOtherWithholdingTax ||
-                    this.AmountOtherWithholdingTax.Equals(input.AmountOtherWithholdingTax)
+                    (this.AmountOtherWithholdingTax != null &&
+                    this.AmountOtherWithholdingTax.Equals(input.AmountOtherWithholdingTax))
                 ) && 
                 (
                     this.StampDuty == input.StampDuty ||
-                    this.StampDuty.Equals(input.StampDuty)
+                    (this.StampDuty != null &&
+                    this.StampDuty.Equals(input.StampDuty))
                 ) && 
                 (
                     this.AmountDue == input.AmountDue ||
-                    this.AmountDue.Equals(input.AmountDue)
+                    (this.AmountDue != null &&
+                    this.AmountDue.Equals(input.AmountDue))
                 ) && 
                 (
                     this.IsEnasarcoMaximalExceeded == input.IsEnasarcoMaximalExceeded ||
@@ -313,7 +327,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.PaymentsSum == input.PaymentsSum ||
-                    this.PaymentsSum.Equals(input.PaymentsSum)
+                    (this.PaymentsSum != null &&
+                    this.PaymentsSum.Equals(input.PaymentsSum))
                 ) && 
                 (
                     this.VatList == input.VatList ||
@@ -331,25 +346,70 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.AmountNet.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountRivalsa.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountNetWithRivalsa.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountCassa.GetHashCode();
-                hashCode = (hashCode * 59) + this.TaxableAmount.GetHashCode();
-                hashCode = (hashCode * 59) + this.NotTaxableAmount.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountVat.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountGross.GetHashCode();
-                hashCode = (hashCode * 59) + this.TaxableAmountWithholdingTax.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountWithholdingTax.GetHashCode();
-                hashCode = (hashCode * 59) + this.TaxableAmountOtherWithholdingTax.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountOtherWithholdingTax.GetHashCode();
-                hashCode = (hashCode * 59) + this.StampDuty.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountDue.GetHashCode();
+                if (this.AmountNet != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountNet.GetHashCode();
+                }
+                if (this.AmountRivalsa != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountRivalsa.GetHashCode();
+                }
+                if (this.AmountNetWithRivalsa != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountNetWithRivalsa.GetHashCode();
+                }
+                if (this.AmountCassa != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountCassa.GetHashCode();
+                }
+                if (this.TaxableAmount != null)
+                {
+                    hashCode = (hashCode * 59) + this.TaxableAmount.GetHashCode();
+                }
+                if (this.NotTaxableAmount != null)
+                {
+                    hashCode = (hashCode * 59) + this.NotTaxableAmount.GetHashCode();
+                }
+                if (this.AmountVat != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountVat.GetHashCode();
+                }
+                if (this.AmountGross != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountGross.GetHashCode();
+                }
+                if (this.TaxableAmountWithholdingTax != null)
+                {
+                    hashCode = (hashCode * 59) + this.TaxableAmountWithholdingTax.GetHashCode();
+                }
+                if (this.AmountWithholdingTax != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountWithholdingTax.GetHashCode();
+                }
+                if (this.TaxableAmountOtherWithholdingTax != null)
+                {
+                    hashCode = (hashCode * 59) + this.TaxableAmountOtherWithholdingTax.GetHashCode();
+                }
+                if (this.AmountOtherWithholdingTax != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountOtherWithholdingTax.GetHashCode();
+                }
+                if (this.StampDuty != null)
+                {
+                    hashCode = (hashCode * 59) + this.StampDuty.GetHashCode();
+                }
+                if (this.AmountDue != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountDue.GetHashCode();
+                }
                 if (this.IsEnasarcoMaximalExceeded != null)
                 {
                     hashCode = (hashCode * 59) + this.IsEnasarcoMaximalExceeded.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.PaymentsSum.GetHashCode();
+                if (this.PaymentsSum != null)
+                {
+                    hashCode = (hashCode * 59) + this.PaymentsSum.GetHashCode();
+                }
                 if (this.VatList != null)
                 {
                     hashCode = (hashCode * 59) + this.VatList.GetHashCode();

@@ -42,7 +42,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="amountOtherWithholdingTax">Total other withholding tax amount..</param>
         /// <param name="amountDue">Total amount due..</param>
         /// <param name="paymentsSum">Payments sum..</param>
-        public ReceivedDocumentTotals(decimal amountNet = default(decimal), decimal amountVat = default(decimal), decimal amountGross = default(decimal), decimal amountWithholdingTax = default(decimal), decimal amountOtherWithholdingTax = default(decimal), decimal amountDue = default(decimal), decimal paymentsSum = default(decimal))
+        public ReceivedDocumentTotals(decimal? amountNet = default(decimal?), decimal? amountVat = default(decimal?), decimal? amountGross = default(decimal?), decimal? amountWithholdingTax = default(decimal?), decimal? amountOtherWithholdingTax = default(decimal?), decimal? amountDue = default(decimal?), decimal? paymentsSum = default(decimal?))
         {
             this.AmountNet = amountNet;
             this.AmountVat = amountVat;
@@ -57,50 +57,50 @@ namespace It.FattureInCloud.Sdk.Model
         /// Total net amount.
         /// </summary>
         /// <value>Total net amount.</value>
-        [DataMember(Name = "amount_net", EmitDefaultValue = false)]
-        public decimal AmountNet { get; set; }
+        [DataMember(Name = "amount_net", EmitDefaultValue = true)]
+        public decimal? AmountNet { get; set; }
 
         /// <summary>
         /// Total vat amount.
         /// </summary>
         /// <value>Total vat amount.</value>
-        [DataMember(Name = "amount_vat", EmitDefaultValue = false)]
-        public decimal AmountVat { get; set; }
+        [DataMember(Name = "amount_vat", EmitDefaultValue = true)]
+        public decimal? AmountVat { get; set; }
 
         /// <summary>
         /// Total gross amount.
         /// </summary>
         /// <value>Total gross amount.</value>
-        [DataMember(Name = "amount_gross", EmitDefaultValue = false)]
-        public decimal AmountGross { get; set; }
+        [DataMember(Name = "amount_gross", EmitDefaultValue = true)]
+        public decimal? AmountGross { get; set; }
 
         /// <summary>
         /// Total withholding tax amount.
         /// </summary>
         /// <value>Total withholding tax amount.</value>
-        [DataMember(Name = "amount_withholding_tax", EmitDefaultValue = false)]
-        public decimal AmountWithholdingTax { get; set; }
+        [DataMember(Name = "amount_withholding_tax", EmitDefaultValue = true)]
+        public decimal? AmountWithholdingTax { get; set; }
 
         /// <summary>
         /// Total other withholding tax amount.
         /// </summary>
         /// <value>Total other withholding tax amount.</value>
-        [DataMember(Name = "amount_other_withholding_tax", EmitDefaultValue = false)]
-        public decimal AmountOtherWithholdingTax { get; set; }
+        [DataMember(Name = "amount_other_withholding_tax", EmitDefaultValue = true)]
+        public decimal? AmountOtherWithholdingTax { get; set; }
 
         /// <summary>
         /// Total amount due.
         /// </summary>
         /// <value>Total amount due.</value>
-        [DataMember(Name = "amount_due", EmitDefaultValue = false)]
-        public decimal AmountDue { get; set; }
+        [DataMember(Name = "amount_due", EmitDefaultValue = true)]
+        public decimal? AmountDue { get; set; }
 
         /// <summary>
         /// Payments sum.
         /// </summary>
         /// <value>Payments sum.</value>
-        [DataMember(Name = "payments_sum", EmitDefaultValue = false)]
-        public decimal PaymentsSum { get; set; }
+        [DataMember(Name = "payments_sum", EmitDefaultValue = true)]
+        public decimal? PaymentsSum { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -154,31 +154,38 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.AmountNet == input.AmountNet ||
-                    this.AmountNet.Equals(input.AmountNet)
+                    (this.AmountNet != null &&
+                    this.AmountNet.Equals(input.AmountNet))
                 ) && 
                 (
                     this.AmountVat == input.AmountVat ||
-                    this.AmountVat.Equals(input.AmountVat)
+                    (this.AmountVat != null &&
+                    this.AmountVat.Equals(input.AmountVat))
                 ) && 
                 (
                     this.AmountGross == input.AmountGross ||
-                    this.AmountGross.Equals(input.AmountGross)
+                    (this.AmountGross != null &&
+                    this.AmountGross.Equals(input.AmountGross))
                 ) && 
                 (
                     this.AmountWithholdingTax == input.AmountWithholdingTax ||
-                    this.AmountWithholdingTax.Equals(input.AmountWithholdingTax)
+                    (this.AmountWithholdingTax != null &&
+                    this.AmountWithholdingTax.Equals(input.AmountWithholdingTax))
                 ) && 
                 (
                     this.AmountOtherWithholdingTax == input.AmountOtherWithholdingTax ||
-                    this.AmountOtherWithholdingTax.Equals(input.AmountOtherWithholdingTax)
+                    (this.AmountOtherWithholdingTax != null &&
+                    this.AmountOtherWithholdingTax.Equals(input.AmountOtherWithholdingTax))
                 ) && 
                 (
                     this.AmountDue == input.AmountDue ||
-                    this.AmountDue.Equals(input.AmountDue)
+                    (this.AmountDue != null &&
+                    this.AmountDue.Equals(input.AmountDue))
                 ) && 
                 (
                     this.PaymentsSum == input.PaymentsSum ||
-                    this.PaymentsSum.Equals(input.PaymentsSum)
+                    (this.PaymentsSum != null &&
+                    this.PaymentsSum.Equals(input.PaymentsSum))
                 );
         }
 
@@ -191,13 +198,34 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.AmountNet.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountVat.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountGross.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountWithholdingTax.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountOtherWithholdingTax.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountDue.GetHashCode();
-                hashCode = (hashCode * 59) + this.PaymentsSum.GetHashCode();
+                if (this.AmountNet != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountNet.GetHashCode();
+                }
+                if (this.AmountVat != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountVat.GetHashCode();
+                }
+                if (this.AmountGross != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountGross.GetHashCode();
+                }
+                if (this.AmountWithholdingTax != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountWithholdingTax.GetHashCode();
+                }
+                if (this.AmountOtherWithholdingTax != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountOtherWithholdingTax.GetHashCode();
+                }
+                if (this.AmountDue != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountDue.GetHashCode();
+                }
+                if (this.PaymentsSum != null)
+                {
+                    hashCode = (hashCode * 59) + this.PaymentsSum.GetHashCode();
+                }
                 return hashCode;
             }
         }

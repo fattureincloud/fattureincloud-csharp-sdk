@@ -53,7 +53,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="averagePrice">Product average price..</param>
         /// <param name="createdAt">createdAt.</param>
         /// <param name="updatedAt">updatedAt.</param>
-        public Product(int id = default(int), string name = default(string), string code = default(string), decimal? netPrice = default(decimal?), decimal? grossPrice = default(decimal?), bool useGrossPrice = default(bool), VatType defaultVat = default(VatType), decimal? netCost = default(decimal?), string measure = default(string), string description = default(string), string category = default(string), string notes = default(string), bool inStock = default(bool), decimal stockInitial = default(decimal), decimal averageCost = default(decimal), decimal averagePrice = default(decimal), string createdAt = default(string), string updatedAt = default(string))
+        public Product(int? id = default(int?), string name = default(string), string code = default(string), decimal? netPrice = default(decimal?), decimal? grossPrice = default(decimal?), bool? useGrossPrice = default(bool?), VatType defaultVat = default(VatType), decimal? netCost = default(decimal?), string measure = default(string), string description = default(string), string category = default(string), string notes = default(string), bool? inStock = default(bool?), decimal? stockInitial = default(decimal?), decimal? averageCost = default(decimal?), decimal? averagePrice = default(decimal?), string createdAt = default(string), string updatedAt = default(string))
         {
             this.Id = id;
             this.Name = name;
@@ -79,14 +79,14 @@ namespace It.FattureInCloud.Sdk.Model
         /// Unique identifier.
         /// </summary>
         /// <value>Unique identifier.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id { get; set; }
 
         /// <summary>
         /// Product name.
         /// </summary>
         /// <value>Product name.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>Determine which price to use for calculations.</value>
         [DataMember(Name = "use_gross_price", EmitDefaultValue = true)]
-        public bool UseGrossPrice { get; set; }
+        public bool? UseGrossPrice { get; set; }
 
         /// <summary>
         /// Gets or Sets DefaultVat
@@ -148,7 +148,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Product category.
         /// </summary>
         /// <value>Product category.</value>
-        [DataMember(Name = "category", EmitDefaultValue = false)]
+        [DataMember(Name = "category", EmitDefaultValue = true)]
         public string Category { get; set; }
 
         /// <summary>
@@ -163,21 +163,21 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>Determine if the product is in stock.</value>
         [DataMember(Name = "in_stock", EmitDefaultValue = true)]
-        public bool InStock { get; set; }
+        public bool? InStock { get; set; }
 
         /// <summary>
         /// Product initial stock.
         /// </summary>
         /// <value>Product initial stock.</value>
-        [DataMember(Name = "stock_initial", EmitDefaultValue = false)]
-        public decimal StockInitial { get; set; }
+        [DataMember(Name = "stock_initial", EmitDefaultValue = true)]
+        public decimal? StockInitial { get; set; }
 
         /// <summary>
         /// [Read Only] Product current stock.
         /// </summary>
         /// <value>[Read Only] Product current stock.</value>
-        [DataMember(Name = "stock_current", EmitDefaultValue = false)]
-        public decimal StockCurrent { get; private set; }
+        [DataMember(Name = "stock_current", EmitDefaultValue = true)]
+        public decimal? StockCurrent { get; private set; }
 
         /// <summary>
         /// Returns false as StockCurrent should not be serialized given that it's read-only.
@@ -191,15 +191,15 @@ namespace It.FattureInCloud.Sdk.Model
         /// Product average cost.
         /// </summary>
         /// <value>Product average cost.</value>
-        [DataMember(Name = "average_cost", EmitDefaultValue = false)]
-        public decimal AverageCost { get; set; }
+        [DataMember(Name = "average_cost", EmitDefaultValue = true)]
+        public decimal? AverageCost { get; set; }
 
         /// <summary>
         /// Product average price.
         /// </summary>
         /// <value>Product average price.</value>
-        [DataMember(Name = "average_price", EmitDefaultValue = false)]
-        public decimal AveragePrice { get; set; }
+        [DataMember(Name = "average_price", EmitDefaultValue = true)]
+        public decimal? AveragePrice { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedAt
@@ -277,7 +277,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -301,7 +302,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.UseGrossPrice == input.UseGrossPrice ||
-                    this.UseGrossPrice.Equals(input.UseGrossPrice)
+                    (this.UseGrossPrice != null &&
+                    this.UseGrossPrice.Equals(input.UseGrossPrice))
                 ) && 
                 (
                     this.DefaultVat == input.DefaultVat ||
@@ -335,23 +337,28 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.InStock == input.InStock ||
-                    this.InStock.Equals(input.InStock)
+                    (this.InStock != null &&
+                    this.InStock.Equals(input.InStock))
                 ) && 
                 (
                     this.StockInitial == input.StockInitial ||
-                    this.StockInitial.Equals(input.StockInitial)
+                    (this.StockInitial != null &&
+                    this.StockInitial.Equals(input.StockInitial))
                 ) && 
                 (
                     this.StockCurrent == input.StockCurrent ||
-                    this.StockCurrent.Equals(input.StockCurrent)
+                    (this.StockCurrent != null &&
+                    this.StockCurrent.Equals(input.StockCurrent))
                 ) && 
                 (
                     this.AverageCost == input.AverageCost ||
-                    this.AverageCost.Equals(input.AverageCost)
+                    (this.AverageCost != null &&
+                    this.AverageCost.Equals(input.AverageCost))
                 ) && 
                 (
                     this.AveragePrice == input.AveragePrice ||
-                    this.AveragePrice.Equals(input.AveragePrice)
+                    (this.AveragePrice != null &&
+                    this.AveragePrice.Equals(input.AveragePrice))
                 ) && 
                 (
                     this.CreatedAt == input.CreatedAt ||
@@ -374,7 +381,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
@@ -391,7 +401,10 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.GrossPrice.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.UseGrossPrice.GetHashCode();
+                if (this.UseGrossPrice != null)
+                {
+                    hashCode = (hashCode * 59) + this.UseGrossPrice.GetHashCode();
+                }
                 if (this.DefaultVat != null)
                 {
                     hashCode = (hashCode * 59) + this.DefaultVat.GetHashCode();
@@ -416,11 +429,26 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Notes.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.InStock.GetHashCode();
-                hashCode = (hashCode * 59) + this.StockInitial.GetHashCode();
-                hashCode = (hashCode * 59) + this.StockCurrent.GetHashCode();
-                hashCode = (hashCode * 59) + this.AverageCost.GetHashCode();
-                hashCode = (hashCode * 59) + this.AveragePrice.GetHashCode();
+                if (this.InStock != null)
+                {
+                    hashCode = (hashCode * 59) + this.InStock.GetHashCode();
+                }
+                if (this.StockInitial != null)
+                {
+                    hashCode = (hashCode * 59) + this.StockInitial.GetHashCode();
+                }
+                if (this.StockCurrent != null)
+                {
+                    hashCode = (hashCode * 59) + this.StockCurrent.GetHashCode();
+                }
+                if (this.AverageCost != null)
+                {
+                    hashCode = (hashCode * 59) + this.AverageCost.GetHashCode();
+                }
+                if (this.AveragePrice != null)
+                {
+                    hashCode = (hashCode * 59) + this.AveragePrice.GetHashCode();
+                }
                 if (this.CreatedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();

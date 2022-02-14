@@ -44,7 +44,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <summary>
         /// Gets or Sets Data
         /// </summary>
-        [DataMember(Name = "data", EmitDefaultValue = false)]
+        [DataMember(Name = "data", EmitDefaultValue = true)]
         public List<ReceivedDocument> Data { get; set; }
 
         /// <summary>

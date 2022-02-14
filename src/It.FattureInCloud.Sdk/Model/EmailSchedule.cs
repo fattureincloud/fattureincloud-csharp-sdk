@@ -43,7 +43,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="include">include.</param>
         /// <param name="attachPdf">If set to true, documents will be sent as PDF attachments too.</param>
         /// <param name="sendCopy">If set to true, a copy of the email will be sent to the &#x60;cc_email&#x60; specified by &#x60;Get email data&#x60;.</param>
-        public EmailSchedule(int senderId = default(int), string senderEmail = default(string), string recipientEmail = default(string), string subject = default(string), string body = default(string), EmailScheduleInclude include = default(EmailScheduleInclude), bool attachPdf = default(bool), bool sendCopy = default(bool))
+        public EmailSchedule(int? senderId = default(int?), string senderEmail = default(string), string recipientEmail = default(string), string subject = default(string), string body = default(string), EmailScheduleInclude include = default(EmailScheduleInclude), bool? attachPdf = default(bool?), bool? sendCopy = default(bool?))
         {
             this.SenderId = senderId;
             this.SenderEmail = senderEmail;
@@ -59,41 +59,41 @@ namespace It.FattureInCloud.Sdk.Model
         /// Sender id. Required if &#x60;sender_email&#x60; is not specified
         /// </summary>
         /// <value>Sender id. Required if &#x60;sender_email&#x60; is not specified</value>
-        [DataMember(Name = "sender_id", EmitDefaultValue = false)]
-        public int SenderId { get; set; }
+        [DataMember(Name = "sender_id", EmitDefaultValue = true)]
+        public int? SenderId { get; set; }
 
         /// <summary>
         /// Sender email. Required if &#x60;sender_id&#x60; is not specified
         /// </summary>
         /// <value>Sender email. Required if &#x60;sender_id&#x60; is not specified</value>
-        [DataMember(Name = "sender_email", EmitDefaultValue = false)]
+        [DataMember(Name = "sender_email", EmitDefaultValue = true)]
         public string SenderEmail { get; set; }
 
         /// <summary>
         /// One or more comma separated recipient emails
         /// </summary>
         /// <value>One or more comma separated recipient emails</value>
-        [DataMember(Name = "recipient_email", EmitDefaultValue = false)]
+        [DataMember(Name = "recipient_email", EmitDefaultValue = true)]
         public string RecipientEmail { get; set; }
 
         /// <summary>
         /// Email subject
         /// </summary>
         /// <value>Email subject</value>
-        [DataMember(Name = "subject", EmitDefaultValue = false)]
+        [DataMember(Name = "subject", EmitDefaultValue = true)]
         public string Subject { get; set; }
 
         /// <summary>
         /// Email body
         /// </summary>
         /// <value>Email body</value>
-        [DataMember(Name = "body", EmitDefaultValue = false)]
+        [DataMember(Name = "body", EmitDefaultValue = true)]
         public string Body { get; set; }
 
         /// <summary>
         /// Gets or Sets Include
         /// </summary>
-        [DataMember(Name = "include", EmitDefaultValue = false)]
+        [DataMember(Name = "include", EmitDefaultValue = true)]
         public EmailScheduleInclude Include { get; set; }
 
         /// <summary>
@@ -101,14 +101,14 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>If set to true, documents will be sent as PDF attachments too</value>
         [DataMember(Name = "attach_pdf", EmitDefaultValue = true)]
-        public bool AttachPdf { get; set; }
+        public bool? AttachPdf { get; set; }
 
         /// <summary>
         /// If set to true, a copy of the email will be sent to the &#x60;cc_email&#x60; specified by &#x60;Get email data&#x60;
         /// </summary>
         /// <value>If set to true, a copy of the email will be sent to the &#x60;cc_email&#x60; specified by &#x60;Get email data&#x60;</value>
         [DataMember(Name = "send_copy", EmitDefaultValue = true)]
-        public bool SendCopy { get; set; }
+        public bool? SendCopy { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -163,7 +163,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.SenderId == input.SenderId ||
-                    this.SenderId.Equals(input.SenderId)
+                    (this.SenderId != null &&
+                    this.SenderId.Equals(input.SenderId))
                 ) && 
                 (
                     this.SenderEmail == input.SenderEmail ||
@@ -192,11 +193,13 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.AttachPdf == input.AttachPdf ||
-                    this.AttachPdf.Equals(input.AttachPdf)
+                    (this.AttachPdf != null &&
+                    this.AttachPdf.Equals(input.AttachPdf))
                 ) && 
                 (
                     this.SendCopy == input.SendCopy ||
-                    this.SendCopy.Equals(input.SendCopy)
+                    (this.SendCopy != null &&
+                    this.SendCopy.Equals(input.SendCopy))
                 );
         }
 
@@ -209,7 +212,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.SenderId.GetHashCode();
+                if (this.SenderId != null)
+                {
+                    hashCode = (hashCode * 59) + this.SenderId.GetHashCode();
+                }
                 if (this.SenderEmail != null)
                 {
                     hashCode = (hashCode * 59) + this.SenderEmail.GetHashCode();
@@ -230,8 +236,14 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Include.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AttachPdf.GetHashCode();
-                hashCode = (hashCode * 59) + this.SendCopy.GetHashCode();
+                if (this.AttachPdf != null)
+                {
+                    hashCode = (hashCode * 59) + this.AttachPdf.GetHashCode();
+                }
+                if (this.SendCopy != null)
+                {
+                    hashCode = (hashCode * 59) + this.SendCopy.GetHashCode();
+                }
                 return hashCode;
             }
         }

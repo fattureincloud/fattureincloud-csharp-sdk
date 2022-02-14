@@ -39,7 +39,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="tsTipoSpesa">tsTipoSpesa.</param>
         /// <param name="tsFlagTipoSpesa">tsFlagTipoSpesa.</param>
         /// <param name="tsPagamentoTracciato">tsPagamentoTracciato.</param>
-        public IssuedDocumentPreCreateInfoExtraDataDefaultValues(bool tsCommunication = default(bool), string tsTipoSpesa = default(string), int tsFlagTipoSpesa = default(int), bool tsPagamentoTracciato = default(bool))
+        public IssuedDocumentPreCreateInfoExtraDataDefaultValues(bool? tsCommunication = default(bool?), string tsTipoSpesa = default(string), int? tsFlagTipoSpesa = default(int?), bool? tsPagamentoTracciato = default(bool?))
         {
             this.TsCommunication = tsCommunication;
             this.TsTipoSpesa = tsTipoSpesa;
@@ -51,25 +51,25 @@ namespace It.FattureInCloud.Sdk.Model
         /// Gets or Sets TsCommunication
         /// </summary>
         [DataMember(Name = "ts_communication", EmitDefaultValue = true)]
-        public bool TsCommunication { get; set; }
+        public bool? TsCommunication { get; set; }
 
         /// <summary>
         /// Gets or Sets TsTipoSpesa
         /// </summary>
-        [DataMember(Name = "ts_tipo_spesa", EmitDefaultValue = false)]
+        [DataMember(Name = "ts_tipo_spesa", EmitDefaultValue = true)]
         public string TsTipoSpesa { get; set; }
 
         /// <summary>
         /// Gets or Sets TsFlagTipoSpesa
         /// </summary>
-        [DataMember(Name = "ts_flag_tipo_spesa", EmitDefaultValue = false)]
-        public int TsFlagTipoSpesa { get; set; }
+        [DataMember(Name = "ts_flag_tipo_spesa", EmitDefaultValue = true)]
+        public int? TsFlagTipoSpesa { get; set; }
 
         /// <summary>
         /// Gets or Sets TsPagamentoTracciato
         /// </summary>
         [DataMember(Name = "ts_pagamento_tracciato", EmitDefaultValue = true)]
-        public bool TsPagamentoTracciato { get; set; }
+        public bool? TsPagamentoTracciato { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,7 +120,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.TsCommunication == input.TsCommunication ||
-                    this.TsCommunication.Equals(input.TsCommunication)
+                    (this.TsCommunication != null &&
+                    this.TsCommunication.Equals(input.TsCommunication))
                 ) && 
                 (
                     this.TsTipoSpesa == input.TsTipoSpesa ||
@@ -129,11 +130,13 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.TsFlagTipoSpesa == input.TsFlagTipoSpesa ||
-                    this.TsFlagTipoSpesa.Equals(input.TsFlagTipoSpesa)
+                    (this.TsFlagTipoSpesa != null &&
+                    this.TsFlagTipoSpesa.Equals(input.TsFlagTipoSpesa))
                 ) && 
                 (
                     this.TsPagamentoTracciato == input.TsPagamentoTracciato ||
-                    this.TsPagamentoTracciato.Equals(input.TsPagamentoTracciato)
+                    (this.TsPagamentoTracciato != null &&
+                    this.TsPagamentoTracciato.Equals(input.TsPagamentoTracciato))
                 );
         }
 
@@ -146,13 +149,22 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.TsCommunication.GetHashCode();
+                if (this.TsCommunication != null)
+                {
+                    hashCode = (hashCode * 59) + this.TsCommunication.GetHashCode();
+                }
                 if (this.TsTipoSpesa != null)
                 {
                     hashCode = (hashCode * 59) + this.TsTipoSpesa.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.TsFlagTipoSpesa.GetHashCode();
-                hashCode = (hashCode * 59) + this.TsPagamentoTracciato.GetHashCode();
+                if (this.TsFlagTipoSpesa != null)
+                {
+                    hashCode = (hashCode * 59) + this.TsFlagTipoSpesa.GetHashCode();
+                }
+                if (this.TsPagamentoTracciato != null)
+                {
+                    hashCode = (hashCode * 59) + this.TsPagamentoTracciato.GetHashCode();
+                }
                 return hashCode;
             }
         }

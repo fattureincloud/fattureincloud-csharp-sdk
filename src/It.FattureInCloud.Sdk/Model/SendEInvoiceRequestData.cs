@@ -47,14 +47,14 @@ namespace It.FattureInCloud.Sdk.Model
         /// Value of TipoCassa used (optional, override the company default value).
         /// </summary>
         /// <value>Value of TipoCassa used (optional, override the company default value).</value>
-        [DataMember(Name = "cassa_type", EmitDefaultValue = false)]
+        [DataMember(Name = "cassa_type", EmitDefaultValue = true)]
         public string CassaType { get; set; }
 
         /// <summary>
         /// Value of CausalePagamento used (optional, override the company default value).
         /// </summary>
         /// <value>Value of CausalePagamento used (optional, override the company default value).</value>
-        [DataMember(Name = "withholding_tax_causal", EmitDefaultValue = false)]
+        [DataMember(Name = "withholding_tax_causal", EmitDefaultValue = true)]
         public string WithholdingTaxCausal { get; set; }
 
         /// <summary>

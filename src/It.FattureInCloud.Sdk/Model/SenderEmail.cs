@@ -37,7 +37,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <param name="id">Id.</param>
         /// <param name="email">Email address.</param>
-        public SenderEmail(int id = default(int), string email = default(string))
+        public SenderEmail(int? id = default(int?), string email = default(string))
         {
             this.Id = id;
             this.Email = email;
@@ -47,14 +47,14 @@ namespace It.FattureInCloud.Sdk.Model
         /// Id
         /// </summary>
         /// <value>Id</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id { get; set; }
 
         /// <summary>
         /// Email address
         /// </summary>
         /// <value>Email address</value>
-        [DataMember(Name = "email", EmitDefaultValue = false)]
+        [DataMember(Name = "email", EmitDefaultValue = true)]
         public string Email { get; set; }
 
         /// <summary>
@@ -104,7 +104,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.Email == input.Email ||
@@ -122,7 +123,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.Email != null)
                 {
                     hashCode = (hashCode * 59) + this.Email.GetHashCode();

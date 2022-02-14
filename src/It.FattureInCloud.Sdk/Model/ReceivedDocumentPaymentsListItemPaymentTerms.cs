@@ -37,7 +37,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <param name="days">Number of days..</param>
         /// <param name="type">type.</param>
-        public ReceivedDocumentPaymentsListItemPaymentTerms(int days = default(int), string type = default(string))
+        public ReceivedDocumentPaymentsListItemPaymentTerms(int? days = default(int?), string type = default(string))
         {
             this.Days = days;
             this.Type = type;
@@ -47,13 +47,13 @@ namespace It.FattureInCloud.Sdk.Model
         /// Number of days.
         /// </summary>
         /// <value>Number of days.</value>
-        [DataMember(Name = "days", EmitDefaultValue = false)]
-        public int Days { get; set; }
+        [DataMember(Name = "days", EmitDefaultValue = true)]
+        public int? Days { get; set; }
 
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
+        [DataMember(Name = "type", EmitDefaultValue = true)]
         public string Type { get; set; }
 
         /// <summary>
@@ -103,7 +103,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Days == input.Days ||
-                    this.Days.Equals(input.Days)
+                    (this.Days != null &&
+                    this.Days.Equals(input.Days))
                 ) && 
                 (
                     this.Type == input.Type ||
@@ -121,7 +122,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Days.GetHashCode();
+                if (this.Days != null)
+                {
+                    hashCode = (hashCode * 59) + this.Days.GetHashCode();
+                }
                 if (this.Type != null)
                 {
                     hashCode = (hashCode * 59) + this.Type.GetHashCode();

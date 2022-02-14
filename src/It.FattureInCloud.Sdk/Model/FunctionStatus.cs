@@ -36,7 +36,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Initializes a new instance of the <see cref="FunctionStatus" /> class.
         /// </summary>
         /// <param name="active">active.</param>
-        public FunctionStatus(bool active = default(bool))
+        public FunctionStatus(bool? active = default(bool?))
         {
             this.Active = active;
         }
@@ -45,7 +45,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Gets or Sets Active
         /// </summary>
         [DataMember(Name = "active", EmitDefaultValue = true)]
-        public bool Active { get; set; }
+        public bool? Active { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -93,7 +93,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Active == input.Active ||
-                    this.Active.Equals(input.Active)
+                    (this.Active != null &&
+                    this.Active.Equals(input.Active))
                 );
         }
 
@@ -106,7 +107,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Active.GetHashCode();
+                if (this.Active != null)
+                {
+                    hashCode = (hashCode * 59) + this.Active.GetHashCode();
+                }
                 return hashCode;
             }
         }

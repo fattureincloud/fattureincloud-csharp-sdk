@@ -46,13 +46,13 @@ namespace It.FattureInCloud.Sdk.Model
         /// <summary>
         /// Gets or Sets Error
         /// </summary>
-        [DataMember(Name = "error", EmitDefaultValue = false)]
+        [DataMember(Name = "error", EmitDefaultValue = true)]
         public VerifyEInvoiceXmlErrorResponseError Error { get; set; }
 
         /// <summary>
         /// Gets or Sets Extra
         /// </summary>
-        [DataMember(Name = "extra", EmitDefaultValue = false)]
+        [DataMember(Name = "extra", EmitDefaultValue = true)]
         public VerifyEInvoiceXmlErrorResponseExtra Extra { get; set; }
 
         /// <summary>

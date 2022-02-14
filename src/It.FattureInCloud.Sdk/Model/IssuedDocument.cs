@@ -124,7 +124,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// [Read only] Status of the e-invoice.   * &#x60;attempt&#x60; - We are trying to send the invoice, please wait up to 2 hours   * &#x60;missing&#x60; - The invoice is missing   * &#x60;not_sent&#x60; - The invoice has yet to be sent   * &#x60;pending&#x60; - The checks for the digital signature and sending are in progress   * &#x60;processing&#x60; - The SDI is delivering the invoice to the customer   * &#x60;error&#x60; - An error occurred while handling the invoice, please try to resend it or contact support   * &#x60;discarded&#x60; - The invoice has been rejected by the SDI, so it must be corrected and re-sent   * &#x60;not_delivered&#x60; - The SDI was unable to deliver the invoice   * &#x60;accepted&#x60; - The customer accepted the invoice   * &#x60;rejected&#x60; - The customer rejected the invoice, so it must be corrected   * &#x60;no_response&#x60; - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice 
         /// </summary>
         /// <value>[Read only] Status of the e-invoice.   * &#x60;attempt&#x60; - We are trying to send the invoice, please wait up to 2 hours   * &#x60;missing&#x60; - The invoice is missing   * &#x60;not_sent&#x60; - The invoice has yet to be sent   * &#x60;pending&#x60; - The checks for the digital signature and sending are in progress   * &#x60;processing&#x60; - The SDI is delivering the invoice to the customer   * &#x60;error&#x60; - An error occurred while handling the invoice, please try to resend it or contact support   * &#x60;discarded&#x60; - The invoice has been rejected by the SDI, so it must be corrected and re-sent   * &#x60;not_delivered&#x60; - The SDI was unable to deliver the invoice   * &#x60;accepted&#x60; - The customer accepted the invoice   * &#x60;rejected&#x60; - The customer rejected the invoice, so it must be corrected   * &#x60;no_response&#x60; - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice </value>
-        [DataMember(Name = "ei_status", EmitDefaultValue = false)]
+        [DataMember(Name = "ei_status", EmitDefaultValue = true)]
         public EiStatusEnum? EiStatus { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="IssuedDocument" /> class.
@@ -156,9 +156,9 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="otherWithholdingTax">Other withholding tax (altra ritenuta) percentual value.</param>
         /// <param name="stampDuty">Stamp duty value [0 if not present].</param>
         /// <param name="paymentMethod">paymentMethod.</param>
-        /// <param name="useSplitPayment">Use split payment (default to false).</param>
-        /// <param name="useGrossPrices">Use gross prices (default to false).</param>
-        /// <param name="eInvoice">Indicates if this is an e-invoice. (default to false).</param>
+        /// <param name="useSplitPayment">Use split payment.</param>
+        /// <param name="useGrossPrices">Use gross prices.</param>
+        /// <param name="eInvoice">Indicates if this is an e-invoice..</param>
         /// <param name="eiData">eiData.</param>
         /// <param name="eiCassaType">Einvoice cassa type.</param>
         /// <param name="eiCassa2Type">Einvoice cassa2 type.</param>
@@ -175,11 +175,11 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="showPayments">Shows the expiration dates of the payments on the document..</param>
         /// <param name="showPaymentMethod">Show the payment method details on the document..</param>
         /// <param name="showTotals">showTotals.</param>
-        /// <param name="showPaypalButton">Show paypal button (default to false).</param>
-        /// <param name="showNotificationButton">Show notification button (default to false).</param>
+        /// <param name="showPaypalButton">Show paypal button.</param>
+        /// <param name="showNotificationButton">Show notification button.</param>
         /// <param name="showTspayButton">Show ts pay button..</param>
         /// <param name="deliveryNote">deliveryNote.</param>
-        /// <param name="accompanyingInvoice">Attach an accompanying invoice. (default to false).</param>
+        /// <param name="accompanyingInvoice">Attach an accompanying invoice..</param>
         /// <param name="dnNumber">Number (for the attached delivery note)..</param>
         /// <param name="dnDate">Date (for the attached delivery note)..</param>
         /// <param name="dnAiPackagesNumber">Number of packages (for the attached delivery note)..</param>
@@ -201,7 +201,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="attachmentToken">[Write Only] Attachment token returned by POST /issued_documents/attachment. Used to attach the file already uploaded..</param>
         /// <param name="eiRaw">Advanced raw attributes for e-invoices..</param>
         /// <param name="eiStatus">[Read only] Status of the e-invoice.   * &#x60;attempt&#x60; - We are trying to send the invoice, please wait up to 2 hours   * &#x60;missing&#x60; - The invoice is missing   * &#x60;not_sent&#x60; - The invoice has yet to be sent   * &#x60;pending&#x60; - The checks for the digital signature and sending are in progress   * &#x60;processing&#x60; - The SDI is delivering the invoice to the customer   * &#x60;error&#x60; - An error occurred while handling the invoice, please try to resend it or contact support   * &#x60;discarded&#x60; - The invoice has been rejected by the SDI, so it must be corrected and re-sent   * &#x60;not_delivered&#x60; - The SDI was unable to deliver the invoice   * &#x60;accepted&#x60; - The customer accepted the invoice   * &#x60;rejected&#x60; - The customer rejected the invoice, so it must be corrected   * &#x60;no_response&#x60; - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice .</param>
-        public IssuedDocument(int id = default(int), Entity entity = default(Entity), IssuedDocumentType? type = default(IssuedDocumentType?), int number = default(int), string numeration = default(string), DateTimeOffset date = default(DateTimeOffset), int year = default(int), Currency currency = default(Currency), Language language = default(Language), string subject = default(string), string visibleSubject = default(string), string rcCenter = default(string), string notes = default(string), decimal rivalsa = default(decimal), decimal cassa = default(decimal), decimal cassaTaxable = default(decimal), decimal? amountCassaTaxable = default(decimal?), decimal cassa2 = default(decimal), decimal cassa2Taxable = default(decimal), decimal? amountCassa2Taxable = default(decimal?), decimal globalCassaTaxable = default(decimal), decimal? amountGlobalCassaTaxable = default(decimal?), decimal withholdingTax = default(decimal), decimal withholdingTaxTaxable = default(decimal), decimal otherWithholdingTax = default(decimal), decimal stampDuty = default(decimal), PaymentMethod paymentMethod = default(PaymentMethod), bool useSplitPayment = false, bool useGrossPrices = false, bool eInvoice = false, IssuedDocumentEiData eiData = default(IssuedDocumentEiData), string eiCassaType = default(string), string eiCassa2Type = default(string), string eiWithholdingTaxCausal = default(string), string eiOtherWithholdingTaxType = default(string), string eiOtherWithholdingTaxCausal = default(string), List<IssuedDocumentItemsListItem> itemsList = default(List<IssuedDocumentItemsListItem>), List<IssuedDocumentPaymentsListItem> paymentsList = default(List<IssuedDocumentPaymentsListItem>), DocumentTemplate template = default(DocumentTemplate), DocumentTemplate deliveryNoteTemplate = default(DocumentTemplate), DocumentTemplate accInvTemplate = default(DocumentTemplate), int hMargins = default(int), int vMargins = default(int), bool showPayments = default(bool), bool showPaymentMethod = default(bool), ShowTotalsMode? showTotals = default(ShowTotalsMode?), bool showPaypalButton = false, bool showNotificationButton = false, bool? showTspayButton = default(bool?), bool deliveryNote = default(bool), bool accompanyingInvoice = false, int dnNumber = default(int), DateTimeOffset dnDate = default(DateTimeOffset), string dnAiPackagesNumber = default(string), string dnAiWeight = default(string), string dnAiCausal = default(string), string dnAiDestination = default(string), string dnAiTransporter = default(string), string dnAiNotes = default(string), bool isMarked = default(bool), decimal amountDueDiscount = default(decimal), decimal? amountRivalsaTaxable = default(decimal?), decimal? amountWithholdingTaxTaxable = default(decimal?), decimal? amountOtherWithholdingTaxTaxable = default(decimal?), decimal? amountEnasarcoTaxable = default(decimal?), IssuedDocumentExtraData extraData = default(IssuedDocumentExtraData), DateTime? seenDate = default(DateTime?), DateTime? nextDueDate = default(DateTime?), string url = default(string), string attachmentToken = default(string), Object eiRaw = default(Object), EiStatusEnum? eiStatus = default(EiStatusEnum?))
+        public IssuedDocument(int? id = default(int?), Entity entity = default(Entity), IssuedDocumentType? type = default(IssuedDocumentType?), int? number = default(int?), string numeration = default(string), DateTime? date = default(DateTime?), int? year = default(int?), Currency currency = default(Currency), Language language = default(Language), string subject = default(string), string visibleSubject = default(string), string rcCenter = default(string), string notes = default(string), decimal? rivalsa = default(decimal?), decimal? cassa = default(decimal?), decimal? cassaTaxable = default(decimal?), decimal? amountCassaTaxable = default(decimal?), decimal? cassa2 = default(decimal?), decimal? cassa2Taxable = default(decimal?), decimal? amountCassa2Taxable = default(decimal?), decimal? globalCassaTaxable = default(decimal?), decimal? amountGlobalCassaTaxable = default(decimal?), decimal? withholdingTax = default(decimal?), decimal? withholdingTaxTaxable = default(decimal?), decimal? otherWithholdingTax = default(decimal?), decimal? stampDuty = default(decimal?), PaymentMethod paymentMethod = default(PaymentMethod), bool? useSplitPayment = default(bool?), bool? useGrossPrices = default(bool?), bool? eInvoice = default(bool?), IssuedDocumentEiData eiData = default(IssuedDocumentEiData), string eiCassaType = default(string), string eiCassa2Type = default(string), string eiWithholdingTaxCausal = default(string), string eiOtherWithholdingTaxType = default(string), string eiOtherWithholdingTaxCausal = default(string), List<IssuedDocumentItemsListItem> itemsList = default(List<IssuedDocumentItemsListItem>), List<IssuedDocumentPaymentsListItem> paymentsList = default(List<IssuedDocumentPaymentsListItem>), DocumentTemplate template = default(DocumentTemplate), DocumentTemplate deliveryNoteTemplate = default(DocumentTemplate), DocumentTemplate accInvTemplate = default(DocumentTemplate), int? hMargins = default(int?), int? vMargins = default(int?), bool? showPayments = default(bool?), bool? showPaymentMethod = default(bool?), ShowTotalsMode? showTotals = default(ShowTotalsMode?), bool? showPaypalButton = default(bool?), bool? showNotificationButton = default(bool?), bool? showTspayButton = default(bool?), bool? deliveryNote = default(bool?), bool? accompanyingInvoice = default(bool?), int? dnNumber = default(int?), DateTime? dnDate = default(DateTime?), string dnAiPackagesNumber = default(string), string dnAiWeight = default(string), string dnAiCausal = default(string), string dnAiDestination = default(string), string dnAiTransporter = default(string), string dnAiNotes = default(string), bool? isMarked = default(bool?), decimal? amountDueDiscount = default(decimal?), decimal? amountRivalsaTaxable = default(decimal?), decimal? amountWithholdingTaxTaxable = default(decimal?), decimal? amountOtherWithholdingTaxTaxable = default(decimal?), decimal? amountEnasarcoTaxable = default(decimal?), IssuedDocumentExtraData extraData = default(IssuedDocumentExtraData), DateTime? seenDate = default(DateTime?), DateTime? nextDueDate = default(DateTime?), string url = default(string), string attachmentToken = default(string), Object eiRaw = default(Object), EiStatusEnum? eiStatus = default(EiStatusEnum?))
         {
             this.Id = id;
             this.Entity = entity;
@@ -281,8 +281,8 @@ namespace It.FattureInCloud.Sdk.Model
         /// Unique identifier of the document.
         /// </summary>
         /// <value>Unique identifier of the document.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Entity
@@ -294,30 +294,30 @@ namespace It.FattureInCloud.Sdk.Model
         /// Number of the document [If not specified, next number is used]
         /// </summary>
         /// <value>Number of the document [If not specified, next number is used]</value>
-        [DataMember(Name = "number", EmitDefaultValue = false)]
-        public int Number { get; set; }
+        [DataMember(Name = "number", EmitDefaultValue = true)]
+        public int? Number { get; set; }
 
         /// <summary>
         /// Numeration of the document [Not available if type&#x3D;delivery_note]
         /// </summary>
         /// <value>Numeration of the document [Not available if type&#x3D;delivery_note]</value>
-        [DataMember(Name = "numeration", EmitDefaultValue = false)]
+        [DataMember(Name = "numeration", EmitDefaultValue = true)]
         public string Numeration { get; set; }
 
         /// <summary>
         /// Date of the document [If not specified, today date is used]
         /// </summary>
         /// <value>Date of the document [If not specified, today date is used]</value>
-        [DataMember(Name = "date", EmitDefaultValue = false)]
+        [DataMember(Name = "date", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTimeOffset Date { get; set; }
+        public DateTime? Date { get; set; }
 
         /// <summary>
         /// Invoice year.
         /// </summary>
         /// <value>Invoice year.</value>
-        [DataMember(Name = "year", EmitDefaultValue = false)]
-        public int Year { get; set; }
+        [DataMember(Name = "year", EmitDefaultValue = true)]
+        public int? Year { get; set; }
 
         /// <summary>
         /// Gets or Sets Currency
@@ -335,50 +335,50 @@ namespace It.FattureInCloud.Sdk.Model
         /// Issued document subject.
         /// </summary>
         /// <value>Issued document subject.</value>
-        [DataMember(Name = "subject", EmitDefaultValue = false)]
+        [DataMember(Name = "subject", EmitDefaultValue = true)]
         public string Subject { get; set; }
 
         /// <summary>
         /// Issued document visible subject.
         /// </summary>
         /// <value>Issued document visible subject.</value>
-        [DataMember(Name = "visible_subject", EmitDefaultValue = false)]
+        [DataMember(Name = "visible_subject", EmitDefaultValue = true)]
         public string VisibleSubject { get; set; }
 
         /// <summary>
         /// Revenue center [or cost center if type&#x3D;supplier_order].
         /// </summary>
         /// <value>Revenue center [or cost center if type&#x3D;supplier_order].</value>
-        [DataMember(Name = "rc_center", EmitDefaultValue = false)]
+        [DataMember(Name = "rc_center", EmitDefaultValue = true)]
         public string RcCenter { get; set; }
 
         /// <summary>
         /// Issued document extra notes.
         /// </summary>
         /// <value>Issued document extra notes.</value>
-        [DataMember(Name = "notes", EmitDefaultValue = false)]
+        [DataMember(Name = "notes", EmitDefaultValue = true)]
         public string Notes { get; set; }
 
         /// <summary>
         /// \&quot;Rivalsa INPS\&quot; percentual value
         /// </summary>
         /// <value>\&quot;Rivalsa INPS\&quot; percentual value</value>
-        [DataMember(Name = "rivalsa", EmitDefaultValue = false)]
-        public decimal Rivalsa { get; set; }
+        [DataMember(Name = "rivalsa", EmitDefaultValue = true)]
+        public decimal? Rivalsa { get; set; }
 
         /// <summary>
         /// \&quot;Cassa previdenziale\&quot; percentual value
         /// </summary>
         /// <value>\&quot;Cassa previdenziale\&quot; percentual value</value>
-        [DataMember(Name = "cassa", EmitDefaultValue = false)]
-        public decimal Cassa { get; set; }
+        [DataMember(Name = "cassa", EmitDefaultValue = true)]
+        public decimal? Cassa { get; set; }
 
         /// <summary>
         /// [Read Only] Cassa amount.
         /// </summary>
         /// <value>[Read Only] Cassa amount.</value>
-        [DataMember(Name = "amount_cassa", EmitDefaultValue = false)]
-        public decimal AmountCassa { get; private set; }
+        [DataMember(Name = "amount_cassa", EmitDefaultValue = true)]
+        public decimal? AmountCassa { get; private set; }
 
         /// <summary>
         /// Returns false as AmountCassa should not be serialized given that it's read-only.
@@ -392,8 +392,8 @@ namespace It.FattureInCloud.Sdk.Model
         /// Cassa taxable percentage
         /// </summary>
         /// <value>Cassa taxable percentage</value>
-        [DataMember(Name = "cassa_taxable", EmitDefaultValue = false)]
-        public decimal CassaTaxable { get; set; }
+        [DataMember(Name = "cassa_taxable", EmitDefaultValue = true)]
+        public decimal? CassaTaxable { get; set; }
 
         /// <summary>
         /// [Can be set only if cassa_taxable is NULL] Cassa2 taxable amount
@@ -406,8 +406,8 @@ namespace It.FattureInCloud.Sdk.Model
         /// \&quot;Cassa previdenziale 2\&quot; percentual value
         /// </summary>
         /// <value>\&quot;Cassa previdenziale 2\&quot; percentual value</value>
-        [DataMember(Name = "cassa2", EmitDefaultValue = false)]
-        public decimal Cassa2 { get; set; }
+        [DataMember(Name = "cassa2", EmitDefaultValue = true)]
+        public decimal? Cassa2 { get; set; }
 
         /// <summary>
         /// [Read Only] Cassa amount.
@@ -428,8 +428,8 @@ namespace It.FattureInCloud.Sdk.Model
         /// Cassa2 taxable percentage
         /// </summary>
         /// <value>Cassa2 taxable percentage</value>
-        [DataMember(Name = "cassa2_taxable", EmitDefaultValue = false)]
-        public decimal Cassa2Taxable { get; set; }
+        [DataMember(Name = "cassa2_taxable", EmitDefaultValue = true)]
+        public decimal? Cassa2Taxable { get; set; }
 
         /// <summary>
         /// [Can be set only if cassa2_taxable is NULL] Cassa2 taxable amount
@@ -442,8 +442,8 @@ namespace It.FattureInCloud.Sdk.Model
         /// Global cassa taxable percentage
         /// </summary>
         /// <value>Global cassa taxable percentage</value>
-        [DataMember(Name = "global_cassa_taxable", EmitDefaultValue = false)]
-        public decimal GlobalCassaTaxable { get; set; }
+        [DataMember(Name = "global_cassa_taxable", EmitDefaultValue = true)]
+        public decimal? GlobalCassaTaxable { get; set; }
 
         /// <summary>
         /// [Can be set only if global_cassa_taxable is NULL] Global cassa taxable amount
@@ -456,29 +456,29 @@ namespace It.FattureInCloud.Sdk.Model
         /// Withholding tax (ritenuta d&#39;acconto) percentual value
         /// </summary>
         /// <value>Withholding tax (ritenuta d&#39;acconto) percentual value</value>
-        [DataMember(Name = "withholding_tax", EmitDefaultValue = false)]
-        public decimal WithholdingTax { get; set; }
+        [DataMember(Name = "withholding_tax", EmitDefaultValue = true)]
+        public decimal? WithholdingTax { get; set; }
 
         /// <summary>
         /// Withholding tax taxable (imponibile) percentual value
         /// </summary>
         /// <value>Withholding tax taxable (imponibile) percentual value</value>
-        [DataMember(Name = "withholding_tax_taxable", EmitDefaultValue = false)]
-        public decimal WithholdingTaxTaxable { get; set; }
+        [DataMember(Name = "withholding_tax_taxable", EmitDefaultValue = true)]
+        public decimal? WithholdingTaxTaxable { get; set; }
 
         /// <summary>
         /// Other withholding tax (altra ritenuta) percentual value
         /// </summary>
         /// <value>Other withholding tax (altra ritenuta) percentual value</value>
-        [DataMember(Name = "other_withholding_tax", EmitDefaultValue = false)]
-        public decimal OtherWithholdingTax { get; set; }
+        [DataMember(Name = "other_withholding_tax", EmitDefaultValue = true)]
+        public decimal? OtherWithholdingTax { get; set; }
 
         /// <summary>
         /// Stamp duty value [0 if not present]
         /// </summary>
         /// <value>Stamp duty value [0 if not present]</value>
-        [DataMember(Name = "stamp_duty", EmitDefaultValue = false)]
-        public decimal StampDuty { get; set; }
+        [DataMember(Name = "stamp_duty", EmitDefaultValue = true)]
+        public decimal? StampDuty { get; set; }
 
         /// <summary>
         /// Gets or Sets PaymentMethod
@@ -491,21 +491,21 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>Use split payment</value>
         [DataMember(Name = "use_split_payment", EmitDefaultValue = true)]
-        public bool UseSplitPayment { get; set; }
+        public bool? UseSplitPayment { get; set; }
 
         /// <summary>
         /// Use gross prices
         /// </summary>
         /// <value>Use gross prices</value>
         [DataMember(Name = "use_gross_prices", EmitDefaultValue = true)]
-        public bool UseGrossPrices { get; set; }
+        public bool? UseGrossPrices { get; set; }
 
         /// <summary>
         /// Indicates if this is an e-invoice.
         /// </summary>
         /// <value>Indicates if this is an e-invoice.</value>
         [DataMember(Name = "e_invoice", EmitDefaultValue = true)]
-        public bool EInvoice { get; set; }
+        public bool? EInvoice { get; set; }
 
         /// <summary>
         /// Gets or Sets EiData
@@ -582,43 +582,43 @@ namespace It.FattureInCloud.Sdk.Model
         /// Horizontal margins.
         /// </summary>
         /// <value>Horizontal margins.</value>
-        [DataMember(Name = "h_margins", EmitDefaultValue = false)]
-        public int HMargins { get; set; }
+        [DataMember(Name = "h_margins", EmitDefaultValue = true)]
+        public int? HMargins { get; set; }
 
         /// <summary>
         /// Vertical margins.
         /// </summary>
         /// <value>Vertical margins.</value>
-        [DataMember(Name = "v_margins", EmitDefaultValue = false)]
-        public int VMargins { get; set; }
+        [DataMember(Name = "v_margins", EmitDefaultValue = true)]
+        public int? VMargins { get; set; }
 
         /// <summary>
         /// Shows the expiration dates of the payments on the document.
         /// </summary>
         /// <value>Shows the expiration dates of the payments on the document.</value>
         [DataMember(Name = "show_payments", EmitDefaultValue = true)]
-        public bool ShowPayments { get; set; }
+        public bool? ShowPayments { get; set; }
 
         /// <summary>
         /// Show the payment method details on the document.
         /// </summary>
         /// <value>Show the payment method details on the document.</value>
         [DataMember(Name = "show_payment_method", EmitDefaultValue = true)]
-        public bool ShowPaymentMethod { get; set; }
+        public bool? ShowPaymentMethod { get; set; }
 
         /// <summary>
         /// Show paypal button
         /// </summary>
         /// <value>Show paypal button</value>
         [DataMember(Name = "show_paypal_button", EmitDefaultValue = true)]
-        public bool ShowPaypalButton { get; set; }
+        public bool? ShowPaypalButton { get; set; }
 
         /// <summary>
         /// Show notification button
         /// </summary>
         /// <value>Show notification button</value>
         [DataMember(Name = "show_notification_button", EmitDefaultValue = true)]
-        public bool ShowNotificationButton { get; set; }
+        public bool? ShowNotificationButton { get; set; }
 
         /// <summary>
         /// Show ts pay button.
@@ -631,29 +631,29 @@ namespace It.FattureInCloud.Sdk.Model
         /// Gets or Sets DeliveryNote
         /// </summary>
         [DataMember(Name = "delivery_note", EmitDefaultValue = true)]
-        public bool DeliveryNote { get; set; }
+        public bool? DeliveryNote { get; set; }
 
         /// <summary>
         /// Attach an accompanying invoice.
         /// </summary>
         /// <value>Attach an accompanying invoice.</value>
         [DataMember(Name = "accompanying_invoice", EmitDefaultValue = true)]
-        public bool AccompanyingInvoice { get; set; }
+        public bool? AccompanyingInvoice { get; set; }
 
         /// <summary>
         /// Number (for the attached delivery note).
         /// </summary>
         /// <value>Number (for the attached delivery note).</value>
-        [DataMember(Name = "dn_number", EmitDefaultValue = false)]
-        public int DnNumber { get; set; }
+        [DataMember(Name = "dn_number", EmitDefaultValue = true)]
+        public int? DnNumber { get; set; }
 
         /// <summary>
         /// Date (for the attached delivery note).
         /// </summary>
         /// <value>Date (for the attached delivery note).</value>
-        [DataMember(Name = "dn_date", EmitDefaultValue = false)]
+        [DataMember(Name = "dn_date", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTimeOffset DnDate { get; set; }
+        public DateTime? DnDate { get; set; }
 
         /// <summary>
         /// Number of packages (for the attached delivery note).
@@ -702,14 +702,14 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>This is true if the document is marked.</value>
         [DataMember(Name = "is_marked", EmitDefaultValue = true)]
-        public bool IsMarked { get; set; }
+        public bool? IsMarked { get; set; }
 
         /// <summary>
         /// [Read Only] Total net amount (competenze).
         /// </summary>
         /// <value>[Read Only] Total net amount (competenze).</value>
-        [DataMember(Name = "amount_net", EmitDefaultValue = false)]
-        public decimal AmountNet { get; private set; }
+        [DataMember(Name = "amount_net", EmitDefaultValue = true)]
+        public decimal? AmountNet { get; private set; }
 
         /// <summary>
         /// Returns false as AmountNet should not be serialized given that it's read-only.
@@ -723,8 +723,8 @@ namespace It.FattureInCloud.Sdk.Model
         /// [Read Only] Total vat amount (IVA).
         /// </summary>
         /// <value>[Read Only] Total vat amount (IVA).</value>
-        [DataMember(Name = "amount_vat", EmitDefaultValue = false)]
-        public decimal AmountVat { get; private set; }
+        [DataMember(Name = "amount_vat", EmitDefaultValue = true)]
+        public decimal? AmountVat { get; private set; }
 
         /// <summary>
         /// Returns false as AmountVat should not be serialized given that it's read-only.
@@ -738,8 +738,8 @@ namespace It.FattureInCloud.Sdk.Model
         /// [Read Only] Total gross amount (totale documento).
         /// </summary>
         /// <value>[Read Only] Total gross amount (totale documento).</value>
-        [DataMember(Name = "amount_gross", EmitDefaultValue = false)]
-        public decimal AmountGross { get; private set; }
+        [DataMember(Name = "amount_gross", EmitDefaultValue = true)]
+        public decimal? AmountGross { get; private set; }
 
         /// <summary>
         /// Returns false as AmountGross should not be serialized given that it's read-only.
@@ -753,15 +753,15 @@ namespace It.FattureInCloud.Sdk.Model
         /// Amount due discount
         /// </summary>
         /// <value>Amount due discount</value>
-        [DataMember(Name = "amount_due_discount", EmitDefaultValue = false)]
-        public decimal AmountDueDiscount { get; set; }
+        [DataMember(Name = "amount_due_discount", EmitDefaultValue = true)]
+        public decimal? AmountDueDiscount { get; set; }
 
         /// <summary>
         /// [Read Only] Rivalsa amount.
         /// </summary>
         /// <value>[Read Only] Rivalsa amount.</value>
-        [DataMember(Name = "amount_rivalsa", EmitDefaultValue = false)]
-        public decimal AmountRivalsa { get; private set; }
+        [DataMember(Name = "amount_rivalsa", EmitDefaultValue = true)]
+        public decimal? AmountRivalsa { get; private set; }
 
         /// <summary>
         /// Returns false as AmountRivalsa should not be serialized given that it's read-only.
@@ -782,8 +782,8 @@ namespace It.FattureInCloud.Sdk.Model
         /// [Read Only] Withholding tax amount (ritenuta d&#39;acconto).
         /// </summary>
         /// <value>[Read Only] Withholding tax amount (ritenuta d&#39;acconto).</value>
-        [DataMember(Name = "amount_withholding_tax", EmitDefaultValue = false)]
-        public decimal AmountWithholdingTax { get; private set; }
+        [DataMember(Name = "amount_withholding_tax", EmitDefaultValue = true)]
+        public decimal? AmountWithholdingTax { get; private set; }
 
         /// <summary>
         /// Returns false as AmountWithholdingTax should not be serialized given that it's read-only.
@@ -804,8 +804,8 @@ namespace It.FattureInCloud.Sdk.Model
         /// [Read Only] Other withholding tax amount (altra ritenuta).
         /// </summary>
         /// <value>[Read Only] Other withholding tax amount (altra ritenuta).</value>
-        [DataMember(Name = "amount_other_withholding_tax", EmitDefaultValue = false)]
-        public decimal AmountOtherWithholdingTax { get; private set; }
+        [DataMember(Name = "amount_other_withholding_tax", EmitDefaultValue = true)]
+        public decimal? AmountOtherWithholdingTax { get; private set; }
 
         /// <summary>
         /// Returns false as AmountOtherWithholdingTax should not be serialized given that it's read-only.
@@ -855,14 +855,14 @@ namespace It.FattureInCloud.Sdk.Model
         /// Public url of the document PDF file.
         /// </summary>
         /// <value>Public url of the document PDF file.</value>
-        [DataMember(Name = "url", EmitDefaultValue = false)]
+        [DataMember(Name = "url", EmitDefaultValue = true)]
         public string Url { get; set; }
 
         /// <summary>
         /// [Read Only] Public url of the attached file. Authomatically set if a valid attachment token is passed via POST /issued_documents or PUT /issued_documents/{documentId}.
         /// </summary>
         /// <value>[Read Only] Public url of the attached file. Authomatically set if a valid attachment token is passed via POST /issued_documents or PUT /issued_documents/{documentId}.</value>
-        [DataMember(Name = "attachment_url", EmitDefaultValue = false)]
+        [DataMember(Name = "attachment_url", EmitDefaultValue = true)]
         public string AttachmentUrl { get; private set; }
 
         /// <summary>
@@ -1013,7 +1013,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.Entity == input.Entity ||
@@ -1026,7 +1027,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.Number == input.Number ||
-                    this.Number.Equals(input.Number)
+                    (this.Number != null &&
+                    this.Number.Equals(input.Number))
                 ) && 
                 (
                     this.Numeration == input.Numeration ||
@@ -1040,7 +1042,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.Year == input.Year ||
-                    this.Year.Equals(input.Year)
+                    (this.Year != null &&
+                    this.Year.Equals(input.Year))
                 ) && 
                 (
                     this.Currency == input.Currency ||
@@ -1074,19 +1077,23 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.Rivalsa == input.Rivalsa ||
-                    this.Rivalsa.Equals(input.Rivalsa)
+                    (this.Rivalsa != null &&
+                    this.Rivalsa.Equals(input.Rivalsa))
                 ) && 
                 (
                     this.Cassa == input.Cassa ||
-                    this.Cassa.Equals(input.Cassa)
+                    (this.Cassa != null &&
+                    this.Cassa.Equals(input.Cassa))
                 ) && 
                 (
                     this.AmountCassa == input.AmountCassa ||
-                    this.AmountCassa.Equals(input.AmountCassa)
+                    (this.AmountCassa != null &&
+                    this.AmountCassa.Equals(input.AmountCassa))
                 ) && 
                 (
                     this.CassaTaxable == input.CassaTaxable ||
-                    this.CassaTaxable.Equals(input.CassaTaxable)
+                    (this.CassaTaxable != null &&
+                    this.CassaTaxable.Equals(input.CassaTaxable))
                 ) && 
                 (
                     this.AmountCassaTaxable == input.AmountCassaTaxable ||
@@ -1095,7 +1102,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.Cassa2 == input.Cassa2 ||
-                    this.Cassa2.Equals(input.Cassa2)
+                    (this.Cassa2 != null &&
+                    this.Cassa2.Equals(input.Cassa2))
                 ) && 
                 (
                     this.AmountCassa2 == input.AmountCassa2 ||
@@ -1104,7 +1112,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.Cassa2Taxable == input.Cassa2Taxable ||
-                    this.Cassa2Taxable.Equals(input.Cassa2Taxable)
+                    (this.Cassa2Taxable != null &&
+                    this.Cassa2Taxable.Equals(input.Cassa2Taxable))
                 ) && 
                 (
                     this.AmountCassa2Taxable == input.AmountCassa2Taxable ||
@@ -1113,7 +1122,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.GlobalCassaTaxable == input.GlobalCassaTaxable ||
-                    this.GlobalCassaTaxable.Equals(input.GlobalCassaTaxable)
+                    (this.GlobalCassaTaxable != null &&
+                    this.GlobalCassaTaxable.Equals(input.GlobalCassaTaxable))
                 ) && 
                 (
                     this.AmountGlobalCassaTaxable == input.AmountGlobalCassaTaxable ||
@@ -1122,19 +1132,23 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.WithholdingTax == input.WithholdingTax ||
-                    this.WithholdingTax.Equals(input.WithholdingTax)
+                    (this.WithholdingTax != null &&
+                    this.WithholdingTax.Equals(input.WithholdingTax))
                 ) && 
                 (
                     this.WithholdingTaxTaxable == input.WithholdingTaxTaxable ||
-                    this.WithholdingTaxTaxable.Equals(input.WithholdingTaxTaxable)
+                    (this.WithholdingTaxTaxable != null &&
+                    this.WithholdingTaxTaxable.Equals(input.WithholdingTaxTaxable))
                 ) && 
                 (
                     this.OtherWithholdingTax == input.OtherWithholdingTax ||
-                    this.OtherWithholdingTax.Equals(input.OtherWithholdingTax)
+                    (this.OtherWithholdingTax != null &&
+                    this.OtherWithholdingTax.Equals(input.OtherWithholdingTax))
                 ) && 
                 (
                     this.StampDuty == input.StampDuty ||
-                    this.StampDuty.Equals(input.StampDuty)
+                    (this.StampDuty != null &&
+                    this.StampDuty.Equals(input.StampDuty))
                 ) && 
                 (
                     this.PaymentMethod == input.PaymentMethod ||
@@ -1143,15 +1157,18 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.UseSplitPayment == input.UseSplitPayment ||
-                    this.UseSplitPayment.Equals(input.UseSplitPayment)
+                    (this.UseSplitPayment != null &&
+                    this.UseSplitPayment.Equals(input.UseSplitPayment))
                 ) && 
                 (
                     this.UseGrossPrices == input.UseGrossPrices ||
-                    this.UseGrossPrices.Equals(input.UseGrossPrices)
+                    (this.UseGrossPrices != null &&
+                    this.UseGrossPrices.Equals(input.UseGrossPrices))
                 ) && 
                 (
                     this.EInvoice == input.EInvoice ||
-                    this.EInvoice.Equals(input.EInvoice)
+                    (this.EInvoice != null &&
+                    this.EInvoice.Equals(input.EInvoice))
                 ) && 
                 (
                     this.EiData == input.EiData ||
@@ -1212,19 +1229,23 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.HMargins == input.HMargins ||
-                    this.HMargins.Equals(input.HMargins)
+                    (this.HMargins != null &&
+                    this.HMargins.Equals(input.HMargins))
                 ) && 
                 (
                     this.VMargins == input.VMargins ||
-                    this.VMargins.Equals(input.VMargins)
+                    (this.VMargins != null &&
+                    this.VMargins.Equals(input.VMargins))
                 ) && 
                 (
                     this.ShowPayments == input.ShowPayments ||
-                    this.ShowPayments.Equals(input.ShowPayments)
+                    (this.ShowPayments != null &&
+                    this.ShowPayments.Equals(input.ShowPayments))
                 ) && 
                 (
                     this.ShowPaymentMethod == input.ShowPaymentMethod ||
-                    this.ShowPaymentMethod.Equals(input.ShowPaymentMethod)
+                    (this.ShowPaymentMethod != null &&
+                    this.ShowPaymentMethod.Equals(input.ShowPaymentMethod))
                 ) && 
                 (
                     this.ShowTotals == input.ShowTotals ||
@@ -1232,11 +1253,13 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.ShowPaypalButton == input.ShowPaypalButton ||
-                    this.ShowPaypalButton.Equals(input.ShowPaypalButton)
+                    (this.ShowPaypalButton != null &&
+                    this.ShowPaypalButton.Equals(input.ShowPaypalButton))
                 ) && 
                 (
                     this.ShowNotificationButton == input.ShowNotificationButton ||
-                    this.ShowNotificationButton.Equals(input.ShowNotificationButton)
+                    (this.ShowNotificationButton != null &&
+                    this.ShowNotificationButton.Equals(input.ShowNotificationButton))
                 ) && 
                 (
                     this.ShowTspayButton == input.ShowTspayButton ||
@@ -1245,15 +1268,18 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.DeliveryNote == input.DeliveryNote ||
-                    this.DeliveryNote.Equals(input.DeliveryNote)
+                    (this.DeliveryNote != null &&
+                    this.DeliveryNote.Equals(input.DeliveryNote))
                 ) && 
                 (
                     this.AccompanyingInvoice == input.AccompanyingInvoice ||
-                    this.AccompanyingInvoice.Equals(input.AccompanyingInvoice)
+                    (this.AccompanyingInvoice != null &&
+                    this.AccompanyingInvoice.Equals(input.AccompanyingInvoice))
                 ) && 
                 (
                     this.DnNumber == input.DnNumber ||
-                    this.DnNumber.Equals(input.DnNumber)
+                    (this.DnNumber != null &&
+                    this.DnNumber.Equals(input.DnNumber))
                 ) && 
                 (
                     this.DnDate == input.DnDate ||
@@ -1292,27 +1318,33 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.IsMarked == input.IsMarked ||
-                    this.IsMarked.Equals(input.IsMarked)
+                    (this.IsMarked != null &&
+                    this.IsMarked.Equals(input.IsMarked))
                 ) && 
                 (
                     this.AmountNet == input.AmountNet ||
-                    this.AmountNet.Equals(input.AmountNet)
+                    (this.AmountNet != null &&
+                    this.AmountNet.Equals(input.AmountNet))
                 ) && 
                 (
                     this.AmountVat == input.AmountVat ||
-                    this.AmountVat.Equals(input.AmountVat)
+                    (this.AmountVat != null &&
+                    this.AmountVat.Equals(input.AmountVat))
                 ) && 
                 (
                     this.AmountGross == input.AmountGross ||
-                    this.AmountGross.Equals(input.AmountGross)
+                    (this.AmountGross != null &&
+                    this.AmountGross.Equals(input.AmountGross))
                 ) && 
                 (
                     this.AmountDueDiscount == input.AmountDueDiscount ||
-                    this.AmountDueDiscount.Equals(input.AmountDueDiscount)
+                    (this.AmountDueDiscount != null &&
+                    this.AmountDueDiscount.Equals(input.AmountDueDiscount))
                 ) && 
                 (
                     this.AmountRivalsa == input.AmountRivalsa ||
-                    this.AmountRivalsa.Equals(input.AmountRivalsa)
+                    (this.AmountRivalsa != null &&
+                    this.AmountRivalsa.Equals(input.AmountRivalsa))
                 ) && 
                 (
                     this.AmountRivalsaTaxable == input.AmountRivalsaTaxable ||
@@ -1321,7 +1353,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.AmountWithholdingTax == input.AmountWithholdingTax ||
-                    this.AmountWithholdingTax.Equals(input.AmountWithholdingTax)
+                    (this.AmountWithholdingTax != null &&
+                    this.AmountWithholdingTax.Equals(input.AmountWithholdingTax))
                 ) && 
                 (
                     this.AmountWithholdingTaxTaxable == input.AmountWithholdingTaxTaxable ||
@@ -1330,7 +1363,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.AmountOtherWithholdingTax == input.AmountOtherWithholdingTax ||
-                    this.AmountOtherWithholdingTax.Equals(input.AmountOtherWithholdingTax)
+                    (this.AmountOtherWithholdingTax != null &&
+                    this.AmountOtherWithholdingTax.Equals(input.AmountOtherWithholdingTax))
                 ) && 
                 (
                     this.AmountOtherWithholdingTaxTaxable == input.AmountOtherWithholdingTaxTaxable ||
@@ -1392,13 +1426,19 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.Entity != null)
                 {
                     hashCode = (hashCode * 59) + this.Entity.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Type.GetHashCode();
-                hashCode = (hashCode * 59) + this.Number.GetHashCode();
+                if (this.Number != null)
+                {
+                    hashCode = (hashCode * 59) + this.Number.GetHashCode();
+                }
                 if (this.Numeration != null)
                 {
                     hashCode = (hashCode * 59) + this.Numeration.GetHashCode();
@@ -1407,7 +1447,10 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Date.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Year.GetHashCode();
+                if (this.Year != null)
+                {
+                    hashCode = (hashCode * 59) + this.Year.GetHashCode();
+                }
                 if (this.Currency != null)
                 {
                     hashCode = (hashCode * 59) + this.Currency.GetHashCode();
@@ -1432,40 +1475,82 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Notes.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Rivalsa.GetHashCode();
-                hashCode = (hashCode * 59) + this.Cassa.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountCassa.GetHashCode();
-                hashCode = (hashCode * 59) + this.CassaTaxable.GetHashCode();
+                if (this.Rivalsa != null)
+                {
+                    hashCode = (hashCode * 59) + this.Rivalsa.GetHashCode();
+                }
+                if (this.Cassa != null)
+                {
+                    hashCode = (hashCode * 59) + this.Cassa.GetHashCode();
+                }
+                if (this.AmountCassa != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountCassa.GetHashCode();
+                }
+                if (this.CassaTaxable != null)
+                {
+                    hashCode = (hashCode * 59) + this.CassaTaxable.GetHashCode();
+                }
                 if (this.AmountCassaTaxable != null)
                 {
                     hashCode = (hashCode * 59) + this.AmountCassaTaxable.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Cassa2.GetHashCode();
+                if (this.Cassa2 != null)
+                {
+                    hashCode = (hashCode * 59) + this.Cassa2.GetHashCode();
+                }
                 if (this.AmountCassa2 != null)
                 {
                     hashCode = (hashCode * 59) + this.AmountCassa2.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Cassa2Taxable.GetHashCode();
+                if (this.Cassa2Taxable != null)
+                {
+                    hashCode = (hashCode * 59) + this.Cassa2Taxable.GetHashCode();
+                }
                 if (this.AmountCassa2Taxable != null)
                 {
                     hashCode = (hashCode * 59) + this.AmountCassa2Taxable.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.GlobalCassaTaxable.GetHashCode();
+                if (this.GlobalCassaTaxable != null)
+                {
+                    hashCode = (hashCode * 59) + this.GlobalCassaTaxable.GetHashCode();
+                }
                 if (this.AmountGlobalCassaTaxable != null)
                 {
                     hashCode = (hashCode * 59) + this.AmountGlobalCassaTaxable.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.WithholdingTax.GetHashCode();
-                hashCode = (hashCode * 59) + this.WithholdingTaxTaxable.GetHashCode();
-                hashCode = (hashCode * 59) + this.OtherWithholdingTax.GetHashCode();
-                hashCode = (hashCode * 59) + this.StampDuty.GetHashCode();
+                if (this.WithholdingTax != null)
+                {
+                    hashCode = (hashCode * 59) + this.WithholdingTax.GetHashCode();
+                }
+                if (this.WithholdingTaxTaxable != null)
+                {
+                    hashCode = (hashCode * 59) + this.WithholdingTaxTaxable.GetHashCode();
+                }
+                if (this.OtherWithholdingTax != null)
+                {
+                    hashCode = (hashCode * 59) + this.OtherWithholdingTax.GetHashCode();
+                }
+                if (this.StampDuty != null)
+                {
+                    hashCode = (hashCode * 59) + this.StampDuty.GetHashCode();
+                }
                 if (this.PaymentMethod != null)
                 {
                     hashCode = (hashCode * 59) + this.PaymentMethod.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.UseSplitPayment.GetHashCode();
-                hashCode = (hashCode * 59) + this.UseGrossPrices.GetHashCode();
-                hashCode = (hashCode * 59) + this.EInvoice.GetHashCode();
+                if (this.UseSplitPayment != null)
+                {
+                    hashCode = (hashCode * 59) + this.UseSplitPayment.GetHashCode();
+                }
+                if (this.UseGrossPrices != null)
+                {
+                    hashCode = (hashCode * 59) + this.UseGrossPrices.GetHashCode();
+                }
+                if (this.EInvoice != null)
+                {
+                    hashCode = (hashCode * 59) + this.EInvoice.GetHashCode();
+                }
                 if (this.EiData != null)
                 {
                     hashCode = (hashCode * 59) + this.EiData.GetHashCode();
@@ -1510,20 +1595,47 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.AccInvTemplate.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.HMargins.GetHashCode();
-                hashCode = (hashCode * 59) + this.VMargins.GetHashCode();
-                hashCode = (hashCode * 59) + this.ShowPayments.GetHashCode();
-                hashCode = (hashCode * 59) + this.ShowPaymentMethod.GetHashCode();
+                if (this.HMargins != null)
+                {
+                    hashCode = (hashCode * 59) + this.HMargins.GetHashCode();
+                }
+                if (this.VMargins != null)
+                {
+                    hashCode = (hashCode * 59) + this.VMargins.GetHashCode();
+                }
+                if (this.ShowPayments != null)
+                {
+                    hashCode = (hashCode * 59) + this.ShowPayments.GetHashCode();
+                }
+                if (this.ShowPaymentMethod != null)
+                {
+                    hashCode = (hashCode * 59) + this.ShowPaymentMethod.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.ShowTotals.GetHashCode();
-                hashCode = (hashCode * 59) + this.ShowPaypalButton.GetHashCode();
-                hashCode = (hashCode * 59) + this.ShowNotificationButton.GetHashCode();
+                if (this.ShowPaypalButton != null)
+                {
+                    hashCode = (hashCode * 59) + this.ShowPaypalButton.GetHashCode();
+                }
+                if (this.ShowNotificationButton != null)
+                {
+                    hashCode = (hashCode * 59) + this.ShowNotificationButton.GetHashCode();
+                }
                 if (this.ShowTspayButton != null)
                 {
                     hashCode = (hashCode * 59) + this.ShowTspayButton.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.DeliveryNote.GetHashCode();
-                hashCode = (hashCode * 59) + this.AccompanyingInvoice.GetHashCode();
-                hashCode = (hashCode * 59) + this.DnNumber.GetHashCode();
+                if (this.DeliveryNote != null)
+                {
+                    hashCode = (hashCode * 59) + this.DeliveryNote.GetHashCode();
+                }
+                if (this.AccompanyingInvoice != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccompanyingInvoice.GetHashCode();
+                }
+                if (this.DnNumber != null)
+                {
+                    hashCode = (hashCode * 59) + this.DnNumber.GetHashCode();
+                }
                 if (this.DnDate != null)
                 {
                     hashCode = (hashCode * 59) + this.DnDate.GetHashCode();
@@ -1552,22 +1664,46 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.DnAiNotes.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.IsMarked.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountNet.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountVat.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountGross.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountDueDiscount.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountRivalsa.GetHashCode();
+                if (this.IsMarked != null)
+                {
+                    hashCode = (hashCode * 59) + this.IsMarked.GetHashCode();
+                }
+                if (this.AmountNet != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountNet.GetHashCode();
+                }
+                if (this.AmountVat != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountVat.GetHashCode();
+                }
+                if (this.AmountGross != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountGross.GetHashCode();
+                }
+                if (this.AmountDueDiscount != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountDueDiscount.GetHashCode();
+                }
+                if (this.AmountRivalsa != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountRivalsa.GetHashCode();
+                }
                 if (this.AmountRivalsaTaxable != null)
                 {
                     hashCode = (hashCode * 59) + this.AmountRivalsaTaxable.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AmountWithholdingTax.GetHashCode();
+                if (this.AmountWithholdingTax != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountWithholdingTax.GetHashCode();
+                }
                 if (this.AmountWithholdingTaxTaxable != null)
                 {
                     hashCode = (hashCode * 59) + this.AmountWithholdingTaxTaxable.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AmountOtherWithholdingTax.GetHashCode();
+                if (this.AmountOtherWithholdingTax != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountOtherWithholdingTax.GetHashCode();
+                }
                 if (this.AmountOtherWithholdingTaxTaxable != null)
                 {
                     hashCode = (hashCode * 59) + this.AmountOtherWithholdingTaxTaxable.GetHashCode();
@@ -1616,114 +1752,6 @@ namespace It.FattureInCloud.Sdk.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Rivalsa (decimal) maximum
-            if (this.Rivalsa > (decimal)100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Rivalsa, must be a value less than or equal to 100.", new [] { "Rivalsa" });
-            }
-
-            // Rivalsa (decimal) minimum
-            if (this.Rivalsa < (decimal)0)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Rivalsa, must be a value greater than or equal to 0.", new [] { "Rivalsa" });
-            }
-
-            // Cassa (decimal) maximum
-            if (this.Cassa > (decimal)100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Cassa, must be a value less than or equal to 100.", new [] { "Cassa" });
-            }
-
-            // Cassa (decimal) minimum
-            if (this.Cassa < (decimal)0)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Cassa, must be a value greater than or equal to 0.", new [] { "Cassa" });
-            }
-
-            // CassaTaxable (decimal) maximum
-            if (this.CassaTaxable > (decimal)100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CassaTaxable, must be a value less than or equal to 100.", new [] { "CassaTaxable" });
-            }
-
-            // CassaTaxable (decimal) minimum
-            if (this.CassaTaxable < (decimal)0)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CassaTaxable, must be a value greater than or equal to 0.", new [] { "CassaTaxable" });
-            }
-
-            // Cassa2 (decimal) maximum
-            if (this.Cassa2 > (decimal)100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Cassa2, must be a value less than or equal to 100.", new [] { "Cassa2" });
-            }
-
-            // Cassa2 (decimal) minimum
-            if (this.Cassa2 < (decimal)0)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Cassa2, must be a value greater than or equal to 0.", new [] { "Cassa2" });
-            }
-
-            // Cassa2Taxable (decimal) maximum
-            if (this.Cassa2Taxable > (decimal)100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Cassa2Taxable, must be a value less than or equal to 100.", new [] { "Cassa2Taxable" });
-            }
-
-            // Cassa2Taxable (decimal) minimum
-            if (this.Cassa2Taxable < (decimal)0)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Cassa2Taxable, must be a value greater than or equal to 0.", new [] { "Cassa2Taxable" });
-            }
-
-            // GlobalCassaTaxable (decimal) maximum
-            if (this.GlobalCassaTaxable > (decimal)100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for GlobalCassaTaxable, must be a value less than or equal to 100.", new [] { "GlobalCassaTaxable" });
-            }
-
-            // GlobalCassaTaxable (decimal) minimum
-            if (this.GlobalCassaTaxable < (decimal)0)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for GlobalCassaTaxable, must be a value greater than or equal to 0.", new [] { "GlobalCassaTaxable" });
-            }
-
-            // WithholdingTax (decimal) maximum
-            if (this.WithholdingTax > (decimal)100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for WithholdingTax, must be a value less than or equal to 100.", new [] { "WithholdingTax" });
-            }
-
-            // WithholdingTax (decimal) minimum
-            if (this.WithholdingTax < (decimal)0)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for WithholdingTax, must be a value greater than or equal to 0.", new [] { "WithholdingTax" });
-            }
-
-            // WithholdingTaxTaxable (decimal) maximum
-            if (this.WithholdingTaxTaxable > (decimal)100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for WithholdingTaxTaxable, must be a value less than or equal to 100.", new [] { "WithholdingTaxTaxable" });
-            }
-
-            // WithholdingTaxTaxable (decimal) minimum
-            if (this.WithholdingTaxTaxable < (decimal)0)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for WithholdingTaxTaxable, must be a value greater than or equal to 0.", new [] { "WithholdingTaxTaxable" });
-            }
-
-            // OtherWithholdingTax (decimal) maximum
-            if (this.OtherWithholdingTax > (decimal)100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for OtherWithholdingTax, must be a value less than or equal to 100.", new [] { "OtherWithholdingTax" });
-            }
-
-            // OtherWithholdingTax (decimal) minimum
-            if (this.OtherWithholdingTax < (decimal)0)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for OtherWithholdingTax, must be a value greater than or equal to 0.", new [] { "OtherWithholdingTax" });
-            }
-
             yield break;
         }
     }

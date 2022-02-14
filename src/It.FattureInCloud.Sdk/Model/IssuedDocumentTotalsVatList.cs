@@ -44,7 +44,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <summary>
         /// Gets or Sets VatItem
         /// </summary>
-        [DataMember(Name = "vat_item", EmitDefaultValue = false)]
+        [DataMember(Name = "vat_item", EmitDefaultValue = true)]
         public IssuedDocumentTotalsVatListVatItem VatItem { get; set; }
 
         /// <summary>

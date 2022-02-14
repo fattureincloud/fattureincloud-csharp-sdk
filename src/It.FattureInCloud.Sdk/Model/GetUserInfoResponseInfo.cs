@@ -38,7 +38,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="needMarketingConsentsConfirmation">needMarketingConsentsConfirmation.</param>
         /// <param name="needPasswordChange">needPasswordChange.</param>
         /// <param name="needTermsOfServiceConfirmation">needTermsOfServiceConfirmation.</param>
-        public GetUserInfoResponseInfo(bool needMarketingConsentsConfirmation = default(bool), bool needPasswordChange = default(bool), bool needTermsOfServiceConfirmation = default(bool))
+        public GetUserInfoResponseInfo(bool? needMarketingConsentsConfirmation = default(bool?), bool? needPasswordChange = default(bool?), bool? needTermsOfServiceConfirmation = default(bool?))
         {
             this.NeedMarketingConsentsConfirmation = needMarketingConsentsConfirmation;
             this.NeedPasswordChange = needPasswordChange;
@@ -49,19 +49,19 @@ namespace It.FattureInCloud.Sdk.Model
         /// Gets or Sets NeedMarketingConsentsConfirmation
         /// </summary>
         [DataMember(Name = "need_marketing_consents_confirmation", EmitDefaultValue = true)]
-        public bool NeedMarketingConsentsConfirmation { get; set; }
+        public bool? NeedMarketingConsentsConfirmation { get; set; }
 
         /// <summary>
         /// Gets or Sets NeedPasswordChange
         /// </summary>
         [DataMember(Name = "need_password_change", EmitDefaultValue = true)]
-        public bool NeedPasswordChange { get; set; }
+        public bool? NeedPasswordChange { get; set; }
 
         /// <summary>
         /// Gets or Sets NeedTermsOfServiceConfirmation
         /// </summary>
         [DataMember(Name = "need_terms_of_service_confirmation", EmitDefaultValue = true)]
-        public bool NeedTermsOfServiceConfirmation { get; set; }
+        public bool? NeedTermsOfServiceConfirmation { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -111,15 +111,18 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.NeedMarketingConsentsConfirmation == input.NeedMarketingConsentsConfirmation ||
-                    this.NeedMarketingConsentsConfirmation.Equals(input.NeedMarketingConsentsConfirmation)
+                    (this.NeedMarketingConsentsConfirmation != null &&
+                    this.NeedMarketingConsentsConfirmation.Equals(input.NeedMarketingConsentsConfirmation))
                 ) && 
                 (
                     this.NeedPasswordChange == input.NeedPasswordChange ||
-                    this.NeedPasswordChange.Equals(input.NeedPasswordChange)
+                    (this.NeedPasswordChange != null &&
+                    this.NeedPasswordChange.Equals(input.NeedPasswordChange))
                 ) && 
                 (
                     this.NeedTermsOfServiceConfirmation == input.NeedTermsOfServiceConfirmation ||
-                    this.NeedTermsOfServiceConfirmation.Equals(input.NeedTermsOfServiceConfirmation)
+                    (this.NeedTermsOfServiceConfirmation != null &&
+                    this.NeedTermsOfServiceConfirmation.Equals(input.NeedTermsOfServiceConfirmation))
                 );
         }
 
@@ -132,9 +135,18 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.NeedMarketingConsentsConfirmation.GetHashCode();
-                hashCode = (hashCode * 59) + this.NeedPasswordChange.GetHashCode();
-                hashCode = (hashCode * 59) + this.NeedTermsOfServiceConfirmation.GetHashCode();
+                if (this.NeedMarketingConsentsConfirmation != null)
+                {
+                    hashCode = (hashCode * 59) + this.NeedMarketingConsentsConfirmation.GetHashCode();
+                }
+                if (this.NeedPasswordChange != null)
+                {
+                    hashCode = (hashCode * 59) + this.NeedPasswordChange.GetHashCode();
+                }
+                if (this.NeedTermsOfServiceConfirmation != null)
+                {
+                    hashCode = (hashCode * 59) + this.NeedTermsOfServiceConfirmation.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -47,14 +47,14 @@ namespace It.FattureInCloud.Sdk.Model
         /// Response message.
         /// </summary>
         /// <value>Response message.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
         /// E-invoice sent date.
         /// </summary>
         /// <value>E-invoice sent date.</value>
-        [DataMember(Name = "date", EmitDefaultValue = false)]
+        [DataMember(Name = "date", EmitDefaultValue = true)]
         public string Date { get; set; }
 
         /// <summary>

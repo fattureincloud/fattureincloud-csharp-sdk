@@ -236,7 +236,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <summary>
         /// Gets or Sets FicIssuedDocumentsDetailed
         /// </summary>
-        [DataMember(Name = "fic_issued_documents_detailed", EmitDefaultValue = false)]
+        [DataMember(Name = "fic_issued_documents_detailed", EmitDefaultValue = true)]
         public PermissionsFicIssuedDocumentsDetailed FicIssuedDocumentsDetailed { get; set; }
 
         /// <summary>

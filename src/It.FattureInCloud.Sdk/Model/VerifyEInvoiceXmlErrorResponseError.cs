@@ -46,13 +46,13 @@ namespace It.FattureInCloud.Sdk.Model
         /// <summary>
         /// Gets or Sets Message
         /// </summary>
-        [DataMember(Name = "message", EmitDefaultValue = false)]
+        [DataMember(Name = "message", EmitDefaultValue = true)]
         public string Message { get; set; }
 
         /// <summary>
         /// Gets or Sets ValidationResult
         /// </summary>
-        [DataMember(Name = "validation_result", EmitDefaultValue = false)]
+        [DataMember(Name = "validation_result", EmitDefaultValue = true)]
         public Object ValidationResult { get; set; }
 
         /// <summary>

@@ -54,7 +54,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Entity name.
         /// </summary>
         /// <value>Entity name.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>

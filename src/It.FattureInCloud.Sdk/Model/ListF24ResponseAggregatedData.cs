@@ -36,7 +36,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Initializes a new instance of the <see cref="ListF24ResponseAggregatedData" /> class.
         /// </summary>
         /// <param name="amount">Total amount..</param>
-        public ListF24ResponseAggregatedData(decimal amount = default(decimal))
+        public ListF24ResponseAggregatedData(decimal? amount = default(decimal?))
         {
             this.Amount = amount;
         }
@@ -45,8 +45,8 @@ namespace It.FattureInCloud.Sdk.Model
         /// Total amount.
         /// </summary>
         /// <value>Total amount.</value>
-        [DataMember(Name = "amount", EmitDefaultValue = false)]
-        public decimal Amount { get; set; }
+        [DataMember(Name = "amount", EmitDefaultValue = true)]
+        public decimal? Amount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -94,7 +94,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Amount == input.Amount ||
-                    this.Amount.Equals(input.Amount)
+                    (this.Amount != null &&
+                    this.Amount.Equals(input.Amount))
                 );
         }
 
@@ -107,7 +108,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                if (this.Amount != null)
+                {
+                    hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                }
                 return hashCode;
             }
         }

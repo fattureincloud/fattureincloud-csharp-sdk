@@ -58,7 +58,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="paymentAccountIn">paymentAccountIn.</param>
         /// <param name="amountOut">[Only for cashbook entry out] Total amount out..</param>
         /// <param name="paymentAccountOut">paymentAccountOut.</param>
-        public CashbookEntry(string id = default(string), DateTimeOffset date = default(DateTimeOffset), string description = default(string), CashbookEntryKind? kind = default(CashbookEntryKind?), CashbookEntryType? type = default(CashbookEntryType?), string entityName = default(string), CashbookEntryDocument document = default(CashbookEntryDocument), decimal? amountIn = default(decimal?), PaymentAccount paymentAccountIn = default(PaymentAccount), decimal? amountOut = default(decimal?), PaymentAccount paymentAccountOut = default(PaymentAccount))
+        public CashbookEntry(string id = default(string), DateTime? date = default(DateTime?), string description = default(string), CashbookEntryKind? kind = default(CashbookEntryKind?), CashbookEntryType? type = default(CashbookEntryType?), string entityName = default(string), CashbookEntryDocument document = default(CashbookEntryDocument), decimal? amountIn = default(decimal?), PaymentAccount paymentAccountIn = default(PaymentAccount), decimal? amountOut = default(decimal?), PaymentAccount paymentAccountOut = default(PaymentAccount))
         {
             this.Id = id;
             this.Date = date;
@@ -77,22 +77,22 @@ namespace It.FattureInCloud.Sdk.Model
         /// Cashbook unique identifier.
         /// </summary>
         /// <value>Cashbook unique identifier.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
+        [DataMember(Name = "id", EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
         /// Cashbook date.
         /// </summary>
         /// <value>Cashbook date.</value>
-        [DataMember(Name = "date", EmitDefaultValue = false)]
+        [DataMember(Name = "date", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTimeOffset Date { get; set; }
+        public DateTime? Date { get; set; }
 
         /// <summary>
         /// Cashbook description.
         /// </summary>
         /// <value>Cashbook description.</value>
-        [DataMember(Name = "description", EmitDefaultValue = false)]
+        [DataMember(Name = "description", EmitDefaultValue = true)]
         public string Description { get; set; }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <summary>
         /// Gets or Sets Document
         /// </summary>
-        [DataMember(Name = "document", EmitDefaultValue = false)]
+        [DataMember(Name = "document", EmitDefaultValue = true)]
         public CashbookEntryDocument Document { get; set; }
 
         /// <summary>

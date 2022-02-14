@@ -46,14 +46,14 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="netPrice">Net price..</param>
         /// <param name="grossPrice">Gross price..</param>
         /// <param name="vat">vat.</param>
-        /// <param name="notTaxable">notTaxable (default to false).</param>
-        /// <param name="applyWithholdingTaxes">Apply withholding taxes, rivalsa and cassa. (default to true).</param>
+        /// <param name="notTaxable">notTaxable.</param>
+        /// <param name="applyWithholdingTaxes">Apply withholding taxes, rivalsa and cassa..</param>
         /// <param name="discount">Discount percentual value..</param>
-        /// <param name="discountHighlight">discountHighlight (default to false).</param>
-        /// <param name="inDdt">inDdt (default to true).</param>
+        /// <param name="discountHighlight">discountHighlight.</param>
+        /// <param name="inDdt">inDdt.</param>
         /// <param name="stock">stock.</param>
         /// <param name="eiRaw">Advanced raw attributes for e-invoices..</param>
-        public IssuedDocumentItemsListItem(int id = default(int), int? productId = default(int?), string code = default(string), string name = default(string), string category = default(string), string description = default(string), decimal qty = default(decimal), string measure = default(string), decimal netPrice = default(decimal), decimal? grossPrice = default(decimal?), VatType vat = default(VatType), bool notTaxable = false, bool applyWithholdingTaxes = true, decimal discount = default(decimal), bool discountHighlight = false, bool inDdt = true, bool? stock = default(bool?), Object eiRaw = default(Object))
+        public IssuedDocumentItemsListItem(int? id = default(int?), int? productId = default(int?), string code = default(string), string name = default(string), string category = default(string), string description = default(string), decimal? qty = default(decimal?), string measure = default(string), decimal? netPrice = default(decimal?), decimal? grossPrice = default(decimal?), VatType vat = default(VatType), bool? notTaxable = default(bool?), bool? applyWithholdingTaxes = default(bool?), decimal? discount = default(decimal?), bool? discountHighlight = default(bool?), bool? inDdt = default(bool?), bool? stock = default(bool?), Object eiRaw = default(Object))
         {
             this.Id = id;
             this.ProductId = productId;
@@ -79,8 +79,8 @@ namespace It.FattureInCloud.Sdk.Model
         /// Unique identifier.
         /// </summary>
         /// <value>Unique identifier.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id { get; set; }
 
         /// <summary>
         /// Unique identifier of the product.
@@ -93,50 +93,50 @@ namespace It.FattureInCloud.Sdk.Model
         /// Product code.
         /// </summary>
         /// <value>Product code.</value>
-        [DataMember(Name = "code", EmitDefaultValue = false)]
+        [DataMember(Name = "code", EmitDefaultValue = true)]
         public string Code { get; set; }
 
         /// <summary>
         /// Product name.
         /// </summary>
         /// <value>Product name.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
         /// Product category
         /// </summary>
         /// <value>Product category</value>
-        [DataMember(Name = "category", EmitDefaultValue = false)]
+        [DataMember(Name = "category", EmitDefaultValue = true)]
         public string Category { get; set; }
 
         /// <summary>
         /// Product description.
         /// </summary>
         /// <value>Product description.</value>
-        [DataMember(Name = "description", EmitDefaultValue = false)]
+        [DataMember(Name = "description", EmitDefaultValue = true)]
         public string Description { get; set; }
 
         /// <summary>
         /// Items quantity,
         /// </summary>
         /// <value>Items quantity,</value>
-        [DataMember(Name = "qty", EmitDefaultValue = false)]
-        public decimal Qty { get; set; }
+        [DataMember(Name = "qty", EmitDefaultValue = true)]
+        public decimal? Qty { get; set; }
 
         /// <summary>
         /// Item measure.
         /// </summary>
         /// <value>Item measure.</value>
-        [DataMember(Name = "measure", EmitDefaultValue = false)]
+        [DataMember(Name = "measure", EmitDefaultValue = true)]
         public string Measure { get; set; }
 
         /// <summary>
         /// Net price.
         /// </summary>
         /// <value>Net price.</value>
-        [DataMember(Name = "net_price", EmitDefaultValue = false)]
-        public decimal NetPrice { get; set; }
+        [DataMember(Name = "net_price", EmitDefaultValue = true)]
+        public decimal? NetPrice { get; set; }
 
         /// <summary>
         /// Gross price.
@@ -155,33 +155,33 @@ namespace It.FattureInCloud.Sdk.Model
         /// Gets or Sets NotTaxable
         /// </summary>
         [DataMember(Name = "not_taxable", EmitDefaultValue = true)]
-        public bool NotTaxable { get; set; }
+        public bool? NotTaxable { get; set; }
 
         /// <summary>
         /// Apply withholding taxes, rivalsa and cassa.
         /// </summary>
         /// <value>Apply withholding taxes, rivalsa and cassa.</value>
         [DataMember(Name = "apply_withholding_taxes", EmitDefaultValue = true)]
-        public bool ApplyWithholdingTaxes { get; set; }
+        public bool? ApplyWithholdingTaxes { get; set; }
 
         /// <summary>
         /// Discount percentual value.
         /// </summary>
         /// <value>Discount percentual value.</value>
-        [DataMember(Name = "discount", EmitDefaultValue = false)]
-        public decimal Discount { get; set; }
+        [DataMember(Name = "discount", EmitDefaultValue = true)]
+        public decimal? Discount { get; set; }
 
         /// <summary>
         /// Gets or Sets DiscountHighlight
         /// </summary>
         [DataMember(Name = "discount_highlight", EmitDefaultValue = true)]
-        public bool DiscountHighlight { get; set; }
+        public bool? DiscountHighlight { get; set; }
 
         /// <summary>
         /// Gets or Sets InDdt
         /// </summary>
         [DataMember(Name = "in_ddt", EmitDefaultValue = true)]
-        public bool InDdt { get; set; }
+        public bool? InDdt { get; set; }
 
         /// <summary>
         /// Gets or Sets Stock
@@ -193,7 +193,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Advanced raw attributes for e-invoices.
         /// </summary>
         /// <value>Advanced raw attributes for e-invoices.</value>
-        [DataMember(Name = "ei_raw", EmitDefaultValue = false)]
+        [DataMember(Name = "ei_raw", EmitDefaultValue = true)]
         public Object EiRaw { get; set; }
 
         /// <summary>
@@ -259,7 +259,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.ProductId == input.ProductId ||
@@ -288,7 +289,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.Qty == input.Qty ||
-                    this.Qty.Equals(input.Qty)
+                    (this.Qty != null &&
+                    this.Qty.Equals(input.Qty))
                 ) && 
                 (
                     this.Measure == input.Measure ||
@@ -297,7 +299,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.NetPrice == input.NetPrice ||
-                    this.NetPrice.Equals(input.NetPrice)
+                    (this.NetPrice != null &&
+                    this.NetPrice.Equals(input.NetPrice))
                 ) && 
                 (
                     this.GrossPrice == input.GrossPrice ||
@@ -311,23 +314,28 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.NotTaxable == input.NotTaxable ||
-                    this.NotTaxable.Equals(input.NotTaxable)
+                    (this.NotTaxable != null &&
+                    this.NotTaxable.Equals(input.NotTaxable))
                 ) && 
                 (
                     this.ApplyWithholdingTaxes == input.ApplyWithholdingTaxes ||
-                    this.ApplyWithholdingTaxes.Equals(input.ApplyWithholdingTaxes)
+                    (this.ApplyWithholdingTaxes != null &&
+                    this.ApplyWithholdingTaxes.Equals(input.ApplyWithholdingTaxes))
                 ) && 
                 (
                     this.Discount == input.Discount ||
-                    this.Discount.Equals(input.Discount)
+                    (this.Discount != null &&
+                    this.Discount.Equals(input.Discount))
                 ) && 
                 (
                     this.DiscountHighlight == input.DiscountHighlight ||
-                    this.DiscountHighlight.Equals(input.DiscountHighlight)
+                    (this.DiscountHighlight != null &&
+                    this.DiscountHighlight.Equals(input.DiscountHighlight))
                 ) && 
                 (
                     this.InDdt == input.InDdt ||
-                    this.InDdt.Equals(input.InDdt)
+                    (this.InDdt != null &&
+                    this.InDdt.Equals(input.InDdt))
                 ) && 
                 (
                     this.Stock == input.Stock ||
@@ -350,7 +358,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.ProductId != null)
                 {
                     hashCode = (hashCode * 59) + this.ProductId.GetHashCode();
@@ -371,12 +382,18 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Qty.GetHashCode();
+                if (this.Qty != null)
+                {
+                    hashCode = (hashCode * 59) + this.Qty.GetHashCode();
+                }
                 if (this.Measure != null)
                 {
                     hashCode = (hashCode * 59) + this.Measure.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.NetPrice.GetHashCode();
+                if (this.NetPrice != null)
+                {
+                    hashCode = (hashCode * 59) + this.NetPrice.GetHashCode();
+                }
                 if (this.GrossPrice != null)
                 {
                     hashCode = (hashCode * 59) + this.GrossPrice.GetHashCode();
@@ -385,11 +402,26 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Vat.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.NotTaxable.GetHashCode();
-                hashCode = (hashCode * 59) + this.ApplyWithholdingTaxes.GetHashCode();
-                hashCode = (hashCode * 59) + this.Discount.GetHashCode();
-                hashCode = (hashCode * 59) + this.DiscountHighlight.GetHashCode();
-                hashCode = (hashCode * 59) + this.InDdt.GetHashCode();
+                if (this.NotTaxable != null)
+                {
+                    hashCode = (hashCode * 59) + this.NotTaxable.GetHashCode();
+                }
+                if (this.ApplyWithholdingTaxes != null)
+                {
+                    hashCode = (hashCode * 59) + this.ApplyWithholdingTaxes.GetHashCode();
+                }
+                if (this.Discount != null)
+                {
+                    hashCode = (hashCode * 59) + this.Discount.GetHashCode();
+                }
+                if (this.DiscountHighlight != null)
+                {
+                    hashCode = (hashCode * 59) + this.DiscountHighlight.GetHashCode();
+                }
+                if (this.InDdt != null)
+                {
+                    hashCode = (hashCode * 59) + this.InDdt.GetHashCode();
+                }
                 if (this.Stock != null)
                 {
                     hashCode = (hashCode * 59) + this.Stock.GetHashCode();
@@ -409,18 +441,6 @@ namespace It.FattureInCloud.Sdk.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Discount (decimal) maximum
-            if (this.Discount > (decimal)100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Discount, must be a value less than or equal to 100.", new [] { "Discount" });
-            }
-
-            // Discount (decimal) minimum
-            if (this.Discount < (decimal)0)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Discount, must be a value greater than or equal to 0.", new [] { "Discount" });
-            }
-
             yield break;
         }
     }

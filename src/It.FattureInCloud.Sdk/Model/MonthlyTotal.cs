@@ -38,7 +38,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="net">Monthly total net amount..</param>
         /// <param name="gross">Monthly total gross amount..</param>
         /// <param name="count">Monthly total receipt number..</param>
-        public MonthlyTotal(decimal net = default(decimal), decimal gross = default(decimal), decimal count = default(decimal))
+        public MonthlyTotal(decimal? net = default(decimal?), decimal? gross = default(decimal?), decimal? count = default(decimal?))
         {
             this.Net = net;
             this.Gross = gross;
@@ -49,22 +49,22 @@ namespace It.FattureInCloud.Sdk.Model
         /// Monthly total net amount.
         /// </summary>
         /// <value>Monthly total net amount.</value>
-        [DataMember(Name = "net", EmitDefaultValue = false)]
-        public decimal Net { get; set; }
+        [DataMember(Name = "net", EmitDefaultValue = true)]
+        public decimal? Net { get; set; }
 
         /// <summary>
         /// Monthly total gross amount.
         /// </summary>
         /// <value>Monthly total gross amount.</value>
-        [DataMember(Name = "gross", EmitDefaultValue = false)]
-        public decimal Gross { get; set; }
+        [DataMember(Name = "gross", EmitDefaultValue = true)]
+        public decimal? Gross { get; set; }
 
         /// <summary>
         /// Monthly total receipt number.
         /// </summary>
         /// <value>Monthly total receipt number.</value>
-        [DataMember(Name = "count", EmitDefaultValue = false)]
-        public decimal Count { get; set; }
+        [DataMember(Name = "count", EmitDefaultValue = true)]
+        public decimal? Count { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -114,15 +114,18 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Net == input.Net ||
-                    this.Net.Equals(input.Net)
+                    (this.Net != null &&
+                    this.Net.Equals(input.Net))
                 ) && 
                 (
                     this.Gross == input.Gross ||
-                    this.Gross.Equals(input.Gross)
+                    (this.Gross != null &&
+                    this.Gross.Equals(input.Gross))
                 ) && 
                 (
                     this.Count == input.Count ||
-                    this.Count.Equals(input.Count)
+                    (this.Count != null &&
+                    this.Count.Equals(input.Count))
                 );
         }
 
@@ -135,9 +138,18 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Net.GetHashCode();
-                hashCode = (hashCode * 59) + this.Gross.GetHashCode();
-                hashCode = (hashCode * 59) + this.Count.GetHashCode();
+                if (this.Net != null)
+                {
+                    hashCode = (hashCode * 59) + this.Net.GetHashCode();
+                }
+                if (this.Gross != null)
+                {
+                    hashCode = (hashCode * 59) + this.Gross.GetHashCode();
+                }
+                if (this.Count != null)
+                {
+                    hashCode = (hashCode * 59) + this.Count.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -53,7 +53,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="tsDigital">tsDigital.</param>
         /// <param name="tsInvoiceTrading">tsInvoiceTrading.</param>
         /// <param name="tsPay">tsPay.</param>
-        public CompanyInfoPlanInfoFunctions(bool archive = default(bool), bool cerved = default(bool), bool documentAttachments = default(bool), bool eInvoice = default(bool), bool genius = default(bool), bool mailTracking = default(bool), bool paymentNotifications = default(bool), bool paypal = default(bool), bool receipts = default(bool), bool recurring = default(bool), bool smtp = default(bool), bool sofort = default(bool), bool stock = default(bool), bool subaccounts = default(bool), bool tesseraSanitaria = default(bool), bool tsDigital = default(bool), bool? tsInvoiceTrading = default(bool?), bool tsPay = default(bool))
+        public CompanyInfoPlanInfoFunctions(bool? archive = default(bool?), bool? cerved = default(bool?), bool? documentAttachments = default(bool?), bool? eInvoice = default(bool?), bool? genius = default(bool?), bool? mailTracking = default(bool?), bool? paymentNotifications = default(bool?), bool? paypal = default(bool?), bool? receipts = default(bool?), bool? recurring = default(bool?), bool? smtp = default(bool?), bool? sofort = default(bool?), bool? stock = default(bool?), bool? subaccounts = default(bool?), bool? tesseraSanitaria = default(bool?), bool? tsDigital = default(bool?), bool? tsInvoiceTrading = default(bool?), bool? tsPay = default(bool?))
         {
             this.Archive = archive;
             this.Cerved = cerved;
@@ -79,97 +79,97 @@ namespace It.FattureInCloud.Sdk.Model
         /// Gets or Sets Archive
         /// </summary>
         [DataMember(Name = "archive", EmitDefaultValue = true)]
-        public bool Archive { get; set; }
+        public bool? Archive { get; set; }
 
         /// <summary>
         /// Gets or Sets Cerved
         /// </summary>
         [DataMember(Name = "cerved", EmitDefaultValue = true)]
-        public bool Cerved { get; set; }
+        public bool? Cerved { get; set; }
 
         /// <summary>
         /// Gets or Sets DocumentAttachments
         /// </summary>
         [DataMember(Name = "document_attachments", EmitDefaultValue = true)]
-        public bool DocumentAttachments { get; set; }
+        public bool? DocumentAttachments { get; set; }
 
         /// <summary>
         /// Gets or Sets EInvoice
         /// </summary>
         [DataMember(Name = "e_invoice", EmitDefaultValue = true)]
-        public bool EInvoice { get; set; }
+        public bool? EInvoice { get; set; }
 
         /// <summary>
         /// Gets or Sets Genius
         /// </summary>
         [DataMember(Name = "genius", EmitDefaultValue = true)]
-        public bool Genius { get; set; }
+        public bool? Genius { get; set; }
 
         /// <summary>
         /// Gets or Sets MailTracking
         /// </summary>
         [DataMember(Name = "mail_tracking", EmitDefaultValue = true)]
-        public bool MailTracking { get; set; }
+        public bool? MailTracking { get; set; }
 
         /// <summary>
         /// Gets or Sets PaymentNotifications
         /// </summary>
         [DataMember(Name = "payment_notifications", EmitDefaultValue = true)]
-        public bool PaymentNotifications { get; set; }
+        public bool? PaymentNotifications { get; set; }
 
         /// <summary>
         /// Gets or Sets Paypal
         /// </summary>
         [DataMember(Name = "paypal", EmitDefaultValue = true)]
-        public bool Paypal { get; set; }
+        public bool? Paypal { get; set; }
 
         /// <summary>
         /// Gets or Sets Receipts
         /// </summary>
         [DataMember(Name = "receipts", EmitDefaultValue = true)]
-        public bool Receipts { get; set; }
+        public bool? Receipts { get; set; }
 
         /// <summary>
         /// Gets or Sets Recurring
         /// </summary>
         [DataMember(Name = "recurring", EmitDefaultValue = true)]
-        public bool Recurring { get; set; }
+        public bool? Recurring { get; set; }
 
         /// <summary>
         /// Gets or Sets Smtp
         /// </summary>
         [DataMember(Name = "smtp", EmitDefaultValue = true)]
-        public bool Smtp { get; set; }
+        public bool? Smtp { get; set; }
 
         /// <summary>
         /// Gets or Sets Sofort
         /// </summary>
         [DataMember(Name = "sofort", EmitDefaultValue = true)]
-        public bool Sofort { get; set; }
+        public bool? Sofort { get; set; }
 
         /// <summary>
         /// Gets or Sets Stock
         /// </summary>
         [DataMember(Name = "stock", EmitDefaultValue = true)]
-        public bool Stock { get; set; }
+        public bool? Stock { get; set; }
 
         /// <summary>
         /// Gets or Sets Subaccounts
         /// </summary>
         [DataMember(Name = "subaccounts", EmitDefaultValue = true)]
-        public bool Subaccounts { get; set; }
+        public bool? Subaccounts { get; set; }
 
         /// <summary>
         /// Gets or Sets TesseraSanitaria
         /// </summary>
         [DataMember(Name = "tessera_sanitaria", EmitDefaultValue = true)]
-        public bool TesseraSanitaria { get; set; }
+        public bool? TesseraSanitaria { get; set; }
 
         /// <summary>
         /// Gets or Sets TsDigital
         /// </summary>
         [DataMember(Name = "ts_digital", EmitDefaultValue = true)]
-        public bool TsDigital { get; set; }
+        public bool? TsDigital { get; set; }
 
         /// <summary>
         /// Gets or Sets TsInvoiceTrading
@@ -181,7 +181,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Gets or Sets TsPay
         /// </summary>
         [DataMember(Name = "ts_pay", EmitDefaultValue = true)]
-        public bool TsPay { get; set; }
+        public bool? TsPay { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -246,67 +246,83 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Archive == input.Archive ||
-                    this.Archive.Equals(input.Archive)
+                    (this.Archive != null &&
+                    this.Archive.Equals(input.Archive))
                 ) && 
                 (
                     this.Cerved == input.Cerved ||
-                    this.Cerved.Equals(input.Cerved)
+                    (this.Cerved != null &&
+                    this.Cerved.Equals(input.Cerved))
                 ) && 
                 (
                     this.DocumentAttachments == input.DocumentAttachments ||
-                    this.DocumentAttachments.Equals(input.DocumentAttachments)
+                    (this.DocumentAttachments != null &&
+                    this.DocumentAttachments.Equals(input.DocumentAttachments))
                 ) && 
                 (
                     this.EInvoice == input.EInvoice ||
-                    this.EInvoice.Equals(input.EInvoice)
+                    (this.EInvoice != null &&
+                    this.EInvoice.Equals(input.EInvoice))
                 ) && 
                 (
                     this.Genius == input.Genius ||
-                    this.Genius.Equals(input.Genius)
+                    (this.Genius != null &&
+                    this.Genius.Equals(input.Genius))
                 ) && 
                 (
                     this.MailTracking == input.MailTracking ||
-                    this.MailTracking.Equals(input.MailTracking)
+                    (this.MailTracking != null &&
+                    this.MailTracking.Equals(input.MailTracking))
                 ) && 
                 (
                     this.PaymentNotifications == input.PaymentNotifications ||
-                    this.PaymentNotifications.Equals(input.PaymentNotifications)
+                    (this.PaymentNotifications != null &&
+                    this.PaymentNotifications.Equals(input.PaymentNotifications))
                 ) && 
                 (
                     this.Paypal == input.Paypal ||
-                    this.Paypal.Equals(input.Paypal)
+                    (this.Paypal != null &&
+                    this.Paypal.Equals(input.Paypal))
                 ) && 
                 (
                     this.Receipts == input.Receipts ||
-                    this.Receipts.Equals(input.Receipts)
+                    (this.Receipts != null &&
+                    this.Receipts.Equals(input.Receipts))
                 ) && 
                 (
                     this.Recurring == input.Recurring ||
-                    this.Recurring.Equals(input.Recurring)
+                    (this.Recurring != null &&
+                    this.Recurring.Equals(input.Recurring))
                 ) && 
                 (
                     this.Smtp == input.Smtp ||
-                    this.Smtp.Equals(input.Smtp)
+                    (this.Smtp != null &&
+                    this.Smtp.Equals(input.Smtp))
                 ) && 
                 (
                     this.Sofort == input.Sofort ||
-                    this.Sofort.Equals(input.Sofort)
+                    (this.Sofort != null &&
+                    this.Sofort.Equals(input.Sofort))
                 ) && 
                 (
                     this.Stock == input.Stock ||
-                    this.Stock.Equals(input.Stock)
+                    (this.Stock != null &&
+                    this.Stock.Equals(input.Stock))
                 ) && 
                 (
                     this.Subaccounts == input.Subaccounts ||
-                    this.Subaccounts.Equals(input.Subaccounts)
+                    (this.Subaccounts != null &&
+                    this.Subaccounts.Equals(input.Subaccounts))
                 ) && 
                 (
                     this.TesseraSanitaria == input.TesseraSanitaria ||
-                    this.TesseraSanitaria.Equals(input.TesseraSanitaria)
+                    (this.TesseraSanitaria != null &&
+                    this.TesseraSanitaria.Equals(input.TesseraSanitaria))
                 ) && 
                 (
                     this.TsDigital == input.TsDigital ||
-                    this.TsDigital.Equals(input.TsDigital)
+                    (this.TsDigital != null &&
+                    this.TsDigital.Equals(input.TsDigital))
                 ) && 
                 (
                     this.TsInvoiceTrading == input.TsInvoiceTrading ||
@@ -315,7 +331,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.TsPay == input.TsPay ||
-                    this.TsPay.Equals(input.TsPay)
+                    (this.TsPay != null &&
+                    this.TsPay.Equals(input.TsPay))
                 );
         }
 
@@ -328,27 +345,78 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Archive.GetHashCode();
-                hashCode = (hashCode * 59) + this.Cerved.GetHashCode();
-                hashCode = (hashCode * 59) + this.DocumentAttachments.GetHashCode();
-                hashCode = (hashCode * 59) + this.EInvoice.GetHashCode();
-                hashCode = (hashCode * 59) + this.Genius.GetHashCode();
-                hashCode = (hashCode * 59) + this.MailTracking.GetHashCode();
-                hashCode = (hashCode * 59) + this.PaymentNotifications.GetHashCode();
-                hashCode = (hashCode * 59) + this.Paypal.GetHashCode();
-                hashCode = (hashCode * 59) + this.Receipts.GetHashCode();
-                hashCode = (hashCode * 59) + this.Recurring.GetHashCode();
-                hashCode = (hashCode * 59) + this.Smtp.GetHashCode();
-                hashCode = (hashCode * 59) + this.Sofort.GetHashCode();
-                hashCode = (hashCode * 59) + this.Stock.GetHashCode();
-                hashCode = (hashCode * 59) + this.Subaccounts.GetHashCode();
-                hashCode = (hashCode * 59) + this.TesseraSanitaria.GetHashCode();
-                hashCode = (hashCode * 59) + this.TsDigital.GetHashCode();
+                if (this.Archive != null)
+                {
+                    hashCode = (hashCode * 59) + this.Archive.GetHashCode();
+                }
+                if (this.Cerved != null)
+                {
+                    hashCode = (hashCode * 59) + this.Cerved.GetHashCode();
+                }
+                if (this.DocumentAttachments != null)
+                {
+                    hashCode = (hashCode * 59) + this.DocumentAttachments.GetHashCode();
+                }
+                if (this.EInvoice != null)
+                {
+                    hashCode = (hashCode * 59) + this.EInvoice.GetHashCode();
+                }
+                if (this.Genius != null)
+                {
+                    hashCode = (hashCode * 59) + this.Genius.GetHashCode();
+                }
+                if (this.MailTracking != null)
+                {
+                    hashCode = (hashCode * 59) + this.MailTracking.GetHashCode();
+                }
+                if (this.PaymentNotifications != null)
+                {
+                    hashCode = (hashCode * 59) + this.PaymentNotifications.GetHashCode();
+                }
+                if (this.Paypal != null)
+                {
+                    hashCode = (hashCode * 59) + this.Paypal.GetHashCode();
+                }
+                if (this.Receipts != null)
+                {
+                    hashCode = (hashCode * 59) + this.Receipts.GetHashCode();
+                }
+                if (this.Recurring != null)
+                {
+                    hashCode = (hashCode * 59) + this.Recurring.GetHashCode();
+                }
+                if (this.Smtp != null)
+                {
+                    hashCode = (hashCode * 59) + this.Smtp.GetHashCode();
+                }
+                if (this.Sofort != null)
+                {
+                    hashCode = (hashCode * 59) + this.Sofort.GetHashCode();
+                }
+                if (this.Stock != null)
+                {
+                    hashCode = (hashCode * 59) + this.Stock.GetHashCode();
+                }
+                if (this.Subaccounts != null)
+                {
+                    hashCode = (hashCode * 59) + this.Subaccounts.GetHashCode();
+                }
+                if (this.TesseraSanitaria != null)
+                {
+                    hashCode = (hashCode * 59) + this.TesseraSanitaria.GetHashCode();
+                }
+                if (this.TsDigital != null)
+                {
+                    hashCode = (hashCode * 59) + this.TsDigital.GetHashCode();
+                }
                 if (this.TsInvoiceTrading != null)
                 {
                     hashCode = (hashCode * 59) + this.TsInvoiceTrading.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.TsPay.GetHashCode();
+                if (this.TsPay != null)
+                {
+                    hashCode = (hashCode * 59) + this.TsPay.GetHashCode();
+                }
                 return hashCode;
             }
         }

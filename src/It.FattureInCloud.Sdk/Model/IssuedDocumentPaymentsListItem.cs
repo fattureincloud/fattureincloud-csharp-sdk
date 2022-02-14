@@ -48,7 +48,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="paymentAccount">paymentAccount.</param>
         /// <param name="paidDate">Payment date. [Only if status is paid].</param>
         /// <param name="eiRaw">Advanced raw attributes for e-invoices..</param>
-        public IssuedDocumentPaymentsListItem(int id = default(int), DateTimeOffset dueDate = default(DateTimeOffset), decimal amount = default(decimal), IssuedDocumentStatus? status = default(IssuedDocumentStatus?), PaymentAccount paymentAccount = default(PaymentAccount), DateTimeOffset paidDate = default(DateTimeOffset), Object eiRaw = default(Object))
+        public IssuedDocumentPaymentsListItem(int? id = default(int?), DateTime? dueDate = default(DateTime?), decimal? amount = default(decimal?), IssuedDocumentStatus? status = default(IssuedDocumentStatus?), PaymentAccount paymentAccount = default(PaymentAccount), DateTime? paidDate = default(DateTime?), Object eiRaw = default(Object))
         {
             this.Id = id;
             this.DueDate = dueDate;
@@ -63,23 +63,23 @@ namespace It.FattureInCloud.Sdk.Model
         /// Unique identifier.
         /// </summary>
         /// <value>Unique identifier.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id { get; set; }
 
         /// <summary>
         /// Due date.
         /// </summary>
         /// <value>Due date.</value>
-        [DataMember(Name = "due_date", EmitDefaultValue = false)]
+        [DataMember(Name = "due_date", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTimeOffset DueDate { get; set; }
+        public DateTime? DueDate { get; set; }
 
         /// <summary>
         /// Payment amount.
         /// </summary>
         /// <value>Payment amount.</value>
-        [DataMember(Name = "amount", EmitDefaultValue = false)]
-        public decimal Amount { get; set; }
+        [DataMember(Name = "amount", EmitDefaultValue = true)]
+        public decimal? Amount { get; set; }
 
         /// <summary>
         /// Gets or Sets PaymentAccount
@@ -91,9 +91,9 @@ namespace It.FattureInCloud.Sdk.Model
         /// Payment date. [Only if status is paid]
         /// </summary>
         /// <value>Payment date. [Only if status is paid]</value>
-        [DataMember(Name = "paid_date", EmitDefaultValue = false)]
+        [DataMember(Name = "paid_date", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTimeOffset PaidDate { get; set; }
+        public DateTime? PaidDate { get; set; }
 
         /// <summary>
         /// Advanced raw attributes for e-invoices.
@@ -154,7 +154,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.DueDate == input.DueDate ||
@@ -163,7 +164,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.Amount == input.Amount ||
-                    this.Amount.Equals(input.Amount)
+                    (this.Amount != null &&
+                    this.Amount.Equals(input.Amount))
                 ) && 
                 (
                     this.Status == input.Status ||
@@ -195,12 +197,18 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.DueDate != null)
                 {
                     hashCode = (hashCode * 59) + this.DueDate.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                if (this.Amount != null)
+                {
+                    hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 if (this.PaymentAccount != null)
                 {

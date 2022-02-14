@@ -49,7 +49,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="planInfo">planInfo.</param>
         /// <param name="accountantId">Accountant unique identifier..</param>
         /// <param name="isAccountant">Determine if the logged account is an accountant..</param>
-        public CompanyInfo(int id = default(int), string name = default(string), string email = default(string), CompanyType? type = default(CompanyType?), CompanyInfoAccessInfo accessInfo = default(CompanyInfoAccessInfo), CompanyInfoPlanInfo planInfo = default(CompanyInfoPlanInfo), int? accountantId = default(int?), bool isAccountant = default(bool))
+        public CompanyInfo(int? id = default(int?), string name = default(string), string email = default(string), CompanyType? type = default(CompanyType?), CompanyInfoAccessInfo accessInfo = default(CompanyInfoAccessInfo), CompanyInfoPlanInfo planInfo = default(CompanyInfoPlanInfo), int? accountantId = default(int?), bool? isAccountant = default(bool?))
         {
             this.Id = id;
             this.Name = name;
@@ -65,33 +65,33 @@ namespace It.FattureInCloud.Sdk.Model
         /// Company unique identifier.
         /// </summary>
         /// <value>Company unique identifier.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id { get; set; }
 
         /// <summary>
         /// Company name.
         /// </summary>
         /// <value>Company name.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
         /// Company email.
         /// </summary>
         /// <value>Company email.</value>
-        [DataMember(Name = "email", EmitDefaultValue = false)]
+        [DataMember(Name = "email", EmitDefaultValue = true)]
         public string Email { get; set; }
 
         /// <summary>
         /// Gets or Sets AccessInfo
         /// </summary>
-        [DataMember(Name = "access_info", EmitDefaultValue = false)]
+        [DataMember(Name = "access_info", EmitDefaultValue = true)]
         public CompanyInfoAccessInfo AccessInfo { get; set; }
 
         /// <summary>
         /// Gets or Sets PlanInfo
         /// </summary>
-        [DataMember(Name = "plan_info", EmitDefaultValue = false)]
+        [DataMember(Name = "plan_info", EmitDefaultValue = true)]
         public CompanyInfoPlanInfo PlanInfo { get; set; }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>Determine if the logged account is an accountant.</value>
         [DataMember(Name = "is_accountant", EmitDefaultValue = true)]
-        public bool IsAccountant { get; set; }
+        public bool? IsAccountant { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -161,7 +161,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -194,7 +195,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.IsAccountant == input.IsAccountant ||
-                    this.IsAccountant.Equals(input.IsAccountant)
+                    (this.IsAccountant != null &&
+                    this.IsAccountant.Equals(input.IsAccountant))
                 );
         }
 
@@ -207,7 +209,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
@@ -229,7 +234,10 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.AccountantId.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.IsAccountant.GetHashCode();
+                if (this.IsAccountant != null)
+                {
+                    hashCode = (hashCode * 59) + this.IsAccountant.GetHashCode();
+                }
                 return hashCode;
             }
         }

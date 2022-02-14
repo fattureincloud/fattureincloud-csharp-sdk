@@ -48,7 +48,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="sia">Payment account sia..</param>
         /// <param name="cuc">Payment account cuc..</param>
         /// <param name="_virtual">Determine if the payment method is virtual..</param>
-        public PaymentAccount(int id = default(int), string name = default(string), PaymentAccountType? type = default(PaymentAccountType?), string iban = default(string), string sia = default(string), string cuc = default(string), bool _virtual = default(bool))
+        public PaymentAccount(int? id = default(int?), string name = default(string), PaymentAccountType? type = default(PaymentAccountType?), string iban = default(string), string sia = default(string), string cuc = default(string), bool? _virtual = default(bool?))
         {
             this.Id = id;
             this.Name = name;
@@ -63,14 +63,14 @@ namespace It.FattureInCloud.Sdk.Model
         /// Unique identifier
         /// </summary>
         /// <value>Unique identifier</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id { get; set; }
 
         /// <summary>
         /// Payment account name.
         /// </summary>
         /// <value>Payment account name.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Payment account cuc.
         /// </summary>
         /// <value>Payment account cuc.</value>
-        [DataMember(Name = "cuc", EmitDefaultValue = false)]
+        [DataMember(Name = "cuc", EmitDefaultValue = true)]
         public string Cuc { get; set; }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>Determine if the payment method is virtual.</value>
         [DataMember(Name = "virtual", EmitDefaultValue = true)]
-        public bool Virtual { get; set; }
+        public bool? Virtual { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -153,7 +153,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -181,7 +182,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.Virtual == input.Virtual ||
-                    this.Virtual.Equals(input.Virtual)
+                    (this.Virtual != null &&
+                    this.Virtual.Equals(input.Virtual))
                 );
         }
 
@@ -194,7 +196,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
@@ -212,7 +217,10 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Cuc.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Virtual.GetHashCode();
+                if (this.Virtual != null)
+                {
+                    hashCode = (hashCode * 59) + this.Virtual.GetHashCode();
+                }
                 return hashCode;
             }
         }

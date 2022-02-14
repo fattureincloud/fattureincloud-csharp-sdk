@@ -37,7 +37,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <param name="data">data.</param>
         /// <param name="autocompleteNumber">If true, the number is autocompleted progressively..</param>
-        public CreateReceiptRequest(Receipt data = default(Receipt), bool autocompleteNumber = default(bool))
+        public CreateReceiptRequest(Receipt data = default(Receipt), bool? autocompleteNumber = default(bool?))
         {
             this.Data = data;
             this.AutocompleteNumber = autocompleteNumber;
@@ -54,7 +54,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>If true, the number is autocompleted progressively.</value>
         [DataMember(Name = "autocomplete_number", EmitDefaultValue = true)]
-        public bool AutocompleteNumber { get; set; }
+        public bool? AutocompleteNumber { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -108,7 +108,8 @@ namespace It.FattureInCloud.Sdk.Model
                 ) && 
                 (
                     this.AutocompleteNumber == input.AutocompleteNumber ||
-                    this.AutocompleteNumber.Equals(input.AutocompleteNumber)
+                    (this.AutocompleteNumber != null &&
+                    this.AutocompleteNumber.Equals(input.AutocompleteNumber))
                 );
         }
 
@@ -125,7 +126,10 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Data.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AutocompleteNumber.GetHashCode();
+                if (this.AutocompleteNumber != null)
+                {
+                    hashCode = (hashCode * 59) + this.AutocompleteNumber.GetHashCode();
+                }
                 return hashCode;
             }
         }

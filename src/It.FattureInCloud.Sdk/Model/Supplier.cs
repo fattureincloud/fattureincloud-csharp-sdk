@@ -55,7 +55,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="addressCity">Supplier city..</param>
         /// <param name="addressProvince">Supplier province..</param>
         /// <param name="addressExtra">Supplier address extra info..</param>
-        /// <param name="country">Supplier country. (default to &quot;Italia&quot;).</param>
+        /// <param name="country">Supplier country..</param>
         /// <param name="email">Supplier email..</param>
         /// <param name="certifiedEmail">Supplier certified email..</param>
         /// <param name="phone">Supplier phone..</param>
@@ -63,7 +63,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="notes">Supplier extra notes..</param>
         /// <param name="createdAt">createdAt.</param>
         /// <param name="updatedAt">updatedAt.</param>
-        public Supplier(int id = default(int), string code = default(string), string name = default(string), SupplierType? type = default(SupplierType?), string firstName = default(string), string lastName = default(string), string contactPerson = default(string), string vatNumber = default(string), string taxCode = default(string), string addressStreet = default(string), string addressPostalCode = default(string), string addressCity = default(string), string addressProvince = default(string), string addressExtra = default(string), string country = "Italia", string email = default(string), string certifiedEmail = default(string), string phone = default(string), string fax = default(string), string notes = default(string), string createdAt = default(string), string updatedAt = default(string))
+        public Supplier(int? id = default(int?), string code = default(string), string name = default(string), SupplierType? type = default(SupplierType?), string firstName = default(string), string lastName = default(string), string contactPerson = default(string), string vatNumber = default(string), string taxCode = default(string), string addressStreet = default(string), string addressPostalCode = default(string), string addressCity = default(string), string addressProvince = default(string), string addressExtra = default(string), string country = default(string), string email = default(string), string certifiedEmail = default(string), string phone = default(string), string fax = default(string), string notes = default(string), string createdAt = default(string), string updatedAt = default(string))
         {
             this.Id = id;
             this.Code = code;
@@ -79,8 +79,7 @@ namespace It.FattureInCloud.Sdk.Model
             this.AddressCity = addressCity;
             this.AddressProvince = addressProvince;
             this.AddressExtra = addressExtra;
-            // use default value if no "country" provided
-            this.Country = country ?? "Italia";
+            this.Country = country;
             this.Email = email;
             this.CertifiedEmail = certifiedEmail;
             this.Phone = phone;
@@ -94,132 +93,132 @@ namespace It.FattureInCloud.Sdk.Model
         /// Unique identifier
         /// </summary>
         /// <value>Unique identifier</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id { get; set; }
 
         /// <summary>
         /// Supplier code.
         /// </summary>
         /// <value>Supplier code.</value>
-        [DataMember(Name = "code", EmitDefaultValue = false)]
+        [DataMember(Name = "code", EmitDefaultValue = true)]
         public string Code { get; set; }
 
         /// <summary>
         /// Supplier name.
         /// </summary>
         /// <value>Supplier name.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
         /// Supplier first name.
         /// </summary>
         /// <value>Supplier first name.</value>
-        [DataMember(Name = "first_name", EmitDefaultValue = false)]
+        [DataMember(Name = "first_name", EmitDefaultValue = true)]
         public string FirstName { get; set; }
 
         /// <summary>
         /// Supplier last name.
         /// </summary>
         /// <value>Supplier last name.</value>
-        [DataMember(Name = "last_name", EmitDefaultValue = false)]
+        [DataMember(Name = "last_name", EmitDefaultValue = true)]
         public string LastName { get; set; }
 
         /// <summary>
         /// Gets or Sets ContactPerson
         /// </summary>
-        [DataMember(Name = "contact_person", EmitDefaultValue = false)]
+        [DataMember(Name = "contact_person", EmitDefaultValue = true)]
         public string ContactPerson { get; set; }
 
         /// <summary>
         /// Supplier vat number.
         /// </summary>
         /// <value>Supplier vat number.</value>
-        [DataMember(Name = "vat_number", EmitDefaultValue = false)]
+        [DataMember(Name = "vat_number", EmitDefaultValue = true)]
         public string VatNumber { get; set; }
 
         /// <summary>
         /// Supplier tax code.
         /// </summary>
         /// <value>Supplier tax code.</value>
-        [DataMember(Name = "tax_code", EmitDefaultValue = false)]
+        [DataMember(Name = "tax_code", EmitDefaultValue = true)]
         public string TaxCode { get; set; }
 
         /// <summary>
         /// Supplier street address.
         /// </summary>
         /// <value>Supplier street address.</value>
-        [DataMember(Name = "address_street", EmitDefaultValue = false)]
+        [DataMember(Name = "address_street", EmitDefaultValue = true)]
         public string AddressStreet { get; set; }
 
         /// <summary>
         /// Supplier postal code.
         /// </summary>
         /// <value>Supplier postal code.</value>
-        [DataMember(Name = "address_postal_code", EmitDefaultValue = false)]
+        [DataMember(Name = "address_postal_code", EmitDefaultValue = true)]
         public string AddressPostalCode { get; set; }
 
         /// <summary>
         /// Supplier city.
         /// </summary>
         /// <value>Supplier city.</value>
-        [DataMember(Name = "address_city", EmitDefaultValue = false)]
+        [DataMember(Name = "address_city", EmitDefaultValue = true)]
         public string AddressCity { get; set; }
 
         /// <summary>
         /// Supplier province.
         /// </summary>
         /// <value>Supplier province.</value>
-        [DataMember(Name = "address_province", EmitDefaultValue = false)]
+        [DataMember(Name = "address_province", EmitDefaultValue = true)]
         public string AddressProvince { get; set; }
 
         /// <summary>
         /// Supplier address extra info.
         /// </summary>
         /// <value>Supplier address extra info.</value>
-        [DataMember(Name = "address_extra", EmitDefaultValue = false)]
+        [DataMember(Name = "address_extra", EmitDefaultValue = true)]
         public string AddressExtra { get; set; }
 
         /// <summary>
         /// Supplier country.
         /// </summary>
         /// <value>Supplier country.</value>
-        [DataMember(Name = "country", EmitDefaultValue = false)]
+        [DataMember(Name = "country", EmitDefaultValue = true)]
         public string Country { get; set; }
 
         /// <summary>
         /// Supplier email.
         /// </summary>
         /// <value>Supplier email.</value>
-        [DataMember(Name = "email", EmitDefaultValue = false)]
+        [DataMember(Name = "email", EmitDefaultValue = true)]
         public string Email { get; set; }
 
         /// <summary>
         /// Supplier certified email.
         /// </summary>
         /// <value>Supplier certified email.</value>
-        [DataMember(Name = "certified_email", EmitDefaultValue = false)]
+        [DataMember(Name = "certified_email", EmitDefaultValue = true)]
         public string CertifiedEmail { get; set; }
 
         /// <summary>
         /// Supplier phone.
         /// </summary>
         /// <value>Supplier phone.</value>
-        [DataMember(Name = "phone", EmitDefaultValue = false)]
+        [DataMember(Name = "phone", EmitDefaultValue = true)]
         public string Phone { get; set; }
 
         /// <summary>
         /// Supplier fax.
         /// </summary>
         /// <value>Supplier fax.</value>
-        [DataMember(Name = "fax", EmitDefaultValue = false)]
+        [DataMember(Name = "fax", EmitDefaultValue = true)]
         public string Fax { get; set; }
 
         /// <summary>
         /// Supplier extra notes.
         /// </summary>
         /// <value>Supplier extra notes.</value>
-        [DataMember(Name = "notes", EmitDefaultValue = false)]
+        [DataMember(Name = "notes", EmitDefaultValue = true)]
         public string Notes { get; set; }
 
         /// <summary>
@@ -301,7 +300,8 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.Code == input.Code ||
@@ -418,7 +418,10 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.Code != null)
                 {
                     hashCode = (hashCode * 59) + this.Code.GetHashCode();

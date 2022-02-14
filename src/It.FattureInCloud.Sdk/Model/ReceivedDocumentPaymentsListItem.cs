@@ -42,7 +42,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="paymentTerms">paymentTerms.</param>
         /// <param name="status">Payment status..</param>
         /// <param name="paymentAccount">paymentAccount.</param>
-        public ReceivedDocumentPaymentsListItem(int id = default(int), decimal amount = default(decimal), DateTimeOffset dueDate = default(DateTimeOffset), DateTimeOffset paidDate = default(DateTimeOffset), ReceivedDocumentPaymentsListItemPaymentTerms paymentTerms = default(ReceivedDocumentPaymentsListItemPaymentTerms), string status = default(string), PaymentAccount paymentAccount = default(PaymentAccount))
+        public ReceivedDocumentPaymentsListItem(int? id = default(int?), decimal? amount = default(decimal?), DateTime? dueDate = default(DateTime?), DateTime? paidDate = default(DateTime?), ReceivedDocumentPaymentsListItemPaymentTerms paymentTerms = default(ReceivedDocumentPaymentsListItemPaymentTerms), string status = default(string), PaymentAccount paymentAccount = default(PaymentAccount))
         {
             this.Id = id;
             this.Amount = amount;
@@ -57,43 +57,43 @@ namespace It.FattureInCloud.Sdk.Model
         /// Unique identifier.
         /// </summary>
         /// <value>Unique identifier.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public int Id { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public int? Id { get; set; }
 
         /// <summary>
         /// Amount of items.
         /// </summary>
         /// <value>Amount of items.</value>
-        [DataMember(Name = "amount", EmitDefaultValue = false)]
-        public decimal Amount { get; set; }
+        [DataMember(Name = "amount", EmitDefaultValue = true)]
+        public decimal? Amount { get; set; }
 
         /// <summary>
         /// Due date
         /// </summary>
         /// <value>Due date</value>
-        [DataMember(Name = "due_date", EmitDefaultValue = false)]
+        [DataMember(Name = "due_date", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTimeOffset DueDate { get; set; }
+        public DateTime? DueDate { get; set; }
 
         /// <summary>
         /// Paid date
         /// </summary>
         /// <value>Paid date</value>
-        [DataMember(Name = "paid_date", EmitDefaultValue = false)]
+        [DataMember(Name = "paid_date", EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTimeOffset PaidDate { get; set; }
+        public DateTime? PaidDate { get; set; }
 
         /// <summary>
         /// Gets or Sets PaymentTerms
         /// </summary>
-        [DataMember(Name = "payment_terms", EmitDefaultValue = false)]
+        [DataMember(Name = "payment_terms", EmitDefaultValue = true)]
         public ReceivedDocumentPaymentsListItemPaymentTerms PaymentTerms { get; set; }
 
         /// <summary>
         /// Payment status.
         /// </summary>
         /// <value>Payment status.</value>
-        [DataMember(Name = "status", EmitDefaultValue = false)]
+        [DataMember(Name = "status", EmitDefaultValue = true)]
         public string Status { get; set; }
 
         /// <summary>
@@ -154,11 +154,13 @@ namespace It.FattureInCloud.Sdk.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.Amount == input.Amount ||
-                    this.Amount.Equals(input.Amount)
+                    (this.Amount != null &&
+                    this.Amount.Equals(input.Amount))
                 ) && 
                 (
                     this.DueDate == input.DueDate ||
@@ -196,8 +198,14 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
-                hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.Amount != null)
+                {
+                    hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                }
                 if (this.DueDate != null)
                 {
                     hashCode = (hashCode * 59) + this.DueDate.GetHashCode();

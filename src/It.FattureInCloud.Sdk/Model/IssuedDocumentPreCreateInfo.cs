@@ -69,88 +69,88 @@ namespace It.FattureInCloud.Sdk.Model
         /// Next numbers by year and numeration name (for the given document type).
         /// </summary>
         /// <value>Next numbers by year and numeration name (for the given document type).</value>
-        [DataMember(Name = "numerations", EmitDefaultValue = false)]
+        [DataMember(Name = "numerations", EmitDefaultValue = true)]
         public Object Numerations { get; set; }
 
         /// <summary>
         /// Next numbers by year and numeration name (for delivery_notes).
         /// </summary>
         /// <value>Next numbers by year and numeration name (for delivery_notes).</value>
-        [DataMember(Name = "dn_numerations", EmitDefaultValue = false)]
+        [DataMember(Name = "dn_numerations", EmitDefaultValue = true)]
         public Object DnNumerations { get; set; }
 
         /// <summary>
         /// Gets or Sets DefaultValues
         /// </summary>
-        [DataMember(Name = "default_values", EmitDefaultValue = false)]
+        [DataMember(Name = "default_values", EmitDefaultValue = true)]
         public IssuedDocumentPreCreateInfoDefaultValues DefaultValues { get; set; }
 
         /// <summary>
         /// Gets or Sets ExtraDataDefaultValues
         /// </summary>
-        [DataMember(Name = "extra_data_default_values", EmitDefaultValue = false)]
+        [DataMember(Name = "extra_data_default_values", EmitDefaultValue = true)]
         public IssuedDocumentPreCreateInfoExtraDataDefaultValues ExtraDataDefaultValues { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemsDefaultValues
         /// </summary>
-        [DataMember(Name = "items_default_values", EmitDefaultValue = false)]
+        [DataMember(Name = "items_default_values", EmitDefaultValue = true)]
         public IssuedDocumentPreCreateInfoItemsDefaultValues ItemsDefaultValues { get; set; }
 
         /// <summary>
         /// Countries list.
         /// </summary>
         /// <value>Countries list.</value>
-        [DataMember(Name = "countries_list", EmitDefaultValue = false)]
+        [DataMember(Name = "countries_list", EmitDefaultValue = true)]
         public List<string> CountriesList { get; set; }
 
         /// <summary>
         /// Currencies list.
         /// </summary>
         /// <value>Currencies list.</value>
-        [DataMember(Name = "currencies_list", EmitDefaultValue = false)]
+        [DataMember(Name = "currencies_list", EmitDefaultValue = true)]
         public List<Currency> CurrenciesList { get; set; }
 
         /// <summary>
         /// Document templates list.
         /// </summary>
         /// <value>Document templates list.</value>
-        [DataMember(Name = "templates_list", EmitDefaultValue = false)]
+        [DataMember(Name = "templates_list", EmitDefaultValue = true)]
         public List<DocumentTemplate> TemplatesList { get; set; }
 
         /// <summary>
         /// Delivery note templates list.
         /// </summary>
         /// <value>Delivery note templates list.</value>
-        [DataMember(Name = "dn_templates_list", EmitDefaultValue = false)]
+        [DataMember(Name = "dn_templates_list", EmitDefaultValue = true)]
         public List<DocumentTemplate> DnTemplatesList { get; set; }
 
         /// <summary>
         /// Accompanying invoice templates list.
         /// </summary>
         /// <value>Accompanying invoice templates list.</value>
-        [DataMember(Name = "ai_templates_list", EmitDefaultValue = false)]
+        [DataMember(Name = "ai_templates_list", EmitDefaultValue = true)]
         public List<DocumentTemplate> AiTemplatesList { get; set; }
 
         /// <summary>
         /// Payment methods list.
         /// </summary>
         /// <value>Payment methods list.</value>
-        [DataMember(Name = "payment_methods_list", EmitDefaultValue = false)]
+        [DataMember(Name = "payment_methods_list", EmitDefaultValue = true)]
         public List<PaymentMethod> PaymentMethodsList { get; set; }
 
         /// <summary>
         /// Payment accounts list.
         /// </summary>
         /// <value>Payment accounts list.</value>
-        [DataMember(Name = "payment_accounts_list", EmitDefaultValue = false)]
+        [DataMember(Name = "payment_accounts_list", EmitDefaultValue = true)]
         public List<PaymentAccount> PaymentAccountsList { get; set; }
 
         /// <summary>
         /// Vat types list.
         /// </summary>
         /// <value>Vat types list.</value>
-        [DataMember(Name = "vat_types_list", EmitDefaultValue = false)]
+        [DataMember(Name = "vat_types_list", EmitDefaultValue = true)]
         public List<VatType> VatTypesList { get; set; }
 
         /// <summary>
