@@ -1,11 +1,13 @@
-# It.FattureInCloud.Sdk.Model.IssuedDocumentTotalsVatListVatItem
+# It.FattureInCloud.Sdk.Model.EntityOptions
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AmountNet** | **decimal** |  | [optional] 
-**AmountVat** | **decimal** |  | [optional] 
+**EntitySearchFields** | **string** |  | [optional] 
+**EntityAutocomplete** | **bool?** |  | [optional] 
+**EntityCreate** | **bool?** |  | [optional] 
+**EntityUpdate** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

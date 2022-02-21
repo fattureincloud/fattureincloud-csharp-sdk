@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int** | Document unique identifier. | [optional] 
+**Id** | **int?** | Document unique identifier. | [optional] 
 **Type** | **string** | Document type. | [optional] 
 **Path** | **string** | Document path. | [optional] 
 
