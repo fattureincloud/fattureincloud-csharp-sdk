@@ -94,6 +94,7 @@ docs/IssuedDocument.md
 docs/IssuedDocumentEiData.md
 docs/IssuedDocumentExtraData.md
 docs/IssuedDocumentItemsListItem.md
+docs/IssuedDocumentOptions.md
 docs/IssuedDocumentPaymentsListItem.md
 docs/IssuedDocumentPreCreateInfo.md
 docs/IssuedDocumentPreCreateInfoDefaultValues.md
@@ -101,8 +102,6 @@ docs/IssuedDocumentPreCreateInfoExtraDataDefaultValues.md
 docs/IssuedDocumentPreCreateInfoItemsDefaultValues.md
 docs/IssuedDocumentStatus.md
 docs/IssuedDocumentTotals.md
-docs/IssuedDocumentTotalsVatList.md
-docs/IssuedDocumentTotalsVatListVatItem.md
 docs/IssuedDocumentType.md
 docs/IssuedDocumentsApi.md
 docs/IssuedEInvoicesApi.md
@@ -216,6 +215,7 @@ docs/UploadReceivedDocumentAttachmentResponse.md
 docs/User.md
 docs/UserApi.md
 docs/UserCompanyRole.md
+docs/VatItem.md
 docs/VatKind.md
 docs/VatType.md
 docs/VerifyEInvoiceXmlErrorResponse.md
@@ -224,17 +224,8 @@ docs/VerifyEInvoiceXmlErrorResponseExtra.md
 docs/VerifyEInvoiceXmlResponse.md
 docs/VerifyEInvoiceXmlResponseData.md
 src/It.FattureInCloud.Sdk.Test/It.FattureInCloud.Sdk.Test.csproj
-src/It.FattureInCloud.Sdk.Test/Model/CashbookEntryDocumentTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/EinvoiceRejectionReasonTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/EntityTypeTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/GetEInvoiceRejectionReasonResponseTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/IssuedDocumentItemsListItemTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/IssuedDocumentPaymentsListItemTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/ListF24ResponseAggregationTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/ReceivedDocumentItemsListItemTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/ReceivedDocumentPaymentsListItemPaymentTermsTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/ReceivedDocumentPaymentsListItemTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/SenderEmailTests.cs
+src/It.FattureInCloud.Sdk.Test/Model/IssuedDocumentOptionsTests.cs
+src/It.FattureInCloud.Sdk.Test/Model/VatItemTests.cs
 src/It.FattureInCloud.Sdk/Api/ArchiveApi.cs
 src/It.FattureInCloud.Sdk/Api/CashbookApi.cs
 src/It.FattureInCloud.Sdk/Api/ClientsApi.cs
@@ -355,6 +346,7 @@ src/It.FattureInCloud.Sdk/Model/IssuedDocument.cs
 src/It.FattureInCloud.Sdk/Model/IssuedDocumentEiData.cs
 src/It.FattureInCloud.Sdk/Model/IssuedDocumentExtraData.cs
 src/It.FattureInCloud.Sdk/Model/IssuedDocumentItemsListItem.cs
+src/It.FattureInCloud.Sdk/Model/IssuedDocumentOptions.cs
 src/It.FattureInCloud.Sdk/Model/IssuedDocumentPaymentsListItem.cs
 src/It.FattureInCloud.Sdk/Model/IssuedDocumentPreCreateInfo.cs
 src/It.FattureInCloud.Sdk/Model/IssuedDocumentPreCreateInfoDefaultValues.cs
@@ -362,8 +354,6 @@ src/It.FattureInCloud.Sdk/Model/IssuedDocumentPreCreateInfoExtraDataDefaultValue
 src/It.FattureInCloud.Sdk/Model/IssuedDocumentPreCreateInfoItemsDefaultValues.cs
 src/It.FattureInCloud.Sdk/Model/IssuedDocumentStatus.cs
 src/It.FattureInCloud.Sdk/Model/IssuedDocumentTotals.cs
-src/It.FattureInCloud.Sdk/Model/IssuedDocumentTotalsVatList.cs
-src/It.FattureInCloud.Sdk/Model/IssuedDocumentTotalsVatListVatItem.cs
 src/It.FattureInCloud.Sdk/Model/IssuedDocumentType.cs
 src/It.FattureInCloud.Sdk/Model/Language.cs
 src/It.FattureInCloud.Sdk/Model/ListArchiveCategoriesResponse.cs
@@ -468,6 +458,7 @@ src/It.FattureInCloud.Sdk/Model/UploadIssuedDocumentAttachmentResponse.cs
 src/It.FattureInCloud.Sdk/Model/UploadReceivedDocumentAttachmentResponse.cs
 src/It.FattureInCloud.Sdk/Model/User.cs
 src/It.FattureInCloud.Sdk/Model/UserCompanyRole.cs
+src/It.FattureInCloud.Sdk/Model/VatItem.cs
 src/It.FattureInCloud.Sdk/Model/VatKind.cs
 src/It.FattureInCloud.Sdk/Model/VatType.cs
 src/It.FattureInCloud.Sdk/Model/VerifyEInvoiceXmlErrorResponse.cs

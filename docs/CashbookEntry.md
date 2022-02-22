@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Cashbook unique identifier. | [optional] 
-**Date** | **DateTimeOffset** | Cashbook date. | [optional] 
+**Date** | **DateTime?** | Cashbook date. | [optional] 
 **Description** | **string** | Cashbook description. | [optional] 
 **Kind** | **CashbookEntryKind** |  | [optional] 
 **Type** | **CashbookEntryType** |  | [optional] 
