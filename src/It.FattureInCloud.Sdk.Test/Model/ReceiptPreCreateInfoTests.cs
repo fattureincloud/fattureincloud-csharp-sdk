@@ -61,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NumerationsTest()
         {
-            Assert.IsType<Newtonsoft.Json.Linq.JObject>(instance.Numerations);
+            Assert.IsType<Dictionary<string, Dictionary<string, Dictionary<string, int>>>>(instance.Numerations);
         }
         /// <summary>
         /// Test the property 'NumerationsList'
@@ -85,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PaymentAccountsListTest()
         {
-            Assert.IsType<List<string>>(instance.RcCentersList);
+            Assert.IsType<List<PaymentAccount>>(instance.PaymentAccountsList);
         }
         /// <summary>
         /// Test the property 'CategoriesList'
@@ -93,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CategoriesListTest()
         {
-            Assert.IsType<List<string>>(instance.RcCentersList);
+            Assert.IsType<List<string>>(instance.CategoriesList);
         }
         /// <summary>
         /// Test the property 'VatTypesList'

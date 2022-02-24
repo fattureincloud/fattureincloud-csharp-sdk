@@ -42,25 +42,25 @@ namespace It.FattureInCloud.Sdk.Test.Api
 
         public ProductsApiTests()
         {
-            createProductResponseBody = "{'data':{'id':12345,'name':'Tavolo di marmo','code':'TAVOLO003','net_price':240.0,'gross_price':280.0,'use_gross_price':false,'default_vat':{'id':3,'value':22.0,'description':'Non imponibile art. 123','notes':'IVA non imponibile ai sensi dell articolo 123, comma 2','e_invoice':false,'is_disabled':false},'net_cost':0.0,'measure':'','description':'Tavolo in marmo pregiato','category':'arredamento','notes':null,'in_stock':true,'created_at':null,'updated_at':null}}";
+            createProductResponseBody = "{ 'data': { 'id': 12345, 'name': 'Tavolo di marmo', 'code': 'TAVOLO003', 'net_price': 240.0, 'gross_price': 280.0, 'use_gross_price': false, 'default_vat': { 'id': 3, 'value': 22.0, 'description': 'Non imponibile art. 123', 'notes': 'IVA non imponibile ai sensi dell articolo 123, comma 2', 'e_invoice': false, 'is_disabled': false }, 'net_cost': 0.0, 'measure': '', 'description': 'Tavolo in marmo pregiato', 'category': 'arredamento', 'in_stock': true } }";
             var createProductResponse = JsonConvert.DeserializeObject<CreateProductResponse>(createProductResponseBody);
             instance
                 .Setup(p => p.CreateProduct(Moq.It.IsAny<int>(), Moq.It.IsAny<CreateProductRequest>()))
                 .Returns(createProductResponse);
 
-            getProductResponseBody = "{'data':{'id':12345,'name':'Tavolo di marmo','code':'TAVOLO003','net_price':240.0,'gross_price':280.0,'use_gross_price':false,'default_vat':{'id':3,'value':22.0,'description':'Non imponibile art. 123','notes':'IVA non imponibile ai sensi dell articolo 123, comma 2','e_invoice':false,'is_disabled':false},'net_cost':0.0,'measure':'','description':'Tavolo in marmo pregiato','category':'arredamento','notes':null,'in_stock':true,'created_at':null,'updated_at':null}}";
+            getProductResponseBody = "{ 'data': { 'id': 12345, 'name': 'Tavolo di marmo', 'code': 'TAVOLO003', 'net_price': 240.0, 'gross_price': 280.0, 'use_gross_price': false, 'default_vat': { 'id': 3, 'value': 22.0, 'description': 'Non imponibile art. 123', 'notes': 'IVA non imponibile ai sensi dell articolo 123, comma 2', 'e_invoice': false, 'is_disabled': false }, 'net_cost': 0.0, 'measure': '', 'description': 'Tavolo in marmo pregiato', 'category': 'arredamento', 'in_stock': true } }";
             var getProductResponse = JsonConvert.DeserializeObject<GetProductResponse>(getProductResponseBody);
             instance
                 .Setup(p => p.GetProduct(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
                 .Returns(getProductResponse);
 
-            listProductsResponseBody = "{ 'current_page': 1, 'first_page_url': 'page=1', 'from': 1, 'last_page': 1, 'last_page_url': 'page=1', 'next_page_url': 'page=2', 'path': 'products', 'per_page': 50, 'prev_page_url': null, 'to': 55, 'total': 55, 'data': [ { 'id': 12345, 'name': 'Tavolo di marmo', 'code': 'TAVOLO003', 'net_price': 240.0, 'gross_price': 280.0, 'use_gross_price': false, 'default_vat': { 'id': 3, 'value': 22.0, 'description': 'Non imponibile art. 123', 'notes': 'IVA non imponibile ai sensi dell articolo 123, comma 2', 'e_invoice': false, 'is_disabled': false }, 'net_cost': 0.0, 'measure': '', 'description': 'Tavolo in marmo pregiato', 'category': 'arredamento', 'notes': null, 'in_stock': true, 'created_at': null, 'updated_at': null }, { 'id': 12346, 'name': 'Tavolo di legno', 'code': 'TAVOLO001', 'net_price': 120.0, 'gross_price': 160.0, 'use_gross_price': false, 'default_vat': { 'id': 3, 'value': 22.0, 'description': 'Non imponibile art. 123', 'notes': 'IVA non imponibile ai sensi dell articolo 123, comma 2', 'e_invoice': false, 'is_disabled': false }, 'net_cost': 0.0, 'measure': '', 'description': 'Tavolo in legno pregiato', 'category': 'arredamento', 'notes': null, 'in_stock': true, 'created_at': null, 'updated_at': null } ]}";
+            listProductsResponseBody = "{ 'current_page': 1, 'first_page_url': 'page=1', 'from': 1, 'last_page': 1, 'last_page_url': 'page=1', 'next_page_url': 'page=2', 'path': 'products', 'per_page': 50, 'to': 55, 'total': 55, 'data': [ { 'id': 12345, 'name': 'Tavolo di marmo', 'code': 'TAVOLO003', 'net_price': 240.0, 'gross_price': 280.0, 'use_gross_price': false, 'default_vat': { 'id': 3, 'value': 22.0, 'description': 'Non imponibile art. 123', 'notes': 'IVA non imponibile ai sensi dell articolo 123, comma 2', 'e_invoice': false, 'is_disabled': false }, 'net_cost': 0.0, 'measure': '', 'description': 'Tavolo in marmo pregiato', 'category': 'arredamento', 'in_stock': true }, { 'id': 12346, 'name': 'Tavolo di legno', 'code': 'TAVOLO001', 'net_price': 120.0, 'gross_price': 160.0, 'use_gross_price': false, 'default_vat': { 'id': 3, 'value': 22.0, 'description': 'Non imponibile art. 123', 'notes': 'IVA non imponibile ai sensi dell articolo 123, comma 2', 'e_invoice': false, 'is_disabled': false }, 'net_cost': 0.0, 'measure': '', 'description': 'Tavolo in legno pregiato', 'in_stock': true, 'category': 'arredamento' } ] }";
             var listProductsResponse = JsonConvert.DeserializeObject<ListProductsResponse>(listProductsResponseBody);
             instance
                 .Setup(p => p.ListProducts(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<int>(), Moq.It.IsAny<int>()))
                 .Returns(listProductsResponse);
 
-            modifyProductResponseBody = "{'data':{'id':12345,'name':'Tavolo di marmo','code':'TAVOLO003','net_price':240.0,'gross_price':280.0,'use_gross_price':false,'default_vat':{'id':3,'value':22.0,'description':'Non imponibile art. 123','notes':'IVA non imponibile ai sensi dell articolo 123, comma 2','e_invoice':false,'is_disabled':false},'net_cost':0.0,'measure':'','description':'Tavolo in marmo pregiato','category':'arredamento','notes':null,'in_stock':true,'created_at':null,'updated_at':null}}";
+            modifyProductResponseBody = "{ 'data': { 'id': 12345, 'name': 'Tavolo di marmo', 'code': 'TAVOLO003', 'net_price': 240.0, 'gross_price': 280.0, 'use_gross_price': false, 'default_vat': { 'id': 3, 'value': 22.0, 'description': 'Non imponibile art. 123', 'notes': 'IVA non imponibile ai sensi dell articolo 123, comma 2', 'e_invoice': false, 'is_disabled': false }, 'net_cost': 0.0, 'measure': '', 'description': 'Tavolo in marmo pregiato', 'category': 'arredamento', 'in_stock': true } }";
             var modifyProductResponse = JsonConvert.DeserializeObject<ModifyProductResponse>(modifyProductResponseBody);
             instance
                 .Setup(p => p.ModifyProduct(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifyProductRequest>()))
@@ -119,7 +119,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
 
             var response = instance.Object.GetProduct(companyId, productId, fields, fieldset);
             JObject obj = JObject.Parse(getProductResponseBody);
-
+            
             Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 

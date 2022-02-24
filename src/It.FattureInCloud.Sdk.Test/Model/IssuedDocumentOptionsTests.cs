@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class IssuedDocumentOptionsTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for IssuedDocumentOptions
-        //private IssuedDocumentOptions instance;
+        private IssuedDocumentOptions instance;
 
         public IssuedDocumentOptionsTests()
         {
-            // TODO uncomment below to create an instance of IssuedDocumentOptions
-            //instance = new IssuedDocumentOptions();
+            var body = "{ 'fix_payments': true }";
+            instance = JsonConvert.DeserializeObject<IssuedDocumentOptions>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IssuedDocumentOptionsInstanceTest()
         {
-            // TODO uncomment below to test "IsType" IssuedDocumentOptions
-            //Assert.IsType<IssuedDocumentOptions>(instance);
+            Assert.IsType<IssuedDocumentOptions>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FixPaymentsTest()
         {
-            // TODO unit test for the property 'FixPayments'
+            Assert.IsType<bool>(instance.FixPayments);
         }
 
     }

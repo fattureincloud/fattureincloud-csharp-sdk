@@ -36,7 +36,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
 
         public GetIssuedDocumentPreCreateInfoResponseTests()
         {
-            var body = "{ 'data': { 'numerations': { '2018': { 'AB123': 2 }, '2019': { '123': null }, '2020': { 'ABC': 2 }, '2021': { 'rec123': 2 } }, 'dn_numerations': { '2017': { '': 1000 }, '2018': { '': 112 }, '2019': { '': 526 }, '2020': { '': 11 }, '2021': { '': 110 } }, 'default_values': { 'template': { 'id': 111, 'type': 'standard', 'name': 'Light Smoke' }, 'dn_template': { 'id': 222, 'type': 'delivery_note', 'name': 'DDT 1' }, 'ai_template': { 'id': 333, 'type': 'accompanying_invoice', 'name': 'FT Accompagnatoria 1' }, 'notes': '', 'rivalsa': 0, 'cassa': 0, 'withholding_tax': 0, 'withholding_tax_taxable': 100, 'other_withholding_tax': 0, 'use_gross_prices': false } } }";
+            var body = "{ 'data': { 'numerations': { '2018': { 'AB123': 2 }, '2019': { '123': 0 }, '2020': { 'ABC': 2 }, '2021': { 'rec123': 2 } }, 'dn_numerations': { '2017': { '': 1000 }, '2018': { '': 112 }, '2019': { '': 526 }, '2020': { '': 11 }, '2021': { '': 110 } }, 'default_values': { 'template': { 'id': 111, 'type': 'standard', 'name': 'Light Smoke' }, 'dn_template': { 'id': 222, 'type': 'delivery_note', 'name': 'DDT 1' }, 'ai_template': { 'id': 333, 'type': 'accompanying_invoice', 'name': 'FT Accompagnatoria 1' }, 'notes': '', 'rivalsa': 0, 'cassa': 0, 'withholding_tax': 0, 'withholding_tax_taxable': 100, 'other_withholding_tax': 0, 'use_gross_prices': false } } }";
             instance = JsonConvert.DeserializeObject<GetIssuedDocumentPreCreateInfoResponse>(body);
         }
 
