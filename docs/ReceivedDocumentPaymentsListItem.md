@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int** | Unique identifier. | [optional] 
-**Amount** | **decimal** | Amount of items. | [optional] 
-**DueDate** | **DateTimeOffset** | Due date | [optional] 
-**PaidDate** | **DateTimeOffset** | Paid date | [optional] 
+**Id** | **int?** | Unique identifier. | [optional] 
+**Amount** | **decimal?** | Amount of items. | [optional] 
+**DueDate** | **DateTime?** | Due date | [optional] 
+**PaidDate** | **DateTime?** | Paid date | [optional] 
 **PaymentTerms** | [**ReceivedDocumentPaymentsListItemPaymentTerms**](ReceivedDocumentPaymentsListItemPaymentTerms.md) |  | [optional] 
 **Status** | **string** | Payment status. | [optional] 
 **PaymentAccount** | [**PaymentAccount**](PaymentAccount.md) |  | [optional] 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **int?** | Unique identifier | [optional] 
 **Name** | **string** | Name of the payment method | [optional] 
 **Type** | **PaymentMethodType** |  | [optional] 
-**IsDefault** | **bool** | Determines if this is the default payment method. | [optional] 
+**IsDefault** | **bool?** | Determines if this is the default payment method. | [optional] 
 **DefaultPaymentAccount** | [**PaymentAccount**](PaymentAccount.md) |  | [optional] 
 **Details** | [**List&lt;PaymentMethodDetails&gt;**](PaymentMethodDetails.md) | Method details rows | [optional] 
 **BankIban** | **string** | Bank iban | [optional] 
