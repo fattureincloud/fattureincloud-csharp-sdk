@@ -189,7 +189,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VatListTest()
         {
-            Assert.IsType<IssuedDocumentTotalsVatList>(instance.VatList);
+            Assert.IsType<Dictionary<string, VatItem>>(instance.VatList);
         }
 
     }

@@ -61,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NumerationsTest()
         {
-            Assert.IsType<Newtonsoft.Json.Linq.JObject>(instance.Numerations);
+            Assert.IsType<Dictionary<string, Dictionary<string, int>>>(instance.Numerations);
         }
         /// <summary>
         /// Test the property 'DnNumerations'
@@ -69,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DnNumerationsTest()
         {
-            Assert.IsType<Newtonsoft.Json.Linq.JObject>(instance.DnNumerations);
+            Assert.IsType<Dictionary<string, Dictionary<string, int>>>(instance.DnNumerations);
         }
         /// <summary>
         /// Test the property 'DefaultValues'

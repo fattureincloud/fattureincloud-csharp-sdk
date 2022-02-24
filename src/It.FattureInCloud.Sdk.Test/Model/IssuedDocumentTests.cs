@@ -101,7 +101,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DateTest()
         {
-            Assert.IsType<DateTimeOffset>(instance.Date);
+            Assert.IsType<DateTime>(instance.Date);
         }
         /// <summary>
         /// Test the property 'Currency'
@@ -365,7 +365,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DnDateTest()
         {
-            Assert.IsType<DateTimeOffset>(instance.DnDate);
+            Assert.IsType<DateTime>(instance.DnDate);
         }
         /// <summary>
         /// Test the property 'DnAiPackagesNumber'

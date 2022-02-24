@@ -95,13 +95,13 @@ namespace It.FattureInCloud.Sdk.Test.Api
                 .Setup(p => p.ListLanguages())
                 .Returns(listLanguagesResponse);
 
-            listPaymentAccountsResponseBody = "{'data':[{'id':21,'name':'Indesa - Carta conto','type':'standard','iban':null,'sia':null,'virtual':false},{'id':109,'name':'Indesa','type':'bank','iban':'IT17A1234563200000003498936','sia':'IN234','virtual':false}]}";
+            listPaymentAccountsResponseBody = "{'data':[{'id':21,'name':'Indesa - Carta conto','type':'standard','virtual':false},{'id':109,'name':'Indesa','type':'bank','iban':'IT17A1234563200000003498936','sia':'IN234','virtual':false}]}";
             var listPaymentAccountsResponse = JsonConvert.DeserializeObject<ListPaymentAccountsResponse>(listPaymentAccountsResponseBody);
             instance
                 .Setup(p => p.ListPaymentAccounts(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
                 .Returns(listPaymentAccountsResponse);
 
-            listPaymentMethodsResponseBody = "{'data':[{'id':12345,'name':'Carta di credito','is_default':false,'default_payment_account':null,'details':null,'bank_iban':null,'bank_name':null,'bank_beneficiary':null},{'id':12346,'name':'Bonifico bancario','is_default':true,'default_payment_account':null,'details':null,'bank_iban':null,'bank_name':null,'bank_beneficiary':null}]}";
+            listPaymentMethodsResponseBody = "{'data':[{'id':12345,'name':'Carta di credito','is_default':false},{'id':12346,'name':'Bonifico bancario','is_default':true}]}";
             var listPaymentMethodsResponse = JsonConvert.DeserializeObject<ListPaymentMethodsResponse>(listPaymentMethodsResponseBody);
             instance
                 .Setup(p => p.ListPaymentMethods(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))

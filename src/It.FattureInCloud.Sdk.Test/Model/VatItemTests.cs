@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class VatItemTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for VatItem
-        //private VatItem instance;
+        private VatItem instance;
 
         public VatItemTests()
         {
-            // TODO uncomment below to create an instance of VatItem
-            //instance = new VatItem();
+            var body = "{ 'amount_net': 10.0, 'amount_vat': 10.0 }";
+            instance = JsonConvert.DeserializeObject<VatItem>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VatItemInstanceTest()
         {
-            // TODO uncomment below to test "IsType" VatItem
-            //Assert.IsType<VatItem>(instance);
+            Assert.IsType<VatItem>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AmountNetTest()
         {
-            // TODO unit test for the property 'AmountNet'
+            Assert.IsType<decimal>(instance.AmountNet);
         }
         /// <summary>
         /// Test the property 'AmountVat'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AmountVatTest()
         {
-            // TODO unit test for the property 'AmountVat'
+            Assert.IsType<decimal>(instance.AmountVat);
         }
 
     }

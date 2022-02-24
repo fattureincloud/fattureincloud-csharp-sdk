@@ -62,19 +62,19 @@ namespace It.FattureInCloud.Sdk.Test.Api
                 .Setup(p => p.ModifyPaymentAccount(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifyPaymentAccountRequest>()))
                 .Returns(modifyPaymentAccountResponse);
 
-            createPaymentMethodResponseBody = "{ 'data': { 'type': 'standard', 'id': 386683, 'name': 'Bonifico bancario', 'is_default': true, 'default_payment_account': { 'id': 12345, 'name': 'conto banca SP', 'iban': null, 'sia': null, 'virtual': false }, 'details': [ { 'title': 'Banca', 'description': 'Sao Paulo' } ], 'bank_iban': null, 'bank_name': null, 'bank_beneficiary': null } }";
+            createPaymentMethodResponseBody = "{ 'data': { 'type': 'standard', 'id': 386683, 'name': 'Bonifico bancario', 'is_default': true, 'default_payment_account': { 'id': 12345, 'name': 'conto banca SP', 'virtual': false }, 'details': [ { 'title': 'Banca', 'description': 'Sao Paulo' } ] } }";
             var createPaymentMethodResponse = JsonConvert.DeserializeObject<CreatePaymentMethodResponse>(createPaymentMethodResponseBody);
             instance
                 .Setup(p => p.CreatePaymentMethod(Moq.It.IsAny<int>(), Moq.It.IsAny<CreatePaymentMethodRequest>()))
                 .Returns(createPaymentMethodResponse);
 
-            getPaymentMethodResponseBody = "{ 'data': { 'type': 'standard', 'id': 386683, 'name': 'Bonifico bancario', 'is_default': true, 'default_payment_account': { 'id': 12345, 'name': 'conto banca SP', 'iban': null, 'sia': null, 'virtual': false }, 'details': [ { 'title': 'Banca', 'description': 'Sao Paulo' } ], 'bank_iban': null, 'bank_name': null, 'bank_beneficiary': null } }";
+            getPaymentMethodResponseBody = "{ 'data': { 'type': 'standard', 'id': 386683, 'name': 'Bonifico bancario', 'is_default': true, 'default_payment_account': { 'id': 12345, 'name': 'conto banca SP', 'virtual': false }, 'details': [ { 'title': 'Banca', 'description': 'Sao Paulo' } ] } }";
             var getPaymentMethodResponse = JsonConvert.DeserializeObject<GetPaymentMethodResponse>(getPaymentMethodResponseBody);
             instance
                 .Setup(p => p.GetPaymentMethod(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
                 .Returns(getPaymentMethodResponse);
 
-            modifyPaymentMethodResponseBody = "{ 'data': { 'type': 'standard', 'id': 386683, 'name': 'Bonifico bancario', 'is_default': true, 'default_payment_account': { 'id': 12345, 'name': 'conto banca SP', 'iban': null, 'sia': null, 'virtual': false }, 'details': [ { 'title': 'Banca', 'description': 'Sao Paulo' } ], 'bank_iban': null, 'bank_name': null, 'bank_beneficiary': null } }";
+            modifyPaymentMethodResponseBody = "{ 'data': { 'type': 'standard', 'id': 386683, 'name': 'Bonifico bancario', 'is_default': true, 'default_payment_account': { 'id': 12345, 'name': 'conto banca SP', 'virtual': false }, 'details': [ { 'title': 'Banca', 'description': 'Sao Paulo' } ] } }";
             var modifyPaymentMethodResponse = JsonConvert.DeserializeObject<ModifyPaymentMethodResponse>(modifyPaymentMethodResponseBody);
             instance
                 .Setup(p => p.ModifyPaymentMethod(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifyPaymentMethodRequest>()))

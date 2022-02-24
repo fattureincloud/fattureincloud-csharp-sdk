@@ -69,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DueDateTest()
         {
-            Assert.IsType<DateTimeOffset>(instance.DueDate);
+            Assert.IsType<DateTime>(instance.DueDate);
         }
         /// <summary>
         /// Test the property 'Status'
