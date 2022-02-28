@@ -1,11 +1,10 @@
-# It.FattureInCloud.Sdk.Model.IssuedDocumentTotalsVatListVatItem
+# It.FattureInCloud.Sdk.Model.IssuedDocumentOptions
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AmountNet** | **decimal** |  | [optional] 
-**AmountVat** | **decimal** |  | [optional] 
+**FixPayments** | **bool?** | Fixes your last payment amount to match your document total | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

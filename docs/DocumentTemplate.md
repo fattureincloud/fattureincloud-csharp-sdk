@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int** | Unique identifier. | [optional] 
+**Id** | **int?** | Unique identifier. | [optional] 
 **Name** | **string** | Template name. | [optional] 
 **Type** | **string** | Template type. | [optional] 
 

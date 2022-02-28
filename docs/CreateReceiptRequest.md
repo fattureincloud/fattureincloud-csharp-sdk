@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Data** | [**Receipt**](Receipt.md) |  | [optional] 
-**AutocompleteNumber** | **bool** | If true, the number is autocompleted progressively. | [optional] 
+**AutocompleteNumber** | **bool?** | If true, the number is autocompleted progressively. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

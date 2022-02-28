@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int** | Unique identifier | [optional] 
+**Id** | **int?** | Unique identifier | [optional] 
 **Code** | **string** | Supplier code. | [optional] 
 **Name** | **string** | Supplier name. | [optional] 
 **Type** | **SupplierType** |  | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **AddressCity** | **string** | Supplier city. | [optional] 
 **AddressProvince** | **string** | Supplier province. | [optional] 
 **AddressExtra** | **string** | Supplier address extra info. | [optional] 
-**Country** | **string** | Supplier country. | [optional] [default to "Italia"]
+**Country** | **string** | Supplier country. | [optional] 
 **Email** | **string** | Supplier email. | [optional] 
 **CertifiedEmail** | **string** | Supplier certified email. | [optional] 
 **Phone** | **string** | Supplier phone. | [optional] 

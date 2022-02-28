@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int** | Receipt unique identifier. | [optional] 
-**Date** | **DateTimeOffset** | Receipt date. | [optional] 
+**Id** | **int?** | Receipt unique identifier. | [optional] 
+**Date** | **DateTime?** | Receipt date. | [optional] 
 **Number** | **decimal?** | Receipt number. | [optional] 
 **Numeration** | **string** | If it&#39;s null or empty string use the default numeration. | [optional] 
-**AmountNet** | **decimal** | Total net amount. | [optional] 
-**AmountVat** | **decimal** | Total vat amount. | [optional] 
-**AmountGross** | **decimal** | Total gross amount. | [optional] 
-**UseGrossPrices** | **bool** |  | [optional] [default to false]
+**AmountNet** | **decimal?** | Total net amount. | [optional] 
+**AmountVat** | **decimal?** | Total vat amount. | [optional] 
+**AmountGross** | **decimal?** | Total gross amount. | [optional] 
+**UseGrossPrices** | **bool?** |  | [optional] 
 **Type** | **ReceiptType** |  | [optional] 
 **Description** | **string** | Receipt description. | [optional] 
 **RcCenter** | **string** | Revenue center. | [optional] 

@@ -40,7 +40,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
 
         public UserApiTests()
         {
-            getUserInfoResponseBody = "{'data':{'id':2,'name':'Matteo Milesi2','first_name':'Matteo','last_name':'Milesi2','email':'matteo@example.com','picture':null,'hash':'5add29e1046432a1bf2ed7b612043029'},'info':{'need_password_change':false,'need_marketing_consents_confirmation':false,'need_terms_of_service_confirmation':false},'email_confirmation_state':{'need_confirmation':false}}";
+            getUserInfoResponseBody = "{'data':{'id':2,'name':'Matteo Milesi2','first_name':'Matteo','last_name':'Milesi2','email':'matteo@example.com','hash':'5add29e1046432a1bf2ed7b612043029'},'info':{'need_password_change':false,'need_marketing_consents_confirmation':false,'need_terms_of_service_confirmation':false},'email_confirmation_state':{'need_confirmation':false}}";
             var getUserInfoResponse = JsonConvert.DeserializeObject<GetUserInfoResponse>(getUserInfoResponseBody);
             instance
                 .Setup(p => p.GetUserInfo())

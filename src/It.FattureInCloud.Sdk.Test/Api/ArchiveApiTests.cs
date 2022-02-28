@@ -43,7 +43,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
 
         public ArchiveApiTests()
         {
-            createArchiveDocumentResponseBody = "{'data':{'id':12345,'date':'2021-08-20','category':'Altri documenti','description':'spesa 2'}}";
+            createArchiveDocumentResponseBody = "{'data':{'id':12345,'category':'Altri documenti','description':'spesa 2'}}";
             var createArchiveDocumentResponse = JsonConvert.DeserializeObject<CreateArchiveDocumentResponse>(createArchiveDocumentResponseBody);
             instance
                 .Setup(p => p.CreateArchiveDocument(Moq.It.IsAny<int>(), Moq.It.IsAny<CreateArchiveDocumentRequest>()))
@@ -55,7 +55,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
                 .Setup(p => p.GetArchiveDocument(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
                 .Returns(getArchiveDocumentResponse);
 
-            listArchiveDocumentsResponseBody = "{'current_page':1,'data':[{'id':12345,'date':'2021-08-20','category':'Altri documenti','description':'spesa 2'},{'id':12346,'date':'2021-08-19','category':'Altri documenti','description':'spesa 1'}],'first_page_url':'page=1','from':1,'last_page':1,'last_page_url':'page=1','next_page_url':null,'path':'/archive','per_page':50,'prev_page_url':null,'to':2,'total':2}";
+            listArchiveDocumentsResponseBody = "{'current_page':1,'data':[{'id':12345,'date':'2021-08-20','category':'Altri documenti','description':'spesa 2'},{'id':12346,'date':'2021-08-19','category':'Altri documenti','description':'spesa 1'}],'first_page_url':'page=1','from':1,'last_page':1,'last_page_url':'page=1','path':'/archive','per_page':50,'to':2,'total':2}";
             var listArchiveDocumentsResponse = JsonConvert.DeserializeObject<ListArchiveDocumentsResponse>(listArchiveDocumentsResponseBody);
             instance
                 .Setup(p => p.ListArchiveDocuments(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<int>(), Moq.It.IsAny<int>()))
@@ -99,7 +99,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
 
             var response = instance.Object.CreateArchiveDocument(companyId, createArchiveDocumentRequest);
             JObject obj = JObject.Parse(createArchiveDocumentResponseBody);
-
+            
             Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 

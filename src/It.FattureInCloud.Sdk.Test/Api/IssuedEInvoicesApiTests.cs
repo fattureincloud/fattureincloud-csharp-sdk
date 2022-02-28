@@ -60,7 +60,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
                 .Setup(p => p.GetEInvoiceXml(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), true))
                 .Returns(getEInvoiceXmlResponse);
 
-            getEInvoiceRejectionReasonResponseBody = "{'data': {'reason': 'invalid date', 'ei_status': null, 'solution': null, 'code': null, 'date': null }}";
+            getEInvoiceRejectionReasonResponseBody = "{'data': {'reason': 'invalid date' }}";
             var getEInvoiceRejectionReason = JsonConvert.DeserializeObject<GetEInvoiceRejectionReasonResponse>(getEInvoiceRejectionReasonResponseBody); ;
             instance
                 .Setup(p => p.GetEInvoiceRejectionReason(Moq.It.IsAny<int>(), Moq.It.IsAny<int>()))
