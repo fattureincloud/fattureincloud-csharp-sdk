@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo><!-- setting GenerateAssemblyInfo to false causes this bug https://github.com/dotnet/project-system/issues/3934 -->
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <AssemblyName>It.FattureInCloud.Sdk</AssemblyName>
     <PackageId>It.FattureInCloud.Sdk</PackageId>
@@ -13,12 +13,12 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>It.FattureInCloud.Sdk</RootNamespace>
-    <Version>2.0.6</Version>
+    <Version>2.0.7</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\It.FattureInCloud.Sdk.xml</DocumentationFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/fattureincloud/fattureincloud-csharp-sdk.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>bumping version to 2.0.6</PackageReleaseNotes>
+    <PackageReleaseNotes>bumping version to 2.0.7</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

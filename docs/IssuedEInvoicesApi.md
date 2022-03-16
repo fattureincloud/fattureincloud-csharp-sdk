@@ -4,19 +4,19 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetEInvoiceRejectionReason**](IssuedEInvoicesApi.md#geteinvoicerejectionreason) | **GET** /c/{company_id}/issued_documents/{document_id}/e_invoice/error_reason | Get EInvoice rejection reason
+[**GetEInvoiceRejectionReason**](IssuedEInvoicesApi.md#geteinvoicerejectionreason) | **GET** /c/{company_id}/issued_documents/{document_id}/e_invoice/error_reason | Get e-invoice rejection reason
 [**GetEInvoiceXml**](IssuedEInvoicesApi.md#geteinvoicexml) | **GET** /c/{company_id}/issued_documents/{document_id}/e_invoice/xml | Get e-invoice XML
 [**SendEInvoice**](IssuedEInvoicesApi.md#sendeinvoice) | **POST** /c/{company_id}/issued_documents/{document_id}/e_invoice/send | Send the e-invoice
-[**VerifyEInvoiceXml**](IssuedEInvoicesApi.md#verifyeinvoicexml) | **GET** /c/{company_id}/issued_documents/{document_id}/e_invoice/xml_verify | Verify e-invoice xml
+[**VerifyEInvoiceXml**](IssuedEInvoicesApi.md#verifyeinvoicexml) | **GET** /c/{company_id}/issued_documents/{document_id}/e_invoice/xml_verify | Verify e-invoice XML
 
 
 <a name="geteinvoicerejectionreason"></a>
 # **GetEInvoiceRejectionReason**
 > GetEInvoiceRejectionReasonResponse GetEInvoiceRejectionReason (int companyId, int documentId)
 
-Get EInvoice rejection reason
+Get e-invoice rejection reason
 
-Get EInvoice rejection reason
+Get e-invoice rejection reason
 
 ### Example
 ```csharp
@@ -43,7 +43,7 @@ namespace Example
 
             try
             {
-                // Get EInvoice rejection reason
+                // Get e-invoice rejection reason
                 GetEInvoiceRejectionReasonResponse result = apiInstance.GetEInvoiceRejectionReason(companyId, documentId);
                 Debug.WriteLine(result);
             }
@@ -250,9 +250,9 @@ Name | Type | Description  | Notes
 # **VerifyEInvoiceXml**
 > VerifyEInvoiceXmlResponse VerifyEInvoiceXml (int companyId, int documentId)
 
-Verify e-invoice xml
+Verify e-invoice XML
 
-Verifies the e-invoice xml format. Checks if all of the mandatory fields are filled and compliant to the right format.
+Verifies the e-invoice XML format. Checks if all of the mandatory fields are filled and compliant to the right format.
 
 ### Example
 ```csharp
@@ -279,7 +279,7 @@ namespace Example
 
             try
             {
-                // Verify e-invoice xml
+                // Verify e-invoice XML
                 VerifyEInvoiceXmlResponse result = apiInstance.VerifyEInvoiceXml(companyId, documentId);
                 Debug.WriteLine(result);
             }

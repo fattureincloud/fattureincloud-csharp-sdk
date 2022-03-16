@@ -48,8 +48,9 @@ docs/CreateVatTypeRequest.md
 docs/CreateVatTypeResponse.md
 docs/Currency.md
 docs/DefaultPaymentTermsType.md
+docs/DetailedCountry.md
 docs/DocumentTemplate.md
-docs/EinvoiceRejectionReason.md
+docs/EInvoiceRejectionReason.md
 docs/EmailData.md
 docs/EmailDataDefaultSenderEmail.md
 docs/EmailSchedule.md
@@ -117,6 +118,7 @@ docs/ListCostCentersResponse.md
 docs/ListCountriesResponse.md
 docs/ListCurrenciesResponse.md
 docs/ListDeliveryNotesDefaultCausalsResponse.md
+docs/ListDetailedCountriesResponse.md
 docs/ListF24Response.md
 docs/ListF24ResponseAggregatedData.md
 docs/ListF24ResponseAggregation.md
@@ -224,8 +226,9 @@ docs/VerifyEInvoiceXmlErrorResponseExtra.md
 docs/VerifyEInvoiceXmlResponse.md
 docs/VerifyEInvoiceXmlResponseData.md
 src/It.FattureInCloud.Sdk.Test/It.FattureInCloud.Sdk.Test.csproj
-src/It.FattureInCloud.Sdk.Test/Model/IssuedDocumentOptionsTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/VatItemTests.cs
+src/It.FattureInCloud.Sdk.Test/Model/DetailedCountryTests.cs
+src/It.FattureInCloud.Sdk.Test/Model/EInvoiceRejectionReasonTests.cs
+src/It.FattureInCloud.Sdk.Test/Model/ListDetailedCountriesResponseTests.cs
 src/It.FattureInCloud.Sdk/Api/ArchiveApi.cs
 src/It.FattureInCloud.Sdk/Api/CashbookApi.cs
 src/It.FattureInCloud.Sdk/Api/ClientsApi.cs
@@ -301,8 +304,9 @@ src/It.FattureInCloud.Sdk/Model/CreateVatTypeRequest.cs
 src/It.FattureInCloud.Sdk/Model/CreateVatTypeResponse.cs
 src/It.FattureInCloud.Sdk/Model/Currency.cs
 src/It.FattureInCloud.Sdk/Model/DefaultPaymentTermsType.cs
+src/It.FattureInCloud.Sdk/Model/DetailedCountry.cs
 src/It.FattureInCloud.Sdk/Model/DocumentTemplate.cs
-src/It.FattureInCloud.Sdk/Model/EinvoiceRejectionReason.cs
+src/It.FattureInCloud.Sdk/Model/EInvoiceRejectionReason.cs
 src/It.FattureInCloud.Sdk/Model/EmailData.cs
 src/It.FattureInCloud.Sdk/Model/EmailDataDefaultSenderEmail.cs
 src/It.FattureInCloud.Sdk/Model/EmailSchedule.cs
@@ -367,6 +371,7 @@ src/It.FattureInCloud.Sdk/Model/ListCostCentersResponse.cs
 src/It.FattureInCloud.Sdk/Model/ListCountriesResponse.cs
 src/It.FattureInCloud.Sdk/Model/ListCurrenciesResponse.cs
 src/It.FattureInCloud.Sdk/Model/ListDeliveryNotesDefaultCausalsResponse.cs
+src/It.FattureInCloud.Sdk/Model/ListDetailedCountriesResponse.cs
 src/It.FattureInCloud.Sdk/Model/ListF24Response.cs
 src/It.FattureInCloud.Sdk/Model/ListF24ResponseAggregatedData.cs
 src/It.FattureInCloud.Sdk/Model/ListF24ResponseAggregation.cs

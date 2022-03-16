@@ -407,7 +407,7 @@ Name | Type | Description  | Notes
 
 <a name="listreceipts"></a>
 # **ListReceipts**
-> ListReceiptsResponse ListReceipts (int companyId, string fields = null, string fieldset = null, int? page = null, int? perPage = null, string sort = null)
+> ListReceiptsResponse ListReceipts (int companyId, string fields = null, string fieldset = null, int? page = null, int? perPage = null, string sort = null, string q = null)
 
 List Receipts
 
@@ -439,11 +439,12 @@ namespace Example
             var page = 1;  // int? | The page to retrieve. (optional)  (default to 1)
             var perPage = 5;  // int? | The size of the page. (optional)  (default to 5)
             var sort = "sort_example";  // string | List of comma-separated fields for result sorting (minus for desc sorting). (optional) 
+            var q = "q_example";  // string | Query for filtering the results. (optional) 
 
             try
             {
                 // List Receipts
-                ListReceiptsResponse result = apiInstance.ListReceipts(companyId, fields, fieldset, page, perPage, sort);
+                ListReceiptsResponse result = apiInstance.ListReceipts(companyId, fields, fieldset, page, perPage, sort, q);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -467,6 +468,7 @@ Name | Type | Description  | Notes
  **page** | **int?**| The page to retrieve. | [optional] [default to 1]
  **perPage** | **int?**| The size of the page. | [optional] [default to 5]
  **sort** | **string**| List of comma-separated fields for result sorting (minus for desc sorting). | [optional] 
+ **q** | **string**| Query for filtering the results. | [optional] 
 
 ### Return type
 

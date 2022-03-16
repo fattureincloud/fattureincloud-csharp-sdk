@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **BankIban** | **string** | Bank iban | [optional] 
 **BankName** | **string** | Bank name | [optional] 
 **BankBeneficiary** | **string** | Bank beneficiary | [optional] 
-**EiPaymentMethod** | **string** | EInvoice payment method | [optional] 
+**EiPaymentMethod** | **string** | E-invoice payment method | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

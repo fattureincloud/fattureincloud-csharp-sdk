@@ -37,11 +37,11 @@ Name | Type | Description | Notes
 **UseGrossPrices** | **bool?** | Use gross prices | [optional] 
 **EInvoice** | **bool?** | Indicates if this is an e-invoice. | [optional] 
 **EiData** | [**IssuedDocumentEiData**](IssuedDocumentEiData.md) |  | [optional] 
-**EiCassaType** | **string** | Einvoice cassa type | [optional] 
-**EiCassa2Type** | **string** | Einvoice cassa2 type | [optional] 
-**EiWithholdingTaxCausal** | **string** | Einvoice withholding tax causal | [optional] 
-**EiOtherWithholdingTaxType** | **string** | Einvoice other withholding tax type | [optional] 
-**EiOtherWithholdingTaxCausal** | **string** | Einvoice other withholding tax causal | [optional] 
+**EiCassaType** | **string** | E-invoice cassa type | [optional] 
+**EiCassa2Type** | **string** | E-invoice cassa2 type | [optional] 
+**EiWithholdingTaxCausal** | **string** | E-invoice withholding tax causal | [optional] 
+**EiOtherWithholdingTaxType** | **string** | E-invoice other withholding tax type | [optional] 
+**EiOtherWithholdingTaxCausal** | **string** | E-invoice other withholding tax causal | [optional] 
 **ItemsList** | [**List&lt;IssuedDocumentItemsListItem&gt;**](IssuedDocumentItemsListItem.md) |  | [optional] 
 **PaymentsList** | [**List&lt;IssuedDocumentPaymentsListItem&gt;**](IssuedDocumentPaymentsListItem.md) |  | [optional] 
 **Template** | [**DocumentTemplate**](DocumentTemplate.md) |  | [optional] 
@@ -84,7 +84,7 @@ Name | Type | Description | Notes
 **AttachmentUrl** | **string** | [Read Only] Public url of the attached file. Authomatically set if a valid attachment token is passed via POST /issued_documents or PUT /issued_documents/{documentId}. | [optional] [readonly] 
 **AttachmentToken** | **string** | [Write Only] Attachment token returned by POST /issued_documents/attachment. Used to attach the file already uploaded. | [optional] 
 **EiRaw** | **Object** | Advanced raw attributes for e-invoices. | [optional] 
-**EiStatus** | **string** | [Read only] Status of the e-invoice.   * &#x60;attempt&#x60; - We are trying to send the invoice, please wait up to 2 hours   * &#x60;missing&#x60; - The invoice is missing   * &#x60;not_sent&#x60; - The invoice has yet to be sent   * &#x60;pending&#x60; - The checks for the digital signature and sending are in progress   * &#x60;processing&#x60; - The SDI is delivering the invoice to the customer   * &#x60;error&#x60; - An error occurred while handling the invoice, please try to resend it or contact support   * &#x60;discarded&#x60; - The invoice has been rejected by the SDI, so it must be corrected and re-sent   * &#x60;not_delivered&#x60; - The SDI was unable to deliver the invoice   * &#x60;accepted&#x60; - The customer accepted the invoice   * &#x60;rejected&#x60; - The customer rejected the invoice, so it must be corrected   * &#x60;no_response&#x60; - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice  | [optional] 
+**EiStatus** | **string** | [Read only] Status of the e-invoice.   * &#x60;attempt&#x60; - We are trying to send the invoice, please wait up to 2 hours   * &#x60;missing&#x60; - The invoice is missing   * &#x60;not_sent&#x60; - The invoice has yet to be sent   * &#x60;sent&#x60; - The invoice was sent   * &#x60;pending&#x60; - The checks for the digital signature and sending are in progress   * &#x60;processing&#x60; - The SDI is delivering the invoice to the customer   * &#x60;error&#x60; - An error occurred while handling the invoice, please try to resend it or contact support   * &#x60;discarded&#x60; - The invoice has been rejected by the SDI, so it must be corrected and re-sent   * &#x60;not_delivered&#x60; - The SDI was unable to deliver the invoice   * &#x60;accepted&#x60; - The customer accepted the invoice   * &#x60;rejected&#x60; - The customer rejected the invoice, so it must be corrected   * &#x60;no_response&#x60; - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
