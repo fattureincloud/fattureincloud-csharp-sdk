@@ -58,7 +58,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
             listArchiveDocumentsResponseBody = "{'current_page':1,'data':[{'id':12345,'date':'2021-08-20','category':'Altri documenti','description':'spesa 2'},{'id':12346,'date':'2021-08-19','category':'Altri documenti','description':'spesa 1'}],'first_page_url':'page=1','from':1,'last_page':1,'last_page_url':'page=1','path':'/archive','per_page':50,'to':2,'total':2}";
             var listArchiveDocumentsResponse = JsonConvert.DeserializeObject<ListArchiveDocumentsResponse>(listArchiveDocumentsResponseBody);
             instance
-                .Setup(p => p.ListArchiveDocuments(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<int>(), Moq.It.IsAny<int>()))
+                .Setup(p => p.ListArchiveDocuments(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>()))
                 .Returns(listArchiveDocumentsResponse);
 
             modifyArchiveDocumentResponseBody = "{'data':{'id':12345,'date':'2021-08-20','category':'Altri documenti','description':'spesa 2'}}";

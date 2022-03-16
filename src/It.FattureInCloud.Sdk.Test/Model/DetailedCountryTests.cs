@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class DetailedCountryTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for DetailedCountry
-        //private DetailedCountry instance;
+        private DetailedCountry instance;
 
         public DetailedCountryTests()
         {
-            // TODO uncomment below to create an instance of DetailedCountry
-            //instance = new DetailedCountry();
+            var body = "{ 'name': 'Italia', 'settings_name': 'Italia', 'iso': 'IT', 'fiscal_iso': 'IT', 'uic': '086' }";
+            instance = JsonConvert.DeserializeObject<DetailedCountry>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DetailedCountryInstanceTest()
         {
-            // TODO uncomment below to test "IsType" DetailedCountry
-            //Assert.IsType<DetailedCountry>(instance);
+            Assert.IsType<DetailedCountry>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NameTest()
         {
-            // TODO unit test for the property 'Name'
+            Assert.IsType<string>(instance.Name);
         }
         /// <summary>
         /// Test the property 'SettingsName'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SettingsNameTest()
         {
-            // TODO unit test for the property 'SettingsName'
+            Assert.IsType<string>(instance.SettingsName);
         }
         /// <summary>
         /// Test the property 'Iso'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IsoTest()
         {
-            // TODO unit test for the property 'Iso'
+            Assert.IsType<string>(instance.Iso);
         }
         /// <summary>
         /// Test the property 'FiscalIso'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FiscalIsoTest()
         {
-            // TODO unit test for the property 'FiscalIso'
+            Assert.IsType<string>(instance.FiscalIso);
         }
         /// <summary>
         /// Test the property 'Uic'
@@ -95,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void UicTest()
         {
-            // TODO unit test for the property 'Uic'
+            Assert.IsType<string>(instance.Uic);
         }
 
     }
