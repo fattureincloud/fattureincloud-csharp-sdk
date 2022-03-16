@@ -39,6 +39,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         string listCitiesResponseBody;
         string listCostCentersResponseBody;
         string listCountriesResponseBody;
+        string listDetailedCountriesResponseBody;
         string listCurrenciesResponseBody;
         string listDeliveryNotesDefaultCausalsResponseBody;
         string listLanguagesResponseBody;
@@ -76,6 +77,12 @@ namespace It.FattureInCloud.Sdk.Test.Api
             instance
                 .Setup(p => p.ListCountries())
                 .Returns(listCountriesResponse);
+
+            listDetailedCountriesResponseBody = "{'data': [{'name': 'Italia', 'settings_name': 'Italia', 'iso': 'IT', 'fiscal_iso': 'IT', 'uic': '086'}, {'name': 'Albania', 'settings_name': 'Albania', 'iso': 'AL', 'fiscal_iso': 'AL', 'uic': '087'}]}";
+            var listDetailedCountriesResponse = JsonConvert.DeserializeObject<ListDetailedCountriesResponse>(listDetailedCountriesResponseBody);
+            instance
+                .Setup(p => p.ListDetailedCountries())
+                .Returns(listDetailedCountriesResponse);
 
             listCurrenciesResponseBody = "{'data':[{'id':'AED','symbol':'AED','html_symbol':'AED','exchange_rate':'4.09500'},{'id':'EUR','symbol':'\u20ac','html_symbol':'€','exchange_rate':'1.00000'}]}";
             var listCurrenciesResponse = JsonConvert.DeserializeObject<ListCurrenciesResponse>(listCurrenciesResponseBody);
@@ -208,6 +215,18 @@ namespace It.FattureInCloud.Sdk.Test.Api
         {
             var response = instance.Object.ListCountries();
             JObject obj = JObject.Parse(listCountriesResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
+        }
+
+        /// <summary>
+        /// Test ListCountries
+        /// </summary>
+        [Fact]
+        public void ListDetailedCountriesTest()
+        {
+            var response = instance.Object.ListDetailedCountries();
+            JObject obj = JObject.Parse(listDetailedCountriesResponseBody);
 
             Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
