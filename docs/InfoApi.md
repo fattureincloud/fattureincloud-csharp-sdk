@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**ListCountries**](InfoApi.md#listcountries) | **GET** /info/countries | List Countries
 [**ListCurrencies**](InfoApi.md#listcurrencies) | **GET** /info/currencies | List Currencies
 [**ListDeliveryNotesDefaultCausals**](InfoApi.md#listdeliverynotesdefaultcausals) | **GET** /info/dn_causals | List Delivery Notes Default Causals
+[**ListDetailedCountries**](InfoApi.md#listdetailedcountries) | **GET** /info/detailed_countries | List Detailed Countries
 [**ListLanguages**](InfoApi.md#listlanguages) | **GET** /info/languages | List Languages
 [**ListPaymentAccounts**](InfoApi.md#listpaymentaccounts) | **GET** /c/{company_id}/info/payment_accounts | List Payment Accounts
 [**ListPaymentMethods**](InfoApi.md#listpaymentmethods) | **GET** /c/{company_id}/info/payment_methods | List Payment Methods
@@ -458,6 +459,77 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of Delivery Notes Default Causals |  -  |
+| **401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="listdetailedcountries"></a>
+# **ListDetailedCountries**
+> ListDetailedCountriesResponse ListDetailedCountries ()
+
+List Detailed Countries
+
+Lists the supported countries.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using It.FattureInCloud.Sdk.Api;
+using It.FattureInCloud.Sdk.Client;
+using It.FattureInCloud.Sdk.Model;
+
+namespace Example
+{
+    public class ListDetailedCountriesExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api-v2.fattureincloud.it";
+            // Configure OAuth2 access token for authorization: OAuth2AuthenticationCodeFlow
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new InfoApi(config);
+
+            try
+            {
+                // List Detailed Countries
+                ListDetailedCountriesResponse result = apiInstance.ListDetailedCountries();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling InfoApi.ListDetailedCountries: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ListDetailedCountriesResponse**](ListDetailedCountriesResponse.md)
+
+### Authorization
+
+[OAuth2AuthenticationCodeFlow](../README.md#OAuth2AuthenticationCodeFlow)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | List of detailed countries |  -  |
 | **401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

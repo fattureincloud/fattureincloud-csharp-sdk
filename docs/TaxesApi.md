@@ -329,7 +329,7 @@ Name | Type | Description  | Notes
 
 <a name="listf24"></a>
 # **ListF24**
-> ListF24Response ListF24 (int companyId, string fields = null, string fieldset = null, string sort = null, int? page = null, int? perPage = null)
+> ListF24Response ListF24 (int companyId, string fields = null, string fieldset = null, string sort = null, int? page = null, int? perPage = null, string q = null)
 
 List F24
 
@@ -361,11 +361,12 @@ namespace Example
             var sort = "sort_example";  // string | List of comma-separated fields for result sorting (minus for desc sorting). (optional) 
             var page = 1;  // int? | The page to retrieve. (optional)  (default to 1)
             var perPage = 5;  // int? | The size of the page. (optional)  (default to 5)
+            var q = "q_example";  // string | Query for filtering the results. (optional) 
 
             try
             {
                 // List F24
-                ListF24Response result = apiInstance.ListF24(companyId, fields, fieldset, sort, page, perPage);
+                ListF24Response result = apiInstance.ListF24(companyId, fields, fieldset, sort, page, perPage, q);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -389,6 +390,7 @@ Name | Type | Description  | Notes
  **sort** | **string**| List of comma-separated fields for result sorting (minus for desc sorting). | [optional] 
  **page** | **int?**| The page to retrieve. | [optional] [default to 1]
  **perPage** | **int?**| The size of the page. | [optional] [default to 5]
+ **q** | **string**| Query for filtering the results. | [optional] 
 
 ### Return type
 

@@ -1,11 +1,11 @@
-# It.FattureInCloud.Sdk.Model.EinvoiceRejectionReason
+# It.FattureInCloud.Sdk.Model.EInvoiceRejectionReason
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Reason** | **string** | Rejection reason. | [optional] 
-**EiStatus** | **string** | EInvoice status. | [optional] 
+**EiStatus** | **string** | E-invoice status. | [optional] 
 **Solution** | **string** | Error solution. | [optional] 
 **Code** | **string** | Error code. | [optional] 
 **Date** | **DateTime?** | Rejection date. | [optional] 
