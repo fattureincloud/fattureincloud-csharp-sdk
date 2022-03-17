@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.7 (2022-03-17)
+
+
+### Bug Fixes
+
+* added filter parameter and detailed countries method ([#36](https://github.com/fattureincloud/fattureincloud-csharp-sdk/issues/36)) ([dbf9578](https://github.com/fattureincloud/fattureincloud-csharp-sdk/commit/dbf95787a7a5a72b9413a8f79d60dac8004bd3ec))
+
 ### 2.0.6 (2022-02-28)
 
 
