@@ -13,12 +13,12 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>It.FattureInCloud.Sdk</RootNamespace>
-    <Version>2.0.7</Version>
+    <Version>2.0.8</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\It.FattureInCloud.Sdk.xml</DocumentationFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/fattureincloud/fattureincloud-csharp-sdk.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>bumping version to 2.0.7</PackageReleaseNotes>
+    <PackageReleaseNotes>bumping version to 2.0.8</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

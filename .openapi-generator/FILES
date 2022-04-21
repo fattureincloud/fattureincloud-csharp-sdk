@@ -226,9 +226,6 @@ docs/VerifyEInvoiceXmlErrorResponseExtra.md
 docs/VerifyEInvoiceXmlResponse.md
 docs/VerifyEInvoiceXmlResponseData.md
 src/It.FattureInCloud.Sdk.Test/It.FattureInCloud.Sdk.Test.csproj
-src/It.FattureInCloud.Sdk.Test/Model/DetailedCountryTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/EInvoiceRejectionReasonTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/ListDetailedCountriesResponseTests.cs
 src/It.FattureInCloud.Sdk/Api/ArchiveApi.cs
 src/It.FattureInCloud.Sdk/Api/CashbookApi.cs
 src/It.FattureInCloud.Sdk/Api/ClientsApi.cs
