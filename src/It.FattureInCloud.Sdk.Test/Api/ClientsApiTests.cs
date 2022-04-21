@@ -137,7 +137,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
 
             var response = instance.Object.ListClients(companyId, fields, fieldset, sort, page, perPage);
             JObject obj = JObject.Parse(listClientsResponseBody);
-            Console.Write(JObject.FromObject(response));
+
             Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 

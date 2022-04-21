@@ -138,7 +138,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
 
             var response = instance.Object.ListCashbookEntries(companyId, dateFrom, dateTo, year, type, paymentAccountId);
             JObject obj = JObject.Parse(listCashbookResponseBody);
-            Console.Write(JObject.FromObject(response));
+
             Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
