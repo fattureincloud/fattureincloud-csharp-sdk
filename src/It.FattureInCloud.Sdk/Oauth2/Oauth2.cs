@@ -87,7 +87,7 @@ namespace It.FattureInCloud.Sdk.OauthHelper
         /// </summary>
         /// <param name="code">Code</param>
         /// <returns>(OAuth2AuthorizationCodeTokenResponse)</returns>
-        public OAuth2AuthorizationCodeTokenResponse fetchToken(string code)
+        public OAuth2AuthorizationCodeTokenResponse FetchToken(string code)
         {
             string tokenUri = string.Format("{0}/oauth/token", BaseUri);
             var data = new
@@ -116,7 +116,7 @@ namespace It.FattureInCloud.Sdk.OauthHelper
         /// </summary>
         /// <param name="refreshToken">Refresh Token</param>
         /// <returns>(OAuth2AuthorizationCodeTokenResponse)</returns>
-        public OAuth2AuthorizationCodeTokenResponse refreshToken(string refreshToken)
+        public OAuth2AuthorizationCodeTokenResponse RefreshToken(string refreshToken)
         {
             string tokenUri = string.Format("{0}/oauth/token", BaseUri);
             var data = new
