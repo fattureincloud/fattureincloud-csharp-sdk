@@ -8,14 +8,14 @@ namespace It.FattureInCloud.Sdk.Test.OauthHelper
     /// <summary>
     ///  Class for testing Oauth
     /// </summary>
-    public class Oauth2Test : IDisposable
+    public class OAuth2AuthorizationCodeManagerTest : IDisposable
     {
-        Oauth2 oauth = new Oauth2("CLIENT_ID", "CLIENT_SECRET", "http://localhost:3000/redirect");
+        OAuth2AuthorizationCodeManager oauth = new OAuth2AuthorizationCodeManager("CLIENT_ID", "CLIENT_SECRET", "http://localhost:3000/redirect");
         /// <summary>
         /// Test a OAuth2 instance
         /// </summary>
         [Fact]
-        public void Oauth2InstanceTest()
+        public void OAuth2AuthorizationCodeManagerInstanceTest()
         {
             Assert.Equal("CLIENT_ID", oauth.ClientId);
             Assert.Equal("CLIENT_SECRET", oauth.ClientSecret);
@@ -30,7 +30,7 @@ namespace It.FattureInCloud.Sdk.Test.OauthHelper
         public void OAuth2AuthorizationCodeParamsTest()
         {
             var parameters = new OAuth2AuthorizationCodeParams("EXAMPLE_CODE", "EXAMPLE_STATE");
-            Assert.Equal("EXAMPLE_CODE", parameters.Code);
+            Assert.Equal("EXAMPLE_CODE", parameters.AuthorizationCode);
             Assert.Equal("EXAMPLE_STATE", parameters.State);
         }
 
@@ -58,7 +58,7 @@ namespace It.FattureInCloud.Sdk.Test.OauthHelper
                 Scope.ARCHIVE_READ
             };
 
-            var scopesStr = Oauth2.GetScopeString(scopes);
+            var scopesStr = OAuth2AuthorizationCodeManager.GetScopeString(scopes);
             Assert.Equal("entity.clients:r archive:r", scopesStr);
         }
 
@@ -86,7 +86,7 @@ namespace It.FattureInCloud.Sdk.Test.OauthHelper
             var url = "http://localhost:3000/redirect?state=EXAMPLE_STATE&code=c%2FEXAMPLE_CODE";
             var parameters = oauth.GetParamsFromUrl(url);
 
-            Assert.Equal("c/EXAMPLE_CODE", parameters.Code);
+            Assert.Equal("c/EXAMPLE_CODE", parameters.AuthorizationCode);
             Assert.Equal("EXAMPLE_STATE", parameters.State);
         }
 

@@ -9,7 +9,7 @@ namespace It.FattureInCloud.Sdk.OauthHelper
     /// <summary>
     /// Oauth2
     /// </summary>
-    public class Oauth2
+    public class OAuth2AuthorizationCodeManager
     {
         /// <summary>
         /// Gets or Sets ClientId
@@ -38,7 +38,7 @@ namespace It.FattureInCloud.Sdk.OauthHelper
         /// <param name="clientSecret">Client Secret</param>
         /// <param name="redirectUri">Redirect Uri</param>
         /// <param name="baseUri">Base Uri</param>
-        public Oauth2(string clientId, string clientSecret, string redirectUri, string baseUri = "https://api-v2.fattureincloud.it")
+        public OAuth2AuthorizationCodeManager(string clientId, string clientSecret, string redirectUri, string baseUri = "https://api-v2.fattureincloud.it")
         {
             ClientId = clientId;
             ClientSecret = clientSecret;
@@ -87,7 +87,7 @@ namespace It.FattureInCloud.Sdk.OauthHelper
         /// </summary>
         /// <param name="code">Code</param>
         /// <returns>(OAuth2AuthorizationCodeTokenResponse)</returns>
-        public OAuth2AuthorizationCodeTokenResponse fetchToken(string code)
+        public OAuth2AuthorizationCodeTokenResponse FetchToken(string code)
         {
             string tokenUri = string.Format("{0}/oauth/token", BaseUri);
             var data = new
@@ -116,7 +116,7 @@ namespace It.FattureInCloud.Sdk.OauthHelper
         /// </summary>
         /// <param name="refreshToken">Refresh Token</param>
         /// <returns>(OAuth2AuthorizationCodeTokenResponse)</returns>
-        public OAuth2AuthorizationCodeTokenResponse refreshToken(string refreshToken)
+        public OAuth2AuthorizationCodeTokenResponse RefreshToken(string refreshToken)
         {
             string tokenUri = string.Format("{0}/oauth/token", BaseUri);
             var data = new
@@ -165,7 +165,7 @@ namespace It.FattureInCloud.Sdk.OauthHelper
         /// <summary>
         /// Gets or Sets Code
         /// </summary>
-        public string Code { get; set; }
+        public string AuthorizationCode { get; set; }
 
         /// <summary>
         /// Gets or Sets State
@@ -177,7 +177,7 @@ namespace It.FattureInCloud.Sdk.OauthHelper
         /// </summary>
         public OAuth2AuthorizationCodeParams(string code, string state)
         {
-            Code = code;
+            AuthorizationCode = code;
             State = state;
         }
     }

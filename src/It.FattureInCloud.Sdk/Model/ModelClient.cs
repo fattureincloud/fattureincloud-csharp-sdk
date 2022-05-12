@@ -953,7 +953,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// </summary>
         /// <value>Has intent declaration.</value>
         [DataMember(Name = "has_intent_declaration", EmitDefaultValue = true)]
-        public bool HasIntentDeclaration
+        public bool? HasIntentDeclaration
         {
             get{ return _HasIntentDeclaration;}
             set
@@ -962,7 +962,7 @@ namespace It.FattureInCloud.Sdk.Model
                 _flagHasIntentDeclaration = true;
             }
         }
-        private bool _HasIntentDeclaration;
+        private bool? _HasIntentDeclaration;
         private bool _flagHasIntentDeclaration;
 
         /// <summary>
