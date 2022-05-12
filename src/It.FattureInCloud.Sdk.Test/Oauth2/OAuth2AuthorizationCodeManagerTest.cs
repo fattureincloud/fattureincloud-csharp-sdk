@@ -8,14 +8,14 @@ namespace It.FattureInCloud.Sdk.Test.OauthHelper
     /// <summary>
     ///  Class for testing Oauth
     /// </summary>
-    public class Oauth2Test : IDisposable
+    public class OAuth2AuthorizationCodeManagerTest : IDisposable
     {
         OAuth2AuthorizationCodeManager oauth = new OAuth2AuthorizationCodeManager("CLIENT_ID", "CLIENT_SECRET", "http://localhost:3000/redirect");
         /// <summary>
         /// Test a OAuth2 instance
         /// </summary>
         [Fact]
-        public void Oauth2InstanceTest()
+        public void OAuth2AuthorizationCodeManagerInstanceTest()
         {
             Assert.Equal("CLIENT_ID", oauth.ClientId);
             Assert.Equal("CLIENT_SECRET", oauth.ClientSecret);
