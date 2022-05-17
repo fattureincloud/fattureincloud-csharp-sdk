@@ -1,4 +1,4 @@
-﻿namespace It.FattureInCloud.Sdk.OauthHelper
+namespace It.FattureInCloud.Sdk.OauthHelper
 {
     /// <summary>
     /// Scope enum
@@ -66,10 +66,10 @@
         /// <summary>Write permission to the issued Delivery Notes</summary>
         ISSUED_DOCUMENTS_DELIVERY_NOTES_ALL,
 
-        /// <summary>Read permission to the issued Received Documents</summary>
+        /// <summary>Read permission to the Received Documents</summary>
         RECEIVED_DOCUMENTS_READ,
 
-        /// <summary>Write permission to the issued Received Documents</summary>
+        /// <summary>Write permission to the Received Documents</summary>
         RECEIVED_DOCUMENTS_ALL,
 
         /// <summary>Read permission to the Stock movements</summary>

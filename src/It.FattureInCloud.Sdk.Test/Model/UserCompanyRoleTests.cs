@@ -36,7 +36,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
 
         public UserCompanyRoleTests()
         {
-           instance = UserCompanyRole.Employee;
+            instance = UserCompanyRole.Employee;
         }
 
         public void Dispose()

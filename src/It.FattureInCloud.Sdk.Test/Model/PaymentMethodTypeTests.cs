@@ -36,7 +36,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
 
         public PaymentMethodTypeTests()
         {
-             instance = PaymentMethodType.Standard;
+            instance = PaymentMethodType.Standard;
         }
 
         public void Dispose()

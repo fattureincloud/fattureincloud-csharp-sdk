@@ -34,7 +34,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
     /// </remarks>
     public class ArchiveApiTests : IDisposable
     {
-        Mock<IArchiveApi>instance = new Mock<IArchiveApi>();
+        Mock<IArchiveApi> instance = new Mock<IArchiveApi>();
         string createArchiveDocumentResponseBody;
         string getArchiveDocumentResponseBody;
         string listArchiveDocumentsResponseBody;
@@ -99,7 +99,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
 
             var response = instance.Object.CreateArchiveDocument(companyId, createArchiveDocumentRequest);
             JObject obj = JObject.Parse(createArchiveDocumentResponseBody);
-            
+
             Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 

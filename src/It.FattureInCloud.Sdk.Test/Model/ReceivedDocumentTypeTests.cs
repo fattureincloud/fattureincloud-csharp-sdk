@@ -51,7 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ReceivedDocumentTypeInstanceTest()
         {
-           Assert.IsType<ReceivedDocumentType>(instance.Type);
+            Assert.IsType<ReceivedDocumentType>(instance.Type);
         }
 
 

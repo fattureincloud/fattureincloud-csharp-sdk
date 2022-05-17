@@ -14,7 +14,7 @@ namespace It.FattureInCloud.Sdk.Test.FilterHelper
         /// </summary>
         [Fact]
         public void ConditionInstanceTest()
-        { 
+        {
             var cBool = new Condition<bool>("qualified", Operator.EQ, true);
             Assert.Equal("qualified", cBool.Field);
             Assert.Equal(Operator.EQ, cBool.Op);

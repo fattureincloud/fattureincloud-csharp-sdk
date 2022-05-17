@@ -101,7 +101,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DetailsTest()
         {
-            Assert.IsType <List<PaymentMethodDetails>>(instance.Details);     
+            Assert.IsType<List<PaymentMethodDetails>>(instance.Details);
         }
         /// <summary>
         /// Test the property 'BankIban'
