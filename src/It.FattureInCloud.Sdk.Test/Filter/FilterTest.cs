@@ -1,21 +1,25 @@
-using Xunit;
 using System;
 using It.FattureInCloud.Sdk.FilterHelper;
 
 namespace It.FattureInCloud.Sdk.Test.FilterHelper
 {
     /// <summary>
-    ///  Class for testing Filter
+    ///     Class for testing Filter
     /// </summary>
     public class FilterTest : IDisposable
     {
+        public void Dispose()
+        {
+            // Cleanup when everything is done.
+        }
+
         /// <summary>
-        /// Test a Filter instance
+        ///     Test a Filter instance
         /// </summary>
         [Fact]
         public void FilterInstanceTest()
         {
-            Filter f = new Filter();
+            var f = new Filter();
             Assert.Null(f.Expression);
 
             Expression e = new Condition<string>("nation", Operator.EQ, "IT");
@@ -27,18 +31,13 @@ namespace It.FattureInCloud.Sdk.Test.FilterHelper
             Assert.Equal(e1, f.Expression);
         }
 
-        public void Dispose()
-        {
-            // Cleanup when everything is done.
-        }
-
         /// <summary>
-        /// Test the Where method
+        ///     Test the Where method
         /// </summary>
         [Fact]
         public void WhereTest()
         {
-            Filter f = new Filter();
+            var f = new Filter();
             Assert.Null(f.Expression);
 
             Expression e = new Condition<string>("nation", Operator.EQ, "IT");
@@ -51,12 +50,12 @@ namespace It.FattureInCloud.Sdk.Test.FilterHelper
         }
 
         /// <summary>
-        /// Test the WhereExpression method
+        ///     Test the WhereExpression method
         /// </summary>
         [Fact]
         public void WhereExpressionTest()
         {
-            Filter f = new Filter();
+            var f = new Filter();
             Assert.Null(f.Expression);
 
             Expression e = new Condition<string>("nation", Operator.EQ, "IT");
@@ -69,17 +68,17 @@ namespace It.FattureInCloud.Sdk.Test.FilterHelper
         }
 
         /// <summary>
-        /// Test the And method
+        ///     Test the And method
         /// </summary>
         [Fact]
         public void AndTest()
         {
-            Filter f = new Filter();
+            var f = new Filter();
             Assert.Null(f.Expression);
 
             Expression c1 = new Condition<string>("city", Operator.EQ, "Warsaw");
             Expression c2 = new Condition<string>("company", Operator.EQ, "Przewodniczka Social Media");
-            Conjunction conj = new Conjunction(c1, c2);
+            var conj = new Conjunction(c1, c2);
 
 
             Exception ex = Assert.Throws<Exception>(() =>
@@ -95,17 +94,17 @@ namespace It.FattureInCloud.Sdk.Test.FilterHelper
         }
 
         /// <summary>
-        /// Test the AndExpression method
+        ///     Test the AndExpression method
         /// </summary>
         [Fact]
         public void AndExpressionTest()
         {
-            Filter f = new Filter();
+            var f = new Filter();
             Assert.Null(f.Expression);
 
             Expression c1 = new Condition<string>("city", Operator.EQ, "Warsaw");
             Expression c2 = new Condition<string>("company", Operator.EQ, "Przewodniczka Social Media");
-            Conjunction conj = new Conjunction(c1, c2);
+            var conj = new Conjunction(c1, c2);
 
 
             Exception thrownLeft = Assert.Throws<Exception>(() =>
@@ -127,17 +126,17 @@ namespace It.FattureInCloud.Sdk.Test.FilterHelper
         }
 
         /// <summary>
-        /// Test the AndFilter method
+        ///     Test the AndFilter method
         /// </summary>
         [Fact]
         public void AndFilterTest()
         {
-            Filter f = new Filter();
+            var f = new Filter();
             Assert.Null(f.Expression);
 
             Expression c1 = new Condition<string>("city", Operator.EQ, "Warsaw");
             Expression c2 = new Condition<string>("company", Operator.EQ, "Przewodniczka Social Media");
-            Conjunction conj = new Conjunction(c1, c2);
+            var conj = new Conjunction(c1, c2);
 
 
             Exception thrownLeft = Assert.Throws<Exception>(() =>
@@ -165,17 +164,17 @@ namespace It.FattureInCloud.Sdk.Test.FilterHelper
         }
 
         /// <summary>
-        /// Test the Or method
+        ///     Test the Or method
         /// </summary>
         [Fact]
         public void OrTest()
         {
-            Filter f = new Filter();
+            var f = new Filter();
             Assert.Null(f.Expression);
 
             Expression c1 = new Condition<string>("city", Operator.EQ, "Warsaw");
             Expression c2 = new Condition<string>("company", Operator.EQ, "Przewodniczka Social Media");
-            Disjunction disj = new Disjunction(c1, c2);
+            var disj = new Disjunction(c1, c2);
 
 
             Exception ex = Assert.Throws<Exception>(() =>
@@ -191,17 +190,17 @@ namespace It.FattureInCloud.Sdk.Test.FilterHelper
         }
 
         /// <summary>
-        /// Test the OrExpression method
+        ///     Test the OrExpression method
         /// </summary>
         [Fact]
         public void OrExpressionTest()
         {
-            Filter f = new Filter();
+            var f = new Filter();
             Assert.Null(f.Expression);
 
             Expression c1 = new Condition<string>("city", Operator.EQ, "Warsaw");
             Expression c2 = new Condition<string>("company", Operator.EQ, "Przewodniczka Social Media");
-            Disjunction disj = new Disjunction(c1, c2);
+            var disj = new Disjunction(c1, c2);
 
 
             Exception thrownLeft = Assert.Throws<Exception>(() =>
@@ -223,17 +222,17 @@ namespace It.FattureInCloud.Sdk.Test.FilterHelper
         }
 
         /// <summary>
-        /// Test the OrFilter method
+        ///     Test the OrFilter method
         /// </summary>
         [Fact]
         public void OrFilterTest()
         {
-            Filter f = new Filter();
+            var f = new Filter();
             Assert.Null(f.Expression);
 
             Expression c1 = new Condition<string>("city", Operator.EQ, "Warsaw");
             Expression c2 = new Condition<string>("company", Operator.EQ, "Przewodniczka Social Media");
-            Disjunction disj = new Disjunction(c1, c2);
+            var disj = new Disjunction(c1, c2);
 
 
             Exception thrownLeft = Assert.Throws<Exception>(() =>
@@ -261,12 +260,12 @@ namespace It.FattureInCloud.Sdk.Test.FilterHelper
         }
 
         /// <summary>
-        /// Test the BuildQuery method
+        ///     Test the BuildQuery method
         /// </summary>
         [Fact]
         public void BuildQueryTest()
         {
-            Filter f = new Filter();
+            var f = new Filter();
             Assert.Empty(f.BuildQuery());
 
             f = new Filter(new Condition<string>("company", Operator.EQ, "Przewodniczka Social Media"));
@@ -274,12 +273,12 @@ namespace It.FattureInCloud.Sdk.Test.FilterHelper
         }
 
         /// <summary>
-        /// Test the BuildUrlEncodedQuery method
+        ///     Test the BuildUrlEncodedQuery method
         /// </summary>
         [Fact]
         public void BuildUrlEncodedQueryTest()
         {
-            Filter f = new Filter();
+            var f = new Filter();
             Assert.Empty(f.BuildUrlEncodedQuery());
 
             f = new Filter(new Condition<string>("company", Operator.EQ, "Przewodniczka Social Media"));
@@ -287,12 +286,12 @@ namespace It.FattureInCloud.Sdk.Test.FilterHelper
         }
 
         /// <summary>
-        /// Test the ToString method
+        ///     Test the ToString method
         /// </summary>
         [Fact]
         public void ToStringTest()
         {
-            Filter f = new Filter();
+            var f = new Filter();
             Assert.Empty(f.ToString());
 
             f = new Filter(new Condition<string>("company", Operator.EQ, "Przewodniczka Social Media"));

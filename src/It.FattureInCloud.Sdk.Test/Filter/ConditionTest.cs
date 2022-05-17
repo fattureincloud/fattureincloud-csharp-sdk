@@ -1,20 +1,24 @@
-using Xunit;
 using System;
 using It.FattureInCloud.Sdk.FilterHelper;
 
 namespace It.FattureInCloud.Sdk.Test.FilterHelper
 {
     /// <summary>
-    ///  Class for testing Condition
+    ///     Class for testing Condition
     /// </summary>
     public class ConditionTest : IDisposable
     {
+        public void Dispose()
+        {
+            // Cleanup when everything is done.
+        }
+
         /// <summary>
-        /// Test a Condition instance
+        ///     Test a Condition instance
         /// </summary>
         [Fact]
         public void ConditionInstanceTest()
-        { 
+        {
             var cBool = new Condition<bool>("qualified", Operator.EQ, true);
             Assert.Equal("qualified", cBool.Field);
             Assert.Equal(Operator.EQ, cBool.Op);
@@ -67,14 +71,6 @@ namespace It.FattureInCloud.Sdk.Test.FilterHelper
             Assert.Equal("girlfriend is not null", cNull.BuildQuery());
             cNull.Op = Operator.IS;
             Assert.Equal("girlfriend is null", cNull.ToString());
-
         }
-
-        public void Dispose()
-        {
-            // Cleanup when everything is done.
-        }
-
     }
-
 }

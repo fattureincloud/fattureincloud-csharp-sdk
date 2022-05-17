@@ -1,57 +1,56 @@
-﻿using Xunit;
-using System;
+﻿using System;
 using It.FattureInCloud.Sdk.FilterHelper;
 
 namespace It.FattureInCloud.Sdk.Test.FilterHelper
 {
     public class OperatorTest : IDisposable
     {
+        public void Dispose()
+        {
+            // Cleanup when everything is done.
+        }
+
         /// <summary>
-        /// Test a Operator instance
+        ///     Test a Operator instance
         /// </summary>
         [Fact]
         public void OperatorInstanceTest()
         {
-            Operator eq = Operator.EQ;
+            var eq = Operator.EQ;
             Assert.Equal("=", OperatorExtensions.GetOperatorValue(eq));
 
-            Operator neq = Operator.NEQ;
+            var neq = Operator.NEQ;
             Assert.Equal("<>", OperatorExtensions.GetOperatorValue(neq));
 
-            Operator gt = Operator.GT;
+            var gt = Operator.GT;
             Assert.Equal(">", OperatorExtensions.GetOperatorValue(gt));
 
-            Operator gte = Operator.GTE;
+            var gte = Operator.GTE;
             Assert.Equal(">=", OperatorExtensions.GetOperatorValue(gte));
 
-            Operator lt = Operator.LT;
+            var lt = Operator.LT;
             Assert.Equal("<", OperatorExtensions.GetOperatorValue(lt));
 
-            Operator lte = Operator.LTE;
+            var lte = Operator.LTE;
             Assert.Equal("<=", OperatorExtensions.GetOperatorValue(lte));
 
-            Operator isOp = Operator.IS;
+            var isOp = Operator.IS;
             Assert.Equal("is", OperatorExtensions.GetOperatorValue(isOp));
 
-            Operator isNot = Operator.IS_NOT;
+            var isNot = Operator.IS_NOT;
             Assert.Equal("is not", OperatorExtensions.GetOperatorValue(isNot));
 
-            Operator like = Operator.LIKE;
+            var like = Operator.LIKE;
             Assert.Equal("like", OperatorExtensions.GetOperatorValue(like));
 
-            Operator contains = Operator.CONTAINS;
+            var contains = Operator.CONTAINS;
             Assert.Equal("contains", OperatorExtensions.GetOperatorValue(contains));
 
-            Operator startsWith = Operator.STARTS_WITH;
+            var startsWith = Operator.STARTS_WITH;
             Assert.Equal("starts with", OperatorExtensions.GetOperatorValue(startsWith));
 
-            Operator endsWith = Operator.ENDS_WITH;
+            var endsWith = Operator.ENDS_WITH;
             Assert.Equal("ends with", OperatorExtensions.GetOperatorValue(endsWith));
-        }
-
-        public void Dispose()
-        {
-            // Cleanup when everything is done.
         }
     }
 }

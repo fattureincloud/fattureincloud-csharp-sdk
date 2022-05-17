@@ -1,27 +1,12 @@
 namespace It.FattureInCloud.Sdk.FilterHelper
 {
     /// <summary>
-    /// Condition
+    ///     Condition
     /// </summary>
     public class Condition<T> : Expression
     {
         /// <summary>
-        /// Gets or Sets Field
-        /// </summary>
-        public string Field { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Op
-        /// </summary>
-        public Operator Op { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Value
-        /// </summary>
-        public T Value { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the Condition class.
+        ///     Initializes a new instance of the Condition class.
         /// </summary>
         /// <param name="field">Condition field</param>
         /// <param name="op">Condition operator</param>
@@ -34,28 +19,38 @@ namespace It.FattureInCloud.Sdk.FilterHelper
         }
 
         /// <summary>
-        /// Builds the query from the condition
+        ///     Gets or Sets Field
+        /// </summary>
+        public string Field { get; set; }
+
+        /// <summary>
+        ///     Gets or Sets Op
+        /// </summary>
+        public Operator Op { get; set; }
+
+        /// <summary>
+        ///     Gets or Sets Value
+        /// </summary>
+        public T Value { get; set; }
+
+        /// <summary>
+        ///     Builds the query from the condition
         /// </summary>
         /// <returns>(string)</returns>
         public string BuildQuery()
         {
             if (Value == null)
-            {
                 return string.Format("{0} {1} {2}", Field, OperatorExtensions.GetOperatorValue(Op), "null");
-            }
             if (Value is bool)
-            {
-                return string.Format("{0} {1} {2}", Field, OperatorExtensions.GetOperatorValue(Op), Value.ToString().ToLower());
-            }
+                return string.Format("{0} {1} {2}", Field, OperatorExtensions.GetOperatorValue(Op),
+                    Value.ToString().ToLower());
             if (Value is string)
-            {
                 return string.Format("{0} {1} {2}", Field, OperatorExtensions.GetOperatorValue(Op), "'" + Value + "'");
-            }
             return string.Format("{0} {1} {2}", Field, OperatorExtensions.GetOperatorValue(Op), Value);
         }
 
         /// <summary>
-        /// Builds the query from the condition
+        ///     Builds the query from the condition
         /// </summary>
         /// <returns>(string)</returns>
         public override string ToString()
@@ -64,23 +59,18 @@ namespace It.FattureInCloud.Sdk.FilterHelper
         }
 
         /// <summary>
-        /// Override of the Equals method
+        ///     Override of the Equals method
         /// </summary>
         /// <returns>(boolean)</returns>
         public override bool Equals(object o)
         {
             if (o is Condition<T>)
-            {
                 return Equals(o as Condition<T>);
-            }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         /// <summary>
-        /// Condition specific Equals method
+        ///     Condition specific Equals method
         /// </summary>
         /// <returns>(boolean)</returns>
         public bool Equals(Condition<T> c)
@@ -92,7 +82,7 @@ namespace It.FattureInCloud.Sdk.FilterHelper
         }
 
         /// <summary>
-        /// Override of the GetHashCode method
+        ///     Override of the GetHashCode method
         /// </summary>
         /// <returns>(int)</returns>
         public override int GetHashCode()
