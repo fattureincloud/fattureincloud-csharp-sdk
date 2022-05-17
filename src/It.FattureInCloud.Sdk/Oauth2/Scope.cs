@@ -1,11 +1,10 @@
-﻿namespace It.FattureInCloud.Sdk.OauthHelper
+namespace It.FattureInCloud.Sdk.OauthHelper
 {
     /// <summary>
-    /// Scope enum
+    ///     Scope enum
     /// </summary>
     public enum Scope
     {
-
         /// <summary>Read permission to the Clients registry</summary>
         ENTITY_CLIENTS_READ,
 
@@ -66,10 +65,10 @@
         /// <summary>Write permission to the issued Delivery Notes</summary>
         ISSUED_DOCUMENTS_DELIVERY_NOTES_ALL,
 
-        /// <summary>Read permission to the issued Received Documents</summary>
+        /// <summary>Read permission to the Received Documents</summary>
         RECEIVED_DOCUMENTS_READ,
 
-        /// <summary>Write permission to the issued Received Documents</summary>
+        /// <summary>Write permission to the Received Documents</summary>
         RECEIVED_DOCUMENTS_ALL,
 
         /// <summary>Read permission to the Stock movements</summary>
@@ -109,17 +108,16 @@
         SETTINGS_ALL,
 
         /// <summary>Read permission to the company Situation</summary>
-        SITUATION_READ,
-
+        SITUATION_READ
     }
 
     /// <summary>
-    /// Scope Extensions Class
+    ///     Scope Extensions Class
     /// </summary>
     public class ScopeExtensions
     {
         /// <summary>
-        /// Returns the Scope value.
+        ///     Returns the Scope value.
         /// </summary>
         /// <param name="scope">Scope</param>
         public static string GetScopeValue(Scope scope)
@@ -127,7 +125,6 @@
             string stringScope = string.Empty;
             switch (scope.ToString())
             {
-
                 case "ENTITY_CLIENTS_READ":
                     stringScope = "entity.clients:r";
                     break;
@@ -267,8 +264,8 @@
                 case "SITUATION_READ":
                     stringScope = "situation:r";
                     break;
-
             }
+
             return stringScope;
         }
     }

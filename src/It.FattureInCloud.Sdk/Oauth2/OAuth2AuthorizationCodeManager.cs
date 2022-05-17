@@ -1,44 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using RestSharp;
-using Newtonsoft.Json;
-
-namespace It.FattureInCloud.Sdk.OauthHelper
+﻿namespace It.FattureInCloud.Sdk.OauthHelper
 {
     /// <summary>
-    /// Oauth2
+    ///     Oauth2
     /// </summary>
     public class OAuth2AuthorizationCodeManager
     {
         /// <summary>
-        /// Gets or Sets ClientId
-        /// </summary>
-        public string ClientId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ClientSecret
-        /// </summary>
-        public string ClientSecret { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RedirectUri
-        /// </summary>
-        public string RedirectUri { get; set; }
-
-        /// <summary>
-        /// Gets or Sets BaseUri
-        /// </summary>
-        public string BaseUri { get; set; } = "https://api-v2.fattureincloud.it";
-
-        /// <summary>
-        /// Initialize a new instance of the Oauth2 class.
+        ///     Initialize a new instance of the Oauth2 class.
         /// </summary>
         /// <param name="clientId">Client Id</param>
         /// <param name="clientSecret">Client Secret</param>
         /// <param name="redirectUri">Redirect Uri</param>
         /// <param name="baseUri">Base Uri</param>
-        public OAuth2AuthorizationCodeManager(string clientId, string clientSecret, string redirectUri, string baseUri = "https://api-v2.fattureincloud.it")
+        public OAuth2AuthorizationCodeManager(string clientId, string clientSecret, string redirectUri,
+            string baseUri = "https://api-v2.fattureincloud.it")
         {
             ClientId = clientId;
             ClientSecret = clientSecret;
@@ -47,7 +22,27 @@ namespace It.FattureInCloud.Sdk.OauthHelper
         }
 
         /// <summary>
-        /// Get the authorization url.
+        ///     Gets or Sets ClientId
+        /// </summary>
+        public string ClientId { get; set; }
+
+        /// <summary>
+        ///     Gets or Sets ClientSecret
+        /// </summary>
+        public string ClientSecret { get; set; }
+
+        /// <summary>
+        ///     Gets or Sets RedirectUri
+        /// </summary>
+        public string RedirectUri { get; set; }
+
+        /// <summary>
+        ///     Gets or Sets BaseUri
+        /// </summary>
+        public string BaseUri { get; set; } = "https://api-v2.fattureincloud.it";
+
+        /// <summary>
+        ///     Get the authorization url.
         /// </summary>
         /// <param name="scopes">Scopes</param>
         /// <param name="state">state</param>
@@ -68,7 +63,7 @@ namespace It.FattureInCloud.Sdk.OauthHelper
         }
 
         /// <summary>
-        /// Get parameters from the url.
+        ///     Get parameters from the url.
         /// </summary>
         /// <param name="url">Url</param>
         /// <returns>(OAuth2AuthorizationCodeParams)</returns>
@@ -83,7 +78,7 @@ namespace It.FattureInCloud.Sdk.OauthHelper
         }
 
         /// <summary>
-        /// Retrieve the access token.
+        ///     Retrieve the access token.
         /// </summary>
         /// <param name="code">Code</param>
         /// <returns>(OAuth2AuthorizationCodeTokenResponse)</returns>
@@ -96,7 +91,7 @@ namespace It.FattureInCloud.Sdk.OauthHelper
                 client_id = ClientId,
                 client_secret = ClientSecret,
                 redirect_uri = RedirectUri,
-                code = code
+                code
             };
 
             var client = new RestClient(tokenUri);
@@ -104,15 +99,14 @@ namespace It.FattureInCloud.Sdk.OauthHelper
             request.AddHeader("content-type", "application/json");
             request.AddJsonBody(data);
             IRestResponse response = client.Execute(request);
-            if ((int)response.StatusCode != 200) {
-                throw new OAuth2AuthorizationCodeError(response.Content);
-            };
+            if ((int)response.StatusCode != 200) throw new OAuth2AuthorizationCodeError(response.Content);
+            ;
 
             return JsonConvert.DeserializeObject<OAuth2AuthorizationCodeTokenResponse>(response.Content);
         }
 
         /// <summary>
-        /// Refresh the access token.
+        ///     Refresh the access token.
         /// </summary>
         /// <param name="refreshToken">Refresh Token</param>
         /// <returns>(OAuth2AuthorizationCodeTokenResponse)</returns>
@@ -132,118 +126,114 @@ namespace It.FattureInCloud.Sdk.OauthHelper
             request.AddHeader("content-type", "application/json");
             request.AddJsonBody(data);
             IRestResponse response = client.Execute(request);
-            if ((int)response.StatusCode != 200)
-            {
-                throw new OAuth2AuthorizationCodeError(response.Content);
-            };
+            if ((int)response.StatusCode != 200) throw new OAuth2AuthorizationCodeError(response.Content);
+            ;
 
             return JsonConvert.DeserializeObject<OAuth2AuthorizationCodeTokenResponse>(response.Content);
         }
 
         /// <summary>
-        /// Build the Scope string.
+        ///     Build the Scope string.
         /// </summary>
         /// <param name="scopes">Scopes</param>
         /// <returns>(string)</returns>
         public static string GetScopeString(List<Scope> scopes)
         {
             string joinedScopes = string.Empty;
-            foreach(Scope s in scopes)
-            {
-                joinedScopes += ScopeExtensions.GetScopeValue(s) + ' ';
-            }
+            foreach (Scope s in scopes) joinedScopes += ScopeExtensions.GetScopeValue(s) + ' ';
 
             return joinedScopes.Trim();
         }
     }
 
     /// <summary>
-    /// OAuth2AuthorizationCodeParams
+    ///     OAuth2AuthorizationCodeParams
     /// </summary>
     public class OAuth2AuthorizationCodeParams
     {
         /// <summary>
-        /// Gets or Sets Code
-        /// </summary>
-        public string AuthorizationCode { get; set; }
-
-        /// <summary>
-        /// Gets or Sets State
-        /// </summary>
-        public string State { get; set; }
-
-        /// <summary>
-        /// OAuth2AuthorizationCodeParams
+        ///     OAuth2AuthorizationCodeParams
         /// </summary>
         public OAuth2AuthorizationCodeParams(string code, string state)
         {
             AuthorizationCode = code;
             State = state;
         }
+
+        /// <summary>
+        ///     Gets or Sets Code
+        /// </summary>
+        public string AuthorizationCode { get; set; }
+
+        /// <summary>
+        ///     Gets or Sets State
+        /// </summary>
+        public string State { get; set; }
     }
 
     /// <summary>
-    /// OAuth2AuthorizationCodeTokenResponse
+    ///     OAuth2AuthorizationCodeTokenResponse
     /// </summary>
     public class OAuth2AuthorizationCodeTokenResponse
     {
         /// <summary>
-        /// Gets or Sets TokenType
+        ///     OAuth2AuthorizationCodeTokenResponse
         /// </summary>
-        [JsonProperty("token_type")]
-        public string TokenType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AccessToken
-        /// </summary>
-        [JsonProperty("access_token")]
-        public string AccessToken { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RefreshToken
-        /// </summary>
-        [JsonProperty("refresh_token")]
-        public string RefreshToken { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ExpiresIn
-        /// </summary>
-        [JsonProperty("expires_in")]
-        public int ExpiresIn { get; set; }
-
-        /// <summary>
-        /// OAuth2AuthorizationCodeTokenResponse
-        /// </summary>
-        public OAuth2AuthorizationCodeTokenResponse(string tokenType, string accessToken, string refreshToken, int expiresIn)
+        public OAuth2AuthorizationCodeTokenResponse(string tokenType, string accessToken, string refreshToken,
+            int expiresIn)
         {
             TokenType = tokenType;
             AccessToken = accessToken;
             RefreshToken = refreshToken;
             ExpiresIn = expiresIn;
         }
+
+        /// <summary>
+        ///     Gets or Sets TokenType
+        /// </summary>
+        [JsonProperty("token_type")]
+        public string TokenType { get; set; }
+
+        /// <summary>
+        ///     Gets or Sets AccessToken
+        /// </summary>
+        [JsonProperty("access_token")]
+        public string AccessToken { get; set; }
+
+        /// <summary>
+        ///     Gets or Sets RefreshToken
+        /// </summary>
+        [JsonProperty("refresh_token")]
+        public string RefreshToken { get; set; }
+
+        /// <summary>
+        ///     Gets or Sets ExpiresIn
+        /// </summary>
+        [JsonProperty("expires_in")]
+        public int ExpiresIn { get; set; }
     }
 
     /// <summary>
-    /// OAuth2AuthorizationCodeError
+    ///     OAuth2AuthorizationCodeError
     /// </summary>
     public class OAuth2AuthorizationCodeError : Exception
     {
         /// <summary>
-        /// OAuth2AuthorizationCodeError
+        ///     OAuth2AuthorizationCodeError
         /// </summary>
         public OAuth2AuthorizationCodeError()
         {
         }
 
         /// <summary>
-        /// OAuth2AuthorizationCodeError
+        ///     OAuth2AuthorizationCodeError
         /// </summary>
-        public OAuth2AuthorizationCodeError(string message): base(message)
+        public OAuth2AuthorizationCodeError(string message) : base(message)
         {
         }
 
         /// <summary>
-        /// OAuth2AuthorizationCodeError
+        ///     OAuth2AuthorizationCodeError
         /// </summary>
         public OAuth2AuthorizationCodeError(string message, Exception inner)
             : base("An error occurred while retrieving token: " + message, inner)

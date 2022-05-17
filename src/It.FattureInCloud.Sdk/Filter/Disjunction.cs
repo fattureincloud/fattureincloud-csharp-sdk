@@ -1,22 +1,12 @@
 namespace It.FattureInCloud.Sdk.FilterHelper
 {
     /// <summary>
-    /// Disjunction
+    ///     Disjunction
     /// </summary>
     public class Disjunction : Expression
     {
         /// <summary>
-        /// Gets or Sets Left
-        /// </summary>
-        public Expression Left { get; set; }
-        
-        /// <summary>
-        /// Gets or Sets Right
-        /// </summary>
-        public Expression Right { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the Disjunction class.
+        ///     Initializes a new instance of the Disjunction class.
         /// </summary>
         /// <param name="left">Left xpression</param>
         /// <param name="right">Right expression</param>
@@ -27,7 +17,17 @@ namespace It.FattureInCloud.Sdk.FilterHelper
         }
 
         /// <summary>
-        /// Builds the query from the disjunction
+        ///     Gets or Sets Left
+        /// </summary>
+        public Expression Left { get; set; }
+
+        /// <summary>
+        ///     Gets or Sets Right
+        /// </summary>
+        public Expression Right { get; set; }
+
+        /// <summary>
+        ///     Builds the query from the disjunction
         /// </summary>
         /// <returns>(string)</returns>
         public string BuildQuery()
@@ -36,7 +36,7 @@ namespace It.FattureInCloud.Sdk.FilterHelper
         }
 
         /// <summary>
-        /// Builds the query from the disjunction
+        ///     Builds the query from the disjunction
         /// </summary>
         /// <returns>(string)</returns>
         public override string ToString()
@@ -45,24 +45,19 @@ namespace It.FattureInCloud.Sdk.FilterHelper
         }
 
         /// <summary>
-        /// Override of the Equals method
+        ///     Override of the Equals method
         /// </summary>
         /// <param name="o">Object to check for equality</param>
         /// <returns>(boolean)</returns>
         public override bool Equals(object o)
         {
             if (o is Disjunction)
-            {
                 return Equals(o as Disjunction);
-            }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         /// <summary>
-        /// Condition specific Equals method
+        ///     Condition specific Equals method
         /// </summary>
         /// <param name="d">Disjunction to check for equality</param>
         /// <returns>(boolean)</returns>
@@ -74,7 +69,7 @@ namespace It.FattureInCloud.Sdk.FilterHelper
         }
 
         /// <summary>
-        /// Override of the GetHashCode method
+        ///     Override of the GetHashCode method
         /// </summary>
         /// <returns>(int)</returns>
         public override int GetHashCode()
