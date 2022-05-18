@@ -36,7 +36,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
 
         public CashbookEntryKindTests()
         {
-            instance =  CashbookEntryKind.Cashbook;
+            instance = CashbookEntryKind.Cashbook;
         }
 
         public void Dispose()

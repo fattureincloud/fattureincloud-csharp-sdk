@@ -21,7 +21,7 @@ using It.FattureInCloud.Sdk.Client;
 using It.FattureInCloud.Sdk.Api;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using It.FattureInCloud.Sdk.Model; 
+using It.FattureInCloud.Sdk.Model;
 
 namespace It.FattureInCloud.Sdk.Test.Api
 {
@@ -119,7 +119,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
 
             var response = instance.Object.GetProduct(companyId, productId, fields, fieldset);
             JObject obj = JObject.Parse(getProductResponseBody);
-            
+
             Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 

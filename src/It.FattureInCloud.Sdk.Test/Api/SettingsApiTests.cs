@@ -106,7 +106,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
 
             var response = instance.Object.CreatePaymentAccount(companyId, createPaymentAccountRequest);
             JObject obj = JObject.Parse(createPaymentAccountResponseBody);
- 
+
             Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 

@@ -104,7 +104,8 @@ namespace It.FattureInCloud.Sdk.OauthHelper
             request.AddHeader("content-type", "application/json");
             request.AddJsonBody(data);
             IRestResponse response = client.Execute(request);
-            if ((int)response.StatusCode != 200) {
+            if ((int)response.StatusCode != 200)
+            {
                 throw new OAuth2AuthorizationCodeError(response.Content);
             };
 
@@ -148,7 +149,7 @@ namespace It.FattureInCloud.Sdk.OauthHelper
         public static string GetScopeString(List<Scope> scopes)
         {
             string joinedScopes = string.Empty;
-            foreach(Scope s in scopes)
+            foreach (Scope s in scopes)
             {
                 joinedScopes += ScopeExtensions.GetScopeValue(s) + ' ';
             }
@@ -238,7 +239,7 @@ namespace It.FattureInCloud.Sdk.OauthHelper
         /// <summary>
         /// OAuth2AuthorizationCodeError
         /// </summary>
-        public OAuth2AuthorizationCodeError(string message): base(message)
+        public OAuth2AuthorizationCodeError(string message) : base(message)
         {
         }
 
