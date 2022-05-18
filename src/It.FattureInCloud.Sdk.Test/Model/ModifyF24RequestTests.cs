@@ -61,7 +61,8 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            Assert.IsType<F24>(instance.Data);        }
+            Assert.IsType<F24>(instance.Data);
+        }
 
     }
 

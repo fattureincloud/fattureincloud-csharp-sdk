@@ -192,7 +192,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
             int documentId = 12345;
             string fields = "";
             string fieldset = "";
-            
+
             var response = instance.Object.GetIssuedDocument(companyId, documentId, fields, fieldset);
             JObject obj = JObject.Parse(getIssuedDocumentResponseBody);
 

@@ -9,7 +9,7 @@ namespace It.FattureInCloud.Sdk.FilterHelper
         /// Gets or Sets Left
         /// </summary>
         public Expression Left { get; set; }
-        
+
         /// <summary>
         /// Gets or Sets Right
         /// </summary>

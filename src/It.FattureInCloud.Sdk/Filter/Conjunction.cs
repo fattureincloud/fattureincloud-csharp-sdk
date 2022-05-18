@@ -3,7 +3,8 @@ namespace It.FattureInCloud.Sdk.FilterHelper
     /// <summary>
     /// Conjunction
     /// </summary>
-    public class Conjunction : Expression {
+    public class Conjunction : Expression
+    {
 
         /// <summary>
         /// Gets or Sets Left
@@ -39,7 +40,8 @@ namespace It.FattureInCloud.Sdk.FilterHelper
         /// Builds the query from the conjunction
         /// </summary>
         /// <returns>(string)</returns>
-        public override string ToString() {
+        public override string ToString()
+        {
             return BuildQuery();
         }
 
