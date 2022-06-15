@@ -45,25 +45,25 @@ namespace It.FattureInCloud.Sdk.Test.Api
             sendEInvoiceResponseBody = "{'data':{'name':'CARICATO','date':'2021-08-23 10:38:03'}}";
             var sendEInvoiceResponse = JsonConvert.DeserializeObject<SendEInvoiceResponse>(sendEInvoiceResponseBody);
             instance
-                .Setup(p => p.SendEInvoice(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<SendEInvoiceRequest>()))
+                .Setup(p => p.SendEInvoice(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<SendEInvoiceRequest>(), 0))
                 .Returns(sendEInvoiceResponse);
 
             verifyEInvoiceXmlResponseBody = "{'data':{'success':true}}";
             var verifyEInvoiceXmlResponse = JsonConvert.DeserializeObject<VerifyEInvoiceXmlResponse>(verifyEInvoiceXmlResponseBody);
             instance
-                .Setup(p => p.VerifyEInvoiceXml(Moq.It.IsAny<int>(), Moq.It.IsAny<int>()))
+                .Setup(p => p.VerifyEInvoiceXml(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), 0))
                 .Returns(verifyEInvoiceXmlResponse);
 
             getEInvoiceXmlResponseBody = "<xmlFattura>fields</xmlFattura>";
             var getEInvoiceXmlResponse = getEInvoiceXmlResponseBody;
             instance
-                .Setup(p => p.GetEInvoiceXml(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), true))
+                .Setup(p => p.GetEInvoiceXml(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), true, 0))
                 .Returns(getEInvoiceXmlResponse);
 
             getEInvoiceRejectionReasonResponseBody = "{'data': {'reason': 'invalid date' }}";
             var getEInvoiceRejectionReason = JsonConvert.DeserializeObject<GetEInvoiceRejectionReasonResponse>(getEInvoiceRejectionReasonResponseBody); ;
             instance
-                .Setup(p => p.GetEInvoiceRejectionReason(Moq.It.IsAny<int>(), Moq.It.IsAny<int>()))
+                .Setup(p => p.GetEInvoiceRejectionReason(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), 0))
                 .Returns(getEInvoiceRejectionReason);
 
         }

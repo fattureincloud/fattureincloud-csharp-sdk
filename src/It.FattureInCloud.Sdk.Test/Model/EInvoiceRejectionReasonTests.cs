@@ -93,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DateTest()
         {
-            Assert.IsType<DateTime>(instance.Date);
+            Assert.IsType<DateTimeOffset>(instance.Date);
         }
 
     }
