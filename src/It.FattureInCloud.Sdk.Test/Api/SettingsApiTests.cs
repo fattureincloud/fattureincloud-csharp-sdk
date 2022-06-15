@@ -47,37 +47,37 @@ namespace It.FattureInCloud.Sdk.Test.Api
             createPaymentAccountResponseBody = "{ 'data': { 'type': 'standard', 'name': 'Conto Banca Intesa', 'iban': 'string', 'sia': 'string', 'cuc': 'string', 'virtual': true } }";
             var createPaymentAccountResponse = JsonConvert.DeserializeObject<CreatePaymentAccountResponse>(createPaymentAccountResponseBody);
             instance
-                .Setup(p => p.CreatePaymentAccount(Moq.It.IsAny<int>(), Moq.It.IsAny<CreatePaymentAccountRequest>()))
+                .Setup(p => p.CreatePaymentAccount(Moq.It.IsAny<int>(), Moq.It.IsAny<CreatePaymentAccountRequest>(), 0))
                 .Returns(createPaymentAccountResponse);
 
             getPaymentAccountResponseBody = "{ 'data': { 'type': 'standard', 'name': 'Conto Banca Intesa', 'iban': 'string', 'sia': 'string', 'cuc': 'string', 'virtual': true } }";
             var getPaymentAccountResponse = JsonConvert.DeserializeObject<GetPaymentAccountResponse>(getPaymentAccountResponseBody);
             instance
-                .Setup(p => p.GetPaymentAccount(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
+                .Setup(p => p.GetPaymentAccount(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), 0))
                 .Returns(getPaymentAccountResponse);
 
             modifyPaymentAccountResponseBody = "{ 'data': { 'type': 'standard', 'name': 'Conto Banca Intesa', 'iban': 'string', 'sia': 'string', 'cuc': 'string', 'virtual': true } }";
             var modifyPaymentAccountResponse = JsonConvert.DeserializeObject<ModifyPaymentAccountResponse>(modifyPaymentAccountResponseBody);
             instance
-                .Setup(p => p.ModifyPaymentAccount(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifyPaymentAccountRequest>()))
+                .Setup(p => p.ModifyPaymentAccount(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifyPaymentAccountRequest>(), 0))
                 .Returns(modifyPaymentAccountResponse);
 
             createPaymentMethodResponseBody = "{ 'data': { 'type': 'standard', 'id': 386683, 'name': 'Bonifico bancario', 'is_default': true, 'default_payment_account': { 'id': 12345, 'name': 'conto banca SP', 'virtual': false }, 'details': [ { 'title': 'Banca', 'description': 'Sao Paulo' } ] } }";
             var createPaymentMethodResponse = JsonConvert.DeserializeObject<CreatePaymentMethodResponse>(createPaymentMethodResponseBody);
             instance
-                .Setup(p => p.CreatePaymentMethod(Moq.It.IsAny<int>(), Moq.It.IsAny<CreatePaymentMethodRequest>()))
+                .Setup(p => p.CreatePaymentMethod(Moq.It.IsAny<int>(), Moq.It.IsAny<CreatePaymentMethodRequest>(), 0))
                 .Returns(createPaymentMethodResponse);
 
             getPaymentMethodResponseBody = "{ 'data': { 'type': 'standard', 'id': 386683, 'name': 'Bonifico bancario', 'is_default': true, 'default_payment_account': { 'id': 12345, 'name': 'conto banca SP', 'virtual': false }, 'details': [ { 'title': 'Banca', 'description': 'Sao Paulo' } ] } }";
             var getPaymentMethodResponse = JsonConvert.DeserializeObject<GetPaymentMethodResponse>(getPaymentMethodResponseBody);
             instance
-                .Setup(p => p.GetPaymentMethod(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
+                .Setup(p => p.GetPaymentMethod(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), 0))
                 .Returns(getPaymentMethodResponse);
 
             modifyPaymentMethodResponseBody = "{ 'data': { 'type': 'standard', 'id': 386683, 'name': 'Bonifico bancario', 'is_default': true, 'default_payment_account': { 'id': 12345, 'name': 'conto banca SP', 'virtual': false }, 'details': [ { 'title': 'Banca', 'description': 'Sao Paulo' } ] } }";
             var modifyPaymentMethodResponse = JsonConvert.DeserializeObject<ModifyPaymentMethodResponse>(modifyPaymentMethodResponseBody);
             instance
-                .Setup(p => p.ModifyPaymentMethod(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifyPaymentMethodRequest>()))
+                .Setup(p => p.ModifyPaymentMethod(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifyPaymentMethodRequest>(), 0))
                 .Returns(modifyPaymentMethodResponse);
         }
 

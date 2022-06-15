@@ -57,97 +57,97 @@ namespace It.FattureInCloud.Sdk.Test.Api
             listArchiveCategoriesResponseBody = "{'data':['Altri documenti','Conferme dordine','Contratti','Dichiarazioni dei redditi','Documenti per detrazioni','Estratti conto bancari','Estratti conto carte di credito']}";
             var listArchiveCategoriesResponse = JsonConvert.DeserializeObject<ListArchiveCategoriesResponse>(listArchiveCategoriesResponseBody);
             instance
-                .Setup(p => p.ListArchiveCategories(Moq.It.IsAny<int>()))
+                .Setup(p => p.ListArchiveCategories(Moq.It.IsAny<int>(), 0))
                 .Returns(listArchiveCategoriesResponse);
 
             listCitiesResponseBody = "{'data':[{'postal_code':'89867','city':'Zungri','province':'VV'},{'postal_code':'83020','city':'Aiello del Sabato','province':'AV'},{'postal_code':'83011','city':'Altavilla Irpina','province':'AV'}]}";
             var listCitiesResponse = JsonConvert.DeserializeObject<ListCitiesResponse>(listCitiesResponseBody);
             instance
-                .Setup(p => p.ListCities(Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
+                .Setup(p => p.ListCities(Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), 0))
                 .Returns(listCitiesResponse);
 
             listCostCentersResponseBody = "{'data':['Negozio Bergamo','Negozio Milano']}";
             var listCostCentersResponse = JsonConvert.DeserializeObject<ListCostCentersResponse>(listCostCentersResponseBody);
             instance
-                .Setup(p => p.ListCostCenters(Moq.It.IsAny<int>()))
+                .Setup(p => p.ListCostCenters(Moq.It.IsAny<int>(), 0))
                 .Returns(listCostCentersResponse);
 
             listCountriesResponseBody = "{'data':['Italia','Afghanistan','Albania','Algeria','Andorra','Angola','Anguilla','...']}";
             var listCountriesResponse = JsonConvert.DeserializeObject<ListCountriesResponse>(listCountriesResponseBody);
             instance
-                .Setup(p => p.ListCountries())
+                .Setup(p => p.ListCountries(0))
                 .Returns(listCountriesResponse);
 
             listDetailedCountriesResponseBody = "{'data': [{'name': 'Italia', 'settings_name': 'Italia', 'iso': 'IT', 'fiscal_iso': 'IT', 'uic': '086'}, {'name': 'Albania', 'settings_name': 'Albania', 'iso': 'AL', 'fiscal_iso': 'AL', 'uic': '087'}]}";
             var listDetailedCountriesResponse = JsonConvert.DeserializeObject<ListDetailedCountriesResponse>(listDetailedCountriesResponseBody);
             instance
-                .Setup(p => p.ListDetailedCountries())
+                .Setup(p => p.ListDetailedCountries(0))
                 .Returns(listDetailedCountriesResponse);
 
             listCurrenciesResponseBody = "{'data':[{'id':'AED','symbol':'AED','html_symbol':'AED','exchange_rate':'4.09500'},{'id':'EUR','symbol':'\u20ac','html_symbol':'€','exchange_rate':'1.00000'}]}";
             var listCurrenciesResponse = JsonConvert.DeserializeObject<ListCurrenciesResponse>(listCurrenciesResponseBody);
             instance
-                .Setup(p => p.ListCurrencies())
+                .Setup(p => p.ListCurrencies(0))
                 .Returns(listCurrenciesResponse);
 
             listDeliveryNotesDefaultCausalsResponseBody = "{'data':['Altri documenti','Conferme dordine','Contratti','Dichiarazioni dei redditi','Documenti per detrazioni','Estratti conto bancari','Estratti conto carte di credito']}";
             var listDeliveryNotesDefaultCausalsResponse = JsonConvert.DeserializeObject<ListDeliveryNotesDefaultCausalsResponse>(listDeliveryNotesDefaultCausalsResponseBody);
             instance
-                .Setup(p => p.ListDeliveryNotesDefaultCausals())
+                .Setup(p => p.ListDeliveryNotesDefaultCausals(0))
                 .Returns(listDeliveryNotesDefaultCausalsResponse);
 
             listLanguagesResponseBody = "{'data':[{'code':'it','name':'Italiano'},{'code':'en','name':'Inglese'}]}";
             var listLanguagesResponse = JsonConvert.DeserializeObject<ListLanguagesResponse>(listLanguagesResponseBody);
             instance
-                .Setup(p => p.ListLanguages())
+                .Setup(p => p.ListLanguages(0))
                 .Returns(listLanguagesResponse);
 
             listPaymentAccountsResponseBody = "{'data':[{'id':21,'name':'Indesa - Carta conto','type':'standard','virtual':false},{'id':109,'name':'Indesa','type':'bank','iban':'IT17A1234563200000003498936','sia':'IN234','virtual':false}]}";
             var listPaymentAccountsResponse = JsonConvert.DeserializeObject<ListPaymentAccountsResponse>(listPaymentAccountsResponseBody);
             instance
-                .Setup(p => p.ListPaymentAccounts(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
+                .Setup(p => p.ListPaymentAccounts(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), 0))
                 .Returns(listPaymentAccountsResponse);
 
             listPaymentMethodsResponseBody = "{'data':[{'id':12345,'name':'Carta di credito','is_default':false},{'id':12346,'name':'Bonifico bancario','is_default':true}]}";
             var listPaymentMethodsResponse = JsonConvert.DeserializeObject<ListPaymentMethodsResponse>(listPaymentMethodsResponseBody);
             instance
-                .Setup(p => p.ListPaymentMethods(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
+                .Setup(p => p.ListPaymentMethods(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), 0))
                 .Returns(listPaymentMethodsResponse);
 
             listProductCategoriesResponseBody = "{'data':['Alimentari','Arredamento']}";
             var listProductCategoriesResponse = JsonConvert.DeserializeObject<ListProductCategoriesResponse>(listProductCategoriesResponseBody);
             instance
-                .Setup(p => p.ListProductCategories(Moq.It.IsAny<int>(), Moq.It.IsAny<string>()))
+                .Setup(p => p.ListProductCategories(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), 0))
                 .Returns(listProductCategoriesResponse);
 
             listReceivedDocumentCategoriesResponseBody = "{'data':['Telefono e internet','Assicurazioni e quote','Auto ed altri veicoli','Computer e accessori','Server e hosting']}";
             var listReceivedDocumentCategoriesResponse = JsonConvert.DeserializeObject<ListReceivedDocumentCategoriesResponse>(listReceivedDocumentCategoriesResponseBody);
             instance
-                .Setup(p => p.ListReceivedDocumentCategories(Moq.It.IsAny<int>()))
+                .Setup(p => p.ListReceivedDocumentCategories(Moq.It.IsAny<int>(), 0))
                 .Returns(listReceivedDocumentCategoriesResponse);
 
             listRevenueCentersResponseBody = "{'data':['Negozio Bergamo','Negozio Milano']}";
             var listRevenueCentersResponse = JsonConvert.DeserializeObject<ListRevenueCentersResponse>(listRevenueCentersResponseBody);
             instance
-                .Setup(p => p.ListRevenueCenters(Moq.It.IsAny<int>()))
+                .Setup(p => p.ListRevenueCenters(Moq.It.IsAny<int>(), 0))
                 .Returns(listRevenueCentersResponse);
 
             listTemplatesResponseBody = "{'data':[{'id':10,'name':'New Standard S1'},{'id':106,'name':'Minimalist'}]}";
             var listTemplatesResponse = JsonConvert.DeserializeObject<ListTemplatesResponse>(listTemplatesResponseBody);
             instance
-                .Setup(p => p.ListTemplates(Moq.It.IsAny<string>(), Moq.It.IsAny<bool>()))
+                .Setup(p => p.ListTemplates(Moq.It.IsAny<string>(), Moq.It.IsAny<bool>(), 0))
                 .Returns(listTemplatesResponse);
 
             listUnitsOfMeasureResponseBody = "{'data':['pezzi','kg','litri','ore','giorni','km','mesi']}";
             var listUnitsOfMeasureResponse = JsonConvert.DeserializeObject<ListUnitsOfMeasureResponse>(listUnitsOfMeasureResponseBody);
             instance
-                .Setup(p => p.ListUnitsOfMeasure())
+                .Setup(p => p.ListUnitsOfMeasure(0))
                 .Returns(listUnitsOfMeasureResponse);
 
             listVatTypesResponseBody = "{'data':[{'value':22.0,'description':'Non imponibile art. 123','notes':'IVA non imponibile ai sensi dell articolo 123, comma 2','e_invoice':true,'ei_type':'2','ei_description':'string','is_disabled':false},{'id':1010,'description':'NON IMPONIBILE IVA EX ART. 8 COMMA 1 LETT.A','notes':'','e_invoice':false,'ei_type':'0','is_disabled':false}]}";
             var listVatTypesResponse = JsonConvert.DeserializeObject<ListVatTypesResponse>(listVatTypesResponseBody);
             instance
-                .Setup(p => p.ListVatTypes(Moq.It.IsAny<int>(), Moq.It.IsAny<string>()))
+                .Setup(p => p.ListVatTypes(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), 0))
                 .Returns(listVatTypesResponse);
         }
 

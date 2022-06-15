@@ -46,31 +46,31 @@ namespace It.FattureInCloud.Sdk.Test.Api
             createF24ResponseBody = "{ 'data': { 'status': 'paid', 'due_date': '2021-12-31', 'payment_account': { 'id': 111, 'virtual': false }, 'amount': 840.36, 'attachment_token': 'b19c01da9b1688fb73d0d9e8ad', 'description': 'PAGAMENTO IVA 2021' }}";
             var createF24Response = JsonConvert.DeserializeObject<CreateF24Response>(createF24ResponseBody);
             instance
-                .Setup(p => p.CreateF24(Moq.It.IsAny<int>(), Moq.It.IsAny<CreateF24Request>()))
+                .Setup(p => p.CreateF24(Moq.It.IsAny<int>(), Moq.It.IsAny<CreateF24Request>(), 0))
                 .Returns(createF24Response);
 
             getF24ResponseBody = "{ 'data': { 'status': 'paid', 'due_date': '2021-12-31', 'payment_account': { 'id': 111, 'virtual': false }, 'amount': 840.36, 'attachment_token': 'b19c01da9b1688fb73d0d9e8ad', 'description': 'PAGAMENTO IVA 2021' }}";
             var getF24Response = JsonConvert.DeserializeObject<GetF24Response>(getF24ResponseBody);
             instance
-                .Setup(p => p.GetF24(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
+                .Setup(p => p.GetF24(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), 0))
                 .Returns(getF24Response);
 
             listF24ResponseBody = "{ 'current_page': 1, 'first_page_url': 'page=1', 'from': 1, 'last_page': 1, 'last_page_url': 'page=1', 'path': 'taxes', 'per_page': 50, 'to': 2, 'total': 2, 'data': [ { 'status': 'paid', 'id': 12345, 'due_date': '2021-12-31', 'payment_account': { 'id': 111, 'name': 'Indesa - carta conto', 'virtual': false }, 'amount': 840.36, 'description': 'PAGAMENTO IVA 2021' }, { 'status': 'paid', 'id': 12346, 'due_date': '2020-12-31', 'payment_account': { 'id': 111, 'name': 'Indesa - carta conto', 'virtual': false }, 'amount': 810.62, 'description': 'PAGAMENTO IVA 2020' } ], 'aggregated_data': { 'amount': 6438.96 }}";
             var listF24sResponse = JsonConvert.DeserializeObject<ListF24Response>(listF24ResponseBody);
             instance
-                .Setup(p => p.ListF24(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>()))
+                .Setup(p => p.ListF24(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), 0))
                 .Returns(listF24sResponse);
 
             modifyF24ResponseBody = "{ 'data': { 'status': 'paid', 'due_date': '2021-12-31', 'payment_account': { 'id': 111, 'virtual': false }, 'amount': 840.36, 'attachment_token': 'b19c01da9b1688fb73d0d9e8ad', 'description': 'PAGAMENTO IVA 2021' }}";
             var modifyF24Response = JsonConvert.DeserializeObject<ModifyF24Response>(modifyF24ResponseBody);
             instance
-                .Setup(p => p.ModifyF24(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifyF24Request>()))
+                .Setup(p => p.ModifyF24(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifyF24Request>(), 0))
                 .Returns(modifyF24Response);
 
             uploadF24AttachmentResponseBody = "{'data':{'attachment_token':'YmMyNWYxYzIwMTU3N2Y4ZGE3ZjZiMzg5OWY0ODNkZDQveXl5LmRvYw'}}";
             var uploadF24AttachmentResponse = JsonConvert.DeserializeObject<UploadF24AttachmentResponse>(uploadF24AttachmentResponseBody);
             instance
-                .Setup(p => p.UploadF24Attachment(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<Stream>()))
+                .Setup(p => p.UploadF24Attachment(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<Stream>(), 0))
                 .Returns(uploadF24AttachmentResponse);
         }
 
