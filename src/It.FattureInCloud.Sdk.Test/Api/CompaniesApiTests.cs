@@ -42,7 +42,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
             getCompanyInfoResponseBody = "{ 'data': { 'type': 'accountant', 'id': 12345, 'name': 'Studio Commercialista', 'email': 'mario.rossi@examplea.com', 'access_info': { 'role': 'master', 'through_accountant': false }, 'is_accountant': false }}";
             var getCompanyInfoResponse = JsonConvert.DeserializeObject<GetCompanyInfoResponse>(getCompanyInfoResponseBody);
             instance
-                .Setup(p => p.GetCompanyInfo(Moq.It.IsAny<int>()))
+                .Setup(p => p.GetCompanyInfo(Moq.It.IsAny<int>(), 0))
                 .Returns(getCompanyInfoResponse);
         }
 

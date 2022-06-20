@@ -46,31 +46,31 @@ namespace It.FattureInCloud.Sdk.Test.Api
             createArchiveDocumentResponseBody = "{'data':{'id':12345,'category':'Altri documenti','description':'spesa 2'}}";
             var createArchiveDocumentResponse = JsonConvert.DeserializeObject<CreateArchiveDocumentResponse>(createArchiveDocumentResponseBody);
             instance
-                .Setup(p => p.CreateArchiveDocument(Moq.It.IsAny<int>(), Moq.It.IsAny<CreateArchiveDocumentRequest>()))
+                .Setup(p => p.CreateArchiveDocument(Moq.It.IsAny<int>(), Moq.It.IsAny<CreateArchiveDocumentRequest>(), 0))
                 .Returns(createArchiveDocumentResponse);
 
             getArchiveDocumentResponseBody = "{'data':{'id':12345,'date':'2021-08-20','category':'Altri documenti','description':'spesa 2',}}";
             var getArchiveDocumentResponse = JsonConvert.DeserializeObject<GetArchiveDocumentResponse>(getArchiveDocumentResponseBody);
             instance
-                .Setup(p => p.GetArchiveDocument(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
+                .Setup(p => p.GetArchiveDocument(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), 0))
                 .Returns(getArchiveDocumentResponse);
 
             listArchiveDocumentsResponseBody = "{'current_page':1,'data':[{'id':12345,'date':'2021-08-20','category':'Altri documenti','description':'spesa 2'},{'id':12346,'date':'2021-08-19','category':'Altri documenti','description':'spesa 1'}],'first_page_url':'page=1','from':1,'last_page':1,'last_page_url':'page=1','path':'/archive','per_page':50,'to':2,'total':2}";
             var listArchiveDocumentsResponse = JsonConvert.DeserializeObject<ListArchiveDocumentsResponse>(listArchiveDocumentsResponseBody);
             instance
-                .Setup(p => p.ListArchiveDocuments(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>()))
+                .Setup(p => p.ListArchiveDocuments(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), 0))
                 .Returns(listArchiveDocumentsResponse);
 
             modifyArchiveDocumentResponseBody = "{'data':{'id':12345,'date':'2021-08-20','category':'Altri documenti','description':'spesa 2'}}";
             var modifyArchiveDocumentResponse = JsonConvert.DeserializeObject<ModifyArchiveDocumentResponse>(modifyArchiveDocumentResponseBody);
             instance
-                .Setup(p => p.ModifyArchiveDocument(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifyArchiveDocumentRequest>()))
+                .Setup(p => p.ModifyArchiveDocument(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifyArchiveDocumentRequest>(), 0))
                 .Returns(modifyArchiveDocumentResponse);
 
             uploadArchiveDocumentAttachmentResponseBody = "{'data':{'attachment_token':'YmMyNWYxYzIwMTU3N2Y4ZGE3ZjZiMzg5OWY0ODNkZDQveXl5LmRvYw'}}";
             var uploadArchiveDocumentAttachmentResponse = JsonConvert.DeserializeObject<UploadArchiveAttachmentResponse>(uploadArchiveDocumentAttachmentResponseBody);
             instance
-                .Setup(p => p.UploadArchiveDocumentAttachment(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<Stream>()))
+                .Setup(p => p.UploadArchiveDocumentAttachment(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<Stream>(), 0))
                 .Returns(uploadArchiveDocumentAttachmentResponse);
         }
 
