@@ -2,16 +2,15 @@
 
 All URIs are relative to *https://api-v2.fattureincloud.it*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**CreateReceipt**](ReceiptsApi.md#createreceipt) | **POST** /c/{company_id}/receipts | Create Receipt
-[**DeleteReceipt**](ReceiptsApi.md#deletereceipt) | **DELETE** /c/{company_id}/receipts/{document_id} | Delete Receipt
-[**GetReceipt**](ReceiptsApi.md#getreceipt) | **GET** /c/{company_id}/receipts/{document_id} | Get Receipt
-[**GetReceiptPreCreateInfo**](ReceiptsApi.md#getreceiptprecreateinfo) | **GET** /c/{company_id}/receipts/info | Get Receipt Pre-Create Info
-[**GetReceiptsMonthlyTotals**](ReceiptsApi.md#getreceiptsmonthlytotals) | **GET** /c/{company_id}/receipts/monthly_totals | Get Receipts Monthly Totals
-[**ListReceipts**](ReceiptsApi.md#listreceipts) | **GET** /c/{company_id}/receipts | List Receipts
-[**ModifyReceipt**](ReceiptsApi.md#modifyreceipt) | **PUT** /c/{company_id}/receipts/{document_id} | Modify Receipt
-
+| Method | HTTP request | Description |
+|--------|--------------|-------------|
+| [**CreateReceipt**](ReceiptsApi.md#createreceipt) | **POST** /c/{company_id}/receipts | Create Receipt |
+| [**DeleteReceipt**](ReceiptsApi.md#deletereceipt) | **DELETE** /c/{company_id}/receipts/{document_id} | Delete Receipt |
+| [**GetReceipt**](ReceiptsApi.md#getreceipt) | **GET** /c/{company_id}/receipts/{document_id} | Get Receipt |
+| [**GetReceiptPreCreateInfo**](ReceiptsApi.md#getreceiptprecreateinfo) | **GET** /c/{company_id}/receipts/info | Get Receipt Pre-Create Info |
+| [**GetReceiptsMonthlyTotals**](ReceiptsApi.md#getreceiptsmonthlytotals) | **GET** /c/{company_id}/receipts/monthly_totals | Get Receipts Monthly Totals |
+| [**ListReceipts**](ReceiptsApi.md#listreceipts) | **GET** /c/{company_id}/receipts | List Receipts |
+| [**ModifyReceipt**](ReceiptsApi.md#modifyreceipt) | **PUT** /c/{company_id}/receipts/{document_id} | Modify Receipt |
 
 <a name="createreceipt"></a>
 # **CreateReceipt**
@@ -52,8 +51,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReceiptsApi.CreateReceipt: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ReceiptsApi.CreateReceipt: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -61,12 +60,32 @@ namespace Example
 }
 ```
 
+#### Using the CreateReceiptWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create Receipt
+    ApiResponse<CreateReceiptResponse> response = apiInstance.CreateReceiptWithHttpInfo(companyId, createReceiptRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceiptsApi.CreateReceiptWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **createReceiptRequest** | [**CreateReceiptRequest**](CreateReceiptRequest.md)| The Receipt to create. | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **createReceiptRequest** | [**CreateReceiptRequest**](CreateReceiptRequest.md) | The Receipt to create. | [optional]  |
 
 ### Return type
 
@@ -128,8 +147,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReceiptsApi.DeleteReceipt: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ReceiptsApi.DeleteReceipt: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -137,12 +156,29 @@ namespace Example
 }
 ```
 
+#### Using the DeleteReceiptWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete Receipt
+    apiInstance.DeleteReceiptWithHttpInfo(companyId, documentId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceiptsApi.DeleteReceiptWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **documentId** | **int**| The ID of the document. | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
 
 ### Return type
 
@@ -208,8 +244,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReceiptsApi.GetReceipt: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ReceiptsApi.GetReceipt: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -217,14 +253,34 @@ namespace Example
 }
 ```
 
+#### Using the GetReceiptWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get Receipt
+    ApiResponse<GetReceiptResponse> response = apiInstance.GetReceiptWithHttpInfo(companyId, documentId, fields, fieldset);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceiptsApi.GetReceiptWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **documentId** | **int**| The ID of the document. | 
- **fields** | **string**| List of comma-separated fields. | [optional] 
- **fieldset** | **string**| Name of the fieldset. | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
+| **fields** | **string** | List of comma-separated fields. | [optional]  |
+| **fieldset** | **string** | Name of the fieldset. | [optional]  |
 
 ### Return type
 
@@ -287,8 +343,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReceiptsApi.GetReceiptPreCreateInfo: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ReceiptsApi.GetReceiptPreCreateInfo: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -296,11 +352,31 @@ namespace Example
 }
 ```
 
+#### Using the GetReceiptPreCreateInfoWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get Receipt Pre-Create Info
+    ApiResponse<GetReceiptPreCreateInfoResponse> response = apiInstance.GetReceiptPreCreateInfoWithHttpInfo(companyId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceiptsApi.GetReceiptPreCreateInfoWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
 
 ### Return type
 
@@ -365,8 +441,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReceiptsApi.GetReceiptsMonthlyTotals: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ReceiptsApi.GetReceiptsMonthlyTotals: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -374,13 +450,33 @@ namespace Example
 }
 ```
 
+#### Using the GetReceiptsMonthlyTotalsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get Receipts Monthly Totals
+    ApiResponse<GetReceiptsMonthlyTotalsResponse> response = apiInstance.GetReceiptsMonthlyTotalsWithHttpInfo(companyId, type, year);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceiptsApi.GetReceiptsMonthlyTotalsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **type** | **string**| Receipt Type | 
- **year** | **string**| Year for which you want monthly totals | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **type** | **string** | Receipt Type |  |
+| **year** | **string** | Year for which you want monthly totals |  |
 
 ### Return type
 
@@ -449,8 +545,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReceiptsApi.ListReceipts: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ReceiptsApi.ListReceipts: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -458,17 +554,37 @@ namespace Example
 }
 ```
 
+#### Using the ListReceiptsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Receipts
+    ApiResponse<ListReceiptsResponse> response = apiInstance.ListReceiptsWithHttpInfo(companyId, fields, fieldset, page, perPage, sort, q);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceiptsApi.ListReceiptsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **fields** | **string**| List of comma-separated fields. | [optional] 
- **fieldset** | **string**| Name of the fieldset. | [optional] 
- **page** | **int?**| The page to retrieve. | [optional] [default to 1]
- **perPage** | **int?**| The size of the page. | [optional] [default to 5]
- **sort** | **string**| List of comma-separated fields for result sorting (minus for desc sorting). | [optional] 
- **q** | **string**| Query for filtering the results. | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **fields** | **string** | List of comma-separated fields. | [optional]  |
+| **fieldset** | **string** | Name of the fieldset. | [optional]  |
+| **page** | **int?** | The page to retrieve. | [optional] [default to 1] |
+| **perPage** | **int?** | The size of the page. | [optional] [default to 5] |
+| **sort** | **string** | List of comma-separated fields for result sorting (minus for desc sorting). | [optional]  |
+| **q** | **string** | Query for filtering the results. | [optional]  |
 
 ### Return type
 
@@ -532,8 +648,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReceiptsApi.ModifyReceipt: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ReceiptsApi.ModifyReceipt: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -541,13 +657,33 @@ namespace Example
 }
 ```
 
+#### Using the ModifyReceiptWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Modify Receipt
+    ApiResponse<ModifyReceiptResponse> response = apiInstance.ModifyReceiptWithHttpInfo(companyId, documentId, modifyReceiptRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceiptsApi.ModifyReceiptWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **documentId** | **int**| The ID of the document. | 
- **modifyReceiptRequest** | [**ModifyReceiptRequest**](ModifyReceiptRequest.md)| Modified receipt. | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
+| **modifyReceiptRequest** | [**ModifyReceiptRequest**](ModifyReceiptRequest.md) | Modified receipt. | [optional]  |
 
 ### Return type
 

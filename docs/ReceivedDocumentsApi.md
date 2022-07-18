@@ -2,19 +2,18 @@
 
 All URIs are relative to *https://api-v2.fattureincloud.it*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**CreateReceivedDocument**](ReceivedDocumentsApi.md#createreceiveddocument) | **POST** /c/{company_id}/received_documents | Create Received Document
-[**DeleteReceivedDocument**](ReceivedDocumentsApi.md#deletereceiveddocument) | **DELETE** /c/{company_id}/received_documents/{document_id} | Delete Received Document
-[**DeleteReceivedDocumentAttachment**](ReceivedDocumentsApi.md#deletereceiveddocumentattachment) | **DELETE** /c/{company_id}/received_documents/{document_id}/attachment | Delete Received Document Attachment
-[**GetExistingReceivedDocumentTotals**](ReceivedDocumentsApi.md#getexistingreceiveddocumenttotals) | **POST** /c/{company_id}/received_documents/{document_id}/totals | Get Existing Received Document Totals
-[**GetNewReceivedDocumentTotals**](ReceivedDocumentsApi.md#getnewreceiveddocumenttotals) | **POST** /c/{company_id}/received_documents/totals | Get New Received Document Totals
-[**GetReceivedDocument**](ReceivedDocumentsApi.md#getreceiveddocument) | **GET** /c/{company_id}/received_documents/{document_id} | Get Received Document
-[**GetReceivedDocumentPreCreateInfo**](ReceivedDocumentsApi.md#getreceiveddocumentprecreateinfo) | **GET** /c/{company_id}/received_documents/info | Get Received Document Pre-Create Info
-[**ListReceivedDocuments**](ReceivedDocumentsApi.md#listreceiveddocuments) | **GET** /c/{company_id}/received_documents | List Received Documents
-[**ModifyReceivedDocument**](ReceivedDocumentsApi.md#modifyreceiveddocument) | **PUT** /c/{company_id}/received_documents/{document_id} | Modify Received Document
-[**UploadReceivedDocumentAttachment**](ReceivedDocumentsApi.md#uploadreceiveddocumentattachment) | **POST** /c/{company_id}/received_documents/attachment | Upload Received Document Attachment
-
+| Method | HTTP request | Description |
+|--------|--------------|-------------|
+| [**CreateReceivedDocument**](ReceivedDocumentsApi.md#createreceiveddocument) | **POST** /c/{company_id}/received_documents | Create Received Document |
+| [**DeleteReceivedDocument**](ReceivedDocumentsApi.md#deletereceiveddocument) | **DELETE** /c/{company_id}/received_documents/{document_id} | Delete Received Document |
+| [**DeleteReceivedDocumentAttachment**](ReceivedDocumentsApi.md#deletereceiveddocumentattachment) | **DELETE** /c/{company_id}/received_documents/{document_id}/attachment | Delete Received Document Attachment |
+| [**GetExistingReceivedDocumentTotals**](ReceivedDocumentsApi.md#getexistingreceiveddocumenttotals) | **POST** /c/{company_id}/received_documents/{document_id}/totals | Get Existing Received Document Totals |
+| [**GetNewReceivedDocumentTotals**](ReceivedDocumentsApi.md#getnewreceiveddocumenttotals) | **POST** /c/{company_id}/received_documents/totals | Get New Received Document Totals |
+| [**GetReceivedDocument**](ReceivedDocumentsApi.md#getreceiveddocument) | **GET** /c/{company_id}/received_documents/{document_id} | Get Received Document |
+| [**GetReceivedDocumentPreCreateInfo**](ReceivedDocumentsApi.md#getreceiveddocumentprecreateinfo) | **GET** /c/{company_id}/received_documents/info | Get Received Document Pre-Create Info |
+| [**ListReceivedDocuments**](ReceivedDocumentsApi.md#listreceiveddocuments) | **GET** /c/{company_id}/received_documents | List Received Documents |
+| [**ModifyReceivedDocument**](ReceivedDocumentsApi.md#modifyreceiveddocument) | **PUT** /c/{company_id}/received_documents/{document_id} | Modify Received Document |
+| [**UploadReceivedDocumentAttachment**](ReceivedDocumentsApi.md#uploadreceiveddocumentattachment) | **POST** /c/{company_id}/received_documents/attachment | Upload Received Document Attachment |
 
 <a name="createreceiveddocument"></a>
 # **CreateReceivedDocument**
@@ -55,8 +54,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReceivedDocumentsApi.CreateReceivedDocument: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ReceivedDocumentsApi.CreateReceivedDocument: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -64,12 +63,32 @@ namespace Example
 }
 ```
 
+#### Using the CreateReceivedDocumentWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create Received Document
+    ApiResponse<CreateReceivedDocumentResponse> response = apiInstance.CreateReceivedDocumentWithHttpInfo(companyId, createReceivedDocumentRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceivedDocumentsApi.CreateReceivedDocumentWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **createReceivedDocumentRequest** | [**CreateReceivedDocumentRequest**](CreateReceivedDocumentRequest.md)| Document to create | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **createReceivedDocumentRequest** | [**CreateReceivedDocumentRequest**](CreateReceivedDocumentRequest.md) | Document to create | [optional]  |
 
 ### Return type
 
@@ -130,8 +149,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReceivedDocumentsApi.DeleteReceivedDocument: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ReceivedDocumentsApi.DeleteReceivedDocument: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -139,12 +158,29 @@ namespace Example
 }
 ```
 
+#### Using the DeleteReceivedDocumentWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete Received Document
+    apiInstance.DeleteReceivedDocumentWithHttpInfo(companyId, documentId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceivedDocumentsApi.DeleteReceivedDocumentWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **documentId** | **int**| The ID of the document. | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
 
 ### Return type
 
@@ -207,8 +243,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReceivedDocumentsApi.DeleteReceivedDocumentAttachment: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ReceivedDocumentsApi.DeleteReceivedDocumentAttachment: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -216,12 +252,29 @@ namespace Example
 }
 ```
 
+#### Using the DeleteReceivedDocumentAttachmentWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete Received Document Attachment
+    apiInstance.DeleteReceivedDocumentAttachmentWithHttpInfo(companyId, documentId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceivedDocumentsApi.DeleteReceivedDocumentAttachmentWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **documentId** | **int**| The ID of the document. | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
 
 ### Return type
 
@@ -286,8 +339,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReceivedDocumentsApi.GetExistingReceivedDocumentTotals: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ReceivedDocumentsApi.GetExistingReceivedDocumentTotals: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -295,13 +348,33 @@ namespace Example
 }
 ```
 
+#### Using the GetExistingReceivedDocumentTotalsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get Existing Received Document Totals
+    ApiResponse<GetExistingReceivedDocumentTotalsResponse> response = apiInstance.GetExistingReceivedDocumentTotalsWithHttpInfo(companyId, documentId, getExistingReceivedDocumentTotalsRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceivedDocumentsApi.GetExistingReceivedDocumentTotalsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **documentId** | **int**| The ID of the document. | 
- **getExistingReceivedDocumentTotalsRequest** | [**GetExistingReceivedDocumentTotalsRequest**](GetExistingReceivedDocumentTotalsRequest.md)| Received document. | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
+| **getExistingReceivedDocumentTotalsRequest** | [**GetExistingReceivedDocumentTotalsRequest**](GetExistingReceivedDocumentTotalsRequest.md) | Received document. | [optional]  |
 
 ### Return type
 
@@ -363,8 +436,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReceivedDocumentsApi.GetNewReceivedDocumentTotals: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ReceivedDocumentsApi.GetNewReceivedDocumentTotals: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -372,12 +445,32 @@ namespace Example
 }
 ```
 
+#### Using the GetNewReceivedDocumentTotalsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get New Received Document Totals
+    ApiResponse<GetNewReceivedDocumentTotalsResponse> response = apiInstance.GetNewReceivedDocumentTotalsWithHttpInfo(companyId, getNewReceivedDocumentTotalsRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceivedDocumentsApi.GetNewReceivedDocumentTotalsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **getNewReceivedDocumentTotalsRequest** | [**GetNewReceivedDocumentTotalsRequest**](GetNewReceivedDocumentTotalsRequest.md)| Received document. | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **getNewReceivedDocumentTotalsRequest** | [**GetNewReceivedDocumentTotalsRequest**](GetNewReceivedDocumentTotalsRequest.md) | Received document. | [optional]  |
 
 ### Return type
 
@@ -443,8 +536,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReceivedDocumentsApi.GetReceivedDocument: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ReceivedDocumentsApi.GetReceivedDocument: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -452,14 +545,34 @@ namespace Example
 }
 ```
 
+#### Using the GetReceivedDocumentWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get Received Document
+    ApiResponse<GetReceivedDocumentResponse> response = apiInstance.GetReceivedDocumentWithHttpInfo(companyId, documentId, fields, fieldset);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceivedDocumentsApi.GetReceivedDocumentWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **documentId** | **int**| The ID of the document. | 
- **fields** | **string**| List of comma-separated fields. | [optional] 
- **fieldset** | **string**| Name of the fieldset. | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
+| **fields** | **string** | List of comma-separated fields. | [optional]  |
+| **fieldset** | **string** | Name of the fieldset. | [optional]  |
 
 ### Return type
 
@@ -523,8 +636,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReceivedDocumentsApi.GetReceivedDocumentPreCreateInfo: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ReceivedDocumentsApi.GetReceivedDocumentPreCreateInfo: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -532,12 +645,32 @@ namespace Example
 }
 ```
 
+#### Using the GetReceivedDocumentPreCreateInfoWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get Received Document Pre-Create Info
+    ApiResponse<GetReceivedDocumentPreCreateInfoResponse> response = apiInstance.GetReceivedDocumentPreCreateInfoWithHttpInfo(companyId, type);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceivedDocumentsApi.GetReceivedDocumentPreCreateInfoWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **type** | **string**| The type of the received document. | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **type** | **string** | The type of the received document. |  |
 
 ### Return type
 
@@ -605,8 +738,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReceivedDocumentsApi.ListReceivedDocuments: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ReceivedDocumentsApi.ListReceivedDocuments: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -614,18 +747,38 @@ namespace Example
 }
 ```
 
+#### Using the ListReceivedDocumentsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Received Documents
+    ApiResponse<ListReceivedDocumentsResponse> response = apiInstance.ListReceivedDocumentsWithHttpInfo(companyId, type, fields, fieldset, sort, page, perPage, q);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceivedDocumentsApi.ListReceivedDocumentsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **type** | **string**| The type of the received document. | 
- **fields** | **string**| List of comma-separated fields. | [optional] 
- **fieldset** | **string**| Name of the fieldset. | [optional] 
- **sort** | **string**| List of comma-separated fields for result sorting (minus for desc sorting). | [optional] 
- **page** | **int?**| The page to retrieve. | [optional] [default to 1]
- **perPage** | **int?**| The size of the page. | [optional] [default to 5]
- **q** | **string**| Query for filtering the results. | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **type** | **string** | The type of the received document. |  |
+| **fields** | **string** | List of comma-separated fields. | [optional]  |
+| **fieldset** | **string** | Name of the fieldset. | [optional]  |
+| **sort** | **string** | List of comma-separated fields for result sorting (minus for desc sorting). | [optional]  |
+| **page** | **int?** | The page to retrieve. | [optional] [default to 1] |
+| **perPage** | **int?** | The size of the page. | [optional] [default to 5] |
+| **q** | **string** | Query for filtering the results. | [optional]  |
 
 ### Return type
 
@@ -689,8 +842,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReceivedDocumentsApi.ModifyReceivedDocument: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ReceivedDocumentsApi.ModifyReceivedDocument: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -698,13 +851,33 @@ namespace Example
 }
 ```
 
+#### Using the ModifyReceivedDocumentWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Modify Received Document
+    ApiResponse<ModifyReceivedDocumentResponse> response = apiInstance.ModifyReceivedDocumentWithHttpInfo(companyId, documentId, modifyReceivedDocumentRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceivedDocumentsApi.ModifyReceivedDocumentWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **documentId** | **int**| The ID of the document. | 
- **modifyReceivedDocumentRequest** | [**ModifyReceivedDocumentRequest**](ModifyReceivedDocumentRequest.md)| Modified document. | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
+| **modifyReceivedDocumentRequest** | [**ModifyReceivedDocumentRequest**](ModifyReceivedDocumentRequest.md) | Modified document. | [optional]  |
 
 ### Return type
 
@@ -769,8 +942,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReceivedDocumentsApi.UploadReceivedDocumentAttachment: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ReceivedDocumentsApi.UploadReceivedDocumentAttachment: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -778,13 +951,33 @@ namespace Example
 }
 ```
 
+#### Using the UploadReceivedDocumentAttachmentWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Upload Received Document Attachment
+    ApiResponse<UploadReceivedDocumentAttachmentResponse> response = apiInstance.UploadReceivedDocumentAttachmentWithHttpInfo(companyId, filename, attachment);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceivedDocumentsApi.UploadReceivedDocumentAttachmentWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **filename** | **string**| Name of the file. | [optional] 
- **attachment** | **System.IO.Stream****System.IO.Stream**| Valid format: .png, .jpg, .gif, .pdf, .zip, .xls, .xlsx, .doc, .docx | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **filename** | **string** | Name of the file. | [optional]  |
+| **attachment** | **System.IO.Stream****System.IO.Stream** | Valid format: .png, .jpg, .gif, .pdf, .zip, .xls, .xlsx, .doc, .docx | [optional]  |
 
 ### Return type
 

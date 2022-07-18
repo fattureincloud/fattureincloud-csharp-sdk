@@ -2,16 +2,15 @@
 
 All URIs are relative to *https://api-v2.fattureincloud.it*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**CreateF24**](TaxesApi.md#createf24) | **POST** /c/{company_id}/taxes | Create F24
-[**DeleteF24**](TaxesApi.md#deletef24) | **DELETE** /c/{company_id}/taxes/{document_id} | Delete F24
-[**DeleteF24Attachment**](TaxesApi.md#deletef24attachment) | **DELETE** /c/{company_id}/taxes/{document_id}/attachment | Delete F24 Attachment
-[**GetF24**](TaxesApi.md#getf24) | **GET** /c/{company_id}/taxes/{document_id} | Get F24
-[**ListF24**](TaxesApi.md#listf24) | **GET** /c/{company_id}/taxes | List F24
-[**ModifyF24**](TaxesApi.md#modifyf24) | **PUT** /c/{company_id}/taxes/{document_id} | Modify F24
-[**UploadF24Attachment**](TaxesApi.md#uploadf24attachment) | **POST** /c/{company_id}/taxes/attachment | Upload F24 Attachment
-
+| Method | HTTP request | Description |
+|--------|--------------|-------------|
+| [**CreateF24**](TaxesApi.md#createf24) | **POST** /c/{company_id}/taxes | Create F24 |
+| [**DeleteF24**](TaxesApi.md#deletef24) | **DELETE** /c/{company_id}/taxes/{document_id} | Delete F24 |
+| [**DeleteF24Attachment**](TaxesApi.md#deletef24attachment) | **DELETE** /c/{company_id}/taxes/{document_id}/attachment | Delete F24 Attachment |
+| [**GetF24**](TaxesApi.md#getf24) | **GET** /c/{company_id}/taxes/{document_id} | Get F24 |
+| [**ListF24**](TaxesApi.md#listf24) | **GET** /c/{company_id}/taxes | List F24 |
+| [**ModifyF24**](TaxesApi.md#modifyf24) | **PUT** /c/{company_id}/taxes/{document_id} | Modify F24 |
+| [**UploadF24Attachment**](TaxesApi.md#uploadf24attachment) | **POST** /c/{company_id}/taxes/attachment | Upload F24 Attachment |
 
 <a name="createf24"></a>
 # **CreateF24**
@@ -52,8 +51,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TaxesApi.CreateF24: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling TaxesApi.CreateF24: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -61,12 +60,32 @@ namespace Example
 }
 ```
 
+#### Using the CreateF24WithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create F24
+    ApiResponse<CreateF24Response> response = apiInstance.CreateF24WithHttpInfo(companyId, createF24Request);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TaxesApi.CreateF24WithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **createF24Request** | [**CreateF24Request**](CreateF24Request.md)| The F24 to create | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **createF24Request** | [**CreateF24Request**](CreateF24Request.md) | The F24 to create | [optional]  |
 
 ### Return type
 
@@ -129,8 +148,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TaxesApi.DeleteF24: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling TaxesApi.DeleteF24: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -138,12 +157,29 @@ namespace Example
 }
 ```
 
+#### Using the DeleteF24WithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete F24
+    apiInstance.DeleteF24WithHttpInfo(companyId, documentId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TaxesApi.DeleteF24WithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **documentId** | **int**| The ID of the document. | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
 
 ### Return type
 
@@ -206,8 +242,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TaxesApi.DeleteF24Attachment: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling TaxesApi.DeleteF24Attachment: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -215,12 +251,29 @@ namespace Example
 }
 ```
 
+#### Using the DeleteF24AttachmentWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete F24 Attachment
+    apiInstance.DeleteF24AttachmentWithHttpInfo(companyId, documentId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TaxesApi.DeleteF24AttachmentWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **documentId** | **int**| The ID of the document. | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
 
 ### Return type
 
@@ -286,8 +339,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TaxesApi.GetF24: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling TaxesApi.GetF24: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -295,14 +348,34 @@ namespace Example
 }
 ```
 
+#### Using the GetF24WithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get F24
+    ApiResponse<GetF24Response> response = apiInstance.GetF24WithHttpInfo(companyId, documentId, fields, fieldset);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TaxesApi.GetF24WithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **documentId** | **int**| The ID of the document. | 
- **fields** | **string**| List of comma-separated fields. | [optional] 
- **fieldset** | **string**| Name of the fieldset. | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
+| **fields** | **string** | List of comma-separated fields. | [optional]  |
+| **fieldset** | **string** | Name of the fieldset. | [optional]  |
 
 ### Return type
 
@@ -371,8 +444,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TaxesApi.ListF24: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling TaxesApi.ListF24: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -380,17 +453,37 @@ namespace Example
 }
 ```
 
+#### Using the ListF24WithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List F24
+    ApiResponse<ListF24Response> response = apiInstance.ListF24WithHttpInfo(companyId, fields, fieldset, sort, page, perPage, q);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TaxesApi.ListF24WithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **fields** | **string**| List of comma-separated fields. | [optional] 
- **fieldset** | **string**| Name of the fieldset. | [optional] 
- **sort** | **string**| List of comma-separated fields for result sorting (minus for desc sorting). | [optional] 
- **page** | **int?**| The page to retrieve. | [optional] [default to 1]
- **perPage** | **int?**| The size of the page. | [optional] [default to 5]
- **q** | **string**| Query for filtering the results. | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **fields** | **string** | List of comma-separated fields. | [optional]  |
+| **fieldset** | **string** | Name of the fieldset. | [optional]  |
+| **sort** | **string** | List of comma-separated fields for result sorting (minus for desc sorting). | [optional]  |
+| **page** | **int?** | The page to retrieve. | [optional] [default to 1] |
+| **perPage** | **int?** | The size of the page. | [optional] [default to 5] |
+| **q** | **string** | Query for filtering the results. | [optional]  |
 
 ### Return type
 
@@ -454,8 +547,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TaxesApi.ModifyF24: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling TaxesApi.ModifyF24: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -463,13 +556,33 @@ namespace Example
 }
 ```
 
+#### Using the ModifyF24WithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Modify F24
+    ApiResponse<ModifyF24Response> response = apiInstance.ModifyF24WithHttpInfo(companyId, documentId, modifyF24Request);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TaxesApi.ModifyF24WithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **documentId** | **int**| The ID of the document. | 
- **modifyF24Request** | [**ModifyF24Request**](ModifyF24Request.md)| The F24 | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
+| **modifyF24Request** | [**ModifyF24Request**](ModifyF24Request.md) | The F24 | [optional]  |
 
 ### Return type
 
@@ -534,8 +647,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TaxesApi.UploadF24Attachment: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling TaxesApi.UploadF24Attachment: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -543,13 +656,33 @@ namespace Example
 }
 ```
 
+#### Using the UploadF24AttachmentWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Upload F24 Attachment
+    ApiResponse<UploadF24AttachmentResponse> response = apiInstance.UploadF24AttachmentWithHttpInfo(companyId, filename, attachment);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TaxesApi.UploadF24AttachmentWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **filename** | **string**| Name of the file. | [optional] 
- **attachment** | **System.IO.Stream****System.IO.Stream**| Valid format: .png, .jpg, .gif, .pdf, .zip, .xls, .xlsx, .doc, .docx | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **filename** | **string** | Name of the file. | [optional]  |
+| **attachment** | **System.IO.Stream****System.IO.Stream** | Valid format: .png, .jpg, .gif, .pdf, .zip, .xls, .xlsx, .doc, .docx | [optional]  |
 
 ### Return type
 

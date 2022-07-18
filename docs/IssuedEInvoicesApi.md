@@ -2,13 +2,12 @@
 
 All URIs are relative to *https://api-v2.fattureincloud.it*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**GetEInvoiceRejectionReason**](IssuedEInvoicesApi.md#geteinvoicerejectionreason) | **GET** /c/{company_id}/issued_documents/{document_id}/e_invoice/error_reason | Get e-invoice rejection reason
-[**GetEInvoiceXml**](IssuedEInvoicesApi.md#geteinvoicexml) | **GET** /c/{company_id}/issued_documents/{document_id}/e_invoice/xml | Get e-invoice XML
-[**SendEInvoice**](IssuedEInvoicesApi.md#sendeinvoice) | **POST** /c/{company_id}/issued_documents/{document_id}/e_invoice/send | Send the e-invoice
-[**VerifyEInvoiceXml**](IssuedEInvoicesApi.md#verifyeinvoicexml) | **GET** /c/{company_id}/issued_documents/{document_id}/e_invoice/xml_verify | Verify e-invoice XML
-
+| Method | HTTP request | Description |
+|--------|--------------|-------------|
+| [**GetEInvoiceRejectionReason**](IssuedEInvoicesApi.md#geteinvoicerejectionreason) | **GET** /c/{company_id}/issued_documents/{document_id}/e_invoice/error_reason | Get e-invoice rejection reason |
+| [**GetEInvoiceXml**](IssuedEInvoicesApi.md#geteinvoicexml) | **GET** /c/{company_id}/issued_documents/{document_id}/e_invoice/xml | Get e-invoice XML |
+| [**SendEInvoice**](IssuedEInvoicesApi.md#sendeinvoice) | **POST** /c/{company_id}/issued_documents/{document_id}/e_invoice/send | Send the e-invoice |
+| [**VerifyEInvoiceXml**](IssuedEInvoicesApi.md#verifyeinvoicexml) | **GET** /c/{company_id}/issued_documents/{document_id}/e_invoice/xml_verify | Verify e-invoice XML |
 
 <a name="geteinvoicerejectionreason"></a>
 # **GetEInvoiceRejectionReason**
@@ -49,8 +48,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling IssuedEInvoicesApi.GetEInvoiceRejectionReason: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling IssuedEInvoicesApi.GetEInvoiceRejectionReason: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -58,12 +57,32 @@ namespace Example
 }
 ```
 
+#### Using the GetEInvoiceRejectionReasonWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get e-invoice rejection reason
+    ApiResponse<GetEInvoiceRejectionReasonResponse> response = apiInstance.GetEInvoiceRejectionReasonWithHttpInfo(companyId, documentId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling IssuedEInvoicesApi.GetEInvoiceRejectionReasonWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **documentId** | **int**| The ID of the document. | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
 
 ### Return type
 
@@ -126,8 +145,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling IssuedEInvoicesApi.GetEInvoiceXml: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling IssuedEInvoicesApi.GetEInvoiceXml: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -135,13 +154,33 @@ namespace Example
 }
 ```
 
+#### Using the GetEInvoiceXmlWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get e-invoice XML
+    ApiResponse<string> response = apiInstance.GetEInvoiceXmlWithHttpInfo(companyId, documentId, includeAttachment);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling IssuedEInvoicesApi.GetEInvoiceXmlWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **documentId** | **int**| The ID of the document. | 
- **includeAttachment** | **bool?**| Include the attachment to the XML e-invoice. | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
+| **includeAttachment** | **bool?** | Include the attachment to the XML e-invoice. | [optional]  |
 
 ### Return type
 
@@ -206,8 +245,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling IssuedEInvoicesApi.SendEInvoice: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling IssuedEInvoicesApi.SendEInvoice: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -215,13 +254,33 @@ namespace Example
 }
 ```
 
+#### Using the SendEInvoiceWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Send the e-invoice
+    ApiResponse<SendEInvoiceResponse> response = apiInstance.SendEInvoiceWithHttpInfo(companyId, documentId, sendEInvoiceRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling IssuedEInvoicesApi.SendEInvoiceWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **documentId** | **int**| The ID of the document. | 
- **sendEInvoiceRequest** | [**SendEInvoiceRequest**](SendEInvoiceRequest.md)|  | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
+| **sendEInvoiceRequest** | [**SendEInvoiceRequest**](SendEInvoiceRequest.md) |  | [optional]  |
 
 ### Return type
 
@@ -285,8 +344,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling IssuedEInvoicesApi.VerifyEInvoiceXml: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling IssuedEInvoicesApi.VerifyEInvoiceXml: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -294,12 +353,32 @@ namespace Example
 }
 ```
 
+#### Using the VerifyEInvoiceXmlWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Verify e-invoice XML
+    ApiResponse<VerifyEInvoiceXmlResponse> response = apiInstance.VerifyEInvoiceXmlWithHttpInfo(companyId, documentId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling IssuedEInvoicesApi.VerifyEInvoiceXmlWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **documentId** | **int**| The ID of the document. | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
 
 ### Return type
 

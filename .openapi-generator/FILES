@@ -97,6 +97,7 @@ docs/IssuedDocumentExtraData.md
 docs/IssuedDocumentItemsListItem.md
 docs/IssuedDocumentOptions.md
 docs/IssuedDocumentPaymentsListItem.md
+docs/IssuedDocumentPaymentsListItemPaymentTerms.md
 docs/IssuedDocumentPreCreateInfo.md
 docs/IssuedDocumentPreCreateInfoDefaultValues.md
 docs/IssuedDocumentPreCreateInfoExtraDataDefaultValues.md
@@ -226,6 +227,7 @@ docs/VerifyEInvoiceXmlErrorResponseExtra.md
 docs/VerifyEInvoiceXmlResponse.md
 docs/VerifyEInvoiceXmlResponseData.md
 src/It.FattureInCloud.Sdk.Test/It.FattureInCloud.Sdk.Test.csproj
+src/It.FattureInCloud.Sdk.Test/Model/IssuedDocumentPaymentsListItemPaymentTermsTests.cs
 src/It.FattureInCloud.Sdk/Api/ArchiveApi.cs
 src/It.FattureInCloud.Sdk/Api/CashbookApi.cs
 src/It.FattureInCloud.Sdk/Api/ClientsApi.cs
@@ -349,6 +351,7 @@ src/It.FattureInCloud.Sdk/Model/IssuedDocumentExtraData.cs
 src/It.FattureInCloud.Sdk/Model/IssuedDocumentItemsListItem.cs
 src/It.FattureInCloud.Sdk/Model/IssuedDocumentOptions.cs
 src/It.FattureInCloud.Sdk/Model/IssuedDocumentPaymentsListItem.cs
+src/It.FattureInCloud.Sdk/Model/IssuedDocumentPaymentsListItemPaymentTerms.cs
 src/It.FattureInCloud.Sdk/Model/IssuedDocumentPreCreateInfo.cs
 src/It.FattureInCloud.Sdk/Model/IssuedDocumentPreCreateInfoDefaultValues.cs
 src/It.FattureInCloud.Sdk/Model/IssuedDocumentPreCreateInfoExtraDataDefaultValues.cs

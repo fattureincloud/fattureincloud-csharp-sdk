@@ -2,14 +2,13 @@
 
 All URIs are relative to *https://api-v2.fattureincloud.it*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**CreateProduct**](ProductsApi.md#createproduct) | **POST** /c/{company_id}/products | Create Product
-[**DeleteProduct**](ProductsApi.md#deleteproduct) | **DELETE** /c/{company_id}/products/{product_id} | Delete Product
-[**GetProduct**](ProductsApi.md#getproduct) | **GET** /c/{company_id}/products/{product_id} | Get Product
-[**ListProducts**](ProductsApi.md#listproducts) | **GET** /c/{company_id}/products | List Products
-[**ModifyProduct**](ProductsApi.md#modifyproduct) | **PUT** /c/{company_id}/products/{product_id} | Modify Product
-
+| Method | HTTP request | Description |
+|--------|--------------|-------------|
+| [**CreateProduct**](ProductsApi.md#createproduct) | **POST** /c/{company_id}/products | Create Product |
+| [**DeleteProduct**](ProductsApi.md#deleteproduct) | **DELETE** /c/{company_id}/products/{product_id} | Delete Product |
+| [**GetProduct**](ProductsApi.md#getproduct) | **GET** /c/{company_id}/products/{product_id} | Get Product |
+| [**ListProducts**](ProductsApi.md#listproducts) | **GET** /c/{company_id}/products | List Products |
+| [**ModifyProduct**](ProductsApi.md#modifyproduct) | **PUT** /c/{company_id}/products/{product_id} | Modify Product |
 
 <a name="createproduct"></a>
 # **CreateProduct**
@@ -50,8 +49,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ProductsApi.CreateProduct: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ProductsApi.CreateProduct: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -59,12 +58,32 @@ namespace Example
 }
 ```
 
+#### Using the CreateProductWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create Product
+    ApiResponse<CreateProductResponse> response = apiInstance.CreateProductWithHttpInfo(companyId, createProductRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ProductsApi.CreateProductWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **createProductRequest** | [**CreateProductRequest**](CreateProductRequest.md)|  | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **createProductRequest** | [**CreateProductRequest**](CreateProductRequest.md) |  | [optional]  |
 
 ### Return type
 
@@ -125,8 +144,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ProductsApi.DeleteProduct: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ProductsApi.DeleteProduct: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -134,12 +153,29 @@ namespace Example
 }
 ```
 
+#### Using the DeleteProductWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete Product
+    apiInstance.DeleteProductWithHttpInfo(companyId, productId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ProductsApi.DeleteProductWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **productId** | **int**| The ID of the product. | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **productId** | **int** | The ID of the product. |  |
 
 ### Return type
 
@@ -205,8 +241,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ProductsApi.GetProduct: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ProductsApi.GetProduct: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -214,14 +250,34 @@ namespace Example
 }
 ```
 
+#### Using the GetProductWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get Product
+    ApiResponse<GetProductResponse> response = apiInstance.GetProductWithHttpInfo(companyId, productId, fields, fieldset);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ProductsApi.GetProductWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **productId** | **int**| The ID of the product. | 
- **fields** | **string**| List of comma-separated fields. | [optional] 
- **fieldset** | **string**| Name of the fieldset. | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **productId** | **int** | The ID of the product. |  |
+| **fields** | **string** | List of comma-separated fields. | [optional]  |
+| **fieldset** | **string** | Name of the fieldset. | [optional]  |
 
 ### Return type
 
@@ -290,8 +346,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ProductsApi.ListProducts: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ProductsApi.ListProducts: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -299,17 +355,37 @@ namespace Example
 }
 ```
 
+#### Using the ListProductsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Products
+    ApiResponse<ListProductsResponse> response = apiInstance.ListProductsWithHttpInfo(companyId, fields, fieldset, sort, page, perPage, q);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ProductsApi.ListProductsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **fields** | **string**| List of comma-separated fields. | [optional] 
- **fieldset** | **string**| Name of the fieldset. | [optional] 
- **sort** | **string**| List of comma-separated fields for result sorting (minus for desc sorting). | [optional] 
- **page** | **int?**| The page to retrieve. | [optional] [default to 1]
- **perPage** | **int?**| The size of the page. | [optional] [default to 5]
- **q** | **string**| Query for filtering the results. | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **fields** | **string** | List of comma-separated fields. | [optional]  |
+| **fieldset** | **string** | Name of the fieldset. | [optional]  |
+| **sort** | **string** | List of comma-separated fields for result sorting (minus for desc sorting). | [optional]  |
+| **page** | **int?** | The page to retrieve. | [optional] [default to 1] |
+| **perPage** | **int?** | The size of the page. | [optional] [default to 5] |
+| **q** | **string** | Query for filtering the results. | [optional]  |
 
 ### Return type
 
@@ -373,8 +449,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ProductsApi.ModifyProduct: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling ProductsApi.ModifyProduct: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -382,13 +458,33 @@ namespace Example
 }
 ```
 
+#### Using the ModifyProductWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Modify Product
+    ApiResponse<ModifyProductResponse> response = apiInstance.ModifyProductWithHttpInfo(companyId, productId, modifyProductRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ProductsApi.ModifyProductWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **productId** | **int**| The ID of the product. | 
- **modifyProductRequest** | [**ModifyProductRequest**](ModifyProductRequest.md)| Modified product details. | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **productId** | **int** | The ID of the product. |  |
+| **modifyProductRequest** | [**ModifyProductRequest**](ModifyProductRequest.md) | Modified product details. | [optional]  |
 
 ### Return type
 

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **PaymentAccount** | [**PaymentAccount**](PaymentAccount.md) |  | [optional] 
 **PaidDate** | **DateTime?** | Payment date. [Only if status is paid] | [optional] 
 **EiRaw** | **Object** | Advanced raw attributes for e-invoices. | [optional] 
+**PaymentTerms** | [**IssuedDocumentPaymentsListItemPaymentTerms**](IssuedDocumentPaymentsListItemPaymentTerms.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

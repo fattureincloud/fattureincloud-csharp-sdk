@@ -2,25 +2,24 @@
 
 All URIs are relative to *https://api-v2.fattureincloud.it*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**ListArchiveCategories**](InfoApi.md#listarchivecategories) | **GET** /c/{company_id}/info/archive_categories | List Archive Categories
-[**ListCities**](InfoApi.md#listcities) | **GET** /info/cities | List Cities
-[**ListCostCenters**](InfoApi.md#listcostcenters) | **GET** /c/{company_id}/info/cost_centers | List Cost Centers
-[**ListCountries**](InfoApi.md#listcountries) | **GET** /info/countries | List Countries
-[**ListCurrencies**](InfoApi.md#listcurrencies) | **GET** /info/currencies | List Currencies
-[**ListDeliveryNotesDefaultCausals**](InfoApi.md#listdeliverynotesdefaultcausals) | **GET** /info/dn_causals | List Delivery Notes Default Causals
-[**ListDetailedCountries**](InfoApi.md#listdetailedcountries) | **GET** /info/detailed_countries | List Detailed Countries
-[**ListLanguages**](InfoApi.md#listlanguages) | **GET** /info/languages | List Languages
-[**ListPaymentAccounts**](InfoApi.md#listpaymentaccounts) | **GET** /c/{company_id}/info/payment_accounts | List Payment Accounts
-[**ListPaymentMethods**](InfoApi.md#listpaymentmethods) | **GET** /c/{company_id}/info/payment_methods | List Payment Methods
-[**ListProductCategories**](InfoApi.md#listproductcategories) | **GET** /c/{company_id}/info/product_categories | List Product Categories
-[**ListReceivedDocumentCategories**](InfoApi.md#listreceiveddocumentcategories) | **GET** /c/{company_id}/info/received_document_categories | List Received Document Categories
-[**ListRevenueCenters**](InfoApi.md#listrevenuecenters) | **GET** /c/{company_id}/info/revenue_centers | List Revenue Centers
-[**ListTemplates**](InfoApi.md#listtemplates) | **GET** /info/templates | List Templates
-[**ListUnitsOfMeasure**](InfoApi.md#listunitsofmeasure) | **GET** /info/measures | List Units of Measure
-[**ListVatTypes**](InfoApi.md#listvattypes) | **GET** /c/{company_id}/info/vat_types | List Vat Types
-
+| Method | HTTP request | Description |
+|--------|--------------|-------------|
+| [**ListArchiveCategories**](InfoApi.md#listarchivecategories) | **GET** /c/{company_id}/info/archive_categories | List Archive Categories |
+| [**ListCities**](InfoApi.md#listcities) | **GET** /info/cities | List Cities |
+| [**ListCostCenters**](InfoApi.md#listcostcenters) | **GET** /c/{company_id}/info/cost_centers | List Cost Centers |
+| [**ListCountries**](InfoApi.md#listcountries) | **GET** /info/countries | List Countries |
+| [**ListCurrencies**](InfoApi.md#listcurrencies) | **GET** /info/currencies | List Currencies |
+| [**ListDeliveryNotesDefaultCausals**](InfoApi.md#listdeliverynotesdefaultcausals) | **GET** /info/dn_causals | List Delivery Notes Default Causals |
+| [**ListDetailedCountries**](InfoApi.md#listdetailedcountries) | **GET** /info/detailed_countries | List Detailed Countries |
+| [**ListLanguages**](InfoApi.md#listlanguages) | **GET** /info/languages | List Languages |
+| [**ListPaymentAccounts**](InfoApi.md#listpaymentaccounts) | **GET** /c/{company_id}/info/payment_accounts | List Payment Accounts |
+| [**ListPaymentMethods**](InfoApi.md#listpaymentmethods) | **GET** /c/{company_id}/info/payment_methods | List Payment Methods |
+| [**ListProductCategories**](InfoApi.md#listproductcategories) | **GET** /c/{company_id}/info/product_categories | List Product Categories |
+| [**ListReceivedDocumentCategories**](InfoApi.md#listreceiveddocumentcategories) | **GET** /c/{company_id}/info/received_document_categories | List Received Document Categories |
+| [**ListRevenueCenters**](InfoApi.md#listrevenuecenters) | **GET** /c/{company_id}/info/revenue_centers | List Revenue Centers |
+| [**ListTemplates**](InfoApi.md#listtemplates) | **GET** /info/templates | List Templates |
+| [**ListUnitsOfMeasure**](InfoApi.md#listunitsofmeasure) | **GET** /info/measures | List Units of Measure |
+| [**ListVatTypes**](InfoApi.md#listvattypes) | **GET** /c/{company_id}/info/vat_types | List Vat Types |
 
 <a name="listarchivecategories"></a>
 # **ListArchiveCategories**
@@ -60,8 +59,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling InfoApi.ListArchiveCategories: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling InfoApi.ListArchiveCategories: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -69,11 +68,31 @@ namespace Example
 }
 ```
 
+#### Using the ListArchiveCategoriesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Archive Categories
+    ApiResponse<ListArchiveCategoriesResponse> response = apiInstance.ListArchiveCategoriesWithHttpInfo(companyId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling InfoApi.ListArchiveCategoriesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
 
 ### Return type
 
@@ -137,8 +156,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling InfoApi.ListCities: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling InfoApi.ListCities: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -146,12 +165,32 @@ namespace Example
 }
 ```
 
+#### Using the ListCitiesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Cities
+    ApiResponse<ListCitiesResponse> response = apiInstance.ListCitiesWithHttpInfo(postalCode, city);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling InfoApi.ListCitiesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **postalCode** | **string**| Postal code for filtering. | [optional] 
- **city** | **string**| City for filtering (ignored if postal_code is passed). | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **postalCode** | **string** | Postal code for filtering. | [optional]  |
+| **city** | **string** | City for filtering (ignored if postal_code is passed). | [optional]  |
 
 ### Return type
 
@@ -212,8 +251,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling InfoApi.ListCostCenters: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling InfoApi.ListCostCenters: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -221,11 +260,31 @@ namespace Example
 }
 ```
 
+#### Using the ListCostCentersWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Cost Centers
+    ApiResponse<ListCostCentersResponse> response = apiInstance.ListCostCentersWithHttpInfo(companyId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling InfoApi.ListCostCentersWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
 
 ### Return type
 
@@ -287,8 +346,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling InfoApi.ListCountries: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling InfoApi.ListCountries: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -296,9 +355,28 @@ namespace Example
 }
 ```
 
+#### Using the ListCountriesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Countries
+    ApiResponse<ListCountriesResponse> response = apiInstance.ListCountriesWithHttpInfo();
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling InfoApi.ListCountriesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 This endpoint does not need any parameter.
-
 ### Return type
 
 [**ListCountriesResponse**](ListCountriesResponse.md)
@@ -358,8 +436,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling InfoApi.ListCurrencies: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling InfoApi.ListCurrencies: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -367,9 +445,28 @@ namespace Example
 }
 ```
 
+#### Using the ListCurrenciesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Currencies
+    ApiResponse<ListCurrenciesResponse> response = apiInstance.ListCurrenciesWithHttpInfo();
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling InfoApi.ListCurrenciesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 This endpoint does not need any parameter.
-
 ### Return type
 
 [**ListCurrenciesResponse**](ListCurrenciesResponse.md)
@@ -429,8 +526,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling InfoApi.ListDeliveryNotesDefaultCausals: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling InfoApi.ListDeliveryNotesDefaultCausals: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -438,9 +535,28 @@ namespace Example
 }
 ```
 
+#### Using the ListDeliveryNotesDefaultCausalsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Delivery Notes Default Causals
+    ApiResponse<ListDeliveryNotesDefaultCausalsResponse> response = apiInstance.ListDeliveryNotesDefaultCausalsWithHttpInfo();
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling InfoApi.ListDeliveryNotesDefaultCausalsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 This endpoint does not need any parameter.
-
 ### Return type
 
 [**ListDeliveryNotesDefaultCausalsResponse**](ListDeliveryNotesDefaultCausalsResponse.md)
@@ -500,8 +616,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling InfoApi.ListDetailedCountries: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling InfoApi.ListDetailedCountries: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -509,9 +625,28 @@ namespace Example
 }
 ```
 
+#### Using the ListDetailedCountriesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Detailed Countries
+    ApiResponse<ListDetailedCountriesResponse> response = apiInstance.ListDetailedCountriesWithHttpInfo();
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling InfoApi.ListDetailedCountriesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 This endpoint does not need any parameter.
-
 ### Return type
 
 [**ListDetailedCountriesResponse**](ListDetailedCountriesResponse.md)
@@ -571,8 +706,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling InfoApi.ListLanguages: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling InfoApi.ListLanguages: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -580,9 +715,28 @@ namespace Example
 }
 ```
 
+#### Using the ListLanguagesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Languages
+    ApiResponse<ListLanguagesResponse> response = apiInstance.ListLanguagesWithHttpInfo();
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling InfoApi.ListLanguagesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 This endpoint does not need any parameter.
-
 ### Return type
 
 [**ListLanguagesResponse**](ListLanguagesResponse.md)
@@ -646,8 +800,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling InfoApi.ListPaymentAccounts: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling InfoApi.ListPaymentAccounts: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -655,14 +809,34 @@ namespace Example
 }
 ```
 
+#### Using the ListPaymentAccountsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Payment Accounts
+    ApiResponse<ListPaymentAccountsResponse> response = apiInstance.ListPaymentAccountsWithHttpInfo(companyId, fields, fieldset, sort);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling InfoApi.ListPaymentAccountsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **fields** | **string**| List of comma-separated fields. | [optional] 
- **fieldset** | **string**| Name of the fieldset. | [optional] 
- **sort** | **string**| List of comma-separated fields for result sorting (minus for desc sorting). | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **fields** | **string** | List of comma-separated fields. | [optional]  |
+| **fieldset** | **string** | Name of the fieldset. | [optional]  |
+| **sort** | **string** | List of comma-separated fields for result sorting (minus for desc sorting). | [optional]  |
 
 ### Return type
 
@@ -728,8 +902,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling InfoApi.ListPaymentMethods: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling InfoApi.ListPaymentMethods: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -737,14 +911,34 @@ namespace Example
 }
 ```
 
+#### Using the ListPaymentMethodsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Payment Methods
+    ApiResponse<ListPaymentMethodsResponse> response = apiInstance.ListPaymentMethodsWithHttpInfo(companyId, fields, fieldset, sort);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling InfoApi.ListPaymentMethodsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **fields** | **string**| List of comma-separated fields. | [optional] 
- **fieldset** | **string**| Name of the fieldset. | [optional] 
- **sort** | **string**| List of comma-separated fields for result sorting (minus for desc sorting). | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **fields** | **string** | List of comma-separated fields. | [optional]  |
+| **fieldset** | **string** | Name of the fieldset. | [optional]  |
+| **sort** | **string** | List of comma-separated fields for result sorting (minus for desc sorting). | [optional]  |
 
 ### Return type
 
@@ -808,8 +1002,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling InfoApi.ListProductCategories: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling InfoApi.ListProductCategories: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -817,12 +1011,32 @@ namespace Example
 }
 ```
 
+#### Using the ListProductCategoriesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Product Categories
+    ApiResponse<ListProductCategoriesResponse> response = apiInstance.ListProductCategoriesWithHttpInfo(companyId, context);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling InfoApi.ListProductCategoriesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **context** | **string**|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **context** | **string** |  |  |
 
 ### Return type
 
@@ -885,8 +1099,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling InfoApi.ListReceivedDocumentCategories: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling InfoApi.ListReceivedDocumentCategories: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -894,11 +1108,31 @@ namespace Example
 }
 ```
 
+#### Using the ListReceivedDocumentCategoriesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Received Document Categories
+    ApiResponse<ListReceivedDocumentCategoriesResponse> response = apiInstance.ListReceivedDocumentCategoriesWithHttpInfo(companyId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling InfoApi.ListReceivedDocumentCategoriesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
 
 ### Return type
 
@@ -959,8 +1193,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling InfoApi.ListRevenueCenters: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling InfoApi.ListRevenueCenters: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -968,11 +1202,31 @@ namespace Example
 }
 ```
 
+#### Using the ListRevenueCentersWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Revenue Centers
+    ApiResponse<ListRevenueCentersResponse> response = apiInstance.ListRevenueCentersWithHttpInfo(companyId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling InfoApi.ListRevenueCentersWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
 
 ### Return type
 
@@ -1036,8 +1290,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling InfoApi.ListTemplates: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling InfoApi.ListTemplates: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -1045,12 +1299,32 @@ namespace Example
 }
 ```
 
+#### Using the ListTemplatesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Templates
+    ApiResponse<ListTemplatesResponse> response = apiInstance.ListTemplatesWithHttpInfo(type, byType);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling InfoApi.ListTemplatesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **type** | **string**| Type of the templates. | [optional] [default to all]
- **byType** | **bool?**| [Only if type&#x3D;all] If true, splits the list in objects, grouping templates by type. | [optional] [default to false]
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **type** | **string** | Type of the templates. | [optional] [default to all] |
+| **byType** | **bool?** | [Only if type&#x3D;all] If true, splits the list in objects, grouping templates by type. | [optional] [default to false] |
 
 ### Return type
 
@@ -1111,8 +1385,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling InfoApi.ListUnitsOfMeasure: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling InfoApi.ListUnitsOfMeasure: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -1120,9 +1394,28 @@ namespace Example
 }
 ```
 
+#### Using the ListUnitsOfMeasureWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Units of Measure
+    ApiResponse<ListUnitsOfMeasureResponse> response = apiInstance.ListUnitsOfMeasureWithHttpInfo();
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling InfoApi.ListUnitsOfMeasureWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 This endpoint does not need any parameter.
-
 ### Return type
 
 [**ListUnitsOfMeasureResponse**](ListUnitsOfMeasureResponse.md)
@@ -1184,8 +1477,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling InfoApi.ListVatTypes: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling InfoApi.ListVatTypes: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -1193,12 +1486,32 @@ namespace Example
 }
 ```
 
+#### Using the ListVatTypesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Vat Types
+    ApiResponse<ListVatTypesResponse> response = apiInstance.ListVatTypesWithHttpInfo(companyId, fieldset);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling InfoApi.ListVatTypesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
- **fieldset** | **string**| Name of the fieldset. | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **fieldset** | **string** | Name of the fieldset. | [optional]  |
 
 ### Return type
 
