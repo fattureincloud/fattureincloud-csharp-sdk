@@ -2,10 +2,9 @@
 
 All URIs are relative to *https://api-v2.fattureincloud.it*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**GetCompanyInfo**](CompaniesApi.md#getcompanyinfo) | **GET** /c/{company_id}/company/info | Get Company Info
-
+| Method | HTTP request | Description |
+|--------|--------------|-------------|
+| [**GetCompanyInfo**](CompaniesApi.md#getcompanyinfo) | **GET** /c/{company_id}/company/info | Get Company Info |
 
 <a name="getcompanyinfo"></a>
 # **GetCompanyInfo**
@@ -45,8 +44,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CompaniesApi.GetCompanyInfo: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling CompaniesApi.GetCompanyInfo: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -54,11 +53,31 @@ namespace Example
 }
 ```
 
+#### Using the GetCompanyInfoWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get Company Info
+    ApiResponse<GetCompanyInfoResponse> response = apiInstance.GetCompanyInfoWithHttpInfo(companyId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling CompaniesApi.GetCompanyInfoWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **int**| The ID of the company. | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
 
 ### Return type
 

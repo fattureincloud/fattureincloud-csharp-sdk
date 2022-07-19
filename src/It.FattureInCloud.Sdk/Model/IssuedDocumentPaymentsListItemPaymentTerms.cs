@@ -27,17 +27,65 @@ using OpenAPIDateConverter = It.FattureInCloud.Sdk.Client.OpenAPIDateConverter;
 namespace It.FattureInCloud.Sdk.Model
 {
     /// <summary>
-    /// ReceivedDocumentPaymentsListItemPaymentTerms
+    /// IssuedDocumentPaymentsListItemPaymentTerms
     /// </summary>
-    [DataContract(Name = "ReceivedDocumentPaymentsListItem_payment_terms")]
-    public partial class ReceivedDocumentPaymentsListItemPaymentTerms : IEquatable<ReceivedDocumentPaymentsListItemPaymentTerms>, IValidatableObject
+    [DataContract(Name = "IssuedDocumentPaymentsListItem_payment_terms")]
+    public partial class IssuedDocumentPaymentsListItemPaymentTerms : IEquatable<IssuedDocumentPaymentsListItemPaymentTerms>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ReceivedDocumentPaymentsListItemPaymentTerms" /> class.
+        /// Payment terms type.
         /// </summary>
-        /// <param name="days">Number of days..</param>
-        /// <param name="type">type.</param>
-        public ReceivedDocumentPaymentsListItemPaymentTerms(int? days = default(int?), string type = default(string))
+        /// <value>Payment terms type.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TypeEnum
+        {
+            /// <summary>
+            /// Enum Standard for value: standard
+            /// </summary>
+            [EnumMember(Value = "standard")]
+            Standard = 1,
+
+            /// <summary>
+            /// Enum EndOfMonth for value: end_of_month
+            /// </summary>
+            [EnumMember(Value = "end_of_month")]
+            EndOfMonth = 2
+
+        }
+
+
+        /// <summary>
+        /// Payment terms type.
+        /// </summary>
+        /// <value>Payment terms type.</value>
+
+        [DataMember(Name = "type", EmitDefaultValue = true)]
+        public TypeEnum? Type
+        {
+            get { return _Type; }
+            set
+            {
+                _Type = value;
+                _flagType = true;
+            }
+        }
+        private TypeEnum? _Type;
+        private bool _flagType;
+
+        /// <summary>
+        /// Returns false as Type should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeType()
+        {
+            return _flagType;
+        }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IssuedDocumentPaymentsListItemPaymentTerms" /> class.
+        /// </summary>
+        /// <param name="days">The number of days by which the payment must be made..</param>
+        /// <param name="type">Payment terms type..</param>
+        public IssuedDocumentPaymentsListItemPaymentTerms(int? days = default(int?), TypeEnum? type = default(TypeEnum?))
         {
             this._Days = days;
             if (this.Days != null)
@@ -52,9 +100,9 @@ namespace It.FattureInCloud.Sdk.Model
         }
 
         /// <summary>
-        /// Number of days.
+        /// The number of days by which the payment must be made.
         /// </summary>
-        /// <value>Number of days.</value>
+        /// <value>The number of days by which the payment must be made.</value>
         [DataMember(Name = "days", EmitDefaultValue = true)]
         public int? Days
         {
@@ -77,37 +125,13 @@ namespace It.FattureInCloud.Sdk.Model
             return _flagDays;
         }
         /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = true)]
-        public string Type
-        {
-            get { return _Type; }
-            set
-            {
-                _Type = value;
-                _flagType = true;
-            }
-        }
-        private string _Type;
-        private bool _flagType;
-
-        /// <summary>
-        /// Returns false as Type should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeType()
-        {
-            return _flagType;
-        }
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ReceivedDocumentPaymentsListItemPaymentTerms {\n");
+            sb.Append("class IssuedDocumentPaymentsListItemPaymentTerms {\n");
             sb.Append("  Days: ").Append(Days).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
@@ -130,15 +154,15 @@ namespace It.FattureInCloud.Sdk.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ReceivedDocumentPaymentsListItemPaymentTerms);
+            return this.Equals(input as IssuedDocumentPaymentsListItemPaymentTerms);
         }
 
         /// <summary>
-        /// Returns true if ReceivedDocumentPaymentsListItemPaymentTerms instances are equal
+        /// Returns true if IssuedDocumentPaymentsListItemPaymentTerms instances are equal
         /// </summary>
-        /// <param name="input">Instance of ReceivedDocumentPaymentsListItemPaymentTerms to be compared</param>
+        /// <param name="input">Instance of IssuedDocumentPaymentsListItemPaymentTerms to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ReceivedDocumentPaymentsListItemPaymentTerms input)
+        public bool Equals(IssuedDocumentPaymentsListItemPaymentTerms input)
         {
             if (input == null)
             {
@@ -152,8 +176,7 @@ namespace It.FattureInCloud.Sdk.Model
                 ) &&
                 (
                     this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
+                    this.Type.Equals(input.Type)
                 );
         }
 
@@ -170,10 +193,7 @@ namespace It.FattureInCloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.Days.GetHashCode();
                 }
-                if (this.Type != null)
-                {
-                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 return hashCode;
             }
         }
