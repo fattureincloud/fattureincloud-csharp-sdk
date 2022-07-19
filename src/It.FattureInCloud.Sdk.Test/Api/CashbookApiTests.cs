@@ -51,7 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
             getCashbookResponseBody = "{ 'data': { 'kind': 'issued_document', 'type': 'out', 'date': '2021-10-10', 'description': 'Fattura n. 201/2021', 'entity_name': 'Rossi S.r.l.', 'document': { 'id': 54321 }, 'amount_out': 122.0, 'payment_account_out': { 'id': 21, 'virtual': false } } }";
             var getCashbookResponse = JsonConvert.DeserializeObject<GetCashbookEntryResponse>(getCashbookResponseBody);
             instance
-                .Setup(p => p.GetCashbookEntry(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), 0))
+                .Setup(p => p.GetCashbookEntry(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), 0))
                 .Returns(getCashbookResponse);
 
             listCashbookResponseBody = "{ 'data': [{ 'kind': 'issued_document', 'type': 'out', 'date': '2021-10-10', 'description': 'Fattura n. 201/2021', 'entity_name': 'Rossi S.r.l.', 'document': { 'id': 54321 }, 'amount_out': 122.0, 'payment_account_out': { 'id': 21, 'virtual': false } } ,{ 'kind': 'issued_document', 'type': 'out', 'date': '2021-10-10', 'description': 'Fattura n. 201/2021', 'entity_name': 'Rossi S.r.l.', 'document': { 'id': 54321 }, 'amount_out': 122.0, 'payment_account_out': { 'id': 21, 'virtual': false } } ] }";
@@ -63,7 +63,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
             modifyCashbookResponseBody = "{ 'data': { 'kind': 'issued_document', 'type': 'out', 'date': '2021-10-10', 'description': 'Fattura n. 201/2021', 'entity_name': 'Rossi S.r.l.', 'document': { 'id': 54321 }, 'amount_out': 122.0, 'payment_account_out': { 'id': 21, 'virtual': false } } }";
             var modifyCashbookResponse = JsonConvert.DeserializeObject<ModifyCashbookEntryResponse>(modifyCashbookResponseBody);
             instance
-                .Setup(p => p.ModifyCashbookEntry(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifyCashbookEntryRequest>(), 0))
+                .Setup(p => p.ModifyCashbookEntry(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<ModifyCashbookEntryRequest>(), 0))
                 .Returns(modifyCashbookResponse);
 
         }
@@ -113,7 +113,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         public void GetCashbookEntryTest()
         {
             int companyId = 2;
-            int documentId = 12345;
+            string documentId = "1234";
             string fields = "";
             string fieldset = "";
 
@@ -149,7 +149,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         public void ModifyCashbookEntryTest()
         {
             int companyId = 2;
-            int documentId = 12345;
+            string documentId = "1234";
             ModifyCashbookEntryRequest modifyCashbookEntryRequest = new ModifyCashbookEntryRequest();
 
             var response = instance.Object.ModifyCashbookEntry(companyId, documentId, modifyCashbookEntryRequest);

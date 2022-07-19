@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class IssuedDocumentPaymentsListItemPaymentTermsTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for IssuedDocumentPaymentsListItemPaymentTerms
-        //private IssuedDocumentPaymentsListItemPaymentTerms instance;
+        private IssuedDocumentPaymentsListItemPaymentTerms instance;
 
         public IssuedDocumentPaymentsListItemPaymentTermsTests()
         {
-            // TODO uncomment below to create an instance of IssuedDocumentPaymentsListItemPaymentTerms
-            //instance = new IssuedDocumentPaymentsListItemPaymentTerms();
+            var body = "{ 'days': 2, 'type': 'standard' }";
+            instance = JsonConvert.DeserializeObject<IssuedDocumentPaymentsListItemPaymentTerms>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IssuedDocumentPaymentsListItemPaymentTermsInstanceTest()
         {
-            // TODO uncomment below to test "IsType" IssuedDocumentPaymentsListItemPaymentTerms
-            //Assert.IsType<IssuedDocumentPaymentsListItemPaymentTerms>(instance);
+            Assert.IsType<IssuedDocumentPaymentsListItemPaymentTerms>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DaysTest()
         {
-            // TODO unit test for the property 'Days'
+            Assert.IsType<int>(instance.Days);
         }
         /// <summary>
         /// Test the property 'Type'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TypeTest()
         {
-            // TODO unit test for the property 'Type'
+            Assert.IsType<IssuedDocumentPaymentsListItemPaymentTerms.TypeEnum>(instance.Type);
         }
 
     }
