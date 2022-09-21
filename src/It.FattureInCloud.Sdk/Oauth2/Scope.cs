@@ -45,6 +45,15 @@ namespace It.FattureInCloud.Sdk.OauthHelper
         /// <summary>Read permission to the issued Delivery Notes</summary>
         ISSUED_DOCUMENTS_DELIVERY_NOTES_READ,
 
+        /// <summary>Read permission to the issued Work Reports</summary>
+        ISSUED_DOCUMENTS_WORK_REPORTS_READ,
+
+        /// <summary>Read permission to the issued Supplier Orders</summary>
+        ISSUED_DOCUMENTS_SUPPLIER_ORDERS_READ,
+
+        /// <summary>Read permission to the issued Self Invoices</summary>
+        ISSUED_DOCUMENTS_SELF_INVOICES_READ,
+
         /// <summary>Write permission to the issued Invoices</summary>
         ISSUED_DOCUMENTS_INVOICES_ALL,
 
@@ -65,6 +74,15 @@ namespace It.FattureInCloud.Sdk.OauthHelper
 
         /// <summary>Write permission to the issued Delivery Notes</summary>
         ISSUED_DOCUMENTS_DELIVERY_NOTES_ALL,
+
+        /// <summary>Write permission to the issued Work Reports</summary>
+        ISSUED_DOCUMENTS_WORK_REPORTS_ALL,
+
+        /// <summary>Write permission to the issued Supplier Orders</summary>
+        ISSUED_DOCUMENTS_SUPPLIER_ORDERS_ALL,
+
+        /// <summary>Write permission to the issued Self Invoices</summary>
+        ISSUED_DOCUMENTS_SELF_INVOICES_ALL,
 
         /// <summary>Read permission to the Received Documents</summary>
         RECEIVED_DOCUMENTS_READ,
@@ -180,6 +198,18 @@ namespace It.FattureInCloud.Sdk.OauthHelper
                     stringScope = "issued_documents.delivery_notes:r";
                     break;
 
+                case "ISSUED_DOCUMENTS_WORK_REPORTS_READ":
+                    stringScope = "issued_documents.work_reports:r";
+                    break;
+
+                case "ISSUED_DOCUMENTS_SUPPLIER_ORDERS_READ":
+                    stringScope = "issued_documents.supplier_orders:r";
+                    break;
+
+                case "ISSUED_DOCUMENTS_SELF_INVOICES_READ":
+                    stringScope = "issued_documents.self_invoices:r";
+                    break;
+
                 case "ISSUED_DOCUMENTS_INVOICES_ALL":
                     stringScope = "issued_documents.invoices:a";
                     break;
@@ -206,6 +236,18 @@ namespace It.FattureInCloud.Sdk.OauthHelper
 
                 case "ISSUED_DOCUMENTS_DELIVERY_NOTES_ALL":
                     stringScope = "issued_documents.delivery_notes:a";
+                    break;
+
+                case "ISSUED_DOCUMENTS_WORK_REPORTS_ALL":
+                    stringScope = "issued_documents.work_reports:a";
+                    break;
+
+                case "ISSUED_DOCUMENTS_SUPPLIER_ORDERS_ALL":
+                    stringScope = "issued_documents.supplier_orders:a";
+                    break;
+
+                case "ISSUED_DOCUMENTS_SELF_INVOICES_ALL":
+                    stringScope = "issued_documents.self_invoices:a";
                     break;
 
                 case "RECEIVED_DOCUMENTS_READ":
