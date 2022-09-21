@@ -23,3 +23,8 @@
 #!docs/README.md
 git_push.sh
 .gitignore
+
+# OAuth files
+OAuthAuthenticator.cs
+OAuthFlow.cs
+TokenResponse.cs
