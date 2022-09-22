@@ -47,7 +47,6 @@ docs/CreateSupplierResponse.md
 docs/CreateVatTypeRequest.md
 docs/CreateVatTypeResponse.md
 docs/Currency.md
-docs/DefaultPaymentTermsType.md
 docs/DetailedCountry.md
 docs/DocumentTemplate.md
 docs/EInvoiceRejectionReason.md
@@ -178,6 +177,7 @@ docs/PaymentAccountType.md
 docs/PaymentMethod.md
 docs/PaymentMethodDetails.md
 docs/PaymentMethodType.md
+docs/PaymentTermsType.md
 docs/PermissionLevel.md
 docs/Permissions.md
 docs/PermissionsFicIssuedDocumentsDetailed.md
@@ -227,6 +227,7 @@ docs/VerifyEInvoiceXmlErrorResponseExtra.md
 docs/VerifyEInvoiceXmlResponse.md
 docs/VerifyEInvoiceXmlResponseData.md
 src/It.FattureInCloud.Sdk.Test/It.FattureInCloud.Sdk.Test.csproj
+src/It.FattureInCloud.Sdk.Test/Model/PaymentTermsTypeTests.cs
 src/It.FattureInCloud.Sdk/Api/ArchiveApi.cs
 src/It.FattureInCloud.Sdk/Api/CashbookApi.cs
 src/It.FattureInCloud.Sdk/Api/ClientsApi.cs
@@ -244,6 +245,9 @@ src/It.FattureInCloud.Sdk/Api/UserApi.cs
 src/It.FattureInCloud.Sdk/Client/ApiClient.cs
 src/It.FattureInCloud.Sdk/Client/ApiException.cs
 src/It.FattureInCloud.Sdk/Client/ApiResponse.cs
+src/It.FattureInCloud.Sdk/Client/Auth/OAuthAuthenticator.cs
+src/It.FattureInCloud.Sdk/Client/Auth/OAuthFlow.cs
+src/It.FattureInCloud.Sdk/Client/Auth/TokenResponse.cs
 src/It.FattureInCloud.Sdk/Client/ClientUtils.cs
 src/It.FattureInCloud.Sdk/Client/Configuration.cs
 src/It.FattureInCloud.Sdk/Client/ExceptionFactory.cs
@@ -301,7 +305,6 @@ src/It.FattureInCloud.Sdk/Model/CreateSupplierResponse.cs
 src/It.FattureInCloud.Sdk/Model/CreateVatTypeRequest.cs
 src/It.FattureInCloud.Sdk/Model/CreateVatTypeResponse.cs
 src/It.FattureInCloud.Sdk/Model/Currency.cs
-src/It.FattureInCloud.Sdk/Model/DefaultPaymentTermsType.cs
 src/It.FattureInCloud.Sdk/Model/DetailedCountry.cs
 src/It.FattureInCloud.Sdk/Model/DocumentTemplate.cs
 src/It.FattureInCloud.Sdk/Model/EInvoiceRejectionReason.cs
@@ -429,6 +432,7 @@ src/It.FattureInCloud.Sdk/Model/PaymentAccountType.cs
 src/It.FattureInCloud.Sdk/Model/PaymentMethod.cs
 src/It.FattureInCloud.Sdk/Model/PaymentMethodDetails.cs
 src/It.FattureInCloud.Sdk/Model/PaymentMethodType.cs
+src/It.FattureInCloud.Sdk/Model/PaymentTermsType.cs
 src/It.FattureInCloud.Sdk/Model/PermissionLevel.cs
 src/It.FattureInCloud.Sdk/Model/Permissions.cs
 src/It.FattureInCloud.Sdk/Model/PermissionsFicIssuedDocumentsDetailed.cs
