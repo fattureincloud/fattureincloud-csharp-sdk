@@ -25,6 +25,6 @@ git_push.sh
 .gitignore
 
 # OAuth files
-OAuthAuthenticator.cs
-OAuthFlow.cs
-TokenResponse.cs
+src/It.FattureInCloud.Sdk/Client/Auth/OAuthAuthenticator.cs
+src/It.FattureInCloud.Sdk/Client/Auth/OAuthFlow.cs
+src/It.FattureInCloud.Sdk/Client/Auth/TokenResponse.cs
