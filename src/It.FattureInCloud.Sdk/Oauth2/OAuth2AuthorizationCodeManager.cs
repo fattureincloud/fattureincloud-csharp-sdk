@@ -100,10 +100,10 @@ namespace It.FattureInCloud.Sdk.OauthHelper
             };
 
             var client = new RestClient(tokenUri);
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest();
             request.AddHeader("content-type", "application/json");
             request.AddJsonBody(data);
-            IRestResponse response = client.Execute(request);
+            var response = client.Post(request);
             if ((int)response.StatusCode != 200)
             {
                 throw new OAuth2AuthorizationCodeError(response.Content);
@@ -129,10 +129,10 @@ namespace It.FattureInCloud.Sdk.OauthHelper
             };
 
             var client = new RestClient(tokenUri);
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest();
             request.AddHeader("content-type", "application/json");
             request.AddJsonBody(data);
-            IRestResponse response = client.Execute(request);
+            var response = client.Post(request);
             if ((int)response.StatusCode != 200)
             {
                 throw new OAuth2AuthorizationCodeError(response.Content);

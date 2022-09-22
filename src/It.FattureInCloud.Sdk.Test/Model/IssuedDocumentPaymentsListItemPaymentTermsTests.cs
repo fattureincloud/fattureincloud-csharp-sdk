@@ -69,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TypeTest()
         {
-            Assert.IsType<IssuedDocumentPaymentsListItemPaymentTerms.TypeEnum>(instance.Type);
+            Assert.IsType<PaymentTermsType>(instance.Type);
         }
 
     }

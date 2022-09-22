@@ -238,7 +238,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DefaultPaymentTermsTypeTest()
         {
-            Assert.IsType<DefaultPaymentTermsType>(instance.DefaultPaymentTermsType);
+            Assert.IsType<PaymentTermsType>(instance.DefaultPaymentTermsType);
         }
         /// <summary>
         /// Test the property 'DefaultPaymentMethod'
