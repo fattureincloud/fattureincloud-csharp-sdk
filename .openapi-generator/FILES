@@ -227,7 +227,6 @@ docs/VerifyEInvoiceXmlErrorResponseExtra.md
 docs/VerifyEInvoiceXmlResponse.md
 docs/VerifyEInvoiceXmlResponseData.md
 src/It.FattureInCloud.Sdk.Test/It.FattureInCloud.Sdk.Test.csproj
-src/It.FattureInCloud.Sdk.Test/Model/PaymentTermsTypeTests.cs
 src/It.FattureInCloud.Sdk/Api/ArchiveApi.cs
 src/It.FattureInCloud.Sdk/Api/CashbookApi.cs
 src/It.FattureInCloud.Sdk/Api/ClientsApi.cs
@@ -245,9 +244,6 @@ src/It.FattureInCloud.Sdk/Api/UserApi.cs
 src/It.FattureInCloud.Sdk/Client/ApiClient.cs
 src/It.FattureInCloud.Sdk/Client/ApiException.cs
 src/It.FattureInCloud.Sdk/Client/ApiResponse.cs
-src/It.FattureInCloud.Sdk/Client/Auth/OAuthAuthenticator.cs
-src/It.FattureInCloud.Sdk/Client/Auth/OAuthFlow.cs
-src/It.FattureInCloud.Sdk/Client/Auth/TokenResponse.cs
 src/It.FattureInCloud.Sdk/Client/ClientUtils.cs
 src/It.FattureInCloud.Sdk/Client/Configuration.cs
 src/It.FattureInCloud.Sdk/Client/ExceptionFactory.cs

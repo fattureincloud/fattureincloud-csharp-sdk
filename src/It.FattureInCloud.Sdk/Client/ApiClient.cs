@@ -367,7 +367,7 @@ namespace It.FattureInCloud.Sdk.Client
                         request.RequestFormat = DataFormat.Json;
                     }
 
-                    request.AddParameter("application/json", JsonConvert.SerializeObject(options.Data), ParameterType.RequestBody);
+                    request.AddParameter("application/json; charset=utf-8", JsonConvert.SerializeObject(options.Data), ParameterType.RequestBody);
                 }
             }
 
