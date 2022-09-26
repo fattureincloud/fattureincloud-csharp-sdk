@@ -49,7 +49,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="paymentAccountsList">Payment accounts list..</param>
         /// <param name="vatTypesList">Vat types list..</param>
         /// <param name="languagesList">Languages list..</param>
-        public IssuedDocumentPreCreateInfo(Dictionary<string, Dictionary> numerations = default(Dictionary<string, Dictionary>), Dictionary<string, Dictionary> dnNumerations = default(Dictionary<string, Dictionary>), IssuedDocumentPreCreateInfoDefaultValues defaultValues = default(IssuedDocumentPreCreateInfoDefaultValues), IssuedDocumentPreCreateInfoExtraDataDefaultValues extraDataDefaultValues = default(IssuedDocumentPreCreateInfoExtraDataDefaultValues), IssuedDocumentPreCreateInfoItemsDefaultValues itemsDefaultValues = default(IssuedDocumentPreCreateInfoItemsDefaultValues), List<string> countriesList = default(List<string>), List<Currency> currenciesList = default(List<Currency>), List<DocumentTemplate> templatesList = default(List<DocumentTemplate>), List<DocumentTemplate> dnTemplatesList = default(List<DocumentTemplate>), List<DocumentTemplate> aiTemplatesList = default(List<DocumentTemplate>), List<PaymentMethod> paymentMethodsList = default(List<PaymentMethod>), List<PaymentAccount> paymentAccountsList = default(List<PaymentAccount>), List<VatType> vatTypesList = default(List<VatType>), List<Language> languagesList = default(List<Language>))
+        public IssuedDocumentPreCreateInfo(Dictionary<string, Dictionary<string, int>> numerations = default(Dictionary<string, Dictionary<string, int>>), Dictionary<string, Dictionary<string, int>> dnNumerations = default(Dictionary<string, Dictionary<string, int>>), IssuedDocumentPreCreateInfoDefaultValues defaultValues = default(IssuedDocumentPreCreateInfoDefaultValues), IssuedDocumentPreCreateInfoExtraDataDefaultValues extraDataDefaultValues = default(IssuedDocumentPreCreateInfoExtraDataDefaultValues), IssuedDocumentPreCreateInfoItemsDefaultValues itemsDefaultValues = default(IssuedDocumentPreCreateInfoItemsDefaultValues), List<string> countriesList = default(List<string>), List<Currency> currenciesList = default(List<Currency>), List<DocumentTemplate> templatesList = default(List<DocumentTemplate>), List<DocumentTemplate> dnTemplatesList = default(List<DocumentTemplate>), List<DocumentTemplate> aiTemplatesList = default(List<DocumentTemplate>), List<PaymentMethod> paymentMethodsList = default(List<PaymentMethod>), List<PaymentAccount> paymentAccountsList = default(List<PaymentAccount>), List<VatType> vatTypesList = default(List<VatType>), List<Language> languagesList = default(List<Language>))
         {
             this._Numerations = numerations;
             if (this.Numerations != null)
@@ -127,7 +127,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Gets or Sets Numerations
         /// </summary>
         [DataMember(Name = "numerations", EmitDefaultValue = false)]
-        public Dictionary<string, Dictionary> Numerations
+        public Dictionary<string, Dictionary<string, int>> Numerations
         {
             get { return _Numerations; }
             set
@@ -136,7 +136,7 @@ namespace It.FattureInCloud.Sdk.Model
                 _flagNumerations = true;
             }
         }
-        private Dictionary<string, Dictionary> _Numerations;
+        private Dictionary<string, Dictionary<string, int>> _Numerations;
         private bool _flagNumerations;
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Gets or Sets DnNumerations
         /// </summary>
         [DataMember(Name = "dn_numerations", EmitDefaultValue = false)]
-        public Dictionary<string, Dictionary> DnNumerations
+        public Dictionary<string, Dictionary<string, int>> DnNumerations
         {
             get { return _DnNumerations; }
             set
@@ -160,7 +160,7 @@ namespace It.FattureInCloud.Sdk.Model
                 _flagDnNumerations = true;
             }
         }
-        private Dictionary<string, Dictionary> _DnNumerations;
+        private Dictionary<string, Dictionary<string, int>> _DnNumerations;
         private bool _flagDnNumerations;
 
         /// <summary>
