@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **AddressProvince** | **string** | Province. | [optional] 
 **AddressExtra** | **string** | Address extra info. | [optional] 
 **Country** | **string** | Country | [optional] 
+**CountryIso** | **string** | Country Iso | [optional] 
 **Email** | **string** | Email. | [optional] 
 **CertifiedEmail** | **string** | Certified email. | [optional] 
 **Phone** | **string** | Phone. | [optional] 

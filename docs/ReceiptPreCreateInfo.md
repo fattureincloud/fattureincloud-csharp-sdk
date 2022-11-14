@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Numerations** | **Dictionary&lt;string, Dictionary&gt;** |  | [optional] 
+**Numerations** | **Dictionary&lt;string, Dictionary&lt;string, int&gt;&gt;** |  | [optional] 
 **NumerationsList** | **List&lt;string&gt;** | List of series used in the past. | [optional] 
 **RcCentersList** | **List&lt;string&gt;** | List of revenue centers used in the past. | [optional] 
 **PaymentAccountsList** | [**List&lt;PaymentAccount&gt;**](PaymentAccount.md) | User payment accounts list. | [optional] 
