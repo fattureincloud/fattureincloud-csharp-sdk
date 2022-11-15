@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ListEmailsResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ListEmailsResponse
-        //private ListEmailsResponse instance;
+        private ListEmailsResponse instance;
 
         public ListEmailsResponseTests()
         {
-            // TODO uncomment below to create an instance of ListEmailsResponse
-            //instance = new ListEmailsResponse();
+            var body = "{'current_page':1,'data':[{'id':1,'status':'sent','sent_date':'2022-07-17 13:53:12','errors_count':0,'error_log':'','from_email':'test@mail.it','from_name':'Test mail','to_email':'mail@test.it','to_name':'Mario','subject':'Test','content':'Test send email','copy_to':'','recipient_status':'unknown','recipient_date':'2022-11-15 13:13:00','kind':'Fatture','attachments':[]},{'id':2,'status':'sent','sent_date':'2022-07-18 13:53:12','errors_count':0,'error_log':'','from_email':'test@mail.it','from_name':'Test mail','to_email':'mail@test.it','to_name':'Maria','subject':'Test','content':'Test send email','copy_to':'','recipient_status':'unknown','recipient_date':'2022-07-18 13:53:12','kind':'Fatture','attachments':[]}],'first_page_url':'emails?page=1','next_page_url':'emails?page=1','from':1,'last_page':1,'last_page_url':'emails?page=1','path':'emails','per_page':50,'prev_page_url':'emails?page=1','to':2,'total':2}";
+            instance = JsonConvert.DeserializeObject<ListEmailsResponse>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ListEmailsResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ListEmailsResponse
-            //Assert.IsType<ListEmailsResponse>(instance);
+            Assert.IsType<ListEmailsResponse>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CurrentPageTest()
         {
-            // TODO unit test for the property 'CurrentPage'
+            Assert.IsType<int>(instance.CurrentPage);
         }
         /// <summary>
         /// Test the property 'FirstPageUrl'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FirstPageUrlTest()
         {
-            // TODO unit test for the property 'FirstPageUrl'
+            Assert.IsType<string>(instance.FirstPageUrl);
         }
         /// <summary>
         /// Test the property 'From'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FromTest()
         {
-            // TODO unit test for the property 'From'
+            Assert.IsType<int>(instance.From);
         }
         /// <summary>
         /// Test the property 'LastPage'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void LastPageTest()
         {
-            // TODO unit test for the property 'LastPage'
+            Assert.IsType<int>(instance.LastPage);
         }
         /// <summary>
         /// Test the property 'LastPageUrl'
@@ -95,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void LastPageUrlTest()
         {
-            // TODO unit test for the property 'LastPageUrl'
+            Assert.IsType<string>(instance.LastPageUrl);
         }
         /// <summary>
         /// Test the property 'NextPageUrl'
@@ -103,7 +101,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NextPageUrlTest()
         {
-            // TODO unit test for the property 'NextPageUrl'
+            Assert.IsType<string>(instance.NextPageUrl);
         }
         /// <summary>
         /// Test the property 'Path'
@@ -111,7 +109,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PathTest()
         {
-            // TODO unit test for the property 'Path'
+            Assert.IsType<string>(instance.Path);
         }
         /// <summary>
         /// Test the property 'PerPage'
@@ -119,7 +117,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PerPageTest()
         {
-            // TODO unit test for the property 'PerPage'
+            Assert.IsType<int>(instance.PerPage);
         }
         /// <summary>
         /// Test the property 'PrevPageUrl'
@@ -127,7 +125,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PrevPageUrlTest()
         {
-            // TODO unit test for the property 'PrevPageUrl'
+            Assert.IsType<string>(instance.PrevPageUrl);
         }
         /// <summary>
         /// Test the property 'To'
@@ -135,7 +133,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ToTest()
         {
-            // TODO unit test for the property 'To'
+            Assert.IsType<int>(instance.To);
         }
         /// <summary>
         /// Test the property 'Total'
@@ -143,7 +141,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TotalTest()
         {
-            // TODO unit test for the property 'Total'
+            Assert.IsType<int>(instance.Total);
         }
         /// <summary>
         /// Test the property 'Data'
@@ -151,7 +149,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<List<Email>>(instance.Data);
         }
 
     }

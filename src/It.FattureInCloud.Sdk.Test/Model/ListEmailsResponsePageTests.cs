@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ListEmailsResponsePageTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ListEmailsResponsePage
-        //private ListEmailsResponsePage instance;
+        private ListEmailsResponsePage instance;
 
         public ListEmailsResponsePageTests()
         {
-            // TODO uncomment below to create an instance of ListEmailsResponsePage
-            //instance = new ListEmailsResponsePage();
+            var body = "{'data':[{'id':1,'status':'sent','sent_date':'2022-07-17 13:53:12','errors_count':0,'error_log':'','from_email':'test@mail.it','from_name':'Test mail','to_email':'mail@test.it','to_name':'Mario','subject':'Test','content':'Test send email','copy_to':'','recipient_status':'unknown','recipient_date':'2022-07-18 13:53:12','kind':'Fatture','attachments':[]},{'id':2,'status':'sent','sent_date':'2022-07-18 13:53:12','errors_count':0,'error_log':'','from_email':'test@mail.it','from_name':'Test mail','to_email':'mail@test.it','to_name':'Maria','subject':'Test','content':'Test send email','copy_to':'','recipient_status':'unknown','recipient_date':'2022-07-18 13:53:12','kind':'Fatture','attachments':[]}]}";
+            instance = JsonConvert.DeserializeObject<ListEmailsResponsePage>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ListEmailsResponsePageInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ListEmailsResponsePage
-            //Assert.IsType<ListEmailsResponsePage>(instance);
+            Assert.IsType<ListEmailsResponsePage>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<List<Email>>(instance.Data);
         }
 
     }

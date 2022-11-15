@@ -367,7 +367,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// <param name="transformKeepCopy">Keep the old document. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransformIssuedDocumentResponse</returns>
-        TransformIssuedDocumentResponse TransformIssuedDocument(int companyId, string originalDocumentId, string newType, int? eInvoice = default(int?), int? transformKeepCopy = default(int?), int operationIndex = 0);
+        TransformIssuedDocumentResponse TransformIssuedDocument(int companyId, int originalDocumentId, string newType, int? eInvoice = default(int?), int? transformKeepCopy = default(int?), int operationIndex = 0);
 
         /// <summary>
         /// Transform issued document
@@ -383,7 +383,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// <param name="transformKeepCopy">Keep the old document. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransformIssuedDocumentResponse</returns>
-        ApiResponse<TransformIssuedDocumentResponse> TransformIssuedDocumentWithHttpInfo(int companyId, string originalDocumentId, string newType, int? eInvoice = default(int?), int? transformKeepCopy = default(int?), int operationIndex = 0);
+        ApiResponse<TransformIssuedDocumentResponse> TransformIssuedDocumentWithHttpInfo(int companyId, int originalDocumentId, string newType, int? eInvoice = default(int?), int? transformKeepCopy = default(int?), int operationIndex = 0);
         /// <summary>
         /// Upload Issued Document Attachment
         /// </summary>
@@ -785,7 +785,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TransformIssuedDocumentResponse</returns>
-        System.Threading.Tasks.Task<TransformIssuedDocumentResponse> TransformIssuedDocumentAsync(int companyId, string originalDocumentId, string newType, int? eInvoice = default(int?), int? transformKeepCopy = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TransformIssuedDocumentResponse> TransformIssuedDocumentAsync(int companyId, int originalDocumentId, string newType, int? eInvoice = default(int?), int? transformKeepCopy = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Transform issued document
@@ -802,7 +802,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TransformIssuedDocumentResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TransformIssuedDocumentResponse>> TransformIssuedDocumentWithHttpInfoAsync(int companyId, string originalDocumentId, string newType, int? eInvoice = default(int?), int? transformKeepCopy = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TransformIssuedDocumentResponse>> TransformIssuedDocumentWithHttpInfoAsync(int companyId, int originalDocumentId, string newType, int? eInvoice = default(int?), int? transformKeepCopy = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Upload Issued Document Attachment
         /// </summary>
@@ -2935,7 +2935,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// <param name="transformKeepCopy">Keep the old document. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransformIssuedDocumentResponse</returns>
-        public TransformIssuedDocumentResponse TransformIssuedDocument(int companyId, string originalDocumentId, string newType, int? eInvoice = default(int?), int? transformKeepCopy = default(int?), int operationIndex = 0)
+        public TransformIssuedDocumentResponse TransformIssuedDocument(int companyId, int originalDocumentId, string newType, int? eInvoice = default(int?), int? transformKeepCopy = default(int?), int operationIndex = 0)
         {
             It.FattureInCloud.Sdk.Client.ApiResponse<TransformIssuedDocumentResponse> localVarResponse = TransformIssuedDocumentWithHttpInfo(companyId, originalDocumentId, newType, eInvoice, transformKeepCopy);
             return localVarResponse.Data;
@@ -2952,13 +2952,8 @@ namespace It.FattureInCloud.Sdk.Api
         /// <param name="transformKeepCopy">Keep the old document. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransformIssuedDocumentResponse</returns>
-        public It.FattureInCloud.Sdk.Client.ApiResponse<TransformIssuedDocumentResponse> TransformIssuedDocumentWithHttpInfo(int companyId, string originalDocumentId, string newType, int? eInvoice = default(int?), int? transformKeepCopy = default(int?), int operationIndex = 0)
+        public It.FattureInCloud.Sdk.Client.ApiResponse<TransformIssuedDocumentResponse> TransformIssuedDocumentWithHttpInfo(int companyId, int originalDocumentId, string newType, int? eInvoice = default(int?), int? transformKeepCopy = default(int?), int operationIndex = 0)
         {
-            // verify the required parameter 'originalDocumentId' is set
-            if (originalDocumentId == null)
-            {
-                throw new It.FattureInCloud.Sdk.Client.ApiException(400, "Missing required parameter 'originalDocumentId' when calling IssuedDocumentsApi->TransformIssuedDocument");
-            }
 
             // verify the required parameter 'newType' is set
             if (newType == null)
@@ -3036,7 +3031,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TransformIssuedDocumentResponse</returns>
-        public async System.Threading.Tasks.Task<TransformIssuedDocumentResponse> TransformIssuedDocumentAsync(int companyId, string originalDocumentId, string newType, int? eInvoice = default(int?), int? transformKeepCopy = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TransformIssuedDocumentResponse> TransformIssuedDocumentAsync(int companyId, int originalDocumentId, string newType, int? eInvoice = default(int?), int? transformKeepCopy = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             It.FattureInCloud.Sdk.Client.ApiResponse<TransformIssuedDocumentResponse> localVarResponse = await TransformIssuedDocumentWithHttpInfoAsync(companyId, originalDocumentId, newType, eInvoice, transformKeepCopy, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -3054,13 +3049,8 @@ namespace It.FattureInCloud.Sdk.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TransformIssuedDocumentResponse)</returns>
-        public async System.Threading.Tasks.Task<It.FattureInCloud.Sdk.Client.ApiResponse<TransformIssuedDocumentResponse>> TransformIssuedDocumentWithHttpInfoAsync(int companyId, string originalDocumentId, string newType, int? eInvoice = default(int?), int? transformKeepCopy = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<It.FattureInCloud.Sdk.Client.ApiResponse<TransformIssuedDocumentResponse>> TransformIssuedDocumentWithHttpInfoAsync(int companyId, int originalDocumentId, string newType, int? eInvoice = default(int?), int? transformKeepCopy = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'originalDocumentId' is set
-            if (originalDocumentId == null)
-            {
-                throw new It.FattureInCloud.Sdk.Client.ApiException(400, "Missing required parameter 'originalDocumentId' when calling IssuedDocumentsApi->TransformIssuedDocument");
-            }
 
             // verify the required parameter 'newType' is set
             if (newType == null)

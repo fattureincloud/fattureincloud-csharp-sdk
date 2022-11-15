@@ -37,7 +37,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// <param name="companyId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ListEmailsResponse</returns>
-        ListEmailsResponse ListEmails(string companyId, int operationIndex = 0);
+        ListEmailsResponse ListEmails(int companyId, int operationIndex = 0);
 
         /// <summary>
         /// List emails
@@ -49,7 +49,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// <param name="companyId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ListEmailsResponse</returns>
-        ApiResponse<ListEmailsResponse> ListEmailsWithHttpInfo(string companyId, int operationIndex = 0);
+        ApiResponse<ListEmailsResponse> ListEmailsWithHttpInfo(int companyId, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -70,7 +70,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListEmailsResponse</returns>
-        System.Threading.Tasks.Task<ListEmailsResponse> ListEmailsAsync(string companyId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListEmailsResponse> ListEmailsAsync(int companyId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List emails
@@ -83,7 +83,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListEmailsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListEmailsResponse>> ListEmailsWithHttpInfoAsync(string companyId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListEmailsResponse>> ListEmailsWithHttpInfoAsync(int companyId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -211,7 +211,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// <param name="companyId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ListEmailsResponse</returns>
-        public ListEmailsResponse ListEmails(string companyId, int operationIndex = 0)
+        public ListEmailsResponse ListEmails(int companyId, int operationIndex = 0)
         {
             It.FattureInCloud.Sdk.Client.ApiResponse<ListEmailsResponse> localVarResponse = ListEmailsWithHttpInfo(companyId);
             return localVarResponse.Data;
@@ -224,13 +224,8 @@ namespace It.FattureInCloud.Sdk.Api
         /// <param name="companyId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ListEmailsResponse</returns>
-        public It.FattureInCloud.Sdk.Client.ApiResponse<ListEmailsResponse> ListEmailsWithHttpInfo(string companyId, int operationIndex = 0)
+        public It.FattureInCloud.Sdk.Client.ApiResponse<ListEmailsResponse> ListEmailsWithHttpInfo(int companyId, int operationIndex = 0)
         {
-            // verify the required parameter 'companyId' is set
-            if (companyId == null)
-            {
-                throw new It.FattureInCloud.Sdk.Client.ApiException(400, "Missing required parameter 'companyId' when calling EmailsApi->ListEmails");
-            }
 
             It.FattureInCloud.Sdk.Client.RequestOptions localVarRequestOptions = new It.FattureInCloud.Sdk.Client.RequestOptions();
 
@@ -288,7 +283,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListEmailsResponse</returns>
-        public async System.Threading.Tasks.Task<ListEmailsResponse> ListEmailsAsync(string companyId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListEmailsResponse> ListEmailsAsync(int companyId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             It.FattureInCloud.Sdk.Client.ApiResponse<ListEmailsResponse> localVarResponse = await ListEmailsWithHttpInfoAsync(companyId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -302,13 +297,8 @@ namespace It.FattureInCloud.Sdk.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListEmailsResponse)</returns>
-        public async System.Threading.Tasks.Task<It.FattureInCloud.Sdk.Client.ApiResponse<ListEmailsResponse>> ListEmailsWithHttpInfoAsync(string companyId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<It.FattureInCloud.Sdk.Client.ApiResponse<ListEmailsResponse>> ListEmailsWithHttpInfoAsync(int companyId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'companyId' is set
-            if (companyId == null)
-            {
-                throw new It.FattureInCloud.Sdk.Client.ApiException(400, "Missing required parameter 'companyId' when calling EmailsApi->ListEmails");
-            }
 
 
             It.FattureInCloud.Sdk.Client.RequestOptions localVarRequestOptions = new It.FattureInCloud.Sdk.Client.RequestOptions();

@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class EmailAttachmentTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for EmailAttachment
-        //private EmailAttachment instance;
+        private EmailAttachment instance;
 
         public EmailAttachmentTests()
         {
-            // TODO uncomment below to create an instance of EmailAttachment
-            //instance = new EmailAttachment();
+            var body = "{'filename':'nomone', 'url':'www.af.com'}";
+            instance = JsonConvert.DeserializeObject<EmailAttachment>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EmailAttachmentInstanceTest()
         {
-            // TODO uncomment below to test "IsType" EmailAttachment
-            //Assert.IsType<EmailAttachment>(instance);
+            Assert.IsType<EmailAttachment>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FilenameTest()
         {
-            // TODO unit test for the property 'Filename'
+            Assert.IsType<string>(instance.Filename);
         }
         /// <summary>
         /// Test the property 'Url'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void UrlTest()
         {
-            // TODO unit test for the property 'Url'
+           Assert.IsType<string>(instance.Url);
         }
 
     }

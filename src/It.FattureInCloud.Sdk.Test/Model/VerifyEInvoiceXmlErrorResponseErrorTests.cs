@@ -69,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ValidationResultTest()
         {
-            Assert.IsType<Newtonsoft.Json.Linq.JObject>(instance.ValidationResult);
+            Assert.IsType<VerifyEInvoiceXmlErrorResponseErrorValidationResult>(instance.ValidationResult);
         }
 
     }

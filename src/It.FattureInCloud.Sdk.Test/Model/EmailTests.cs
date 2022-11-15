@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class EmailTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for Email
-        //private Email instance;
+        private Email instance;
 
         public EmailTests()
         {
-            // TODO uncomment below to create an instance of Email
-            //instance = new Email();
+            var body = "{'id':1,'status':'sent','sent_date':'2022-07-17 13:53:12','errors_count':0,'error_log':'','from_email':'test@mail.it','from_name':'Test mail','to_email':'mail@test.it','to_name':'Mario','subject':'Test','content':'Test send email','copy_to':'','recipient_status':'unknown','recipient_date':'2022-07-17 13:53:12','kind':'Fatture','attachments':[]}";
+            instance = JsonConvert.DeserializeObject<Email>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EmailInstanceTest()
         {
-            // TODO uncomment below to test "IsType" Email
-            //Assert.IsType<Email>(instance);
+            Assert.IsType<Email>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IdTest()
         {
-            // TODO unit test for the property 'Id'
+            Assert.IsType<int>(instance.Id);
         }
         /// <summary>
         /// Test the property 'Status'
@@ -71,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void StatusTest()
         {
-            // TODO unit test for the property 'Status'
+            Assert.IsType<EmailStatus>(instance.Status);
         }
         /// <summary>
         /// Test the property 'SentDate'
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SentDateTest()
         {
-            // TODO unit test for the property 'SentDate'
+            Assert.IsType<DateTimeOffset>(instance.SentDate);
         }
         /// <summary>
         /// Test the property 'ErrorsCount'
@@ -87,7 +85,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ErrorsCountTest()
         {
-            // TODO unit test for the property 'ErrorsCount'
+            Assert.IsType<int>(instance.ErrorsCount);
         }
         /// <summary>
         /// Test the property 'ErrorLog'
@@ -95,7 +93,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ErrorLogTest()
         {
-            // TODO unit test for the property 'ErrorLog'
+            Assert.IsType<string>(instance.ErrorLog);
         }
         /// <summary>
         /// Test the property 'FromEmail'
@@ -103,7 +101,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FromEmailTest()
         {
-            // TODO unit test for the property 'FromEmail'
+            Assert.IsType<string>(instance.FromEmail);
         }
         /// <summary>
         /// Test the property 'FromName'
@@ -111,7 +109,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FromNameTest()
         {
-            // TODO unit test for the property 'FromName'
+            Assert.IsType<string>(instance.FromName);
         }
         /// <summary>
         /// Test the property 'ToEmail'
@@ -119,7 +117,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ToEmailTest()
         {
-            // TODO unit test for the property 'ToEmail'
+            Assert.IsType<string>(instance.ToEmail);
         }
         /// <summary>
         /// Test the property 'ToName'
@@ -127,7 +125,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ToNameTest()
         {
-            // TODO unit test for the property 'ToName'
+            Assert.IsType<string>(instance.ToEmail);
         }
         /// <summary>
         /// Test the property 'Subject'
@@ -135,7 +133,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SubjectTest()
         {
-            // TODO unit test for the property 'Subject'
+            Assert.IsType<string>(instance.Subject);
         }
         /// <summary>
         /// Test the property 'Content'
@@ -143,7 +141,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ContentTest()
         {
-            // TODO unit test for the property 'Content'
+            Assert.IsType<string>(instance.Content);
         }
         /// <summary>
         /// Test the property 'CopyTo'
@@ -151,7 +149,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CopyToTest()
         {
-            // TODO unit test for the property 'CopyTo'
+            Assert.IsType<string>(instance.CopyTo);
         }
         /// <summary>
         /// Test the property 'RecipientStatus'
@@ -159,7 +157,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void RecipientStatusTest()
         {
-            // TODO unit test for the property 'RecipientStatus'
+            Assert.IsType<EmailRecipientStatus>(instance.RecipientStatus);
         }
         /// <summary>
         /// Test the property 'RecipientDate'
@@ -167,7 +165,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void RecipientDateTest()
         {
-            // TODO unit test for the property 'RecipientDate'
+            Assert.IsType<DateTimeOffset>(instance.RecipientDate);
         }
         /// <summary>
         /// Test the property 'Kind'
@@ -175,7 +173,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void KindTest()
         {
-            // TODO unit test for the property 'Kind'
+            Assert.IsType<string>(instance.Kind);
         }
         /// <summary>
         /// Test the property 'Attachments'
@@ -183,7 +181,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void AttachmentsTest()
         {
-            // TODO unit test for the property 'Attachments'
+            Assert.IsType<List<EmailAttachment>>(instance.Attachments);
         }
 
     }

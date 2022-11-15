@@ -8,7 +8,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 
 <a name="listemails"></a>
 # **ListEmails**
-> ListEmailsResponse ListEmails (string companyId)
+> ListEmailsResponse ListEmails (int companyId)
 
 List emails
 

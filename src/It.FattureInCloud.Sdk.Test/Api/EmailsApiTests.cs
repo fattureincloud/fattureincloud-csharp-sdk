@@ -16,11 +16,11 @@ using System.Linq;
 using System.Reflection;
 using RestSharp;
 using Xunit;
-
-using It.FattureInCloud.Sdk.Client;
+using Moq;
 using It.FattureInCloud.Sdk.Api;
-// uncomment below to import models
-//using It.FattureInCloud.Sdk.Model;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using It.FattureInCloud.Sdk.Model;
 
 namespace It.FattureInCloud.Sdk.Test.Api
 {
@@ -33,11 +33,16 @@ namespace It.FattureInCloud.Sdk.Test.Api
     /// </remarks>
     public class EmailsApiTests : IDisposable
     {
-        private EmailsApi instance;
+        Mock<IEmailsApi> instance = new Mock<IEmailsApi>();
+        string listEmailsResponseBody;
 
         public EmailsApiTests()
         {
-            instance = new EmailsApi();
+            listEmailsResponseBody = "{ 'current_page': 1, 'first_page_url': 'emails?page=1', 'from': 1, 'last_page': 1, 'last_page_url': 'emails?page=1', 'next_page_url': 'emails?page=1', 'path': 'emails', 'per_page': 50, 'prev_page_url': 'emails?page=1', 'to': 2, 'data': [ { 'status': 'sent', 'recipient_status': 'unknown', 'id': 1, 'sent_date': '2022-07-17T13:53:12+02:00', 'error_log': '', 'from_email': 'test@mail.it', 'from_name': 'Test mail', 'to_email': 'mail@test.it', 'to_name': 'Mario', 'subject': 'Test', 'content': 'Test send email', 'copy_to': '', 'recipient_date': '2022-07-18T13:53:12+02:00', 'kind': 'Fatture', 'attachments': [] }, { 'status': 'sent', 'recipient_status': 'unknown', 'id': 2, 'sent_date': '2022-07-18T13:53:12+02:00', 'error_log': '', 'from_email': 'test@mail.it', 'from_name': 'Test mail', 'to_email': 'mail@test.it', 'to_name': 'Maria', 'subject': 'Test', 'content': 'Test send email', 'copy_to': '', 'recipient_date': '2022-07-18T13:53:12+02:00', 'kind': 'Fatture', 'attachments': [] } ] }";
+            var listEmailsResponse = JsonConvert.DeserializeObject<ListEmailsResponse>(listEmailsResponseBody);
+            instance
+                .Setup(p => p.ListEmails(Moq.It.IsAny<int>(), 0))
+                .Returns(listEmailsResponse);
         }
 
         public void Dispose()
@@ -51,8 +56,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void InstanceTest()
         {
-            // TODO uncomment below to test 'IsType' EmailsApi
-            //Assert.IsType<EmailsApi>(instance);
+            Assert.IsType<Mock<IEmailsApi>>(instance);
         }
 
         /// <summary>
@@ -61,10 +65,12 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void ListEmailsTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string companyId = null;
-            //var response = instance.ListEmails(companyId);
-            //Assert.IsType<ListEmailsResponse>(response);
+            int companyId = 2;
+
+            var response = instance.Object.ListEmails(companyId);
+            JObject obj = JObject.Parse(listEmailsResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
     }
 }

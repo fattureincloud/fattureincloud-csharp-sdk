@@ -32,13 +32,11 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class EmailRecipientStatusTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for EmailRecipientStatus
-        //private EmailRecipientStatus instance;
+        private EmailRecipientStatus instance;
 
         public EmailRecipientStatusTests()
         {
-            // TODO uncomment below to create an instance of EmailRecipientStatus
-            //instance = new EmailRecipientStatus();
+            instance = EmailRecipientStatus.DocumentOpened;
         }
 
         public void Dispose()
@@ -52,8 +50,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EmailRecipientStatusInstanceTest()
         {
-            // TODO uncomment below to test "IsType" EmailRecipientStatus
-            //Assert.IsType<EmailRecipientStatus>(instance);
+            Assert.IsType<EmailRecipientStatus>(instance);
         }
 
 

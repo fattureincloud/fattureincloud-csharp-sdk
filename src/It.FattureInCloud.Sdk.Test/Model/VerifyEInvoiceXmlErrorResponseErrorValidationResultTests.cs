@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class VerifyEInvoiceXmlErrorResponseErrorValidationResultTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for VerifyEInvoiceXmlErrorResponseErrorValidationResult
-        //private VerifyEInvoiceXmlErrorResponseErrorValidationResult instance;
+        private VerifyEInvoiceXmlErrorResponseErrorValidationResult instance;
 
         public VerifyEInvoiceXmlErrorResponseErrorValidationResultTests()
         {
-            // TODO uncomment below to create an instance of VerifyEInvoiceXmlErrorResponseErrorValidationResult
-            //instance = new VerifyEInvoiceXmlErrorResponseErrorValidationResult();
+            var body = "{'xml_errors':['err', 'or']}";
+            instance = JsonConvert.DeserializeObject<VerifyEInvoiceXmlErrorResponseErrorValidationResult>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VerifyEInvoiceXmlErrorResponseErrorValidationResultInstanceTest()
         {
-            // TODO uncomment below to test "IsType" VerifyEInvoiceXmlErrorResponseErrorValidationResult
-            //Assert.IsType<VerifyEInvoiceXmlErrorResponseErrorValidationResult>(instance);
+            Assert.IsType<VerifyEInvoiceXmlErrorResponseErrorValidationResult>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void XmlErrorsTest()
         {
-            // TODO unit test for the property 'XmlErrors'
+            Assert.IsType<List<string>>(instance.XmlErrors);
         }
 
     }

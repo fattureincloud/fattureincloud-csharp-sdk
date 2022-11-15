@@ -1203,7 +1203,7 @@ void (empty response body)
 
 <a name="transformissueddocument"></a>
 # **TransformIssuedDocument**
-> TransformIssuedDocumentResponse TransformIssuedDocument (int companyId, string originalDocumentId, string newType, int? eInvoice = null, int? transformKeepCopy = null)
+> TransformIssuedDocumentResponse TransformIssuedDocument (int companyId, int originalDocumentId, string newType, int? eInvoice = null, int? transformKeepCopy = null)
 
 Transform issued document
 

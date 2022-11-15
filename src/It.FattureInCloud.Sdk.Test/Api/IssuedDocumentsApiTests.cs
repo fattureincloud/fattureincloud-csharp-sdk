@@ -44,6 +44,8 @@ namespace It.FattureInCloud.Sdk.Test.Api
         string listIssuedDocumentsResponseBody;
         string modifyIssuedDocumentResponseBody;
         string uploadIssuedDocumentAttachmentResponseBody;
+        string transformIssuedDocumentResponseBody;
+        string joinIssuedDocumentsResponseBody;
 
         public IssuedDocumentsApiTests()
         {
@@ -100,6 +102,18 @@ namespace It.FattureInCloud.Sdk.Test.Api
             instance
                 .Setup(p => p.UploadIssuedDocumentAttachment(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<Stream>(), 0))
                 .Returns(uploadIssuedDocumentAttachmentResponse);
+
+            transformIssuedDocumentResponseBody = "{ 'data': { 'type': 'receipt', 'show_totals': 'all', 'id': 12345, 'entity': { 'id': 54321, 'name': 'Mary Red S.r.L.', 'vat_number': 'IT05432181211', 'tax_code': 'IT05432181211', 'address_street': 'Corso impero, 66', 'address_postal_code': '20900', 'address_city': 'Milano', 'address_province': 'MI', 'address_extra': '', 'country': 'Italia', 'certified_email': 'mary@pec.red.com', 'ei_code': 'ABCXCR1' }, 'number': 1, 'numeration': 'rec123', 'date': '2021-08-20', 'year': 2021, 'currency': { 'id': 'EUR', 'symbol': '€', 'exchange_rate': '1.00000' }, 'language': { 'code': 'it', 'name': 'Italiano' }, 'subject': '', 'visible_subject': '', 'rc_center': '', 'notes': '', 'rivalsa': 0.0, 'cassa': 0.0, 'amount_cassa_taxable': 3.0, 'amount_cassa2_taxable': 3.0, 'amount_global_cassa_taxable': 3.0, 'withholding_tax': 0.0, 'withholding_tax_taxable': 100.0, 'other_withholding_tax': 0.0, 'stamp_duty': 0.0, 'payment_method': { 'id': 4, 'name': 'Credit card' }, 'use_split_payment': false, 'use_gross_prices': false, 'e_invoice': false, 'ei_data': { 'bank_name': 'Sao Paulo' }, 'ei_cassa_type': '', 'ei_cassa2_type': '3', 'ei_withholding_tax_causal': 'a', 'ei_other_withholding_tax_type': 'a', 'ei_other_withholding_tax_causal': 'c', 'items_list': [ { 'id': 277876033, 'product_id': 5432, 'code': 'SG3', 'name': 'Soggiorno', 'category': '', 'description': '', 'qty': 1.0, 'measure': '', 'net_price': 68.18182, 'gross_price': 75.0, 'vat': { 'id': 3, 'value': 10.0, 'description': '' }, 'not_taxable': false, 'apply_withholding_taxes': true, 'discount': 0.0, 'discount_highlight': false, 'stock': false } ], 'payments_list': [ { 'status': 'not_paid', 'id': 69078013, 'due_date': '2020-08-23', 'amount': 75.0, 'payment_terms': { 'type': 'standard', 'days': 0 } } ], 'template': { 'id': 2821, 'name': 'Light Smoke' }, 'delivery_note_template': { 'id': 54321 }, 'acc_inv_template': { 'id': 4 }, 'h_margins': 15, 'v_margins': 16, 'show_payments': true, 'show_payment_method': false, 'show_paypal_button': true, 'show_notification_button': false, 'show_tspay_button': false, 'delivery_note': false, 'accompanying_invoice': false, 'dn_number': 3, 'dn_date': '2020-10-21', 'dn_ai_packages_number': '4', 'dn_ai_weight': '3', 'dn_ai_causal': 'causal', 'dn_ai_destination': 'dest', 'dn_ai_transporter': 'trasp', 'dn_ai_notes': 'notes', 'is_marked': false, 'amount_due_discount': 1.0, 'amount_rivalsa_taxable': 3.0, 'amount_withholding_tax_taxable': 3.0, 'amount_other_withholding_tax_taxable': 3.0, 'amount_enasarco_taxable': 3.0, 'extra_data': { 'ts_status': 1 }, 'seen_date': '2020-08-23', 'next_due_date': '2020-08-23', 'url': 'y12h45rn9yf2mse0p43t7ec90vr.pdf', 'attachment_token': 'asdaosdjaoisndoa', 'ei_raw': { 'prop': true } }, 'options': { 'create_from': [ '82112399' ], 'transform': true, 'keep_copy': true } }";
+            var transformIssuedDocumentResponse = JsonConvert.DeserializeObject<TransformIssuedDocumentResponse>(transformIssuedDocumentResponseBody);
+            instance
+                .Setup(p => p.TransformIssuedDocument(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), 0))
+                .Returns(transformIssuedDocumentResponse);
+
+            joinIssuedDocumentsResponseBody = "{ 'data': { 'type': 'receipt', 'show_totals': 'all', 'id': 12345, 'entity': { 'id': 54321, 'name': 'Mary Red S.r.L.', 'vat_number': 'IT05432181211', 'tax_code': 'IT05432181211', 'address_street': 'Corso impero, 66', 'address_postal_code': '20900', 'address_city': 'Milano', 'address_province': 'MI', 'address_extra': '', 'country': 'Italia', 'certified_email': 'mary@pec.red.com', 'ei_code': 'ABCXCR1' }, 'number': 1, 'numeration': 'rec123', 'date': '2021-08-20', 'year': 2021, 'currency': { 'id': 'EUR', 'symbol': '€', 'exchange_rate': '1.00000' }, 'language': { 'code': 'it', 'name': 'Italiano' }, 'subject': '', 'visible_subject': '', 'rc_center': '', 'notes': '', 'rivalsa': 0.0, 'cassa': 0.0, 'amount_cassa_taxable': 3.0, 'amount_cassa2_taxable': 3.0, 'amount_global_cassa_taxable': 3.0, 'withholding_tax': 0.0, 'withholding_tax_taxable': 100.0, 'other_withholding_tax': 0.0, 'stamp_duty': 0.0, 'payment_method': { 'id': 4, 'name': 'Credit card' }, 'use_split_payment': false, 'use_gross_prices': false, 'e_invoice': false, 'ei_data': { 'bank_name': 'Sao Paulo' }, 'ei_cassa_type': '', 'ei_cassa2_type': '3', 'ei_withholding_tax_causal': 'a', 'ei_other_withholding_tax_type': 'a', 'ei_other_withholding_tax_causal': 'c', 'items_list': [ { 'id': 277876033, 'product_id': 5432, 'code': 'SG3', 'name': 'Soggiorno', 'category': '', 'description': '', 'qty': 1.0, 'measure': '', 'net_price': 68.18182, 'gross_price': 75.0, 'vat': { 'id': 3, 'value': 10.0, 'description': '' }, 'not_taxable': false, 'apply_withholding_taxes': true, 'discount': 0.0, 'discount_highlight': false, 'stock': false } ], 'payments_list': [ { 'status': 'not_paid', 'id': 69078013, 'due_date': '2020-08-23', 'amount': 75.0, 'payment_terms': { 'type': 'standard', 'days': 0 } } ], 'template': { 'id': 2821, 'name': 'Light Smoke' }, 'delivery_note_template': { 'id': 54321 }, 'acc_inv_template': { 'id': 4 }, 'h_margins': 15, 'v_margins': 16, 'show_payments': true, 'show_payment_method': false, 'show_paypal_button': true, 'show_notification_button': false, 'show_tspay_button': false, 'delivery_note': false, 'accompanying_invoice': false, 'dn_number': 3, 'dn_date': '2020-10-21', 'dn_ai_packages_number': '4', 'dn_ai_weight': '3', 'dn_ai_causal': 'causal', 'dn_ai_destination': 'dest', 'dn_ai_transporter': 'trasp', 'dn_ai_notes': 'notes', 'is_marked': false, 'amount_due_discount': 1.0, 'amount_rivalsa_taxable': 3.0, 'amount_withholding_tax_taxable': 3.0, 'amount_other_withholding_tax_taxable': 3.0, 'amount_enasarco_taxable': 3.0, 'extra_data': { 'ts_status': 1 }, 'seen_date': '2020-08-23', 'next_due_date': '2020-08-23', 'url': 'y12h45rn9yf2mse0p43t7ec90vr.pdf', 'attachment_token': 'asdaosdjaoisndoa', 'ei_raw': { 'prop': true } }, 'options': { 'create_from': [ '82112399', '82738223' ] } }";
+            var joinIssuedDocumentsResponse = JsonConvert.DeserializeObject<JoinIssuedDocumentsResponse>(joinIssuedDocumentsResponseBody);
+            instance
+                .Setup(p => p.JoinIssuedDocuments(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), 0))
+                .Returns(joinIssuedDocumentsResponse);
 
         }
 
@@ -286,6 +300,34 @@ namespace It.FattureInCloud.Sdk.Test.Api
 
             var response = instance.Object.UploadIssuedDocumentAttachment(companyId, filename, attachment);
             JObject obj = JObject.Parse(uploadIssuedDocumentAttachmentResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
+        }
+
+        /// <summary>
+        /// Test TransformIssuedDocument
+        /// </summary>
+        [Fact]
+        public void TransformIssuedDocumentTest()
+        {
+            int companyId = 2;
+
+            var response = instance.Object.TransformIssuedDocument(companyId, 54321, "proforma", 1, 1);
+            JObject obj = JObject.Parse(transformIssuedDocumentResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
+        }
+
+        /// <summary>
+        /// Test JoinIssuedDocuments
+        /// </summary>
+        [Fact]
+        public void JoinIssuedDocumentTest()
+        {
+            int companyId = 2;
+
+            var response = instance.Object.JoinIssuedDocuments(companyId, "5432,6789", 1, 1);
+            JObject obj = JObject.Parse(joinIssuedDocumentsResponseBody);
 
             Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
