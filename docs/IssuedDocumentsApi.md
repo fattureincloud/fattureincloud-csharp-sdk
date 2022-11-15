@@ -1230,7 +1230,7 @@ namespace Example
 
             var apiInstance = new IssuedDocumentsApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var originalDocumentId = "originalDocumentId_example";  // string | Original document id.
+            var originalDocumentId = 12345;  // int | Original document id.
             var newType = "newType_example";  // string | New document type.
             var eInvoice = 0;  // int? | New document e_invoice. (optional) 
             var transformKeepCopy = 0;  // int? | Keep the old document. (optional) 

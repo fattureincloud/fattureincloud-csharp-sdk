@@ -34,7 +34,7 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new EmailsApi(config);
-            var companyId = "companyId_example";  // string | 
+            var companyId = 12345
 
             try
             {
