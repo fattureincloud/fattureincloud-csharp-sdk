@@ -12,9 +12,11 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | [**GetIssuedDocument**](IssuedDocumentsApi.md#getissueddocument) | **GET** /c/{company_id}/issued_documents/{document_id} | Get Issued Document |
 | [**GetIssuedDocumentPreCreateInfo**](IssuedDocumentsApi.md#getissueddocumentprecreateinfo) | **GET** /c/{company_id}/issued_documents/info | Get Issued Document Pre-create info |
 | [**GetNewIssuedDocumentTotals**](IssuedDocumentsApi.md#getnewissueddocumenttotals) | **POST** /c/{company_id}/issued_documents/totals | Get New Issued Document Totals |
+| [**JoinIssuedDocuments**](IssuedDocumentsApi.md#joinissueddocuments) | **GET** /c/{company_id}/issued_documents/join | Join issued documents |
 | [**ListIssuedDocuments**](IssuedDocumentsApi.md#listissueddocuments) | **GET** /c/{company_id}/issued_documents | List Issued Documents |
 | [**ModifyIssuedDocument**](IssuedDocumentsApi.md#modifyissueddocument) | **PUT** /c/{company_id}/issued_documents/{document_id} | Modify Issued Document |
 | [**ScheduleEmail**](IssuedDocumentsApi.md#scheduleemail) | **POST** /c/{company_id}/issued_documents/{document_id}/email | Schedule Email |
+| [**TransformIssuedDocument**](IssuedDocumentsApi.md#transformissueddocument) | **GET** /c/{company_id}/issued_documents/transform | Transform issued document |
 | [**UploadIssuedDocumentAttachment**](IssuedDocumentsApi.md#uploadissueddocumentattachment) | **POST** /c/{company_id}/issued_documents/attachment | Upload Issued Document Attachment |
 
 <a name="createissueddocument"></a>
@@ -793,6 +795,106 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="joinissueddocuments"></a>
+# **JoinIssuedDocuments**
+> JoinIssuedDocumentsResponse JoinIssuedDocuments (int companyId, string ids, int? group = null, int? eInvoice = null)
+
+Join issued documents
+
+Joins issued documents.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using It.FattureInCloud.Sdk.Api;
+using It.FattureInCloud.Sdk.Client;
+using It.FattureInCloud.Sdk.Model;
+
+namespace Example
+{
+    public class JoinIssuedDocumentsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api-v2.fattureincloud.it";
+            // Configure OAuth2 access token for authorization: OAuth2AuthenticationCodeFlow
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new IssuedDocumentsApi(config);
+            var companyId = 12345;  // int | The ID of the company.
+            var ids = 1,2,3,4;  // string | Ids of the documents.
+            var group = 0;  // int? | Group items. (optional) 
+            var eInvoice = 0;  // int? | New document e_invoice. (optional) 
+
+            try
+            {
+                // Join issued documents
+                JoinIssuedDocumentsResponse result = apiInstance.JoinIssuedDocuments(companyId, ids, group, eInvoice);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling IssuedDocumentsApi.JoinIssuedDocuments: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the JoinIssuedDocumentsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Join issued documents
+    ApiResponse<JoinIssuedDocumentsResponse> response = apiInstance.JoinIssuedDocumentsWithHttpInfo(companyId, ids, group, eInvoice);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling IssuedDocumentsApi.JoinIssuedDocumentsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **ids** | **string** | Ids of the documents. |  |
+| **group** | **int?** | Group items. | [optional]  |
+| **eInvoice** | **int?** | New document e_invoice. | [optional]  |
+
+### Return type
+
+[**JoinIssuedDocumentsResponse**](JoinIssuedDocumentsResponse.md)
+
+### Authorization
+
+[OAuth2AuthenticationCodeFlow](../README.md#OAuth2AuthenticationCodeFlow)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Example response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="listissueddocuments"></a>
 # **ListIssuedDocuments**
 > ListIssuedDocumentsResponse ListIssuedDocuments (int companyId, string type, string fields = null, string fieldset = null, string sort = null, int? page = null, int? perPage = null, string q = null)
@@ -1096,6 +1198,108 @@ void (empty response body)
 | **200** | OK |  -  |
 | **401** | Unauthorized |  -  |
 | **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="transformissueddocument"></a>
+# **TransformIssuedDocument**
+> TransformIssuedDocumentResponse TransformIssuedDocument (int companyId, int originalDocumentId, string newType, int? eInvoice = null, int? transformKeepCopy = null)
+
+Transform issued document
+
+Transforms the document.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using It.FattureInCloud.Sdk.Api;
+using It.FattureInCloud.Sdk.Client;
+using It.FattureInCloud.Sdk.Model;
+
+namespace Example
+{
+    public class TransformIssuedDocumentExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api-v2.fattureincloud.it";
+            // Configure OAuth2 access token for authorization: OAuth2AuthenticationCodeFlow
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new IssuedDocumentsApi(config);
+            var companyId = 12345;  // int | The ID of the company.
+            var originalDocumentId = 12345;  // int | Original document id.
+            var newType = "newType_example";  // string | New document type.
+            var eInvoice = 0;  // int? | New document e_invoice. (optional) 
+            var transformKeepCopy = 0;  // int? | Keep the old document. (optional) 
+
+            try
+            {
+                // Transform issued document
+                TransformIssuedDocumentResponse result = apiInstance.TransformIssuedDocument(companyId, originalDocumentId, newType, eInvoice, transformKeepCopy);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling IssuedDocumentsApi.TransformIssuedDocument: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TransformIssuedDocumentWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Transform issued document
+    ApiResponse<TransformIssuedDocumentResponse> response = apiInstance.TransformIssuedDocumentWithHttpInfo(companyId, originalDocumentId, newType, eInvoice, transformKeepCopy);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling IssuedDocumentsApi.TransformIssuedDocumentWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **originalDocumentId** | **string** | Original document id. |  |
+| **newType** | **string** | New document type. |  |
+| **eInvoice** | **int?** | New document e_invoice. | [optional]  |
+| **transformKeepCopy** | **int?** | Keep the old document. | [optional]  |
+
+### Return type
+
+[**TransformIssuedDocumentResponse**](TransformIssuedDocumentResponse.md)
+
+### Authorization
+
+[OAuth2AuthenticationCodeFlow](../README.md#OAuth2AuthenticationCodeFlow)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Example response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

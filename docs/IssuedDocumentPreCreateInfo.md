@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Numerations** | **Dictionary&lt;string, Dictionary&gt;** |  | [optional] 
-**DnNumerations** | **Dictionary&lt;string, Dictionary&gt;** |  | [optional] 
+**Numerations** | **Dictionary&lt;string, Dictionary&lt;string, int&gt;&gt;** |  | [optional] 
+**DnNumerations** | **Dictionary&lt;string, Dictionary&lt;string, int&gt;&gt;** |  | [optional] 
 **DefaultValues** | [**IssuedDocumentPreCreateInfoDefaultValues**](IssuedDocumentPreCreateInfoDefaultValues.md) |  | [optional] 
 **ExtraDataDefaultValues** | [**IssuedDocumentPreCreateInfoExtraDataDefaultValues**](IssuedDocumentPreCreateInfoExtraDataDefaultValues.md) |  | [optional] 
 **ItemsDefaultValues** | [**IssuedDocumentPreCreateInfoItemsDefaultValues**](IssuedDocumentPreCreateInfoItemsDefaultValues.md) |  | [optional] 
