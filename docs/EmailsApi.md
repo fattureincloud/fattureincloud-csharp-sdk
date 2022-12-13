@@ -34,7 +34,7 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new EmailsApi(config);
-            var companyId = 12345
+            var companyId = 12345;  // int | The ID of the company.
 
             try
             {
@@ -77,7 +77,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **companyId** | **string** |  |  |
+| **companyId** | **int** | The ID of the company. |  |
 
 ### Return type
 
