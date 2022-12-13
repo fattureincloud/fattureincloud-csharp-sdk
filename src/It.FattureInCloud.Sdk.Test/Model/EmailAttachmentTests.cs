@@ -69,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void UrlTest()
         {
-           Assert.IsType<string>(instance.Url);
+            Assert.IsType<string>(instance.Url);
         }
 
     }

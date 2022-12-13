@@ -1230,7 +1230,7 @@ namespace Example
 
             var apiInstance = new IssuedDocumentsApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var originalDocumentId = 12345;  // int | Original document id.
+            var originalDocumentId = 56;  // int | Original document id.
             var newType = "newType_example";  // string | New document type.
             var eInvoice = 0;  // int? | New document e_invoice. (optional) 
             var transformKeepCopy = 0;  // int? | Keep the old document. (optional) 
@@ -1277,7 +1277,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **companyId** | **int** | The ID of the company. |  |
-| **originalDocumentId** | **string** | Original document id. |  |
+| **originalDocumentId** | **int** | Original document id. |  |
 | **newType** | **string** | New document type. |  |
 | **eInvoice** | **int?** | New document e_invoice. | [optional]  |
 | **transformKeepCopy** | **int?** | Keep the old document. | [optional]  |
