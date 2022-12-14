@@ -36,7 +36,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
 
         public IssuedDocumentItemsListItemTests()
         {
-            var body = "{ 'product_id': 12345, 'code': 'cod3', 'name': 'prod 1', 'description': 'product number uan', 'category': 'cat5','qty': 44, 'measure': 'very big', 'net_price': 10, 'gross_price': 12.2, 'not_taxable': false, 'apply_withholding_taxes': true, 'discount': 0, 'discount_highlight': true, 'in_ddt': false, 'stock': 89, 'vat': { 'id': 21 }, 'ei_raw': { 'prop': true } }";
+            var body = "{ 'product_id': 12345, 'code': 'cod3', 'name': 'prod 1', 'description': 'product number uan', 'category': 'cat5','qty': 44, 'measure': 'very big', 'net_price': 10, 'gross_price': 12.2, 'not_taxable': false, 'apply_withholding_taxes': true, 'discount': 0, 'discount_highlight': true, 'in_dn': false, 'stock': 89, 'vat': { 'id': 21 }, 'ei_raw': { 'prop': true } }";
             instance = JsonConvert.DeserializeObject<IssuedDocumentItemsListItem>(body);
         }
 
@@ -168,12 +168,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
             Assert.IsType<bool>(instance.DiscountHighlight);
         }
         /// <summary>
-        /// Test the property 'InDdt'
+        /// Test the property 'InDn'
         /// </summary>
         [Fact]
-        public void InDdtTest()
+        public void InDnTest()
         {
-            Assert.IsType<bool>(instance.InDdt);
+            Assert.IsType<bool>(instance.InDn);
         }
         /// <summary>
         /// Test the property 'Stock'
