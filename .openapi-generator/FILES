@@ -236,17 +236,7 @@ docs/VerifyEInvoiceXmlErrorResponseErrorValidationResult.md
 docs/VerifyEInvoiceXmlErrorResponseExtra.md
 docs/VerifyEInvoiceXmlResponse.md
 docs/VerifyEInvoiceXmlResponseData.md
-src/It.FattureInCloud.Sdk.Test/Api/EmailsApiTests.cs
 src/It.FattureInCloud.Sdk.Test/It.FattureInCloud.Sdk.Test.csproj
-src/It.FattureInCloud.Sdk.Test/Model/EmailAttachmentTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/EmailRecipientStatusTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/EmailStatusTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/EmailTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/JoinIssuedDocumentsResponseTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/ListEmailsResponsePageTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/ListEmailsResponseTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/TransformIssuedDocumentResponseTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/VerifyEInvoiceXmlErrorResponseErrorValidationResultTests.cs
 src/It.FattureInCloud.Sdk/Api/ArchiveApi.cs
 src/It.FattureInCloud.Sdk/Api/CashbookApi.cs
 src/It.FattureInCloud.Sdk/Api/ClientsApi.cs

@@ -13,17 +13,17 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>It.FattureInCloud.Sdk</RootNamespace>
-    <Version>2.0.16</Version>
+    <Version>2.0.17</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\It.FattureInCloud.Sdk.xml</DocumentationFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/fattureincloud/fattureincloud-csharp-sdk.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>bumping version to 2.0.16</PackageReleaseNotes>
+    <PackageReleaseNotes>bumping version to 2.0.17</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="JsonSubTypes" Version="1.9.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="RestSharp" Version="108.0.1" />
     <PackageReference Include="Polly" Version="7.2.3" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
