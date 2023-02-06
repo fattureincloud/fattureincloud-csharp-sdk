@@ -210,6 +210,7 @@ docs/ReceivedDocumentsApi.md
 docs/ScheduleEmailRequest.md
 docs/SendEInvoiceRequest.md
 docs/SendEInvoiceRequestData.md
+docs/SendEInvoiceRequestOptions.md
 docs/SendEInvoiceResponse.md
 docs/SendEInvoiceResponseData.md
 docs/SenderEmail.md
@@ -237,6 +238,7 @@ docs/VerifyEInvoiceXmlErrorResponseExtra.md
 docs/VerifyEInvoiceXmlResponse.md
 docs/VerifyEInvoiceXmlResponseData.md
 src/It.FattureInCloud.Sdk.Test/It.FattureInCloud.Sdk.Test.csproj
+src/It.FattureInCloud.Sdk.Test/Model/SendEInvoiceRequestOptionsTests.cs
 src/It.FattureInCloud.Sdk/Api/ArchiveApi.cs
 src/It.FattureInCloud.Sdk/Api/CashbookApi.cs
 src/It.FattureInCloud.Sdk/Api/ClientsApi.cs
@@ -468,6 +470,7 @@ src/It.FattureInCloud.Sdk/Model/ReceivedDocumentType.cs
 src/It.FattureInCloud.Sdk/Model/ScheduleEmailRequest.cs
 src/It.FattureInCloud.Sdk/Model/SendEInvoiceRequest.cs
 src/It.FattureInCloud.Sdk/Model/SendEInvoiceRequestData.cs
+src/It.FattureInCloud.Sdk/Model/SendEInvoiceRequestOptions.cs
 src/It.FattureInCloud.Sdk/Model/SendEInvoiceResponse.cs
 src/It.FattureInCloud.Sdk/Model/SendEInvoiceResponseData.cs
 src/It.FattureInCloud.Sdk/Model/SenderEmail.cs
