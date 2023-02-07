@@ -32,13 +32,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class SendEInvoiceRequestOptionsTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for SendEInvoiceRequestOptions
-        //private SendEInvoiceRequestOptions instance;
+        private SendEInvoiceRequestOptions instance;
 
         public SendEInvoiceRequestOptionsTests()
         {
-            // TODO uncomment below to create an instance of SendEInvoiceRequestOptions
-            //instance = new SendEInvoiceRequestOptions();
+            var body = "{'dry_run':true}";
+            instance = JsonConvert.DeserializeObject<SendEInvoiceRequestOptions>(body);
         }
 
         public void Dispose()
@@ -52,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SendEInvoiceRequestOptionsInstanceTest()
         {
-            // TODO uncomment below to test "IsType" SendEInvoiceRequestOptions
-            //Assert.IsType<SendEInvoiceRequestOptions>(instance);
+            Assert.IsType<SendEInvoiceRequestOptions>(instance);
         }
 
 
@@ -63,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DryRunTest()
         {
-            // TODO unit test for the property 'DryRun'
+            Assert.IsType<bool>(instance.DryRun);
         }
 
     }
