@@ -27,77 +27,48 @@ using OpenAPIDateConverter = It.FattureInCloud.Sdk.Client.OpenAPIDateConverter;
 namespace It.FattureInCloud.Sdk.Model
 {
     /// <summary>
-    /// SendEInvoiceRequest
+    /// SendEInvoiceRequestOptions
     /// </summary>
-    [DataContract(Name = "SendEInvoiceRequest")]
-    public partial class SendEInvoiceRequest : IEquatable<SendEInvoiceRequest>, IValidatableObject
+    [DataContract(Name = "SendEInvoiceRequest_options")]
+    public partial class SendEInvoiceRequestOptions : IEquatable<SendEInvoiceRequestOptions>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SendEInvoiceRequest" /> class.
+        /// Initializes a new instance of the <see cref="SendEInvoiceRequestOptions" /> class.
         /// </summary>
-        /// <param name="data">data.</param>
-        /// <param name="options">options.</param>
-        public SendEInvoiceRequest(SendEInvoiceRequestData data = default(SendEInvoiceRequestData), SendEInvoiceRequestOptions options = default(SendEInvoiceRequestOptions))
+        /// <param name="dryRun">If set to true the e-invoice will not be sent to the SDI..</param>
+        public SendEInvoiceRequestOptions(bool? dryRun = default(bool?))
         {
-            this._Data = data;
-            if (this.Data != null)
+            this._DryRun = dryRun;
+            if (this.DryRun != null)
             {
-                this._flagData = true;
-            }
-            this._Options = options;
-            if (this.Options != null)
-            {
-                this._flagOptions = true;
+                this._flagDryRun = true;
             }
         }
 
         /// <summary>
-        /// Gets or Sets Data
+        /// If set to true the e-invoice will not be sent to the SDI.
         /// </summary>
-        [DataMember(Name = "data", EmitDefaultValue = true)]
-        public SendEInvoiceRequestData Data
+        /// <value>If set to true the e-invoice will not be sent to the SDI.</value>
+        [DataMember(Name = "dry_run", EmitDefaultValue = true)]
+        public bool? DryRun
         {
-            get { return _Data; }
+            get { return _DryRun; }
             set
             {
-                _Data = value;
-                _flagData = true;
+                _DryRun = value;
+                _flagDryRun = true;
             }
         }
-        private SendEInvoiceRequestData _Data;
-        private bool _flagData;
+        private bool? _DryRun;
+        private bool _flagDryRun;
 
         /// <summary>
-        /// Returns false as Data should not be serialized given that it's read-only.
+        /// Returns false as DryRun should not be serialized given that it's read-only.
         /// </summary>
         /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeData()
+        public bool ShouldSerializeDryRun()
         {
-            return _flagData;
-        }
-        /// <summary>
-        /// Gets or Sets Options
-        /// </summary>
-        [DataMember(Name = "options", EmitDefaultValue = true)]
-        public SendEInvoiceRequestOptions Options
-        {
-            get { return _Options; }
-            set
-            {
-                _Options = value;
-                _flagOptions = true;
-            }
-        }
-        private SendEInvoiceRequestOptions _Options;
-        private bool _flagOptions;
-
-        /// <summary>
-        /// Returns false as Options should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeOptions()
-        {
-            return _flagOptions;
+            return _flagDryRun;
         }
         /// <summary>
         /// Returns the string presentation of the object
@@ -106,9 +77,8 @@ namespace It.FattureInCloud.Sdk.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class SendEInvoiceRequest {\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
-            sb.Append("  Options: ").Append(Options).Append("\n");
+            sb.Append("class SendEInvoiceRequestOptions {\n");
+            sb.Append("  DryRun: ").Append(DryRun).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -129,15 +99,15 @@ namespace It.FattureInCloud.Sdk.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SendEInvoiceRequest);
+            return this.Equals(input as SendEInvoiceRequestOptions);
         }
 
         /// <summary>
-        /// Returns true if SendEInvoiceRequest instances are equal
+        /// Returns true if SendEInvoiceRequestOptions instances are equal
         /// </summary>
-        /// <param name="input">Instance of SendEInvoiceRequest to be compared</param>
+        /// <param name="input">Instance of SendEInvoiceRequestOptions to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SendEInvoiceRequest input)
+        public bool Equals(SendEInvoiceRequestOptions input)
         {
             if (input == null)
             {
@@ -145,14 +115,9 @@ namespace It.FattureInCloud.Sdk.Model
             }
             return
                 (
-                    this.Data == input.Data ||
-                    (this.Data != null &&
-                    this.Data.Equals(input.Data))
-                ) &&
-                (
-                    this.Options == input.Options ||
-                    (this.Options != null &&
-                    this.Options.Equals(input.Options))
+                    this.DryRun == input.DryRun ||
+                    (this.DryRun != null &&
+                    this.DryRun.Equals(input.DryRun))
                 );
         }
 
@@ -165,13 +130,9 @@ namespace It.FattureInCloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Data != null)
+                if (this.DryRun != null)
                 {
-                    hashCode = (hashCode * 59) + this.Data.GetHashCode();
-                }
-                if (this.Options != null)
-                {
-                    hashCode = (hashCode * 59) + this.Options.GetHashCode();
+                    hashCode = (hashCode * 59) + this.DryRun.GetHashCode();
                 }
                 return hashCode;
             }
