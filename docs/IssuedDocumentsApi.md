@@ -897,7 +897,7 @@ catch (ApiException e)
 
 <a name="listissueddocuments"></a>
 # **ListIssuedDocuments**
-> ListIssuedDocumentsResponse ListIssuedDocuments (int companyId, string type, string fields = null, string fieldset = null, string sort = null, int? page = null, int? perPage = null, string q = null)
+> ListIssuedDocumentsResponse ListIssuedDocuments (int companyId, string type, string fields = null, string fieldset = null, string sort = null, int? page = null, int? perPage = null, string q = null, int? inclusive = null)
 
 List Issued Documents
 
@@ -931,11 +931,12 @@ namespace Example
             var page = 1;  // int? | The page to retrieve. (optional)  (default to 1)
             var perPage = 5;  // int? | The size of the page. (optional)  (default to 5)
             var q = "q_example";  // string | Query for filtering the results. (optional) 
+            var inclusive = 0;  // int? | (Only for type = delivery_notes) Include invoices delivery notes. (optional) 
 
             try
             {
                 // List Issued Documents
-                ListIssuedDocumentsResponse result = apiInstance.ListIssuedDocuments(companyId, type, fields, fieldset, sort, page, perPage, q);
+                ListIssuedDocumentsResponse result = apiInstance.ListIssuedDocuments(companyId, type, fields, fieldset, sort, page, perPage, q, inclusive);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -956,7 +957,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // List Issued Documents
-    ApiResponse<ListIssuedDocumentsResponse> response = apiInstance.ListIssuedDocumentsWithHttpInfo(companyId, type, fields, fieldset, sort, page, perPage, q);
+    ApiResponse<ListIssuedDocumentsResponse> response = apiInstance.ListIssuedDocumentsWithHttpInfo(companyId, type, fields, fieldset, sort, page, perPage, q, inclusive);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -981,6 +982,7 @@ catch (ApiException e)
 | **page** | **int?** | The page to retrieve. | [optional] [default to 1] |
 | **perPage** | **int?** | The size of the page. | [optional] [default to 5] |
 | **q** | **string** | Query for filtering the results. | [optional]  |
+| **inclusive** | **int?** | (Only for type &#x3D; delivery_notes) Include invoices delivery notes. | [optional]  |
 
 ### Return type
 
