@@ -82,10 +82,10 @@ namespace It.FattureInCloud.Sdk.Model
         IssuedDocumentsProformasUpdate = 8,
 
         /// <summary>
-        /// Enum IssuedDocumentsProformasCreate for value: it.fattureincloud.issued_documents.proformas.create
+        /// Enum IssuedDocumentsProformasDelete for value: it.fattureincloud.issued_documents.proformas.delete
         /// </summary>
-        [EnumMember(Value = "it.fattureincloud.issued_documents.proformas.create")]
-        IssuedDocumentsProformasCreate = 9,
+        [EnumMember(Value = "it.fattureincloud.issued_documents.proformas.delete")]
+        IssuedDocumentsProformasDelete = 9,
 
         /// <summary>
         /// Enum IssuedDocumentsReceiptsCreate for value: it.fattureincloud.issued_documents.receipts.create

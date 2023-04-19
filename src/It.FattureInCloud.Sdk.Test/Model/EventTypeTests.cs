@@ -31,13 +31,11 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class EventTypeTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for EventType
-        //private EventType instance;
+        private EventType instance;
 
         public EventTypeTests()
         {
-            // TODO uncomment below to create an instance of EventType
-            //instance = new EventType();
+            instance = EventType.CashbookCreate;
         }
 
         public void Dispose()
@@ -51,11 +49,8 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EventTypeInstanceTest()
         {
-            // TODO uncomment below to test "IsType" EventType
-            //Assert.IsType<EventType>(instance);
+            Assert.IsType<EventType>(instance);
         }
-
-
 
     }
 

@@ -31,13 +31,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class CreateWebhooksSubscriptionRequestTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for CreateWebhooksSubscriptionRequest
-        //private CreateWebhooksSubscriptionRequest instance;
+        private CreateWebhooksSubscriptionRequest instance;
 
         public CreateWebhooksSubscriptionRequestTests()
         {
-            // TODO uncomment below to create an instance of CreateWebhooksSubscriptionRequest
-            //instance = new CreateWebhooksSubscriptionRequest();
+            var body = "{ 'data': { 'sink': 'https://endpoint.test', 'types': [ 'it.fattureincloud.cashbook.create' ] } }";
+            instance = JsonConvert.DeserializeObject<CreateWebhooksSubscriptionRequest>(body);
         }
 
         public void Dispose()
@@ -51,8 +50,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CreateWebhooksSubscriptionRequestInstanceTest()
         {
-            // TODO uncomment below to test "IsType" CreateWebhooksSubscriptionRequest
-            //Assert.IsType<CreateWebhooksSubscriptionRequest>(instance);
+            Assert.IsType<CreateWebhooksSubscriptionRequest>(instance);
         }
 
 
@@ -62,7 +60,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<WebhooksSubscription>(instance.Data);
         }
 
     }

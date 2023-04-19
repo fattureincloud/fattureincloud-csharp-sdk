@@ -19,8 +19,10 @@ using Xunit;
 
 using It.FattureInCloud.Sdk.Client;
 using It.FattureInCloud.Sdk.Api;
-// uncomment below to import models
-//using It.FattureInCloud.Sdk.Model;
+using Moq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using It.FattureInCloud.Sdk.Model;
 
 namespace It.FattureInCloud.Sdk.Test.Api
 {
@@ -33,11 +35,37 @@ namespace It.FattureInCloud.Sdk.Test.Api
     /// </remarks>
     public class WebhooksApiTests : IDisposable
     {
-        private WebhooksApi instance;
+        Mock<IWebhooksApi> instance = new Mock<IWebhooksApi>();
+        string createWebhooksSubscriptionResponseBody;
+        string getWebhooksSubscriptionResponseBody;
+        string listWebhooksSubscriptionsResponseBody;
+        string modifyWebhooksSubscriptionsResponseBody;
 
         public WebhooksApiTests()
         {
-            instance = new WebhooksApi();
+            createWebhooksSubscriptionResponseBody = "{'data':{'id':'SUB123','sink':'https://endpoint.test','verified':true,'types':['it.fattureincloud.cashbook.create']},'warnings':['error']}";
+            var createWebhooksSubscriptionResponse = JsonConvert.DeserializeObject<CreateWebhooksSubscriptionResponse>(createWebhooksSubscriptionResponseBody);
+            instance
+                .Setup(p => p.CreateWebhooksSubscription(Moq.It.IsAny<int>(), Moq.It.IsAny<CreateWebhooksSubscriptionRequest>(), 0))
+                .Returns(createWebhooksSubscriptionResponse);
+
+            getWebhooksSubscriptionResponseBody = "{'data':{'id':'SUB123','sink':'https://endpoint.test','verified':true,'types':['it.fattureincloud.cashbook.create']}}";
+            var getWebhooksSubscriptionResponse = JsonConvert.DeserializeObject<GetWebhooksSubscriptionResponse>(createWebhooksSubscriptionResponseBody);
+            instance
+                .Setup(p => p.GetWebhooksSubscription(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), 0))
+                .Returns(getWebhooksSubscriptionResponse);
+
+            listWebhooksSubscriptionsResponseBody = "{'data':[{'id':'SUB123','sink':'https://endpoint.test','verified':true,'types':['it.fattureincloud.cashbook.create']},{'id':'SUB1234','sink':'https://endpoint.test','verified':true,'types':['it.fattureincloud.cashbook.delete']}]}";
+            var listWebhooksSubscriptionsResponse = JsonConvert.DeserializeObject<ListWebhooksSubscriptionsResponse>(listWebhooksSubscriptionsResponseBody);
+            instance
+                .Setup(p => p.ListWebhooksSubscriptions(Moq.It.IsAny<int>(), 0))
+                .Returns(listWebhooksSubscriptionsResponse);
+
+            modifyWebhooksSubscriptionsResponseBody = "{'data':{'id':'SUB123','sink':'https://endpoint.test','verified':true,'types':['it.fattureincloud.cashbook.create']},'warnings':['error']}";
+            var modifyWebhooksSubscriptionsResponse = JsonConvert.DeserializeObject<ModifyWebhooksSubscriptionResponse>(modifyWebhooksSubscriptionsResponseBody);
+            instance
+                .Setup(p => p.ModifyWebhooksSubscription(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<ModifyWebhooksSubscriptionRequest>(), 0))
+                .Returns(modifyWebhooksSubscriptionsResponse);
         }
 
         public void Dispose()
@@ -51,8 +79,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void InstanceTest()
         {
-            // TODO uncomment below to test 'IsType' WebhooksApi
-            //Assert.IsType<WebhooksApi>(instance);
+            Assert.IsType<Mock<IWebhooksApi>>(instance);
         }
 
         /// <summary>
@@ -61,11 +88,13 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void CreateWebhooksSubscriptionTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //CreateWebhooksSubscriptionRequest createWebhooksSubscriptionRequest = null;
-            //var response = instance.CreateWebhooksSubscription(companyId, createWebhooksSubscriptionRequest);
-            //Assert.IsType<CreateWebhooksSubscriptionResponse>(response);
+            int companyId = 12345;
+            CreateWebhooksSubscriptionRequest createWebhooksSubscriptionRequest = new CreateWebhooksSubscriptionRequest();
+
+            var response = instance.Object.CreateWebhooksSubscription(companyId, createWebhooksSubscriptionRequest);
+            JObject obj = JObject.Parse(createWebhooksSubscriptionResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -74,10 +103,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void DeleteWebhooksSubscriptionTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //string subscriptionId = null;
-            //instance.DeleteWebhooksSubscription(companyId, subscriptionId);
+            Assert.True(true);
         }
 
         /// <summary>
@@ -86,11 +112,12 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void GetWebhooksSubscriptionTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //string subscriptionId = null;
-            //var response = instance.GetWebhooksSubscription(companyId, subscriptionId);
-            //Assert.IsType<GetWebhooksSubscriptionResponse>(response);
+            int companyId = 12345;
+            string subscriptionId = "SUB12345";
+            var response = instance.Object.GetWebhooksSubscription(companyId, subscriptionId);
+            JObject obj = JObject.Parse(getWebhooksSubscriptionResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -99,10 +126,11 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void ListWebhooksSubscriptionsTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //var response = instance.ListWebhooksSubscriptions(companyId);
-            //Assert.IsType<ListWebhooksSubscriptionsResponse>(response);
+            int companyId = 12345;
+            var response = instance.Object.ListWebhooksSubscriptions(companyId);
+            JObject obj = JObject.Parse(listWebhooksSubscriptionsResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -111,12 +139,12 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void ModifyWebhooksSubscriptionTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //string subscriptionId = null;
-            //ModifyWebhooksSubscriptionRequest modifyWebhooksSubscriptionRequest = null;
-            //var response = instance.ModifyWebhooksSubscription(companyId, subscriptionId, modifyWebhooksSubscriptionRequest);
-            //Assert.IsType<ModifyWebhooksSubscriptionResponse>(response);
+            int companyId = 12345;
+            string subscriptionId = "SUB123";
+            var response = instance.Object.ModifyWebhooksSubscription(companyId, subscriptionId, new ModifyWebhooksSubscriptionRequest());
+            JObject obj = JObject.Parse(modifyWebhooksSubscriptionsResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
     }
 }

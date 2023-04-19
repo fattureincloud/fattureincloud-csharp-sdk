@@ -31,13 +31,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class ModifyWebhooksSubscriptionResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ModifyWebhooksSubscriptionResponse
-        //private ModifyWebhooksSubscriptionResponse instance;
+        private ModifyWebhooksSubscriptionResponse instance;
 
         public ModifyWebhooksSubscriptionResponseTests()
         {
-            // TODO uncomment below to create an instance of ModifyWebhooksSubscriptionResponse
-            //instance = new ModifyWebhooksSubscriptionResponse();
+            var body = "{ 'data': { 'id': 'SUB123', 'sink': 'https://endpoint.test', 'verified': true, 'types': [ 'it.fattureincloud.cashbook.create' ] }, 'warnings': [ 'it.fattureincloud.cashbook.create' ] }";
+            instance = JsonConvert.DeserializeObject<ModifyWebhooksSubscriptionResponse>(body);
         }
 
         public void Dispose()
@@ -51,8 +50,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ModifyWebhooksSubscriptionResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" ModifyWebhooksSubscriptionResponse
-            //Assert.IsType<ModifyWebhooksSubscriptionResponse>(instance);
+            Assert.IsType<ModifyWebhooksSubscriptionResponse>(instance);
         }
 
 
@@ -62,7 +60,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<WebhooksSubscription>(instance.Data);
         }
         /// <summary>
         /// Test the property 'Warnings'
@@ -70,7 +68,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void WarningsTest()
         {
-            // TODO unit test for the property 'Warnings'
+            Assert.IsType<List<string>>(instance.Warnings);
         }
 
     }

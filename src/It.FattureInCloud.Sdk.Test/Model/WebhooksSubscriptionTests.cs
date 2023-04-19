@@ -31,13 +31,14 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class WebhooksSubscriptionTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for WebhooksSubscription
-        //private WebhooksSubscription instance;
+        WebhooksSubscription instance = new WebhooksSubscription();
 
         public WebhooksSubscriptionTests()
         {
-            // TODO uncomment below to create an instance of WebhooksSubscription
-            //instance = new WebhooksSubscription();
+            instance.Id = "SUB123";
+            instance.Sink = "https://www.example.url";
+            instance.Types = new List<EventType>() {EventType.EntitiesAllCreate, EventType.CashbookCreate};
+            instance.Verified = true;
         }
 
         public void Dispose()
@@ -51,8 +52,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void WebhooksSubscriptionInstanceTest()
         {
-            // TODO uncomment below to test "IsType" WebhooksSubscription
-            //Assert.IsType<WebhooksSubscription>(instance);
+            Assert.IsType<WebhooksSubscription>(instance);
         }
 
 
@@ -62,7 +62,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IdTest()
         {
-            // TODO unit test for the property 'Id'
+            Assert.IsType<string>(instance.Id);
         }
         /// <summary>
         /// Test the property 'Sink'
@@ -70,7 +70,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SinkTest()
         {
-            // TODO unit test for the property 'Sink'
+           Assert.IsType<string>(instance.Sink);
         }
         /// <summary>
         /// Test the property 'Verified'
@@ -78,7 +78,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VerifiedTest()
         {
-            // TODO unit test for the property 'Verified'
+            Assert.IsType<bool>(instance.Verified);
         }
         /// <summary>
         /// Test the property 'Types'
@@ -86,7 +86,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TypesTest()
         {
-            // TODO unit test for the property 'Types'
+            Assert.IsType<List<EventType>>(instance.Types);
         }
 
     }
