@@ -77,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EntityTest()
         {
-            Assert.IsType<ReceivedDocumentEntity>(instance.Entity);
+            Assert.IsType<Entity>(instance.Entity);
         }
         /// <summary>
         /// Test the property 'Date'

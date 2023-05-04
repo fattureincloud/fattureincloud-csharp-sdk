@@ -1,5 +1,6 @@
 It.FattureInCloud.Sdk.sln
 README.md
+api/openapi.yaml
 appveyor.yml
 docs/ArchiveApi.md
 docs/ArchiveDocument.md
@@ -46,6 +47,8 @@ docs/CreateSupplierRequest.md
 docs/CreateSupplierResponse.md
 docs/CreateVatTypeRequest.md
 docs/CreateVatTypeResponse.md
+docs/CreateWebhooksSubscriptionRequest.md
+docs/CreateWebhooksSubscriptionResponse.md
 docs/Currency.md
 docs/DetailedCountry.md
 docs/DocumentTemplate.md
@@ -61,6 +64,7 @@ docs/EmailStatus.md
 docs/EmailsApi.md
 docs/Entity.md
 docs/EntityType.md
+docs/EventType.md
 docs/F24.md
 docs/F24Status.md
 docs/FunctionStatus.md
@@ -94,6 +98,7 @@ docs/GetUserInfoResponse.md
 docs/GetUserInfoResponseEmailConfirmationState.md
 docs/GetUserInfoResponseInfo.md
 docs/GetVatTypeResponse.md
+docs/GetWebhooksSubscriptionResponse.md
 docs/InfoApi.md
 docs/IssuedDocument.md
 docs/IssuedDocumentEiData.md
@@ -152,6 +157,7 @@ docs/ListUnitsOfMeasureResponse.md
 docs/ListUserCompaniesResponse.md
 docs/ListUserCompaniesResponseData.md
 docs/ListVatTypesResponse.md
+docs/ListWebhooksSubscriptionsResponse.md
 docs/ModelClient.md
 docs/ModifyArchiveDocumentRequest.md
 docs/ModifyArchiveDocumentResponse.md
@@ -177,6 +183,8 @@ docs/ModifySupplierRequest.md
 docs/ModifySupplierResponse.md
 docs/ModifyVatTypeRequest.md
 docs/ModifyVatTypeResponse.md
+docs/ModifyWebhooksSubscriptionRequest.md
+docs/ModifyWebhooksSubscriptionResponse.md
 docs/MonthlyTotal.md
 docs/OriginalDocumentType.md
 docs/Pagination.md
@@ -197,7 +205,6 @@ docs/ReceiptPreCreateInfo.md
 docs/ReceiptType.md
 docs/ReceiptsApi.md
 docs/ReceivedDocument.md
-docs/ReceivedDocumentEntity.md
 docs/ReceivedDocumentInfo.md
 docs/ReceivedDocumentInfoDefaultValues.md
 docs/ReceivedDocumentInfoItemsDefaultValues.md
@@ -237,8 +244,18 @@ docs/VerifyEInvoiceXmlErrorResponseErrorValidationResult.md
 docs/VerifyEInvoiceXmlErrorResponseExtra.md
 docs/VerifyEInvoiceXmlResponse.md
 docs/VerifyEInvoiceXmlResponseData.md
+docs/WebhooksApi.md
+docs/WebhooksSubscription.md
+src/It.FattureInCloud.Sdk.Test/Api/WebhooksApiTests.cs
 src/It.FattureInCloud.Sdk.Test/It.FattureInCloud.Sdk.Test.csproj
-src/It.FattureInCloud.Sdk.Test/Model/SendEInvoiceRequestOptionsTests.cs
+src/It.FattureInCloud.Sdk.Test/Model/CreateWebhooksSubscriptionRequestTests.cs
+src/It.FattureInCloud.Sdk.Test/Model/CreateWebhooksSubscriptionResponseTests.cs
+src/It.FattureInCloud.Sdk.Test/Model/EventTypeTests.cs
+src/It.FattureInCloud.Sdk.Test/Model/GetWebhooksSubscriptionResponseTests.cs
+src/It.FattureInCloud.Sdk.Test/Model/ListWebhooksSubscriptionsResponseTests.cs
+src/It.FattureInCloud.Sdk.Test/Model/ModifyWebhooksSubscriptionRequestTests.cs
+src/It.FattureInCloud.Sdk.Test/Model/ModifyWebhooksSubscriptionResponseTests.cs
+src/It.FattureInCloud.Sdk.Test/Model/WebhooksSubscriptionTests.cs
 src/It.FattureInCloud.Sdk/Api/ArchiveApi.cs
 src/It.FattureInCloud.Sdk/Api/CashbookApi.cs
 src/It.FattureInCloud.Sdk/Api/ClientsApi.cs
@@ -254,6 +271,7 @@ src/It.FattureInCloud.Sdk/Api/SettingsApi.cs
 src/It.FattureInCloud.Sdk/Api/SuppliersApi.cs
 src/It.FattureInCloud.Sdk/Api/TaxesApi.cs
 src/It.FattureInCloud.Sdk/Api/UserApi.cs
+src/It.FattureInCloud.Sdk/Api/WebhooksApi.cs
 src/It.FattureInCloud.Sdk/Client/ApiClient.cs
 src/It.FattureInCloud.Sdk/Client/ApiException.cs
 src/It.FattureInCloud.Sdk/Client/ApiResponse.cs
@@ -313,6 +331,8 @@ src/It.FattureInCloud.Sdk/Model/CreateSupplierRequest.cs
 src/It.FattureInCloud.Sdk/Model/CreateSupplierResponse.cs
 src/It.FattureInCloud.Sdk/Model/CreateVatTypeRequest.cs
 src/It.FattureInCloud.Sdk/Model/CreateVatTypeResponse.cs
+src/It.FattureInCloud.Sdk/Model/CreateWebhooksSubscriptionRequest.cs
+src/It.FattureInCloud.Sdk/Model/CreateWebhooksSubscriptionResponse.cs
 src/It.FattureInCloud.Sdk/Model/Currency.cs
 src/It.FattureInCloud.Sdk/Model/DetailedCountry.cs
 src/It.FattureInCloud.Sdk/Model/DocumentTemplate.cs
@@ -327,6 +347,7 @@ src/It.FattureInCloud.Sdk/Model/EmailScheduleInclude.cs
 src/It.FattureInCloud.Sdk/Model/EmailStatus.cs
 src/It.FattureInCloud.Sdk/Model/Entity.cs
 src/It.FattureInCloud.Sdk/Model/EntityType.cs
+src/It.FattureInCloud.Sdk/Model/EventType.cs
 src/It.FattureInCloud.Sdk/Model/F24.cs
 src/It.FattureInCloud.Sdk/Model/F24Status.cs
 src/It.FattureInCloud.Sdk/Model/FunctionStatus.cs
@@ -360,6 +381,7 @@ src/It.FattureInCloud.Sdk/Model/GetUserInfoResponse.cs
 src/It.FattureInCloud.Sdk/Model/GetUserInfoResponseEmailConfirmationState.cs
 src/It.FattureInCloud.Sdk/Model/GetUserInfoResponseInfo.cs
 src/It.FattureInCloud.Sdk/Model/GetVatTypeResponse.cs
+src/It.FattureInCloud.Sdk/Model/GetWebhooksSubscriptionResponse.cs
 src/It.FattureInCloud.Sdk/Model/IssuedDocument.cs
 src/It.FattureInCloud.Sdk/Model/IssuedDocumentEiData.cs
 src/It.FattureInCloud.Sdk/Model/IssuedDocumentExtraData.cs
@@ -415,6 +437,7 @@ src/It.FattureInCloud.Sdk/Model/ListUnitsOfMeasureResponse.cs
 src/It.FattureInCloud.Sdk/Model/ListUserCompaniesResponse.cs
 src/It.FattureInCloud.Sdk/Model/ListUserCompaniesResponseData.cs
 src/It.FattureInCloud.Sdk/Model/ListVatTypesResponse.cs
+src/It.FattureInCloud.Sdk/Model/ListWebhooksSubscriptionsResponse.cs
 src/It.FattureInCloud.Sdk/Model/ModelClient.cs
 src/It.FattureInCloud.Sdk/Model/ModifyArchiveDocumentRequest.cs
 src/It.FattureInCloud.Sdk/Model/ModifyArchiveDocumentResponse.cs
@@ -440,6 +463,8 @@ src/It.FattureInCloud.Sdk/Model/ModifySupplierRequest.cs
 src/It.FattureInCloud.Sdk/Model/ModifySupplierResponse.cs
 src/It.FattureInCloud.Sdk/Model/ModifyVatTypeRequest.cs
 src/It.FattureInCloud.Sdk/Model/ModifyVatTypeResponse.cs
+src/It.FattureInCloud.Sdk/Model/ModifyWebhooksSubscriptionRequest.cs
+src/It.FattureInCloud.Sdk/Model/ModifyWebhooksSubscriptionResponse.cs
 src/It.FattureInCloud.Sdk/Model/MonthlyTotal.cs
 src/It.FattureInCloud.Sdk/Model/OriginalDocumentType.cs
 src/It.FattureInCloud.Sdk/Model/Pagination.cs
@@ -458,7 +483,6 @@ src/It.FattureInCloud.Sdk/Model/ReceiptItemsListItem.cs
 src/It.FattureInCloud.Sdk/Model/ReceiptPreCreateInfo.cs
 src/It.FattureInCloud.Sdk/Model/ReceiptType.cs
 src/It.FattureInCloud.Sdk/Model/ReceivedDocument.cs
-src/It.FattureInCloud.Sdk/Model/ReceivedDocumentEntity.cs
 src/It.FattureInCloud.Sdk/Model/ReceivedDocumentInfo.cs
 src/It.FattureInCloud.Sdk/Model/ReceivedDocumentInfoDefaultValues.cs
 src/It.FattureInCloud.Sdk/Model/ReceivedDocumentInfoItemsDefaultValues.cs
@@ -493,3 +517,4 @@ src/It.FattureInCloud.Sdk/Model/VerifyEInvoiceXmlErrorResponseErrorValidationRes
 src/It.FattureInCloud.Sdk/Model/VerifyEInvoiceXmlErrorResponseExtra.cs
 src/It.FattureInCloud.Sdk/Model/VerifyEInvoiceXmlResponse.cs
 src/It.FattureInCloud.Sdk/Model/VerifyEInvoiceXmlResponseData.cs
+src/It.FattureInCloud.Sdk/Model/WebhooksSubscription.cs
