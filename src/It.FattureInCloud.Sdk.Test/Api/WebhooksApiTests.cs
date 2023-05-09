@@ -43,25 +43,25 @@ namespace It.FattureInCloud.Sdk.Test.Api
 
         public WebhooksApiTests()
         {
-            createWebhooksSubscriptionResponseBody = "{'data':{'id':'SUB123','sink':'https://endpoint.test','verified':true,'types':['it.fattureincloud.cashbook.create']},'warnings':['error']}";
+            createWebhooksSubscriptionResponseBody = "{'data':{'id':'SUB123','sink':'https://endpoint.test','verified':true,'types':['it.fattureincloud.webhooks.cashbook.create']},'warnings':['error']}";
             var createWebhooksSubscriptionResponse = JsonConvert.DeserializeObject<CreateWebhooksSubscriptionResponse>(createWebhooksSubscriptionResponseBody);
             instance
                 .Setup(p => p.CreateWebhooksSubscription(Moq.It.IsAny<int>(), Moq.It.IsAny<CreateWebhooksSubscriptionRequest>(), 0))
                 .Returns(createWebhooksSubscriptionResponse);
 
-            getWebhooksSubscriptionResponseBody = "{'data':{'id':'SUB123','sink':'https://endpoint.test','verified':true,'types':['it.fattureincloud.cashbook.create']}}";
+            getWebhooksSubscriptionResponseBody = "{'data':{'id':'SUB123','sink':'https://endpoint.test','verified':true,'types':['it.fattureincloud.webhooks.cashbook.create']}}";
             var getWebhooksSubscriptionResponse = JsonConvert.DeserializeObject<GetWebhooksSubscriptionResponse>(createWebhooksSubscriptionResponseBody);
             instance
                 .Setup(p => p.GetWebhooksSubscription(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), 0))
                 .Returns(getWebhooksSubscriptionResponse);
 
-            listWebhooksSubscriptionsResponseBody = "{'data':[{'id':'SUB123','sink':'https://endpoint.test','verified':true,'types':['it.fattureincloud.cashbook.create']},{'id':'SUB1234','sink':'https://endpoint.test','verified':true,'types':['it.fattureincloud.cashbook.delete']}]}";
+            listWebhooksSubscriptionsResponseBody = "{'data':[{'id':'SUB123','sink':'https://endpoint.test','verified':true,'types':['it.fattureincloud.webhooks.cashbook.create']},{'id':'SUB1234','sink':'https://endpoint.test','verified':true,'types':['it.fattureincloud.webhooks.cashbook.delete']}]}";
             var listWebhooksSubscriptionsResponse = JsonConvert.DeserializeObject<ListWebhooksSubscriptionsResponse>(listWebhooksSubscriptionsResponseBody);
             instance
                 .Setup(p => p.ListWebhooksSubscriptions(Moq.It.IsAny<int>(), 0))
                 .Returns(listWebhooksSubscriptionsResponse);
 
-            modifyWebhooksSubscriptionsResponseBody = "{'data':{'id':'SUB123','sink':'https://endpoint.test','verified':true,'types':['it.fattureincloud.cashbook.create']},'warnings':['error']}";
+            modifyWebhooksSubscriptionsResponseBody = "{'data':{'id':'SUB123','sink':'https://endpoint.test','verified':true,'types':['it.fattureincloud.webhooks.cashbook.create']},'warnings':['error']}";
             var modifyWebhooksSubscriptionsResponse = JsonConvert.DeserializeObject<ModifyWebhooksSubscriptionResponse>(modifyWebhooksSubscriptionsResponseBody);
             instance
                 .Setup(p => p.ModifyWebhooksSubscription(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<ModifyWebhooksSubscriptionRequest>(), 0))
