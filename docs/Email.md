@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int** | Email unique identifier. | [optional] 
+**Id** | **int?** | Email unique identifier. | [optional] 
 **Status** | **EmailStatus** |  | [optional] 
-**SentDate** | **DateTimeOffset** | Email sent date. | [optional] 
-**ErrorsCount** | **int** | Errors count. | [optional] 
+**SentDate** | **DateTimeOffset?** | Email sent date. | [optional] 
+**ErrorsCount** | **int?** | Errors count. | [optional] 
 **ErrorLog** | **string** | Error log. | [optional] 
 **FromEmail** | **string** | Sender email. | [optional] 
 **FromName** | **string** | Sender name. | [optional] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **Content** | **string** | Email content. | [optional] 
 **CopyTo** | **string** |  | [optional] 
 **RecipientStatus** | **EmailRecipientStatus** |  | [optional] 
-**RecipientDate** | **DateTimeOffset** |  | [optional] 
+**RecipientDate** | **DateTimeOffset?** |  | [optional] 
 **Kind** | **string** | Email kind. | [optional] 
 **Attachments** | [**List&lt;EmailAttachment&gt;**](EmailAttachment.md) | Email attachments. | [optional] 
 

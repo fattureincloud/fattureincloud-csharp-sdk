@@ -37,7 +37,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         {
             instance.Id = "SUB123";
             instance.Sink = "https://www.example.url";
-            instance.Types = new List<EventType>() {EventType.EntitiesAllCreate, EventType.CashbookCreate};
+            instance.Types = new List<EventType>() { EventType.EntitiesAllCreate, EventType.CashbookCreate };
             instance.Verified = true;
         }
 
@@ -70,7 +70,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SinkTest()
         {
-           Assert.IsType<string>(instance.Sink);
+            Assert.IsType<string>(instance.Sink);
         }
         /// <summary>
         /// Test the property 'Verified'
