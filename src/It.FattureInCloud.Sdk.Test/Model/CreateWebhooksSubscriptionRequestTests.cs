@@ -35,7 +35,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
 
         public CreateWebhooksSubscriptionRequestTests()
         {
-            var body = "{ 'data': { 'sink': 'https://endpoint.test', 'types': [ 'it.fattureincloud.cashbook.create' ] } }";
+            var body = "{ 'data': { 'sink': 'https://endpoint.test', 'types': [ 'it.fattureincloud.webhooks.cashbook.create' ] } }";
             instance = JsonConvert.DeserializeObject<CreateWebhooksSubscriptionRequest>(body);
         }
 

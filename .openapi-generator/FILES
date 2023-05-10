@@ -246,16 +246,7 @@ docs/VerifyEInvoiceXmlResponse.md
 docs/VerifyEInvoiceXmlResponseData.md
 docs/WebhooksApi.md
 docs/WebhooksSubscription.md
-src/It.FattureInCloud.Sdk.Test/Api/WebhooksApiTests.cs
 src/It.FattureInCloud.Sdk.Test/It.FattureInCloud.Sdk.Test.csproj
-src/It.FattureInCloud.Sdk.Test/Model/CreateWebhooksSubscriptionRequestTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/CreateWebhooksSubscriptionResponseTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/EventTypeTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/GetWebhooksSubscriptionResponseTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/ListWebhooksSubscriptionsResponseTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/ModifyWebhooksSubscriptionRequestTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/ModifyWebhooksSubscriptionResponseTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/WebhooksSubscriptionTests.cs
 src/It.FattureInCloud.Sdk/Api/ArchiveApi.cs
 src/It.FattureInCloud.Sdk/Api/CashbookApi.cs
 src/It.FattureInCloud.Sdk/Api/ClientsApi.cs
