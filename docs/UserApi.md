@@ -7,7 +7,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | [**GetUserInfo**](UserApi.md#getuserinfo) | **GET** /user/info | Get User Info |
 | [**ListUserCompanies**](UserApi.md#listusercompanies) | **GET** /user/companies | List User Companies |
 
-<a name="getuserinfo"></a>
+<a id="getuserinfo"></a>
 # **GetUserInfo**
 > GetUserInfoResponse GetUserInfo ()
 
@@ -97,7 +97,7 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listusercompanies"></a>
+<a id="listusercompanies"></a>
 # **ListUserCompanies**
 > ListUserCompaniesResponse ListUserCompanies ()
 

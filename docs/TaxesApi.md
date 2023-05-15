@@ -12,7 +12,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | [**ModifyF24**](TaxesApi.md#modifyf24) | **PUT** /c/{company_id}/taxes/{document_id} | Modify F24 |
 | [**UploadF24Attachment**](TaxesApi.md#uploadf24attachment) | **POST** /c/{company_id}/taxes/attachment | Upload F24 Attachment |
 
-<a name="createf24"></a>
+<a id="createf24"></a>
 # **CreateF24**
 > CreateF24Response CreateF24 (int companyId, CreateF24Request createF24Request = null)
 
@@ -110,7 +110,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="deletef24"></a>
+<a id="deletef24"></a>
 # **DeleteF24**
 > void DeleteF24 (int companyId, int documentId)
 
@@ -204,7 +204,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="deletef24attachment"></a>
+<a id="deletef24attachment"></a>
 # **DeleteF24Attachment**
 > void DeleteF24Attachment (int companyId, int documentId)
 
@@ -298,7 +298,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getf24"></a>
+<a id="getf24"></a>
 # **GetF24**
 > GetF24Response GetF24 (int companyId, int documentId, string fields = null, string fieldset = null)
 
@@ -400,7 +400,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listf24"></a>
+<a id="listf24"></a>
 # **ListF24**
 > ListF24Response ListF24 (int companyId, string fields = null, string fieldset = null, string sort = null, int? page = null, int? perPage = null, string q = null)
 
@@ -507,7 +507,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="modifyf24"></a>
+<a id="modifyf24"></a>
 # **ModifyF24**
 > ModifyF24Response ModifyF24 (int companyId, int documentId, ModifyF24Request modifyF24Request = null)
 
@@ -607,7 +607,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="uploadf24attachment"></a>
+<a id="uploadf24attachment"></a>
 # **UploadF24Attachment**
 > UploadF24AttachmentResponse UploadF24Attachment (int companyId, string filename = null, System.IO.Stream attachment = null)
 

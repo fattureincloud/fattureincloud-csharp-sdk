@@ -368,6 +368,7 @@ namespace It.FattureInCloud.Sdk.Client
                     }
 
                     request.AddParameter("application/json", JsonConvert.SerializeObject(options.Data), ParameterType.RequestBody);
+                    request.AddHeader("User-Agent", configuration.UserAgent);
                 }
             }
 
@@ -453,8 +454,7 @@ namespace It.FattureInCloud.Sdk.Client
                 ClientCertificates = configuration.ClientCertificates,
                 CookieContainer = cookies,
                 MaxTimeout = configuration.Timeout,
-                Proxy = configuration.Proxy,
-                UserAgent = configuration.UserAgent
+                Proxy = configuration.Proxy
             };
 
             RestClient client = new RestClient(clientOptions)
@@ -548,8 +548,7 @@ namespace It.FattureInCloud.Sdk.Client
             {
                 ClientCertificates = configuration.ClientCertificates,
                 MaxTimeout = configuration.Timeout,
-                Proxy = configuration.Proxy,
-                UserAgent = configuration.UserAgent
+                Proxy = configuration.Proxy
             };
 
             RestClient client = new RestClient(clientOptions)

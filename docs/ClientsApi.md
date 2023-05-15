@@ -10,7 +10,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | [**ListClients**](ClientsApi.md#listclients) | **GET** /c/{company_id}/entities/clients | List Clients |
 | [**ModifyClient**](ClientsApi.md#modifyclient) | **PUT** /c/{company_id}/entities/clients/{client_id} | Modify Client |
 
-<a name="createclient"></a>
+<a id="createclient"></a>
 # **CreateClient**
 > CreateClientResponse CreateClient (int companyId, CreateClientRequest createClientRequest = null)
 
@@ -106,7 +106,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="deleteclient"></a>
+<a id="deleteclient"></a>
 # **DeleteClient**
 > void DeleteClient (int companyId, int clientId)
 
@@ -200,7 +200,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getclient"></a>
+<a id="getclient"></a>
 # **GetClient**
 > GetClientResponse GetClient (int companyId, int clientId, string fields = null, string fieldset = null)
 
@@ -302,7 +302,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listclients"></a>
+<a id="listclients"></a>
 # **ListClients**
 > ListClientsResponse ListClients (int companyId, string fields = null, string fieldset = null, string sort = null, int? page = null, int? perPage = null, string q = null)
 
@@ -409,7 +409,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="modifyclient"></a>
+<a id="modifyclient"></a>
 # **ModifyClient**
 > ModifyClientResponse ModifyClient (int companyId, int clientId, ModifyClientRequest modifyClientRequest = null)
 

@@ -11,7 +11,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | [**ModifyArchiveDocument**](ArchiveApi.md#modifyarchivedocument) | **PUT** /c/{company_id}/archive/{document_id} | Modify Archive Document |
 | [**UploadArchiveDocumentAttachment**](ArchiveApi.md#uploadarchivedocumentattachment) | **POST** /c/{company_id}/archive/attachment | Upload Archive Document Attachment |
 
-<a name="createarchivedocument"></a>
+<a id="createarchivedocument"></a>
 # **CreateArchiveDocument**
 > CreateArchiveDocumentResponse CreateArchiveDocument (int companyId, CreateArchiveDocumentRequest createArchiveDocumentRequest = null)
 
@@ -109,7 +109,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="deletearchivedocument"></a>
+<a id="deletearchivedocument"></a>
 # **DeleteArchiveDocument**
 > void DeleteArchiveDocument (int companyId, int documentId)
 
@@ -203,7 +203,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getarchivedocument"></a>
+<a id="getarchivedocument"></a>
 # **GetArchiveDocument**
 > GetArchiveDocumentResponse GetArchiveDocument (int companyId, int documentId, string fields = null, string fieldset = null)
 
@@ -305,7 +305,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listarchivedocuments"></a>
+<a id="listarchivedocuments"></a>
 # **ListArchiveDocuments**
 > ListArchiveDocumentsResponse ListArchiveDocuments (int companyId, string fields = null, string fieldset = null, string sort = null, int? page = null, int? perPage = null, string q = null)
 
@@ -413,7 +413,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="modifyarchivedocument"></a>
+<a id="modifyarchivedocument"></a>
 # **ModifyArchiveDocument**
 > ModifyArchiveDocumentResponse ModifyArchiveDocument (int companyId, int documentId, ModifyArchiveDocumentRequest modifyArchiveDocumentRequest = null)
 
@@ -513,7 +513,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="uploadarchivedocumentattachment"></a>
+<a id="uploadarchivedocumentattachment"></a>
 # **UploadArchiveDocumentAttachment**
 > UploadArchiveAttachmentResponse UploadArchiveDocumentAttachment (int companyId, string filename = null, System.IO.Stream attachment = null)
 

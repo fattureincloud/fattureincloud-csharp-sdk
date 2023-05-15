@@ -6,7 +6,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 |--------|--------------|-------------|
 | [**ListEmails**](EmailsApi.md#listemails) | **GET** /c/{company_id}/emails | List emails |
 
-<a name="listemails"></a>
+<a id="listemails"></a>
 # **ListEmails**
 > ListEmailsResponse ListEmails (int companyId)
 

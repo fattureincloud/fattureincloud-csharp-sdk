@@ -10,7 +10,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | [**ListCashbookEntries**](CashbookApi.md#listcashbookentries) | **GET** /c/{company_id}/cashbook | List Cashbook Entries |
 | [**ModifyCashbookEntry**](CashbookApi.md#modifycashbookentry) | **PUT** /c/{company_id}/cashbook/{document_id} | Modify Cashbook Entry |
 
-<a name="createcashbookentry"></a>
+<a id="createcashbookentry"></a>
 # **CreateCashbookEntry**
 > CreateCashbookEntryResponse CreateCashbookEntry (int companyId, CreateCashbookEntryRequest createCashbookEntryRequest = null)
 
@@ -108,7 +108,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="deletecashbookentry"></a>
+<a id="deletecashbookentry"></a>
 # **DeleteCashbookEntry**
 > void DeleteCashbookEntry (int companyId, string documentId)
 
@@ -202,7 +202,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getcashbookentry"></a>
+<a id="getcashbookentry"></a>
 # **GetCashbookEntry**
 > GetCashbookEntryResponse GetCashbookEntry (int companyId, string documentId, string fields = null, string fieldset = null)
 
@@ -304,7 +304,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listcashbookentries"></a>
+<a id="listcashbookentries"></a>
 # **ListCashbookEntries**
 > ListCashbookEntriesResponse ListCashbookEntries (int companyId, string dateFrom, string dateTo, int? year = null, string type = null, int? paymentAccountId = null)
 
@@ -410,7 +410,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="modifycashbookentry"></a>
+<a id="modifycashbookentry"></a>
 # **ModifyCashbookEntry**
 > ModifyCashbookEntryResponse ModifyCashbookEntry (int companyId, string documentId, ModifyCashbookEntryRequest modifyCashbookEntryRequest = null)
 

@@ -10,7 +10,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | [**ListSuppliers**](SuppliersApi.md#listsuppliers) | **GET** /c/{company_id}/entities/suppliers | List Suppliers |
 | [**ModifySupplier**](SuppliersApi.md#modifysupplier) | **PUT** /c/{company_id}/entities/suppliers/{supplier_id} | Modify Supplier |
 
-<a name="createsupplier"></a>
+<a id="createsupplier"></a>
 # **CreateSupplier**
 > CreateSupplierResponse CreateSupplier (int companyId, CreateSupplierRequest createSupplierRequest = null)
 
@@ -106,7 +106,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="deletesupplier"></a>
+<a id="deletesupplier"></a>
 # **DeleteSupplier**
 > void DeleteSupplier (int companyId, int supplierId)
 
@@ -200,7 +200,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getsupplier"></a>
+<a id="getsupplier"></a>
 # **GetSupplier**
 > GetSupplierResponse GetSupplier (int companyId, int supplierId, string fields = null, string fieldset = null)
 
@@ -302,7 +302,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listsuppliers"></a>
+<a id="listsuppliers"></a>
 # **ListSuppliers**
 > ListSuppliersResponse ListSuppliers (int companyId, string fields = null, string fieldset = null, string sort = null, int? page = null, int? perPage = null, string q = null)
 
@@ -409,7 +409,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="modifysupplier"></a>
+<a id="modifysupplier"></a>
 # **ModifySupplier**
 > ModifySupplierResponse ModifySupplier (int companyId, int supplierId, ModifySupplierRequest modifySupplierRequest = null)
 

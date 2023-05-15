@@ -9,7 +9,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | [**SendEInvoice**](IssuedEInvoicesApi.md#sendeinvoice) | **POST** /c/{company_id}/issued_documents/{document_id}/e_invoice/send | Send the e-invoice |
 | [**VerifyEInvoiceXml**](IssuedEInvoicesApi.md#verifyeinvoicexml) | **GET** /c/{company_id}/issued_documents/{document_id}/e_invoice/xml_verify | Verify e-invoice XML |
 
-<a name="geteinvoicerejectionreason"></a>
+<a id="geteinvoicerejectionreason"></a>
 # **GetEInvoiceRejectionReason**
 > GetEInvoiceRejectionReasonResponse GetEInvoiceRejectionReason (int companyId, int documentId)
 
@@ -105,7 +105,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="geteinvoicexml"></a>
+<a id="geteinvoicexml"></a>
 # **GetEInvoiceXml**
 > string GetEInvoiceXml (int companyId, int documentId, bool? includeAttachment = null)
 
@@ -205,7 +205,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="sendeinvoice"></a>
+<a id="sendeinvoice"></a>
 # **SendEInvoice**
 > SendEInvoiceResponse SendEInvoice (int companyId, int documentId, SendEInvoiceRequest sendEInvoiceRequest = null)
 
@@ -305,7 +305,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="verifyeinvoicexml"></a>
+<a id="verifyeinvoicexml"></a>
 # **VerifyEInvoiceXml**
 > VerifyEInvoiceXmlResponse VerifyEInvoiceXml (int companyId, int documentId)
 

@@ -33,7 +33,7 @@ namespace It.FattureInCloud.Sdk.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "2.0.20";
+        public const string Version = "2.0.21";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -110,7 +110,7 @@ namespace It.FattureInCloud.Sdk.Client
         public Configuration()
         {
             Proxy = null;
-            UserAgent = "FattureInCloud/2.0.20/csharp-SDK";
+            UserAgent = "FattureInCloud/2.0.21/csharp-SDK";
             BasePath = "https://api-v2.fattureincloud.it";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -519,7 +519,7 @@ namespace It.FattureInCloud.Sdk.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version + "\n";
             report += "    Version of the API: 2.0.28\n";
-            report += "    SDK Package Version: 2.0.20\n";
+            report += "    SDK Package Version: 2.0.21\n";
 
             return report;
         }

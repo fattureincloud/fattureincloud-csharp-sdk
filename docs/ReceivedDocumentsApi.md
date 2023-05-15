@@ -15,7 +15,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | [**ModifyReceivedDocument**](ReceivedDocumentsApi.md#modifyreceiveddocument) | **PUT** /c/{company_id}/received_documents/{document_id} | Modify Received Document |
 | [**UploadReceivedDocumentAttachment**](ReceivedDocumentsApi.md#uploadreceiveddocumentattachment) | **POST** /c/{company_id}/received_documents/attachment | Upload Received Document Attachment |
 
-<a name="createreceiveddocument"></a>
+<a id="createreceiveddocument"></a>
 # **CreateReceivedDocument**
 > CreateReceivedDocumentResponse CreateReceivedDocument (int companyId, CreateReceivedDocumentRequest createReceivedDocumentRequest = null)
 
@@ -111,7 +111,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="deletereceiveddocument"></a>
+<a id="deletereceiveddocument"></a>
 # **DeleteReceivedDocument**
 > void DeleteReceivedDocument (int companyId, int documentId)
 
@@ -205,7 +205,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="deletereceiveddocumentattachment"></a>
+<a id="deletereceiveddocumentattachment"></a>
 # **DeleteReceivedDocumentAttachment**
 > void DeleteReceivedDocumentAttachment (int companyId, int documentId)
 
@@ -299,7 +299,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getexistingreceiveddocumenttotals"></a>
+<a id="getexistingreceiveddocumenttotals"></a>
 # **GetExistingReceivedDocumentTotals**
 > GetExistingReceivedDocumentTotalsResponse GetExistingReceivedDocumentTotals (int companyId, int documentId, GetExistingReceivedDocumentTotalsRequest getExistingReceivedDocumentTotalsRequest = null)
 
@@ -397,7 +397,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getnewreceiveddocumenttotals"></a>
+<a id="getnewreceiveddocumenttotals"></a>
 # **GetNewReceivedDocumentTotals**
 > GetNewReceivedDocumentTotalsResponse GetNewReceivedDocumentTotals (int companyId, GetNewReceivedDocumentTotalsRequest getNewReceivedDocumentTotalsRequest = null)
 
@@ -495,7 +495,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getreceiveddocument"></a>
+<a id="getreceiveddocument"></a>
 # **GetReceivedDocument**
 > GetReceivedDocumentResponse GetReceivedDocument (int companyId, int documentId, string fields = null, string fieldset = null)
 
@@ -597,7 +597,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getreceiveddocumentprecreateinfo"></a>
+<a id="getreceiveddocumentprecreateinfo"></a>
 # **GetReceivedDocumentPreCreateInfo**
 > GetReceivedDocumentPreCreateInfoResponse GetReceivedDocumentPreCreateInfo (int companyId, string type)
 
@@ -693,7 +693,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listreceiveddocuments"></a>
+<a id="listreceiveddocuments"></a>
 # **ListReceivedDocuments**
 > ListReceivedDocumentsResponse ListReceivedDocuments (int companyId, string type, string fields = null, string fieldset = null, string sort = null, int? page = null, int? perPage = null, string q = null)
 
@@ -802,7 +802,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="modifyreceiveddocument"></a>
+<a id="modifyreceiveddocument"></a>
 # **ModifyReceivedDocument**
 > ModifyReceivedDocumentResponse ModifyReceivedDocument (int companyId, int documentId, ModifyReceivedDocumentRequest modifyReceivedDocumentRequest = null)
 
@@ -902,7 +902,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="uploadreceiveddocumentattachment"></a>
+<a id="uploadreceiveddocumentattachment"></a>
 # **UploadReceivedDocumentAttachment**
 > UploadReceivedDocumentAttachmentResponse UploadReceivedDocumentAttachment (int companyId, string filename = null, System.IO.Stream attachment = null)
 
