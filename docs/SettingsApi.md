@@ -17,7 +17,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | [**ModifyPaymentMethod**](SettingsApi.md#modifypaymentmethod) | **PUT** /c/{company_id}/settings/payment_methods/{payment_method_id} | Modify Payment Method |
 | [**ModifyVatType**](SettingsApi.md#modifyvattype) | **PUT** /c/{company_id}/settings/vat_types/{vat_type_id} | Modify Vat Type |
 
-<a name="createpaymentaccount"></a>
+<a id="createpaymentaccount"></a>
 # **CreatePaymentAccount**
 > CreatePaymentAccountResponse CreatePaymentAccount (int companyId, CreatePaymentAccountRequest createPaymentAccountRequest = null)
 
@@ -113,7 +113,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="createpaymentmethod"></a>
+<a id="createpaymentmethod"></a>
 # **CreatePaymentMethod**
 > CreatePaymentMethodResponse CreatePaymentMethod (int companyId, CreatePaymentMethodRequest createPaymentMethodRequest = null)
 
@@ -209,7 +209,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="createvattype"></a>
+<a id="createvattype"></a>
 # **CreateVatType**
 > CreateVatTypeResponse CreateVatType (int companyId, CreateVatTypeRequest createVatTypeRequest = null)
 
@@ -305,7 +305,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="deletepaymentaccount"></a>
+<a id="deletepaymentaccount"></a>
 # **DeletePaymentAccount**
 > void DeletePaymentAccount (int companyId, int paymentAccountId)
 
@@ -397,7 +397,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="deletepaymentmethod"></a>
+<a id="deletepaymentmethod"></a>
 # **DeletePaymentMethod**
 > void DeletePaymentMethod (int companyId, int paymentMethodId)
 
@@ -489,7 +489,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="deletevattype"></a>
+<a id="deletevattype"></a>
 # **DeleteVatType**
 > void DeleteVatType (int companyId, int vatTypeId)
 
@@ -581,7 +581,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getpaymentaccount"></a>
+<a id="getpaymentaccount"></a>
 # **GetPaymentAccount**
 > GetPaymentAccountResponse GetPaymentAccount (int companyId, int paymentAccountId, string fields = null, string fieldset = null)
 
@@ -681,7 +681,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getpaymentmethod"></a>
+<a id="getpaymentmethod"></a>
 # **GetPaymentMethod**
 > GetPaymentMethodResponse GetPaymentMethod (int companyId, int paymentMethodId, string fields = null, string fieldset = null)
 
@@ -781,7 +781,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getvattype"></a>
+<a id="getvattype"></a>
 # **GetVatType**
 > GetVatTypeResponse GetVatType (int companyId, int vatTypeId)
 
@@ -877,7 +877,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="modifypaymentaccount"></a>
+<a id="modifypaymentaccount"></a>
 # **ModifyPaymentAccount**
 > ModifyPaymentAccountResponse ModifyPaymentAccount (int companyId, int paymentAccountId, ModifyPaymentAccountRequest modifyPaymentAccountRequest = null)
 
@@ -975,7 +975,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="modifypaymentmethod"></a>
+<a id="modifypaymentmethod"></a>
 # **ModifyPaymentMethod**
 > ModifyPaymentMethodResponse ModifyPaymentMethod (int companyId, int paymentMethodId, ModifyPaymentMethodRequest modifyPaymentMethodRequest = null)
 
@@ -1073,7 +1073,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="modifyvattype"></a>
+<a id="modifyvattype"></a>
 # **ModifyVatType**
 > ModifyVatTypeResponse ModifyVatType (int companyId, int vatTypeId, ModifyVatTypeRequest modifyVatTypeRequest = null)
 

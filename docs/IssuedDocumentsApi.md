@@ -19,7 +19,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | [**TransformIssuedDocument**](IssuedDocumentsApi.md#transformissueddocument) | **GET** /c/{company_id}/issued_documents/transform | Transform issued document |
 | [**UploadIssuedDocumentAttachment**](IssuedDocumentsApi.md#uploadissueddocumentattachment) | **POST** /c/{company_id}/issued_documents/attachment | Upload Issued Document Attachment |
 
-<a name="createissueddocument"></a>
+<a id="createissueddocument"></a>
 # **CreateIssuedDocument**
 > CreateIssuedDocumentResponse CreateIssuedDocument (int companyId, CreateIssuedDocumentRequest createIssuedDocumentRequest = null)
 
@@ -116,7 +116,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="deleteissueddocument"></a>
+<a id="deleteissueddocument"></a>
 # **DeleteIssuedDocument**
 > void DeleteIssuedDocument (int companyId, int documentId)
 
@@ -210,7 +210,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="deleteissueddocumentattachment"></a>
+<a id="deleteissueddocumentattachment"></a>
 # **DeleteIssuedDocumentAttachment**
 > void DeleteIssuedDocumentAttachment (int companyId, int documentId)
 
@@ -304,7 +304,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getemaildata"></a>
+<a id="getemaildata"></a>
 # **GetEmailData**
 > GetEmailDataResponse GetEmailData (int companyId, int documentId)
 
@@ -400,7 +400,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getexistingissueddocumenttotals"></a>
+<a id="getexistingissueddocumenttotals"></a>
 # **GetExistingIssuedDocumentTotals**
 > GetExistingIssuedDocumentTotalsResponse GetExistingIssuedDocumentTotals (int companyId, int documentId, GetExistingIssuedDocumentTotalsRequest getExistingIssuedDocumentTotalsRequest = null)
 
@@ -500,7 +500,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getissueddocument"></a>
+<a id="getissueddocument"></a>
 # **GetIssuedDocument**
 > GetIssuedDocumentResponse GetIssuedDocument (int companyId, int documentId, string fields = null, string fieldset = null)
 
@@ -602,7 +602,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getissueddocumentprecreateinfo"></a>
+<a id="getissueddocumentprecreateinfo"></a>
 # **GetIssuedDocumentPreCreateInfo**
 > GetIssuedDocumentPreCreateInfoResponse GetIssuedDocumentPreCreateInfo (int companyId, string type)
 
@@ -698,7 +698,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getnewissueddocumenttotals"></a>
+<a id="getnewissueddocumenttotals"></a>
 # **GetNewIssuedDocumentTotals**
 > GetNewIssuedDocumentTotalsResponse GetNewIssuedDocumentTotals (int companyId, GetNewIssuedDocumentTotalsRequest getNewIssuedDocumentTotalsRequest = null)
 
@@ -795,7 +795,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="joinissueddocuments"></a>
+<a id="joinissueddocuments"></a>
 # **JoinIssuedDocuments**
 > JoinIssuedDocumentsResponse JoinIssuedDocuments (int companyId, string ids, int? group = null, int? eInvoice = null)
 
@@ -895,7 +895,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listissueddocuments"></a>
+<a id="listissueddocuments"></a>
 # **ListIssuedDocuments**
 > ListIssuedDocumentsResponse ListIssuedDocuments (int companyId, string type, string fields = null, string fieldset = null, string sort = null, int? page = null, int? perPage = null, string q = null, int? inclusive = null)
 
@@ -1007,7 +1007,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="modifyissueddocument"></a>
+<a id="modifyissueddocument"></a>
 # **ModifyIssuedDocument**
 > ModifyIssuedDocumentResponse ModifyIssuedDocument (int companyId, int documentId, ModifyIssuedDocumentRequest modifyIssuedDocumentRequest = null)
 
@@ -1107,7 +1107,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="scheduleemail"></a>
+<a id="scheduleemail"></a>
 # **ScheduleEmail**
 > void ScheduleEmail (int companyId, int documentId, ScheduleEmailRequest scheduleEmailRequest = null)
 
@@ -1203,7 +1203,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="transformissueddocument"></a>
+<a id="transformissueddocument"></a>
 # **TransformIssuedDocument**
 > TransformIssuedDocumentResponse TransformIssuedDocument (int companyId, int originalDocumentId, string newType, int? eInvoice = null, int? transformKeepCopy = null)
 
@@ -1305,7 +1305,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="uploadissueddocumentattachment"></a>
+<a id="uploadissueddocumentattachment"></a>
 # **UploadIssuedDocumentAttachment**
 > UploadIssuedDocumentAttachmentResponse UploadIssuedDocumentAttachment (int companyId, string filename = null, System.IO.Stream attachment = null)
 

@@ -6,7 +6,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 |--------|--------------|-------------|
 | [**GetCompanyInfo**](CompaniesApi.md#getcompanyinfo) | **GET** /c/{company_id}/company/info | Get Company Info |
 
-<a name="getcompanyinfo"></a>
+<a id="getcompanyinfo"></a>
 # **GetCompanyInfo**
 > GetCompanyInfoResponse GetCompanyInfo (int companyId)
 

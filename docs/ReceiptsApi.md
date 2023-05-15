@@ -12,7 +12,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | [**ListReceipts**](ReceiptsApi.md#listreceipts) | **GET** /c/{company_id}/receipts | List Receipts |
 | [**ModifyReceipt**](ReceiptsApi.md#modifyreceipt) | **PUT** /c/{company_id}/receipts/{document_id} | Modify Receipt |
 
-<a name="createreceipt"></a>
+<a id="createreceipt"></a>
 # **CreateReceipt**
 > CreateReceiptResponse CreateReceipt (int companyId, CreateReceiptRequest createReceiptRequest = null)
 
@@ -109,7 +109,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="deletereceipt"></a>
+<a id="deletereceipt"></a>
 # **DeleteReceipt**
 > void DeleteReceipt (int companyId, int documentId)
 
@@ -203,7 +203,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getreceipt"></a>
+<a id="getreceipt"></a>
 # **GetReceipt**
 > GetReceiptResponse GetReceipt (int companyId, int documentId, string fields = null, string fieldset = null)
 
@@ -305,7 +305,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getreceiptprecreateinfo"></a>
+<a id="getreceiptprecreateinfo"></a>
 # **GetReceiptPreCreateInfo**
 > GetReceiptPreCreateInfoResponse GetReceiptPreCreateInfo (int companyId)
 
@@ -401,7 +401,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getreceiptsmonthlytotals"></a>
+<a id="getreceiptsmonthlytotals"></a>
 # **GetReceiptsMonthlyTotals**
 > GetReceiptsMonthlyTotalsResponse GetReceiptsMonthlyTotals (int companyId, string type, string year)
 
@@ -501,7 +501,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listreceipts"></a>
+<a id="listreceipts"></a>
 # **ListReceipts**
 > ListReceiptsResponse ListReceipts (int companyId, string fields = null, string fieldset = null, int? page = null, int? perPage = null, string sort = null, string q = null)
 
@@ -608,7 +608,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="modifyreceipt"></a>
+<a id="modifyreceipt"></a>
 # **ModifyReceipt**
 > ModifyReceiptResponse ModifyReceipt (int companyId, int documentId, ModifyReceiptRequest modifyReceiptRequest = null)
 

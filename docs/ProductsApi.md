@@ -10,7 +10,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | [**ListProducts**](ProductsApi.md#listproducts) | **GET** /c/{company_id}/products | List Products |
 | [**ModifyProduct**](ProductsApi.md#modifyproduct) | **PUT** /c/{company_id}/products/{product_id} | Modify Product |
 
-<a name="createproduct"></a>
+<a id="createproduct"></a>
 # **CreateProduct**
 > CreateProductResponse CreateProduct (int companyId, CreateProductRequest createProductRequest = null)
 
@@ -106,7 +106,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="deleteproduct"></a>
+<a id="deleteproduct"></a>
 # **DeleteProduct**
 > void DeleteProduct (int companyId, int productId)
 
@@ -200,7 +200,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getproduct"></a>
+<a id="getproduct"></a>
 # **GetProduct**
 > GetProductResponse GetProduct (int companyId, int productId, string fields = null, string fieldset = null)
 
@@ -302,7 +302,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listproducts"></a>
+<a id="listproducts"></a>
 # **ListProducts**
 > ListProductsResponse ListProducts (int companyId, string fields = null, string fieldset = null, string sort = null, int? page = null, int? perPage = null, string q = null)
 
@@ -409,7 +409,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="modifyproduct"></a>
+<a id="modifyproduct"></a>
 # **ModifyProduct**
 > ModifyProductResponse ModifyProduct (int companyId, int productId, ModifyProductRequest modifyProductRequest = null)
 

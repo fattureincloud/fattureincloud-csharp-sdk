@@ -10,7 +10,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | [**ListWebhooksSubscriptions**](WebhooksApi.md#listwebhookssubscriptions) | **GET** /c/{company_id}/subscriptions | List Webhooks Subscriptions |
 | [**ModifyWebhooksSubscription**](WebhooksApi.md#modifywebhookssubscription) | **PUT** /c/{company_id}/subscriptions/{subscription_id} | Modify Webhooks Subscription |
 
-<a name="createwebhookssubscription"></a>
+<a id="createwebhookssubscription"></a>
 # **CreateWebhooksSubscription**
 > CreateWebhooksSubscriptionResponse CreateWebhooksSubscription (int companyId, CreateWebhooksSubscriptionRequest createWebhooksSubscriptionRequest = null)
 
@@ -106,7 +106,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="deletewebhookssubscription"></a>
+<a id="deletewebhookssubscription"></a>
 # **DeleteWebhooksSubscription**
 > void DeleteWebhooksSubscription (int companyId, string subscriptionId)
 
@@ -198,7 +198,7 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getwebhookssubscription"></a>
+<a id="getwebhookssubscription"></a>
 # **GetWebhooksSubscription**
 > GetWebhooksSubscriptionResponse GetWebhooksSubscription (int companyId, string subscriptionId)
 
@@ -294,7 +294,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listwebhookssubscriptions"></a>
+<a id="listwebhookssubscriptions"></a>
 # **ListWebhooksSubscriptions**
 > ListWebhooksSubscriptionsResponse ListWebhooksSubscriptions (int companyId)
 
@@ -388,7 +388,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="modifywebhookssubscription"></a>
+<a id="modifywebhookssubscription"></a>
 # **ModifyWebhooksSubscription**
 > ModifyWebhooksSubscriptionResponse ModifyWebhooksSubscription (int companyId, string subscriptionId, ModifyWebhooksSubscriptionRequest modifyWebhooksSubscriptionRequest = null)
 

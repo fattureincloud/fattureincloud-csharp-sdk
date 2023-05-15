@@ -21,7 +21,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | [**ListUnitsOfMeasure**](InfoApi.md#listunitsofmeasure) | **GET** /info/measures | List Units of Measure |
 | [**ListVatTypes**](InfoApi.md#listvattypes) | **GET** /c/{company_id}/info/vat_types | List Vat Types |
 
-<a name="listarchivecategories"></a>
+<a id="listarchivecategories"></a>
 # **ListArchiveCategories**
 > ListArchiveCategoriesResponse ListArchiveCategories (int companyId)
 
@@ -117,7 +117,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listcities"></a>
+<a id="listcities"></a>
 # **ListCities**
 > ListCitiesResponse ListCities (string postalCode = null, string city = null)
 
@@ -213,7 +213,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listcostcenters"></a>
+<a id="listcostcenters"></a>
 # **ListCostCenters**
 > ListCostCentersResponse ListCostCenters (int companyId)
 
@@ -309,7 +309,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listcountries"></a>
+<a id="listcountries"></a>
 # **ListCountries**
 > ListCountriesResponse ListCountries ()
 
@@ -399,7 +399,7 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listcurrencies"></a>
+<a id="listcurrencies"></a>
 # **ListCurrencies**
 > ListCurrenciesResponse ListCurrencies ()
 
@@ -489,7 +489,7 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listdeliverynotesdefaultcausals"></a>
+<a id="listdeliverynotesdefaultcausals"></a>
 # **ListDeliveryNotesDefaultCausals**
 > ListDeliveryNotesDefaultCausalsResponse ListDeliveryNotesDefaultCausals ()
 
@@ -579,7 +579,7 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listdetailedcountries"></a>
+<a id="listdetailedcountries"></a>
 # **ListDetailedCountries**
 > ListDetailedCountriesResponse ListDetailedCountries ()
 
@@ -669,7 +669,7 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listlanguages"></a>
+<a id="listlanguages"></a>
 # **ListLanguages**
 > ListLanguagesResponse ListLanguages ()
 
@@ -759,7 +759,7 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listpaymentaccounts"></a>
+<a id="listpaymentaccounts"></a>
 # **ListPaymentAccounts**
 > ListPaymentAccountsResponse ListPaymentAccounts (int companyId, string fields = null, string fieldset = null, string sort = null)
 
@@ -861,7 +861,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listpaymentmethods"></a>
+<a id="listpaymentmethods"></a>
 # **ListPaymentMethods**
 > ListPaymentMethodsResponse ListPaymentMethods (int companyId, string fields = null, string fieldset = null, string sort = null)
 
@@ -963,7 +963,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listproductcategories"></a>
+<a id="listproductcategories"></a>
 # **ListProductCategories**
 > ListProductCategoriesResponse ListProductCategories (int companyId, string context)
 
@@ -1061,7 +1061,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listreceiveddocumentcategories"></a>
+<a id="listreceiveddocumentcategories"></a>
 # **ListReceivedDocumentCategories**
 > ListReceivedDocumentCategoriesResponse ListReceivedDocumentCategories (int companyId)
 
@@ -1155,7 +1155,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listrevenuecenters"></a>
+<a id="listrevenuecenters"></a>
 # **ListRevenueCenters**
 > ListRevenueCentersResponse ListRevenueCenters (int companyId)
 
@@ -1251,7 +1251,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listtemplates"></a>
+<a id="listtemplates"></a>
 # **ListTemplates**
 > ListTemplatesResponse ListTemplates (string type = null, bool? byType = null)
 
@@ -1348,7 +1348,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listunitsofmeasure"></a>
+<a id="listunitsofmeasure"></a>
 # **ListUnitsOfMeasure**
 > ListUnitsOfMeasureResponse ListUnitsOfMeasure ()
 
@@ -1438,7 +1438,7 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="listvattypes"></a>
+<a id="listvattypes"></a>
 # **ListVatTypes**
 > ListVatTypesResponse ListVatTypes (int companyId, string fieldset = null)
 
