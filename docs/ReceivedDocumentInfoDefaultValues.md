@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.ReceivedDocumentInfoDefaultValues
-Default values for the document.
+Received document default values
 
 ## Properties
 

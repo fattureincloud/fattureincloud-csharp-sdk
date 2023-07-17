@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.IssuedDocumentType
-Issued document type.
+Issued document type
 
 ## Properties
 

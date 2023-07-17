@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.CompanyType
-Company type.
+Company type
 
 ## Properties
 

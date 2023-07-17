@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.SupplierType
-Supplier type.
+Supplier type
 
 ## Properties
 

@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.UserCompanyRole
-Role of the user in this company.
+User company role
 
 ## Properties
 

@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.CashbookEntryKind
-Cashbook kind.
+Cashbook kind
 
 ## Properties
 

@@ -1,4 +1,5 @@
 # It.FattureInCloud.Sdk.Model.CompanyInfoPlanInfo
+Company plan info
 
 ## Properties
 

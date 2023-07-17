@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.ShowTotalsMode
-Totals mode.
+Show totals mode
 
 ## Properties
 

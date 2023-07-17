@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.PaymentMethodType
-Method type.
+Payment method type
 
 ## Properties
 

@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.EventType
-Event type.
+Webhooks event type
 
 ## Properties
 

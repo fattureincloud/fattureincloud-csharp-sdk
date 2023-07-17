@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.IssuedDocumentEiData
-E-invoice data. [Only if e_invoice=true]
+Issued document e-invoice data [Only if e_invoice=true]
 
 ## Properties
 
@@ -7,16 +7,16 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **VatKind** | **VatKind** |  | [optional] 
 **OriginalDocumentType** | **OriginalDocumentType** |  | [optional] 
-**OdNumber** | **string** | Original document number. | [optional] 
-**OdDate** | **DateTime?** | Original document date. | [optional] 
-**Cig** | **string** | CIG. | [optional] 
-**Cup** | **string** | CUP. | [optional] 
-**PaymentMethod** | **string** | Payment method (see https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.1/Rappresentazione-tabellare-fattura-ordinaria.pdf for the accepted values of ModalitaPagamento). | [optional] 
-**BankName** | **string** | Bank name. | [optional] 
-**BankIban** | **string** | IBAN. | [optional] 
-**BankBeneficiary** | **string** | Bank beneficiary. | [optional] 
-**InvoiceNumber** | **string** | Invoice number. | [optional] 
-**InvoiceDate** | **DateTime?** | Invoice date. | [optional] 
+**OdNumber** | **string** | E-invoice original document number | [optional] 
+**OdDate** | **DateTime?** | E-invoice original document date | [optional] 
+**Cig** | **string** | E-invoice CIG | [optional] 
+**Cup** | **string** | E-invoice CUP | [optional] 
+**PaymentMethod** | **string** | E-invoice payment method [required for e-invoices](see https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf for the accepted values of ModalitaPagamento) | [optional] 
+**BankName** | **string** | E-invoice bank name | [optional] 
+**BankIban** | **string** | E-invoice bank IBAN | [optional] 
+**BankBeneficiary** | **string** | E-invoice bank beneficiary | [optional] 
+**InvoiceNumber** | **string** | E-invoice invoice number | [optional] 
+**InvoiceDate** | **DateTime?** | E-invoice invoice date | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

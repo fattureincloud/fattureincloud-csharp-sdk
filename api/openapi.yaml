@@ -12,7 +12,7 @@ info:
     name: MIT
     url: https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
   title: Fatture in Cloud API v2 - API Reference
-  version: 2.0.28
+  version: 2.0.29
 servers:
 - url: https://api-v2.fattureincloud.it
 security:
@@ -4876,6 +4876,16 @@ paths:
         "200":
           content:
             application/json:
+              examples:
+                example-1:
+                  value:
+                    data:
+                      reason: La Partita IVA della tua azienda risulta sbagliata e/o
+                        cessata.
+                      ei_status: rejected
+                      solution: "Puoi correggere la tua Partita IVA in: Impostazioni\
+                        \ > Azienda > Informazioni di fatturazione."
+                      date: 2023-06-06
               schema:
                 $ref: '#/components/schemas/GetEInvoiceRejectionReasonResponse'
           description: Example response
@@ -8301,6 +8311,20 @@ paths:
         "200":
           content:
             application/json:
+              examples:
+                example-1:
+                  value:
+                    data:
+                      date: 2021-08-24
+                      amount_in: 122
+                      payment_account_in:
+                        id: 333
+                      description: Fattura n. 201/2021
+                      entity_name: Rossi S.r.l.
+                      kind: issued_document
+                      document:
+                        id: 54321
+                      type: in
               schema:
                 $ref: '#/components/schemas/GetCashbookEntryResponse'
           description: Cashbook Entry.
@@ -8355,6 +8379,20 @@ paths:
         "200":
           content:
             application/json:
+              examples:
+                example-1:
+                  value:
+                    data:
+                      date: 2021-08-24
+                      amount_in: 122
+                      payment_account_in:
+                        id: 333
+                      description: Fattura n. 201/2021
+                      entity_name: Rossi S.r.l.
+                      kind: issued_document
+                      document:
+                        id: 54321
+                      type: in
               schema:
                 $ref: '#/components/schemas/ModifyCashbookEntryResponse'
           description: The modified Cashbook Entry
@@ -10278,7 +10316,7 @@ paths:
           content:
             application/json:
               examples:
-                Example 1:
+                example-1:
                   value:
                     data:
                       id: SUB123
@@ -10326,7 +10364,7 @@ paths:
           content:
             application/json:
               examples:
-                Example 1:
+                example-1:
                   value:
                     data:
                       id: SUB12345
@@ -15219,12 +15257,40 @@ components:
     GetCashbookEntryResponse:
       content:
         application/json:
+          examples:
+            example-1:
+              value:
+                data:
+                  date: 2021-08-24
+                  amount_in: 122
+                  payment_account_in:
+                    id: 333
+                  description: Fattura n. 201/2021
+                  entity_name: Rossi S.r.l.
+                  kind: issued_document
+                  document:
+                    id: 54321
+                  type: in
           schema:
             $ref: '#/components/schemas/GetCashbookEntryResponse'
       description: Cashbook Entry.
     ModifyCashbookEntryResponse:
       content:
         application/json:
+          examples:
+            example-1:
+              value:
+                data:
+                  date: 2021-08-24
+                  amount_in: 122
+                  payment_account_in:
+                    id: 333
+                  description: Fattura n. 201/2021
+                  entity_name: Rossi S.r.l.
+                  kind: issued_document
+                  document:
+                    id: 54321
+                  type: in
           schema:
             $ref: '#/components/schemas/ModifyCashbookEntryResponse'
       description: The modified Cashbook Entry
@@ -15669,6 +15735,15 @@ components:
     GetEInvoiceRejectionReasonResponse:
       content:
         application/json:
+          examples:
+            example-1:
+              value:
+                data:
+                  reason: La Partita IVA della tua azienda risulta sbagliata e/o cessata.
+                  ei_status: rejected
+                  solution: "Puoi correggere la tua Partita IVA in: Impostazioni >\
+                    \ Azienda > Informazioni di fatturazione."
+                  date: 2023-06-06
           schema:
             $ref: '#/components/schemas/GetEInvoiceRejectionReasonResponse'
       description: Example response
@@ -16046,7 +16121,7 @@ components:
       content:
         application/json:
           examples:
-            Example 1:
+            example-1:
               value:
                 data:
                   id: SUB123
@@ -16061,7 +16136,7 @@ components:
       content:
         application/json:
           examples:
-            Example 1:
+            example-1:
               value:
                 data:
                   id: SUB12345
@@ -17218,17 +17293,16 @@ components:
           extra_data:
             ts_file_id: ts_file_id
             ts_flag_tipo_spesa: 7.058770351582356
-            ts_opposizione: true
-            show_sofort_button: true
-            ts_tipo_spesa: ts_tipo_spesa
-            imported_by: imported_by
-            ts_sent_date: 2000-01-23
-            ts_single_sending: true
             ts_pagamento_tracciato: true
             ts_status: 6
+            ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
+            show_sofort_button: true
+            ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 0
+            imported_by: imported_by
+            ts_sent_date: 2000-01-23
           ei_status: attempt
           seen_date: 2000-01-23
           ei_cassa2_type: ei_cassa2_type
@@ -17548,17 +17622,16 @@ components:
           extra_data:
             ts_file_id: ts_file_id
             ts_flag_tipo_spesa: 7.058770351582356
-            ts_opposizione: true
-            show_sofort_button: true
-            ts_tipo_spesa: ts_tipo_spesa
-            imported_by: imported_by
-            ts_sent_date: 2000-01-23
-            ts_single_sending: true
             ts_pagamento_tracciato: true
             ts_status: 6
+            ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
+            show_sofort_button: true
+            ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 0
+            imported_by: imported_by
+            ts_sent_date: 2000-01-23
           ei_status: attempt
           seen_date: 2000-01-23
           ei_cassa2_type: ei_cassa2_type
@@ -17868,17 +17941,16 @@ components:
           extra_data:
             ts_file_id: ts_file_id
             ts_flag_tipo_spesa: 7.058770351582356
-            ts_opposizione: true
-            show_sofort_button: true
-            ts_tipo_spesa: ts_tipo_spesa
-            imported_by: imported_by
-            ts_sent_date: 2000-01-23
-            ts_single_sending: true
             ts_pagamento_tracciato: true
             ts_status: 6
+            ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
+            show_sofort_button: true
+            ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 0
+            imported_by: imported_by
+            ts_sent_date: 2000-01-23
           ei_status: attempt
           seen_date: 2000-01-23
           ei_cassa2_type: ei_cassa2_type
@@ -18189,17 +18261,16 @@ components:
           extra_data:
             ts_file_id: ts_file_id
             ts_flag_tipo_spesa: 7.058770351582356
-            ts_opposizione: true
-            show_sofort_button: true
-            ts_tipo_spesa: ts_tipo_spesa
-            imported_by: imported_by
-            ts_sent_date: 2000-01-23
-            ts_single_sending: true
             ts_pagamento_tracciato: true
             ts_status: 6
+            ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
+            show_sofort_button: true
+            ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 0
+            imported_by: imported_by
+            ts_sent_date: 2000-01-23
           ei_status: attempt
           seen_date: 2000-01-23
           ei_cassa2_type: ei_cassa2_type
@@ -18519,17 +18590,16 @@ components:
           extra_data:
             ts_file_id: ts_file_id
             ts_flag_tipo_spesa: 7.058770351582356
-            ts_opposizione: true
-            show_sofort_button: true
-            ts_tipo_spesa: ts_tipo_spesa
-            imported_by: imported_by
-            ts_sent_date: 2000-01-23
-            ts_single_sending: true
             ts_pagamento_tracciato: true
             ts_status: 6
+            ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
+            show_sofort_button: true
+            ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 0
+            imported_by: imported_by
+            ts_sent_date: 2000-01-23
           ei_status: attempt
           seen_date: 2000-01-23
           ei_cassa2_type: ei_cassa2_type
@@ -18839,17 +18909,16 @@ components:
           extra_data:
             ts_file_id: ts_file_id
             ts_flag_tipo_spesa: 7.058770351582356
-            ts_opposizione: true
-            show_sofort_button: true
-            ts_tipo_spesa: ts_tipo_spesa
-            imported_by: imported_by
-            ts_sent_date: 2000-01-23
-            ts_single_sending: true
             ts_pagamento_tracciato: true
             ts_status: 6
+            ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
+            show_sofort_button: true
+            ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 0
+            imported_by: imported_by
+            ts_sent_date: 2000-01-23
           ei_status: attempt
           seen_date: 2000-01-23
           ei_cassa2_type: ei_cassa2_type
@@ -19188,17 +19257,16 @@ components:
           extra_data:
             ts_file_id: ts_file_id
             ts_flag_tipo_spesa: 7.058770351582356
-            ts_opposizione: true
-            show_sofort_button: true
-            ts_tipo_spesa: ts_tipo_spesa
-            imported_by: imported_by
-            ts_sent_date: 2000-01-23
-            ts_single_sending: true
             ts_pagamento_tracciato: true
             ts_status: 6
+            ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
+            show_sofort_button: true
+            ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 0
+            imported_by: imported_by
+            ts_sent_date: 2000-01-23
           ei_status: attempt
           seen_date: 2000-01-23
           ei_cassa2_type: ei_cassa2_type
@@ -19317,16 +19385,15 @@ components:
     UploadIssuedDocumentAttachmentRequest:
       $ref: '#/components/schemas/Attachment'
     Attachment:
-      description: ""
       properties:
         filename:
-          description: Name of the file.
+          description: Attachment file name
           example: attachment.pdf
           nullable: true
           type: string
         attachment:
-          description: "Valid format: .png, .jpg, .gif, .pdf, .zip, .xls, .xlsx, .doc,\
-            \ .docx"
+          description: "Attachment file [.png, .jpg, .gif, .pdf, .zip, .xls, .xlsx,\
+            \ .doc, .docx]"
           format: binary
           type: string
       title: Attachment
@@ -19679,7 +19746,7 @@ components:
             id: 1
             payment_terms:
               days: 7
-              type: type
+              type: null
             paid_date: 2000-01-23
             status: status
           - amount: 6.84685269835264
@@ -19695,7 +19762,7 @@ components:
             id: 1
             payment_terms:
               days: 7
-              type: type
+              type: null
             paid_date: 2000-01-23
             status: status
           is_detailed: true
@@ -19869,7 +19936,7 @@ components:
             id: 1
             payment_terms:
               days: 7
-              type: type
+              type: null
             paid_date: 2000-01-23
             status: status
           - amount: 6.84685269835264
@@ -19885,7 +19952,7 @@ components:
             id: 1
             payment_terms:
               days: 7
-              type: type
+              type: null
             paid_date: 2000-01-23
             status: status
           is_detailed: true
@@ -20053,7 +20120,7 @@ components:
             id: 1
             payment_terms:
               days: 7
-              type: type
+              type: null
             paid_date: 2000-01-23
             status: status
           - amount: 6.84685269835264
@@ -20069,7 +20136,7 @@ components:
             id: 1
             payment_terms:
               days: 7
-              type: type
+              type: null
             paid_date: 2000-01-23
             status: status
           is_detailed: true
@@ -20237,7 +20304,7 @@ components:
             id: 1
             payment_terms:
               days: 7
-              type: type
+              type: null
             paid_date: 2000-01-23
             status: status
           - amount: 6.84685269835264
@@ -20253,7 +20320,7 @@ components:
             id: 1
             payment_terms:
               days: 7
-              type: type
+              type: null
             paid_date: 2000-01-23
             status: status
           is_detailed: true
@@ -20421,7 +20488,7 @@ components:
             id: 1
             payment_terms:
               days: 7
-              type: type
+              type: null
             paid_date: 2000-01-23
             status: status
           - amount: 6.84685269835264
@@ -20437,7 +20504,7 @@ components:
             id: 1
             payment_terms:
               days: 7
-              type: type
+              type: null
             paid_date: 2000-01-23
             status: status
           is_detailed: true
@@ -20605,7 +20672,7 @@ components:
             id: 1
             payment_terms:
               days: 7
-              type: type
+              type: null
             paid_date: 2000-01-23
             status: status
           - amount: 6.84685269835264
@@ -20621,7 +20688,7 @@ components:
             id: 1
             payment_terms:
               days: 7
-              type: type
+              type: null
             paid_date: 2000-01-23
             status: status
           is_detailed: true
@@ -20805,7 +20872,7 @@ components:
             id: 1
             payment_terms:
               days: 7
-              type: type
+              type: null
             paid_date: 2000-01-23
             status: status
           - amount: 6.84685269835264
@@ -20821,7 +20888,7 @@ components:
             id: 1
             payment_terms:
               days: 7
-              type: type
+              type: null
             paid_date: 2000-01-23
             status: status
           is_detailed: true
@@ -22793,17 +22860,16 @@ components:
           extra_data:
             ts_file_id: ts_file_id
             ts_flag_tipo_spesa: 7.058770351582356
-            ts_opposizione: true
-            show_sofort_button: true
-            ts_tipo_spesa: ts_tipo_spesa
-            imported_by: imported_by
-            ts_sent_date: 2000-01-23
-            ts_single_sending: true
             ts_pagamento_tracciato: true
             ts_status: 6
+            ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
+            show_sofort_button: true
+            ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 0
+            imported_by: imported_by
+            ts_sent_date: 2000-01-23
           ei_status: attempt
           seen_date: 2000-01-23
           ei_cassa2_type: ei_cassa2_type
@@ -23123,17 +23189,16 @@ components:
           extra_data:
             ts_file_id: ts_file_id
             ts_flag_tipo_spesa: 7.058770351582356
-            ts_opposizione: true
-            show_sofort_button: true
-            ts_tipo_spesa: ts_tipo_spesa
-            imported_by: imported_by
-            ts_sent_date: 2000-01-23
-            ts_single_sending: true
             ts_pagamento_tracciato: true
             ts_status: 6
+            ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
+            show_sofort_button: true
+            ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 0
+            imported_by: imported_by
+            ts_sent_date: 2000-01-23
           ei_status: attempt
           seen_date: 2000-01-23
           ei_cassa2_type: ei_cassa2_type
@@ -23346,7 +23411,6 @@ components:
       title: CreateWebhooksSubscriptionRequest
       type: object
     User:
-      description: ""
       example:
         name: Mario Rossi
         last_name: Rossi
@@ -23357,43 +23421,43 @@ components:
         picture: picture.jpg
       properties:
         id:
-          description: User identifier.
+          description: User id
           example: 12345
           nullable: true
           type: integer
         name:
-          description: Full name of the user.
+          description: User full name
           example: Mario Rossi
           nullable: true
           type: string
         first_name:
-          description: First name of the user.
+          description: User first name
           example: Mario
           nullable: true
           type: string
         last_name:
-          description: Last name of the user.
+          description: User last name
           example: Rossi
           nullable: true
           type: string
         email:
-          description: Email of the user.
+          description: User email address
           example: mario.rossi@example.com
           nullable: true
           type: string
         hash:
+          description: User hash
           example: 5add29e1234532a1bf2ed7b612043029
           nullable: true
           type: string
         picture:
-          description: Picture of the user.
+          description: User picture
           example: picture.jpg
           nullable: true
           type: string
       title: User
       type: object
     Company:
-      description: ""
       example:
         access_token: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
         tax_code: tax_code
@@ -23416,12 +23480,12 @@ components:
           type: null
       properties:
         id:
-          description: Company unique identifier.
+          description: Company id
           example: 12345
           nullable: true
           type: integer
         name:
-          description: Company name.
+          description: Company name
           example: Rossi S.r.l.
           nullable: true
           type: string
@@ -23429,31 +23493,30 @@ components:
           $ref: '#/components/schemas/CompanyType'
         access_token:
           description: |-
-            CompanyAuthentication token for this company.
+            Company authentication token for this company.
             [Only if type=company]
           example: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
           nullable: true
           type: string
         controlled_companies:
           description: |-
-            List of controlled companies.
+            Company list of controlled companies
             [Only if type=accountant]
           items:
             $ref: '#/components/schemas/ControlledCompany'
           nullable: true
           type: array
         connection_id:
-          description: Company connection id.
+          description: Company connection id
           nullable: true
           type: integer
         tax_code:
-          description: Tax code.
+          description: Company tax code
           nullable: true
           type: string
       title: Company
       type: object
     CompanyInfo:
-      description: ""
       example:
         accountant_id: 5
         name: Mario Rossi S.r.l.
@@ -23532,17 +23595,17 @@ components:
         email: mario@rossi-example.it
       properties:
         id:
-          description: Company unique identifier.
+          description: Company id
           example: 12345
           nullable: true
           type: integer
         name:
-          description: Company name.
+          description: Company name
           example: Mario Rossi S.r.l.
           nullable: true
           type: string
         email:
-          description: Company email.
+          description: Company email
           example: mario@rossi-example.it
           nullable: true
           type: string
@@ -23553,11 +23616,11 @@ components:
         plan_info:
           $ref: '#/components/schemas/CompanyInfo_plan_info'
         accountant_id:
-          description: Accountant unique identifier.
+          description: Company accountant id
           nullable: true
           type: integer
         is_accountant:
-          description: Determine if the logged account is an accountant.
+          description: Is the logged account an accountant.
           nullable: true
           type: boolean
       title: CompanyInfo
@@ -23626,7 +23689,6 @@ components:
       title: ListClientsResponsePage
       type: object
     Client:
-      description: ""
       example:
         country: Italia
         code: "123"
@@ -23703,11 +23765,11 @@ components:
         intent_declaration_protocol_date: 2000-01-23
       properties:
         id:
-          description: Unique identifier
+          description: Client id
           nullable: true
           type: integer
         code:
-          description: Client code.
+          description: Client code
           example: "123"
           nullable: true
           type: string
@@ -23719,14 +23781,15 @@ components:
         type:
           $ref: '#/components/schemas/ClientType'
         first_name:
-          description: Client first name.
+          description: Client first name
           nullable: true
           type: string
         last_name:
-          description: Client last name.
+          description: Client last name
           nullable: true
           type: string
         contact_person:
+          description: Client contact person
           nullable: true
           type: string
         vat_number:
@@ -23735,32 +23798,32 @@ components:
           nullable: true
           type: string
         tax_code:
-          description: Client tax code.
+          description: Client tax code
           example: RSSMRA44A12E890Q
           nullable: true
           type: string
         address_street:
-          description: Client street address.
+          description: Client address street
           example: "Via dei tigli, 12"
           nullable: true
           type: string
         address_postal_code:
-          description: Client postal code.
+          description: Client address postal code
           example: "24010"
           nullable: true
           type: string
         address_city:
-          description: Client city.
+          description: Client address city
           example: Bergamo
           nullable: true
           type: string
         address_province:
-          description: Client province.
+          description: Client address province
           example: BG
           nullable: true
           type: string
         address_extra:
-          description: Client address extra info.
+          description: Client address extra info
           nullable: true
           type: string
         country:
@@ -23769,30 +23832,31 @@ components:
           nullable: true
           type: string
         email:
-          description: Client email.
+          description: Client email
           example: mario.rossi@example.it
           nullable: true
           type: string
         certified_email:
-          description: Client certified email.
+          description: Client certified email
           example: mario.rossi@pec.example.it
           nullable: true
           type: string
         phone:
-          description: Client phone.
+          description: Client phone
           nullable: true
           type: string
         fax:
-          description: Client fax.
+          description: Client fax
           nullable: true
           type: string
         notes:
-          description: Extra notes.
+          description: Client extra
           nullable: true
           type: string
         default_vat:
           $ref: '#/components/schemas/VatType'
         default_payment_terms:
+          description: Client default payment terms
           example: 30
           nullable: true
           type: integer
@@ -23801,19 +23865,19 @@ components:
         default_payment_method:
           $ref: '#/components/schemas/PaymentMethod'
         bank_name:
-          description: Client bank name.
+          description: Client bank name
           nullable: true
           type: string
         bank_iban:
-          description: Client iban.
+          description: Client bank iban
           nullable: true
           type: string
         bank_swift_code:
-          description: Client bank swift code.
+          description: Client bank swift code
           nullable: true
           type: string
         shipping_address:
-          description: Client shipping address.
+          description: Client shipping address
           nullable: true
           type: string
         e_invoice:
@@ -23821,34 +23885,37 @@ components:
           nullable: true
           type: boolean
         ei_code:
-          description: E-invoice code
+          description: |
+            Client e-invoice code
           nullable: true
           type: string
         discount_highlight:
-          description: Discount Highlight.
+          description: Highlight Discount
           nullable: true
           type: boolean
         default_discount:
-          description: Default discount.
+          description: Client default discount
           nullable: true
           type: number
         has_intent_declaration:
-          description: Has intent declaration.
+          description: Client has intent declaration
           nullable: true
           type: boolean
         intent_declaration_protocol_number:
-          description: Intent declaration protocol number.
+          description: Client intent declaration protocol number
           nullable: true
           type: string
         intent_declaration_protocol_date:
-          description: Intent declaration protocol date.
+          description: Client intent declaration protocol date
           format: date
           nullable: true
           type: string
         created_at:
+          description: Client creation date
           nullable: true
           type: string
         updated_at:
+          description: Client last update date
           nullable: true
           type: string
       title: Client
@@ -23863,7 +23930,6 @@ components:
       title: ListSuppliersResponsePage
       type: object
     Supplier:
-      description: ""
       example:
         country: Italia
         code: "123"
@@ -23890,101 +23956,104 @@ components:
         email: mario.rossi@example.it
       properties:
         id:
-          description: Unique identifier
+          description: Supplier id
           nullable: true
           type: integer
         code:
-          description: Supplier code.
+          description: Supplier code
           example: "123"
           nullable: true
           type: string
         name:
-          description: Supplier name.
+          description: Supplier name
           example: Rossi S.r.l.
           nullable: true
           type: string
         type:
           $ref: '#/components/schemas/SupplierType'
         first_name:
-          description: Supplier first name.
+          description: Supplier first name
           nullable: true
           type: string
         last_name:
-          description: Supplier last name.
+          description: Supplier last name
           nullable: true
           type: string
         contact_person:
+          description: Supplier contact person
           nullable: true
           type: string
         vat_number:
-          description: Supplier vat number.
+          description: Supplier vat number
           example: IT01234567890
           nullable: true
           type: string
         tax_code:
-          description: Supplier tax code.
+          description: Supplier tax code
           example: RSSMRA44A12E890Q
           nullable: true
           type: string
         address_street:
-          description: Supplier street address.
+          description: Supplier street address
           example: "Via dei tigli, 12"
           nullable: true
           type: string
         address_postal_code:
-          description: Supplier postal code.
+          description: Supplier postal code
           example: "24010"
           nullable: true
           type: string
         address_city:
-          description: Supplier city.
+          description: Supplier city
           example: Bergamo
           nullable: true
           type: string
         address_province:
-          description: Supplier province.
+          description: Supplier province
           example: BG
           nullable: true
           type: string
         address_extra:
-          description: Supplier address extra info.
+          description: Supplier address extra info
           nullable: true
           type: string
         country:
-          description: Supplier country.
+          description: Supplier country
           example: Italia
           nullable: true
           type: string
         email:
-          description: Supplier email.
+          description: Supplier email
           example: mario.rossi@example.it
           nullable: true
           type: string
         certified_email:
-          description: Supplier certified email.
+          description: Supplier certified email
           example: mario.rossi@pec.example.it
           nullable: true
           type: string
         phone:
-          description: Supplier phone.
+          description: Supplier phone
           nullable: true
           type: string
         fax:
-          description: Supplier fax.
+          description: Supplier fax
           nullable: true
           type: string
         notes:
-          description: Supplier extra notes.
+          description: Supplier extra notes
           nullable: true
           type: string
         bank_iban:
-          description: Supplier bank IBAN.
+          description: Supplier bank IBAN
           nullable: true
           type: string
         created_at:
+          description: Supplier creation date
           nullable: true
           type: string
         updated_at:
+          description: Supplier last update date
           nullable: true
           type: string
       title: Supplier
@@ -24030,80 +24099,80 @@ components:
         net_cost: 5.962133916683182
       properties:
         id:
-          description: Unique identifier.
+          description: Product id
           nullable: true
           type: integer
         name:
-          description: Product name.
+          description: Product name
           nullable: true
           type: string
         code:
-          description: Product code.
+          description: Product code
           nullable: true
           type: string
         net_price:
-          description: "Net sale price (used if use_gross_price is false, otherwise\
-            \ it's competed automatically)."
+          description: Product net price
           nullable: true
           type: number
         gross_price:
-          description: "Gross sale price (used if use_gross_price is false, otherwise\
-            \ it's competed automatically)."
+          description: Product gross price
           nullable: true
           type: number
         use_gross_price:
-          description: Determine which price to use for calculations.
+          description: Product uses gross prices
           nullable: true
           type: boolean
         default_vat:
           $ref: '#/components/schemas/VatType'
         net_cost:
-          description: Net cost of the product (used for received documents).
+          description: Product net cost
           nullable: true
           type: number
         measure:
-          description: Unit of measure.
+          description: Product measure
           nullable: true
           type: string
         description:
-          description: Product description.
+          description: Product description
           nullable: true
           type: string
         category:
-          description: Product category.
+          description: Product category
           nullable: true
           type: string
         notes:
-          description: Extra notes.
+          description: Product extra notes
           nullable: true
           type: string
         in_stock:
-          description: Determine if the product is in stock.
+          description: Product has stock
           nullable: true
           type: boolean
         stock_initial:
-          description: Product initial stock.
+          description: Product initial stock
           nullable: true
           type: number
         stock_current:
           description: |-
             [Read Only]
-            Product current stock.
+            Product current stock
           nullable: true
           readOnly: true
           type: number
         average_cost:
-          description: Product average cost.
+          description: Product average cost
           nullable: true
           type: number
         average_price:
-          description: Product average price.
+          description: Product average price
           nullable: true
           type: number
         created_at:
+          description: Product creation date
           nullable: true
           type: string
         updated_at:
+          description: Product last update date
           nullable: true
           type: string
       title: Product
@@ -24118,7 +24187,6 @@ components:
       title: ListIssuedDocumentResponsePage
       type: object
     IssuedDocument:
-      description: ""
       example:
         date: 2000-01-23
         numeration: /A
@@ -24340,17 +24408,16 @@ components:
         extra_data:
           ts_file_id: ts_file_id
           ts_flag_tipo_spesa: 7.058770351582356
-          ts_opposizione: true
-          show_sofort_button: true
-          ts_tipo_spesa: ts_tipo_spesa
-          imported_by: imported_by
-          ts_sent_date: 2000-01-23
-          ts_single_sending: true
           ts_pagamento_tracciato: true
           ts_status: 6
+          ts_opposizione: true
           ts_communication: true
           ts_full_amount: true
+          show_sofort_button: true
+          ts_tipo_spesa: ts_tipo_spesa
           multifatture_sent: 0
+          imported_by: imported_by
+          ts_sent_date: 2000-01-23
         ei_status: attempt
         seen_date: 2000-01-23
         ei_cassa2_type: ei_cassa2_type
@@ -24434,7 +24501,7 @@ components:
         amount_cassa2_taxable: 7.386281948385884
       properties:
         id:
-          description: Unique identifier of the document.
+          description: Issued document id
           nullable: true
           type: integer
         entity:
@@ -24443,27 +24510,27 @@ components:
           $ref: '#/components/schemas/IssuedDocumentType'
         number:
           description: |-
-            Number of the document
+            Issued document number
             [If not specified, next number is used]
           example: 1
           nullable: true
           type: integer
         numeration:
           description: |-
-            Numeration of the document
+            Issued document numeration
             [Not available if type=delivery_note]
           example: /A
           nullable: true
           type: string
         date:
           description: |-
-            Date of the document
-            [If not specified, today date is used]
+            Issued document date
+            [defaults to today's date]
           format: date
           nullable: true
           type: string
         year:
-          description: Invoice year.
+          description: Issued document year
           nullable: true
           type: integer
         currency:
@@ -24471,107 +24538,110 @@ components:
         language:
           $ref: '#/components/schemas/Language'
         subject:
-          description: Issued document subject.
+          description: Issued document subject
           nullable: true
           type: string
         visible_subject:
-          description: Issued document visible subject.
+          description: Issued document visible subject
           nullable: true
           type: string
         rc_center:
-          description: "Revenue center [or cost center if type=supplier_order]."
+          description: "Issued document revenue center [or cost center if type=supplier_order]."
           nullable: true
           type: string
         notes:
-          description: Issued document extra notes.
+          description: Issued document extra notes
           nullable: true
           type: string
         rivalsa:
-          description: '"Rivalsa INPS" percentual value'
+          description: Issued document "Rivalsa INPS" percentual value
           nullable: true
           type: number
         cassa:
-          description: '"Cassa previdenziale" percentual value'
+          description: Issued document "Cassa previdenziale" percentual value
           nullable: true
           type: number
         amount_cassa:
           description: |-
             [Read Only]
-            Cassa amount.
+            Issued document cassa amount.
           nullable: true
           readOnly: true
           type: number
         cassa_taxable:
-          description: Cassa taxable percentage
+          description: Issued document cassa taxable percentage
           nullable: true
           type: number
         amount_cassa_taxable:
           description: |-
             [Can be set only if cassa_taxable is NULL]
-            Cassa2 taxable amount
+            Issued document cassa taxable amount
           nullable: true
           type: number
         cassa2:
-          description: '"Cassa previdenziale 2" percentual value'
+          description: Issued document "Cassa previdenziale 2" percentual value
           nullable: true
           type: number
         amount_cassa2:
           description: |-
             [Read Only]
-            Cassa amount.
+            Issued document cassa2 amount
           nullable: true
           readOnly: true
           type: number
         cassa2_taxable:
-          description: Cassa2 taxable percentage
+          description: Issued document cassa2 taxable percentage
           nullable: true
           type: number
         amount_cassa2_taxable:
           description: |-
             [Can be set only if cassa2_taxable is NULL]
-            Cassa2 taxable amount
+            Issued document cassa2 taxable amount
           nullable: true
           type: number
         global_cassa_taxable:
-          description: Global cassa taxable percentage
+          description: Issued document global cassa taxable percentage
           nullable: true
           type: number
         amount_global_cassa_taxable:
           description: |-
             [Can be set only if global_cassa_taxable is NULL]
-            Global cassa taxable amount
+            Issued document global cassa taxable amount
           nullable: true
           type: number
         withholding_tax:
-          description: Withholding tax (ritenuta d'acconto) percentual value
+          description: Issued document withholding tax (ritenuta d'acconto) percentual
+            value
           nullable: true
           type: number
         withholding_tax_taxable:
-          description: Withholding tax taxable (imponibile) percentual value
+          description: Issued document withholding tax taxable (imponibile) percentual
+            value
           nullable: true
           type: number
         other_withholding_tax:
-          description: Other withholding tax (altra ritenuta) percentual value
+          description: Issued document other withholding tax (altra ritenuta) percentual
+            value
           nullable: true
           type: number
         stamp_duty:
           description: |-
-            Stamp duty value
+            Issued document stamp duty value
             [0 if not present]
           nullable: true
           type: number
         payment_method:
           $ref: '#/components/schemas/PaymentMethod'
         use_split_payment:
-          description: Use split payment
+          description: Issued document uses split payment
           nullable: true
           type: boolean
         use_gross_prices:
-          description: Use gross prices
+          description: Issued document uses gross prices
           nullable: true
           type: boolean
         e_invoice:
-          description: Indicates if this is an e-invoice.
+          description: Issued document is an e-invoice.
           nullable: true
           type: boolean
         ei_data:
@@ -24613,203 +24683,207 @@ components:
         acc_inv_template:
           $ref: '#/components/schemas/DocumentTemplate'
         h_margins:
-          description: Horizontal margins.
+          description: Issued document PDF horizontal margins
           nullable: true
           type: integer
         v_margins:
-          description: Vertical margins.
+          description: Issued document PDF vertical margins
           nullable: true
           type: integer
         show_payments:
-          description: Shows the expiration dates of the payments on the document.
+          description: Show the expiration dates of the payments on the document
           nullable: true
           type: boolean
         show_payment_method:
-          description: Show the payment method details on the document.
+          description: Show the payment method details on the document
           nullable: true
           type: boolean
         show_totals:
           $ref: '#/components/schemas/ShowTotalsMode'
         show_paypal_button:
-          description: Show paypal button
+          description: Show paypal button in the PDF
           nullable: true
           type: boolean
         show_notification_button:
-          description: Show notification button
+          description: Show notification button in the PDF
           nullable: true
           type: boolean
         show_tspay_button:
-          description: Show ts pay button.
+          description: Show ts pay button in the PDF
           nullable: true
           type: boolean
         delivery_note:
+          description: Issued document has delivery note
           nullable: true
           type: boolean
         accompanying_invoice:
-          description: Attach an accompanying invoice.
+          description: Issued document has an accompanying invoice
           nullable: true
           type: boolean
         dn_number:
-          description: Number (for the attached delivery note).
+          description: Issued document attached delivery note number
           nullable: true
           type: integer
         dn_date:
-          description: Date (for the attached delivery note).
+          description: Issued document attached delivery note date
           format: date
           nullable: true
           type: string
         dn_ai_packages_number:
-          description: Number of packages (for the attached delivery note).
+          description: Issued document attached delivery note number of packages
           nullable: true
           type: string
         dn_ai_weight:
-          description: Weight (for the attached delivery note).
+          description: Issued document attached delivery note package weight
           nullable: true
           type: string
         dn_ai_causal:
-          description: Causal (for the attached delivery note).
+          description: Issued document attached delivery note causal
           nullable: true
           type: string
         dn_ai_destination:
-          description: Destination (for the attached delivery note).
+          description: Issued document attached delivery note destination
           nullable: true
           type: string
         dn_ai_transporter:
-          description: Transporter (for the attached delivery note).
+          description: Issued document attached delivery note transporter
           nullable: true
           type: string
         dn_ai_notes:
-          description: Notes (for the attached delivery note).
+          description: Issued document attached delivery note notes
           nullable: true
           type: string
         is_marked:
-          description: This is true if the document is marked.
+          description: Issued document is marked
           nullable: true
           type: boolean
         amount_net:
           description: |-
-            [Read Only]
-            Total net amount (competenze).
+            [Read only]
+            Issued document total net amount
           nullable: true
           readOnly: true
           type: number
         amount_vat:
           description: |-
             [Read Only]
-            Total vat amount (IVA).
+            Issued document total vat amount
           nullable: true
           readOnly: true
           type: number
         amount_gross:
           description: |-
             [Read Only]
-            Total gross amount (totale documento).
+            Issued document total gross amount
           nullable: true
           readOnly: true
           type: number
         amount_due_discount:
-          description: Amount due discount
+          description: Issued document amount due discount
           nullable: true
           type: number
         amount_rivalsa:
           description: |-
             [Read Only]
-            Rivalsa amount.
+            Issued document rivalsa amount
           nullable: true
           readOnly: true
           type: number
         amount_rivalsa_taxable:
-          description: Taxable rivalsa amount
+          description: Issued document taxable rivalsa amount
           nullable: true
           type: number
         amount_withholding_tax:
           description: |-
             [Read Only]
-            Withholding tax amount (ritenuta d'acconto).
+            Issued document withholding tax amount (ritenuta d'acconto).
           nullable: true
           readOnly: true
           type: number
         amount_withholding_tax_taxable:
-          description: Taxable withholding tax amount
+          description: Issued document taxable withholding tax amount
           nullable: true
           type: number
         amount_other_withholding_tax:
           description: |-
             [Read Only]
-            Other withholding tax amount (altra ritenuta).
+            Issued document other withholding tax amount (altra ritenuta)
           nullable: true
           readOnly: true
           type: number
         amount_other_withholding_tax_taxable:
-          description: Taxable other withholding tax amount
+          description: Issued document taxable other withholding tax amount
           nullable: true
           type: number
         amount_enasarco_taxable:
-          description: Taxable enasarco amount
+          description: Issued document taxable enasarco amount
           nullable: true
           type: number
         extra_data:
           $ref: '#/components/schemas/IssuedDocument_extra_data'
         seen_date:
-          description: Date when the client/supplier has seen the document.
+          description: Issued document seen date
           format: date
           nullable: true
           type: string
         next_due_date:
-          description: Date of the next not paid payment.
+          description: Issued document date of the next not paid payment
           format: date
           nullable: true
           type: string
         url:
-          description: "[Temporary] [Read Only]\n \nPublic url of the document PDF\
-            \ file."
+          description: |-
+            [Temporary] [Read Only]
+            Issued document url of the document PDF file
           nullable: true
           type: string
         dn_url:
-          description: "[Temporary] [Read Only]\n \nPublic url of the attached delivery\
-            \ note PDF file."
+          description: |-
+            [Temporary] [Read Only]
+            Issued document url of the attached delivery note PDF file
           nullable: true
           type: string
         ai_url:
-          description: "[Temporary] [Read Only]\n \nPublic url of the accompanying\
-            \ invoice PDF file."
+          description: |-
+            [Temporary] [Read Only]
+            Issued document url of the accompanying invoice PDF file
           nullable: true
           type: string
         attachment_url:
           description: |-
             [Temporary] [Read Only]
-            Public url of the attached file. Authomatically set if a valid attachment token is passed via POST /issued_documents or PUT /issued_documents/{documentId}.
+            Issued document url of the attached file
           nullable: true
           readOnly: true
           type: string
         attachment_token:
           description: |-
             [Write Only]
-            Attachment token returned by POST /issued_documents/attachment. Used to attach the file already uploaded.
+            Issued document attachment token returned by POST /issued_documents/attachment
           nullable: true
           type: string
           writeOnly: true
         ei_raw:
-          description: Advanced raw attributes for e-invoices.
+          description: Issued document advanced raw attributes for e-invoices
           nullable: true
           type: object
         ei_status:
           description: |
             [Read only] Status of the e-invoice.
-              * `attempt` - We are trying to send the invoice, please wait up to 2 hours
-              * `missing` - The invoice is missing
-              * `not_sent` - The invoice has yet to be sent
-              * `sent` - The invoice was sent
-              * `pending` - The checks for the digital signature and sending are in progress
-              * `processing` - The SDI is delivering the invoice to the customer
-              * `error` - An error occurred while handling the invoice, please try to resend it or contact support
-              * `discarded` - The invoice has been rejected by the SDI, so it must be corrected and re-sent
-              * `not_delivered` - The SDI was unable to deliver the invoice
-              * `accepted` - The customer accepted the invoice
-              * `rejected` - The customer rejected the invoice, so it must be corrected
-              * `no_response` - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice
-              * `manual_accepted` - The customer accepted the invoice
-              * `manual_rejected` - The customer rejected the invoice
+              * **attempt** - We are trying to send the invoice, please wait up to 2 hours
+              * **missing** - The invoice is missing
+              * **not_sent** - The invoice has yet to be sent
+              * **sent** - The invoice was sent
+              * **pending** - The checks for the digital signature and sending are in progress
+              * **processing** - The SDI is delivering the invoice to the customer
+              * **error** - An error occurred while handling the invoice, please try to resend it or contact support
+              * **discarded** - The invoice has been rejected by the SDI, so it must be corrected and re-sent
+              * **not_delivered** - The SDI was unable to deliver the invoice
+              * **accepted** - The customer accepted the invoice
+              * **rejected** - The customer rejected the invoice, so it must be corrected
+              * **no_response** - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice
+              * **manual_accepted** - The customer accepted the invoice
+              * **manual_rejected** - The customer rejected the invoice
           enum:
           - attempt
           - missing
@@ -24828,9 +24902,11 @@ components:
           nullable: true
           type: string
         created_at:
+          description: Issued document creation date
           nullable: true
           type: string
         updated_at:
+          description: Issued document last update date
           nullable: true
           type: string
       title: IssuedDocument
@@ -24856,7 +24932,7 @@ components:
           nullable: true
           type: array
         transform:
-          description: "Tranform a document. [only for transform]"
+          description: "Tranform a document [only for transform]"
           nullable: true
           type: boolean
         keep_copy:
@@ -24893,66 +24969,67 @@ components:
         amount_gross: 9.301444243932576
       properties:
         amount_net:
-          description: Total net amount.
+          description: Issued document total net amount
           nullable: true
           type: number
         amount_rivalsa:
-          description: Rivalsa amount.
+          description: Issued document rivalsa amount
           nullable: true
           type: number
         amount_net_with_rivalsa:
-          description: Net amount with rivalsa.
+          description: Issued document net amount with rivalsa
           nullable: true
           type: number
         amount_cassa:
-          description: Cassa amount.
+          description: Issued document cassa amount
           nullable: true
           type: number
         taxable_amount:
-          description: Taxable amount.
+          description: Issued document taxable amount
           nullable: true
           type: number
         not_taxable_amount:
-          description: Not taxable amount.
+          description: Issued document not taxable amount
           nullable: true
           type: number
         amount_vat:
-          description: Total vat amount.
+          description: Issued document total vat amount
           nullable: true
           type: number
         amount_gross:
-          description: Total grosas amount.
+          description: Issued document total gross amount
           nullable: true
           type: number
         taxable_amount_withholding_tax:
-          description: Taxable withholding tax amount.
+          description: Issued document Taxable withholding tax amount
           nullable: true
           type: number
         amount_withholding_tax:
-          description: Withholding tax amount.
+          description: Issued document withholding tax amount
           nullable: true
           type: number
         taxable_amount_other_withholding_tax:
-          description: Other withholding tax taxable amount.
+          description: Issued document other withholding tax taxable amount
           nullable: true
           type: number
         amount_other_withholding_tax:
-          description: Other withholding tax amount.
+          description: Issued document other withholding tax amount
           nullable: true
           type: number
         stamp_duty:
-          description: "Stamp duty value [0 if not present]."
+          description: "Issued document stamp duty value [0 if not present]."
           nullable: true
           type: number
         amount_due:
-          description: Total amount due.
+          description: Issued document total amount due
           nullable: true
           type: number
         is_enasarco_maximal_exceeded:
+          description: Is enasarco maximal excedeed
           nullable: true
           type: boolean
         payments_sum:
-          description: Payments sum.
+          description: Issued document payments sum
           nullable: true
           type: number
         vat_list:
@@ -25188,55 +25265,55 @@ components:
         items_default_values:
           $ref: '#/components/schemas/IssuedDocumentPreCreateInfo_items_default_values'
         countries_list:
-          description: Countries list.
+          description: Countries list
           items:
             type: string
           nullable: true
           type: array
         currencies_list:
-          description: Currencies list.
+          description: Currencies list
           items:
             $ref: '#/components/schemas/Currency'
           nullable: true
           type: array
         templates_list:
-          description: Document templates list.
+          description: Document templates list
           items:
             $ref: '#/components/schemas/DocumentTemplate'
           nullable: true
           type: array
         dn_templates_list:
-          description: Delivery note templates list.
+          description: Delivery note templates list
           items:
             $ref: '#/components/schemas/DocumentTemplate'
           nullable: true
           type: array
         ai_templates_list:
-          description: Accompanying invoice templates list.
+          description: Accompanying invoice templates list
           items:
             $ref: '#/components/schemas/DocumentTemplate'
           nullable: true
           type: array
         payment_methods_list:
-          description: Payment methods list.
+          description: Payment methods list
           items:
             $ref: '#/components/schemas/PaymentMethod'
           nullable: true
           type: array
         payment_accounts_list:
-          description: Payment accounts list.
+          description: Payment accounts list
           items:
             $ref: '#/components/schemas/PaymentAccount'
           nullable: true
           type: array
         vat_types_list:
-          description: Vat types list.
+          description: Vat types list
           items:
             $ref: '#/components/schemas/VatType'
           nullable: true
           type: array
         languages_list:
-          description: Languages list.
+          description: Languages list
           items:
             $ref: '#/components/schemas/Language'
           nullable: true
@@ -25244,7 +25321,6 @@ components:
       title: IssuedDocumentPreCreateInfo
       type: object
     EmailData:
-      description: ""
       example:
         delivery_note_exists: true
         accompanying_invoice_exists: true
@@ -25265,7 +25341,7 @@ components:
         body: body
       properties:
         recipient_email:
-          description: Recipient's email
+          description: Email recipient
           nullable: true
           type: string
         default_sender_email:
@@ -25277,8 +25353,7 @@ components:
           nullable: true
           type: array
         cc_email:
-          description: By default is the logged company email. This is the email address
-            to which a copy will be sent.
+          description: "Email cc [by default is the logged company email]"
           nullable: true
           type: string
         subject:
@@ -25290,27 +25365,23 @@ components:
           nullable: true
           type: string
         document_exists:
-          description: "If the document is not a delivery note, this flag will be\
-            \ set to true"
+          description: Document exists if it is not a delivery note
           nullable: true
           type: boolean
         delivery_note_exists:
-          description: "If the document is a delivery note, this flag will be set\
-            \ to true"
+          description: Document is a delivery note
           nullable: true
           type: boolean
         attachment_exists:
-          description: "If the document has one or more attachments, this flag will\
-            \ be set to true"
+          description: Document has attachment
           nullable: true
           type: boolean
         accompanying_invoice_exists:
-          description: "If an accompanying invoice exists, this flag will be set to\
-            \ true"
+          description: Document has accompanying invoice
           nullable: true
           type: boolean
         default_attach_pdf:
-          description: "If a pdf is attached, this flag will be set to true"
+          description: Attach document pdf
           nullable: true
           type: boolean
       title: EmailData
@@ -25331,15 +25402,15 @@ components:
         sender_email: sender_email
       properties:
         sender_id:
-          description: Sender id. Required if `sender_email` is not specified
+          description: "Email sender id [required if **sender_email** is not specified]"
           nullable: true
           type: integer
         sender_email:
-          description: Sender email. Required if `sender_id` is not specified
+          description: "Email sender address [required if **sender_id** is not specified]"
           nullable: true
           type: string
         recipient_email:
-          description: One or more comma separated recipient emails
+          description: "Email recipient emails [comma separated]"
           nullable: true
           type: string
         subject:
@@ -25353,13 +25424,12 @@ components:
         include:
           $ref: '#/components/schemas/EmailSchedule_include'
         attach_pdf:
-          description: "If set to true, documents will be sent as PDF attachments\
-            \ too"
+          description: Attach the pdf of the document
           nullable: true
           type: boolean
         send_copy:
-          description: "If set to true, a copy of the email will be sent to the `cc_email`\
-            \ specified by `Get email data`"
+          description: Send a copy of the email to the **cc_email** specified by **Get
+            email data**
           nullable: true
           type: boolean
       title: EmailSchedule
@@ -25373,11 +25443,11 @@ components:
         ei_status: ei_status
       properties:
         reason:
-          description: Rejection reason.
+          description: E-invoice rejection reason
           nullable: true
           type: string
         ei_status:
-          description: E-invoice status.
+          description: E-invoice status
           nullable: true
           type: string
         solution:
@@ -25385,11 +25455,11 @@ components:
           nullable: true
           type: string
         code:
-          description: Error code.
+          description: E-invoice rejection error code
           nullable: true
           type: string
         date:
-          description: Rejection date.
+          description: E-invoice rejection date
           format: date-time
           nullable: true
           type: string
@@ -25428,7 +25498,7 @@ components:
           id: 1
           payment_terms:
             days: 7
-            type: type
+            type: null
           paid_date: 2000-01-23
           status: status
         - amount: 6.84685269835264
@@ -25444,7 +25514,7 @@ components:
           id: 1
           payment_terms:
             days: 7
-            type: type
+            type: null
           paid_date: 2000-01-23
           status: status
         is_detailed: true
@@ -25583,7 +25653,7 @@ components:
           intent_declaration_protocol_date: 2000-01-23
       properties:
         id:
-          description: Unique identifier of the document.
+          description: Received document id
           nullable: true
           type: integer
         type:
@@ -25591,69 +25661,71 @@ components:
         entity:
           $ref: '#/components/schemas/Entity'
         date:
-          description: "Date of the document [If not specified, today date is used]."
+          description: "Received document date [defaults to today's date]"
           format: date
           nullable: true
           type: string
         category:
-          description: Document category.
+          description: Received document category
           nullable: true
           type: string
         description:
-          description: Document description.
+          description: Received document description
           nullable: true
           type: string
         amount_net:
-          description: Total net amount.
+          description: Received document total net amount
           nullable: true
           type: number
         amount_vat:
-          description: Total vat amount.
+          description: Received document total vat amount
           nullable: true
           type: number
         amount_withholding_tax:
-          description: Withholding tax amount.
+          description: Received document withholding tax amount
           nullable: true
           type: number
         amount_other_withholding_tax:
-          description: Other withholding tax amount.
+          description: Received document other withholding tax amount
           nullable: true
           type: number
         amount_gross:
           description: |-
             [Read Only]
-            Total gross amount.
+            Received document total gross amount
           nullable: true
           readOnly: true
           type: number
         amortization:
-          description: Amortization value
+          description: Received document amortization value
           nullable: true
           type: number
         rc_center:
-          description: Revenue center.
+          description: Received document revenue center
           nullable: true
           type: string
         invoice_number:
-          description: Invoice number
+          description: Received document invoice number
           nullable: true
           type: string
         is_marked:
+          description: Received document is marked
           nullable: true
           type: boolean
         is_detailed:
+          description: Received document has items
           nullable: true
           type: boolean
         e_invoice:
           description: |-
             [Read Only]
-            Indicates if this is an e-invoice.
+            Received document is an e-invoice
           nullable: true
           type: boolean
         next_due_date:
           description: |-
             [Read Only]
-            Next due date.
+            Received document date of the next not paid payment
           format: date
           nullable: true
           readOnly: true
@@ -25661,11 +25733,11 @@ components:
         currency:
           $ref: '#/components/schemas/Currency'
         tax_deductibility:
-          description: Tax deducibility percentage.
+          description: Received document tax deducibility percentage
           nullable: true
           type: number
         vat_deductibility:
-          description: Vat deducibility percentage.
+          description: Received document vat deducibility percentage
           nullable: true
           type: number
         items_list:
@@ -25682,10 +25754,7 @@ components:
           description: |-
             [Temporary]
             [Read Only]
-
-            Public url of the attached file. Authomatically set if a valid attachment
-            token is passed via POST /received_documents or PUT
-            /received_documents/{documentId}.
+            Received document url of the attached file
           nullable: true
           readOnly: true
           type: string
@@ -25693,30 +25762,32 @@ components:
           description: |-
             [Temporary]
             [Read Only]
-
-            Attachment preview url.
+            Received document url of the attachment preview
           nullable: true
           readOnly: true
           type: string
         auto_calculate:
-          description: If set to false total items amount and total payments amount
-            can be different.
+          description: Received document total items amount and total payments amount
+            can differ if this field is set to false
           nullable: true
           type: boolean
         attachment_token:
-          description: Uploaded attachement token.
+          description: |-
+            [Write Only]
+            Received document attachment token returned by POST /received_documents/attachment
           nullable: true
           type: string
         created_at:
+          description: Received document creation date
           nullable: true
           type: string
         updated_at:
+          description: Received document last update date
           nullable: true
           type: string
       title: ReceivedDocument
       type: object
     ReceivedDocumentTotals:
-      description: ""
       example:
         amount_net: 0.8008281904610115
         amount_withholding_tax: 5.962133916683182
@@ -25727,37 +25798,36 @@ components:
         amount_gross: 1.4658129805029452
       properties:
         amount_net:
-          description: Total net amount.
+          description: Received document total net amount
           nullable: true
           type: number
         amount_vat:
-          description: Total vat amount.
+          description: Received document total vat amount
           nullable: true
           type: number
         amount_gross:
-          description: Total gross amount.
+          description: Received document total gross amount
           nullable: true
           type: number
         amount_withholding_tax:
-          description: Total withholding tax amount.
+          description: Received document withholding tax amount
           nullable: true
           type: number
         amount_other_withholding_tax:
-          description: Total other withholding tax amount.
+          description: Received document other withholding tax amount
           nullable: true
           type: number
         amount_due:
-          description: Total amount due.
+          description: Received document total amount due
           nullable: true
           type: number
         payments_sum:
-          description: Payments sum.
+          description: Received document payments sum
           nullable: true
           type: number
       title: ReceivedDocumentTotals
       type: object
     ReceivedDocumentInfo:
-      description: ""
       example:
         default_values:
           detailed: true
@@ -25818,26 +25888,31 @@ components:
         items_default_values:
           $ref: '#/components/schemas/ReceivedDocumentInfo_items_default_values'
         countries_list:
+          description: Countries list
           items:
             type: string
           nullable: true
           type: array
         currencies_list:
+          description: Currencies list
           items:
             $ref: '#/components/schemas/Currency'
           nullable: true
           type: array
         categories_list:
+          description: Categories list
           items:
             type: string
           nullable: true
           type: array
         payment_accounts_list:
+          description: Payments accounts list
           items:
             $ref: '#/components/schemas/PaymentAccount'
           nullable: true
           type: array
         vat_types_list:
+          description: Vat types list
           items:
             $ref: '#/components/schemas/VatType'
           nullable: true
@@ -25854,7 +25929,6 @@ components:
       title: ListReceiptsResponsePage
       type: object
     Receipt:
-      description: ""
       example:
         date: 2000-01-23
         amount_net: 1.4658129805029452
@@ -25908,51 +25982,54 @@ components:
         amount_gross: 5.637376656633329
       properties:
         id:
-          description: Receipt unique identifier.
+          description: Receipt id
           nullable: true
           type: integer
         date:
-          description: Receipt date.
+          description: Receipt date
           format: date
           nullable: true
           type: string
         number:
-          description: Receipt number.
+          description: Receipt number
           nullable: true
           type: number
         numeration:
-          description: If it's null or empty string use the default numeration.
+          description: Receipt numeration
           nullable: true
           type: string
         amount_net:
-          description: Total net amount.
+          description: Receipt total net amount
           nullable: true
           type: number
         amount_vat:
-          description: Total vat amount.
+          description: Receipt total vat amount
           nullable: true
           type: number
         amount_gross:
-          description: Total gross amount.
+          description: Receipt total gross amount
           nullable: true
           type: number
         use_gross_prices:
+          description: Receipt uses gross prices
           nullable: true
           type: boolean
         type:
           $ref: '#/components/schemas/ReceiptType'
         description:
-          description: Receipt description.
+          description: Receipt description
           nullable: true
           type: string
         rc_center:
-          description: Revenue center.
+          description: Receipt revenue center
           nullable: true
           type: string
         created_at:
+          description: Receipt creation date
           nullable: true
           type: string
         updated_at:
+          description: Receipt last update date
           nullable: true
           type: string
         payment_account:
@@ -25965,7 +26042,6 @@ components:
       title: Receipt
       type: object
     ReceiptPreCreateInfo:
-      description: ""
       example:
         numerations_list:
         - numerations_list
@@ -26019,32 +26095,31 @@ components:
           title: Numeration
           type: object
         numerations_list:
-          description: List of series used in the past.
+          description: Receipt used numerations list
           items:
             type: string
           nullable: true
           type: array
         rc_centers_list:
-          description: List of revenue centers used in the past.
+          description: Receipt used revenue centers list
           items:
             type: string
           nullable: true
           type: array
         payment_accounts_list:
-          description: User payment accounts list.
+          description: Payment accounts list
           items:
             $ref: '#/components/schemas/PaymentAccount'
           nullable: true
           type: array
         categories_list:
-          description: List of categories used in the past.
+          description: Receipt categories list
           items:
             type: string
           nullable: true
           type: array
         vat_types_list:
-          description: "List of user vat types with the default 22%, 10%, 4% and 0%\
-            \ vats."
+          description: Vat types list
           items:
             $ref: '#/components/schemas/VatType'
           nullable: true
@@ -26052,22 +26127,21 @@ components:
       title: ReceiptPreCreateInfo
       type: object
     MonthlyTotal:
-      description: ""
       example:
         gross: 6.027456183070403
         count: 1.4658129805029452
         net: 0.8008281904610115
       properties:
         net:
-          description: Monthly total net amount.
+          description: Monthly total net amount
           nullable: true
           type: number
         gross:
-          description: Monthly total gross amount.
+          description: Monthly total gross amount
           nullable: true
           type: number
         count:
-          description: Monthly total receipt number.
+          description: Monthly total receipt number
           nullable: true
           type: number
       title: MonthlyTotal
@@ -26106,11 +26180,11 @@ components:
         status: null
       properties:
         id:
-          description: Unique F24 identifier.
+          description: F24 id
           nullable: true
           type: integer
         due_date:
-          description: Due date.
+          description: F24 due date
           example: 2018-02-12
           format: date
           nullable: true
@@ -26120,26 +26194,24 @@ components:
         payment_account:
           $ref: '#/components/schemas/PaymentAccount'
         amount:
-          description: Taxes amount.
+          description: F24 amount
           example: 300
           nullable: true
           type: number
         attachment_url:
           description: |-
             [Temporary] [Read Only]
-            Absolute url of the attached file. Authomatically set if a valid attachment token is passed via POST /taxes or PUT /taxes/{documentId}.
+            F24 url of the attached file
           nullable: true
           readOnly: true
           type: string
         attachment_token:
-          description: |-
-            [Write Only]
-            Attachment token returned by POST /taxes/attachment. Used to attach the file already uploaded.
+          description: "[Write Only] \nF24 attachment token returned by POST /taxes/attachment"
           nullable: true
           type: string
           writeOnly: true
         description:
-          description: Name or brief description.
+          description: F24 description
           nullable: true
           type: string
       title: F24
@@ -26163,32 +26235,32 @@ components:
         attachment_url: attachment_url
       properties:
         id:
-          description: Archive document unique identifier.
+          description: Archive document id
           nullable: true
           type: integer
         date:
-          description: Archive document date.
+          description: Archive document date
           format: date
           nullable: true
           type: string
         description:
-          description: Archive Document description.
+          description: Archive Document description
           nullable: true
           type: string
         attachment_url:
           description: |-
             [Temporary] [Read Only]
-            Absolute url of the attached file. Authomatically set if a valid attachment token is passed via POST /archive or PUT /archive/{documentId}.
+            Archive Document url of the attached file
           nullable: true
           readOnly: true
           type: string
         category:
-          description: Archive document category.
+          description: Archive document category
           nullable: true
           type: string
         attachment_token:
-          description: "[Write Only] \n[Required]\nAttachment token returned by POST\
-            \ /archive/attachment. Used to attach the file already uploaded."
+          description: "[Write Only] \n[Required]\nArchive document attachment token\
+            \ returned by POST /archive/attachment"
           nullable: true
           type: string
           writeOnly: true
@@ -26226,16 +26298,16 @@ components:
         type: null
       properties:
         id:
-          description: Cashbook unique identifier.
+          description: Cashbook id
           nullable: true
           type: string
         date:
-          description: Cashbook date.
+          description: Cashbook date
           format: date
           nullable: true
           type: string
         description:
-          description: Cashbook description.
+          description: Cashbook description
           nullable: true
           type: string
         kind:
@@ -26243,7 +26315,7 @@ components:
         type:
           $ref: '#/components/schemas/CashbookEntryType'
         entity_name:
-          description: Entity name.
+          description: Cashbook entity name
           nullable: true
           type: string
         document:
@@ -26251,7 +26323,7 @@ components:
         amount_in:
           description: |-
             [Only for cashbook entry in]
-            Total amount in.
+            Cashbook total amount in
           nullable: true
           type: number
         payment_account_in:
@@ -26259,7 +26331,7 @@ components:
         amount_out:
           description: |-
             [Only for cashbook entry out]
-            Total amount out.
+            Cashbook total amount out
           nullable: true
           type: number
         payment_account_out:
@@ -26275,21 +26347,23 @@ components:
         uic: uic
       properties:
         name:
-          description: Country name.
+          description: Country name
           nullable: true
           type: string
         settings_name:
+          description: Country settings name
           nullable: true
           type: string
         iso:
-          description: Country iso.
+          description: Country iso code
           nullable: true
           type: string
         fiscal_iso:
+          description: Country fiscal iso code
           nullable: true
           type: string
         uic:
-          description: Country uic.
+          description: Country uic
           nullable: true
           type: string
       title: DetailedCountry
@@ -26301,15 +26375,15 @@ components:
         postal_code: postal_code
       properties:
         postal_code:
-          description: City postal code.
+          description: City postal code
           nullable: true
           type: string
         city:
-          description: City name.
+          description: City name
           nullable: true
           type: string
         province:
-          description: Province.
+          description: City province
           nullable: true
           type: string
       title: City
@@ -26320,11 +26394,11 @@ components:
         name: name
       properties:
         code:
-          description: Language code.
+          description: Language code
           nullable: true
           type: string
         name:
-          description: Language extended name.
+          description: Language extended name
           nullable: true
           type: string
       title: Language
@@ -26336,23 +26410,22 @@ components:
         type: type
       properties:
         id:
-          description: Unique identifier.
+          description: Template id
           example: 123
           nullable: true
           type: integer
         name:
-          description: Template name.
+          description: Template name
           example: Light Smoke
           nullable: true
           type: string
         type:
-          description: Template type.
+          description: Template type
           nullable: true
           type: string
       title: DocumentTemplate
       type: object
     Currency:
-      description: ""
       example:
         symbol: €
         exchange_rate: "1"
@@ -26360,29 +26433,28 @@ components:
         id: EUR
       properties:
         id:
-          description: Currency code.
+          description: Currency code
           example: EUR
           nullable: true
           type: string
         symbol:
-          description: Currency symbol.
+          description: Currency symbol
           example: €
           nullable: true
           type: string
         exchange_rate:
-          description: Currency exchange rate (EUR to this).
+          description: Currency exchange rate (EUR to this)
           example: "1"
           nullable: true
           type: string
         html_symbol:
-          description: Currency html code.
+          description: Currency html code
           example: EUR
           nullable: true
           type: string
       title: Currency
       type: object
     VatType:
-      description: ""
       example:
         ei_description: ei_description
         notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
@@ -26396,46 +26468,46 @@ components:
       nullable: true
       properties:
         id:
-          description: Unique identifier
+          description: Vat type id
           nullable: true
           type: integer
         value:
-          description: "[Read Only] Percentual value."
+          description: "[Read Only] Vat type percentual value"
           example: 22
           nullable: true
           type: number
         description:
-          description: Short description.
+          description: Vat type short description
           example: Non imponibile art. 123
           nullable: true
           type: string
         notes:
-          description: Long description and notes shown in documents.
+          description: Vat type notes shown in documents
           example: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           nullable: true
           type: string
         e_invoice:
-          description: Usable for e-invoices.
+          description: Vat type is usable for e-invoices
           nullable: true
           type: boolean
         ei_type:
-          description: E-invoice type (natura).
+          description: Vat type e-invoice type (natura)
           example: "2"
           nullable: true
           type: string
         ei_description:
-          description: E-invoice description.
+          description: Vat type e-invoice description
           nullable: true
           type: string
         editable:
           description: |-
             [Read Only]
-            Determine if this vat type is editable.
+            Is the vat type is editable.
           nullable: true
           readOnly: true
           type: boolean
         is_disabled:
-          description: Determine if the vat type is disabled.
+          description: Is the vat type disabled
           nullable: true
           type: boolean
       title: VatType
@@ -26471,38 +26543,38 @@ components:
         bank_iban: bank_iban
       properties:
         id:
-          description: Unique identifier
+          description: Payment method id
           nullable: true
           type: integer
         name:
-          description: Name of the payment method
+          description: Payment method name
           nullable: true
           type: string
         type:
           $ref: '#/components/schemas/PaymentMethodType'
         is_default:
-          description: Determines if this is the default payment method.
+          description: Payment method is default
           nullable: true
           type: boolean
         default_payment_account:
           $ref: '#/components/schemas/PaymentAccount'
         details:
-          description: Method details rows
+          description: Payment method details
           items:
             $ref: '#/components/schemas/PaymentMethodDetails'
           maxItems: 5
           nullable: true
           type: array
         bank_iban:
-          description: Bank iban
+          description: Payment method bank iban
           nullable: true
           type: string
         bank_name:
-          description: Bank name
+          description: Payment method bank name
           nullable: true
           type: string
         bank_beneficiary:
-          description: Bank beneficiary
+          description: Payment method bank beneficiary
           nullable: true
           type: string
         ei_payment_method:
@@ -26512,7 +26584,6 @@ components:
       title: PaymentMethod
       type: object
     PaymentAccount:
-      description: ""
       example:
         cuc: cuc
         virtual: true
@@ -26524,30 +26595,30 @@ components:
       nullable: true
       properties:
         id:
-          description: Unique identifier
+          description: Payment account id
           nullable: true
           type: integer
         name:
-          description: Payment account name.
+          description: Payment account name
           example: Conto Banca Intesa
           nullable: true
           type: string
         type:
           $ref: '#/components/schemas/PaymentAccountType'
         iban:
-          description: Payment account iban.
+          description: Payment account iban
           nullable: true
           type: string
         sia:
-          description: Payment account sia.
+          description: Payment account sia
           nullable: true
           type: string
         cuc:
-          description: Payment account cuc.
+          description: Payment account cuc
           nullable: true
           type: string
         virtual:
-          description: Determine if the payment method is virtual.
+          description: Payment method is virtual
           nullable: true
           type: boolean
       title: PaymentAccount
@@ -26570,7 +26641,7 @@ components:
         id: id
       properties:
         id:
-          description: Unique identifier
+          description: Webhooks subscription id
           nullable: true
           type: string
         sink:
@@ -26590,14 +26661,13 @@ components:
       title: WebhooksSubscription
       type: object
     CompanyType:
-      description: Company type.
+      description: Company type
       enum:
       - company
       - accountant
       title: CompanyType
       type: string
     ControlledCompany:
-      description: ""
       example:
         access_token: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
         tax_code: tax_code
@@ -26607,12 +26677,12 @@ components:
         type: null
       properties:
         id:
-          description: Company unique identifier.
+          description: Controlled company id
           example: 12345
           nullable: true
           type: integer
         name:
-          description: Company name.
+          description: Controlled company id
           example: Rossi S.r.l.
           nullable: true
           type: string
@@ -26620,23 +26690,23 @@ components:
           $ref: '#/components/schemas/CompanyType'
         access_token:
           description: |-
-            CompanyAuthentication token for this company.
-            [Only if type=company]
+            Controlled company access token
+            Only if type=company]
           example: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
           nullable: true
           type: string
         connection_id:
-          description: Company connection id.
+          description: Controlled company connection id
           nullable: true
           type: number
         tax_code:
-          description: Tax code.
+          description: Controlled company tax code
           nullable: true
           type: string
       title: Controlled Company
       type: object
     UserCompanyRole:
-      description: Role of the user in this company.
+      description: User company role
       enum:
       - master
       - subaccount
@@ -26744,7 +26814,7 @@ components:
       title: FunctionStatus
       type: object
     ClientType:
-      description: Client type.
+      description: Client type
       enum:
       - company
       - person
@@ -26755,14 +26825,14 @@ components:
       type: string
     PaymentTermsType:
       default: standard
-      description: Payment terms Type.
+      description: Payment terms type
       enum:
       - standard
       - end_of_month
       title: PaymentTermsType
       type: string
     SupplierType:
-      description: Supplier type.
+      description: Supplier type
       enum:
       - company
       - person
@@ -26772,7 +26842,6 @@ components:
       title: SupplierType
       type: string
     Entity:
-      description: ""
       example:
         country: Italia
         code: "123"
@@ -26848,107 +26917,108 @@ components:
         intent_declaration_protocol_date: 2000-01-23
       properties:
         id:
-          description: Unique identifier
+          description: Entity id
           nullable: true
           type: integer
         code:
-          description: Code.
+          description: Entity code
           example: "123"
           nullable: true
           type: string
         name:
-          description: Name
+          description: Entity name
           example: Rossi S.r.l.
           nullable: true
           type: string
         type:
           $ref: '#/components/schemas/EntityType'
         first_name:
-          description: First name.
+          description: Entity first name
           nullable: true
           type: string
         last_name:
-          description: Last name.
+          description: Entity last name
           nullable: true
           type: string
         contact_person:
+          description: Entity contact person
           nullable: true
           type: string
         vat_number:
-          description: Vat number
+          description: Entity vat number
           example: IT01234567890
           nullable: true
           type: string
         tax_code:
-          description: Tax code.
+          description: Entity tax code
           example: RSSMRA44A12E890Q
           nullable: true
           type: string
         address_street:
-          description: Street address.
+          description: Entitity address street
           example: "Via dei tigli, 12"
           nullable: true
           type: string
         address_postal_code:
-          description: Postal code.
+          description: Entity address postal code
           example: "24010"
           nullable: true
           type: string
         address_city:
-          description: City.
+          description: Entity address city
           example: Bergamo
           nullable: true
           type: string
         address_province:
-          description: Province.
+          description: Entity address province
           example: BG
           nullable: true
           type: string
         address_extra:
-          description: Address extra info.
+          description: Entity address extra info
           nullable: true
           type: string
         country:
-          description: Country
+          description: Entity country
           example: Italia
           nullable: true
           type: string
         country_iso:
-          description: Country Iso
+          description: Entity country iso code
           example: Italia
           nullable: true
           type: string
         email:
-          description: Email.
+          description: Entity email
           example: mario.rossi@example.it
           nullable: true
           type: string
         certified_email:
-          description: Certified email.
+          description: Entity certified email
           example: mario.rossi@pec.example.it
           nullable: true
           type: string
         phone:
-          description: Phone.
+          description: Entity phone
           nullable: true
           type: string
         fax:
-          description: Fax.
+          description: Entity fax
           nullable: true
           type: string
         notes:
-          description: Extra notes.
+          description: Entity extra
           nullable: true
           type: string
-        default_vat:
-          $ref: '#/components/schemas/VatType'
         default_payment_terms:
           description: |-
             [Only for client]
-            Default payment terms.
+            Client default payment terms
           example: 30
           nullable: true
           type: integer
+        default_vat:
+          $ref: '#/components/schemas/VatType'
         default_payment_terms_type:
           $ref: '#/components/schemas/PaymentTermsType'
         default_payment_method:
@@ -26956,25 +27026,25 @@ components:
         bank_name:
           description: |-
             [Only for client]
-            Bank name.
+            Client bank name
           nullable: true
           type: string
         bank_iban:
           description: |-
             [Only for client]
-            Iban.
+            Client bank iban
           nullable: true
           type: string
         bank_swift_code:
           description: |-
             [Only for client]
-            Bank swift code.
+            Client bank swift code
           nullable: true
           type: string
         shipping_address:
           description: |-
             [Only for client]
-            Shipping address.
+            Client Shipping address
           nullable: true
           type: string
         e_invoice:
@@ -26998,27 +27068,29 @@ components:
         intent_declaration_protocol_number:
           description: |-
             [Only for client]
-            Intent declaration protocol number.
+            Client intent declaration protocol number
           nullable: true
           type: string
         intent_declaration_protocol_date:
           description: |-
             [Only for client]
-            Intent declaration protocol date.
+            Client intent declaration protocol date
           format: date
           nullable: true
           type: string
         created_at:
+          description: Entity creation date
           nullable: true
           type: string
         updated_at:
+          description: Entity last update date
           nullable: true
           type: string
       title: Entity
       type: object
     IssuedDocumentType:
       default: invoice
-      description: Issued document type.
+      description: Issued document type
       enum:
       - invoice
       - quote
@@ -27033,7 +27105,7 @@ components:
       - self_supplier_invoice
       type: string
     VatKind:
-      description: Vat kind (esigibilità IVA).
+      description: "Vat kind [esigibilità IVA]"
       enum:
       - null
       - I
@@ -27044,7 +27116,7 @@ components:
       type: string
     OriginalDocumentType:
       default: ordine
-      description: Type of document followed by the the current invoice.
+      description: Issued document original document type
       enum:
       - ordine
       - contratto
@@ -27083,74 +27155,79 @@ components:
         in_dn: true
       properties:
         id:
-          description: Unique identifier.
+          description: Issued document item id
           nullable: true
           type: integer
         product_id:
-          description: Unique identifier of the product.
+          description: Issued document item product id
           example: 1234
           nullable: true
           type: integer
         code:
-          description: Product code.
+          description: Issued document item product code
           example: "239874892374982"
           nullable: true
           type: string
         name:
-          description: Product name.
+          description: Issued document item product name
           example: Water bottle
           nullable: true
           type: string
         category:
-          description: Product category
+          description: Issued document item product category
           nullable: true
           type: string
         description:
-          description: Product description.
+          description: Issued document product description
           nullable: true
           type: string
         qty:
-          description: "Items quantity,"
+          description: Issued document item quantity
           nullable: true
           type: number
         measure:
-          description: Item measure.
+          description: Issued document item measure
           nullable: true
           type: string
         net_price:
-          description: Net price.
+          description: Issued document item net price
           example: 1.23
           nullable: true
           type: number
         gross_price:
-          description: Gross price.
+          description: Issued document item gross price
           example: 1.45
           nullable: true
           type: number
         vat:
           $ref: '#/components/schemas/VatType'
         not_taxable:
+          description: Issued document item is not taxable
           nullable: true
           type: boolean
         apply_withholding_taxes:
-          description: "Apply withholding taxes, rivalsa and cassa."
+          description: "Issued document item apply withholding taxes, rivalsa and\
+            \ cassa"
           nullable: true
           type: boolean
         discount:
-          description: Discount percentual value.
+          description: Issued document item discount percentual value
           nullable: true
           type: number
         discount_highlight:
+          description: Issued document item highlight discount
           nullable: true
           type: boolean
         in_dn:
+          description: Issued document item add in delivery note
           nullable: true
           type: boolean
         stock:
+          description: Issued document item move stock
           nullable: true
           type: boolean
         ei_raw:
-          description: Advanced raw attributes for e-invoices.
+          description: Issued document advanced raw attributes for e-invoices
           nullable: true
           type: object
       title: IssuedDocumentItemsListItem
@@ -27176,17 +27253,17 @@ components:
         status: null
       properties:
         id:
-          description: Unique identifier.
+          description: Issued document payment item id
           nullable: true
           type: integer
         due_date:
-          description: Due date.
+          description: Issued document payment due date
           example: 2018-04-03
           format: date
           nullable: true
           type: string
         amount:
-          description: Payment amount.
+          description: Issued document payment amount
           example: 1.45
           nullable: true
           type: number
@@ -27196,14 +27273,14 @@ components:
           $ref: '#/components/schemas/PaymentAccount'
         paid_date:
           description: |-
-            Payment date.
+            Issued document payment date
             [Only if status is paid]
           example: 2018-04-03
           format: date
           nullable: true
           type: string
         ei_raw:
-          description: Advanced raw attributes for e-invoices.
+          description: Issued document payment advanced raw attributes for e-invoices
           nullable: true
           type: object
         payment_terms:
@@ -27212,7 +27289,7 @@ components:
       type: object
     ShowTotalsMode:
       default: all
-      description: Totals mode.
+      description: Show totals mode
       enum:
       - none
       - nets
@@ -27235,18 +27312,18 @@ components:
         email: email
       properties:
         id:
-          description: Id
+          description: Sender email id
           nullable: true
           type: integer
         email:
-          description: Email address
+          description: Sender email address
           nullable: true
           type: string
       title: SenderEmail
       type: object
     ReceivedDocumentType:
       default: expense
-      description: Received document type.
+      description: Received document type
       enum:
       - expense
       - passive_credit_note
@@ -27276,44 +27353,44 @@ components:
         stock: 1.0246457001441578
       properties:
         id:
-          description: Unique identifier.
+          description: Received document item id
           nullable: true
           type: integer
         product_id:
-          description: Unique identifier of the product
+          description: Received document product id
           nullable: true
           type: integer
         code:
-          description: Product code.
+          description: Received document item product code
           nullable: true
           type: string
         name:
-          description: Product name.
+          description: Received document item product name
           nullable: true
           type: string
         measure:
-          description: Product measure.
+          description: Received document item measure
           nullable: true
           type: string
         net_price:
-          description: Product net price.
+          description: Received document item product net price
           nullable: true
           type: number
         category:
-          description: Product category.
+          description: Received document item product category
           nullable: true
           type: string
         qty:
-          description: Product quantity.
+          description: Received document item quantity
           nullable: true
           type: number
         vat:
           $ref: '#/components/schemas/VatType'
         stock:
-          description: Number of items in stock
+          description: Received document item product number of items in stock
           nullable: true
           type: number
-      title: ItemsListItem
+      title: ReceivedDocumentItemsListItem
       type: object
     ReceivedDocumentPaymentsListItem:
       example:
@@ -27330,16 +27407,16 @@ components:
         id: 1
         payment_terms:
           days: 7
-          type: type
+          type: null
         paid_date: 2000-01-23
         status: status
       properties:
         id:
-          description: Unique identifier.
+          description: Received document payment id
           nullable: true
           type: integer
         amount:
-          description: Amount of items.
+          description: Received document payment total amount
           nullable: true
           type: number
         due_date:
@@ -27348,22 +27425,22 @@ components:
           nullable: true
           type: string
         paid_date:
-          description: Paid date
+          description: Received document payment paid date
           format: date
           nullable: true
           type: string
         payment_terms:
           $ref: '#/components/schemas/ReceivedDocumentPaymentsListItem_payment_terms'
         status:
-          description: Payment status.
+          description: Received document payment status
           nullable: true
           type: string
         payment_account:
           $ref: '#/components/schemas/PaymentAccount'
-      title: PaymentsListItem
+      title: ReceivedDocumentPaymentsListItem
       type: object
     ReceiptType:
-      description: Receipt type.
+      description: Receipt type
       enum:
       - till_receipt
       - sales_receipt
@@ -27387,19 +27464,19 @@ components:
         amount_gross: 9.301444243932576
       properties:
         id:
-          description: Item unique identifier.
+          description: Receipt item id
           nullable: true
           type: integer
         amount_net:
-          description: Item total net amount.
+          description: Receipt item total net amount
           nullable: true
           type: number
         amount_gross:
-          description: Item total gross amount.
+          description: Receipt item total gross amount
           nullable: true
           type: number
         category:
-          description: Item category.
+          description: Receipt item category
           nullable: true
           type: string
         vat:
@@ -27415,7 +27492,7 @@ components:
       title: ListF24ResponseAggregatedData
       type: object
     F24Status:
-      description: Tax status.
+      description: F24 status
       enum:
       - paid
       - not_paid
@@ -27423,7 +27500,7 @@ components:
       title: F24Status
       type: string
     CashbookEntryKind:
-      description: Cashbook kind.
+      description: Cashbook kind
       enum:
       - cashbook
       - issued_document
@@ -27433,7 +27510,7 @@ components:
       title: CashbookEntryKind
       type: string
     CashbookEntryType:
-      description: Cashbook type.
+      description: Cashbook type
       enum:
       - in
       - out
@@ -27442,7 +27519,7 @@ components:
       type: string
     PaymentMethodType:
       default: standard
-      description: Method type.
+      description: Payment method type
       enum:
       - standard
       - riba
@@ -27454,84 +27531,85 @@ components:
         title: title
       properties:
         title:
-          description: Details title.
+          description: Payment method details title
           nullable: true
           type: string
         description:
-          description: Details description.
+          description: Payment method details description
           nullable: true
           type: string
       title: PaymentMethodDetails
       type: object
     PaymentAccountType:
       default: standard
-      description: Payment account type.
+      description: Payment account type
       enum:
       - standard
       - bank
       title: PaymentAccountType
       type: string
     Email:
-      description: ""
       properties:
         id:
-          description: Email unique identifier.
+          description: Email id
           nullable: true
           type: integer
         status:
           $ref: '#/components/schemas/EmailStatus'
         sent_date:
-          description: Email sent date.
+          description: Email sent date
           format: date-time
           nullable: true
           type: string
         errors_count:
-          description: Errors count.
+          description: Email errors count
           nullable: true
           type: integer
         error_log:
-          description: Error log.
+          description: Email errors log
           nullable: true
           type: string
         from_email:
-          description: Sender email.
+          description: Email sender email
           nullable: true
           type: string
         from_name:
-          description: Sender name.
+          description: Email sender name
           nullable: true
           type: string
         to_email:
-          description: Recipient email.
+          description: Email recipient email
           nullable: true
           type: string
         to_name:
-          description: Receipient email.
+          description: Email receipient name
           nullable: true
           type: string
         subject:
-          description: Email subject.
+          description: Email subject
           nullable: true
           type: string
         content:
-          description: Email content.
+          description: Email content
           nullable: true
           type: string
         copy_to:
+          description: Email cc
           nullable: true
           type: string
         recipient_status:
           $ref: '#/components/schemas/EmailRecipientStatus'
         recipient_date:
+          description: Email recipient date
           format: date-time
           nullable: true
           type: string
         kind:
-          description: Email kind.
+          description: Email kind
           nullable: true
           type: string
         attachments:
-          description: Email attachments.
+          description: Email attachments
           items:
             $ref: '#/components/schemas/EmailAttachment'
           nullable: true
@@ -27539,7 +27617,7 @@ components:
       title: Email
       type: object
     EventType:
-      description: Event type.
+      description: Webhooks event type
       enum:
       - it.fattureincloud.webhooks.issued_documents.invoices.create
       - it.fattureincloud.webhooks.issued_documents.invoices.update
@@ -27603,7 +27681,7 @@ components:
       title: EventType
       type: string
     PermissionLevel:
-      description: Level of the permission.
+      description: Permission level
       enum:
       - none
       - read
@@ -27612,7 +27690,7 @@ components:
       title: PermissionLevel
       type: string
     EntityType:
-      description: Entity type.
+      description: Entity type
       enum:
       - company
       - person
@@ -27623,7 +27701,7 @@ components:
       type: string
     IssuedDocumentStatus:
       default: not_paid
-      description: Payment status.
+      description: Issued document status
       enum:
       - not_paid
       - paid
@@ -27636,9 +27714,11 @@ components:
         amount_vat: 7.457744773683766
       properties:
         amount_net:
+          description: Vat item net amount
           nullable: true
           type: number
         amount_vat:
+          description: Vat item vat amount
           nullable: true
           type: number
       title: VatItem
@@ -27649,7 +27729,7 @@ components:
       title: NumerationItem
       type: object
     EmailStatus:
-      description: Email status.
+      description: Email status
       enum:
       - sending
       - pending
@@ -27657,7 +27737,7 @@ components:
       title: EmailStatus
       type: string
     EmailRecipientStatus:
-      description: Email recipient status.
+      description: Email recipient status
       enum:
       - unknown
       - document_opened
@@ -27667,10 +27747,10 @@ components:
     EmailAttachment:
       properties:
         filename:
-          description: Email attachment filename.
+          description: Email attachment filename
           type: string
         url:
-          description: Email attachment url.
+          description: Email attachment url
           type: string
       title: EmailAttachment
       type: object
@@ -27875,11 +27955,12 @@ components:
         permissions:
           $ref: '#/components/schemas/Permissions'
         through_accountant:
+          description: Company activated through accountant
           nullable: true
           type: boolean
       type: object
     CompanyInfo_plan_info_limits:
-      description: Limits for this company.
+      description: Company plan limits
       example:
         clients: 0
         suppliers: 6
@@ -27888,15 +27969,19 @@ components:
       nullable: true
       properties:
         clients:
+          description: Company plan clients limits
           nullable: true
           type: integer
         suppliers:
+          description: Company plan suppliers limits
           nullable: true
           type: integer
         products:
+          description: Company plan products limits
           nullable: true
           type: integer
         documents:
+          description: Company plan documents limits
           nullable: true
           type: integer
       type: object
@@ -27992,6 +28077,7 @@ components:
           $ref: '#/components/schemas/FunctionStatus'
       type: object
     CompanyInfo_plan_info:
+      description: Company plan info
       example:
         functions:
           smtp: true
@@ -28033,7 +28119,7 @@ components:
       type: object
     IssuedDocument_ei_data:
       description: |-
-        E-invoice data.
+        Issued document e-invoice data
         [Only if e_invoice=true]
       example:
         original_document_type: null
@@ -28055,67 +28141,65 @@ components:
         original_document_type:
           $ref: '#/components/schemas/OriginalDocumentType'
         od_number:
-          description: Original document number.
+          description: E-invoice original document number
           nullable: true
           type: string
         od_date:
-          description: Original document date.
+          description: E-invoice original document date
           format: date
           nullable: true
           type: string
         cig:
-          description: CIG.
+          description: E-invoice CIG
           nullable: true
           type: string
         cup:
-          description: CUP.
+          description: E-invoice CUP
           nullable: true
           type: string
         payment_method:
-          description: Payment method (see https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.1/Rappresentazione-tabellare-fattura-ordinaria.pdf
-            for the accepted values of ModalitaPagamento).
+          description: "E-invoice payment method [required for e-invoices](see https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf\
+            \ for the accepted values of ModalitaPagamento)"
           nullable: true
           type: string
         bank_name:
-          description: Bank name.
+          description: E-invoice bank name
           nullable: true
           type: string
         bank_iban:
-          description: IBAN.
+          description: E-invoice bank IBAN
           nullable: true
           type: string
         bank_beneficiary:
-          description: Bank beneficiary.
+          description: E-invoice bank beneficiary
           nullable: true
           type: string
         invoice_number:
-          description: Invoice number.
+          description: E-invoice invoice number
           nullable: true
           type: string
         invoice_date:
-          description: Invoice date.
+          description: E-invoice invoice date
           format: date
           nullable: true
           type: string
       type: object
     IssuedDocument_extra_data:
-      description: |-
-        Extra data.
-        TS fields follow the technical specifications provided by "Sistema Tessera Sanitaria".
+      description: "Issued document extra data [TS fields follow the technical specifications\
+        \ provided by \"Sistema Tessera Sanitaria\"]"
       example:
         ts_file_id: ts_file_id
         ts_flag_tipo_spesa: 7.058770351582356
-        ts_opposizione: true
-        show_sofort_button: true
-        ts_tipo_spesa: ts_tipo_spesa
-        imported_by: imported_by
-        ts_sent_date: 2000-01-23
-        ts_single_sending: true
         ts_pagamento_tracciato: true
         ts_status: 6
+        ts_opposizione: true
         ts_communication: true
         ts_full_amount: true
+        show_sofort_button: true
+        ts_tipo_spesa: ts_tipo_spesa
         multifatture_sent: 0
+        imported_by: imported_by
+        ts_sent_date: 2000-01-23
       nullable: true
       properties:
         show_sofort_button:
@@ -28125,13 +28209,16 @@ components:
           nullable: true
           type: integer
         ts_communication:
+          description: Send issued document to "Sistema Tessera Sanitaria"
           nullable: true
           type: boolean
         ts_flag_tipo_spesa:
-          description: 1 => TK (Ticket di pronto soccorso); 2 => SR (Visita in intramoenia)
+          description: "Issued document ts \"tipo spesa\" [TK, FC, FV, SV,SP, AD,\
+            \ AS, ECG, SR]"
           nullable: true
           type: number
         ts_pagamento_tracciato:
+          description: Issued document ts traced payment
           nullable: true
           type: boolean
         ts_tipo_spesa:
@@ -28140,30 +28227,33 @@ components:
           nullable: true
           type: string
         ts_opposizione:
+          description: Issued document ts "opposizione"
           nullable: true
           type: boolean
         ts_status:
+          description: Issued document ts status
           nullable: true
           type: integer
         ts_file_id:
+          description: Issued document ts file id
           nullable: true
           type: string
         ts_sent_date:
+          description: Issued document ts sent date
           format: date
           nullable: true
           type: string
         ts_full_amount:
+          description: Issued document ts total amount
           nullable: true
           type: boolean
         imported_by:
+          description: Issued document imported by software
           nullable: true
           type: string
-        ts_single_sending:
-          nullable: true
-          type: boolean
       type: object
     IssuedDocumentPreCreateInfo_default_values:
-      description: Default values for the document.
+      description: Issued document default values
       example:
         use_gross_prices: true
         notes: notes
@@ -28252,6 +28342,7 @@ components:
           $ref: '#/components/schemas/PaymentMethod'
       type: object
     IssuedDocumentPreCreateInfo_extra_data_default_values:
+      description: Issued document extra data default values
       example:
         ts_flag_tipo_spesa: 2
         ts_pagamento_tracciato: true
@@ -28273,7 +28364,7 @@ components:
           type: boolean
       type: object
     IssuedDocumentPreCreateInfo_items_default_values:
-      description: Default values for the document items.
+      description: Issued document items default values
       example:
         vat:
           ei_description: ei_description
@@ -28291,18 +28382,18 @@ components:
           $ref: '#/components/schemas/VatType'
       type: object
     EmailData_default_sender_email:
-      description: Default sender email. (Other emails can be found in `sender_emails_list`)
+      description: Default sender email. (Other emails can be found in **sender_emails_list**)
       example:
         id: 0
         email: email
       nullable: true
       properties:
         id:
-          description: Id
+          description: Default sender email id
           nullable: true
           type: integer
         email:
-          description: Email address
+          description: Default sender email address
           nullable: true
           type: string
       type: object
@@ -28315,26 +28406,24 @@ components:
       nullable: true
       properties:
         document:
-          description: "If set to true, the email will have a button to view the document"
+          description: Include a button to view the document
           nullable: true
           type: boolean
         delivery_note:
-          description: "If set to true, the email will have a button to view the delivery\
-            \ note"
+          description: Include a button to view the delivery note
           nullable: true
           type: boolean
         attachment:
-          description: "If set to true, the email will have a button to view the attachment"
+          description: Include a button to view the attachment
           nullable: true
           type: boolean
         accompanying_invoice:
-          description: "If set to true, the email will have a button to view the accompanying\
-            \ invoice"
+          description: Include a button to view the accompanying invoice
           nullable: true
           type: boolean
       type: object
     ReceivedDocumentInfo_default_values:
-      description: Default values for the document.
+      description: Received document default values
       example:
         detailed: true
       nullable: true
@@ -28344,13 +28433,13 @@ components:
           type: boolean
       type: object
     ReceivedDocumentInfo_items_default_values:
-      description: Default values for the document items.
+      description: Received document items default values
       example:
         vat: 0.8008281904610115
       nullable: true
       properties:
         vat:
-          description: Default vat value.
+          description: Vat default value
           nullable: true
           type: number
       type: object
@@ -28362,15 +28451,15 @@ components:
       nullable: true
       properties:
         id:
-          description: Document unique identifier.
+          description: Cashbook related document id
           nullable: true
           type: integer
         type:
-          description: Document type.
+          description: Cashbook related document type
           nullable: true
           type: string
         path:
-          description: Document path.
+          description: Cashbook related document path
           nullable: true
           type: string
       type: object
@@ -28415,7 +28504,8 @@ components:
         type: null
       properties:
         days:
-          description: The number of days by which the payment must be made.
+          description: Issued document payment number of days by which the payment
+            must be made
           nullable: true
           type: integer
         type:
@@ -28424,16 +28514,16 @@ components:
     ReceivedDocumentPaymentsListItem_payment_terms:
       example:
         days: 7
-        type: type
+        type: null
       nullable: true
       properties:
         days:
-          description: Number of days.
+          description: Received document payment number of days by which the payment
+            must be made
           nullable: true
           type: integer
         type:
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/PaymentTermsType'
       type: object
   securitySchemes:
     OAuth2AuthenticationCodeFlow:

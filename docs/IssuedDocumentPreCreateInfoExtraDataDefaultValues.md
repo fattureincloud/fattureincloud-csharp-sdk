@@ -1,4 +1,5 @@
 # It.FattureInCloud.Sdk.Model.IssuedDocumentPreCreateInfoExtraDataDefaultValues
+Issued document extra data default values
 
 ## Properties
 

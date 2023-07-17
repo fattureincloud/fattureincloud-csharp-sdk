@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.PaymentAccountType
-Payment account type.
+Payment account type
 
 ## Properties
 

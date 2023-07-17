@@ -931,8 +931,8 @@ namespace Example
 
             var apiInstance = new ReceivedDocumentsApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var filename = "filename_example";  // string | Name of the file. (optional) 
-            var attachment = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream | Valid format: .png, .jpg, .gif, .pdf, .zip, .xls, .xlsx, .doc, .docx (optional) 
+            var filename = "filename_example";  // string | Attachment file name (optional) 
+            var attachment = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream | Attachment file [.png, .jpg, .gif, .pdf, .zip, .xls, .xlsx, .doc, .docx] (optional) 
 
             try
             {
@@ -976,8 +976,8 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **companyId** | **int** | The ID of the company. |  |
-| **filename** | **string** | Name of the file. | [optional]  |
-| **attachment** | **System.IO.Stream****System.IO.Stream** | Valid format: .png, .jpg, .gif, .pdf, .zip, .xls, .xlsx, .doc, .docx | [optional]  |
+| **filename** | **string** | Attachment file name | [optional]  |
+| **attachment** | **System.IO.Stream****System.IO.Stream** | Attachment file [.png, .jpg, .gif, .pdf, .zip, .xls, .xlsx, .doc, .docx] | [optional]  |
 
 ### Return type
 

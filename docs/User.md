@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int?** | User identifier. | [optional] 
-**Name** | **string** | Full name of the user. | [optional] 
-**FirstName** | **string** | First name of the user. | [optional] 
-**LastName** | **string** | Last name of the user. | [optional] 
-**Email** | **string** | Email of the user. | [optional] 
-**Hash** | **string** |  | [optional] 
-**Picture** | **string** | Picture of the user. | [optional] 
+**Id** | **int?** | User id | [optional] 
+**Name** | **string** | User full name | [optional] 
+**FirstName** | **string** | User first name | [optional] 
+**LastName** | **string** | User last name | [optional] 
+**Email** | **string** | User email address | [optional] 
+**Hash** | **string** | User hash | [optional] 
+**Picture** | **string** | User picture | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

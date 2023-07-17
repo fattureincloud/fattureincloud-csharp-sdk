@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.EmailRecipientStatus
-Email recipient status.
+Email recipient status
 
 ## Properties
 

@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.VatKind
-Vat kind (esigibilità IVA).
+Vat kind [esigibilità IVA]
 
 ## Properties
 

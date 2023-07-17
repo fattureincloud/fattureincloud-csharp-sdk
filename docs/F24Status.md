@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.F24Status
-Tax status.
+F24 status
 
 ## Properties
 
