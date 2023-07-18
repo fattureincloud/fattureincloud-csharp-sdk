@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.ReceivedDocumentType
-Received document type.
+Received document type
 
 ## Properties
 

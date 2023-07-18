@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int?** | Item unique identifier. | [optional] 
-**AmountNet** | **decimal?** | Item total net amount. | [optional] 
-**AmountGross** | **decimal?** | Item total gross amount. | [optional] 
-**Category** | **string** | Item category. | [optional] 
+**Id** | **int?** | Receipt item id | [optional] 
+**AmountNet** | **decimal?** | Receipt item total net amount | [optional] 
+**AmountGross** | **decimal?** | Receipt item total gross amount | [optional] 
+**Category** | **string** | Receipt item category | [optional] 
 **Vat** | [**VatType**](VatType.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

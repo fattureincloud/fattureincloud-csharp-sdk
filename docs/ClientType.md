@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.ClientType
-Client type.
+Client type
 
 ## Properties
 

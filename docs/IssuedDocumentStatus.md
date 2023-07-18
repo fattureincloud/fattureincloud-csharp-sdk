@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.IssuedDocumentStatus
-Payment status.
+Issued document status
 
 ## Properties
 

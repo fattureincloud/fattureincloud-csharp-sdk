@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.OriginalDocumentType
-Type of document followed by the the current invoice.
+Issued document original document type
 
 ## Properties
 

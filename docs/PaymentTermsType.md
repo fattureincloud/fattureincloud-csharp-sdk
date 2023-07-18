@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.PaymentTermsType
-Payment terms Type.
+Payment terms type
 
 ## Properties
 

@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.EntityType
-Entity type.
+Entity type
 
 ## Properties
 

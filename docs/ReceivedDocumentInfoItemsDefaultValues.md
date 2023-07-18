@@ -1,11 +1,11 @@
 # It.FattureInCloud.Sdk.Model.ReceivedDocumentInfoItemsDefaultValues
-Default values for the document items.
+Received document items default values
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Vat** | **decimal?** | Default vat value. | [optional] 
+**Vat** | **decimal?** | Vat default value | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

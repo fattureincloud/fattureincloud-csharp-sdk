@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int?** | Unique identifier. | [optional] 
-**Amount** | **decimal?** | Amount of items. | [optional] 
+**Id** | **int?** | Received document payment id | [optional] 
+**Amount** | **decimal?** | Received document payment total amount | [optional] 
 **DueDate** | **DateTime?** | Due date | [optional] 
-**PaidDate** | **DateTime?** | Paid date | [optional] 
+**PaidDate** | **DateTime?** | Received document payment paid date | [optional] 
 **PaymentTerms** | [**ReceivedDocumentPaymentsListItemPaymentTerms**](ReceivedDocumentPaymentsListItemPaymentTerms.md) |  | [optional] 
-**Status** | **string** | Payment status. | [optional] 
+**Status** | **string** | Received document payment status | [optional] 
 **PaymentAccount** | [**PaymentAccount**](PaymentAccount.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

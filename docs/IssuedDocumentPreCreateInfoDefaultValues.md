@@ -1,5 +1,5 @@
 # It.FattureInCloud.Sdk.Model.IssuedDocumentPreCreateInfoDefaultValues
-Default values for the document.
+Issued document default values
 
 ## Properties
 
