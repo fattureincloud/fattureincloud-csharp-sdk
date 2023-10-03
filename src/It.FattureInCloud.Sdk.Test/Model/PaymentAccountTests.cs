@@ -103,6 +103,14 @@ namespace It.FattureInCloud.Sdk.Test.Model
         {
             Assert.IsType<string>(instance.Cuc);
         }
+        /// <summary>
+        /// Test the property 'Virtual'
+        /// </summary>
+        [Fact]
+        public void VarVirtualTest()
+        {
+            Assert.IsType<bool>(instance.VarVirtual);
+        }
     }
 
 }
