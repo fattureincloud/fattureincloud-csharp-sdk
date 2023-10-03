@@ -63,14 +63,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         {
             Assert.IsType<string>(instance.PostalCode);
         }
-        /// <summary>
-        /// Test the property '_City'
-        /// </summary>
-        [Fact]
-        public void _CityTest()
-        {
-            Assert.IsType<string>(instance._City);
-        }
+
         /// <summary>
         /// Test the property 'Province'
         /// </summary>

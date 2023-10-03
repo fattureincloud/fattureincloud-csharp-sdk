@@ -12,12 +12,8 @@
 using Xunit;
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Collections.Generic;
+
 using It.FattureInCloud.Sdk.Model;
-using It.FattureInCloud.Sdk.Client;
-using System.Reflection;
 using Newtonsoft.Json;
 
 namespace It.FattureInCloud.Sdk.Test.Model
@@ -31,13 +27,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class WebhooksSubscriptionConfigTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for WebhooksSubscriptionConfig
-        //private WebhooksSubscriptionConfig instance;
+        private WebhooksSubscriptionConfig instance;
 
         public WebhooksSubscriptionConfigTests()
         {
-            // TODO uncomment below to create an instance of WebhooksSubscriptionConfig
-            //instance = new WebhooksSubscriptionConfig();
+            var body = "{'mapping':'binary'}";
+            instance = JsonConvert.DeserializeObject<WebhooksSubscriptionConfig>(body);
         }
 
         public void Dispose()
@@ -51,8 +46,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void WebhooksSubscriptionConfigInstanceTest()
         {
-            // TODO uncomment below to test "IsType" WebhooksSubscriptionConfig
-            //Assert.IsType<WebhooksSubscriptionConfig>(instance);
+            Assert.IsType<WebhooksSubscriptionConfig>(instance);
         }
 
         /// <summary>
@@ -61,7 +55,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void MappingTest()
         {
-            // TODO unit test for the property 'Mapping'
+            Assert.IsType<WebhooksSubscriptionMapping>(instance.Mapping);
         }
     }
 }

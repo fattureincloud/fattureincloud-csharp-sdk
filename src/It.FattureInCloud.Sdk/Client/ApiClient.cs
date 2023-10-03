@@ -547,7 +547,7 @@ namespace It.FattureInCloud.Sdk.Client
             using (RestClient client = new RestClient(clientOptions,
                 configureSerialization: serializerConfig => serializerConfig.UseSerializer(() => new CustomJsonCodec(SerializerSettings, configuration))))
             {
-                InterceptRequest(req);
+                InterceptRequest(request);
 
                 RestResponse<T> response;
                 if (RetryConfiguration.AsyncRetryPolicy != null)

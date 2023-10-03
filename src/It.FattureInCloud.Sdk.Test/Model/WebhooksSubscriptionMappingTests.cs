@@ -31,13 +31,11 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class WebhooksSubscriptionMappingTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for WebhooksSubscriptionMapping
-        //private WebhooksSubscriptionMapping instance;
+        private WebhooksSubscriptionMapping instance;
 
         public WebhooksSubscriptionMappingTests()
         {
-            // TODO uncomment below to create an instance of WebhooksSubscriptionMapping
-            //instance = new WebhooksSubscriptionMapping();
+            instance = WebhooksSubscriptionMapping.Structured;
         }
 
         public void Dispose()
@@ -51,8 +49,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void WebhooksSubscriptionMappingInstanceTest()
         {
-            // TODO uncomment below to test "IsType" WebhooksSubscriptionMapping
-            //Assert.IsType<WebhooksSubscriptionMapping>(instance);
+            Assert.IsType<WebhooksSubscriptionMapping>(instance);
         }
     }
 }
