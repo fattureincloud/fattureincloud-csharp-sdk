@@ -4,16 +4,16 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetEInvoiceRejectionReason**](IssuedEInvoicesApi.md#geteinvoicerejectionreason) | **GET** /c/{company_id}/issued_documents/{document_id}/e_invoice/error_reason | Get e-invoice rejection reason |
-| [**GetEInvoiceXml**](IssuedEInvoicesApi.md#geteinvoicexml) | **GET** /c/{company_id}/issued_documents/{document_id}/e_invoice/xml | Get e-invoice XML |
-| [**SendEInvoice**](IssuedEInvoicesApi.md#sendeinvoice) | **POST** /c/{company_id}/issued_documents/{document_id}/e_invoice/send | Send the e-invoice |
-| [**VerifyEInvoiceXml**](IssuedEInvoicesApi.md#verifyeinvoicexml) | **GET** /c/{company_id}/issued_documents/{document_id}/e_invoice/xml_verify | Verify e-invoice XML |
+| [**GetEInvoiceRejectionReason**](IssuedEInvoicesApi.md#geteinvoicerejectionreason) | **GET** /c/{company_id}/issued_documents/{document_id}/e_invoice/error_reason | Get E-Invoice Rejection Reason |
+| [**GetEInvoiceXml**](IssuedEInvoicesApi.md#geteinvoicexml) | **GET** /c/{company_id}/issued_documents/{document_id}/e_invoice/xml | Get E-Invoice XML |
+| [**SendEInvoice**](IssuedEInvoicesApi.md#sendeinvoice) | **POST** /c/{company_id}/issued_documents/{document_id}/e_invoice/send | Send E-Invoice |
+| [**VerifyEInvoiceXml**](IssuedEInvoicesApi.md#verifyeinvoicexml) | **GET** /c/{company_id}/issued_documents/{document_id}/e_invoice/xml_verify | Verify E-Invoice XML |
 
 <a id="geteinvoicerejectionreason"></a>
 # **GetEInvoiceRejectionReason**
 > GetEInvoiceRejectionReasonResponse GetEInvoiceRejectionReason (int companyId, int documentId)
 
-Get e-invoice rejection reason
+Get E-Invoice Rejection Reason
 
 Get e-invoice rejection reason
 
@@ -42,7 +42,7 @@ namespace Example
 
             try
             {
-                // Get e-invoice rejection reason
+                // Get E-Invoice Rejection Reason
                 GetEInvoiceRejectionReasonResponse result = apiInstance.GetEInvoiceRejectionReason(companyId, documentId);
                 Debug.WriteLine(result);
             }
@@ -63,7 +63,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // Get e-invoice rejection reason
+    // Get E-Invoice Rejection Reason
     ApiResponse<GetEInvoiceRejectionReasonResponse> response = apiInstance.GetEInvoiceRejectionReasonWithHttpInfo(companyId, documentId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -109,7 +109,7 @@ catch (ApiException e)
 # **GetEInvoiceXml**
 > string GetEInvoiceXml (int companyId, int documentId, bool? includeAttachment = null)
 
-Get e-invoice XML
+Get E-Invoice XML
 
 Downloads the e-invoice in XML format.
 
@@ -139,7 +139,7 @@ namespace Example
 
             try
             {
-                // Get e-invoice XML
+                // Get E-Invoice XML
                 string result = apiInstance.GetEInvoiceXml(companyId, documentId, includeAttachment);
                 Debug.WriteLine(result);
             }
@@ -160,7 +160,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // Get e-invoice XML
+    // Get E-Invoice XML
     ApiResponse<string> response = apiInstance.GetEInvoiceXmlWithHttpInfo(companyId, documentId, includeAttachment);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -209,7 +209,7 @@ catch (ApiException e)
 # **SendEInvoice**
 > SendEInvoiceResponse SendEInvoice (int companyId, int documentId, SendEInvoiceRequest sendEInvoiceRequest = null)
 
-Send the e-invoice
+Send E-Invoice
 
 Sends the e-invoice to SDI.
 
@@ -239,7 +239,7 @@ namespace Example
 
             try
             {
-                // Send the e-invoice
+                // Send E-Invoice
                 SendEInvoiceResponse result = apiInstance.SendEInvoice(companyId, documentId, sendEInvoiceRequest);
                 Debug.WriteLine(result);
             }
@@ -260,7 +260,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // Send the e-invoice
+    // Send E-Invoice
     ApiResponse<SendEInvoiceResponse> response = apiInstance.SendEInvoiceWithHttpInfo(companyId, documentId, sendEInvoiceRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -309,7 +309,7 @@ catch (ApiException e)
 # **VerifyEInvoiceXml**
 > VerifyEInvoiceXmlResponse VerifyEInvoiceXml (int companyId, int documentId)
 
-Verify e-invoice XML
+Verify E-Invoice XML
 
 Verifies the e-invoice XML format. Checks if all of the mandatory fields are filled and compliant to the right format.
 
@@ -338,7 +338,7 @@ namespace Example
 
             try
             {
-                // Verify e-invoice XML
+                // Verify E-Invoice XML
                 VerifyEInvoiceXmlResponse result = apiInstance.VerifyEInvoiceXml(companyId, documentId);
                 Debug.WriteLine(result);
             }
@@ -359,7 +359,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // Verify e-invoice XML
+    // Verify E-Invoice XML
     ApiResponse<VerifyEInvoiceXmlResponse> response = apiInstance.VerifyEInvoiceXmlWithHttpInfo(companyId, documentId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);

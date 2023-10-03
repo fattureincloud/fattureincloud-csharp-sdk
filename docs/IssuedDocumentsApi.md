@@ -10,13 +10,13 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | [**GetEmailData**](IssuedDocumentsApi.md#getemaildata) | **GET** /c/{company_id}/issued_documents/{document_id}/email | Get Email Data |
 | [**GetExistingIssuedDocumentTotals**](IssuedDocumentsApi.md#getexistingissueddocumenttotals) | **POST** /c/{company_id}/issued_documents/{document_id}/totals | Get Existing Issued Document Totals |
 | [**GetIssuedDocument**](IssuedDocumentsApi.md#getissueddocument) | **GET** /c/{company_id}/issued_documents/{document_id} | Get Issued Document |
-| [**GetIssuedDocumentPreCreateInfo**](IssuedDocumentsApi.md#getissueddocumentprecreateinfo) | **GET** /c/{company_id}/issued_documents/info | Get Issued Document Pre-create info |
+| [**GetIssuedDocumentPreCreateInfo**](IssuedDocumentsApi.md#getissueddocumentprecreateinfo) | **GET** /c/{company_id}/issued_documents/info | Get Issued Document Pre-Create Info |
 | [**GetNewIssuedDocumentTotals**](IssuedDocumentsApi.md#getnewissueddocumenttotals) | **POST** /c/{company_id}/issued_documents/totals | Get New Issued Document Totals |
-| [**JoinIssuedDocuments**](IssuedDocumentsApi.md#joinissueddocuments) | **GET** /c/{company_id}/issued_documents/join | Join issued documents |
+| [**JoinIssuedDocuments**](IssuedDocumentsApi.md#joinissueddocuments) | **GET** /c/{company_id}/issued_documents/join | Join Issued Documents |
 | [**ListIssuedDocuments**](IssuedDocumentsApi.md#listissueddocuments) | **GET** /c/{company_id}/issued_documents | List Issued Documents |
 | [**ModifyIssuedDocument**](IssuedDocumentsApi.md#modifyissueddocument) | **PUT** /c/{company_id}/issued_documents/{document_id} | Modify Issued Document |
 | [**ScheduleEmail**](IssuedDocumentsApi.md#scheduleemail) | **POST** /c/{company_id}/issued_documents/{document_id}/email | Schedule Email |
-| [**TransformIssuedDocument**](IssuedDocumentsApi.md#transformissueddocument) | **GET** /c/{company_id}/issued_documents/transform | Transform issued document |
+| [**TransformIssuedDocument**](IssuedDocumentsApi.md#transformissueddocument) | **GET** /c/{company_id}/issued_documents/transform | Transform Issued Document |
 | [**UploadIssuedDocumentAttachment**](IssuedDocumentsApi.md#uploadissueddocumentattachment) | **POST** /c/{company_id}/issued_documents/attachment | Upload Issued Document Attachment |
 
 <a id="createissueddocument"></a>
@@ -606,7 +606,7 @@ catch (ApiException e)
 # **GetIssuedDocumentPreCreateInfo**
 > GetIssuedDocumentPreCreateInfoResponse GetIssuedDocumentPreCreateInfo (int companyId, string type)
 
-Get Issued Document Pre-create info
+Get Issued Document Pre-Create Info
 
 Retrieves the information useful while creating a new document.
 
@@ -635,7 +635,7 @@ namespace Example
 
             try
             {
-                // Get Issued Document Pre-create info
+                // Get Issued Document Pre-Create Info
                 GetIssuedDocumentPreCreateInfoResponse result = apiInstance.GetIssuedDocumentPreCreateInfo(companyId, type);
                 Debug.WriteLine(result);
             }
@@ -656,7 +656,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // Get Issued Document Pre-create info
+    // Get Issued Document Pre-Create Info
     ApiResponse<GetIssuedDocumentPreCreateInfoResponse> response = apiInstance.GetIssuedDocumentPreCreateInfoWithHttpInfo(companyId, type);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -799,7 +799,7 @@ catch (ApiException e)
 # **JoinIssuedDocuments**
 > JoinIssuedDocumentsResponse JoinIssuedDocuments (int companyId, string ids, int? group = null, int? eInvoice = null)
 
-Join issued documents
+Join Issued Documents
 
 Joins issued documents.
 
@@ -830,7 +830,7 @@ namespace Example
 
             try
             {
-                // Join issued documents
+                // Join Issued Documents
                 JoinIssuedDocumentsResponse result = apiInstance.JoinIssuedDocuments(companyId, ids, group, eInvoice);
                 Debug.WriteLine(result);
             }
@@ -851,7 +851,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // Join issued documents
+    // Join Issued Documents
     ApiResponse<JoinIssuedDocumentsResponse> response = apiInstance.JoinIssuedDocumentsWithHttpInfo(companyId, ids, group, eInvoice);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -1207,7 +1207,7 @@ void (empty response body)
 # **TransformIssuedDocument**
 > TransformIssuedDocumentResponse TransformIssuedDocument (int companyId, int originalDocumentId, string newType, int? eInvoice = null, int? transformKeepCopy = null)
 
-Transform issued document
+Transform Issued Document
 
 Transforms the document.
 
@@ -1239,7 +1239,7 @@ namespace Example
 
             try
             {
-                // Transform issued document
+                // Transform Issued Document
                 TransformIssuedDocumentResponse result = apiInstance.TransformIssuedDocument(companyId, originalDocumentId, newType, eInvoice, transformKeepCopy);
                 Debug.WriteLine(result);
             }
@@ -1260,7 +1260,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // Transform issued document
+    // Transform Issued Document
     ApiResponse<TransformIssuedDocumentResponse> response = apiInstance.TransformIssuedDocumentWithHttpInfo(companyId, originalDocumentId, newType, eInvoice, transformKeepCopy);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);

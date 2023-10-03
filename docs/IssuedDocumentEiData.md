@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **OdDate** | **DateTime?** | E-invoice original document date | [optional] 
 **Cig** | **string** | E-invoice CIG | [optional] 
 **Cup** | **string** | E-invoice CUP | [optional] 
-**PaymentMethod** | **string** | E-invoice payment method [required for e-invoices](see https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf for the accepted values of ModalitaPagamento) | [optional] 
+**PaymentMethod** | **string** | E-invoice payment method [required for e-invoices] (see [here](https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf) for the accepted values of ModalitaPagamento) | [optional] 
 **BankName** | **string** | E-invoice bank name | [optional] 
 **BankIban** | **string** | E-invoice bank IBAN | [optional] 
 **BankBeneficiary** | **string** | E-invoice bank beneficiary | [optional] 

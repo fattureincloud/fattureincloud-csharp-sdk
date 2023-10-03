@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Iban** | **string** | Payment account iban | [optional] 
 **Sia** | **string** | Payment account sia | [optional] 
 **Cuc** | **string** | Payment account cuc | [optional] 
-**Virtual** | **bool?** | Payment method is virtual | [optional] 
+**VarVirtual** | **bool?** | Payment method is virtual | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
