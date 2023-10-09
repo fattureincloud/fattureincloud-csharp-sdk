@@ -992,7 +992,7 @@ namespace Example
 
             var apiInstance = new InfoApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var context = "products";  // string | 
+            var context = "products";  // string | Categories resource type.
 
             try
             {
@@ -1036,7 +1036,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **companyId** | **int** | The ID of the company. |  |
-| **context** | **string** |  |  |
+| **context** | **string** | Categories resource type. |  |
 
 ### Return type
 

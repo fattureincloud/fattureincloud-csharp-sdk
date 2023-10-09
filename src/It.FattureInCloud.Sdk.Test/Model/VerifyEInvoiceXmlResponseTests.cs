@@ -38,7 +38,6 @@ namespace It.FattureInCloud.Sdk.Test.Model
         {
             var body = "{'data':{'success':true}}";
             instance = JsonConvert.DeserializeObject<VerifyEInvoiceXmlResponse>(body);
-
         }
 
         public void Dispose()

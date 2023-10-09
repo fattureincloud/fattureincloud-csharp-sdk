@@ -4,13 +4,13 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**ListEmails**](EmailsApi.md#listemails) | **GET** /c/{company_id}/emails | List emails |
+| [**ListEmails**](EmailsApi.md#listemails) | **GET** /c/{company_id}/emails | List Emails |
 
 <a id="listemails"></a>
 # **ListEmails**
 > ListEmailsResponse ListEmails (int companyId)
 
-List emails
+List Emails
 
 List Emails.
 
@@ -38,7 +38,7 @@ namespace Example
 
             try
             {
-                // List emails
+                // List Emails
                 ListEmailsResponse result = apiInstance.ListEmails(companyId);
                 Debug.WriteLine(result);
             }
@@ -59,7 +59,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // List emails
+    // List Emails
     ApiResponse<ListEmailsResponse> response = apiInstance.ListEmailsWithHttpInfo(companyId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);

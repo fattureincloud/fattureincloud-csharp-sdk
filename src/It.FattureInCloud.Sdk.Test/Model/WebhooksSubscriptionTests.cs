@@ -39,6 +39,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
             instance.Sink = "https://www.example.url";
             instance.Types = new List<EventType>() { EventType.EntitiesAllCreate, EventType.CashbookCreate };
             instance.Verified = true;
+            instance.Config = new WebhooksSubscriptionConfig(WebhooksSubscriptionMapping.Structured);
         }
 
         public void Dispose()
@@ -87,6 +88,14 @@ namespace It.FattureInCloud.Sdk.Test.Model
         public void TypesTest()
         {
             Assert.IsType<List<EventType>>(instance.Types);
+        }
+        /// <summary>
+        /// Test the property 'Config'
+        /// </summary>
+        [Fact]
+        public void ConfigTest()
+        {
+            Assert.IsType<WebhooksSubscriptionConfig>(instance.Config);
         }
 
     }
