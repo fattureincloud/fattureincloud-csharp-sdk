@@ -25,6 +25,10 @@ namespace It.FattureInCloud.Sdk.FilterHelper
         LIKE,
         /// <summary>Contains Operator</summary>
         CONTAINS,
+        /// <summary>Not Like Operator</summary>
+        NOT_LIKE,
+        /// <summary>Not Contains Operator</summary>
+        NOT_CONTAINS,
         /// <summary>Starts With Operator</summary>
         STARTS_WITH,
         /// <summary>Ends With Operator</summary>
@@ -74,6 +78,12 @@ namespace It.FattureInCloud.Sdk.FilterHelper
                     break;
                 case "CONTAINS":
                     stringOperator = "contains";
+                    break;
+                case "NOT_LIKE":
+                    stringOperator = "not like";
+                    break;
+                case "NOT_CONTAINS":
+                    stringOperator = "not contains";
                     break;
                 case "STARTS_WITH":
                     stringOperator = "starts with";
