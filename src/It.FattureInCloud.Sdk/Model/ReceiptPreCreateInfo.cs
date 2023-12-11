@@ -41,7 +41,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="paymentAccountsList">Payment accounts list.</param>
         /// <param name="categoriesList">Receipt categories list.</param>
         /// <param name="vatTypesList">Vat types list.</param>
-        public ReceiptPreCreateInfo(Dictionary<string, Dictionary<string, int>> numerations = default(Dictionary<string, Dictionary<string, int>>), List<string> numerationsList = default(List<string>), List<string> rcCentersList = default(List<string>), List<PaymentAccount> paymentAccountsList = default(List<PaymentAccount>), List<string> categoriesList = default(List<string>), List<VatType> vatTypesList = default(List<VatType>))
+        public ReceiptPreCreateInfo(Dictionary<string, Dictionary<string, Dictionary<string, int>>> numerations = default(Dictionary<string, Dictionary<string, Dictionary<string, int>>>), List<string> numerationsList = default(List<string>), List<string> rcCentersList = default(List<string>), List<PaymentAccount> paymentAccountsList = default(List<PaymentAccount>), List<string> categoriesList = default(List<string>), List<VatType> vatTypesList = default(List<VatType>))
         {
             this._Numerations = numerations;
             if (this.Numerations != null)
@@ -79,7 +79,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Gets or Sets Numerations
         /// </summary>
         [DataMember(Name = "numerations", EmitDefaultValue = false)]
-        public Dictionary<string, Dictionary<string, int>> Numerations
+        public Dictionary<string, Dictionary<string, Dictionary<string, int>>> Numerations
         {
             get { return _Numerations; }
             set
@@ -88,7 +88,7 @@ namespace It.FattureInCloud.Sdk.Model
                 _flagNumerations = true;
             }
         }
-        private Dictionary<string, Dictionary<string, int>> _Numerations;
+        public Dictionary<string, Dictionary<string, Dictionary<string, int>>> _Numerations;
         private bool _flagNumerations;
 
         /// <summary>
