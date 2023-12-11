@@ -249,8 +249,6 @@ docs/WebhooksSubscription.md
 docs/WebhooksSubscriptionConfig.md
 docs/WebhooksSubscriptionMapping.md
 src/It.FattureInCloud.Sdk.Test/It.FattureInCloud.Sdk.Test.csproj
-src/It.FattureInCloud.Sdk.Test/Model/WebhooksSubscriptionConfigTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/WebhooksSubscriptionMappingTests.cs
 src/It.FattureInCloud.Sdk/Api/ArchiveApi.cs
 src/It.FattureInCloud.Sdk/Api/CashbookApi.cs
 src/It.FattureInCloud.Sdk/Api/ClientsApi.cs

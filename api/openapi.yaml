@@ -12,7 +12,7 @@ info:
     name: MIT
     url: https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
   title: Fatture in Cloud API v2 - API Reference
-  version: 2.0.30
+  version: 2.0.31
 servers:
 - url: https://api-v2.fattureincloud.it
 security:
@@ -27728,6 +27728,9 @@ components:
       - it.fattureincloud.webhooks.taxes.create
       - it.fattureincloud.webhooks.taxes.update
       - it.fattureincloud.webhooks.taxes.delete
+      - it.fattureincloud.webhooks.archive_documents.create
+      - it.fattureincloud.webhooks.archive_documents.update
+      - it.fattureincloud.webhooks.archive_documents.delete
       - it.fattureincloud.webhooks.cashbook.create
       - it.fattureincloud.webhooks.cashbook.update
       - it.fattureincloud.webhooks.cashbook.delete
@@ -27745,7 +27748,7 @@ components:
       - it.fattureincloud.webhooks.entities.all.update
       - it.fattureincloud.webhooks.entities.all.delete
       - it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
-      - it.fattureincloud.webhooks.received_documents.e_invoices.status_update
+      - it.fattureincloud.webhooks.received_documents.e_invoices.receive
       title: EventType
       type: string
     WebhooksSubscriptionConfig:
