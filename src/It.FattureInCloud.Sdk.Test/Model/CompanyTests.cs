@@ -103,6 +103,23 @@ namespace It.FattureInCloud.Sdk.Test.Model
         {
             Assert.IsType<string>(instance.TaxCode);
         }
+        /// <summary>
+        /// Test the property 'FicLicenseExpire'
+        /// </summary>
+        [Fact]
+        public void FicLicenseExpireTest()
+        {
+            Assert.IsType<DateTime>(instance.FicLicenseExpire);
+        }
+        /// <summary>
+        /// Test the property 'FicPlan'
+        /// </summary>
+        [Fact]
+        public void FicPlanTest()
+        {
+            Assert.IsType<FattureInCloudPlanType>(instance.FicPlan);
+        }
+
 
     }
 

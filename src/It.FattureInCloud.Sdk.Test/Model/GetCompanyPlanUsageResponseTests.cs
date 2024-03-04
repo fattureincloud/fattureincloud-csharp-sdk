@@ -31,13 +31,13 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class GetCompanyPlanUsageResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for GetCompanyPlanUsageResponse
-        //private GetCompanyPlanUsageResponse instance;
+        private GetCompanyPlanUsageResponse instance;
 
         public GetCompanyPlanUsageResponseTests()
         {
             // TODO uncomment below to create an instance of GetCompanyPlanUsageResponse
-            //instance = new GetCompanyPlanUsageResponse();
+            var body = "{ 'data': { 'limit': 5, 'usage': '7' }}";
+            instance = JsonConvert.DeserializeObject<GetCompanyPlanUsageResponse>(body);
         }
 
         public void Dispose()
@@ -51,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void GetCompanyPlanUsageResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" GetCompanyPlanUsageResponse
-            //Assert.IsType<GetCompanyPlanUsageResponse>(instance);
+            Assert.IsType<GetCompanyPlanUsageResponse>(instance);
         }
 
         /// <summary>
@@ -61,7 +60,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<CompanyPlanUsage>(instance.Data);
         }
     }
 }
