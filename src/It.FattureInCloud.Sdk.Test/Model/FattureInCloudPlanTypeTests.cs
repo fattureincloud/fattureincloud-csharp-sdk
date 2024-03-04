@@ -31,13 +31,11 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class FattureInCloudPlanTypeTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for FattureInCloudPlanType
-        //private FattureInCloudPlanType instance;
+        private FattureInCloudPlanType instance;
 
         public FattureInCloudPlanTypeTests()
         {
-            // TODO uncomment below to create an instance of FattureInCloudPlanType
-            //instance = new FattureInCloudPlanType();
+            instance = FattureInCloudPlanType.Standard;
         }
 
         public void Dispose()
@@ -51,8 +49,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void FattureInCloudPlanTypeInstanceTest()
         {
-            // TODO uncomment below to test "IsType" FattureInCloudPlanType
-            //Assert.IsType<FattureInCloudPlanType>(instance);
+            Assert.IsType<FattureInCloudPlanType>(instance);
         }
     }
 }
