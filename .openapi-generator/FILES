@@ -21,6 +21,7 @@ docs/CompanyInfoPlanInfo.md
 docs/CompanyInfoPlanInfoFunctions.md
 docs/CompanyInfoPlanInfoFunctionsStatus.md
 docs/CompanyInfoPlanInfoLimits.md
+docs/CompanyPlanUsage.md
 docs/CompanyType.md
 docs/ControlledCompany.md
 docs/CreateArchiveDocumentRequest.md
@@ -67,11 +68,13 @@ docs/EntityType.md
 docs/EventType.md
 docs/F24.md
 docs/F24Status.md
+docs/FattureInCloudPlanType.md
 docs/FunctionStatus.md
 docs/GetArchiveDocumentResponse.md
 docs/GetCashbookEntryResponse.md
 docs/GetClientResponse.md
 docs/GetCompanyInfoResponse.md
+docs/GetCompanyPlanUsageResponse.md
 docs/GetEInvoiceRejectionReasonResponse.md
 docs/GetEmailDataResponse.md
 docs/GetExistingIssuedDocumentTotalsRequest.md
@@ -249,6 +252,9 @@ docs/WebhooksSubscription.md
 docs/WebhooksSubscriptionConfig.md
 docs/WebhooksSubscriptionMapping.md
 src/It.FattureInCloud.Sdk.Test/It.FattureInCloud.Sdk.Test.csproj
+src/It.FattureInCloud.Sdk.Test/Model/CompanyPlanUsageTests.cs
+src/It.FattureInCloud.Sdk.Test/Model/FattureInCloudPlanTypeTests.cs
+src/It.FattureInCloud.Sdk.Test/Model/GetCompanyPlanUsageResponseTests.cs
 src/It.FattureInCloud.Sdk/Api/ArchiveApi.cs
 src/It.FattureInCloud.Sdk/Api/CashbookApi.cs
 src/It.FattureInCloud.Sdk/Api/ClientsApi.cs
@@ -298,6 +304,7 @@ src/It.FattureInCloud.Sdk/Model/CompanyInfoPlanInfo.cs
 src/It.FattureInCloud.Sdk/Model/CompanyInfoPlanInfoFunctions.cs
 src/It.FattureInCloud.Sdk/Model/CompanyInfoPlanInfoFunctionsStatus.cs
 src/It.FattureInCloud.Sdk/Model/CompanyInfoPlanInfoLimits.cs
+src/It.FattureInCloud.Sdk/Model/CompanyPlanUsage.cs
 src/It.FattureInCloud.Sdk/Model/CompanyType.cs
 src/It.FattureInCloud.Sdk/Model/ControlledCompany.cs
 src/It.FattureInCloud.Sdk/Model/CreateArchiveDocumentRequest.cs
@@ -343,11 +350,13 @@ src/It.FattureInCloud.Sdk/Model/EntityType.cs
 src/It.FattureInCloud.Sdk/Model/EventType.cs
 src/It.FattureInCloud.Sdk/Model/F24.cs
 src/It.FattureInCloud.Sdk/Model/F24Status.cs
+src/It.FattureInCloud.Sdk/Model/FattureInCloudPlanType.cs
 src/It.FattureInCloud.Sdk/Model/FunctionStatus.cs
 src/It.FattureInCloud.Sdk/Model/GetArchiveDocumentResponse.cs
 src/It.FattureInCloud.Sdk/Model/GetCashbookEntryResponse.cs
 src/It.FattureInCloud.Sdk/Model/GetClientResponse.cs
 src/It.FattureInCloud.Sdk/Model/GetCompanyInfoResponse.cs
+src/It.FattureInCloud.Sdk/Model/GetCompanyPlanUsageResponse.cs
 src/It.FattureInCloud.Sdk/Model/GetEInvoiceRejectionReasonResponse.cs
 src/It.FattureInCloud.Sdk/Model/GetEmailDataResponse.cs
 src/It.FattureInCloud.Sdk/Model/GetExistingIssuedDocumentTotalsRequest.cs

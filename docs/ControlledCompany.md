@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **Name** | **string** | Controlled company id | [optional] 
 **Type** | **CompanyType** |  | [optional] 
 **AccessToken** | **string** | Controlled company access token Only if type&#x3D;company] | [optional] 
+**FicLicenseExpire** | **DateTime?** |  | [optional] 
+**FicPlan** | **FattureInCloudPlanType** |  | [optional] 
 **ConnectionId** | **decimal?** | Controlled company connection id | [optional] 
 **TaxCode** | **string** | Controlled company tax code | [optional] 
 
