@@ -52,7 +52,6 @@ Name | Type | Description | Notes
 **ShowPayments** | **bool?** | Show the expiration dates of the payments on the document | [optional] 
 **ShowPaymentMethod** | **bool?** | Show the payment method details on the document | [optional] 
 **ShowTotals** | **ShowTotalsMode** |  | [optional] 
-**ShowPaypalButton** | **bool?** | Show paypal button in the PDF | [optional] 
 **ShowNotificationButton** | **bool?** | Show notification button in the PDF | [optional] 
 **ShowTspayButton** | **bool?** | Show ts pay button in the PDF | [optional] 
 **DeliveryNote** | **bool?** | Issued document has delivery note | [optional] 
