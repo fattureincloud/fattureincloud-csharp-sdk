@@ -36,7 +36,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
 
         public IssuedDocumentExtraDataTests()
         {
-            var body = "{'show_sofort_button':true,'multifatture_sent':3,'ts_communication':true,'ts_flag_tipo_spesa':1,'ts_pagamento_tracciato':true,'ts_tipo_spesa':'TK','ts_opposizione':true,'ts_status':1,'ts_file_id':'file.png','ts_sent_date':'2020-10-10','ts_full_amount':true,'imported_by':'jss'}";
+            var body = "{'multifatture_sent':3,'ts_communication':true,'ts_flag_tipo_spesa':1,'ts_pagamento_tracciato':true,'ts_tipo_spesa':'TK','ts_opposizione':true,'ts_status':1,'ts_file_id':'file.png','ts_sent_date':'2020-10-10','ts_full_amount':true,'imported_by':'jss'}";
             instance = JsonConvert.DeserializeObject<IssuedDocumentExtraData>(body);
         }
 
@@ -55,14 +55,6 @@ namespace It.FattureInCloud.Sdk.Test.Model
         }
 
 
-        /// <summary>
-        /// Test the property 'ShowSofortButton'
-        /// </summary>
-        [Fact]
-        public void ShowSofortButtonTest()
-        {
-            Assert.IsType<bool>(instance.ShowSofortButton);
-        }
         /// <summary>
         /// Test the property 'MultifattureSent'
         /// </summary>

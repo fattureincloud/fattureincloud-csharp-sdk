@@ -5,7 +5,6 @@ Issued document extra data [TS fields follow the technical specifications provid
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ShowSofortButton** | **bool?** |  | [optional] 
 **MultifattureSent** | **int?** |  | [optional] 
 **TsCommunication** | **bool?** | Send issued document to \&quot;Sistema Tessera Sanitaria\&quot; | [optional] 
 **TsFlagTipoSpesa** | **decimal?** | Issued document ts \&quot;tipo spesa\&quot; [TK, FC, FV, SV,SP, AD, AS, ECG, SR] | [optional] 
