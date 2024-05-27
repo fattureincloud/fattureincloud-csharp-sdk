@@ -56,14 +56,6 @@ namespace It.FattureInCloud.Sdk.Test.Model
 
 
         /// <summary>
-        /// Test the property 'ShowSofortButton'
-        /// </summary>
-        [Fact]
-        public void ShowSofortButtonTest()
-        {
-            Assert.IsType<bool>(instance.ShowSofortButton);
-        }
-        /// <summary>
         /// Test the property 'MultifattureSent'
         /// </summary>
         [Fact]

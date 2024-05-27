@@ -320,14 +320,6 @@ namespace It.FattureInCloud.Sdk.Test.Model
             Assert.IsType<int>(instance.VMargins);
         }
         /// <summary>
-        /// Test the property 'ShowPaypalButton'
-        /// </summary>
-        [Fact]
-        public void ShowPaypalButtonTest()
-        {
-            Assert.IsType<bool>(instance.ShowPaypalButton);
-        }
-        /// <summary>
         /// Test the property 'ShowNotificationButton'
         /// </summary>
         [Fact]
