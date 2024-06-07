@@ -228,8 +228,9 @@ namespace It.FattureInCloud.Sdk.OauthHelper
             {
                 throw new OAuth2Error(response.Content);
             };
+            var dataResponse = JsonConvert.DeserializeObject<OAuth2DeviceCodeRawResponse>(response.Content);
 
-            return JsonConvert.DeserializeObject<OAuth2DeviceCodeResponse>(response.Content);
+            return dataResponse.Data;
         }
 
         /// <summary>
@@ -352,6 +353,27 @@ namespace It.FattureInCloud.Sdk.OauthHelper
             AccessToken = accessToken;
             RefreshToken = refreshToken;
             ExpiresIn = expiresIn;
+        }
+    }
+
+    /// <summary>
+    /// OAuth2DeviceCodeRawResponse
+    /// </summary>
+    public class OAuth2DeviceCodeRawResponse
+    {
+
+        /// <summary>
+        /// Gets or Sets ExpiresIn
+        /// </summary>
+        [JsonProperty("data")]
+        public OAuth2DeviceCodeResponse Data { get; set; }
+
+        /// <summary>
+        /// OAuth2DeviceCodeRawResponse
+        /// </summary>
+        public OAuth2DeviceCodeRawResponse(OAuth2DeviceCodeResponse data)
+        {
+            Data = data;
         }
     }
 
