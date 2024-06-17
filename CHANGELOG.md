@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 2.1.0 (2024-06-17)
+
+
+### Features
+
+* added device code manager ([8266c5f](https://github.com/fattureincloud/fattureincloud-csharp-sdk/commit/8266c5fc6101e507f85e69a1426d17d6c85da6cd))
+
 ### 2.0.26 (2024-05-27)
 
 ### 2.0.25 (2024-03-06)
