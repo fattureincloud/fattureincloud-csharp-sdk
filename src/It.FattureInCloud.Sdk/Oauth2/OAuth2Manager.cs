@@ -66,7 +66,7 @@ namespace It.FattureInCloud.Sdk.OauthHelper
     /// <summary>
     /// Oauth2 Authorization Code Manager
     /// </summary>
-    public class OAuth2AuthorizationCodeManager: OAuth2Manager
+    public class OAuth2AuthorizationCodeManager : OAuth2Manager
     {
         /// <summary>
         /// Gets or Sets ClientSecret
@@ -85,7 +85,7 @@ namespace It.FattureInCloud.Sdk.OauthHelper
         /// <param name="clientSecret">Client Secret</param>
         /// <param name="redirectUri">Redirect Uri</param>
         /// <param name="baseUri">Base Uri</param>
-        public OAuth2AuthorizationCodeManager(string clientId, string clientSecret, string redirectUri, string baseUri = "https://api-v2.fattureincloud.it"): base(clientId, baseUri)
+        public OAuth2AuthorizationCodeManager(string clientId, string clientSecret, string redirectUri, string baseUri = "https://api-v2.fattureincloud.it") : base(clientId, baseUri)
         {
             ClientSecret = clientSecret;
             RedirectUri = redirectUri;
@@ -190,7 +190,7 @@ namespace It.FattureInCloud.Sdk.OauthHelper
     /// <summary>
     /// Oauth2 Device Code Manager
     /// </summary>
-    public class OAuth2DeviceCodeManager: OAuth2Manager
+    public class OAuth2DeviceCodeManager : OAuth2Manager
     {
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace It.FattureInCloud.Sdk.OauthHelper
         /// </summary>
         /// <param name="clientId">Client Id</param>
         /// <param name="baseUri">Base Uri</param>
-        public OAuth2DeviceCodeManager(string clientId, string baseUri = "https://api-v2.fattureincloud.it"): base(clientId, baseUri)
+        public OAuth2DeviceCodeManager(string clientId, string baseUri = "https://api-v2.fattureincloud.it") : base(clientId, baseUri)
         {
         }
 
@@ -398,7 +398,7 @@ namespace It.FattureInCloud.Sdk.OauthHelper
         /// Gets or Sets Scope
         /// </summary>
         [JsonProperty("scope")]
-        public Dictionary<string,string> Scope { get; set; }
+        public Dictionary<string, string> Scope { get; set; }
 
         /// <summary>
         /// Gets or Sets VerificationUri
@@ -421,7 +421,7 @@ namespace It.FattureInCloud.Sdk.OauthHelper
         /// <summary>
         /// OAuth2DeviceCodeResponse
         /// </summary>
-        public OAuth2DeviceCodeResponse(string deviceCode, string userCode, Dictionary<string,string> scope, string verificationUri, int interval, int expiresIn)
+        public OAuth2DeviceCodeResponse(string deviceCode, string userCode, Dictionary<string, string> scope, string verificationUri, int interval, int expiresIn)
         {
             DeviceCode = deviceCode;
             UserCode = userCode;
