@@ -12,7 +12,7 @@ info:
     name: MIT
     url: https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
   title: Fatture in Cloud API v2 - API Reference
-  version: 2.1.0
+  version: 2.1.1
 servers:
 - url: https://api-v2.fattureincloud.it
 security:
@@ -9417,6 +9417,69 @@ paths:
       summary: Create Payment Account
       tags:
       - Settings
+  /c/{company_id}/settings/tax_profile:
+    get:
+      description: Gets the Tax Profile
+      operationId: getTaxProfile
+      parameters:
+      - description: The ID of the company.
+        explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          example: 12345
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                example-1:
+                  value:
+                    data:
+                      company_type: individual
+                      company_subtype: artigiani
+                      profession: null
+                      regime: forfettario_5
+                      rivalsa_name: ""
+                      default_rivalsa: 0
+                      cassa_name: ""
+                      default_cassa: 0
+                      default_cassa_taxable: 100
+                      cassa2_name: ""
+                      default_cassa2: 0
+                      default_cassa2_taxable: 0
+                      default_withholding_tax: 0
+                      default_withholding_tax_taxable: 100
+                      default_other_withholding_tax: 0
+                      enasarco: false
+                      enasarco_type: null
+                      contributions_percentage: 0
+                      med: false
+                      default_vat:
+                        id: 66
+                        value: 0
+                        description: Contribuenti forfettari
+                        notes: "Operazione non soggetta a IVA ai sensi dell'art. 1,\
+                          \ commi 54-89, Legge n. 190\\/2014 e succ. modifiche\\/integrazioni"
+                        e_invoice: true
+                        ei_type: 2.2
+                        ei_description: Non soggetta art. 1\/54-89 L. 190\/2014 e
+                          succ. modifiche\/integrazioni
+                        editable: false
+                        is_disabled: false
+                        default: true
+              schema:
+                $ref: '#/components/schemas/GetTaxProfileResponse'
+          description: Example response
+      security:
+      - OAuth2AuthenticationCodeFlow:
+        - settings:r
+      summary: Get Tax Profile
+      tags:
+      - Settings
   /c/{company_id}/settings/payment_accounts/{payment_account_id}:
     delete:
       description: Deletes the specified payment account.
@@ -16193,6 +16256,48 @@ components:
           schema:
             $ref: '#/components/schemas/GetCompanyPlanUsageResponse'
       description: Example response
+    GetTaxProfileResponse:
+      content:
+        application/json:
+          examples:
+            example-1:
+              value:
+                data:
+                  company_type: individual
+                  company_subtype: artigiani
+                  profession: null
+                  regime: forfettario_5
+                  rivalsa_name: ""
+                  default_rivalsa: 0
+                  cassa_name: ""
+                  default_cassa: 0
+                  default_cassa_taxable: 100
+                  cassa2_name: ""
+                  default_cassa2: 0
+                  default_cassa2_taxable: 0
+                  default_withholding_tax: 0
+                  default_withholding_tax_taxable: 100
+                  default_other_withholding_tax: 0
+                  enasarco: false
+                  enasarco_type: null
+                  contributions_percentage: 0
+                  med: false
+                  default_vat:
+                    id: 66
+                    value: 0
+                    description: Contribuenti forfettari
+                    notes: "Operazione non soggetta a IVA ai sensi dell'art. 1, commi\
+                      \ 54-89, Legge n. 190\\/2014 e succ. modifiche\\/integrazioni"
+                    e_invoice: true
+                    ei_type: 2.2
+                    ei_description: Non soggetta art. 1\/54-89 L. 190\/2014 e succ.
+                      modifiche\/integrazioni
+                    editable: false
+                    is_disabled: false
+                    default: true
+          schema:
+            $ref: '#/components/schemas/GetTaxProfileResponse'
+      description: Example response
   schemas:
     GetUserInfoResponse:
       description: ""
@@ -16403,6 +16508,7 @@ components:
           default_discount: 4.145608029883936
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -16477,6 +16583,7 @@ components:
           default_discount: 4.145608029883936
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -16562,6 +16669,7 @@ components:
           default_discount: 4.145608029883936
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -16644,6 +16752,7 @@ components:
           default_discount: 4.145608029883936
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -16726,6 +16835,7 @@ components:
           default_discount: 4.145608029883936
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -16809,6 +16919,7 @@ components:
           default_discount: 4.145608029883936
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -16891,6 +17002,7 @@ components:
           default_discount: 4.145608029883936
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -17205,6 +17317,7 @@ components:
           stock_current: 7.386281948385884
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -17233,6 +17346,7 @@ components:
           stock_current: 7.386281948385884
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -17272,6 +17386,7 @@ components:
           stock_current: 7.386281948385884
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -17308,6 +17423,7 @@ components:
           stock_current: 7.386281948385884
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -17344,6 +17460,7 @@ components:
           stock_current: 7.386281948385884
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -17380,6 +17497,7 @@ components:
           stock_current: 7.386281948385884
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -17416,6 +17534,7 @@ components:
           stock_current: 7.386281948385884
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -17480,6 +17599,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -17507,6 +17627,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -17694,6 +17815,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -17790,6 +17912,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -17817,6 +17940,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -18004,6 +18128,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -18111,6 +18236,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -18138,6 +18264,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -18325,6 +18452,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -18439,6 +18567,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -18466,6 +18595,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -18653,6 +18783,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -18757,6 +18888,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -18784,6 +18916,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -18971,6 +19104,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -19076,6 +19210,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -19103,6 +19238,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -19290,6 +19426,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -19404,6 +19541,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -19431,6 +19569,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -19618,6 +19757,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -19722,6 +19862,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -19749,6 +19890,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -19936,6 +20078,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -20069,6 +20212,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -20096,6 +20240,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -20283,6 +20428,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -20467,6 +20613,7 @@ components:
           items_default_values:
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -20585,6 +20732,7 @@ components:
             key: null
           vat_types_list:
           - ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -20594,6 +20742,7 @@ components:
             id: 9
             value: 22
           - ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -20788,6 +20937,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -20807,6 +20957,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -20849,6 +21000,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -20964,6 +21116,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -20983,6 +21136,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21025,6 +21179,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21152,6 +21307,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21171,6 +21327,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21213,6 +21370,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21343,6 +21501,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21362,6 +21521,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21404,6 +21564,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21528,6 +21689,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21547,6 +21709,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21589,6 +21752,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21713,6 +21877,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21732,6 +21897,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21774,6 +21940,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21898,6 +22065,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21917,6 +22085,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21959,6 +22128,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22083,6 +22253,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22102,6 +22273,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22144,6 +22316,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22284,6 +22457,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22303,6 +22477,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22345,6 +22520,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22474,6 +22650,7 @@ components:
             id: EUR
           vat_types_list:
           - ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -22483,6 +22660,7 @@ components:
             id: 9
             value: 22
           - ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -22533,6 +22711,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22547,6 +22726,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22583,6 +22763,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22597,6 +22778,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22646,6 +22828,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22660,6 +22843,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22709,6 +22893,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22723,6 +22908,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22768,6 +22954,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22782,6 +22969,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22827,6 +23015,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22841,6 +23030,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22886,6 +23076,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22900,6 +23091,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22950,6 +23142,7 @@ components:
           - categories_list
           vat_types_list:
           - ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -22959,6 +23152,7 @@ components:
             id: 9
             value: 22
           - ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -23681,6 +23875,7 @@ components:
       example:
         data:
         - ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -23690,6 +23885,7 @@ components:
           id: 9
           value: 22
         - ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -24071,6 +24267,45 @@ components:
           $ref: '#/components/schemas/PaymentAccount'
       title: CreatePaymentAccountResponse
       type: object
+    GetTaxProfileResponse:
+      example:
+        data:
+          profession: profession
+          company_type: company_type
+          contributions_percentage: 3.616076749251911
+          rivalsa_name: rivalsa_name
+          default_cassa2_taxable: 5.637376656633329
+          regime: regime
+          default_cassa2: 5.962133916683182
+          enasarco_type: enasarco_type
+          default_cassa: 6.027456183070403
+          profit_coefficient: 2.027123023002322
+          company_subtype: company_subtype
+          med: true
+          default_withholding_tax: 2.3021358869347655
+          default_other_withholding_tax: 9.301444243932576
+          default_vat:
+            ei_description: ei_description
+            default: true
+            notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+            e_invoice: true
+            ei_type: "2"
+            editable: true
+            is_disabled: true
+            description: Non imponibile art. 123
+            id: 9
+            value: 22
+          default_withholding_tax_taxable: 7.061401241503109
+          enasarco: true
+          default_cassa_taxable: 1.4658129805029452
+          default_rivalsa: 0.8008281904610115
+          cassa_name: cassa_name
+          cassa2_name: cassa2_name
+      properties:
+        data:
+          $ref: '#/components/schemas/TaxProfile'
+      title: GetTaxProfileResponse
+      type: object
     GetPaymentAccountResponse:
       example:
         data:
@@ -24120,6 +24355,7 @@ components:
       example:
         data:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -24137,6 +24373,7 @@ components:
       example:
         data:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -24154,6 +24391,7 @@ components:
       example:
         data:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -24171,6 +24409,7 @@ components:
       example:
         data:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -24187,6 +24426,7 @@ components:
       example:
         data:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -24237,6 +24477,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -24264,6 +24505,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -24451,6 +24693,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -24565,6 +24808,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -24592,6 +24836,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -24779,6 +25024,7 @@ components:
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -25372,6 +25618,7 @@ components:
         default_discount: 4.145608029883936
         default_vat:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -25762,6 +26009,7 @@ components:
         stock_current: 7.386281948385884
         default_vat:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -25902,6 +26150,7 @@ components:
           discount_highlight: true
           vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -25929,6 +26178,7 @@ components:
           discount_highlight: true
           vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -26116,6 +26366,7 @@ components:
           bank_swift_code: bank_swift_code
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -26791,6 +27042,7 @@ components:
         items_default_values:
           vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -26909,6 +27161,7 @@ components:
           key: null
         vat_types_list:
         - ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -26918,6 +27171,7 @@ components:
           id: 9
           value: 22
         - ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -27210,6 +27464,7 @@ components:
           name: name
           vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -27229,6 +27484,7 @@ components:
           name: name
           vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -27271,6 +27527,7 @@ components:
           bank_swift_code: bank_swift_code
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -27546,6 +27803,7 @@ components:
           id: EUR
         vat_types_list:
         - ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -27555,6 +27813,7 @@ components:
           id: 9
           value: 22
         - ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -27637,6 +27896,7 @@ components:
         - amount_net: 1.2315135367772556
           vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -27651,6 +27911,7 @@ components:
         - amount_net: 1.2315135367772556
           vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -27755,6 +28016,7 @@ components:
         - categories_list
         vat_types_list:
         - ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -27764,6 +28026,7 @@ components:
           id: 9
           value: 22
         - ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -28141,6 +28404,7 @@ components:
     VatType:
       example:
         ei_description: ei_description
+        default: true
         notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
         e_invoice: true
         ei_type: "2"
@@ -28192,6 +28456,10 @@ components:
           type: boolean
         is_disabled:
           description: Is the vat type disabled
+          nullable: true
+          type: boolean
+        default:
+          description: If the vat type is default
           nullable: true
           type: boolean
       title: VatType
@@ -28306,6 +28574,124 @@ components:
           nullable: true
           type: boolean
       title: PaymentAccount
+      type: object
+    TaxProfile:
+      example:
+        profession: profession
+        company_type: company_type
+        contributions_percentage: 3.616076749251911
+        rivalsa_name: rivalsa_name
+        default_cassa2_taxable: 5.637376656633329
+        regime: regime
+        default_cassa2: 5.962133916683182
+        enasarco_type: enasarco_type
+        default_cassa: 6.027456183070403
+        profit_coefficient: 2.027123023002322
+        company_subtype: company_subtype
+        med: true
+        default_withholding_tax: 2.3021358869347655
+        default_other_withholding_tax: 9.301444243932576
+        default_vat:
+          ei_description: ei_description
+          default: true
+          notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+          e_invoice: true
+          ei_type: "2"
+          editable: true
+          is_disabled: true
+          description: Non imponibile art. 123
+          id: 9
+          value: 22
+        default_withholding_tax_taxable: 7.061401241503109
+        enasarco: true
+        default_cassa_taxable: 1.4658129805029452
+        default_rivalsa: 0.8008281904610115
+        cassa_name: cassa_name
+        cassa2_name: cassa2_name
+      properties:
+        company_type:
+          description: The company type
+          nullable: true
+          type: string
+        company_subtype:
+          description: The company subtype
+          nullable: true
+          type: string
+        profession:
+          description: The profession
+          nullable: true
+          type: string
+        regime:
+          description: The applied regime
+          nullable: true
+          type: string
+        rivalsa_name:
+          description: The name of the rivalsa
+          nullable: true
+          type: string
+        default_rivalsa:
+          description: The default rivalsa amount
+          nullable: true
+          type: number
+        cassa_name:
+          description: The name of the cassa
+          nullable: true
+          type: string
+        default_cassa:
+          description: The default cassa amount
+          nullable: true
+          type: number
+        default_cassa_taxable:
+          description: The default taxable amount for the cassa
+          nullable: true
+          type: number
+        cassa2_name:
+          description: The name of the second cassa
+          nullable: true
+          type: string
+        default_cassa2:
+          description: The default second cassa amount
+          nullable: true
+          type: number
+        default_cassa2_taxable:
+          description: The default taxable amount for the second cassa
+          nullable: true
+          type: number
+        default_withholding_tax:
+          description: The default withholding tax
+          nullable: true
+          type: number
+        default_withholding_tax_taxable:
+          description: The default taxable amount for the withholding tax
+          nullable: true
+          type: number
+        default_other_withholding_tax:
+          description: The default other withholding tax
+          nullable: true
+          type: number
+        enasarco:
+          description: If it has enasarco
+          nullable: true
+          type: boolean
+        enasarco_type:
+          description: The enasarco type
+          nullable: true
+          type: string
+        contributions_percentage:
+          description: The contributions percentage
+          nullable: true
+          type: number
+        profit_coefficient:
+          description: The profit coefficient
+          nullable: true
+          type: number
+        med:
+          description: If the health card system is active
+          nullable: true
+          type: boolean
+        default_vat:
+          $ref: '#/components/schemas/VatType'
+      title: TaxProfile
       type: object
     ListEmailsResponsePage:
       properties:
@@ -28561,6 +28947,7 @@ components:
         bank_swift_code: bank_swift_code
         default_vat:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -28836,6 +29223,7 @@ components:
         discount_highlight: true
         vat:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -29044,6 +29432,7 @@ components:
         name: name
         vat:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -29156,6 +29545,7 @@ components:
         amount_net: 1.2315135367772556
         vat:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -29410,6 +29800,17 @@ components:
       - it.fattureincloud.webhooks.entities.all.delete
       - it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
       - it.fattureincloud.webhooks.received_documents.e_invoices.receive
+      - it.fattureincloud.webhooks.issued_documents.invoices.email_sent
+      - it.fattureincloud.webhooks.issued_documents.quotes.email_sent
+      - it.fattureincloud.webhooks.issued_documents.proformas.email_sent
+      - it.fattureincloud.webhooks.issued_documents.receipts.email_sent
+      - it.fattureincloud.webhooks.issued_documents.delivery_notes.email_sent
+      - it.fattureincloud.webhooks.issued_documents.credit_notes.email_sent
+      - it.fattureincloud.webhooks.issued_documents.orders.email_sent
+      - it.fattureincloud.webhooks.issued_documents.work_reports.email_sent
+      - it.fattureincloud.webhooks.issued_documents.supplier_orders.email_sent
+      - it.fattureincloud.webhooks.issued_documents.self_invoices.email_sent
+      - it.fattureincloud.webhooks.issued_documents.all.email_sent
       title: EventType
       type: string
     WebhooksSubscriptionConfig:
@@ -30142,6 +30543,7 @@ components:
       example:
         vat:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
