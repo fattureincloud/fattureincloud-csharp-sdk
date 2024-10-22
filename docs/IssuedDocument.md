@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Year** | **int?** | Issued document year | [optional] 
 **Currency** | [**Currency**](Currency.md) |  | [optional] 
 **Language** | [**Language**](Language.md) |  | [optional] 
-**Subject** | **string** | Issued document subject | [optional] 
+**Subject** | **string** | Issued document subject [not shown on the PDF] | [optional] 
 **VisibleSubject** | **string** | Issued document visible subject | [optional] 
 **RcCenter** | **string** | Issued document revenue center [or cost center if type&#x3D;supplier_order]. | [optional] 
 **Notes** | **string** | Issued document extra notes | [optional] 
