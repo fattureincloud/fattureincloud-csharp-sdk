@@ -797,7 +797,7 @@ catch (ApiException e)
 
 <a id="joinissueddocuments"></a>
 # **JoinIssuedDocuments**
-> JoinIssuedDocumentsResponse JoinIssuedDocuments (int companyId, string ids, int? group = null, int? eInvoice = null)
+> JoinIssuedDocumentsResponse JoinIssuedDocuments (int companyId, string ids, int? group = null, string type = null)
 
 Join Issued Documents
 
@@ -826,12 +826,12 @@ namespace Example
             var companyId = 12345;  // int | The ID of the company.
             var ids = 1,2,3,4;  // string | Ids of the documents.
             var group = 0;  // int? | Group items. (optional) 
-            var eInvoice = 0;  // int? | New document e_invoice. (optional) 
+            var type = delivery_notes, orders, quotes, work_reports;  // string | Type of the documents to be joined (optional) 
 
             try
             {
                 // Join Issued Documents
-                JoinIssuedDocumentsResponse result = apiInstance.JoinIssuedDocuments(companyId, ids, group, eInvoice);
+                JoinIssuedDocumentsResponse result = apiInstance.JoinIssuedDocuments(companyId, ids, group, type);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -852,7 +852,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Join Issued Documents
-    ApiResponse<JoinIssuedDocumentsResponse> response = apiInstance.JoinIssuedDocumentsWithHttpInfo(companyId, ids, group, eInvoice);
+    ApiResponse<JoinIssuedDocumentsResponse> response = apiInstance.JoinIssuedDocumentsWithHttpInfo(companyId, ids, group, type);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -872,7 +872,7 @@ catch (ApiException e)
 | **companyId** | **int** | The ID of the company. |  |
 | **ids** | **string** | Ids of the documents. |  |
 | **group** | **int?** | Group items. | [optional]  |
-| **eInvoice** | **int?** | New document e_invoice. | [optional]  |
+| **type** | **string** | Type of the documents to be joined | [optional]  |
 
 ### Return type
 
@@ -1205,7 +1205,7 @@ void (empty response body)
 
 <a id="transformissueddocument"></a>
 # **TransformIssuedDocument**
-> TransformIssuedDocumentResponse TransformIssuedDocument (int companyId, int originalDocumentId, string newType, int? eInvoice = null, int? transformKeepCopy = null)
+> TransformIssuedDocumentResponse TransformIssuedDocument (int companyId, int originalDocumentId, string newType, string type = null, int? eInvoice = null, int? transformKeepCopy = null)
 
 Transform Issued Document
 
@@ -1234,13 +1234,14 @@ namespace Example
             var companyId = 12345;  // int | The ID of the company.
             var originalDocumentId = 56;  // int | Original document id.
             var newType = "newType_example";  // string | New document type.
+            var type = "type_example";  // string | Current document type. (optional) 
             var eInvoice = 0;  // int? | New document e_invoice. (optional) 
             var transformKeepCopy = 0;  // int? | Keep the old document. (optional) 
 
             try
             {
                 // Transform Issued Document
-                TransformIssuedDocumentResponse result = apiInstance.TransformIssuedDocument(companyId, originalDocumentId, newType, eInvoice, transformKeepCopy);
+                TransformIssuedDocumentResponse result = apiInstance.TransformIssuedDocument(companyId, originalDocumentId, newType, type, eInvoice, transformKeepCopy);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1261,7 +1262,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Transform Issued Document
-    ApiResponse<TransformIssuedDocumentResponse> response = apiInstance.TransformIssuedDocumentWithHttpInfo(companyId, originalDocumentId, newType, eInvoice, transformKeepCopy);
+    ApiResponse<TransformIssuedDocumentResponse> response = apiInstance.TransformIssuedDocumentWithHttpInfo(companyId, originalDocumentId, newType, type, eInvoice, transformKeepCopy);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1281,6 +1282,7 @@ catch (ApiException e)
 | **companyId** | **int** | The ID of the company. |  |
 | **originalDocumentId** | **int** | Original document id. |  |
 | **newType** | **string** | New document type. |  |
+| **type** | **string** | Current document type. | [optional]  |
 | **eInvoice** | **int?** | New document e_invoice. | [optional]  |
 | **transformKeepCopy** | **int?** | Keep the old document. | [optional]  |
 
