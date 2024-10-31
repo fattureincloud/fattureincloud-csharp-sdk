@@ -77,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void SentDateTest()
         {
-            Assert.IsType<DateTimeOffset>(instance.SentDate);
+            Assert.IsType<string>(instance.SentDate);
         }
         /// <summary>
         /// Test the property 'ErrorsCount'
