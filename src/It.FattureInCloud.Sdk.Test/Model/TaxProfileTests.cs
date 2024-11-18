@@ -31,13 +31,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class TaxProfileTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for TaxProfile
-        //private TaxProfile instance;
+        private TaxProfile instance;
 
         public TaxProfileTests()
         {
-            // TODO uncomment below to create an instance of TaxProfile
-            //instance = new TaxProfile();
+            var body = "{ 'company_type': 'individual', 'company_subtype': 'artigiani', 'profession': 'test', 'regime': 'forfettario_5', 'rivalsa_name': '', 'default_rivalsa': 0, 'cassa_name': '', 'default_cassa': 0, 'default_cassa_taxable': 100, 'cassa2_name': '', 'default_cassa2': 0, 'default_cassa2_taxable': 0, 'default_withholding_tax': 0, 'default_withholding_tax_taxable': 100, 'default_other_withholding_tax': 0, 'enasarco': false, 'enasarco_type': 'null', 'contributions_percentage': 0, 'med': false, 'default_vat': { 'id': 66, 'value': 0, 'description': 'Contribuenti forfettari', 'notes': 'Operazione non soggetta a IVA ai sensi dell\"art. 1, commi 54-89, Legge n. 190\\/2014 e succ. modifiche\\/integrazioni', 'e_invoice': true, 'ei_type': '2.2', 'ei_description': 'Non soggetta art. 1\\/54-89 L. 190\\/2014 e succ. modifiche\\/integrazioni', 'editable': false, 'is_disabled': false, 'default': true } }";
+            instance = JsonConvert.DeserializeObject<TaxProfile>(body);
         }
 
         public void Dispose()
@@ -51,8 +50,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TaxProfileInstanceTest()
         {
-            // TODO uncomment below to test "IsType" TaxProfile
-            //Assert.IsType<TaxProfile>(instance);
+            Assert.IsType<TaxProfile>(instance);
         }
 
         /// <summary>
@@ -61,7 +59,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CompanyTypeTest()
         {
-            // TODO unit test for the property 'CompanyType'
+            Assert.IsType<string>(instance.CompanyType);
         }
 
         /// <summary>
@@ -70,7 +68,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CompanySubtypeTest()
         {
-            // TODO unit test for the property 'CompanySubtype'
+            Assert.IsType<string>(instance.CompanySubtype);
         }
 
         /// <summary>
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ProfessionTest()
         {
-            // TODO unit test for the property 'Profession'
+            Assert.IsType<string>(instance.Profession);
         }
 
         /// <summary>
@@ -88,7 +86,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void RegimeTest()
         {
-            // TODO unit test for the property 'Regime'
+            Assert.IsType<string>(instance.Regime);
         }
 
         /// <summary>
@@ -97,7 +95,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void RivalsaNameTest()
         {
-            // TODO unit test for the property 'RivalsaName'
+            Assert.IsType<string>(instance.RivalsaName);
         }
 
         /// <summary>
@@ -106,7 +104,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DefaultRivalsaTest()
         {
-            // TODO unit test for the property 'DefaultRivalsa'
+            Assert.IsType<decimal>(instance.DefaultRivalsa);
         }
 
         /// <summary>
@@ -115,7 +113,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CassaNameTest()
         {
-            // TODO unit test for the property 'CassaName'
+            Assert.IsType<string>(instance.CassaName);
         }
 
         /// <summary>
@@ -124,7 +122,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DefaultCassaTest()
         {
-            // TODO unit test for the property 'DefaultCassa'
+            Assert.IsType<decimal>(instance.DefaultCassa);
         }
 
         /// <summary>
@@ -133,7 +131,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DefaultCassaTaxableTest()
         {
-            // TODO unit test for the property 'DefaultCassaTaxable'
+            Assert.IsType<decimal>(instance.DefaultCassaTaxable);
         }
 
         /// <summary>
@@ -142,7 +140,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void Cassa2NameTest()
         {
-            // TODO unit test for the property 'Cassa2Name'
+            Assert.IsType<string>(instance.Cassa2Name);
         }
 
         /// <summary>
@@ -151,7 +149,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DefaultCassa2Test()
         {
-            // TODO unit test for the property 'DefaultCassa2'
+            Assert.IsType<decimal>(instance.DefaultCassa2);
         }
 
         /// <summary>
@@ -160,7 +158,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DefaultCassa2TaxableTest()
         {
-            // TODO unit test for the property 'DefaultCassa2Taxable'
+            Assert.IsType<decimal>(instance.DefaultCassa2Taxable);
         }
 
         /// <summary>
@@ -169,7 +167,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DefaultWithholdingTaxTest()
         {
-            // TODO unit test for the property 'DefaultWithholdingTax'
+            Assert.IsType<decimal>(instance.DefaultWithholdingTax);
         }
 
         /// <summary>
@@ -178,7 +176,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DefaultWithholdingTaxTaxableTest()
         {
-            // TODO unit test for the property 'DefaultWithholdingTaxTaxable'
+            Assert.IsType<decimal>(instance.DefaultWithholdingTaxTaxable);
         }
 
         /// <summary>
@@ -187,7 +185,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DefaultOtherWithholdingTaxTest()
         {
-            // TODO unit test for the property 'DefaultOtherWithholdingTax'
+            Assert.IsType<decimal>(instance.DefaultOtherWithholdingTax);
         }
 
         /// <summary>
@@ -196,7 +194,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EnasarcoTest()
         {
-            // TODO unit test for the property 'Enasarco'
+            Assert.IsType<bool>(instance.Enasarco);
         }
 
         /// <summary>
@@ -205,7 +203,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EnasarcoTypeTest()
         {
-            // TODO unit test for the property 'EnasarcoType'
+            Assert.IsType<string>(instance.EnasarcoType);
         }
 
         /// <summary>
@@ -214,16 +212,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ContributionsPercentageTest()
         {
-            // TODO unit test for the property 'ContributionsPercentage'
-        }
-
-        /// <summary>
-        /// Test the property 'ProfitCoefficient'
-        /// </summary>
-        [Fact]
-        public void ProfitCoefficientTest()
-        {
-            // TODO unit test for the property 'ProfitCoefficient'
+            Assert.IsType<decimal>(instance.ContributionsPercentage);
         }
 
         /// <summary>
@@ -232,7 +221,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void MedTest()
         {
-            // TODO unit test for the property 'Med'
+            Assert.IsType<bool>(instance.Med);
         }
 
         /// <summary>
@@ -241,7 +230,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DefaultVatTest()
         {
-            // TODO unit test for the property 'DefaultVat'
+            Assert.IsType<VatType>(instance.DefaultVat);
         }
     }
 }
