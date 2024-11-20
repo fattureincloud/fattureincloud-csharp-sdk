@@ -41,6 +41,8 @@ namespace It.FattureInCloud.Sdk.Test.Api
         string createPaymentMethodResponseBody;
         string getPaymentMethodResponseBody;
         string modifyPaymentMethodResponseBody;
+        string getTaxProfileResponseBody;
+
 
         public SettingsApiTests()
         {
@@ -79,6 +81,11 @@ namespace It.FattureInCloud.Sdk.Test.Api
             instance
                 .Setup(p => p.ModifyPaymentMethod(Moq.It.IsAny<int>(), Moq.It.IsAny<int>(), Moq.It.IsAny<ModifyPaymentMethodRequest>(), 0))
                 .Returns(modifyPaymentMethodResponse);
+            getTaxProfileResponseBody = "{ 'data': { 'company_type': 'individual', 'company_subtype': 'artigiani', 'profession': 'test', 'regime': 'forfettario_5', 'rivalsa_name': '', 'default_rivalsa': 0.0, 'cassa_name': '', 'default_cassa': 0.0, 'default_cassa_taxable': 100.0, 'cassa2_name': '', 'default_cassa2': 0.0, 'default_cassa2_taxable': 0.0, 'default_withholding_tax': 0.0, 'default_withholding_tax_taxable': 100.0, 'default_other_withholding_tax': 0.0, 'enasarco': false, 'enasarco_type': 'null', 'contributions_percentage': 0.0, 'med': false, 'default_vat': { 'id': 66, 'value': 0.0, 'description': 'Contribuenti forfettari', 'notes': 'Operazione non soggetta a IVA ai sensi dell\"art. 1, commi 54-89, Legge n. 190\\/2014 e succ. modifiche\\/integrazioni', 'e_invoice': true, 'ei_type': '2.2', 'ei_description': 'Non soggetta art. 1/54-89 L. 190/2014 e succ. modifiche/integrazioni', 'is_disabled': false, 'default': true } } }";
+            var getTaxProfileResponse = JsonConvert.DeserializeObject<GetTaxProfileResponse>(getTaxProfileResponseBody);
+            instance
+                .Setup(p => p.GetTaxProfile(2,0))
+                .Returns(getTaxProfileResponse);
         }
 
         public void Dispose()
@@ -206,6 +213,21 @@ namespace It.FattureInCloud.Sdk.Test.Api
             var response = instance.Object.ModifyPaymentMethod(companyId, paymentMethodId, modifyPaymentMethodRequest);
             JObject obj = JObject.Parse(modifyPaymentMethodResponseBody);
 
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
+        }
+
+        /// <summary>
+        /// Test getTaxProfile
+        /// </summary>
+        [Fact]
+        public void getTaxProfileTest()
+        {
+            int companyId = 2;
+
+            var response = instance.Object.GetTaxProfile(companyId, 0);
+            JObject obj = JObject.Parse(getTaxProfileResponseBody);
+            Console.WriteLine(obj);
+            Console.WriteLine(JObject.FromObject(response));
             Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
     }
