@@ -35,7 +35,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
 
         public TaxProfileTests()
         {
-            var body = "{ 'company_type': 'individual', 'company_subtype': 'artigiani', 'profession': 'test', 'regime': 'forfettario_5', 'rivalsa_name': '', 'default_rivalsa': 0, 'cassa_name': '', 'default_cassa': 0, 'default_cassa_taxable': 100, 'cassa2_name': '', 'default_cassa2': 0, 'default_cassa2_taxable': 0, 'default_withholding_tax': 0, 'default_withholding_tax_taxable': 100, 'default_other_withholding_tax': 0, 'enasarco': false, 'enasarco_type': 'null', 'contributions_percentage': 0, 'med': false, 'default_vat': { 'id': 66, 'value': 0, 'description': 'Contribuenti forfettari', 'notes': 'Operazione non soggetta a IVA ai sensi dell\"art. 1, commi 54-89, Legge n. 190\\/2014 e succ. modifiche\\/integrazioni', 'e_invoice': true, 'ei_type': '2.2', 'ei_description': 'Non soggetta art. 1\\/54-89 L. 190\\/2014 e succ. modifiche\\/integrazioni', 'editable': false, 'is_disabled': false, 'default': true } }";
+            var body = "{ 'company_type': 'individual', 'company_subtype': 'artigiani', 'profession': 'test', 'regime': 'forfettario_5', 'rivalsa_name': '', 'default_rivalsa': 0, 'cassa_name': '', 'default_cassa': 0, 'default_cassa_taxable': 100, 'cassa2_name': '', 'default_cassa2': 0, 'default_cassa2_taxable': 0, 'default_withholding_tax': 0, 'default_withholding_tax_taxable': 100, 'default_other_withholding_tax': 0, 'enasarco': false, 'enasarco_type': 'null', 'contributions_percentage': 0, 'profit_coefficient': 2.2, 'med': false, 'default_vat': { 'id': 66, 'value': 0, 'description': 'Contribuenti forfettari', 'notes': 'Operazione non soggetta a IVA ai sensi dell\"art. 1, commi 54-89, Legge n. 190\\/2014 e succ. modifiche\\/integrazioni', 'e_invoice': true, 'ei_type': '2.2', 'ei_description': 'Non soggetta art. 1\\/54-89 L. 190\\/2014 e succ. modifiche\\/integrazioni', 'editable': false, 'is_disabled': false, 'default': true } }";
             instance = JsonConvert.DeserializeObject<TaxProfile>(body);
         }
 
@@ -213,6 +213,15 @@ namespace It.FattureInCloud.Sdk.Test.Model
         public void ContributionsPercentageTest()
         {
             Assert.IsType<decimal>(instance.ContributionsPercentage);
+        }
+
+        /// <summary>
+        /// Test the property 'ProfitCoefficient'
+        /// </summary>
+        [Fact]
+        public void ProfitCoefficientTest()
+        {
+            Assert.IsType<decimal>(instance.ProfitCoefficient);
         }
 
         /// <summary>
