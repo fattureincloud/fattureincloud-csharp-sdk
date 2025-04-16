@@ -12,7 +12,7 @@ info:
     name: MIT
     url: https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
   title: Fatture in Cloud API v2 - API Reference
-  version: 2.1.3
+  version: 2.1.7
 servers:
 - url: https://api-v2.fattureincloud.it
 security:
@@ -26,6 +26,7 @@ tags:
 - name: Issued Documents
 - name: Issued e-invoices
 - name: Products
+- name: PriceLists
 - name: Receipts
 - name: Received Documents
 - name: Suppliers
@@ -556,6 +557,7 @@ paths:
                       value: 45
                       description: ""
                       is_disabled: false
+                    price_list_id: "10"
             schema:
               $ref: '#/components/schemas/CreateClientRequest'
         description: The client to create
@@ -729,6 +731,7 @@ paths:
                         value: 45
                         description: ""
                         is_disabled: false
+                      price_list_id: "10"
               schema:
                 $ref: '#/components/schemas/GetClientResponse'
           description: Client Details.
@@ -802,6 +805,7 @@ paths:
                       value: 45
                       description: ""
                       is_disabled: false
+                    price_list_id: "10"
             schema:
               $ref: '#/components/schemas/ModifyClientRequest'
         description: The modified Client. First level parameters are managed in delta
@@ -846,6 +850,7 @@ paths:
                         value: 45
                         description: ""
                         is_disabled: false
+                      price_list_id: "10"
               schema:
                 $ref: '#/components/schemas/ModifyClientResponse'
           description: Client modified.
@@ -857,6 +862,82 @@ paths:
       - OAuth2AuthenticationCodeFlow:
         - entity.clients:a
       summary: Modify Client
+      tags:
+      - Clients
+  /c/{company_id}/entities/clients/info:
+    get:
+      description: Retrieves the information useful while creating a new Client.
+      operationId: getClientInfo
+      parameters:
+      - description: The ID of the company.
+        explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          example: 12345
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                example-1:
+                  value:
+                    data:
+                      countries_list:
+                      - Italy
+                      payment_methods_list:
+                      - id: 555
+                        name: Rimessa diretta
+                        is_default: false
+                        details: []
+                        bank_iban: null
+                        bank_name: null
+                        bank_beneficiary: null
+                        ei_payment_method: null
+                      payment_accounts_list:
+                      - id: 0
+                        name: Conto Banca Intesa
+                        type: standard
+                        iban: string
+                        sia: string
+                        cuc: string
+                        virtual: true
+                      vat_types_list:
+                      - id: 0
+                        value: 22
+                        description: Non imponibile art. 123
+                        notes: "IVA non imponibile ai sensi dell'articolo 123, comma\
+                          \ 2"
+                        e_invoice: true
+                        ei_type: 2
+                        ei_description: string
+                        editable: true
+                        is_disabled: true
+                        default: true
+                      price_lists:
+                      - id: string
+                        name: "123"
+                        prices_type: net
+                        is_default: true
+                        valid_from: string
+                        valid_to: string
+                        type: sell
+                      limit: 0
+                      usage: 0
+              schema:
+                $ref: '#/components/schemas/GetEntityClientPreCreateInfoResponse'
+          description: Example response
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not Found
+      security:
+      - OAuth2AuthenticationCodeFlow:
+        - entity.clients:r
+      summary: Get Client info
       tags:
       - Clients
   /c/{company_id}/entities/suppliers:
@@ -1983,6 +2064,7 @@ paths:
                       status: not_paid
                     payment_method:
                       id: 4
+                    price_list_id: "10"
             schema:
               $ref: '#/components/schemas/CreateIssuedDocumentRequest'
         description: The Issued Document
@@ -2323,6 +2405,7 @@ paths:
                       locked: false
                       has_ts_pay_pending_payment: false
                       show_tspay_button: false
+                      price_list_id: "10"
               schema:
                 $ref: '#/components/schemas/GetIssuedDocumentResponse'
           description: Document Details.
@@ -4605,6 +4688,15 @@ paths:
                         RT05: Contributo ENPAM
                         RT06: Altro contributo previdenziale
                       use_e_invoice: true
+                      price_lists:
+                      - id: "10"
+                        name: Listino 1
+                        prices_type: net
+                        is_default: true
+                        is_archived: false
+                        valid_from: 2021-08-01
+                        valid_to: 2025-09-10
+                        type: sell
               schema:
                 $ref: '#/components/schemas/GetIssuedDocumentPreCreateInfoResponse'
           description: Pre-create info.
@@ -10222,6 +10314,62 @@ paths:
           example: 12345
           type: integer
         style: simple
+      - description: List of comma-separated fields.
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Name of the fieldset.
+        explode: true
+        in: query
+        name: fieldset
+        required: false
+        schema:
+          enum:
+          - basic
+          - detailed
+          type: string
+        style: form
+      - description: List of comma-separated fields for result sorting (minus for
+          desc sorting).
+        explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The page to retrieve.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          type: integer
+        style: form
+      - description: The size of the page.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          default: 5
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: Query for filtering the results.
+        explode: true
+        in: query
+        name: q
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -10346,6 +10494,7 @@ paths:
                     types:
                     - it.fattureincloud.webhooks.entities.create
                     - it.fattureincloud.webhooks.issued_documents.create
+                    verification_method: header
             schema:
               $ref: '#/components/schemas/CreateWebhooksSubscriptionRequest'
         description: ""
@@ -10498,6 +10647,760 @@ paths:
       summary: Modify Webhooks Subscription
       tags:
       - Webhooks
+  /c/{company_id}/subscriptions/{subscription_id}/verify:
+    post:
+      description: Verify a webhook subscription.
+      operationId: verifyWebhooksSubscription
+      parameters:
+      - description: The ID of the company.
+        explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          example: 12345
+          type: integer
+        style: simple
+      - description: The ID of the subscription.
+        explode: false
+        in: path
+        name: subscription_id
+        required: true
+        schema:
+          example: SUB123
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyWebhooksSubscriptionRequest'
+      responses:
+        "200":
+          description: OK
+      security:
+      - OAuth2AuthenticationCodeFlow: []
+      summary: Verify Webhooks Subscription
+      tags:
+      - Webhooks
+  /c/{company_id}/bin/issued_documents:
+    get:
+      description: Get bin issued documents list
+      operationId: ListBinIssuedDocuments
+      parameters:
+      - description: The ID of the company.
+        explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          example: 12345
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                example-1:
+                  value:
+                    data:
+                    - id: 12345
+                      type: receipt
+                      numeration: rec123
+                      subject: ""
+                      visible_subject: ""
+                      amount_net: 68.18
+                      amount_vat: 6.82
+                      amount_gross: 75
+                      amount_due_discount: 0
+                      entity:
+                        id: 54321
+                        name: Mary Red S.r.L.
+                        vat_number: IT05432181211
+                        tax_code: IT05432181211
+                        address_street: "Via Italia, 66"
+                        address_postal_code: "20900"
+                        address_city: Milano
+                        address_province: MI
+                        address_extra: ""
+                        country: Italia
+                        certified_email: mary@pec.red.com
+                        ei_code: ABCXCR1
+                      date: 2021-08-20
+                      number: 1
+                      next_due_date: 2021-12-31
+                      url: ypbqqe4u8w8bdabcd5fd5b1a4gtqhlof.pdf
+                      items_list: null
+                      payments_list: null
+                    - id: 12346
+                      type: receipt
+                      numeration: rec124
+                      subject: ""
+                      visible_subject: ""
+                      amount_net: 168.18
+                      amount_vat: 16.82
+                      amount_gross: 175
+                      amount_due_discount: 0
+                      entity:
+                        id: 54321
+                        name: Mary Red S.r.L.
+                        vat_number: IT05432181211
+                        tax_code: IT05432181211
+                        address_street: "Via Italia, 66"
+                        address_postal_code: "20900"
+                        address_city: Milano
+                        address_province: MI
+                        address_extra: ""
+                        country: Italia
+                        certified_email: mary@pec.red.com
+                        ei_code: ABCXCR1
+                      date: 2021-08-28
+                      number: 1
+                      next_due_date: 2021-12-31
+                      url: qwertye4u8w8bdaqrt5fd5b1a4gtqhlof.pdf
+                      items_list: null
+                      payments_list: null
+              schema:
+                $ref: '#/components/schemas/ListBinIssuedDocuments'
+          description: Bin Issued Documents List
+      security:
+      - OAuth2AuthenticationCodeFlow:
+        - issued_documents.invoices:r
+        - issued_documents.credit_notes:r
+        - issued_documents.receipts:r
+        - issued_documents.orders:r
+        - issued_documents.quotes:r
+        - issued_documents.proformas:r
+      summary: Get Bin Issued Documents List
+      tags:
+      - Issued Documents
+  /c/{company_id}/bin/issued_documents/{document_id}:
+    delete:
+      description: Delete Bin Issued Document
+      operationId: DeleteBinIssuedDocument
+      parameters:
+      - description: The ID of the company.
+        explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          example: 12345
+          type: integer
+        style: simple
+      - description: The ID of the document.
+        explode: false
+        in: path
+        name: document_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: OK
+      summary: Delete Bin Issued Document
+      tags:
+      - Issued Documents
+    get:
+      description: Get bin issued documents detail
+      operationId: GetBinIssuedDocument
+      parameters:
+      - description: The ID of the company.
+        explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          example: 12345
+          type: integer
+        style: simple
+      - description: The ID of the document.
+        explode: false
+        in: path
+        name: document_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                example-1:
+                  value:
+                    data:
+                      id: 12345
+                      type: receipt
+                      year: 2021
+                      numeration: rec123
+                      subject: ""
+                      visible_subject: ""
+                      rc_center: ""
+                      ei_cassa_type: null
+                      ei_withholding_tax_causal: null
+                      ei_other_withholding_tax_type: null
+                      ei_other_withholding_tax_causal: null
+                      stamp_duty: 0
+                      use_gross_prices: false
+                      e_invoice: false
+                      agyo_company_id: null
+                      agyo_id: null
+                      agyo_sent_at: null
+                      delivery_note: false
+                      accompanying_invoice: false
+                      amount_net: 68.18
+                      amount_vat: 6.82
+                      amount_gross: 75
+                      amount_due_discount: 0
+                      amount_rivalsa: 0
+                      amount_cassa: 0
+                      amount_withholding_tax: 0
+                      amount_other_withholding_tax: 0
+                      h_margins: 15
+                      v_margins: 16
+                      show_payment_method: false
+                      show_payments: true
+                      show_totals: all
+                      show_notification_button: false
+                      is_marked: false
+                      created_at: 2021-08-13 09:30:20
+                      updated_at: 2021-08-23 05:34:20
+                      entity:
+                        id: 54321
+                        name: Mary Red S.r.L.
+                        vat_number: IT05432181211
+                        tax_code: IT05432181211
+                        address_street: "Via Italia, 66"
+                        address_postal_code: "20900"
+                        address_city: Milano
+                        address_province: MI
+                        address_extra: ""
+                        country: Italia
+                        certified_email: mary@pec.red.com
+                        ei_code: ABCXCR1
+                      date: 2021-08-20
+                      number: 1
+                      currency:
+                        id: EUR
+                        exchange_rate: "1.00000"
+                        symbol: €
+                      language:
+                        code: it
+                        name: Italiano
+                      notes: ""
+                      rivalsa: 0
+                      cassa: 0
+                      withholding_tax: 0
+                      withholding_tax_taxable: 100
+                      other_withholding_tax: 0
+                      payment_method:
+                        id: 4
+                        name: Credit card
+                      use_split_payment: false
+                      merged_in: null
+                      original_document: null
+                      items_list:
+                      - product_id: 5432
+                        code: SG3
+                        name: Soggiorno
+                        measure: ""
+                        net_price: 68.18182
+                        category: ""
+                        id: 277876033
+                        gross_price: 75
+                        apply_withholding_taxes: true
+                        discount: 0
+                        discount_highlight: false
+                        in_dn: false
+                        qty: 1
+                        vat:
+                          id: 3
+                          value: 10
+                          description: ""
+                        stock: false
+                        description: ""
+                        not_taxable: false
+                      payments_list:
+                      - amount: 75
+                        due_date: 2020-08-23
+                        paid_date: null
+                        id: 69078013
+                        payment_terms:
+                          days: 0
+                          type: standard
+                        status: not_paid
+                      attachment_url: kdijrnf893hnwkfk45f50f.pdf
+                      seen_date: null
+                      next_due_date: 2020-08-23
+                      template:
+                        id: 2821
+                        name: Light Smoke
+                      extra_data: null
+                      url: y12h45rn9yf2mse0p43t7ec90vr.pdf
+                      locked: false
+                      has_ts_pay_pending_payment: false
+                      show_tspay_button: false
+              schema:
+                $ref: '#/components/schemas/GetBinIssuedDocumentResponse'
+          description: Bin issued document details
+      security:
+      - OAuth2AuthenticationCodeFlow:
+        - issued_documents.invoices:r
+        - issued_documents.credit_notes:r
+        - issued_documents.receipts:r
+        - issued_documents.orders:r
+        - issued_documents.quotes:r
+        - issued_documents.proformas:r
+      summary: Get Bin Issued Documents List
+      tags:
+      - Issued Documents
+  /c/{company_id}/bin/issued_documents/{document_id}/recover:
+    post:
+      description: Recover Issued Document From The Bin
+      operationId: RecoverBinIssuedDocument
+      parameters:
+      - description: The ID of the company.
+        explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          example: 12345
+          type: integer
+        style: simple
+      - description: The ID of the document.
+        explode: false
+        in: path
+        name: document_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: OK
+      summary: Recover Issued Document From The Bin
+      tags:
+      - Issued Documents
+  /c/{company_id}/bin/received_documents:
+    get:
+      description: Get bin Received documents list
+      operationId: ListBinReceivedDocuments
+      parameters:
+      - description: The ID of the company.
+        explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          example: 12345
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                example-1:
+                  value:
+                    data:
+                    - id: 12345
+                      type: expense
+                      description: Soggiorno di lavoro
+                      amortization: 1
+                      rc_center: ""
+                      invoice_number: ""
+                      is_marked: false
+                      is_detailed: false
+                      e_invoice: false
+                      created_at: 2021-08-15 14:02:02
+                      updated_at: 2021-08-15 14:02:02
+                      entity:
+                        id: 111
+                        name: Hotel Rubino Palace
+                      date: 2021-08-15
+                      next_due_date: 2021-08-15
+                      currency:
+                        id: EUR
+                        exchange_rate: "1.00000"
+                        symbol: €
+                      amount_net: 592
+                      amount_vat: 0
+                      amount_gross: 592
+                      amount_withholding_tax: 0
+                      amount_other_withholding_tax: 0
+                      tax_deductibility: 50
+                      vat_deductibility: 100
+                      items_list: null
+                      payments_list:
+                      - amount: 592
+                        due_date: 2021-08-15
+                        paid_date: 2021-08-15
+                        id: 777
+                        payment_terms:
+                          days: 0
+                          type: standard
+                        status: paid
+                        payment_account:
+                          id: 222
+                          name: Contanti
+                          virtual: false
+                      attachment_url: spesa_ger5i783t45hu6ti.pdf
+                      attachment_preview_url: null
+                      extra_data: null
+                    - id: 12346
+                      type: expense
+                      description: Assicurazione RCA
+                      iamortization: 1
+                      rc_center: ""
+                      invoice_number: ""
+                      is_marked: false
+                      is_detailed: false
+                      e_invoice: false
+                      created_at: 2021-08-09 14:02:02
+                      updated_at: 2021-08-09 14:02:02
+                      entity:
+                        id: 89
+                        name: Indesa Assicurazioni S.P.A.
+                      date: 2021-08-08
+                      next_due_date: 2021-08-08
+                      currency:
+                        id: EUR
+                        exchange_rate: "1.00000"
+                        symbol: €
+                      amount_net: 645.69
+                      amount_vat: 0
+                      amount_gross: 645.69
+                      amount_withholding_tax: 0
+                      amount_other_withholding_tax: 0
+                      tax_deductibility: 50
+                      vat_deductibility: 100
+                      items_list: null
+                      payments_list:
+                      - amount: 645.69
+                        due_date: 2021-08-08
+                        paid_date: 2021-08-08
+                        id: 999
+                        payment_terms:
+                          days: 0
+                          type: standard
+                        status: paid
+                        payment_account:
+                          id: 333
+                          name: Carta conto
+                          virtual: false
+                      attachment_url: spesa_gjsd567e5hu6ti.pdf
+                      attachment_preview_url: null
+                      extra_data: null
+              schema:
+                $ref: '#/components/schemas/ListBinReceivedDocuments'
+          description: Example response
+      security:
+      - OAuth2AuthenticationCodeFlow: []
+      summary: Get Bin Received Documents List
+      tags:
+      - Received Documents
+  /c/{company_id}/bin/received_documents/{document_id}:
+    delete:
+      description: Delete Bin Received Document
+      operationId: DeleteBinReceivedDocument
+      parameters:
+      - description: The ID of the company.
+        explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          example: 12345
+          type: integer
+        style: simple
+      - description: The ID of the document.
+        explode: false
+        in: path
+        name: document_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: OK
+      summary: Delete Bin Received Document
+      tags:
+      - Received Documents
+    get:
+      description: Get bin issued documents detail
+      operationId: GetBinReceivedDocument
+      parameters:
+      - description: The ID of the company.
+        explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          example: 12345
+          type: integer
+        style: simple
+      - description: The ID of the document.
+        explode: false
+        in: path
+        name: document_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                example-1:
+                  value:
+                    data:
+                      id: 12345
+                      type: receipt
+                      year: 2021
+                      numeration: rec123
+                      subject: ""
+                      visible_subject: ""
+                      rc_center: ""
+                      ei_cassa_type: null
+                      ei_withholding_tax_causal: null
+                      ei_other_withholding_tax_type: null
+                      ei_other_withholding_tax_causal: null
+                      stamp_duty: 0
+                      use_gross_prices: false
+                      e_invoice: false
+                      agyo_company_id: null
+                      agyo_id: null
+                      agyo_sent_at: null
+                      delivery_note: false
+                      accompanying_invoice: false
+                      amount_net: 68.18
+                      amount_vat: 6.82
+                      amount_gross: 75
+                      amount_due_discount: 0
+                      amount_rivalsa: 0
+                      amount_cassa: 0
+                      amount_withholding_tax: 0
+                      amount_other_withholding_tax: 0
+                      h_margins: 15
+                      v_margins: 16
+                      show_payment_method: false
+                      show_payments: true
+                      show_totals: all
+                      show_notification_button: false
+                      is_marked: false
+                      created_at: 2021-08-13 09:30:20
+                      updated_at: 2021-08-23 05:34:20
+                      entity:
+                        id: 54321
+                        name: Mary Red S.r.L.
+                        vat_number: IT05432181211
+                        tax_code: IT05432181211
+                        address_street: "Via Italia, 66"
+                        address_postal_code: "20900"
+                        address_city: Milano
+                        address_province: MI
+                        address_extra: ""
+                        country: Italia
+                        certified_email: mary@pec.red.com
+                        ei_code: ABCXCR1
+                      date: 2021-08-20
+                      number: 1
+                      currency:
+                        id: EUR
+                        exchange_rate: "1.00000"
+                        symbol: €
+                      language:
+                        code: it
+                        name: Italiano
+                      notes: ""
+                      rivalsa: 0
+                      cassa: 0
+                      withholding_tax: 0
+                      withholding_tax_taxable: 100
+                      other_withholding_tax: 0
+                      payment_method:
+                        id: 4
+                        name: Credit card
+                      use_split_payment: false
+                      merged_in: null
+                      original_document: null
+                      items_list:
+                      - product_id: 5432
+                        code: SG3
+                        name: Soggiorno
+                        measure: ""
+                        net_price: 68.18182
+                        category: ""
+                        id: 277876033
+                        gross_price: 75
+                        apply_withholding_taxes: true
+                        discount: 0
+                        discount_highlight: false
+                        in_dn: false
+                        qty: 1
+                        vat:
+                          id: 3
+                          value: 10
+                          description: ""
+                        stock: false
+                        description: ""
+                        not_taxable: false
+                      payments_list:
+                      - amount: 75
+                        due_date: 2020-08-23
+                        paid_date: null
+                        id: 69078013
+                        payment_terms:
+                          days: 0
+                          type: standard
+                        status: not_paid
+                      attachment_url: kdijrnf893hnwkfk45f50f.pdf
+                      seen_date: null
+                      next_due_date: 2020-08-23
+                      template:
+                        id: 2821
+                        name: Light Smoke
+                      extra_data: null
+                      url: y12h45rn9yf2mse0p43t7ec90vr.pdf
+                      locked: false
+                      has_ts_pay_pending_payment: false
+                      show_tspay_button: false
+              schema:
+                $ref: '#/components/schemas/GetBinIssuedDocumentResponse'
+          description: Bin issued document details
+      security:
+      - OAuth2AuthenticationCodeFlow: []
+      summary: Get Bin Received Documents List
+      tags:
+      - Received Documents
+  /c/{company_id}/bin/received_documents/{document_id}/recover:
+    post:
+      description: Recover Received Document From The Bin
+      operationId: RecoverBinReceivedDocument
+      parameters:
+      - description: The ID of the company.
+        explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          example: 12345
+          type: integer
+        style: simple
+      - description: The ID of the document.
+        explode: false
+        in: path
+        name: document_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: OK
+      summary: Recover Received Document From The Bin
+      tags:
+      - Received Documents
+  /c/{company_id}/price_lists:
+    get:
+      description: Retrieves all price lists of the company
+      operationId: getPriceLists
+      parameters:
+      - description: The ID of the company.
+        explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          example: 12345
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                example-1:
+                  value:
+                    data:
+                    - id: "10"
+                      name: listino
+                      prices_type: net
+                      is_default: true
+                      valid_from: 2025-01-01
+                      valid_to: 2025-12-01
+                      type: sell
+                    - id: "11"
+                      name: listino-test
+                      prices_type: gross
+                      is_default: true
+                      valid_from: 2025-01-01
+                      valid_to: 2025-01-01
+                      type: purchase
+              schema:
+                $ref: '#/components/schemas/ListPriceListsResponse'
+          description: Example response
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not Found
+      security:
+      - OAuth2AuthenticationCodeFlow: []
+      summary: Get PriceLists
+      tags:
+      - PriceLists
+  /c/{company_id}/price_lists/{price_list_id}/items:
+    get:
+      description: Retrieves all the Items of a PriceList
+      operationId: getPriceListItems
+      parameters:
+      - description: The ID of the company.
+        explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          example: 12345
+          type: integer
+        style: simple
+      - description: The ID of the price
+        explode: false
+        in: path
+        name: price_list_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                example-1:
+                  value:
+                    data:
+                      "1":
+                        price: 3.5
+                      "2":
+                        price: 5
+              schema:
+                $ref: '#/components/schemas/GetPriceListItemsResponse'
+          description: Example response
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not Found
+      security:
+      - OAuth2AuthenticationCodeFlow: []
+      summary: Get PriceList Items List
+      tags:
+      - PriceLists
 components:
   parameters:
     company_id:
@@ -11144,6 +12047,7 @@ components:
                     value: 45
                     description: ""
                     is_disabled: false
+                  price_list_id: "10"
           schema:
             $ref: '#/components/schemas/GetClientResponse'
       description: Client Details.
@@ -11186,6 +12090,7 @@ components:
                     value: 45
                     description: ""
                     is_disabled: false
+                  price_list_id: "10"
           schema:
             $ref: '#/components/schemas/ModifyClientResponse'
       description: Client modified.
@@ -11713,6 +12618,7 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
+                  price_list_id: "10"
           schema:
             $ref: '#/components/schemas/GetIssuedDocumentResponse'
       description: Document Details.
@@ -13598,6 +14504,15 @@ components:
                     RT05: Contributo ENPAM
                     RT06: Altro contributo previdenziale
                   use_e_invoice: true
+                  price_lists:
+                  - id: "10"
+                    name: Listino 1
+                    prices_type: net
+                    is_default: true
+                    is_archived: false
+                    valid_from: 2021-08-01
+                    valid_to: 2025-09-10
+                    type: sell
           schema:
             $ref: '#/components/schemas/GetIssuedDocumentPreCreateInfoResponse'
       description: Pre-create info.
@@ -16312,6 +17227,433 @@ components:
           schema:
             $ref: '#/components/schemas/GetTaxProfileResponse'
       description: Example response
+    ListBinIssuedDocumentsResponse:
+      content:
+        application/json:
+          examples:
+            example-1:
+              value:
+                data:
+                - id: 12345
+                  type: receipt
+                  numeration: rec123
+                  subject: ""
+                  visible_subject: ""
+                  amount_net: 68.18
+                  amount_vat: 6.82
+                  amount_gross: 75
+                  amount_due_discount: 0
+                  entity:
+                    id: 54321
+                    name: Mary Red S.r.L.
+                    vat_number: IT05432181211
+                    tax_code: IT05432181211
+                    address_street: "Via Italia, 66"
+                    address_postal_code: "20900"
+                    address_city: Milano
+                    address_province: MI
+                    address_extra: ""
+                    country: Italia
+                    certified_email: mary@pec.red.com
+                    ei_code: ABCXCR1
+                  date: 2021-08-20
+                  number: 1
+                  next_due_date: 2021-12-31
+                  url: ypbqqe4u8w8bdabcd5fd5b1a4gtqhlof.pdf
+                  items_list: null
+                  payments_list: null
+                - id: 12346
+                  type: receipt
+                  numeration: rec124
+                  subject: ""
+                  visible_subject: ""
+                  amount_net: 168.18
+                  amount_vat: 16.82
+                  amount_gross: 175
+                  amount_due_discount: 0
+                  entity:
+                    id: 54321
+                    name: Mary Red S.r.L.
+                    vat_number: IT05432181211
+                    tax_code: IT05432181211
+                    address_street: "Via Italia, 66"
+                    address_postal_code: "20900"
+                    address_city: Milano
+                    address_province: MI
+                    address_extra: ""
+                    country: Italia
+                    certified_email: mary@pec.red.com
+                    ei_code: ABCXCR1
+                  date: 2021-08-28
+                  number: 1
+                  next_due_date: 2021-12-31
+                  url: qwertye4u8w8bdaqrt5fd5b1a4gtqhlof.pdf
+                  items_list: null
+                  payments_list: null
+          schema:
+            $ref: '#/components/schemas/ListBinIssuedDocuments'
+      description: Bin Issued Documents List
+    GetBinIssuedDocumentResponse:
+      content:
+        application/json:
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 12345
+                  type: receipt
+                  year: 2021
+                  numeration: rec123
+                  subject: ""
+                  visible_subject: ""
+                  rc_center: ""
+                  ei_cassa_type: null
+                  ei_withholding_tax_causal: null
+                  ei_other_withholding_tax_type: null
+                  ei_other_withholding_tax_causal: null
+                  stamp_duty: 0
+                  use_gross_prices: false
+                  e_invoice: false
+                  agyo_company_id: null
+                  agyo_id: null
+                  agyo_sent_at: null
+                  delivery_note: false
+                  accompanying_invoice: false
+                  amount_net: 68.18
+                  amount_vat: 6.82
+                  amount_gross: 75
+                  amount_due_discount: 0
+                  amount_rivalsa: 0
+                  amount_cassa: 0
+                  amount_withholding_tax: 0
+                  amount_other_withholding_tax: 0
+                  h_margins: 15
+                  v_margins: 16
+                  show_payment_method: false
+                  show_payments: true
+                  show_totals: all
+                  show_notification_button: false
+                  is_marked: false
+                  created_at: 2021-08-13 09:30:20
+                  updated_at: 2021-08-23 05:34:20
+                  entity:
+                    id: 54321
+                    name: Mary Red S.r.L.
+                    vat_number: IT05432181211
+                    tax_code: IT05432181211
+                    address_street: "Via Italia, 66"
+                    address_postal_code: "20900"
+                    address_city: Milano
+                    address_province: MI
+                    address_extra: ""
+                    country: Italia
+                    certified_email: mary@pec.red.com
+                    ei_code: ABCXCR1
+                  date: 2021-08-20
+                  number: 1
+                  currency:
+                    id: EUR
+                    exchange_rate: "1.00000"
+                    symbol: €
+                  language:
+                    code: it
+                    name: Italiano
+                  notes: ""
+                  rivalsa: 0
+                  cassa: 0
+                  withholding_tax: 0
+                  withholding_tax_taxable: 100
+                  other_withholding_tax: 0
+                  payment_method:
+                    id: 4
+                    name: Credit card
+                  use_split_payment: false
+                  merged_in: null
+                  original_document: null
+                  items_list:
+                  - product_id: 5432
+                    code: SG3
+                    name: Soggiorno
+                    measure: ""
+                    net_price: 68.18182
+                    category: ""
+                    id: 277876033
+                    gross_price: 75
+                    apply_withholding_taxes: true
+                    discount: 0
+                    discount_highlight: false
+                    in_dn: false
+                    qty: 1
+                    vat:
+                      id: 3
+                      value: 10
+                      description: ""
+                    stock: false
+                    description: ""
+                    not_taxable: false
+                  payments_list:
+                  - amount: 75
+                    due_date: 2020-08-23
+                    paid_date: null
+                    id: 69078013
+                    payment_terms:
+                      days: 0
+                      type: standard
+                    status: not_paid
+                  attachment_url: kdijrnf893hnwkfk45f50f.pdf
+                  seen_date: null
+                  next_due_date: 2020-08-23
+                  template:
+                    id: 2821
+                    name: Light Smoke
+                  extra_data: null
+                  url: y12h45rn9yf2mse0p43t7ec90vr.pdf
+                  locked: false
+                  has_ts_pay_pending_payment: false
+                  show_tspay_button: false
+          schema:
+            $ref: '#/components/schemas/GetBinIssuedDocumentResponse'
+      description: Bin issued document details
+    ListBinReceivedDocumentsResponse:
+      content:
+        application/json:
+          examples:
+            example-1:
+              value:
+                data:
+                - id: 12345
+                  type: expense
+                  description: Soggiorno di lavoro
+                  amortization: 1
+                  rc_center: ""
+                  invoice_number: ""
+                  is_marked: false
+                  is_detailed: false
+                  e_invoice: false
+                  created_at: 2021-08-15 14:02:02
+                  updated_at: 2021-08-15 14:02:02
+                  entity:
+                    id: 111
+                    name: Hotel Rubino Palace
+                  date: 2021-08-15
+                  next_due_date: 2021-08-15
+                  currency:
+                    id: EUR
+                    exchange_rate: "1.00000"
+                    symbol: €
+                  amount_net: 592
+                  amount_vat: 0
+                  amount_gross: 592
+                  amount_withholding_tax: 0
+                  amount_other_withholding_tax: 0
+                  tax_deductibility: 50
+                  vat_deductibility: 100
+                  items_list: null
+                  payments_list:
+                  - amount: 592
+                    due_date: 2021-08-15
+                    paid_date: 2021-08-15
+                    id: 777
+                    payment_terms:
+                      days: 0
+                      type: standard
+                    status: paid
+                    payment_account:
+                      id: 222
+                      name: Contanti
+                      virtual: false
+                  attachment_url: spesa_ger5i783t45hu6ti.pdf
+                  attachment_preview_url: null
+                  extra_data: null
+                - id: 12346
+                  type: expense
+                  description: Assicurazione RCA
+                  iamortization: 1
+                  rc_center: ""
+                  invoice_number: ""
+                  is_marked: false
+                  is_detailed: false
+                  e_invoice: false
+                  created_at: 2021-08-09 14:02:02
+                  updated_at: 2021-08-09 14:02:02
+                  entity:
+                    id: 89
+                    name: Indesa Assicurazioni S.P.A.
+                  date: 2021-08-08
+                  next_due_date: 2021-08-08
+                  currency:
+                    id: EUR
+                    exchange_rate: "1.00000"
+                    symbol: €
+                  amount_net: 645.69
+                  amount_vat: 0
+                  amount_gross: 645.69
+                  amount_withholding_tax: 0
+                  amount_other_withholding_tax: 0
+                  tax_deductibility: 50
+                  vat_deductibility: 100
+                  items_list: null
+                  payments_list:
+                  - amount: 645.69
+                    due_date: 2021-08-08
+                    paid_date: 2021-08-08
+                    id: 999
+                    payment_terms:
+                      days: 0
+                      type: standard
+                    status: paid
+                    payment_account:
+                      id: 333
+                      name: Carta conto
+                      virtual: false
+                  attachment_url: spesa_gjsd567e5hu6ti.pdf
+                  attachment_preview_url: null
+                  extra_data: null
+          schema:
+            $ref: '#/components/schemas/ListBinReceivedDocuments'
+      description: Example response
+    GetBinReceivedDocumentResponse:
+      content:
+        application/json:
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 12345
+                  type: expense
+                  description: Soggiorno di lavoro
+                  amortization: 1
+                  rc_center: ""
+                  invoice_number: ""
+                  is_marked: false
+                  is_detailed: false
+                  e_invoice: false
+                  created_at: 2021-08-15 14:02:02
+                  updated_at: 2021-08-15 14:02:02
+                  entity:
+                    id: 111
+                    name: Hotel Rubino Palace
+                  date: 2021-08-15
+                  next_due_date: 2021-08-15
+                  currency:
+                    id: EUR
+                    exchange_rate: "1.00000"
+                    symbol: €
+                  amount_net: 592
+                  amount_vat: 0
+                  amount_gross: 592
+                  amount_withholding_tax: 0
+                  amount_other_withholding_tax: 0
+                  tax_deductibility: 50
+                  vat_deductibility: 100
+                  items_list: null
+                  payments_list:
+                  - amount: 592
+                    due_date: 2021-08-15
+                    paid_date: 2021-08-15
+                    id: 777
+                    payment_terms:
+                      days: 0
+                      type: standard
+                    status: paid
+                    payment_account:
+                      id: 222
+                      name: Contanti
+                      virtual: false
+                  attachment_url: spesa_ger5i783t45hu6ti.pdf
+                  attachment_preview_url: null
+                  extra_data: null
+          schema:
+            $ref: '#/components/schemas/GetBinReceivedDocumentResponse'
+      description: Bin received document details
+    GetEntityClientsInfoResponse:
+      content:
+        application/json:
+          examples:
+            example-1:
+              value:
+                data:
+                  countries_list:
+                  - Italy
+                  payment_methods_list:
+                  - id: 555
+                    name: Rimessa diretta
+                    is_default: false
+                    details: []
+                    bank_iban: null
+                    bank_name: null
+                    bank_beneficiary: null
+                    ei_payment_method: null
+                  payment_accounts_list:
+                  - id: 0
+                    name: Conto Banca Intesa
+                    type: standard
+                    iban: string
+                    sia: string
+                    cuc: string
+                    virtual: true
+                  vat_types_list:
+                  - id: 0
+                    value: 22
+                    description: Non imponibile art. 123
+                    notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+                    e_invoice: true
+                    ei_type: 2
+                    ei_description: string
+                    editable: true
+                    is_disabled: true
+                    default: true
+                  price_lists:
+                  - id: string
+                    name: "123"
+                    prices_type: net
+                    is_default: true
+                    valid_from: string
+                    valid_to: string
+                    type: sell
+                  limit: 0
+                  usage: 0
+          schema:
+            $ref: '#/components/schemas/GetEntityClientPreCreateInfoResponse'
+      description: Example response
+    ListPriceList:
+      content:
+        application/json:
+          examples:
+            example-1:
+              value:
+                data:
+                - id: "10"
+                  name: listino
+                  prices_type: net
+                  is_default: true
+                  valid_from: 2025-01-01
+                  valid_to: 2025-12-01
+                  type: sell
+                - id: "11"
+                  name: listino-test
+                  prices_type: gross
+                  is_default: true
+                  valid_from: 2025-01-01
+                  valid_to: 2025-01-01
+                  type: purchase
+          schema:
+            $ref: '#/components/schemas/ListPriceListsResponse'
+      description: Example response
+    GetPriceListItems:
+      content:
+        application/json:
+          examples:
+            example-1:
+              value:
+                data:
+                  "1":
+                    price: 3.5
+                  "2":
+                    price: 5
+          schema:
+            $ref: '#/components/schemas/GetPriceListItemsResponse'
+      description: Example response
   schemas:
     GetUserInfoResponse:
       description: ""
@@ -16572,6 +17914,7 @@ components:
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
           last_name: last_name
+          price_list_id: price_list_id
           address_city: Bergamo
           tax_code: RSSMRA44A12E890Q
           intent_declaration_protocol_number: intent_declaration_protocol_number
@@ -16647,6 +17990,7 @@ components:
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
           last_name: last_name
+          price_list_id: price_list_id
           address_city: Bergamo
           tax_code: RSSMRA44A12E890Q
           intent_declaration_protocol_number: intent_declaration_protocol_number
@@ -16733,6 +18077,7 @@ components:
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
           last_name: last_name
+          price_list_id: price_list_id
           address_city: Bergamo
           tax_code: RSSMRA44A12E890Q
           intent_declaration_protocol_number: intent_declaration_protocol_number
@@ -16816,6 +18161,7 @@ components:
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
           last_name: last_name
+          price_list_id: price_list_id
           address_city: Bergamo
           tax_code: RSSMRA44A12E890Q
           intent_declaration_protocol_number: intent_declaration_protocol_number
@@ -16899,6 +18245,7 @@ components:
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
           last_name: last_name
+          price_list_id: price_list_id
           address_city: Bergamo
           tax_code: RSSMRA44A12E890Q
           intent_declaration_protocol_number: intent_declaration_protocol_number
@@ -16983,6 +18330,7 @@ components:
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
           last_name: last_name
+          price_list_id: price_list_id
           address_city: Bergamo
           tax_code: RSSMRA44A12E890Q
           intent_declaration_protocol_number: intent_declaration_protocol_number
@@ -17066,6 +18414,7 @@ components:
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
           last_name: last_name
+          price_list_id: price_list_id
           address_city: Bergamo
           tax_code: RSSMRA44A12E890Q
           intent_declaration_protocol_number: intent_declaration_protocol_number
@@ -17081,6 +18430,125 @@ components:
         data:
           $ref: '#/components/schemas/Client'
       title: ModifyClientResponse
+      type: object
+    GetEntityClientPreCreateInfoResponse:
+      example:
+        data:
+          payment_methods_list:
+          - default_payment_account:
+              cuc: cuc
+              virtual: true
+              iban: iban
+              name: Conto Banca Intesa
+              sia: sia
+              id: 2
+              type: standard
+            name: name
+            bank_name: bank_name
+            details:
+            - description: description
+              title: title
+            - description: description
+              title: title
+            - description: description
+              title: title
+            - description: description
+              title: title
+            - description: description
+              title: title
+            bank_beneficiary: bank_beneficiary
+            id: 3
+            type: standard
+            is_default: true
+            ei_payment_method: ei_payment_method
+            bank_iban: bank_iban
+          - default_payment_account:
+              cuc: cuc
+              virtual: true
+              iban: iban
+              name: Conto Banca Intesa
+              sia: sia
+              id: 2
+              type: standard
+            name: name
+            bank_name: bank_name
+            details:
+            - description: description
+              title: title
+            - description: description
+              title: title
+            - description: description
+              title: title
+            - description: description
+              title: title
+            - description: description
+              title: title
+            bank_beneficiary: bank_beneficiary
+            id: 3
+            type: standard
+            is_default: true
+            ei_payment_method: ei_payment_method
+            bank_iban: bank_iban
+          price_lists:
+          - prices_type: net
+            valid_to: valid_to
+            name: "123"
+            valid_from: valid_from
+            id: id
+            is_default: true
+            type: sell
+          - prices_type: net
+            valid_to: valid_to
+            name: "123"
+            valid_from: valid_from
+            id: id
+            is_default: true
+            type: sell
+          usage: 6.027456183070403
+          payment_accounts_list:
+          - cuc: cuc
+            virtual: true
+            iban: iban
+            name: Conto Banca Intesa
+            sia: sia
+            id: 2
+            type: standard
+          - cuc: cuc
+            virtual: true
+            iban: iban
+            name: Conto Banca Intesa
+            sia: sia
+            id: 2
+            type: standard
+          limit: 0.8008281904610115
+          vat_types_list:
+          - ei_description: ei_description
+            default: true
+            notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+            e_invoice: true
+            ei_type: "2"
+            editable: true
+            is_disabled: true
+            description: Non imponibile art. 123
+            id: 9
+            value: 22
+          - ei_description: ei_description
+            default: true
+            notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+            e_invoice: true
+            ei_type: "2"
+            editable: true
+            is_disabled: true
+            description: Non imponibile art. 123
+            id: 9
+            value: 22
+          countries_list:
+          - countries_list
+          - countries_list
+      properties:
+        data:
+          $ref: '#/components/schemas/EntityClientPreCreateInfo'
+      title: GetEntityClientPreCreateInfoResponse
       type: object
     ListSuppliersResponse:
       allOf:
@@ -17794,6 +19262,7 @@ components:
           show_notification_button: true
           dn_url: dn_url
           show_payment_method: true
+          price_list_id: price_list_id
           delivery_note: true
           url: url
           attachment_url: attachment_url
@@ -18107,6 +19576,7 @@ components:
           show_notification_button: true
           dn_url: dn_url
           show_payment_method: true
+          price_list_id: price_list_id
           delivery_note: true
           url: url
           attachment_url: attachment_url
@@ -18431,6 +19901,7 @@ components:
           show_notification_button: true
           dn_url: dn_url
           show_payment_method: true
+          price_list_id: price_list_id
           delivery_note: true
           url: url
           attachment_url: attachment_url
@@ -18762,6 +20233,7 @@ components:
           show_notification_button: true
           dn_url: dn_url
           show_payment_method: true
+          price_list_id: price_list_id
           delivery_note: true
           url: url
           attachment_url: attachment_url
@@ -19083,6 +20555,7 @@ components:
           show_notification_button: true
           dn_url: dn_url
           show_payment_method: true
+          price_list_id: price_list_id
           delivery_note: true
           url: url
           attachment_url: attachment_url
@@ -19405,6 +20878,7 @@ components:
           show_notification_button: true
           dn_url: dn_url
           show_payment_method: true
+          price_list_id: price_list_id
           delivery_note: true
           url: url
           attachment_url: attachment_url
@@ -19736,6 +21210,7 @@ components:
           show_notification_button: true
           dn_url: dn_url
           show_payment_method: true
+          price_list_id: price_list_id
           delivery_note: true
           url: url
           attachment_url: attachment_url
@@ -20057,6 +21532,7 @@ components:
           show_notification_button: true
           dn_url: dn_url
           show_payment_method: true
+          price_list_id: price_list_id
           delivery_note: true
           url: url
           attachment_url: attachment_url
@@ -20407,6 +21883,7 @@ components:
           show_notification_button: true
           dn_url: dn_url
           show_payment_method: true
+          price_list_id: price_list_id
           delivery_note: true
           url: url
           attachment_url: attachment_url
@@ -20624,6 +22101,21 @@ components:
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
+          price_lists:
+          - prices_type: net
+            valid_to: valid_to
+            name: "123"
+            valid_from: valid_from
+            id: id
+            is_default: true
+            type: sell
+          - prices_type: net
+            valid_to: valid_to
+            name: "123"
+            valid_from: valid_from
+            id: id
+            is_default: true
+            type: sell
           items_default_values:
             vat:
               ei_description: ei_description
@@ -24672,6 +26164,7 @@ components:
           show_notification_button: true
           dn_url: dn_url
           show_payment_method: true
+          price_list_id: price_list_id
           delivery_note: true
           url: url
           attachment_url: attachment_url
@@ -25003,6 +26496,7 @@ components:
           show_notification_button: true
           dn_url: dn_url
           show_payment_method: true
+          price_list_id: price_list_id
           delivery_note: true
           url: url
           attachment_url: attachment_url
@@ -25181,6 +26675,7 @@ components:
           - it.fattureincloud.webhooks.issued_documents.invoices.create
           - it.fattureincloud.webhooks.issued_documents.invoices.create
           sink: sink
+          verification_method: header
           verified: true
           id: id
           config:
@@ -25189,6 +26684,7 @@ components:
           - it.fattureincloud.webhooks.issued_documents.invoices.create
           - it.fattureincloud.webhooks.issued_documents.invoices.create
           sink: sink
+          verification_method: header
           verified: true
           id: id
           config:
@@ -25207,6 +26703,7 @@ components:
           - it.fattureincloud.webhooks.issued_documents.invoices.create
           - it.fattureincloud.webhooks.issued_documents.invoices.create
           sink: sink
+          verification_method: header
           verified: true
           id: id
           config:
@@ -25223,6 +26720,7 @@ components:
           - it.fattureincloud.webhooks.issued_documents.invoices.create
           - it.fattureincloud.webhooks.issued_documents.invoices.create
           sink: sink
+          verification_method: header
           verified: true
           id: id
           config:
@@ -25248,6 +26746,7 @@ components:
           - it.fattureincloud.webhooks.issued_documents.invoices.create
           - it.fattureincloud.webhooks.issued_documents.invoices.create
           sink: sink
+          verification_method: header
           verified: true
           id: id
           config:
@@ -25264,6 +26763,7 @@ components:
           - it.fattureincloud.webhooks.issued_documents.invoices.create
           - it.fattureincloud.webhooks.issued_documents.invoices.create
           sink: sink
+          verification_method: header
           verified: true
           id: id
           config:
@@ -25280,6 +26780,7 @@ components:
           - it.fattureincloud.webhooks.issued_documents.invoices.create
           - it.fattureincloud.webhooks.issued_documents.invoices.create
           sink: sink
+          verification_method: header
           verified: true
           id: id
           config:
@@ -25297,6 +26798,1387 @@ components:
           nullable: true
           type: array
       title: CreateWebhooksSubscriptionRequest
+      type: object
+    VerifyWebhooksSubscriptionRequest:
+      example:
+        data:
+          verification_method: header
+          id: id
+      properties:
+        data:
+          $ref: '#/components/schemas/VerifyWebhooksSubscription'
+      title: VerifyWebhooksSubscriptionRequest
+      type: object
+    ListBinIssuedDocuments:
+      example:
+        data:
+        - date: 2000-01-23
+          numeration: /A
+          notes: notes
+          year: 3
+          subject: subject
+          rivalsa: 2.027123023002322
+          dn_ai_causal: dn_ai_causal
+          language:
+            code: code
+            name: name
+          type: invoice
+          show_payments: true
+          ei_data:
+            original_document_type: ordine
+            cig: cig
+            bank_name: bank_name
+            od_number: od_number
+            od_date: 2000-01-23
+            bank_beneficiary: bank_beneficiary
+            vat_kind: null
+            bank_iban: bank_iban
+            invoice_number: invoice_number
+            payment_method: payment_method
+            cup: cup
+            invoice_date: 2000-01-23
+          dn_ai_weight: dn_ai_weight
+          number: 1
+          rc_center: rc_center
+          items_list:
+          - code: "239874892374982"
+            ei_raw: "{}"
+            discount_highlight: true
+            vat:
+              ei_description: ei_description
+              default: true
+              notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+              e_invoice: true
+              ei_type: "2"
+              editable: true
+              is_disabled: true
+              description: Non imponibile art. 123
+              id: 9
+              value: 22
+            description: description
+            not_taxable: true
+            discount: 3.5571952270680973
+            net_price: 1.23
+            apply_withholding_taxes: true
+            measure: measure
+            product_id: 1234
+            qty: 6.438423552598547
+            name: Water bottle
+            gross_price: 1.45
+            id: 9
+            category: category
+            stock: true
+            in_dn: true
+          - code: "239874892374982"
+            ei_raw: "{}"
+            discount_highlight: true
+            vat:
+              ei_description: ei_description
+              default: true
+              notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+              e_invoice: true
+              ei_type: "2"
+              editable: true
+              is_disabled: true
+              description: Non imponibile art. 123
+              id: 9
+              value: 22
+            description: description
+            not_taxable: true
+            discount: 3.5571952270680973
+            net_price: 1.23
+            apply_withholding_taxes: true
+            measure: measure
+            product_id: 1234
+            qty: 6.438423552598547
+            name: Water bottle
+            gross_price: 1.45
+            id: 9
+            category: category
+            stock: true
+            in_dn: true
+          dn_ai_notes: dn_ai_notes
+          acc_inv_template:
+            name: Light Smoke
+            id: 123
+            type: type
+          id: 7
+          delivery_note_template:
+            name: Light Smoke
+            id: 123
+            type: type
+          locked: true
+          show_tspay_button: true
+          payment_method:
+            default_payment_account:
+              cuc: cuc
+              virtual: true
+              iban: iban
+              name: Conto Banca Intesa
+              sia: sia
+              id: 2
+              type: standard
+            name: name
+            bank_name: bank_name
+            details:
+            - description: description
+              title: title
+            - description: description
+              title: title
+            - description: description
+              title: title
+            - description: description
+              title: title
+            - description: description
+              title: title
+            bank_beneficiary: bank_beneficiary
+            id: 3
+            type: standard
+            is_default: true
+            ei_payment_method: ei_payment_method
+            bank_iban: bank_iban
+          attachment_token: attachment_token
+          amount_net: 5.944895607614016
+          dn_ai_destination: dn_ai_destination
+          ai_url: ai_url
+          amount_cassa: 7.386281948385884
+          cassa2_taxable: 7.457744773683766
+          v_margins: 6
+          amount_cassa2: 6.84685269835264
+          accompanying_invoice: true
+          amount_rivalsa_taxable: 0.8851374739011653
+          amount_rivalsa: 7.143538047012306
+          show_totals: all
+          stamp_duty: 8.762042012749001
+          use_gross_prices: true
+          global_cassa_taxable: 4.965218492984954
+          e_invoice: true
+          dn_ai_packages_number: dn_ai_packages_number
+          withholding_tax: 9.965781217890562
+          amount_withholding_tax_taxable: 6.519180951018382
+          other_withholding_tax: 6.683562403749608
+          ei_other_withholding_tax_type: ei_other_withholding_tax_type
+          template:
+            name: Light Smoke
+            id: 123
+            type: type
+          cassa: 4.145608029883936
+          ei_raw: "{}"
+          amount_global_cassa_taxable: 5.025004791520295
+          amount_due_discount: 3.0937452626664474
+          amount_enasarco_taxable: 8.969578798196912
+          created_at: created_at
+          visible_subject: visible_subject
+          use_split_payment: true
+          payments_list:
+          - amount: 1.45
+            payment_account:
+              cuc: cuc
+              virtual: true
+              iban: iban
+              name: Conto Banca Intesa
+              sia: sia
+              id: 2
+              type: standard
+            ei_raw: "{}"
+            due_date: 2018-04-03
+            id: 6
+            payment_terms:
+              days: 1
+              type: null
+            paid_date: 2018-04-03
+            status: not_paid
+          - amount: 1.45
+            payment_account:
+              cuc: cuc
+              virtual: true
+              iban: iban
+              name: Conto Banca Intesa
+              sia: sia
+              id: 2
+              type: standard
+            ei_raw: "{}"
+            due_date: 2018-04-03
+            id: 6
+            payment_terms:
+              days: 1
+              type: null
+            paid_date: 2018-04-03
+            status: not_paid
+          h_margins: 2
+          dn_date: 2000-01-23
+          ei_other_withholding_tax_causal: ei_other_withholding_tax_causal
+          next_due_date: 2000-01-23
+          cassa2: 1.4894159098541704
+          withholding_tax_taxable: 9.369310271410669
+          is_marked: true
+          updated_at: updated_at
+          amount_vat: 6.704019297950036
+          amount_other_withholding_tax_taxable: 4.652396432933246
+          currency:
+            symbol: €
+            exchange_rate: "1"
+            html_symbol: EUR
+            id: EUR
+          dn_number: 6
+          amount_other_withholding_tax: 0.10263654006109402
+          ei_cassa_type: ei_cassa_type
+          dn_ai_transporter: dn_ai_transporter
+          show_notification_button: true
+          dn_url: dn_url
+          show_payment_method: true
+          price_list_id: price_list_id
+          delivery_note: true
+          url: url
+          attachment_url: attachment_url
+          amount_withholding_tax: 7.058770351582356
+          extra_data:
+            ts_file_id: ts_file_id
+            ts_flag_tipo_spesa: 3.0205796992916243
+            ts_pagamento_tracciato: true
+            ts_status: 3
+            ts_opposizione: true
+            ts_communication: true
+            ts_full_amount: true
+            ts_tipo_spesa: ts_tipo_spesa
+            multifatture_sent: 7
+            imported_by: imported_by
+            ts_sent_date: 2000-01-23
+          ei_status: attempt
+          seen_date: 2000-01-23
+          ei_cassa2_type: ei_cassa2_type
+          ei_withholding_tax_causal: ei_withholding_tax_causal
+          cassa_taxable: 1.2315135367772556
+          amount_gross: 3.353193347011243
+          entity:
+            country: Italia
+            code: "123"
+            notes: notes
+            ei_code: ei_code
+            default_payment_terms_type: standard
+            vat_number: IT01234567890
+            created_at: created_at
+            type: company
+            address_extra: address_extra
+            bank_swift_code: bank_swift_code
+            default_vat:
+              ei_description: ei_description
+              default: true
+              notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+              e_invoice: true
+              ei_type: "2"
+              editable: true
+              is_disabled: true
+              description: Non imponibile art. 123
+              id: 9
+              value: 22
+            address_province: BG
+            updated_at: updated_at
+            bank_name: bank_name
+            id: 9
+            shipping_address: shipping_address
+            fax: fax
+            first_name: first_name
+            bank_iban: bank_iban
+            country_iso: Italia
+            email: mario.rossi@example.it
+            contact_person: contact_person
+            address_postal_code: "24010"
+            default_payment_method:
+              default_payment_account:
+                cuc: cuc
+                virtual: true
+                iban: iban
+                name: Conto Banca Intesa
+                sia: sia
+                id: 2
+                type: standard
+              name: name
+              bank_name: bank_name
+              details:
+              - description: description
+                title: title
+              - description: description
+                title: title
+              - description: description
+                title: title
+              - description: description
+                title: title
+              - description: description
+                title: title
+              bank_beneficiary: bank_beneficiary
+              id: 3
+              type: standard
+              is_default: true
+              ei_payment_method: ei_payment_method
+              bank_iban: bank_iban
+            last_name: last_name
+            address_city: Bergamo
+            tax_code: RSSMRA44A12E890Q
+            intent_declaration_protocol_number: intent_declaration_protocol_number
+            phone: phone
+            address_street: "Via dei tigli, 12"
+            e_invoice: true
+            name: Rossi S.r.l.
+            default_payment_terms: 30
+            certified_email: mario.rossi@pec.example.it
+            has_intent_declaration: true
+            intent_declaration_protocol_date: 2000-01-23
+          amount_cassa_taxable: 1.0246457001441578
+          amount_cassa2_taxable: 1.1730742509559433
+        - date: 2000-01-23
+          numeration: /A
+          notes: notes
+          year: 3
+          subject: subject
+          rivalsa: 2.027123023002322
+          dn_ai_causal: dn_ai_causal
+          language:
+            code: code
+            name: name
+          type: invoice
+          show_payments: true
+          ei_data:
+            original_document_type: ordine
+            cig: cig
+            bank_name: bank_name
+            od_number: od_number
+            od_date: 2000-01-23
+            bank_beneficiary: bank_beneficiary
+            vat_kind: null
+            bank_iban: bank_iban
+            invoice_number: invoice_number
+            payment_method: payment_method
+            cup: cup
+            invoice_date: 2000-01-23
+          dn_ai_weight: dn_ai_weight
+          number: 1
+          rc_center: rc_center
+          items_list:
+          - code: "239874892374982"
+            ei_raw: "{}"
+            discount_highlight: true
+            vat:
+              ei_description: ei_description
+              default: true
+              notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+              e_invoice: true
+              ei_type: "2"
+              editable: true
+              is_disabled: true
+              description: Non imponibile art. 123
+              id: 9
+              value: 22
+            description: description
+            not_taxable: true
+            discount: 3.5571952270680973
+            net_price: 1.23
+            apply_withholding_taxes: true
+            measure: measure
+            product_id: 1234
+            qty: 6.438423552598547
+            name: Water bottle
+            gross_price: 1.45
+            id: 9
+            category: category
+            stock: true
+            in_dn: true
+          - code: "239874892374982"
+            ei_raw: "{}"
+            discount_highlight: true
+            vat:
+              ei_description: ei_description
+              default: true
+              notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+              e_invoice: true
+              ei_type: "2"
+              editable: true
+              is_disabled: true
+              description: Non imponibile art. 123
+              id: 9
+              value: 22
+            description: description
+            not_taxable: true
+            discount: 3.5571952270680973
+            net_price: 1.23
+            apply_withholding_taxes: true
+            measure: measure
+            product_id: 1234
+            qty: 6.438423552598547
+            name: Water bottle
+            gross_price: 1.45
+            id: 9
+            category: category
+            stock: true
+            in_dn: true
+          dn_ai_notes: dn_ai_notes
+          acc_inv_template:
+            name: Light Smoke
+            id: 123
+            type: type
+          id: 7
+          delivery_note_template:
+            name: Light Smoke
+            id: 123
+            type: type
+          locked: true
+          show_tspay_button: true
+          payment_method:
+            default_payment_account:
+              cuc: cuc
+              virtual: true
+              iban: iban
+              name: Conto Banca Intesa
+              sia: sia
+              id: 2
+              type: standard
+            name: name
+            bank_name: bank_name
+            details:
+            - description: description
+              title: title
+            - description: description
+              title: title
+            - description: description
+              title: title
+            - description: description
+              title: title
+            - description: description
+              title: title
+            bank_beneficiary: bank_beneficiary
+            id: 3
+            type: standard
+            is_default: true
+            ei_payment_method: ei_payment_method
+            bank_iban: bank_iban
+          attachment_token: attachment_token
+          amount_net: 5.944895607614016
+          dn_ai_destination: dn_ai_destination
+          ai_url: ai_url
+          amount_cassa: 7.386281948385884
+          cassa2_taxable: 7.457744773683766
+          v_margins: 6
+          amount_cassa2: 6.84685269835264
+          accompanying_invoice: true
+          amount_rivalsa_taxable: 0.8851374739011653
+          amount_rivalsa: 7.143538047012306
+          show_totals: all
+          stamp_duty: 8.762042012749001
+          use_gross_prices: true
+          global_cassa_taxable: 4.965218492984954
+          e_invoice: true
+          dn_ai_packages_number: dn_ai_packages_number
+          withholding_tax: 9.965781217890562
+          amount_withholding_tax_taxable: 6.519180951018382
+          other_withholding_tax: 6.683562403749608
+          ei_other_withholding_tax_type: ei_other_withholding_tax_type
+          template:
+            name: Light Smoke
+            id: 123
+            type: type
+          cassa: 4.145608029883936
+          ei_raw: "{}"
+          amount_global_cassa_taxable: 5.025004791520295
+          amount_due_discount: 3.0937452626664474
+          amount_enasarco_taxable: 8.969578798196912
+          created_at: created_at
+          visible_subject: visible_subject
+          use_split_payment: true
+          payments_list:
+          - amount: 1.45
+            payment_account:
+              cuc: cuc
+              virtual: true
+              iban: iban
+              name: Conto Banca Intesa
+              sia: sia
+              id: 2
+              type: standard
+            ei_raw: "{}"
+            due_date: 2018-04-03
+            id: 6
+            payment_terms:
+              days: 1
+              type: null
+            paid_date: 2018-04-03
+            status: not_paid
+          - amount: 1.45
+            payment_account:
+              cuc: cuc
+              virtual: true
+              iban: iban
+              name: Conto Banca Intesa
+              sia: sia
+              id: 2
+              type: standard
+            ei_raw: "{}"
+            due_date: 2018-04-03
+            id: 6
+            payment_terms:
+              days: 1
+              type: null
+            paid_date: 2018-04-03
+            status: not_paid
+          h_margins: 2
+          dn_date: 2000-01-23
+          ei_other_withholding_tax_causal: ei_other_withholding_tax_causal
+          next_due_date: 2000-01-23
+          cassa2: 1.4894159098541704
+          withholding_tax_taxable: 9.369310271410669
+          is_marked: true
+          updated_at: updated_at
+          amount_vat: 6.704019297950036
+          amount_other_withholding_tax_taxable: 4.652396432933246
+          currency:
+            symbol: €
+            exchange_rate: "1"
+            html_symbol: EUR
+            id: EUR
+          dn_number: 6
+          amount_other_withholding_tax: 0.10263654006109402
+          ei_cassa_type: ei_cassa_type
+          dn_ai_transporter: dn_ai_transporter
+          show_notification_button: true
+          dn_url: dn_url
+          show_payment_method: true
+          price_list_id: price_list_id
+          delivery_note: true
+          url: url
+          attachment_url: attachment_url
+          amount_withholding_tax: 7.058770351582356
+          extra_data:
+            ts_file_id: ts_file_id
+            ts_flag_tipo_spesa: 3.0205796992916243
+            ts_pagamento_tracciato: true
+            ts_status: 3
+            ts_opposizione: true
+            ts_communication: true
+            ts_full_amount: true
+            ts_tipo_spesa: ts_tipo_spesa
+            multifatture_sent: 7
+            imported_by: imported_by
+            ts_sent_date: 2000-01-23
+          ei_status: attempt
+          seen_date: 2000-01-23
+          ei_cassa2_type: ei_cassa2_type
+          ei_withholding_tax_causal: ei_withholding_tax_causal
+          cassa_taxable: 1.2315135367772556
+          amount_gross: 3.353193347011243
+          entity:
+            country: Italia
+            code: "123"
+            notes: notes
+            ei_code: ei_code
+            default_payment_terms_type: standard
+            vat_number: IT01234567890
+            created_at: created_at
+            type: company
+            address_extra: address_extra
+            bank_swift_code: bank_swift_code
+            default_vat:
+              ei_description: ei_description
+              default: true
+              notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+              e_invoice: true
+              ei_type: "2"
+              editable: true
+              is_disabled: true
+              description: Non imponibile art. 123
+              id: 9
+              value: 22
+            address_province: BG
+            updated_at: updated_at
+            bank_name: bank_name
+            id: 9
+            shipping_address: shipping_address
+            fax: fax
+            first_name: first_name
+            bank_iban: bank_iban
+            country_iso: Italia
+            email: mario.rossi@example.it
+            contact_person: contact_person
+            address_postal_code: "24010"
+            default_payment_method:
+              default_payment_account:
+                cuc: cuc
+                virtual: true
+                iban: iban
+                name: Conto Banca Intesa
+                sia: sia
+                id: 2
+                type: standard
+              name: name
+              bank_name: bank_name
+              details:
+              - description: description
+                title: title
+              - description: description
+                title: title
+              - description: description
+                title: title
+              - description: description
+                title: title
+              - description: description
+                title: title
+              bank_beneficiary: bank_beneficiary
+              id: 3
+              type: standard
+              is_default: true
+              ei_payment_method: ei_payment_method
+              bank_iban: bank_iban
+            last_name: last_name
+            address_city: Bergamo
+            tax_code: RSSMRA44A12E890Q
+            intent_declaration_protocol_number: intent_declaration_protocol_number
+            phone: phone
+            address_street: "Via dei tigli, 12"
+            e_invoice: true
+            name: Rossi S.r.l.
+            default_payment_terms: 30
+            certified_email: mario.rossi@pec.example.it
+            has_intent_declaration: true
+            intent_declaration_protocol_date: 2000-01-23
+          amount_cassa_taxable: 1.0246457001441578
+          amount_cassa2_taxable: 1.1730742509559433
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/IssuedDocument'
+          type: array
+      title: ListBinIssuedDocuments
+      type: object
+    GetBinIssuedDocumentResponse:
+      example:
+        data:
+          date: 2000-01-23
+          numeration: /A
+          notes: notes
+          year: 3
+          subject: subject
+          rivalsa: 2.027123023002322
+          dn_ai_causal: dn_ai_causal
+          language:
+            code: code
+            name: name
+          type: invoice
+          show_payments: true
+          ei_data:
+            original_document_type: ordine
+            cig: cig
+            bank_name: bank_name
+            od_number: od_number
+            od_date: 2000-01-23
+            bank_beneficiary: bank_beneficiary
+            vat_kind: null
+            bank_iban: bank_iban
+            invoice_number: invoice_number
+            payment_method: payment_method
+            cup: cup
+            invoice_date: 2000-01-23
+          dn_ai_weight: dn_ai_weight
+          number: 1
+          rc_center: rc_center
+          items_list:
+          - code: "239874892374982"
+            ei_raw: "{}"
+            discount_highlight: true
+            vat:
+              ei_description: ei_description
+              default: true
+              notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+              e_invoice: true
+              ei_type: "2"
+              editable: true
+              is_disabled: true
+              description: Non imponibile art. 123
+              id: 9
+              value: 22
+            description: description
+            not_taxable: true
+            discount: 3.5571952270680973
+            net_price: 1.23
+            apply_withholding_taxes: true
+            measure: measure
+            product_id: 1234
+            qty: 6.438423552598547
+            name: Water bottle
+            gross_price: 1.45
+            id: 9
+            category: category
+            stock: true
+            in_dn: true
+          - code: "239874892374982"
+            ei_raw: "{}"
+            discount_highlight: true
+            vat:
+              ei_description: ei_description
+              default: true
+              notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+              e_invoice: true
+              ei_type: "2"
+              editable: true
+              is_disabled: true
+              description: Non imponibile art. 123
+              id: 9
+              value: 22
+            description: description
+            not_taxable: true
+            discount: 3.5571952270680973
+            net_price: 1.23
+            apply_withholding_taxes: true
+            measure: measure
+            product_id: 1234
+            qty: 6.438423552598547
+            name: Water bottle
+            gross_price: 1.45
+            id: 9
+            category: category
+            stock: true
+            in_dn: true
+          dn_ai_notes: dn_ai_notes
+          acc_inv_template:
+            name: Light Smoke
+            id: 123
+            type: type
+          id: 7
+          delivery_note_template:
+            name: Light Smoke
+            id: 123
+            type: type
+          locked: true
+          show_tspay_button: true
+          payment_method:
+            default_payment_account:
+              cuc: cuc
+              virtual: true
+              iban: iban
+              name: Conto Banca Intesa
+              sia: sia
+              id: 2
+              type: standard
+            name: name
+            bank_name: bank_name
+            details:
+            - description: description
+              title: title
+            - description: description
+              title: title
+            - description: description
+              title: title
+            - description: description
+              title: title
+            - description: description
+              title: title
+            bank_beneficiary: bank_beneficiary
+            id: 3
+            type: standard
+            is_default: true
+            ei_payment_method: ei_payment_method
+            bank_iban: bank_iban
+          attachment_token: attachment_token
+          amount_net: 5.944895607614016
+          dn_ai_destination: dn_ai_destination
+          ai_url: ai_url
+          amount_cassa: 7.386281948385884
+          cassa2_taxable: 7.457744773683766
+          v_margins: 6
+          amount_cassa2: 6.84685269835264
+          accompanying_invoice: true
+          amount_rivalsa_taxable: 0.8851374739011653
+          amount_rivalsa: 7.143538047012306
+          show_totals: all
+          stamp_duty: 8.762042012749001
+          use_gross_prices: true
+          global_cassa_taxable: 4.965218492984954
+          e_invoice: true
+          dn_ai_packages_number: dn_ai_packages_number
+          withholding_tax: 9.965781217890562
+          amount_withholding_tax_taxable: 6.519180951018382
+          other_withholding_tax: 6.683562403749608
+          ei_other_withholding_tax_type: ei_other_withholding_tax_type
+          template:
+            name: Light Smoke
+            id: 123
+            type: type
+          cassa: 4.145608029883936
+          ei_raw: "{}"
+          amount_global_cassa_taxable: 5.025004791520295
+          amount_due_discount: 3.0937452626664474
+          amount_enasarco_taxable: 8.969578798196912
+          created_at: created_at
+          visible_subject: visible_subject
+          use_split_payment: true
+          payments_list:
+          - amount: 1.45
+            payment_account:
+              cuc: cuc
+              virtual: true
+              iban: iban
+              name: Conto Banca Intesa
+              sia: sia
+              id: 2
+              type: standard
+            ei_raw: "{}"
+            due_date: 2018-04-03
+            id: 6
+            payment_terms:
+              days: 1
+              type: null
+            paid_date: 2018-04-03
+            status: not_paid
+          - amount: 1.45
+            payment_account:
+              cuc: cuc
+              virtual: true
+              iban: iban
+              name: Conto Banca Intesa
+              sia: sia
+              id: 2
+              type: standard
+            ei_raw: "{}"
+            due_date: 2018-04-03
+            id: 6
+            payment_terms:
+              days: 1
+              type: null
+            paid_date: 2018-04-03
+            status: not_paid
+          h_margins: 2
+          dn_date: 2000-01-23
+          ei_other_withholding_tax_causal: ei_other_withholding_tax_causal
+          next_due_date: 2000-01-23
+          cassa2: 1.4894159098541704
+          withholding_tax_taxable: 9.369310271410669
+          is_marked: true
+          updated_at: updated_at
+          amount_vat: 6.704019297950036
+          amount_other_withholding_tax_taxable: 4.652396432933246
+          currency:
+            symbol: €
+            exchange_rate: "1"
+            html_symbol: EUR
+            id: EUR
+          dn_number: 6
+          amount_other_withholding_tax: 0.10263654006109402
+          ei_cassa_type: ei_cassa_type
+          dn_ai_transporter: dn_ai_transporter
+          show_notification_button: true
+          dn_url: dn_url
+          show_payment_method: true
+          price_list_id: price_list_id
+          delivery_note: true
+          url: url
+          attachment_url: attachment_url
+          amount_withholding_tax: 7.058770351582356
+          extra_data:
+            ts_file_id: ts_file_id
+            ts_flag_tipo_spesa: 3.0205796992916243
+            ts_pagamento_tracciato: true
+            ts_status: 3
+            ts_opposizione: true
+            ts_communication: true
+            ts_full_amount: true
+            ts_tipo_spesa: ts_tipo_spesa
+            multifatture_sent: 7
+            imported_by: imported_by
+            ts_sent_date: 2000-01-23
+          ei_status: attempt
+          seen_date: 2000-01-23
+          ei_cassa2_type: ei_cassa2_type
+          ei_withholding_tax_causal: ei_withholding_tax_causal
+          cassa_taxable: 1.2315135367772556
+          amount_gross: 3.353193347011243
+          entity:
+            country: Italia
+            code: "123"
+            notes: notes
+            ei_code: ei_code
+            default_payment_terms_type: standard
+            vat_number: IT01234567890
+            created_at: created_at
+            type: company
+            address_extra: address_extra
+            bank_swift_code: bank_swift_code
+            default_vat:
+              ei_description: ei_description
+              default: true
+              notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+              e_invoice: true
+              ei_type: "2"
+              editable: true
+              is_disabled: true
+              description: Non imponibile art. 123
+              id: 9
+              value: 22
+            address_province: BG
+            updated_at: updated_at
+            bank_name: bank_name
+            id: 9
+            shipping_address: shipping_address
+            fax: fax
+            first_name: first_name
+            bank_iban: bank_iban
+            country_iso: Italia
+            email: mario.rossi@example.it
+            contact_person: contact_person
+            address_postal_code: "24010"
+            default_payment_method:
+              default_payment_account:
+                cuc: cuc
+                virtual: true
+                iban: iban
+                name: Conto Banca Intesa
+                sia: sia
+                id: 2
+                type: standard
+              name: name
+              bank_name: bank_name
+              details:
+              - description: description
+                title: title
+              - description: description
+                title: title
+              - description: description
+                title: title
+              - description: description
+                title: title
+              - description: description
+                title: title
+              bank_beneficiary: bank_beneficiary
+              id: 3
+              type: standard
+              is_default: true
+              ei_payment_method: ei_payment_method
+              bank_iban: bank_iban
+            last_name: last_name
+            address_city: Bergamo
+            tax_code: RSSMRA44A12E890Q
+            intent_declaration_protocol_number: intent_declaration_protocol_number
+            phone: phone
+            address_street: "Via dei tigli, 12"
+            e_invoice: true
+            name: Rossi S.r.l.
+            default_payment_terms: 30
+            certified_email: mario.rossi@pec.example.it
+            has_intent_declaration: true
+            intent_declaration_protocol_date: 2000-01-23
+          amount_cassa_taxable: 1.0246457001441578
+          amount_cassa2_taxable: 1.1730742509559433
+      properties:
+        data:
+          $ref: '#/components/schemas/IssuedDocument'
+      title: GetBinIssuedDocumentResponse
+      type: object
+    ListBinReceivedDocuments:
+      example:
+        data:
+        - date: 2000-01-23
+          attachment_preview_url: attachment_preview_url
+          auto_calculate: true
+          tax_deductibility: 1.0246457001441578
+          description: description
+          created_at: created_at
+          amortization: 1.2315135367772556
+          type: expense
+          payments_list:
+          - amount: 9.369310271410669
+            payment_account:
+              cuc: cuc
+              virtual: true
+              iban: iban
+              name: Conto Banca Intesa
+              sia: sia
+              id: 2
+              type: standard
+            due_date: 2000-01-23
+            id: 9
+            payment_terms:
+              days: 6
+              type: standard
+            paid_date: 2000-01-23
+            status: status
+          - amount: 9.369310271410669
+            payment_account:
+              cuc: cuc
+              virtual: true
+              iban: iban
+              name: Conto Banca Intesa
+              sia: sia
+              id: 2
+              type: standard
+            due_date: 2000-01-23
+            id: 9
+            payment_terms:
+              days: 6
+              type: standard
+            paid_date: 2000-01-23
+            status: status
+          is_detailed: true
+          next_due_date: 2000-01-23
+          rc_center: rc_center
+          is_marked: true
+          updated_at: updated_at
+          amount_vat: 3.616076749251911
+          items_list:
+          - code: code
+            measure: measure
+            product_id: 7
+            qty: 4.965218492984954
+            name: name
+            vat:
+              ei_description: ei_description
+              default: true
+              notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+              e_invoice: true
+              ei_type: "2"
+              editable: true
+              is_disabled: true
+              description: Non imponibile art. 123
+              id: 9
+              value: 22
+            net_price: 1.1730742509559433
+            id: 6
+            category: category
+            stock: 5.025004791520295
+          - code: code
+            measure: measure
+            product_id: 7
+            qty: 4.965218492984954
+            name: name
+            vat:
+              ei_description: ei_description
+              default: true
+              notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+              e_invoice: true
+              ei_type: "2"
+              editable: true
+              is_disabled: true
+              description: Non imponibile art. 123
+              id: 9
+              value: 22
+            net_price: 1.1730742509559433
+            id: 6
+            category: category
+            stock: 5.025004791520295
+          currency:
+            symbol: €
+            exchange_rate: "1"
+            html_symbol: EUR
+            id: EUR
+          id: 7
+          amount_other_withholding_tax: 4.145608029883936
+          locked: true
+          invoice_number: invoice_number
+          vat_deductibility: 1.4894159098541704
+          attachment_token: attachment_token
+          amount_net: 9.301444243932576
+          attachment_url: attachment_url
+          amount_withholding_tax: 2.027123023002322
+          e_invoice: true
+          category: category
+          amount_gross: 7.386281948385884
+          entity:
+            country: Italia
+            code: "123"
+            notes: notes
+            ei_code: ei_code
+            default_payment_terms_type: standard
+            vat_number: IT01234567890
+            created_at: created_at
+            type: company
+            address_extra: address_extra
+            bank_swift_code: bank_swift_code
+            default_vat:
+              ei_description: ei_description
+              default: true
+              notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+              e_invoice: true
+              ei_type: "2"
+              editable: true
+              is_disabled: true
+              description: Non imponibile art. 123
+              id: 9
+              value: 22
+            address_province: BG
+            updated_at: updated_at
+            bank_name: bank_name
+            id: 9
+            shipping_address: shipping_address
+            fax: fax
+            first_name: first_name
+            bank_iban: bank_iban
+            country_iso: Italia
+            email: mario.rossi@example.it
+            contact_person: contact_person
+            address_postal_code: "24010"
+            default_payment_method:
+              default_payment_account:
+                cuc: cuc
+                virtual: true
+                iban: iban
+                name: Conto Banca Intesa
+                sia: sia
+                id: 2
+                type: standard
+              name: name
+              bank_name: bank_name
+              details:
+              - description: description
+                title: title
+              - description: description
+                title: title
+              - description: description
+                title: title
+              - description: description
+                title: title
+              - description: description
+                title: title
+              bank_beneficiary: bank_beneficiary
+              id: 3
+              type: standard
+              is_default: true
+              ei_payment_method: ei_payment_method
+              bank_iban: bank_iban
+            last_name: last_name
+            address_city: Bergamo
+            tax_code: RSSMRA44A12E890Q
+            intent_declaration_protocol_number: intent_declaration_protocol_number
+            phone: phone
+            address_street: "Via dei tigli, 12"
+            e_invoice: true
+            name: Rossi S.r.l.
+            default_payment_terms: 30
+            certified_email: mario.rossi@pec.example.it
+            has_intent_declaration: true
+            intent_declaration_protocol_date: 2000-01-23
+        - date: 2000-01-23
+          attachment_preview_url: attachment_preview_url
+          auto_calculate: true
+          tax_deductibility: 1.0246457001441578
+          description: description
+          created_at: created_at
+          amortization: 1.2315135367772556
+          type: expense
+          payments_list:
+          - amount: 9.369310271410669
+            payment_account:
+              cuc: cuc
+              virtual: true
+              iban: iban
+              name: Conto Banca Intesa
+              sia: sia
+              id: 2
+              type: standard
+            due_date: 2000-01-23
+            id: 9
+            payment_terms:
+              days: 6
+              type: standard
+            paid_date: 2000-01-23
+            status: status
+          - amount: 9.369310271410669
+            payment_account:
+              cuc: cuc
+              virtual: true
+              iban: iban
+              name: Conto Banca Intesa
+              sia: sia
+              id: 2
+              type: standard
+            due_date: 2000-01-23
+            id: 9
+            payment_terms:
+              days: 6
+              type: standard
+            paid_date: 2000-01-23
+            status: status
+          is_detailed: true
+          next_due_date: 2000-01-23
+          rc_center: rc_center
+          is_marked: true
+          updated_at: updated_at
+          amount_vat: 3.616076749251911
+          items_list:
+          - code: code
+            measure: measure
+            product_id: 7
+            qty: 4.965218492984954
+            name: name
+            vat:
+              ei_description: ei_description
+              default: true
+              notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+              e_invoice: true
+              ei_type: "2"
+              editable: true
+              is_disabled: true
+              description: Non imponibile art. 123
+              id: 9
+              value: 22
+            net_price: 1.1730742509559433
+            id: 6
+            category: category
+            stock: 5.025004791520295
+          - code: code
+            measure: measure
+            product_id: 7
+            qty: 4.965218492984954
+            name: name
+            vat:
+              ei_description: ei_description
+              default: true
+              notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+              e_invoice: true
+              ei_type: "2"
+              editable: true
+              is_disabled: true
+              description: Non imponibile art. 123
+              id: 9
+              value: 22
+            net_price: 1.1730742509559433
+            id: 6
+            category: category
+            stock: 5.025004791520295
+          currency:
+            symbol: €
+            exchange_rate: "1"
+            html_symbol: EUR
+            id: EUR
+          id: 7
+          amount_other_withholding_tax: 4.145608029883936
+          locked: true
+          invoice_number: invoice_number
+          vat_deductibility: 1.4894159098541704
+          attachment_token: attachment_token
+          amount_net: 9.301444243932576
+          attachment_url: attachment_url
+          amount_withholding_tax: 2.027123023002322
+          e_invoice: true
+          category: category
+          amount_gross: 7.386281948385884
+          entity:
+            country: Italia
+            code: "123"
+            notes: notes
+            ei_code: ei_code
+            default_payment_terms_type: standard
+            vat_number: IT01234567890
+            created_at: created_at
+            type: company
+            address_extra: address_extra
+            bank_swift_code: bank_swift_code
+            default_vat:
+              ei_description: ei_description
+              default: true
+              notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+              e_invoice: true
+              ei_type: "2"
+              editable: true
+              is_disabled: true
+              description: Non imponibile art. 123
+              id: 9
+              value: 22
+            address_province: BG
+            updated_at: updated_at
+            bank_name: bank_name
+            id: 9
+            shipping_address: shipping_address
+            fax: fax
+            first_name: first_name
+            bank_iban: bank_iban
+            country_iso: Italia
+            email: mario.rossi@example.it
+            contact_person: contact_person
+            address_postal_code: "24010"
+            default_payment_method:
+              default_payment_account:
+                cuc: cuc
+                virtual: true
+                iban: iban
+                name: Conto Banca Intesa
+                sia: sia
+                id: 2
+                type: standard
+              name: name
+              bank_name: bank_name
+              details:
+              - description: description
+                title: title
+              - description: description
+                title: title
+              - description: description
+                title: title
+              - description: description
+                title: title
+              - description: description
+                title: title
+              bank_beneficiary: bank_beneficiary
+              id: 3
+              type: standard
+              is_default: true
+              ei_payment_method: ei_payment_method
+              bank_iban: bank_iban
+            last_name: last_name
+            address_city: Bergamo
+            tax_code: RSSMRA44A12E890Q
+            intent_declaration_protocol_number: intent_declaration_protocol_number
+            phone: phone
+            address_street: "Via dei tigli, 12"
+            e_invoice: true
+            name: Rossi S.r.l.
+            default_payment_terms: 30
+            certified_email: mario.rossi@pec.example.it
+            has_intent_declaration: true
+            intent_declaration_protocol_date: 2000-01-23
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ReceivedDocument'
+          type: array
+      title: ListBinReceivedDocuments
+      type: object
+    ListPriceListsResponse:
+      example:
+        data:
+        - prices_type: net
+          valid_to: valid_to
+          name: "123"
+          valid_from: valid_from
+          id: id
+          is_default: true
+          type: sell
+        - prices_type: net
+          valid_to: valid_to
+          name: "123"
+          valid_from: valid_from
+          id: id
+          is_default: true
+          type: sell
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/PriceList'
+          type: array
+      title: ListPriceListsResponse
+      type: object
+    GetPriceListItemsResponse:
+      example:
+        data:
+          key:
+            price: 0.8008281904610115
+      properties:
+        data:
+          additionalProperties:
+            $ref: '#/components/schemas/PriceListItem'
+          title: PriceListItemsList
+          type: object
+      title: GetPriceListItemsResponse
+      type: object
+    GetBinReceivedDocumentResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/ReceivedDocument'
+      title: GetBinReceivedDocumentResponse
       type: object
     User:
       example:
@@ -25682,6 +28564,7 @@ components:
           ei_payment_method: ei_payment_method
           bank_iban: bank_iban
         last_name: last_name
+        price_list_id: price_list_id
         address_city: Bergamo
         tax_code: RSSMRA44A12E890Q
         intent_declaration_protocol_number: intent_declaration_protocol_number
@@ -25819,15 +28702,15 @@ components:
           description: Use e-invoices for this entity
           nullable: true
           type: boolean
+        discount_highlight:
+          description: Highlight Discount
+          nullable: true
+          type: boolean
         ei_code:
           description: |
             Client e-invoice code
           nullable: true
           type: string
-        discount_highlight:
-          description: Highlight Discount
-          nullable: true
-          type: boolean
         default_discount:
           description: Client default discount
           nullable: true
@@ -25845,6 +28728,10 @@ components:
           format: date
           nullable: true
           type: string
+        price_list_id:
+          description: Price list id
+          nullable: true
+          type: string
         created_at:
           description: Client creation date
           nullable: true
@@ -25854,6 +28741,160 @@ components:
           nullable: true
           type: string
       title: Client
+      type: object
+    EntityClientPreCreateInfo:
+      example:
+        payment_methods_list:
+        - default_payment_account:
+            cuc: cuc
+            virtual: true
+            iban: iban
+            name: Conto Banca Intesa
+            sia: sia
+            id: 2
+            type: standard
+          name: name
+          bank_name: bank_name
+          details:
+          - description: description
+            title: title
+          - description: description
+            title: title
+          - description: description
+            title: title
+          - description: description
+            title: title
+          - description: description
+            title: title
+          bank_beneficiary: bank_beneficiary
+          id: 3
+          type: standard
+          is_default: true
+          ei_payment_method: ei_payment_method
+          bank_iban: bank_iban
+        - default_payment_account:
+            cuc: cuc
+            virtual: true
+            iban: iban
+            name: Conto Banca Intesa
+            sia: sia
+            id: 2
+            type: standard
+          name: name
+          bank_name: bank_name
+          details:
+          - description: description
+            title: title
+          - description: description
+            title: title
+          - description: description
+            title: title
+          - description: description
+            title: title
+          - description: description
+            title: title
+          bank_beneficiary: bank_beneficiary
+          id: 3
+          type: standard
+          is_default: true
+          ei_payment_method: ei_payment_method
+          bank_iban: bank_iban
+        price_lists:
+        - prices_type: net
+          valid_to: valid_to
+          name: "123"
+          valid_from: valid_from
+          id: id
+          is_default: true
+          type: sell
+        - prices_type: net
+          valid_to: valid_to
+          name: "123"
+          valid_from: valid_from
+          id: id
+          is_default: true
+          type: sell
+        usage: 6.027456183070403
+        payment_accounts_list:
+        - cuc: cuc
+          virtual: true
+          iban: iban
+          name: Conto Banca Intesa
+          sia: sia
+          id: 2
+          type: standard
+        - cuc: cuc
+          virtual: true
+          iban: iban
+          name: Conto Banca Intesa
+          sia: sia
+          id: 2
+          type: standard
+        limit: 0.8008281904610115
+        vat_types_list:
+        - ei_description: ei_description
+          default: true
+          notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+          e_invoice: true
+          ei_type: "2"
+          editable: true
+          is_disabled: true
+          description: Non imponibile art. 123
+          id: 9
+          value: 22
+        - ei_description: ei_description
+          default: true
+          notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+          e_invoice: true
+          ei_type: "2"
+          editable: true
+          is_disabled: true
+          description: Non imponibile art. 123
+          id: 9
+          value: 22
+        countries_list:
+        - countries_list
+        - countries_list
+      properties:
+        countries_list:
+          description: Countries list
+          items:
+            type: string
+          nullable: true
+          type: array
+        payment_methods_list:
+          description: Entity payment methods list
+          items:
+            $ref: '#/components/schemas/PaymentMethod'
+          nullable: true
+          type: array
+        payment_accounts_list:
+          description: Entity payment accounts list
+          items:
+            $ref: '#/components/schemas/PaymentAccount'
+          nullable: true
+          type: array
+        vat_types_list:
+          description: Vat types list
+          items:
+            $ref: '#/components/schemas/VatType'
+          nullable: true
+          type: array
+        price_lists:
+          description: Entity price lists
+          items:
+            $ref: '#/components/schemas/PriceList'
+          nullable: true
+          type: array
+        limit:
+          description: Entity limit
+          nullable: true
+          type: number
+        usage:
+          description: Entity usage
+          nullable: true
+          type: number
+      title: EntityClientPreCreateInfo
       type: object
     ListSuppliersResponsePage:
       properties:
@@ -26345,6 +29386,7 @@ components:
         show_notification_button: true
         dn_url: dn_url
         show_payment_method: true
+        price_list_id: price_list_id
         delivery_note: true
         url: url
         attachment_url: attachment_url
@@ -26841,6 +29883,10 @@ components:
           - manual_rejected
           nullable: true
           type: string
+        price_list_id:
+          description: Price list id
+          nullable: true
+          type: string
         locked:
           description: Issued Document can't be edited
           nullable: true
@@ -27053,6 +30099,21 @@ components:
           is_default: true
           ei_payment_method: ei_payment_method
           bank_iban: bank_iban
+        price_lists:
+        - prices_type: net
+          valid_to: valid_to
+          name: "123"
+          valid_from: valid_from
+          id: id
+          is_default: true
+          type: sell
+        - prices_type: net
+          valid_to: valid_to
+          name: "123"
+          valid_from: valid_from
+          id: id
+          is_default: true
+          type: sell
         items_default_values:
           vat:
             ei_description: ei_description
@@ -27264,6 +30325,11 @@ components:
           items:
             $ref: '#/components/schemas/Language'
           nullable: true
+          type: array
+        price_lists:
+          description: Price lists
+          items:
+            $ref: '#/components/schemas/PriceList'
           type: array
       title: IssuedDocumentPreCreateInfo
       type: object
@@ -28479,6 +31545,7 @@ components:
       title: VatType
       type: object
     PaymentMethod:
+      description: ""
       example:
         default_payment_account:
           cuc: cuc
@@ -28721,6 +31788,7 @@ components:
         - it.fattureincloud.webhooks.issued_documents.invoices.create
         - it.fattureincloud.webhooks.issued_documents.invoices.create
         sink: sink
+        verification_method: header
         verified: true
         id: id
         config:
@@ -28746,7 +31814,64 @@ components:
           type: array
         config:
           $ref: '#/components/schemas/WebhooksSubscriptionConfig'
+        verification_method:
+          $ref: '#/components/schemas/WebhooksSubscriptionVerificationMethod'
       title: WebhooksSubscription
+      type: object
+    VerifyWebhooksSubscription:
+      example:
+        verification_method: header
+        id: id
+      properties:
+        id:
+          description: Webhooks subscription id
+          nullable: true
+          type: string
+        verification_method:
+          $ref: '#/components/schemas/WebhooksSubscriptionVerificationMethod'
+      title: VerifyWebhooksSubscription
+      type: object
+    PriceList:
+      example:
+        prices_type: net
+        valid_to: valid_to
+        name: "123"
+        valid_from: valid_from
+        id: id
+        is_default: true
+        type: sell
+      properties:
+        id:
+          description: Price list id
+          nullable: true
+          type: string
+        name:
+          description: Price list name
+          example: "123"
+          nullable: true
+          type: string
+        prices_type:
+          $ref: '#/components/schemas/PriceListPricesType'
+        is_default:
+          description: This entity is default
+          nullable: true
+          type: boolean
+        valid_from:
+          description: Price list validity start date
+          nullable: true
+          type: string
+        valid_to:
+          description: Price list validity end date
+          nullable: true
+          type: string
+        type:
+          $ref: '#/components/schemas/PriceListType'
+      title: PriceList
+      type: object
+    PriceListItemsList:
+      additionalProperties:
+        $ref: '#/components/schemas/PriceListItem'
+      title: PriceListItemsList
       type: object
     CompanyType:
       description: Company type
@@ -29835,6 +32960,35 @@ components:
           $ref: '#/components/schemas/WebhooksSubscriptionMapping'
       title: WebhooksSubscriptionConfig
       type: object
+    WebhooksSubscriptionVerificationMethod:
+      description: Webhooks Subscription verification method
+      enum:
+      - header
+      - query
+      title: WebhooksSubscriptionVerificationMethod
+      type: string
+    PriceListPricesType:
+      description: Price list prices type
+      enum:
+      - net
+      - gross
+      title: PriceListPricesType
+      type: string
+    PriceListType:
+      description: Price list types
+      enum:
+      - sell
+      - purchase
+      title: PriceListType
+      type: string
+    PriceListItem:
+      example:
+        price: 0.8008281904610115
+      properties:
+        price:
+          type: number
+      title: PriceListItem
+      type: object
     PermissionLevel:
       description: Permission level
       enum:
@@ -30761,10 +33915,13 @@ components:
             stock:a: Write permission to the Stock movements
             receipts:r: Read permission to the Receipts
             receipts:a: Write permission to the Receipts
+            calendar:r: Read permission to the Calendar
+            calendar:a: Write permission to the Calendar
             taxes:r: Read permission to the Taxes
             taxes:a: Write permission to the Taxes
             archive:r: Read permission to the Archive Documents
             archive:a: Read permission to the Archive Documents
+            emails:r: Read permission to the Emails
             cashbook:r: Read permission to the Cashbook
             cashbook:a: Write permission to the Cashbook
             settings:r: Read permission to the Settings
