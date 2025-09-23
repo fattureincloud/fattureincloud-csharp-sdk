@@ -6,10 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Update NuGet package
     steps:
-
       - id: checkout
         name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
 
@@ -21,11 +20,11 @@ jobs:
 
       - id: setup-node
         name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
 
       - id: setup-dot-net
-        name: Setup .NET  
-        uses: actions/setup-dotnet@v3
+        name: Setup .NET
+        uses: actions/setup-dotnet@v4
 
       - id: setup-libraries
         name: Install libraries
@@ -78,13 +77,13 @@ jobs:
               ref: "refs/tags/v${{ env.sdk_version }}",
               sha: "${{ env.commit_sha }}"
             })
-          
+
       - id: generate-package
         name: Build solution and generate NuGet package
         if: ${{ !env.ACT }}
-        run: |  
+        run: |
           cd ./src/It.FattureInCloud.Sdk/
-          dotnet pack -c Release -o out  
+          dotnet pack -c Release -o out
 
       - id: publish
         name: Publish the package to nuget.org

@@ -2,7 +2,7 @@ name: C# SDK Validation
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [master]
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -11,34 +11,34 @@ jobs:
     #   matrix:
     #     # dotnet: [ '3.1.x', '5.0.x' ]
     #     dotnet: [ '3.1.x' ]
-        
+
     name: Dotnet validation
-    
+
     steps:
       - id: checkout
         name: Checkout repo
-        uses: actions/checkout@v3
-      
+        uses: actions/checkout@v4
+
       - id: setup-dotnet
         name: Setup dotnet
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: | 
-            3.1.x
-            5.0.x
+          dotnet-version: |
+            6.0.x
+            8.0.x
 
       - id: clean
         name: Clean
         run: dotnet clean
-          
+
       - id: restore
         name: Restore dependencies
         run: dotnet restore
-        
-      - id: build 
+
+      - id: build
         name: Build
         run: dotnet build --no-restore --configuration=Release
-        
+
       - id: test
         name: Test
         run: dotnet test --no-build --verbosity normal --configuration=Release
