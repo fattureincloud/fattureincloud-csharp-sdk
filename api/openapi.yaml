@@ -12,7 +12,7 @@ info:
     name: MIT
     url: https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
   title: Fatture in Cloud API v2 - API Reference
-  version: 2.0.32
+  version: 2.1.3
 servers:
 - url: https://api-v2.fattureincloud.it
 security:
@@ -85,7 +85,7 @@ paths:
                       - id: 12345
                         name: Studio Commercialista
                         tax_code: ABCSFN94T17A794K
-                        vat_number: "03881520161"
+                        vat_number: 3881520161
                         type: accountant
                         access_token: 4ff5f0fe5abcd1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4f7362a848fa32dbb8c3a3f94c34f3df95
                         connection_id: 94566
@@ -93,7 +93,7 @@ paths:
                         - id: 12246
                           name: Studio Commercialista
                           tax_code: ABCSFN94T17A794K
-                          vat_number: "03881520161"
+                          vat_number: 3881520161
                           type: company
                           access_token: 4ff5f0fe5abcdf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4f7362a848fa32dbb8c3a3f94c34f3df95
                           connection_id: 94566
@@ -2026,7 +2026,6 @@ paths:
                       show_payment_method: false
                       show_payments: true
                       show_totals: all
-                      show_paypal_button: true
                       show_notification_button: false
                       is_marked: false
                       created_at: 2021-08-13 09:30:20
@@ -2245,7 +2244,6 @@ paths:
                       show_payment_method: false
                       show_payments: true
                       show_totals: all
-                      show_paypal_button: true
                       show_notification_button: false
                       is_marked: false
                       created_at: 2021-08-13 09:30:20
@@ -2468,7 +2466,6 @@ paths:
                       show_payment_method: false
                       show_payments: true
                       show_totals: all
-                      show_paypal_button: true
                       show_notification_button: false
                       is_marked: false
                       created_at: 2021-08-13 09:30:20
@@ -2612,7 +2609,6 @@ paths:
                     show_payment_method: false
                     show_payments: true
                     show_totals: all
-                    show_paypal_button: true
                     show_notification_button: false
                     is_marked: false
                     created_at: 2021-08-13 09:30:20
@@ -4964,6 +4960,7 @@ paths:
           - expense
           - passive_credit_note
           - passive_delivery_note
+          - self_invoice
           type: string
         style: form
       - description: List of comma-separated fields.
@@ -5793,6 +5790,7 @@ paths:
           - expense
           - passive_credit_note
           - passive_delivery_note
+          - self_invoice
           type: string
         style: form
       responses:
@@ -9421,6 +9419,69 @@ paths:
       summary: Create Payment Account
       tags:
       - Settings
+  /c/{company_id}/settings/tax_profile:
+    get:
+      description: Gets the Tax Profile
+      operationId: getTaxProfile
+      parameters:
+      - description: The ID of the company.
+        explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          example: 12345
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                example-1:
+                  value:
+                    data:
+                      company_type: individual
+                      company_subtype: artigiani
+                      profession: null
+                      regime: forfettario_5
+                      rivalsa_name: ""
+                      default_rivalsa: 0
+                      cassa_name: ""
+                      default_cassa: 0
+                      default_cassa_taxable: 100
+                      cassa2_name: ""
+                      default_cassa2: 0
+                      default_cassa2_taxable: 0
+                      default_withholding_tax: 0
+                      default_withholding_tax_taxable: 100
+                      default_other_withholding_tax: 0
+                      enasarco: false
+                      enasarco_type: null
+                      contributions_percentage: 0
+                      med: false
+                      default_vat:
+                        id: 66
+                        value: 0
+                        description: Contribuenti forfettari
+                        notes: "Operazione non soggetta a IVA ai sensi dell'art. 1,\
+                          \ commi 54-89, Legge n. 190\\/2014 e succ. modifiche\\/integrazioni"
+                        e_invoice: true
+                        ei_type: 2.2
+                        ei_description: Non soggetta art. 1\/54-89 L. 190\/2014 e
+                          succ. modifiche\/integrazioni
+                        editable: false
+                        is_disabled: false
+                        default: true
+              schema:
+                $ref: '#/components/schemas/GetTaxProfileResponse'
+          description: Example response
+      security:
+      - OAuth2AuthenticationCodeFlow:
+        - settings:r
+      summary: Get Tax Profile
+      tags:
+      - Settings
   /c/{company_id}/settings/payment_accounts/{payment_account_id}:
     delete:
       description: Deletes the specified payment account.
@@ -9808,6 +9869,14 @@ paths:
         schema:
           type: string
         style: form
+      - description: Current document type.
+        explode: true
+        in: query
+        name: type
+        required: false
+        schema:
+          type: string
+        style: form
       - description: New document e_invoice.
         explode: true
         in: query
@@ -9869,7 +9938,6 @@ paths:
                       show_payment_method: false
                       show_payments: true
                       show_totals: all
-                      show_paypal_button: true
                       show_notification_button: false
                       is_marked: false
                       created_at: 2022-08-13 09:30:20
@@ -9996,16 +10064,19 @@ paths:
           - 1
           type: integer
         style: form
-      - description: New document e_invoice.
+      - description: Type of the documents to be joined
+        example: "delivery_notes, orders, quotes, work_reports"
         explode: true
         in: query
-        name: e_invoice
+        name: type
         required: false
         schema:
           enum:
-          - 0
-          - 1
-          type: integer
+          - delivery_notes
+          - orders
+          - quotes
+          - work_reports
+          type: string
         style: form
       responses:
         "200":
@@ -10046,7 +10117,6 @@ paths:
                       show_payment_method: false
                       show_payments: true
                       show_totals: all
-                      show_paypal_button: true
                       show_notification_button: false
                       is_marked: false
                       created_at: 2022-08-13 09:30:20
@@ -10561,6 +10631,7 @@ components:
         - expense
         - passive_credit_note
         - passive_delivery_note
+        - self_invoice
         type: string
       style: form
     q:
@@ -10626,7 +10697,7 @@ components:
                   - id: 12345
                     name: Studio Commercialista
                     tax_code: ABCSFN94T17A794K
-                    vat_number: "03881520161"
+                    vat_number: 3881520161
                     type: accountant
                     access_token: 4ff5f0fe5abcd1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4f7362a848fa32dbb8c3a3f94c34f3df95
                     connection_id: 94566
@@ -10634,7 +10705,7 @@ components:
                     - id: 12246
                       name: Studio Commercialista
                       tax_code: ABCSFN94T17A794K
-                      vat_number: "03881520161"
+                      vat_number: 3881520161
                       type: company
                       access_token: 4ff5f0fe5abcdf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4f7362a848fa32dbb8c3a3f94c34f3df95
                       connection_id: 94566
@@ -11442,7 +11513,6 @@ components:
                   show_payment_method: false
                   show_payments: true
                   show_totals: all
-                  show_paypal_button: true
                   show_notification_button: false
                   is_marked: false
                   created_at: 2021-08-13 09:30:20
@@ -11564,7 +11634,6 @@ components:
                   show_payment_method: false
                   show_payments: true
                   show_totals: all
-                  show_paypal_button: true
                   show_notification_button: false
                   is_marked: false
                   created_at: 2021-08-13 09:30:20
@@ -11686,7 +11755,6 @@ components:
                   show_payment_method: false
                   show_payments: true
                   show_totals: all
-                  show_paypal_button: true
                   show_notification_button: false
                   is_marked: false
                   created_at: 2021-08-13 09:30:20
@@ -15854,7 +15922,6 @@ components:
                   show_payment_method: false
                   show_payments: true
                   show_totals: all
-                  show_paypal_button: true
                   show_notification_button: false
                   is_marked: false
                   created_at: 2022-08-13 09:30:20
@@ -15980,7 +16047,6 @@ components:
                   show_payment_method: false
                   show_payments: true
                   show_totals: all
-                  show_paypal_button: true
                   show_notification_button: false
                   is_marked: false
                   created_at: 2022-08-13 09:30:20
@@ -16204,6 +16270,48 @@ components:
           schema:
             $ref: '#/components/schemas/GetCompanyPlanUsageResponse'
       description: Example response
+    GetTaxProfileResponse:
+      content:
+        application/json:
+          examples:
+            example-1:
+              value:
+                data:
+                  company_type: individual
+                  company_subtype: artigiani
+                  profession: null
+                  regime: forfettario_5
+                  rivalsa_name: ""
+                  default_rivalsa: 0
+                  cassa_name: ""
+                  default_cassa: 0
+                  default_cassa_taxable: 100
+                  cassa2_name: ""
+                  default_cassa2: 0
+                  default_cassa2_taxable: 0
+                  default_withholding_tax: 0
+                  default_withholding_tax_taxable: 100
+                  default_other_withholding_tax: 0
+                  enasarco: false
+                  enasarco_type: null
+                  contributions_percentage: 0
+                  med: false
+                  default_vat:
+                    id: 66
+                    value: 0
+                    description: Contribuenti forfettari
+                    notes: "Operazione non soggetta a IVA ai sensi dell'art. 1, commi\
+                      \ 54-89, Legge n. 190\\/2014 e succ. modifiche\\/integrazioni"
+                    e_invoice: true
+                    ei_type: 2.2
+                    ei_description: Non soggetta art. 1\/54-89 L. 190\/2014 e succ.
+                      modifiche\/integrazioni
+                    editable: false
+                    is_disabled: false
+                    default: true
+          schema:
+            $ref: '#/components/schemas/GetTaxProfileResponse'
+      description: Example response
   schemas:
     GetUserInfoResponse:
       description: ""
@@ -16243,7 +16351,7 @@ components:
             vat_number: vat_number
             name: Rossi S.r.l.
             id: 12345
-            type: null
+            type: company
             fic_plan: null
             controlled_companies:
             - access_token: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
@@ -16253,7 +16361,7 @@ components:
               name: Rossi S.r.l.
               id: 12345
               type: null
-              fic_plan: null
+              fic_plan: trial
             - access_token: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
               tax_code: tax_code
               fic_license_expire: 2000-01-23
@@ -16261,7 +16369,7 @@ components:
               name: Rossi S.r.l.
               id: 12345
               type: null
-              fic_plan: null
+              fic_plan: trial
           - access_token: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
             tax_code: tax_code
             fic_license_expire: 2000-01-23
@@ -16269,7 +16377,7 @@ components:
             vat_number: vat_number
             name: Rossi S.r.l.
             id: 12345
-            type: null
+            type: company
             fic_plan: null
             controlled_companies:
             - access_token: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
@@ -16279,7 +16387,7 @@ components:
               name: Rossi S.r.l.
               id: 12345
               type: null
-              fic_plan: null
+              fic_plan: trial
             - access_token: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
               tax_code: tax_code
               fic_license_expire: 2000-01-23
@@ -16287,7 +16395,7 @@ components:
               name: Rossi S.r.l.
               id: 12345
               type: null
-              fic_plan: null
+              fic_plan: trial
       properties:
         data:
           $ref: '#/components/schemas/ListUserCompaniesResponse_data'
@@ -16297,7 +16405,7 @@ components:
       description: ""
       example:
         data:
-          fic_plan_name: null
+          fic_plan_name: trial
           fic_license_expire: 2000-01-23
           accountant_id: 5
           name: Mario Rossi S.r.l.
@@ -16334,7 +16442,7 @@ components:
               products: 1
           id: 12345
           access_info:
-            role: null
+            role: master
             through_accountant: true
             permissions:
               dic_settings: null
@@ -16349,7 +16457,7 @@ components:
               fic_stock: null
               fic_import_issued_documents: null
               fic_clients: null
-              fic_situation: null
+              fic_situation: none
               fic_calendar: null
               fic_issued_documents: null
               fic_settings: null
@@ -16372,7 +16480,7 @@ components:
                 self_invoices: null
                 quotes: null
               fic_import_products: null
-          type: null
+          type: company
           email: mario@rossi-example.it
       properties:
         data:
@@ -16404,16 +16512,17 @@ components:
           code: "123"
           notes: notes
           ei_code: ei_code
-          default_payment_terms_type: null
+          default_payment_terms_type: standard
           discount_highlight: true
           vat_number: IT01234567890
           created_at: created_at
-          type: null
+          type: company
           address_extra: address_extra
           bank_swift_code: bank_swift_code
           default_discount: 4.145608029883936
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -16442,7 +16551,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -16458,7 +16567,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -16478,16 +16587,17 @@ components:
           code: "123"
           notes: notes
           ei_code: ei_code
-          default_payment_terms_type: null
+          default_payment_terms_type: standard
           discount_highlight: true
           vat_number: IT01234567890
           created_at: created_at
-          type: null
+          type: company
           address_extra: address_extra
           bank_swift_code: bank_swift_code
           default_discount: 4.145608029883936
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -16516,7 +16626,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -16532,7 +16642,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -16563,16 +16673,17 @@ components:
           code: "123"
           notes: notes
           ei_code: ei_code
-          default_payment_terms_type: null
+          default_payment_terms_type: standard
           discount_highlight: true
           vat_number: IT01234567890
           created_at: created_at
-          type: null
+          type: company
           address_extra: address_extra
           bank_swift_code: bank_swift_code
           default_discount: 4.145608029883936
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -16601,7 +16712,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -16617,7 +16728,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -16645,16 +16756,17 @@ components:
           code: "123"
           notes: notes
           ei_code: ei_code
-          default_payment_terms_type: null
+          default_payment_terms_type: standard
           discount_highlight: true
           vat_number: IT01234567890
           created_at: created_at
-          type: null
+          type: company
           address_extra: address_extra
           bank_swift_code: bank_swift_code
           default_discount: 4.145608029883936
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -16683,7 +16795,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -16699,7 +16811,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -16727,16 +16839,17 @@ components:
           code: "123"
           notes: notes
           ei_code: ei_code
-          default_payment_terms_type: null
+          default_payment_terms_type: standard
           discount_highlight: true
           vat_number: IT01234567890
           created_at: created_at
-          type: null
+          type: company
           address_extra: address_extra
           bank_swift_code: bank_swift_code
           default_discount: 4.145608029883936
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -16765,7 +16878,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -16781,7 +16894,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -16810,16 +16923,17 @@ components:
           code: "123"
           notes: notes
           ei_code: ei_code
-          default_payment_terms_type: null
+          default_payment_terms_type: standard
           discount_highlight: true
           vat_number: IT01234567890
           created_at: created_at
-          type: null
+          type: company
           address_extra: address_extra
           bank_swift_code: bank_swift_code
           default_discount: 4.145608029883936
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -16848,7 +16962,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -16864,7 +16978,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -16892,16 +17006,17 @@ components:
           code: "123"
           notes: notes
           ei_code: ei_code
-          default_payment_terms_type: null
+          default_payment_terms_type: standard
           discount_highlight: true
           vat_number: IT01234567890
           created_at: created_at
-          type: null
+          type: company
           address_extra: address_extra
           bank_swift_code: bank_swift_code
           default_discount: 4.145608029883936
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -16930,7 +17045,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -16946,7 +17061,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -16985,7 +17100,7 @@ components:
           vat_number: IT01234567890
           last_name: last_name
           created_at: created_at
-          type: null
+          type: company
           address_extra: address_extra
           address_city: Bergamo
           tax_code: RSSMRA44A12E890Q
@@ -17009,7 +17124,7 @@ components:
           vat_number: IT01234567890
           last_name: last_name
           created_at: created_at
-          type: null
+          type: company
           address_extra: address_extra
           address_city: Bergamo
           tax_code: RSSMRA44A12E890Q
@@ -17044,7 +17159,7 @@ components:
           vat_number: IT01234567890
           last_name: last_name
           created_at: created_at
-          type: null
+          type: company
           address_extra: address_extra
           address_city: Bergamo
           tax_code: RSSMRA44A12E890Q
@@ -17076,7 +17191,7 @@ components:
           vat_number: IT01234567890
           last_name: last_name
           created_at: created_at
-          type: null
+          type: company
           address_extra: address_extra
           address_city: Bergamo
           tax_code: RSSMRA44A12E890Q
@@ -17108,7 +17223,7 @@ components:
           vat_number: IT01234567890
           last_name: last_name
           created_at: created_at
-          type: null
+          type: company
           address_extra: address_extra
           address_city: Bergamo
           tax_code: RSSMRA44A12E890Q
@@ -17140,7 +17255,7 @@ components:
           vat_number: IT01234567890
           last_name: last_name
           created_at: created_at
-          type: null
+          type: company
           address_extra: address_extra
           address_city: Bergamo
           tax_code: RSSMRA44A12E890Q
@@ -17172,7 +17287,7 @@ components:
           vat_number: IT01234567890
           last_name: last_name
           created_at: created_at
-          type: null
+          type: company
           address_extra: address_extra
           address_city: Bergamo
           tax_code: RSSMRA44A12E890Q
@@ -17216,6 +17331,7 @@ components:
           stock_current: 7.386281948385884
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -17244,6 +17360,7 @@ components:
           stock_current: 7.386281948385884
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -17283,6 +17400,7 @@ components:
           stock_current: 7.386281948385884
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -17319,6 +17437,7 @@ components:
           stock_current: 7.386281948385884
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -17355,6 +17474,7 @@ components:
           stock_current: 7.386281948385884
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -17391,6 +17511,7 @@ components:
           stock_current: 7.386281948385884
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -17427,6 +17548,7 @@ components:
           stock_current: 7.386281948385884
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -17467,11 +17589,10 @@ components:
           language:
             code: code
             name: name
-          type: null
+          type: invoice
           show_payments: true
-          show_paypal_button: true
           ei_data:
-            original_document_type: null
+            original_document_type: ordine
             cig: cig
             bank_name: bank_name
             od_number: od_number
@@ -17492,6 +17613,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -17519,6 +17641,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -17561,7 +17684,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -17577,7 +17700,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -17592,7 +17715,7 @@ components:
           accompanying_invoice: true
           amount_rivalsa_taxable: 0.8851374739011653
           amount_rivalsa: 7.143538047012306
-          show_totals: null
+          show_totals: all
           stamp_duty: 8.762042012749001
           use_gross_prices: true
           global_cassa_taxable: 4.965218492984954
@@ -17623,7 +17746,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -17631,7 +17754,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           - amount: 1.45
             payment_account:
               cuc: cuc
@@ -17640,7 +17763,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -17648,7 +17771,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           h_margins: 2
           dn_date: 2000-01-23
           ei_other_withholding_tax_causal: ei_other_withholding_tax_causal
@@ -17683,7 +17806,6 @@ components:
             ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
-            show_sofort_button: true
             ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 7
             imported_by: imported_by
@@ -17699,14 +17821,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -17735,7 +17858,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -17751,7 +17874,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -17779,11 +17902,10 @@ components:
           language:
             code: code
             name: name
-          type: null
+          type: invoice
           show_payments: true
-          show_paypal_button: true
           ei_data:
-            original_document_type: null
+            original_document_type: ordine
             cig: cig
             bank_name: bank_name
             od_number: od_number
@@ -17804,6 +17926,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -17831,6 +17954,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -17873,7 +17997,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -17889,7 +18013,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -17904,7 +18028,7 @@ components:
           accompanying_invoice: true
           amount_rivalsa_taxable: 0.8851374739011653
           amount_rivalsa: 7.143538047012306
-          show_totals: null
+          show_totals: all
           stamp_duty: 8.762042012749001
           use_gross_prices: true
           global_cassa_taxable: 4.965218492984954
@@ -17935,7 +18059,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -17943,7 +18067,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           - amount: 1.45
             payment_account:
               cuc: cuc
@@ -17952,7 +18076,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -17960,7 +18084,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           h_margins: 2
           dn_date: 2000-01-23
           ei_other_withholding_tax_causal: ei_other_withholding_tax_causal
@@ -17995,7 +18119,6 @@ components:
             ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
-            show_sofort_button: true
             ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 7
             imported_by: imported_by
@@ -18011,14 +18134,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -18047,7 +18171,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -18063,7 +18187,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -18102,11 +18226,10 @@ components:
           language:
             code: code
             name: name
-          type: null
+          type: invoice
           show_payments: true
-          show_paypal_button: true
           ei_data:
-            original_document_type: null
+            original_document_type: ordine
             cig: cig
             bank_name: bank_name
             od_number: od_number
@@ -18127,6 +18250,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -18154,6 +18278,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -18196,7 +18321,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -18212,7 +18337,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -18227,7 +18352,7 @@ components:
           accompanying_invoice: true
           amount_rivalsa_taxable: 0.8851374739011653
           amount_rivalsa: 7.143538047012306
-          show_totals: null
+          show_totals: all
           stamp_duty: 8.762042012749001
           use_gross_prices: true
           global_cassa_taxable: 4.965218492984954
@@ -18258,7 +18383,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -18266,7 +18391,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           - amount: 1.45
             payment_account:
               cuc: cuc
@@ -18275,7 +18400,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -18283,7 +18408,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           h_margins: 2
           dn_date: 2000-01-23
           ei_other_withholding_tax_causal: ei_other_withholding_tax_causal
@@ -18318,7 +18443,6 @@ components:
             ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
-            show_sofort_button: true
             ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 7
             imported_by: imported_by
@@ -18334,14 +18458,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -18370,7 +18495,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -18386,7 +18511,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -18432,11 +18557,10 @@ components:
           language:
             code: code
             name: name
-          type: null
+          type: invoice
           show_payments: true
-          show_paypal_button: true
           ei_data:
-            original_document_type: null
+            original_document_type: ordine
             cig: cig
             bank_name: bank_name
             od_number: od_number
@@ -18457,6 +18581,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -18484,6 +18609,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -18526,7 +18652,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -18542,7 +18668,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -18557,7 +18683,7 @@ components:
           accompanying_invoice: true
           amount_rivalsa_taxable: 0.8851374739011653
           amount_rivalsa: 7.143538047012306
-          show_totals: null
+          show_totals: all
           stamp_duty: 8.762042012749001
           use_gross_prices: true
           global_cassa_taxable: 4.965218492984954
@@ -18588,7 +18714,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -18596,7 +18722,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           - amount: 1.45
             payment_account:
               cuc: cuc
@@ -18605,7 +18731,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -18613,7 +18739,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           h_margins: 2
           dn_date: 2000-01-23
           ei_other_withholding_tax_causal: ei_other_withholding_tax_causal
@@ -18648,7 +18774,6 @@ components:
             ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
-            show_sofort_button: true
             ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 7
             imported_by: imported_by
@@ -18664,14 +18789,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -18700,7 +18826,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -18716,7 +18842,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -18752,11 +18878,10 @@ components:
           language:
             code: code
             name: name
-          type: null
+          type: invoice
           show_payments: true
-          show_paypal_button: true
           ei_data:
-            original_document_type: null
+            original_document_type: ordine
             cig: cig
             bank_name: bank_name
             od_number: od_number
@@ -18777,6 +18902,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -18804,6 +18930,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -18846,7 +18973,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -18862,7 +18989,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -18877,7 +19004,7 @@ components:
           accompanying_invoice: true
           amount_rivalsa_taxable: 0.8851374739011653
           amount_rivalsa: 7.143538047012306
-          show_totals: null
+          show_totals: all
           stamp_duty: 8.762042012749001
           use_gross_prices: true
           global_cassa_taxable: 4.965218492984954
@@ -18908,7 +19035,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -18916,7 +19043,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           - amount: 1.45
             payment_account:
               cuc: cuc
@@ -18925,7 +19052,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -18933,7 +19060,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           h_margins: 2
           dn_date: 2000-01-23
           ei_other_withholding_tax_causal: ei_other_withholding_tax_causal
@@ -18968,7 +19095,6 @@ components:
             ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
-            show_sofort_button: true
             ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 7
             imported_by: imported_by
@@ -18984,14 +19110,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -19020,7 +19147,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -19036,7 +19163,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -19073,11 +19200,10 @@ components:
           language:
             code: code
             name: name
-          type: null
+          type: invoice
           show_payments: true
-          show_paypal_button: true
           ei_data:
-            original_document_type: null
+            original_document_type: ordine
             cig: cig
             bank_name: bank_name
             od_number: od_number
@@ -19098,6 +19224,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -19125,6 +19252,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -19167,7 +19295,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -19183,7 +19311,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -19198,7 +19326,7 @@ components:
           accompanying_invoice: true
           amount_rivalsa_taxable: 0.8851374739011653
           amount_rivalsa: 7.143538047012306
-          show_totals: null
+          show_totals: all
           stamp_duty: 8.762042012749001
           use_gross_prices: true
           global_cassa_taxable: 4.965218492984954
@@ -19229,7 +19357,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -19237,7 +19365,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           - amount: 1.45
             payment_account:
               cuc: cuc
@@ -19246,7 +19374,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -19254,7 +19382,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           h_margins: 2
           dn_date: 2000-01-23
           ei_other_withholding_tax_causal: ei_other_withholding_tax_causal
@@ -19289,7 +19417,6 @@ components:
             ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
-            show_sofort_button: true
             ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 7
             imported_by: imported_by
@@ -19305,14 +19432,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -19341,7 +19469,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -19357,7 +19485,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -19403,11 +19531,10 @@ components:
           language:
             code: code
             name: name
-          type: null
+          type: invoice
           show_payments: true
-          show_paypal_button: true
           ei_data:
-            original_document_type: null
+            original_document_type: ordine
             cig: cig
             bank_name: bank_name
             od_number: od_number
@@ -19428,6 +19555,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -19455,6 +19583,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -19497,7 +19626,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -19513,7 +19642,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -19528,7 +19657,7 @@ components:
           accompanying_invoice: true
           amount_rivalsa_taxable: 0.8851374739011653
           amount_rivalsa: 7.143538047012306
-          show_totals: null
+          show_totals: all
           stamp_duty: 8.762042012749001
           use_gross_prices: true
           global_cassa_taxable: 4.965218492984954
@@ -19559,7 +19688,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -19567,7 +19696,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           - amount: 1.45
             payment_account:
               cuc: cuc
@@ -19576,7 +19705,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -19584,7 +19713,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           h_margins: 2
           dn_date: 2000-01-23
           ei_other_withholding_tax_causal: ei_other_withholding_tax_causal
@@ -19619,7 +19748,6 @@ components:
             ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
-            show_sofort_button: true
             ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 7
             imported_by: imported_by
@@ -19635,14 +19763,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -19671,7 +19800,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -19687,7 +19816,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -19723,11 +19852,10 @@ components:
           language:
             code: code
             name: name
-          type: null
+          type: invoice
           show_payments: true
-          show_paypal_button: true
           ei_data:
-            original_document_type: null
+            original_document_type: ordine
             cig: cig
             bank_name: bank_name
             od_number: od_number
@@ -19748,6 +19876,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -19775,6 +19904,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -19817,7 +19947,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -19833,7 +19963,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -19848,7 +19978,7 @@ components:
           accompanying_invoice: true
           amount_rivalsa_taxable: 0.8851374739011653
           amount_rivalsa: 7.143538047012306
-          show_totals: null
+          show_totals: all
           stamp_duty: 8.762042012749001
           use_gross_prices: true
           global_cassa_taxable: 4.965218492984954
@@ -19879,7 +20009,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -19887,7 +20017,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           - amount: 1.45
             payment_account:
               cuc: cuc
@@ -19896,7 +20026,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -19904,7 +20034,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           h_margins: 2
           dn_date: 2000-01-23
           ei_other_withholding_tax_causal: ei_other_withholding_tax_causal
@@ -19939,7 +20069,6 @@ components:
             ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
-            show_sofort_button: true
             ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 7
             imported_by: imported_by
@@ -19955,14 +20084,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -19991,7 +20121,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -20007,7 +20137,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -20072,11 +20202,10 @@ components:
           language:
             code: code
             name: name
-          type: null
+          type: invoice
           show_payments: true
-          show_paypal_button: true
           ei_data:
-            original_document_type: null
+            original_document_type: ordine
             cig: cig
             bank_name: bank_name
             od_number: od_number
@@ -20097,6 +20226,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -20124,6 +20254,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -20166,7 +20297,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -20182,7 +20313,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -20197,7 +20328,7 @@ components:
           accompanying_invoice: true
           amount_rivalsa_taxable: 0.8851374739011653
           amount_rivalsa: 7.143538047012306
-          show_totals: null
+          show_totals: all
           stamp_duty: 8.762042012749001
           use_gross_prices: true
           global_cassa_taxable: 4.965218492984954
@@ -20228,7 +20359,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -20236,7 +20367,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           - amount: 1.45
             payment_account:
               cuc: cuc
@@ -20245,7 +20376,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -20253,7 +20384,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           h_margins: 2
           dn_date: 2000-01-23
           ei_other_withholding_tax_causal: ei_other_withholding_tax_causal
@@ -20288,7 +20419,6 @@ components:
             ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
-            show_sofort_button: true
             ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 7
             imported_by: imported_by
@@ -20304,14 +20434,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -20340,7 +20471,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -20356,7 +20487,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -20446,7 +20577,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -20462,7 +20593,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -20473,7 +20604,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -20489,13 +20620,14 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
           items_default_values:
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -20521,14 +20653,14 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           - cuc: cuc
             virtual: true
             iban: iban
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           currencies_list:
           - symbol: €
             exchange_rate: "1"
@@ -20590,7 +20722,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -20606,7 +20738,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -20614,6 +20746,7 @@ components:
             key: null
           vat_types_list:
           - ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -20623,6 +20756,7 @@ components:
             id: 9
             value: 22
           - ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -20769,7 +20903,7 @@ components:
           description: description
           created_at: created_at
           amortization: 1.2315135367772556
-          type: null
+          type: expense
           payments_list:
           - amount: 9.369310271410669
             payment_account:
@@ -20779,12 +20913,12 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             due_date: 2000-01-23
             id: 9
             payment_terms:
               days: 6
-              type: null
+              type: standard
             paid_date: 2000-01-23
             status: status
           - amount: 9.369310271410669
@@ -20795,12 +20929,12 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             due_date: 2000-01-23
             id: 9
             payment_terms:
               days: 6
-              type: null
+              type: standard
             paid_date: 2000-01-23
             status: status
           is_detailed: true
@@ -20817,6 +20951,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -20836,6 +20971,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -20870,14 +21006,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -20906,7 +21043,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -20922,7 +21059,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -20945,7 +21082,7 @@ components:
           description: description
           created_at: created_at
           amortization: 1.2315135367772556
-          type: null
+          type: expense
           payments_list:
           - amount: 9.369310271410669
             payment_account:
@@ -20955,12 +21092,12 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             due_date: 2000-01-23
             id: 9
             payment_terms:
               days: 6
-              type: null
+              type: standard
             paid_date: 2000-01-23
             status: status
           - amount: 9.369310271410669
@@ -20971,12 +21108,12 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             due_date: 2000-01-23
             id: 9
             payment_terms:
               days: 6
-              type: null
+              type: standard
             paid_date: 2000-01-23
             status: status
           is_detailed: true
@@ -20993,6 +21130,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21012,6 +21150,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21046,14 +21185,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21082,7 +21222,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -21098,7 +21238,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -21133,7 +21273,7 @@ components:
           description: description
           created_at: created_at
           amortization: 1.2315135367772556
-          type: null
+          type: expense
           payments_list:
           - amount: 9.369310271410669
             payment_account:
@@ -21143,12 +21283,12 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             due_date: 2000-01-23
             id: 9
             payment_terms:
               days: 6
-              type: null
+              type: standard
             paid_date: 2000-01-23
             status: status
           - amount: 9.369310271410669
@@ -21159,12 +21299,12 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             due_date: 2000-01-23
             id: 9
             payment_terms:
               days: 6
-              type: null
+              type: standard
             paid_date: 2000-01-23
             status: status
           is_detailed: true
@@ -21181,6 +21321,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21200,6 +21341,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21234,14 +21376,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21270,7 +21413,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -21286,7 +21429,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -21324,7 +21467,7 @@ components:
           description: description
           created_at: created_at
           amortization: 1.2315135367772556
-          type: null
+          type: expense
           payments_list:
           - amount: 9.369310271410669
             payment_account:
@@ -21334,12 +21477,12 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             due_date: 2000-01-23
             id: 9
             payment_terms:
               days: 6
-              type: null
+              type: standard
             paid_date: 2000-01-23
             status: status
           - amount: 9.369310271410669
@@ -21350,12 +21493,12 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             due_date: 2000-01-23
             id: 9
             payment_terms:
               days: 6
-              type: null
+              type: standard
             paid_date: 2000-01-23
             status: status
           is_detailed: true
@@ -21372,6 +21515,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21391,6 +21535,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21425,14 +21570,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21461,7 +21607,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -21477,7 +21623,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -21509,7 +21655,7 @@ components:
           description: description
           created_at: created_at
           amortization: 1.2315135367772556
-          type: null
+          type: expense
           payments_list:
           - amount: 9.369310271410669
             payment_account:
@@ -21519,12 +21665,12 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             due_date: 2000-01-23
             id: 9
             payment_terms:
               days: 6
-              type: null
+              type: standard
             paid_date: 2000-01-23
             status: status
           - amount: 9.369310271410669
@@ -21535,12 +21681,12 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             due_date: 2000-01-23
             id: 9
             payment_terms:
               days: 6
-              type: null
+              type: standard
             paid_date: 2000-01-23
             status: status
           is_detailed: true
@@ -21557,6 +21703,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21576,6 +21723,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21610,14 +21758,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21646,7 +21795,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -21662,7 +21811,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -21694,7 +21843,7 @@ components:
           description: description
           created_at: created_at
           amortization: 1.2315135367772556
-          type: null
+          type: expense
           payments_list:
           - amount: 9.369310271410669
             payment_account:
@@ -21704,12 +21853,12 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             due_date: 2000-01-23
             id: 9
             payment_terms:
               days: 6
-              type: null
+              type: standard
             paid_date: 2000-01-23
             status: status
           - amount: 9.369310271410669
@@ -21720,12 +21869,12 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             due_date: 2000-01-23
             id: 9
             payment_terms:
               days: 6
-              type: null
+              type: standard
             paid_date: 2000-01-23
             status: status
           is_detailed: true
@@ -21742,6 +21891,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21761,6 +21911,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21795,14 +21946,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21831,7 +21983,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -21847,7 +21999,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -21879,7 +22031,7 @@ components:
           description: description
           created_at: created_at
           amortization: 1.2315135367772556
-          type: null
+          type: expense
           payments_list:
           - amount: 9.369310271410669
             payment_account:
@@ -21889,12 +22041,12 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             due_date: 2000-01-23
             id: 9
             payment_terms:
               days: 6
-              type: null
+              type: standard
             paid_date: 2000-01-23
             status: status
           - amount: 9.369310271410669
@@ -21905,12 +22057,12 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             due_date: 2000-01-23
             id: 9
             payment_terms:
               days: 6
-              type: null
+              type: standard
             paid_date: 2000-01-23
             status: status
           is_detailed: true
@@ -21927,6 +22079,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21946,6 +22099,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -21980,14 +22134,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22016,7 +22171,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -22032,7 +22187,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -22064,7 +22219,7 @@ components:
           description: description
           created_at: created_at
           amortization: 1.2315135367772556
-          type: null
+          type: expense
           payments_list:
           - amount: 9.369310271410669
             payment_account:
@@ -22074,12 +22229,12 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             due_date: 2000-01-23
             id: 9
             payment_terms:
               days: 6
-              type: null
+              type: standard
             paid_date: 2000-01-23
             status: status
           - amount: 9.369310271410669
@@ -22090,12 +22245,12 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             due_date: 2000-01-23
             id: 9
             payment_terms:
               days: 6
-              type: null
+              type: standard
             paid_date: 2000-01-23
             status: status
           is_detailed: true
@@ -22112,6 +22267,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22131,6 +22287,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22165,14 +22322,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22201,7 +22359,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -22217,7 +22375,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -22265,7 +22423,7 @@ components:
           description: description
           created_at: created_at
           amortization: 1.2315135367772556
-          type: null
+          type: expense
           payments_list:
           - amount: 9.369310271410669
             payment_account:
@@ -22275,12 +22433,12 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             due_date: 2000-01-23
             id: 9
             payment_terms:
               days: 6
-              type: null
+              type: standard
             paid_date: 2000-01-23
             status: status
           - amount: 9.369310271410669
@@ -22291,12 +22449,12 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             due_date: 2000-01-23
             id: 9
             payment_terms:
               days: 6
-              type: null
+              type: standard
             paid_date: 2000-01-23
             status: status
           is_detailed: true
@@ -22313,6 +22471,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22332,6 +22491,7 @@ components:
             name: name
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22366,14 +22526,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22402,7 +22563,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -22418,7 +22579,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -22484,14 +22645,14 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           - cuc: cuc
             virtual: true
             iban: iban
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           currencies_list:
           - symbol: €
             exchange_rate: "1"
@@ -22503,6 +22664,7 @@ components:
             id: EUR
           vat_types_list:
           - ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -22512,6 +22674,7 @@ components:
             id: 9
             value: 22
           - ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -22544,7 +22707,7 @@ components:
           numeration: numeration
           description: description
           created_at: created_at
-          type: null
+          type: till_receipt
           number: 9.301444243932576
           use_gross_prices: true
           rc_center: rc_center
@@ -22555,13 +22718,14 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           updated_at: updated_at
           amount_vat: 2.027123023002322
           items_list:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22576,6 +22740,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22594,7 +22759,7 @@ components:
           numeration: numeration
           description: description
           created_at: created_at
-          type: null
+          type: till_receipt
           number: 9.301444243932576
           use_gross_prices: true
           rc_center: rc_center
@@ -22605,13 +22770,14 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           updated_at: updated_at
           amount_vat: 2.027123023002322
           items_list:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22626,6 +22792,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22657,7 +22824,7 @@ components:
           numeration: numeration
           description: description
           created_at: created_at
-          type: null
+          type: till_receipt
           number: 9.301444243932576
           use_gross_prices: true
           rc_center: rc_center
@@ -22668,13 +22835,14 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           updated_at: updated_at
           amount_vat: 2.027123023002322
           items_list:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22689,6 +22857,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22720,7 +22889,7 @@ components:
           numeration: numeration
           description: description
           created_at: created_at
-          type: null
+          type: till_receipt
           number: 9.301444243932576
           use_gross_prices: true
           rc_center: rc_center
@@ -22731,13 +22900,14 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           updated_at: updated_at
           amount_vat: 2.027123023002322
           items_list:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22752,6 +22922,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22779,7 +22950,7 @@ components:
           numeration: numeration
           description: description
           created_at: created_at
-          type: null
+          type: till_receipt
           number: 9.301444243932576
           use_gross_prices: true
           rc_center: rc_center
@@ -22790,13 +22961,14 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           updated_at: updated_at
           amount_vat: 2.027123023002322
           items_list:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22811,6 +22983,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22838,7 +23011,7 @@ components:
           numeration: numeration
           description: description
           created_at: created_at
-          type: null
+          type: till_receipt
           number: 9.301444243932576
           use_gross_prices: true
           rc_center: rc_center
@@ -22849,13 +23022,14 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           updated_at: updated_at
           amount_vat: 2.027123023002322
           items_list:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22870,6 +23044,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22897,7 +23072,7 @@ components:
           numeration: numeration
           description: description
           created_at: created_at
-          type: null
+          type: till_receipt
           number: 9.301444243932576
           use_gross_prices: true
           rc_center: rc_center
@@ -22908,13 +23083,14 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           updated_at: updated_at
           amount_vat: 2.027123023002322
           items_list:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22929,6 +23105,7 @@ components:
           - amount_net: 1.2315135367772556
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -22966,19 +23143,20 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           - cuc: cuc
             virtual: true
             iban: iban
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           categories_list:
           - categories_list
           - categories_list
           vat_types_list:
           - ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -22988,6 +23166,7 @@ components:
             id: 9
             value: 22
           - ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -23037,12 +23216,12 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           due_date: 2018-02-12
           description: description
           id: 7
           attachment_url: attachment_url
-          status: null
+          status: paid
         - attachment_token: attachment_token
           amount: 300
           payment_account:
@@ -23052,12 +23231,12 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           due_date: 2018-02-12
           description: description
           id: 7
           attachment_url: attachment_url
-          status: null
+          status: paid
         last_page: 1
         next_page_url: https://openapi-generator.tech
         prev_page_url: https://openapi-generator.tech
@@ -23084,12 +23263,12 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           due_date: 2018-02-12
           description: description
           id: 7
           attachment_url: attachment_url
-          status: null
+          status: paid
       properties:
         data:
           $ref: '#/components/schemas/F24'
@@ -23108,12 +23287,12 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           due_date: 2018-02-12
           description: description
           id: 7
           attachment_url: attachment_url
-          status: null
+          status: paid
       properties:
         data:
           $ref: '#/components/schemas/F24'
@@ -23131,12 +23310,12 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           due_date: 2018-02-12
           description: description
           id: 7
           attachment_url: attachment_url
-          status: null
+          status: paid
       properties:
         data:
           $ref: '#/components/schemas/F24'
@@ -23155,12 +23334,12 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           due_date: 2018-02-12
           description: description
           id: 7
           attachment_url: attachment_url
-          status: null
+          status: paid
       properties:
         data:
           $ref: '#/components/schemas/F24'
@@ -23179,12 +23358,12 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           due_date: 2018-02-12
           description: description
           id: 7
           attachment_url: attachment_url
-          status: null
+          status: paid
       properties:
         data:
           $ref: '#/components/schemas/F24'
@@ -23326,7 +23505,7 @@ components:
           amount_out: 1.4658129805029452
           amount_in: 6.027456183070403
           entity_name: entity_name
-          kind: null
+          kind: cashbook
           payment_account_in:
             cuc: cuc
             virtual: true
@@ -23334,7 +23513,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           payment_account_out:
             cuc: cuc
             virtual: true
@@ -23342,19 +23521,19 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           document:
             path: path
             id: 0
             type: type
           description: description
           id: id
-          type: null
+          type: in
         - date: 2000-01-23
           amount_out: 1.4658129805029452
           amount_in: 6.027456183070403
           entity_name: entity_name
-          kind: null
+          kind: cashbook
           payment_account_in:
             cuc: cuc
             virtual: true
@@ -23362,7 +23541,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           payment_account_out:
             cuc: cuc
             virtual: true
@@ -23370,14 +23549,14 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           document:
             path: path
             id: 0
             type: type
           description: description
           id: id
-          type: null
+          type: in
       properties:
         data:
           items:
@@ -23394,7 +23573,7 @@ components:
           amount_out: 1.4658129805029452
           amount_in: 6.027456183070403
           entity_name: entity_name
-          kind: null
+          kind: cashbook
           payment_account_in:
             cuc: cuc
             virtual: true
@@ -23402,7 +23581,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           payment_account_out:
             cuc: cuc
             virtual: true
@@ -23410,14 +23589,14 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           document:
             path: path
             id: 0
             type: type
           description: description
           id: id
-          type: null
+          type: in
       properties:
         data:
           $ref: '#/components/schemas/CashbookEntry'
@@ -23431,7 +23610,7 @@ components:
           amount_out: 1.4658129805029452
           amount_in: 6.027456183070403
           entity_name: entity_name
-          kind: null
+          kind: cashbook
           payment_account_in:
             cuc: cuc
             virtual: true
@@ -23439,7 +23618,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           payment_account_out:
             cuc: cuc
             virtual: true
@@ -23447,14 +23626,14 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           document:
             path: path
             id: 0
             type: type
           description: description
           id: id
-          type: null
+          type: in
       properties:
         data:
           $ref: '#/components/schemas/CashbookEntry'
@@ -23468,7 +23647,7 @@ components:
           amount_out: 1.4658129805029452
           amount_in: 6.027456183070403
           entity_name: entity_name
-          kind: null
+          kind: cashbook
           payment_account_in:
             cuc: cuc
             virtual: true
@@ -23476,7 +23655,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           payment_account_out:
             cuc: cuc
             virtual: true
@@ -23484,14 +23663,14 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           document:
             path: path
             id: 0
             type: type
           description: description
           id: id
-          type: null
+          type: in
       properties:
         data:
           $ref: '#/components/schemas/CashbookEntry'
@@ -23505,7 +23684,7 @@ components:
           amount_out: 1.4658129805029452
           amount_in: 6.027456183070403
           entity_name: entity_name
-          kind: null
+          kind: cashbook
           payment_account_in:
             cuc: cuc
             virtual: true
@@ -23513,7 +23692,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           payment_account_out:
             cuc: cuc
             virtual: true
@@ -23521,14 +23700,14 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           document:
             path: path
             id: 0
             type: type
           description: description
           id: id
-          type: null
+          type: in
       properties:
         data:
           $ref: '#/components/schemas/CashbookEntry'
@@ -23542,7 +23721,7 @@ components:
           amount_out: 1.4658129805029452
           amount_in: 6.027456183070403
           entity_name: entity_name
-          kind: null
+          kind: cashbook
           payment_account_in:
             cuc: cuc
             virtual: true
@@ -23550,7 +23729,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           payment_account_out:
             cuc: cuc
             virtual: true
@@ -23558,14 +23737,14 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           document:
             path: path
             id: 0
             type: type
           description: description
           id: id
-          type: null
+          type: in
       properties:
         data:
           $ref: '#/components/schemas/CashbookEntry'
@@ -23710,6 +23889,7 @@ components:
       example:
         data:
         - ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -23719,6 +23899,7 @@ components:
           id: 9
           value: 22
         - ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -23746,7 +23927,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           name: name
           bank_name: bank_name
           details:
@@ -23762,7 +23943,7 @@ components:
             title: title
           bank_beneficiary: bank_beneficiary
           id: 3
-          type: null
+          type: standard
           is_default: true
           ei_payment_method: ei_payment_method
           bank_iban: bank_iban
@@ -23773,7 +23954,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           name: name
           bank_name: bank_name
           details:
@@ -23789,7 +23970,7 @@ components:
             title: title
           bank_beneficiary: bank_beneficiary
           id: 3
-          type: null
+          type: standard
           is_default: true
           ei_payment_method: ei_payment_method
           bank_iban: bank_iban
@@ -23811,14 +23992,14 @@ components:
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
         - cuc: cuc
           virtual: true
           iban: iban
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
       properties:
         data:
           items:
@@ -23905,7 +24086,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           name: name
           bank_name: bank_name
           details:
@@ -23921,7 +24102,7 @@ components:
             title: title
           bank_beneficiary: bank_beneficiary
           id: 3
-          type: null
+          type: standard
           is_default: true
           ei_payment_method: ei_payment_method
           bank_iban: bank_iban
@@ -23940,7 +24121,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           name: name
           bank_name: bank_name
           details:
@@ -23956,7 +24137,7 @@ components:
             title: title
           bank_beneficiary: bank_beneficiary
           id: 3
-          type: null
+          type: standard
           is_default: true
           ei_payment_method: ei_payment_method
           bank_iban: bank_iban
@@ -23975,7 +24156,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           name: name
           bank_name: bank_name
           details:
@@ -23991,7 +24172,7 @@ components:
             title: title
           bank_beneficiary: bank_beneficiary
           id: 3
-          type: null
+          type: standard
           is_default: true
           ei_payment_method: ei_payment_method
           bank_iban: bank_iban
@@ -24010,7 +24191,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           name: name
           bank_name: bank_name
           details:
@@ -24026,7 +24207,7 @@ components:
             title: title
           bank_beneficiary: bank_beneficiary
           id: 3
-          type: null
+          type: standard
           is_default: true
           ei_payment_method: ei_payment_method
           bank_iban: bank_iban
@@ -24045,7 +24226,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           name: name
           bank_name: bank_name
           details:
@@ -24061,7 +24242,7 @@ components:
             title: title
           bank_beneficiary: bank_beneficiary
           id: 3
-          type: null
+          type: standard
           is_default: true
           ei_payment_method: ei_payment_method
           bank_iban: bank_iban
@@ -24079,7 +24260,7 @@ components:
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
       properties:
         data:
           $ref: '#/components/schemas/PaymentAccount'
@@ -24094,11 +24275,50 @@ components:
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
       properties:
         data:
           $ref: '#/components/schemas/PaymentAccount'
       title: CreatePaymentAccountResponse
+      type: object
+    GetTaxProfileResponse:
+      example:
+        data:
+          profession: profession
+          company_type: company_type
+          contributions_percentage: 3.616076749251911
+          rivalsa_name: rivalsa_name
+          default_cassa2_taxable: 5.637376656633329
+          regime: regime
+          default_cassa2: 5.962133916683182
+          enasarco_type: enasarco_type
+          default_cassa: 6.027456183070403
+          profit_coefficient: 2.027123023002322
+          company_subtype: company_subtype
+          med: true
+          default_withholding_tax: 2.3021358869347655
+          default_other_withholding_tax: 9.301444243932576
+          default_vat:
+            ei_description: ei_description
+            default: true
+            notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+            e_invoice: true
+            ei_type: "2"
+            editable: true
+            is_disabled: true
+            description: Non imponibile art. 123
+            id: 9
+            value: 22
+          default_withholding_tax_taxable: 7.061401241503109
+          enasarco: true
+          default_cassa_taxable: 1.4658129805029452
+          default_rivalsa: 0.8008281904610115
+          cassa_name: cassa_name
+          cassa2_name: cassa2_name
+      properties:
+        data:
+          $ref: '#/components/schemas/TaxProfile'
+      title: GetTaxProfileResponse
       type: object
     GetPaymentAccountResponse:
       example:
@@ -24109,7 +24329,7 @@ components:
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
       properties:
         data:
           $ref: '#/components/schemas/PaymentAccount'
@@ -24124,7 +24344,7 @@ components:
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
       properties:
         data:
           $ref: '#/components/schemas/PaymentAccount'
@@ -24139,7 +24359,7 @@ components:
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
       properties:
         data:
           $ref: '#/components/schemas/PaymentAccount'
@@ -24149,6 +24369,7 @@ components:
       example:
         data:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -24166,6 +24387,7 @@ components:
       example:
         data:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -24183,6 +24405,7 @@ components:
       example:
         data:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -24200,6 +24423,7 @@ components:
       example:
         data:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -24216,6 +24440,7 @@ components:
       example:
         data:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -24242,11 +24467,10 @@ components:
           language:
             code: code
             name: name
-          type: null
+          type: invoice
           show_payments: true
-          show_paypal_button: true
           ei_data:
-            original_document_type: null
+            original_document_type: ordine
             cig: cig
             bank_name: bank_name
             od_number: od_number
@@ -24267,6 +24491,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -24294,6 +24519,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -24336,7 +24562,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -24352,7 +24578,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -24367,7 +24593,7 @@ components:
           accompanying_invoice: true
           amount_rivalsa_taxable: 0.8851374739011653
           amount_rivalsa: 7.143538047012306
-          show_totals: null
+          show_totals: all
           stamp_duty: 8.762042012749001
           use_gross_prices: true
           global_cassa_taxable: 4.965218492984954
@@ -24398,7 +24624,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -24406,7 +24632,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           - amount: 1.45
             payment_account:
               cuc: cuc
@@ -24415,7 +24641,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -24423,7 +24649,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           h_margins: 2
           dn_date: 2000-01-23
           ei_other_withholding_tax_causal: ei_other_withholding_tax_causal
@@ -24458,7 +24684,6 @@ components:
             ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
-            show_sofort_button: true
             ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 7
             imported_by: imported_by
@@ -24474,14 +24699,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -24510,7 +24736,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -24526,7 +24752,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -24572,11 +24798,10 @@ components:
           language:
             code: code
             name: name
-          type: null
+          type: invoice
           show_payments: true
-          show_paypal_button: true
           ei_data:
-            original_document_type: null
+            original_document_type: ordine
             cig: cig
             bank_name: bank_name
             od_number: od_number
@@ -24597,6 +24822,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -24624,6 +24850,7 @@ components:
             discount_highlight: true
             vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -24666,7 +24893,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -24682,7 +24909,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -24697,7 +24924,7 @@ components:
           accompanying_invoice: true
           amount_rivalsa_taxable: 0.8851374739011653
           amount_rivalsa: 7.143538047012306
-          show_totals: null
+          show_totals: all
           stamp_duty: 8.762042012749001
           use_gross_prices: true
           global_cassa_taxable: 4.965218492984954
@@ -24728,7 +24955,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -24736,7 +24963,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           - amount: 1.45
             payment_account:
               cuc: cuc
@@ -24745,7 +24972,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             ei_raw: "{}"
             due_date: 2018-04-03
             id: 6
@@ -24753,7 +24980,7 @@ components:
               days: 1
               type: null
             paid_date: 2018-04-03
-            status: null
+            status: not_paid
           h_margins: 2
           dn_date: 2000-01-23
           ei_other_withholding_tax_causal: ei_other_withholding_tax_causal
@@ -24788,7 +25015,6 @@ components:
             ts_opposizione: true
             ts_communication: true
             ts_full_amount: true
-            show_sofort_button: true
             ts_tipo_spesa: ts_tipo_spesa
             multifatture_sent: 7
             imported_by: imported_by
@@ -24804,14 +25030,15 @@ components:
             code: "123"
             notes: notes
             ei_code: ei_code
-            default_payment_terms_type: null
+            default_payment_terms_type: standard
             vat_number: IT01234567890
             created_at: created_at
-            type: null
+            type: company
             address_extra: address_extra
             bank_swift_code: bank_swift_code
             default_vat:
               ei_description: ei_description
+              default: true
               notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
               e_invoice: true
               ei_type: "2"
@@ -24840,7 +25067,7 @@ components:
                 name: Conto Banca Intesa
                 sia: sia
                 id: 2
-                type: null
+                type: standard
               name: name
               bank_name: bank_name
               details:
@@ -24856,7 +25083,7 @@ components:
                 title: title
               bank_beneficiary: bank_beneficiary
               id: 3
-              type: null
+              type: standard
               is_default: true
               ei_payment_method: ei_payment_method
               bank_iban: bank_iban
@@ -24910,14 +25137,14 @@ components:
           to_name: to_name
           subject: subject
           kind: kind
-          sent_date: 2000-01-23T04:56:07.000+00:00
+          sent_date: sent_date
           from_name: from_name
-          recipient_status: null
+          recipient_status: unknown
           content: content
           copy_to: copy_to
           id: 7
           recipient_date: 2000-01-23T04:56:07.000+00:00
-          status: null
+          status: sending
           errors_count: 9
         - to_email: to_email
           from_email: from_email
@@ -24930,14 +25157,14 @@ components:
           to_name: to_name
           subject: subject
           kind: kind
-          sent_date: 2000-01-23T04:56:07.000+00:00
+          sent_date: sent_date
           from_name: from_name
-          recipient_status: null
+          recipient_status: unknown
           content: content
           copy_to: copy_to
           id: 7
           recipient_date: 2000-01-23T04:56:07.000+00:00
-          status: null
+          status: sending
           errors_count: 9
         last_page: 1
         last_page_url: https://openapi-generator.tech
@@ -24951,21 +25178,21 @@ components:
       example:
         data:
         - types:
-          - null
-          - null
+          - it.fattureincloud.webhooks.issued_documents.invoices.create
+          - it.fattureincloud.webhooks.issued_documents.invoices.create
           sink: sink
           verified: true
           id: id
           config:
-            mapping: null
+            mapping: binary
         - types:
-          - null
-          - null
+          - it.fattureincloud.webhooks.issued_documents.invoices.create
+          - it.fattureincloud.webhooks.issued_documents.invoices.create
           sink: sink
           verified: true
           id: id
           config:
-            mapping: null
+            mapping: binary
       properties:
         data:
           items:
@@ -24977,13 +25204,13 @@ components:
       example:
         data:
           types:
-          - null
-          - null
+          - it.fattureincloud.webhooks.issued_documents.invoices.create
+          - it.fattureincloud.webhooks.issued_documents.invoices.create
           sink: sink
           verified: true
           id: id
           config:
-            mapping: null
+            mapping: binary
       properties:
         data:
           $ref: '#/components/schemas/WebhooksSubscription'
@@ -24993,13 +25220,13 @@ components:
       example:
         data:
           types:
-          - null
-          - null
+          - it.fattureincloud.webhooks.issued_documents.invoices.create
+          - it.fattureincloud.webhooks.issued_documents.invoices.create
           sink: sink
           verified: true
           id: id
           config:
-            mapping: null
+            mapping: binary
         warnings:
         - warnings
         - warnings
@@ -25018,13 +25245,13 @@ components:
       example:
         data:
           types:
-          - null
-          - null
+          - it.fattureincloud.webhooks.issued_documents.invoices.create
+          - it.fattureincloud.webhooks.issued_documents.invoices.create
           sink: sink
           verified: true
           id: id
           config:
-            mapping: null
+            mapping: binary
       properties:
         data:
           $ref: '#/components/schemas/WebhooksSubscription'
@@ -25034,13 +25261,13 @@ components:
       example:
         data:
           types:
-          - null
-          - null
+          - it.fattureincloud.webhooks.issued_documents.invoices.create
+          - it.fattureincloud.webhooks.issued_documents.invoices.create
           sink: sink
           verified: true
           id: id
           config:
-            mapping: null
+            mapping: binary
       properties:
         data:
           $ref: '#/components/schemas/WebhooksSubscription'
@@ -25050,13 +25277,13 @@ components:
       example:
         data:
           types:
-          - null
-          - null
+          - it.fattureincloud.webhooks.issued_documents.invoices.create
+          - it.fattureincloud.webhooks.issued_documents.invoices.create
           sink: sink
           verified: true
           id: id
           config:
-            mapping: null
+            mapping: binary
         warnings:
         - warnings
         - warnings
@@ -25127,7 +25354,7 @@ components:
         vat_number: vat_number
         name: Rossi S.r.l.
         id: 12345
-        type: null
+        type: company
         fic_plan: null
         controlled_companies:
         - access_token: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
@@ -25137,7 +25364,7 @@ components:
           name: Rossi S.r.l.
           id: 12345
           type: null
-          fic_plan: null
+          fic_plan: trial
         - access_token: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
           tax_code: tax_code
           fic_license_expire: 2000-01-23
@@ -25145,7 +25372,7 @@ components:
           name: Rossi S.r.l.
           id: 12345
           type: null
-          fic_plan: null
+          fic_plan: trial
       properties:
         id:
           description: Company id
@@ -25196,7 +25423,7 @@ components:
       type: object
     CompanyInfo:
       example:
-        fic_plan_name: null
+        fic_plan_name: trial
         fic_license_expire: 2000-01-23
         accountant_id: 5
         name: Mario Rossi S.r.l.
@@ -25233,7 +25460,7 @@ components:
             products: 1
         id: 12345
         access_info:
-          role: null
+          role: master
           through_accountant: true
           permissions:
             dic_settings: null
@@ -25248,7 +25475,7 @@ components:
             fic_stock: null
             fic_import_issued_documents: null
             fic_clients: null
-            fic_situation: null
+            fic_situation: none
             fic_calendar: null
             fic_issued_documents: null
             fic_settings: null
@@ -25271,7 +25498,7 @@ components:
               self_invoices: null
               quotes: null
             fic_import_products: null
-        type: null
+        type: company
         email: mario@rossi-example.it
       properties:
         id:
@@ -25395,16 +25622,17 @@ components:
         code: "123"
         notes: notes
         ei_code: ei_code
-        default_payment_terms_type: null
+        default_payment_terms_type: standard
         discount_highlight: true
         vat_number: IT01234567890
         created_at: created_at
-        type: null
+        type: company
         address_extra: address_extra
         bank_swift_code: bank_swift_code
         default_discount: 4.145608029883936
         default_vat:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -25433,7 +25661,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           name: name
           bank_name: bank_name
           details:
@@ -25449,7 +25677,7 @@ components:
             title: title
           bank_beneficiary: bank_beneficiary
           id: 3
-          type: null
+          type: standard
           is_default: true
           ei_payment_method: ei_payment_method
           bank_iban: bank_iban
@@ -25646,7 +25874,7 @@ components:
         vat_number: IT01234567890
         last_name: last_name
         created_at: created_at
-        type: null
+        type: company
         address_extra: address_extra
         address_city: Bergamo
         tax_code: RSSMRA44A12E890Q
@@ -25795,6 +26023,7 @@ components:
         stock_current: 7.386281948385884
         default_vat:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -25911,11 +26140,10 @@ components:
         language:
           code: code
           name: name
-        type: null
+        type: invoice
         show_payments: true
-        show_paypal_button: true
         ei_data:
-          original_document_type: null
+          original_document_type: ordine
           cig: cig
           bank_name: bank_name
           od_number: od_number
@@ -25936,6 +26164,7 @@ components:
           discount_highlight: true
           vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -25963,6 +26192,7 @@ components:
           discount_highlight: true
           vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -26005,7 +26235,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           name: name
           bank_name: bank_name
           details:
@@ -26021,7 +26251,7 @@ components:
             title: title
           bank_beneficiary: bank_beneficiary
           id: 3
-          type: null
+          type: standard
           is_default: true
           ei_payment_method: ei_payment_method
           bank_iban: bank_iban
@@ -26036,7 +26266,7 @@ components:
         accompanying_invoice: true
         amount_rivalsa_taxable: 0.8851374739011653
         amount_rivalsa: 7.143538047012306
-        show_totals: null
+        show_totals: all
         stamp_duty: 8.762042012749001
         use_gross_prices: true
         global_cassa_taxable: 4.965218492984954
@@ -26067,7 +26297,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           ei_raw: "{}"
           due_date: 2018-04-03
           id: 6
@@ -26075,7 +26305,7 @@ components:
             days: 1
             type: null
           paid_date: 2018-04-03
-          status: null
+          status: not_paid
         - amount: 1.45
           payment_account:
             cuc: cuc
@@ -26084,7 +26314,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           ei_raw: "{}"
           due_date: 2018-04-03
           id: 6
@@ -26092,7 +26322,7 @@ components:
             days: 1
             type: null
           paid_date: 2018-04-03
-          status: null
+          status: not_paid
         h_margins: 2
         dn_date: 2000-01-23
         ei_other_withholding_tax_causal: ei_other_withholding_tax_causal
@@ -26127,7 +26357,6 @@ components:
           ts_opposizione: true
           ts_communication: true
           ts_full_amount: true
-          show_sofort_button: true
           ts_tipo_spesa: ts_tipo_spesa
           multifatture_sent: 7
           imported_by: imported_by
@@ -26143,14 +26372,15 @@ components:
           code: "123"
           notes: notes
           ei_code: ei_code
-          default_payment_terms_type: null
+          default_payment_terms_type: standard
           vat_number: IT01234567890
           created_at: created_at
-          type: null
+          type: company
           address_extra: address_extra
           bank_swift_code: bank_swift_code
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -26179,7 +26409,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -26195,7 +26425,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -26252,7 +26482,7 @@ components:
         language:
           $ref: '#/components/schemas/Language'
         subject:
-          description: Issued document subject
+          description: "Issued document subject [not shown on the PDF]"
           nullable: true
           type: string
         visible_subject:
@@ -26414,10 +26644,6 @@ components:
           type: boolean
         show_totals:
           $ref: '#/components/schemas/ShowTotalsMode'
-        show_paypal_button:
-          description: Show paypal button in the PDF
-          nullable: true
-          type: boolean
         show_notification_button:
           description: Show notification button in the PDF
           nullable: true
@@ -26780,7 +27006,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           name: name
           bank_name: bank_name
           details:
@@ -26796,7 +27022,7 @@ components:
             title: title
           bank_beneficiary: bank_beneficiary
           id: 3
-          type: null
+          type: standard
           is_default: true
           ei_payment_method: ei_payment_method
           bank_iban: bank_iban
@@ -26807,7 +27033,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           name: name
           bank_name: bank_name
           details:
@@ -26823,13 +27049,14 @@ components:
             title: title
           bank_beneficiary: bank_beneficiary
           id: 3
-          type: null
+          type: standard
           is_default: true
           ei_payment_method: ei_payment_method
           bank_iban: bank_iban
         items_default_values:
           vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -26855,14 +27082,14 @@ components:
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
         - cuc: cuc
           virtual: true
           iban: iban
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
         currencies_list:
         - symbol: €
           exchange_rate: "1"
@@ -26924,7 +27151,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -26940,7 +27167,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -26948,6 +27175,7 @@ components:
           key: null
         vat_types_list:
         - ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -26957,6 +27185,7 @@ components:
           id: 9
           value: 22
         - ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -27201,7 +27430,7 @@ components:
         description: description
         created_at: created_at
         amortization: 1.2315135367772556
-        type: null
+        type: expense
         payments_list:
         - amount: 9.369310271410669
           payment_account:
@@ -27211,12 +27440,12 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           due_date: 2000-01-23
           id: 9
           payment_terms:
             days: 6
-            type: null
+            type: standard
           paid_date: 2000-01-23
           status: status
         - amount: 9.369310271410669
@@ -27227,12 +27456,12 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           due_date: 2000-01-23
           id: 9
           payment_terms:
             days: 6
-            type: null
+            type: standard
           paid_date: 2000-01-23
           status: status
         is_detailed: true
@@ -27249,6 +27478,7 @@ components:
           name: name
           vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -27268,6 +27498,7 @@ components:
           name: name
           vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -27302,14 +27533,15 @@ components:
           code: "123"
           notes: notes
           ei_code: ei_code
-          default_payment_terms_type: null
+          default_payment_terms_type: standard
           vat_number: IT01234567890
           created_at: created_at
-          type: null
+          type: company
           address_extra: address_extra
           bank_swift_code: bank_swift_code
           default_vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -27338,7 +27570,7 @@ components:
               name: Conto Banca Intesa
               sia: sia
               id: 2
-              type: null
+              type: standard
             name: name
             bank_name: bank_name
             details:
@@ -27354,7 +27586,7 @@ components:
               title: title
             bank_beneficiary: bank_beneficiary
             id: 3
-            type: null
+            type: standard
             is_default: true
             ei_payment_method: ei_payment_method
             bank_iban: bank_iban
@@ -27566,14 +27798,14 @@ components:
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
         - cuc: cuc
           virtual: true
           iban: iban
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
         currencies_list:
         - symbol: €
           exchange_rate: "1"
@@ -27585,6 +27817,7 @@ components:
           id: EUR
         vat_types_list:
         - ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -27594,6 +27827,7 @@ components:
           id: 9
           value: 22
         - ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -27658,7 +27892,7 @@ components:
         numeration: numeration
         description: description
         created_at: created_at
-        type: null
+        type: till_receipt
         number: 9.301444243932576
         use_gross_prices: true
         rc_center: rc_center
@@ -27669,13 +27903,14 @@ components:
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
         updated_at: updated_at
         amount_vat: 2.027123023002322
         items_list:
         - amount_net: 1.2315135367772556
           vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -27690,6 +27925,7 @@ components:
         - amount_net: 1.2315135367772556
           vat:
             ei_description: ei_description
+            default: true
             notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
             e_invoice: true
             ei_type: "2"
@@ -27781,19 +28017,20 @@ components:
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
         - cuc: cuc
           virtual: true
           iban: iban
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
         categories_list:
         - categories_list
         - categories_list
         vat_types_list:
         - ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -27803,6 +28040,7 @@ components:
           id: 9
           value: 22
         - ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -27895,12 +28133,12 @@ components:
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
         due_date: 2018-02-12
         description: description
         id: 7
         attachment_url: attachment_url
-        status: null
+        status: paid
       properties:
         id:
           description: F24 id
@@ -27995,7 +28233,7 @@ components:
         amount_out: 1.4658129805029452
         amount_in: 6.027456183070403
         entity_name: entity_name
-        kind: null
+        kind: cashbook
         payment_account_in:
           cuc: cuc
           virtual: true
@@ -28003,7 +28241,7 @@ components:
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
         payment_account_out:
           cuc: cuc
           virtual: true
@@ -28011,14 +28249,14 @@ components:
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
         document:
           path: path
           id: 0
           type: type
         description: description
         id: id
-        type: null
+        type: in
       properties:
         id:
           description: Cashbook id
@@ -28180,6 +28418,7 @@ components:
     VatType:
       example:
         ei_description: ei_description
+        default: true
         notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
         e_invoice: true
         ei_type: "2"
@@ -28233,6 +28472,10 @@ components:
           description: Is the vat type disabled
           nullable: true
           type: boolean
+        default:
+          description: If the vat type is default
+          nullable: true
+          type: boolean
       title: VatType
       type: object
     PaymentMethod:
@@ -28244,7 +28487,7 @@ components:
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
         name: name
         bank_name: bank_name
         details:
@@ -28260,7 +28503,7 @@ components:
           title: title
         bank_beneficiary: bank_beneficiary
         id: 3
-        type: null
+        type: standard
         is_default: true
         ei_payment_method: ei_payment_method
         bank_iban: bank_iban
@@ -28314,7 +28557,7 @@ components:
         name: Conto Banca Intesa
         sia: sia
         id: 2
-        type: null
+        type: standard
       nullable: true
       properties:
         id:
@@ -28346,6 +28589,124 @@ components:
           type: boolean
       title: PaymentAccount
       type: object
+    TaxProfile:
+      example:
+        profession: profession
+        company_type: company_type
+        contributions_percentage: 3.616076749251911
+        rivalsa_name: rivalsa_name
+        default_cassa2_taxable: 5.637376656633329
+        regime: regime
+        default_cassa2: 5.962133916683182
+        enasarco_type: enasarco_type
+        default_cassa: 6.027456183070403
+        profit_coefficient: 2.027123023002322
+        company_subtype: company_subtype
+        med: true
+        default_withholding_tax: 2.3021358869347655
+        default_other_withholding_tax: 9.301444243932576
+        default_vat:
+          ei_description: ei_description
+          default: true
+          notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
+          e_invoice: true
+          ei_type: "2"
+          editable: true
+          is_disabled: true
+          description: Non imponibile art. 123
+          id: 9
+          value: 22
+        default_withholding_tax_taxable: 7.061401241503109
+        enasarco: true
+        default_cassa_taxable: 1.4658129805029452
+        default_rivalsa: 0.8008281904610115
+        cassa_name: cassa_name
+        cassa2_name: cassa2_name
+      properties:
+        company_type:
+          description: The company type
+          nullable: true
+          type: string
+        company_subtype:
+          description: The company subtype
+          nullable: true
+          type: string
+        profession:
+          description: The profession
+          nullable: true
+          type: string
+        regime:
+          description: The applied regime
+          nullable: true
+          type: string
+        rivalsa_name:
+          description: The name of the rivalsa
+          nullable: true
+          type: string
+        default_rivalsa:
+          description: The default rivalsa amount
+          nullable: true
+          type: number
+        cassa_name:
+          description: The name of the cassa
+          nullable: true
+          type: string
+        default_cassa:
+          description: The default cassa amount
+          nullable: true
+          type: number
+        default_cassa_taxable:
+          description: The default taxable amount for the cassa
+          nullable: true
+          type: number
+        cassa2_name:
+          description: The name of the second cassa
+          nullable: true
+          type: string
+        default_cassa2:
+          description: The default second cassa amount
+          nullable: true
+          type: number
+        default_cassa2_taxable:
+          description: The default taxable amount for the second cassa
+          nullable: true
+          type: number
+        default_withholding_tax:
+          description: The default withholding tax
+          nullable: true
+          type: number
+        default_withholding_tax_taxable:
+          description: The default taxable amount for the withholding tax
+          nullable: true
+          type: number
+        default_other_withholding_tax:
+          description: The default other withholding tax
+          nullable: true
+          type: number
+        enasarco:
+          description: If it has enasarco
+          nullable: true
+          type: boolean
+        enasarco_type:
+          description: The enasarco type
+          nullable: true
+          type: string
+        contributions_percentage:
+          description: The contributions percentage
+          nullable: true
+          type: number
+        profit_coefficient:
+          description: The profit coefficient
+          nullable: true
+          type: number
+        med:
+          description: If the health card system is active
+          nullable: true
+          type: boolean
+        default_vat:
+          $ref: '#/components/schemas/VatType'
+      title: TaxProfile
+      type: object
     ListEmailsResponsePage:
       properties:
         data:
@@ -28357,13 +28718,13 @@ components:
     WebhooksSubscription:
       example:
         types:
-        - null
-        - null
+        - it.fattureincloud.webhooks.issued_documents.invoices.create
+        - it.fattureincloud.webhooks.issued_documents.invoices.create
         sink: sink
         verified: true
         id: id
         config:
-          mapping: null
+          mapping: binary
       properties:
         id:
           description: Webhooks subscription id
@@ -28403,7 +28764,7 @@ components:
         name: Rossi S.r.l.
         id: 12345
         type: null
-        fic_plan: null
+        fic_plan: trial
       properties:
         id:
           description: Controlled company id
@@ -28473,7 +28834,7 @@ components:
         fic_stock: null
         fic_import_issued_documents: null
         fic_clients: null
-        fic_situation: null
+        fic_situation: none
         fic_calendar: null
         fic_issued_documents: null
         fic_settings: null
@@ -28592,14 +28953,15 @@ components:
         code: "123"
         notes: notes
         ei_code: ei_code
-        default_payment_terms_type: null
+        default_payment_terms_type: standard
         vat_number: IT01234567890
         created_at: created_at
-        type: null
+        type: company
         address_extra: address_extra
         bank_swift_code: bank_swift_code
         default_vat:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -28628,7 +28990,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           name: name
           bank_name: bank_name
           details:
@@ -28644,7 +29006,7 @@ components:
             title: title
           bank_beneficiary: bank_beneficiary
           id: 3
-          type: null
+          type: standard
           is_default: true
           ei_payment_method: ei_payment_method
           bank_iban: bank_iban
@@ -28860,7 +29222,6 @@ components:
       title: VatKind
       type: string
     OriginalDocumentType:
-      default: ordine
       description: Issued document original document type
       enum:
       - ordine
@@ -28876,6 +29237,7 @@ components:
         discount_highlight: true
         vat:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -28987,7 +29349,7 @@ components:
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
         ei_raw: "{}"
         due_date: 2018-04-03
         id: 6
@@ -28995,7 +29357,7 @@ components:
           days: 1
           type: null
         paid_date: 2018-04-03
-        status: null
+        status: not_paid
       properties:
         id:
           description: Issued document payment item id
@@ -29073,6 +29435,7 @@ components:
       - expense
       - passive_credit_note
       - passive_delivery_note
+      - self_invoice
       title: ReceivedDocumentType
       type: string
     ReceivedDocumentItemsListItem:
@@ -29084,6 +29447,7 @@ components:
         name: name
         vat:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -29147,12 +29511,12 @@ components:
           name: Conto Banca Intesa
           sia: sia
           id: 2
-          type: null
+          type: standard
         due_date: 2000-01-23
         id: 9
         payment_terms:
           days: 6
-          type: null
+          type: standard
         paid_date: 2000-01-23
         status: status
       properties:
@@ -29196,6 +29560,7 @@ components:
         amount_net: 1.2315135367772556
         vat:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -29308,14 +29673,14 @@ components:
         to_name: to_name
         subject: subject
         kind: kind
-        sent_date: 2000-01-23T04:56:07.000+00:00
+        sent_date: sent_date
         from_name: from_name
-        recipient_status: null
+        recipient_status: unknown
         content: content
         copy_to: copy_to
         id: 7
         recipient_date: 2000-01-23T04:56:07.000+00:00
-        status: null
+        status: sending
         errors_count: 9
       properties:
         id:
@@ -29326,7 +29691,6 @@ components:
           $ref: '#/components/schemas/EmailStatus'
         sent_date:
           description: Email sent date
-          format: date-time
           nullable: true
           type: string
         errors_count:
@@ -29450,11 +29814,22 @@ components:
       - it.fattureincloud.webhooks.entities.all.delete
       - it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
       - it.fattureincloud.webhooks.received_documents.e_invoices.receive
+      - it.fattureincloud.webhooks.issued_documents.invoices.email_sent
+      - it.fattureincloud.webhooks.issued_documents.quotes.email_sent
+      - it.fattureincloud.webhooks.issued_documents.proformas.email_sent
+      - it.fattureincloud.webhooks.issued_documents.receipts.email_sent
+      - it.fattureincloud.webhooks.issued_documents.delivery_notes.email_sent
+      - it.fattureincloud.webhooks.issued_documents.credit_notes.email_sent
+      - it.fattureincloud.webhooks.issued_documents.orders.email_sent
+      - it.fattureincloud.webhooks.issued_documents.work_reports.email_sent
+      - it.fattureincloud.webhooks.issued_documents.supplier_orders.email_sent
+      - it.fattureincloud.webhooks.issued_documents.self_invoices.email_sent
+      - it.fattureincloud.webhooks.issued_documents.all.email_sent
       title: EventType
       type: string
     WebhooksSubscriptionConfig:
       example:
-        mapping: null
+        mapping: binary
       properties:
         mapping:
           $ref: '#/components/schemas/WebhooksSubscriptionMapping'
@@ -29580,7 +29955,7 @@ components:
           vat_number: vat_number
           name: Rossi S.r.l.
           id: 12345
-          type: null
+          type: company
           fic_plan: null
           controlled_companies:
           - access_token: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
@@ -29590,7 +29965,7 @@ components:
             name: Rossi S.r.l.
             id: 12345
             type: null
-            fic_plan: null
+            fic_plan: trial
           - access_token: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
             tax_code: tax_code
             fic_license_expire: 2000-01-23
@@ -29598,7 +29973,7 @@ components:
             name: Rossi S.r.l.
             id: 12345
             type: null
-            fic_plan: null
+            fic_plan: trial
         - access_token: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
           tax_code: tax_code
           fic_license_expire: 2000-01-23
@@ -29606,7 +29981,7 @@ components:
           vat_number: vat_number
           name: Rossi S.r.l.
           id: 12345
-          type: null
+          type: company
           fic_plan: null
           controlled_companies:
           - access_token: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
@@ -29616,7 +29991,7 @@ components:
             name: Rossi S.r.l.
             id: 12345
             type: null
-            fic_plan: null
+            fic_plan: trial
           - access_token: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
             tax_code: tax_code
             fic_license_expire: 2000-01-23
@@ -29624,7 +29999,7 @@ components:
             name: Rossi S.r.l.
             id: 12345
             type: null
-            fic_plan: null
+            fic_plan: trial
       nullable: true
       properties:
         companies:
@@ -29728,7 +30103,7 @@ components:
       type: object
     CompanyInfo_access_info:
       example:
-        role: null
+        role: master
         through_accountant: true
         permissions:
           dic_settings: null
@@ -29743,7 +30118,7 @@ components:
           fic_stock: null
           fic_import_issued_documents: null
           fic_clients: null
-          fic_situation: null
+          fic_situation: none
           fic_calendar: null
           fic_issued_documents: null
           fic_settings: null
@@ -29940,7 +30315,7 @@ components:
         Issued document e-invoice data
         [Only if e_invoice=true]
       example:
-        original_document_type: null
+        original_document_type: ordine
         cig: cig
         bank_name: bank_name
         od_number: od_number
@@ -30013,16 +30388,12 @@ components:
         ts_opposizione: true
         ts_communication: true
         ts_full_amount: true
-        show_sofort_button: true
         ts_tipo_spesa: ts_tipo_spesa
         multifatture_sent: 7
         imported_by: imported_by
         ts_sent_date: 2000-01-23
       nullable: true
       properties:
-        show_sofort_button:
-          nullable: true
-          type: boolean
         multifatture_sent:
           nullable: true
           type: integer
@@ -30100,7 +30471,7 @@ components:
             name: Conto Banca Intesa
             sia: sia
             id: 2
-            type: null
+            type: standard
           name: name
           bank_name: bank_name
           details:
@@ -30116,7 +30487,7 @@ components:
             title: title
           bank_beneficiary: bank_beneficiary
           id: 3
-          type: null
+          type: standard
           is_default: true
           ei_payment_method: ei_payment_method
           bank_iban: bank_iban
@@ -30186,6 +30557,7 @@ components:
       example:
         vat:
           ei_description: ei_description
+          default: true
           notes: "IVA non imponibile ai sensi dell'articolo 123, comma 2"
           e_invoice: true
           ei_type: "2"
@@ -30332,7 +30704,7 @@ components:
     ReceivedDocumentPaymentsListItem_payment_terms:
       example:
         days: 6
-        type: null
+        type: standard
       nullable: true
       properties:
         days:

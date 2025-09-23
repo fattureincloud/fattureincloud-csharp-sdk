@@ -97,6 +97,7 @@ docs/GetReceiptsMonthlyTotalsResponse.md
 docs/GetReceivedDocumentPreCreateInfoResponse.md
 docs/GetReceivedDocumentResponse.md
 docs/GetSupplierResponse.md
+docs/GetTaxProfileResponse.md
 docs/GetUserInfoResponse.md
 docs/GetUserInfoResponseEmailConfirmationState.md
 docs/GetUserInfoResponseInfo.md
@@ -229,6 +230,7 @@ docs/ShowTotalsMode.md
 docs/Supplier.md
 docs/SupplierType.md
 docs/SuppliersApi.md
+docs/TaxProfile.md
 docs/TaxesApi.md
 docs/TransformIssuedDocumentResponse.md
 docs/UploadArchiveAttachmentResponse.md
@@ -252,9 +254,8 @@ docs/WebhooksSubscription.md
 docs/WebhooksSubscriptionConfig.md
 docs/WebhooksSubscriptionMapping.md
 src/It.FattureInCloud.Sdk.Test/It.FattureInCloud.Sdk.Test.csproj
-src/It.FattureInCloud.Sdk.Test/Model/CompanyPlanUsageTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/FattureInCloudPlanTypeTests.cs
-src/It.FattureInCloud.Sdk.Test/Model/GetCompanyPlanUsageResponseTests.cs
+src/It.FattureInCloud.Sdk.Test/Model/GetTaxProfileResponseTests.cs
+src/It.FattureInCloud.Sdk.Test/Model/TaxProfileTests.cs
 src/It.FattureInCloud.Sdk/Api/ArchiveApi.cs
 src/It.FattureInCloud.Sdk/Api/CashbookApi.cs
 src/It.FattureInCloud.Sdk/Api/ClientsApi.cs
@@ -379,6 +380,7 @@ src/It.FattureInCloud.Sdk/Model/GetReceiptsMonthlyTotalsResponse.cs
 src/It.FattureInCloud.Sdk/Model/GetReceivedDocumentPreCreateInfoResponse.cs
 src/It.FattureInCloud.Sdk/Model/GetReceivedDocumentResponse.cs
 src/It.FattureInCloud.Sdk/Model/GetSupplierResponse.cs
+src/It.FattureInCloud.Sdk/Model/GetTaxProfileResponse.cs
 src/It.FattureInCloud.Sdk/Model/GetUserInfoResponse.cs
 src/It.FattureInCloud.Sdk/Model/GetUserInfoResponseEmailConfirmationState.cs
 src/It.FattureInCloud.Sdk/Model/GetUserInfoResponseInfo.cs
@@ -503,6 +505,7 @@ src/It.FattureInCloud.Sdk/Model/SenderEmail.cs
 src/It.FattureInCloud.Sdk/Model/ShowTotalsMode.cs
 src/It.FattureInCloud.Sdk/Model/Supplier.cs
 src/It.FattureInCloud.Sdk/Model/SupplierType.cs
+src/It.FattureInCloud.Sdk/Model/TaxProfile.cs
 src/It.FattureInCloud.Sdk/Model/TransformIssuedDocumentResponse.cs
 src/It.FattureInCloud.Sdk/Model/UploadArchiveAttachmentResponse.cs
 src/It.FattureInCloud.Sdk/Model/UploadF24AttachmentResponse.cs

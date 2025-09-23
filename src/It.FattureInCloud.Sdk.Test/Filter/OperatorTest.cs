@@ -42,6 +42,12 @@ namespace It.FattureInCloud.Sdk.Test.FilterHelper
             Operator contains = Operator.CONTAINS;
             Assert.Equal("contains", OperatorExtensions.GetOperatorValue(contains));
 
+            Operator notLike = Operator.NOT_LIKE;
+            Assert.Equal("not like", OperatorExtensions.GetOperatorValue(notLike));
+
+            Operator notContains = Operator.NOT_CONTAINS;
+            Assert.Equal("not contains", OperatorExtensions.GetOperatorValue(notContains));
+
             Operator startsWith = Operator.STARTS_WITH;
             Assert.Equal("starts with", OperatorExtensions.GetOperatorValue(startsWith));
 
