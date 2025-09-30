@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>It.FattureInCloud.Sdk.Test</AssemblyName>
     <RootNamespace>It.FattureInCloud.Sdk.Test</RootNamespace>
-    <TargetFrameworks>net6.0</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net5.0</TargetFrameworks>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
