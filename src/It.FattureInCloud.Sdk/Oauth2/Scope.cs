@@ -102,6 +102,12 @@ namespace It.FattureInCloud.Sdk.OauthHelper
         /// <summary>Write permission to the Receipts</summary>
         RECEIPTS_ALL,
 
+        /// <summary>Read permission to the Calendar</summary>
+        CALENDAR_READ,
+
+        /// <summary>Write permission to the Calendar</summary>
+        CALENDAR_ALL,
+
         /// <summary>Read permission to the Taxes</summary>
         TAXES_READ,
 
@@ -113,6 +119,9 @@ namespace It.FattureInCloud.Sdk.OauthHelper
 
         /// <summary>Read permission to the Archive Documents</summary>
         ARCHIVE_ALL,
+
+        /// <summary>Read permission to the Emails</summary>
+        EMAILS_READ,
 
         /// <summary>Read permission to the Cashbook</summary>
         CASHBOOK_READ,
@@ -274,6 +283,14 @@ namespace It.FattureInCloud.Sdk.OauthHelper
                     stringScope = "receipts:a";
                     break;
 
+                case "CALENDAR_READ":
+                    stringScope = "calendar:r";
+                    break;
+
+                case "CALENDAR_ALL":
+                    stringScope = "calendar:a";
+                    break;
+
                 case "TAXES_READ":
                     stringScope = "taxes:r";
                     break;
@@ -288,6 +305,10 @@ namespace It.FattureInCloud.Sdk.OauthHelper
 
                 case "ARCHIVE_ALL":
                     stringScope = "archive:a";
+                    break;
+
+                case "EMAILS_READ":
+                    stringScope = "emails:r";
                     break;
 
                 case "CASHBOOK_READ":

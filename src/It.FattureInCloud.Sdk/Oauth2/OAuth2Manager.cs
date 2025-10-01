@@ -152,7 +152,8 @@ namespace It.FattureInCloud.Sdk.OauthHelper
             if ((int)response.StatusCode != 200)
             {
                 throw new OAuth2Error(response.Content);
-            };
+            }
+            ;
 
             return JsonConvert.DeserializeObject<OAuth2TokenResponse>(response.Content);
         }
@@ -181,7 +182,8 @@ namespace It.FattureInCloud.Sdk.OauthHelper
             if ((int)response.StatusCode != 200)
             {
                 throw new OAuth2Error(response.Content);
-            };
+            }
+            ;
 
             return JsonConvert.DeserializeObject<OAuth2TokenResponse>(response.Content);
         }
@@ -227,7 +229,8 @@ namespace It.FattureInCloud.Sdk.OauthHelper
             if ((int)response.StatusCode != 200)
             {
                 throw new OAuth2Error(response.Content);
-            };
+            }
+            ;
             var dataResponse = JsonConvert.DeserializeObject<OAuth2DeviceCodeRawResponse>(response.Content);
 
             return dataResponse.Data;
@@ -256,7 +259,8 @@ namespace It.FattureInCloud.Sdk.OauthHelper
             if ((int)response.StatusCode != 200)
             {
                 throw new OAuth2Error(response.Content);
-            };
+            }
+            ;
 
             return JsonConvert.DeserializeObject<OAuth2TokenResponse>(response.Content);
         }
@@ -284,7 +288,8 @@ namespace It.FattureInCloud.Sdk.OauthHelper
             if ((int)response.StatusCode != 200)
             {
                 throw new OAuth2Error(response.Content);
-            };
+            }
+            ;
 
             return JsonConvert.DeserializeObject<OAuth2TokenResponse>(response.Content);
         }
