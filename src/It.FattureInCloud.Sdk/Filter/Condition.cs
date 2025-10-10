@@ -51,6 +51,11 @@ namespace It.FattureInCloud.Sdk.FilterHelper
             {
                 return string.Format("{0} {1} {2}", Field, OperatorExtensions.GetOperatorValue(Op), "'" + Value + "'");
             }
+            // Use invariant culture for numeric values to ensure consistent formatting (e.g., 10.12 instead of 10,12)
+            if (Value is float || Value is double || Value is decimal)
+            {
+                return string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0} {1} {2}", Field, OperatorExtensions.GetOperatorValue(Op), Value);
+            }
             return string.Format("{0} {1} {2}", Field, OperatorExtensions.GetOperatorValue(Op), Value);
         }
 
