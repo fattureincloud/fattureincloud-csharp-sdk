@@ -35,7 +35,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
 
         public EventTypeTests()
         {
-            instance = EventType.CashbookCreate;
+            instance = EventType.ItFattureincloudWebhooksCashbookCreate;
         }
 
         public void Dispose()

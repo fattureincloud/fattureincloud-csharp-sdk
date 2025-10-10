@@ -144,13 +144,13 @@ namespace It.FattureInCloud.Sdk.Test.Model
             Assert.IsType<bool>(instance.Smtp);
         }
         /// <summary>
-        /// Test the property 'Sofort'
+        /// Test the property 'Sofort' - REMOVED: Property no longer exists in the model
         /// </summary>
-        [Fact]
-        public void SofortTest()
-        {
-            Assert.IsType<bool>(instance.Sofort);
-        }
+        // [Fact]
+        // public void SofortTest()
+        // {
+        //     Assert.IsType<bool>(instance.Sofort);
+        // }
         /// <summary>
         /// Test the property 'Stock'
         /// </summary>
