@@ -5,14 +5,18 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**CreateReceivedDocument**](ReceivedDocumentsApi.md#createreceiveddocument) | **POST** /c/{company_id}/received_documents | Create Received Document |
+| [**DeleteBinReceivedDocument**](ReceivedDocumentsApi.md#deletebinreceiveddocument) | **DELETE** /c/{company_id}/bin/received_documents/{document_id} | Delete Bin Received Document |
 | [**DeleteReceivedDocument**](ReceivedDocumentsApi.md#deletereceiveddocument) | **DELETE** /c/{company_id}/received_documents/{document_id} | Delete Received Document |
 | [**DeleteReceivedDocumentAttachment**](ReceivedDocumentsApi.md#deletereceiveddocumentattachment) | **DELETE** /c/{company_id}/received_documents/{document_id}/attachment | Delete Received Document Attachment |
+| [**GetBinReceivedDocument**](ReceivedDocumentsApi.md#getbinreceiveddocument) | **GET** /c/{company_id}/bin/received_documents/{document_id} | Get Bin Received Documents List |
 | [**GetExistingReceivedDocumentTotals**](ReceivedDocumentsApi.md#getexistingreceiveddocumenttotals) | **POST** /c/{company_id}/received_documents/{document_id}/totals | Get Existing Received Document Totals |
 | [**GetNewReceivedDocumentTotals**](ReceivedDocumentsApi.md#getnewreceiveddocumenttotals) | **POST** /c/{company_id}/received_documents/totals | Get New Received Document Totals |
 | [**GetReceivedDocument**](ReceivedDocumentsApi.md#getreceiveddocument) | **GET** /c/{company_id}/received_documents/{document_id} | Get Received Document |
 | [**GetReceivedDocumentPreCreateInfo**](ReceivedDocumentsApi.md#getreceiveddocumentprecreateinfo) | **GET** /c/{company_id}/received_documents/info | Get Received Document Pre-Create Info |
+| [**ListBinReceivedDocuments**](ReceivedDocumentsApi.md#listbinreceiveddocuments) | **GET** /c/{company_id}/bin/received_documents | Get Bin Received Documents List |
 | [**ListReceivedDocuments**](ReceivedDocumentsApi.md#listreceiveddocuments) | **GET** /c/{company_id}/received_documents | List Received Documents |
 | [**ModifyReceivedDocument**](ReceivedDocumentsApi.md#modifyreceiveddocument) | **PUT** /c/{company_id}/received_documents/{document_id} | Modify Received Document |
+| [**RecoverBinReceivedDocument**](ReceivedDocumentsApi.md#recoverbinreceiveddocument) | **POST** /c/{company_id}/bin/received_documents/{document_id}/recover | Recover Received Document From The Bin |
 | [**UploadReceivedDocumentAttachment**](ReceivedDocumentsApi.md#uploadreceiveddocumentattachment) | **POST** /c/{company_id}/received_documents/attachment | Upload Received Document Attachment |
 
 <a id="createreceiveddocument"></a>
@@ -108,6 +112,98 @@ catch (ApiException e)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Document created. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deletebinreceiveddocument"></a>
+# **DeleteBinReceivedDocument**
+> void DeleteBinReceivedDocument (int companyId, int documentId)
+
+Delete Bin Received Document
+
+Delete Bin Received Document
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using It.FattureInCloud.Sdk.Api;
+using It.FattureInCloud.Sdk.Client;
+using It.FattureInCloud.Sdk.Model;
+
+namespace Example
+{
+    public class DeleteBinReceivedDocumentExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api-v2.fattureincloud.it";
+            // Configure OAuth2 access token for authorization: OAuth2AuthenticationCodeFlow
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ReceivedDocumentsApi(config);
+            var companyId = 12345;  // int | The ID of the company.
+            var documentId = 56;  // int | The ID of the document.
+
+            try
+            {
+                // Delete Bin Received Document
+                apiInstance.DeleteBinReceivedDocument(companyId, documentId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ReceivedDocumentsApi.DeleteBinReceivedDocument: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteBinReceivedDocumentWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete Bin Received Document
+    apiInstance.DeleteBinReceivedDocumentWithHttpInfo(companyId, documentId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceivedDocumentsApi.DeleteBinReceivedDocumentWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[OAuth2AuthenticationCodeFlow](../README.md#OAuth2AuthenticationCodeFlow)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -296,6 +392,102 @@ void (empty response body)
 | **200** | File removed |  -  |
 | **401** | Unauthorized |  -  |
 | **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="getbinreceiveddocument"></a>
+# **GetBinReceivedDocument**
+> GetBinIssuedDocumentResponse GetBinReceivedDocument (int companyId, int documentId)
+
+Get Bin Received Documents List
+
+Get bin issued documents detail
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using It.FattureInCloud.Sdk.Api;
+using It.FattureInCloud.Sdk.Client;
+using It.FattureInCloud.Sdk.Model;
+
+namespace Example
+{
+    public class GetBinReceivedDocumentExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api-v2.fattureincloud.it";
+            // Configure OAuth2 access token for authorization: OAuth2AuthenticationCodeFlow
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ReceivedDocumentsApi(config);
+            var companyId = 12345;  // int | The ID of the company.
+            var documentId = 56;  // int | The ID of the document.
+
+            try
+            {
+                // Get Bin Received Documents List
+                GetBinIssuedDocumentResponse result = apiInstance.GetBinReceivedDocument(companyId, documentId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ReceivedDocumentsApi.GetBinReceivedDocument: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetBinReceivedDocumentWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get Bin Received Documents List
+    ApiResponse<GetBinIssuedDocumentResponse> response = apiInstance.GetBinReceivedDocumentWithHttpInfo(companyId, documentId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceivedDocumentsApi.GetBinReceivedDocumentWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
+
+### Return type
+
+[**GetBinIssuedDocumentResponse**](GetBinIssuedDocumentResponse.md)
+
+### Authorization
+
+[OAuth2AuthenticationCodeFlow](../README.md#OAuth2AuthenticationCodeFlow)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Bin issued document details |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -693,6 +885,100 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="listbinreceiveddocuments"></a>
+# **ListBinReceivedDocuments**
+> ListBinReceivedDocuments ListBinReceivedDocuments (int companyId)
+
+Get Bin Received Documents List
+
+Get bin Received documents list
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using It.FattureInCloud.Sdk.Api;
+using It.FattureInCloud.Sdk.Client;
+using It.FattureInCloud.Sdk.Model;
+
+namespace Example
+{
+    public class ListBinReceivedDocumentsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api-v2.fattureincloud.it";
+            // Configure OAuth2 access token for authorization: OAuth2AuthenticationCodeFlow
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ReceivedDocumentsApi(config);
+            var companyId = 12345;  // int | The ID of the company.
+
+            try
+            {
+                // Get Bin Received Documents List
+                ListBinReceivedDocuments result = apiInstance.ListBinReceivedDocuments(companyId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ReceivedDocumentsApi.ListBinReceivedDocuments: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListBinReceivedDocumentsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get Bin Received Documents List
+    ApiResponse<ListBinReceivedDocuments> response = apiInstance.ListBinReceivedDocumentsWithHttpInfo(companyId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceivedDocumentsApi.ListBinReceivedDocumentsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+
+### Return type
+
+[**ListBinReceivedDocuments**](ListBinReceivedDocuments.md)
+
+### Authorization
+
+[OAuth2AuthenticationCodeFlow](../README.md#OAuth2AuthenticationCodeFlow)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Example response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="listreceiveddocuments"></a>
 # **ListReceivedDocuments**
 > ListReceivedDocumentsResponse ListReceivedDocuments (int companyId, string type, string fields = null, string fieldset = null, string sort = null, int? page = null, int? perPage = null, string q = null)
@@ -899,6 +1185,98 @@ catch (ApiException e)
 | **200** | Modified document. |  -  |
 | **401** | Unauthorized |  -  |
 | **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="recoverbinreceiveddocument"></a>
+# **RecoverBinReceivedDocument**
+> void RecoverBinReceivedDocument (int companyId, int documentId)
+
+Recover Received Document From The Bin
+
+Recover Received Document From The Bin
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using It.FattureInCloud.Sdk.Api;
+using It.FattureInCloud.Sdk.Client;
+using It.FattureInCloud.Sdk.Model;
+
+namespace Example
+{
+    public class RecoverBinReceivedDocumentExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api-v2.fattureincloud.it";
+            // Configure OAuth2 access token for authorization: OAuth2AuthenticationCodeFlow
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ReceivedDocumentsApi(config);
+            var companyId = 12345;  // int | The ID of the company.
+            var documentId = 56;  // int | The ID of the document.
+
+            try
+            {
+                // Recover Received Document From The Bin
+                apiInstance.RecoverBinReceivedDocument(companyId, documentId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ReceivedDocumentsApi.RecoverBinReceivedDocument: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RecoverBinReceivedDocumentWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Recover Received Document From The Bin
+    apiInstance.RecoverBinReceivedDocumentWithHttpInfo(companyId, documentId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReceivedDocumentsApi.RecoverBinReceivedDocumentWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[OAuth2AuthenticationCodeFlow](../README.md#OAuth2AuthenticationCodeFlow)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

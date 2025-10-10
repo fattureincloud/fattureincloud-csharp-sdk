@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **PaymentAccountsList** | [**List&lt;PaymentAccount&gt;**](PaymentAccount.md) | Payment accounts list | [optional] 
 **VatTypesList** | [**List&lt;VatType&gt;**](VatType.md) | Vat types list | [optional] 
 **LanguagesList** | [**List&lt;Language&gt;**](Language.md) | Languages list | [optional] 
+**PriceLists** | [**List&lt;PriceList&gt;**](PriceList.md) | Price lists | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

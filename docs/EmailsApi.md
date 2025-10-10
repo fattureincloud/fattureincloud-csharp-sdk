@@ -8,7 +8,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 
 <a id="listemails"></a>
 # **ListEmails**
-> ListEmailsResponse ListEmails (int companyId)
+> ListEmailsResponse ListEmails (int companyId, string fields = null, string fieldset = null, string sort = null, int? page = null, int? perPage = null, string q = null)
 
 List Emails
 
@@ -35,11 +35,17 @@ namespace Example
 
             var apiInstance = new EmailsApi(config);
             var companyId = 12345;  // int | The ID of the company.
+            var fields = "fields_example";  // string | List of comma-separated fields. (optional) 
+            var fieldset = "basic";  // string | Name of the fieldset. (optional) 
+            var sort = "sort_example";  // string | List of comma-separated fields for result sorting (minus for desc sorting). (optional) 
+            var page = 1;  // int? | The page to retrieve. (optional)  (default to 1)
+            var perPage = 5;  // int? | The size of the page. (optional)  (default to 5)
+            var q = "q_example";  // string | Query for filtering the results. (optional) 
 
             try
             {
                 // List Emails
-                ListEmailsResponse result = apiInstance.ListEmails(companyId);
+                ListEmailsResponse result = apiInstance.ListEmails(companyId, fields, fieldset, sort, page, perPage, q);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -60,7 +66,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // List Emails
-    ApiResponse<ListEmailsResponse> response = apiInstance.ListEmailsWithHttpInfo(companyId);
+    ApiResponse<ListEmailsResponse> response = apiInstance.ListEmailsWithHttpInfo(companyId, fields, fieldset, sort, page, perPage, q);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -78,6 +84,12 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **companyId** | **int** | The ID of the company. |  |
+| **fields** | **string** | List of comma-separated fields. | [optional]  |
+| **fieldset** | **string** | Name of the fieldset. | [optional]  |
+| **sort** | **string** | List of comma-separated fields for result sorting (minus for desc sorting). | [optional]  |
+| **page** | **int?** | The page to retrieve. | [optional] [default to 1] |
+| **perPage** | **int?** | The size of the page. | [optional] [default to 5] |
+| **q** | **string** | Query for filtering the results. | [optional]  |
 
 ### Return type
 

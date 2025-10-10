@@ -5,16 +5,20 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**CreateIssuedDocument**](IssuedDocumentsApi.md#createissueddocument) | **POST** /c/{company_id}/issued_documents | Create Issued Document |
+| [**DeleteBinIssuedDocument**](IssuedDocumentsApi.md#deletebinissueddocument) | **DELETE** /c/{company_id}/bin/issued_documents/{document_id} | Delete Bin Issued Document |
 | [**DeleteIssuedDocument**](IssuedDocumentsApi.md#deleteissueddocument) | **DELETE** /c/{company_id}/issued_documents/{document_id} | Delete Issued Document |
 | [**DeleteIssuedDocumentAttachment**](IssuedDocumentsApi.md#deleteissueddocumentattachment) | **DELETE** /c/{company_id}/issued_documents/{document_id}/attachment | Delete Issued Document Attachment |
+| [**GetBinIssuedDocument**](IssuedDocumentsApi.md#getbinissueddocument) | **GET** /c/{company_id}/bin/issued_documents/{document_id} | Get Bin Issued Documents List |
 | [**GetEmailData**](IssuedDocumentsApi.md#getemaildata) | **GET** /c/{company_id}/issued_documents/{document_id}/email | Get Email Data |
 | [**GetExistingIssuedDocumentTotals**](IssuedDocumentsApi.md#getexistingissueddocumenttotals) | **POST** /c/{company_id}/issued_documents/{document_id}/totals | Get Existing Issued Document Totals |
 | [**GetIssuedDocument**](IssuedDocumentsApi.md#getissueddocument) | **GET** /c/{company_id}/issued_documents/{document_id} | Get Issued Document |
 | [**GetIssuedDocumentPreCreateInfo**](IssuedDocumentsApi.md#getissueddocumentprecreateinfo) | **GET** /c/{company_id}/issued_documents/info | Get Issued Document Pre-Create Info |
 | [**GetNewIssuedDocumentTotals**](IssuedDocumentsApi.md#getnewissueddocumenttotals) | **POST** /c/{company_id}/issued_documents/totals | Get New Issued Document Totals |
 | [**JoinIssuedDocuments**](IssuedDocumentsApi.md#joinissueddocuments) | **GET** /c/{company_id}/issued_documents/join | Join Issued Documents |
+| [**ListBinIssuedDocuments**](IssuedDocumentsApi.md#listbinissueddocuments) | **GET** /c/{company_id}/bin/issued_documents | Get Bin Issued Documents List |
 | [**ListIssuedDocuments**](IssuedDocumentsApi.md#listissueddocuments) | **GET** /c/{company_id}/issued_documents | List Issued Documents |
 | [**ModifyIssuedDocument**](IssuedDocumentsApi.md#modifyissueddocument) | **PUT** /c/{company_id}/issued_documents/{document_id} | Modify Issued Document |
+| [**RecoverBinIssuedDocument**](IssuedDocumentsApi.md#recoverbinissueddocument) | **POST** /c/{company_id}/bin/issued_documents/{document_id}/recover | Recover Issued Document From The Bin |
 | [**ScheduleEmail**](IssuedDocumentsApi.md#scheduleemail) | **POST** /c/{company_id}/issued_documents/{document_id}/email | Schedule Email |
 | [**TransformIssuedDocument**](IssuedDocumentsApi.md#transformissueddocument) | **GET** /c/{company_id}/issued_documents/transform | Transform Issued Document |
 | [**UploadIssuedDocumentAttachment**](IssuedDocumentsApi.md#uploadissueddocumentattachment) | **POST** /c/{company_id}/issued_documents/attachment | Upload Issued Document Attachment |
@@ -113,6 +117,98 @@ catch (ApiException e)
 |-------------|-------------|------------------|
 | **200** | Document created. |  -  |
 | **401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deletebinissueddocument"></a>
+# **DeleteBinIssuedDocument**
+> void DeleteBinIssuedDocument (int companyId, int documentId)
+
+Delete Bin Issued Document
+
+Delete Bin Issued Document
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using It.FattureInCloud.Sdk.Api;
+using It.FattureInCloud.Sdk.Client;
+using It.FattureInCloud.Sdk.Model;
+
+namespace Example
+{
+    public class DeleteBinIssuedDocumentExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api-v2.fattureincloud.it";
+            // Configure OAuth2 access token for authorization: OAuth2AuthenticationCodeFlow
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new IssuedDocumentsApi(config);
+            var companyId = 12345;  // int | The ID of the company.
+            var documentId = 56;  // int | The ID of the document.
+
+            try
+            {
+                // Delete Bin Issued Document
+                apiInstance.DeleteBinIssuedDocument(companyId, documentId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling IssuedDocumentsApi.DeleteBinIssuedDocument: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteBinIssuedDocumentWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete Bin Issued Document
+    apiInstance.DeleteBinIssuedDocumentWithHttpInfo(companyId, documentId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling IssuedDocumentsApi.DeleteBinIssuedDocumentWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[OAuth2AuthenticationCodeFlow](../README.md#OAuth2AuthenticationCodeFlow)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -301,6 +397,102 @@ void (empty response body)
 | **200** | File removed. |  -  |
 | **401** | Unauthorized |  -  |
 | **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="getbinissueddocument"></a>
+# **GetBinIssuedDocument**
+> GetBinIssuedDocumentResponse GetBinIssuedDocument (int companyId, int documentId)
+
+Get Bin Issued Documents List
+
+Get bin issued documents detail
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using It.FattureInCloud.Sdk.Api;
+using It.FattureInCloud.Sdk.Client;
+using It.FattureInCloud.Sdk.Model;
+
+namespace Example
+{
+    public class GetBinIssuedDocumentExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api-v2.fattureincloud.it";
+            // Configure OAuth2 access token for authorization: OAuth2AuthenticationCodeFlow
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new IssuedDocumentsApi(config);
+            var companyId = 12345;  // int | The ID of the company.
+            var documentId = 56;  // int | The ID of the document.
+
+            try
+            {
+                // Get Bin Issued Documents List
+                GetBinIssuedDocumentResponse result = apiInstance.GetBinIssuedDocument(companyId, documentId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling IssuedDocumentsApi.GetBinIssuedDocument: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetBinIssuedDocumentWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get Bin Issued Documents List
+    ApiResponse<GetBinIssuedDocumentResponse> response = apiInstance.GetBinIssuedDocumentWithHttpInfo(companyId, documentId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling IssuedDocumentsApi.GetBinIssuedDocumentWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
+
+### Return type
+
+[**GetBinIssuedDocumentResponse**](GetBinIssuedDocumentResponse.md)
+
+### Authorization
+
+[OAuth2AuthenticationCodeFlow](../README.md#OAuth2AuthenticationCodeFlow)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Bin issued document details |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -895,6 +1087,100 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="listbinissueddocuments"></a>
+# **ListBinIssuedDocuments**
+> ListBinIssuedDocuments ListBinIssuedDocuments (int companyId)
+
+Get Bin Issued Documents List
+
+Get bin issued documents list
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using It.FattureInCloud.Sdk.Api;
+using It.FattureInCloud.Sdk.Client;
+using It.FattureInCloud.Sdk.Model;
+
+namespace Example
+{
+    public class ListBinIssuedDocumentsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api-v2.fattureincloud.it";
+            // Configure OAuth2 access token for authorization: OAuth2AuthenticationCodeFlow
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new IssuedDocumentsApi(config);
+            var companyId = 12345;  // int | The ID of the company.
+
+            try
+            {
+                // Get Bin Issued Documents List
+                ListBinIssuedDocuments result = apiInstance.ListBinIssuedDocuments(companyId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling IssuedDocumentsApi.ListBinIssuedDocuments: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListBinIssuedDocumentsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get Bin Issued Documents List
+    ApiResponse<ListBinIssuedDocuments> response = apiInstance.ListBinIssuedDocumentsWithHttpInfo(companyId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling IssuedDocumentsApi.ListBinIssuedDocumentsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+
+### Return type
+
+[**ListBinIssuedDocuments**](ListBinIssuedDocuments.md)
+
+### Authorization
+
+[OAuth2AuthenticationCodeFlow](../README.md#OAuth2AuthenticationCodeFlow)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Bin Issued Documents List |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="listissueddocuments"></a>
 # **ListIssuedDocuments**
 > ListIssuedDocumentsResponse ListIssuedDocuments (int companyId, string type, string fields = null, string fieldset = null, string sort = null, int? page = null, int? perPage = null, string q = null, int? inclusive = null)
@@ -1104,6 +1390,98 @@ catch (ApiException e)
 | **200** | Document edited |  -  |
 | **401** | Unauthorized |  -  |
 | **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="recoverbinissueddocument"></a>
+# **RecoverBinIssuedDocument**
+> void RecoverBinIssuedDocument (int companyId, int documentId)
+
+Recover Issued Document From The Bin
+
+Recover Issued Document From The Bin
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using It.FattureInCloud.Sdk.Api;
+using It.FattureInCloud.Sdk.Client;
+using It.FattureInCloud.Sdk.Model;
+
+namespace Example
+{
+    public class RecoverBinIssuedDocumentExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api-v2.fattureincloud.it";
+            // Configure OAuth2 access token for authorization: OAuth2AuthenticationCodeFlow
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new IssuedDocumentsApi(config);
+            var companyId = 12345;  // int | The ID of the company.
+            var documentId = 56;  // int | The ID of the document.
+
+            try
+            {
+                // Recover Issued Document From The Bin
+                apiInstance.RecoverBinIssuedDocument(companyId, documentId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling IssuedDocumentsApi.RecoverBinIssuedDocument: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RecoverBinIssuedDocumentWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Recover Issued Document From The Bin
+    apiInstance.RecoverBinIssuedDocumentWithHttpInfo(companyId, documentId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling IssuedDocumentsApi.RecoverBinIssuedDocumentWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+| **documentId** | **int** | The ID of the document. |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[OAuth2AuthenticationCodeFlow](../README.md#OAuth2AuthenticationCodeFlow)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
