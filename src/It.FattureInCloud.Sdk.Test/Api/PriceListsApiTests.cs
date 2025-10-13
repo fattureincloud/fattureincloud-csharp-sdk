@@ -19,6 +19,7 @@ using Xunit;
 
 using It.FattureInCloud.Sdk.Client;
 using It.FattureInCloud.Sdk.Api;
+using Moq;
 // uncomment below to import models
 //using It.FattureInCloud.Sdk.Model;
 
@@ -33,11 +34,23 @@ namespace It.FattureInCloud.Sdk.Test.Api
     /// </remarks>
     public class PriceListsApiTests : IDisposable
     {
-        private PriceListsApi instance;
+        Mock<IPriceListsApi> instance = new Mock<IPriceListsApi>();
+        string getPriceListsResponseBody;
+        string getPriceListItemsResponseBody;
 
         public PriceListsApiTests()
         {
-            instance = new PriceListsApi();
+            getPriceListsResponseBody = "{ 'data': [ { 'id': '1', 'name': 'Listino di prova', 'currency': 'EUR', 'default': true, 'items_count': 2, 'created_at': '2021-10-10 10:10:10', 'updated_at': '2021-10-10 10:10:10' }, { 'id': '2', 'name': 'Listino di prova 2', 'currency': 'USD', 'default': false, 'items_count': 5, 'created_at': '2021-11-11 11:11:11', 'updated_at': '2021-11-11 11:11:11' } ] }";
+            var getPriceListsResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<ListPriceListsResponse>(getPriceListsResponseBody);
+            instance
+                .Setup(p => p.GetPriceLists(Moq.It.IsAny<int>(), 0))
+                .Returns(getPriceListsResponse);
+
+            getPriceListItemsResponseBody = "{ 'data': [ { 'id': 12345, 'name': 'Prodotto A', 'code': 'PROD-A', 'price': 100.0, 'currency': 'EUR', 'tax_rate': 22.0, 'description': 'Descrizione del prodotto A', 'created_at': '2021-10-10 10:10:10', 'updated_at': '2021-10-10 10:10:10' }, { 'id': 12346, 'name': 'Prodotto B', 'code': 'PROD-B', 'price': 200.0, 'currency': 'EUR', 'tax_rate': 22.0, 'description': 'Descrizione del prodotto B', 'created_at': '2021-11-11 11:11:11', 'updated_at': '2021-11-11 11:11:11' } ] }";
+            var getPriceListItemsResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<GetPriceListItemsResponse>(getPriceListItemsResponseBody);
+            instance
+                .Setup(p => p.GetPriceListItems(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), 0))
+                .Returns(getPriceListItemsResponse);
         }
 
         public void Dispose()
@@ -51,8 +64,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void InstanceTest()
         {
-            // TODO uncomment below to test 'IsType' PriceListsApi
-            //Assert.IsType<PriceListsApi>(instance);
+            Assert.IsType<IPriceListsApi>(instance);
         }
 
         /// <summary>
