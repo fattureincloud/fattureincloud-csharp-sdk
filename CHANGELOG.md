@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.1.2 (2025-10-14)
+
+
+### Bug Fixes
+
+* fixed enum ([#129](https://github.com/fattureincloud/fattureincloud-csharp-sdk/issues/129)) ([04c58a8](https://github.com/fattureincloud/fattureincloud-csharp-sdk/commit/04c58a8d429b2a3b315d4c90c00c3c0613bae830))
+
 ### 2.1.1 (2024-10-31)
 
 ## 2.1.0 (2024-06-17)
