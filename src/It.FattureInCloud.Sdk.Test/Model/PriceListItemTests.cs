@@ -31,13 +31,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class PriceListItemTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for PriceListItem
-        //private PriceListItem instance;
+        private PriceListItem instance;
 
         public PriceListItemTests()
         {
-            // TODO uncomment below to create an instance of PriceListItem
-            //instance = new PriceListItem();
+            var body = "{'price':3.5}";
+            instance = JsonConvert.DeserializeObject<PriceListItem>(body);
         }
 
         public void Dispose()
@@ -51,8 +50,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PriceListItemInstanceTest()
         {
-            // TODO uncomment below to test "IsType" PriceListItem
-            //Assert.IsType<PriceListItem>(instance);
+            Assert.IsType<PriceListItem>(instance);
         }
 
         /// <summary>
@@ -61,7 +59,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PriceTest()
         {
-            // TODO unit test for the property 'Price'
+            Assert.IsType<decimal>(instance.Price);
         }
     }
 }

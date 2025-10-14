@@ -31,13 +31,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class PriceListTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for PriceList
-        //private PriceList instance;
+        private PriceList instance;
 
         public PriceListTests()
         {
-            // TODO uncomment below to create an instance of PriceList
-            //instance = new PriceList();
+            var body = "{'id':'10','name':'Listino 1','prices_type':'net','is_default':true,'valid_from':'2023-01-01','valid_to':'2023-12-31','type':'sell'}";
+            instance = JsonConvert.DeserializeObject<PriceList>(body);
         }
 
         public void Dispose()
@@ -51,8 +50,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PriceListInstanceTest()
         {
-            // TODO uncomment below to test "IsType" PriceList
-            //Assert.IsType<PriceList>(instance);
+            Assert.IsType<PriceList>(instance);
         }
 
         /// <summary>
@@ -61,7 +59,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IdTest()
         {
-            // TODO unit test for the property 'Id'
+            Assert.IsType<string>(instance.Id);
         }
 
         /// <summary>
@@ -70,7 +68,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NameTest()
         {
-            // TODO unit test for the property 'Name'
+            Assert.IsType<string>(instance.Name);
         }
 
         /// <summary>
@@ -79,7 +77,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PricesTypeTest()
         {
-            // TODO unit test for the property 'PricesType'
+            Assert.IsType<PriceListPricesType>(instance.PricesType);
         }
 
         /// <summary>
@@ -88,7 +86,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IsDefaultTest()
         {
-            // TODO unit test for the property 'IsDefault'
+            Assert.IsType<bool>(instance.IsDefault);
         }
 
         /// <summary>
@@ -97,7 +95,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ValidFromTest()
         {
-            // TODO unit test for the property 'ValidFrom'
+            Assert.IsType<string>(instance.ValidFrom);
         }
 
         /// <summary>
@@ -106,7 +104,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void ValidToTest()
         {
-            // TODO unit test for the property 'ValidTo'
+            Assert.IsType<string>(instance.ValidTo);
         }
 
         /// <summary>
@@ -115,7 +113,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void TypeTest()
         {
-            // TODO unit test for the property 'Type'
+            Assert.IsType<PriceListType>(instance.Type);
         }
     }
 }
