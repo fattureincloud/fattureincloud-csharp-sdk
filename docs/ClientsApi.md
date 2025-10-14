@@ -7,6 +7,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | [**CreateClient**](ClientsApi.md#createclient) | **POST** /c/{company_id}/entities/clients | Create Client |
 | [**DeleteClient**](ClientsApi.md#deleteclient) | **DELETE** /c/{company_id}/entities/clients/{client_id} | Delete Client |
 | [**GetClient**](ClientsApi.md#getclient) | **GET** /c/{company_id}/entities/clients/{client_id} | Get Client |
+| [**GetClientInfo**](ClientsApi.md#getclientinfo) | **GET** /c/{company_id}/entities/clients/info | Get Client info |
 | [**ListClients**](ClientsApi.md#listclients) | **GET** /c/{company_id}/entities/clients | List Clients |
 | [**ModifyClient**](ClientsApi.md#modifyclient) | **PUT** /c/{company_id}/entities/clients/{client_id} | Modify Client |
 
@@ -297,6 +298,102 @@ catch (ApiException e)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Client Details. |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="getclientinfo"></a>
+# **GetClientInfo**
+> GetEntityClientPreCreateInfoResponse GetClientInfo (int companyId)
+
+Get Client info
+
+Retrieves the information useful while creating a new Client.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using It.FattureInCloud.Sdk.Api;
+using It.FattureInCloud.Sdk.Client;
+using It.FattureInCloud.Sdk.Model;
+
+namespace Example
+{
+    public class GetClientInfoExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api-v2.fattureincloud.it";
+            // Configure OAuth2 access token for authorization: OAuth2AuthenticationCodeFlow
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ClientsApi(config);
+            var companyId = 12345;  // int | The ID of the company.
+
+            try
+            {
+                // Get Client info
+                GetEntityClientPreCreateInfoResponse result = apiInstance.GetClientInfo(companyId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ClientsApi.GetClientInfo: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetClientInfoWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get Client info
+    ApiResponse<GetEntityClientPreCreateInfoResponse> response = apiInstance.GetClientInfoWithHttpInfo(companyId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ClientsApi.GetClientInfoWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **companyId** | **int** | The ID of the company. |  |
+
+### Return type
+
+[**GetEntityClientPreCreateInfoResponse**](GetEntityClientPreCreateInfoResponse.md)
+
+### Authorization
+
+[OAuth2AuthenticationCodeFlow](../README.md#OAuth2AuthenticationCodeFlow)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Example response |  -  |
 | **401** | Unauthorized |  -  |
 | **404** | Not Found |  -  |
 

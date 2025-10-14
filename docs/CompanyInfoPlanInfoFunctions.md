@@ -16,7 +16,6 @@ Name | Type | Description | Notes
 **Receipts** | **bool?** |  | [optional] 
 **Recurring** | **bool?** |  | [optional] 
 **Smtp** | **bool?** |  | [optional] 
-**Sofort** | **bool?** |  | [optional] 
 **Stock** | **bool?** |  | [optional] 
 **Subaccounts** | **bool?** |  | [optional] 
 **TesseraSanitaria** | **bool?** |  | [optional] 

@@ -14,7 +14,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using RestSharp;
 using Xunit;
 using Moq;
 using It.FattureInCloud.Sdk.Api;
@@ -41,7 +40,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
             listEmailsResponseBody = "{ 'current_page': 1, 'first_page_url': 'emails?page=1', 'from': 1, 'last_page': 1, 'last_page_url': 'emails?page=1', 'next_page_url': 'emails?page=1', 'path': 'emails', 'per_page': 50, 'prev_page_url': 'emails?page=1', 'to': 2, 'data': [ { 'status': 'sent', 'recipient_status': 'unknown', 'id': 1, 'error_log': '', 'from_email': 'test@mail.it', 'from_name': 'Test mail', 'to_email': 'mail@test.it', 'to_name': 'Mario', 'subject': 'Test', 'content': 'Test send email', 'copy_to': '', 'kind': 'Fatture', 'attachments': [] }, { 'status': 'sent', 'recipient_status': 'unknown', 'id': 2, 'error_log': '', 'from_email': 'test@mail.it', 'from_name': 'Test mail', 'to_email': 'mail@test.it', 'to_name': 'Maria', 'subject': 'Test', 'content': 'Test send email', 'copy_to': '', 'kind': 'Fatture', 'attachments': [] } ] }";
             var listEmailsResponse = JsonConvert.DeserializeObject<ListEmailsResponse>(listEmailsResponseBody);
             instance
-                .Setup(p => p.ListEmails(Moq.It.IsAny<int>(), 0))
+                .Setup(p => p.ListEmails(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<string>(), Moq.It.IsAny<int?>(), Moq.It.IsAny<int?>(), Moq.It.IsAny<string>(), Moq.It.IsAny<int>()))
                 .Returns(listEmailsResponse);
         }
 
