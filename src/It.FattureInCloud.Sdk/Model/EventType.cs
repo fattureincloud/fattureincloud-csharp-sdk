@@ -34,448 +34,448 @@ namespace It.FattureInCloud.Sdk.Model
     public enum EventType
     {
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsInvoicesCreate for value: it.fattureincloud.webhooks.issued_documents.invoices.create
+        /// Enum IssuedDocumentsInvoicesCreate for value: it.fattureincloud.webhooks.issued_documents.invoices.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.invoices.create")]
-        ItFattureincloudWebhooksIssuedDocumentsInvoicesCreate = 1,
+        IssuedDocumentsInvoicesCreate = 1,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsInvoicesUpdate for value: it.fattureincloud.webhooks.issued_documents.invoices.update
+        /// Enum IssuedDocumentsInvoicesUpdate for value: it.fattureincloud.webhooks.issued_documents.invoices.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.invoices.update")]
-        ItFattureincloudWebhooksIssuedDocumentsInvoicesUpdate = 2,
+        IssuedDocumentsInvoicesUpdate = 2,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsInvoicesDelete for value: it.fattureincloud.webhooks.issued_documents.invoices.delete
+        /// Enum IssuedDocumentsInvoicesDelete for value: it.fattureincloud.webhooks.issued_documents.invoices.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.invoices.delete")]
-        ItFattureincloudWebhooksIssuedDocumentsInvoicesDelete = 3,
+        IssuedDocumentsInvoicesDelete = 3,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsQuotesCreate for value: it.fattureincloud.webhooks.issued_documents.quotes.create
+        /// Enum IssuedDocumentsQuotesCreate for value: it.fattureincloud.webhooks.issued_documents.quotes.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.quotes.create")]
-        ItFattureincloudWebhooksIssuedDocumentsQuotesCreate = 4,
+        IssuedDocumentsQuotesCreate = 4,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsQuotesUpdate for value: it.fattureincloud.webhooks.issued_documents.quotes.update
+        /// Enum IssuedDocumentsQuotesUpdate for value: it.fattureincloud.webhooks.issued_documents.quotes.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.quotes.update")]
-        ItFattureincloudWebhooksIssuedDocumentsQuotesUpdate = 5,
+        IssuedDocumentsQuotesUpdate = 5,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsQuotesDelete for value: it.fattureincloud.webhooks.issued_documents.quotes.delete
+        /// Enum IssuedDocumentsQuotesDelete for value: it.fattureincloud.webhooks.issued_documents.quotes.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.quotes.delete")]
-        ItFattureincloudWebhooksIssuedDocumentsQuotesDelete = 6,
+        IssuedDocumentsQuotesDelete = 6,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsProformasCreate for value: it.fattureincloud.webhooks.issued_documents.proformas.create
+        /// Enum IssuedDocumentsProformasCreate for value: it.fattureincloud.webhooks.issued_documents.proformas.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.proformas.create")]
-        ItFattureincloudWebhooksIssuedDocumentsProformasCreate = 7,
+        IssuedDocumentsProformasCreate = 7,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsProformasUpdate for value: it.fattureincloud.webhooks.issued_documents.proformas.update
+        /// Enum IssuedDocumentsProformasUpdate for value: it.fattureincloud.webhooks.issued_documents.proformas.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.proformas.update")]
-        ItFattureincloudWebhooksIssuedDocumentsProformasUpdate = 8,
+        IssuedDocumentsProformasUpdate = 8,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsProformasDelete for value: it.fattureincloud.webhooks.issued_documents.proformas.delete
+        /// Enum IssuedDocumentsProformasDelete for value: it.fattureincloud.webhooks.issued_documents.proformas.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.proformas.delete")]
-        ItFattureincloudWebhooksIssuedDocumentsProformasDelete = 9,
+        IssuedDocumentsProformasDelete = 9,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsReceiptsCreate for value: it.fattureincloud.webhooks.issued_documents.receipts.create
+        /// Enum IssuedDocumentsReceiptsCreate for value: it.fattureincloud.webhooks.issued_documents.receipts.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.receipts.create")]
-        ItFattureincloudWebhooksIssuedDocumentsReceiptsCreate = 10,
+        IssuedDocumentsReceiptsCreate = 10,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsReceiptsUpdate for value: it.fattureincloud.webhooks.issued_documents.receipts.update
+        /// Enum IssuedDocumentsReceiptsUpdate for value: it.fattureincloud.webhooks.issued_documents.receipts.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.receipts.update")]
-        ItFattureincloudWebhooksIssuedDocumentsReceiptsUpdate = 11,
+        IssuedDocumentsReceiptsUpdate = 11,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsReceiptsDelete for value: it.fattureincloud.webhooks.issued_documents.receipts.delete
+        /// Enum IssuedDocumentsReceiptsDelete for value: it.fattureincloud.webhooks.issued_documents.receipts.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.receipts.delete")]
-        ItFattureincloudWebhooksIssuedDocumentsReceiptsDelete = 12,
+        IssuedDocumentsReceiptsDelete = 12,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsDeliveryNotesCreate for value: it.fattureincloud.webhooks.issued_documents.delivery_notes.create
+        /// Enum IssuedDocumentsDeliveryNotesCreate for value: it.fattureincloud.webhooks.issued_documents.delivery_notes.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.delivery_notes.create")]
-        ItFattureincloudWebhooksIssuedDocumentsDeliveryNotesCreate = 13,
+        IssuedDocumentsDeliveryNotesCreate = 13,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsDeliveryNotesUpdate for value: it.fattureincloud.webhooks.issued_documents.delivery_notes.update
+        /// Enum IssuedDocumentsDeliveryNotesUpdate for value: it.fattureincloud.webhooks.issued_documents.delivery_notes.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.delivery_notes.update")]
-        ItFattureincloudWebhooksIssuedDocumentsDeliveryNotesUpdate = 14,
+        IssuedDocumentsDeliveryNotesUpdate = 14,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsDeliveryNotesDelete for value: it.fattureincloud.webhooks.issued_documents.delivery_notes.delete
+        /// Enum IssuedDocumentsDeliveryNotesDelete for value: it.fattureincloud.webhooks.issued_documents.delivery_notes.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.delivery_notes.delete")]
-        ItFattureincloudWebhooksIssuedDocumentsDeliveryNotesDelete = 15,
+        IssuedDocumentsDeliveryNotesDelete = 15,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsCreditNotesCreate for value: it.fattureincloud.webhooks.issued_documents.credit_notes.create
+        /// Enum IssuedDocumentsCreditNotesCreate for value: it.fattureincloud.webhooks.issued_documents.credit_notes.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.credit_notes.create")]
-        ItFattureincloudWebhooksIssuedDocumentsCreditNotesCreate = 16,
+        IssuedDocumentsCreditNotesCreate = 16,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsCreditNotesUpdate for value: it.fattureincloud.webhooks.issued_documents.credit_notes.update
+        /// Enum IssuedDocumentsCreditNotesUpdate for value: it.fattureincloud.webhooks.issued_documents.credit_notes.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.credit_notes.update")]
-        ItFattureincloudWebhooksIssuedDocumentsCreditNotesUpdate = 17,
+        IssuedDocumentsCreditNotesUpdate = 17,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsCreditNotesDelete for value: it.fattureincloud.webhooks.issued_documents.credit_notes.delete
+        /// Enum IssuedDocumentsCreditNotesDelete for value: it.fattureincloud.webhooks.issued_documents.credit_notes.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.credit_notes.delete")]
-        ItFattureincloudWebhooksIssuedDocumentsCreditNotesDelete = 18,
+        IssuedDocumentsCreditNotesDelete = 18,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsOrdersCreate for value: it.fattureincloud.webhooks.issued_documents.orders.create
+        /// Enum IssuedDocumentsOrdersCreate for value: it.fattureincloud.webhooks.issued_documents.orders.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.orders.create")]
-        ItFattureincloudWebhooksIssuedDocumentsOrdersCreate = 19,
+        IssuedDocumentsOrdersCreate = 19,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsOrdersUpdate for value: it.fattureincloud.webhooks.issued_documents.orders.update
+        /// Enum IssuedDocumentsOrdersUpdate for value: it.fattureincloud.webhooks.issued_documents.orders.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.orders.update")]
-        ItFattureincloudWebhooksIssuedDocumentsOrdersUpdate = 20,
+        IssuedDocumentsOrdersUpdate = 20,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsOrdersDelete for value: it.fattureincloud.webhooks.issued_documents.orders.delete
+        /// Enum IssuedDocumentsOrdersDelete for value: it.fattureincloud.webhooks.issued_documents.orders.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.orders.delete")]
-        ItFattureincloudWebhooksIssuedDocumentsOrdersDelete = 21,
+        IssuedDocumentsOrdersDelete = 21,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsWorkReportsCreate for value: it.fattureincloud.webhooks.issued_documents.work_reports.create
+        /// Enum IssuedDocumentsWorkReportsCreate for value: it.fattureincloud.webhooks.issued_documents.work_reports.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.work_reports.create")]
-        ItFattureincloudWebhooksIssuedDocumentsWorkReportsCreate = 22,
+        IssuedDocumentsWorkReportsCreate = 22,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsWorkReportsUpdate for value: it.fattureincloud.webhooks.issued_documents.work_reports.update
+        /// Enum IssuedDocumentsWorkReportsUpdate for value: it.fattureincloud.webhooks.issued_documents.work_reports.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.work_reports.update")]
-        ItFattureincloudWebhooksIssuedDocumentsWorkReportsUpdate = 23,
+        IssuedDocumentsWorkReportsUpdate = 23,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsWorkReportsDelete for value: it.fattureincloud.webhooks.issued_documents.work_reports.delete
+        /// Enum IssuedDocumentsWorkReportsDelete for value: it.fattureincloud.webhooks.issued_documents.work_reports.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.work_reports.delete")]
-        ItFattureincloudWebhooksIssuedDocumentsWorkReportsDelete = 24,
+        IssuedDocumentsWorkReportsDelete = 24,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsSupplierOrdersCreate for value: it.fattureincloud.webhooks.issued_documents.supplier_orders.create
+        /// Enum IssuedDocumentsSupplierOrdersCreate for value: it.fattureincloud.webhooks.issued_documents.supplier_orders.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.supplier_orders.create")]
-        ItFattureincloudWebhooksIssuedDocumentsSupplierOrdersCreate = 25,
+        IssuedDocumentsSupplierOrdersCreate = 25,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsSupplierOrdersUpdate for value: it.fattureincloud.webhooks.issued_documents.supplier_orders.update
+        /// Enum IssuedDocumentsSupplierOrdersUpdate for value: it.fattureincloud.webhooks.issued_documents.supplier_orders.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.supplier_orders.update")]
-        ItFattureincloudWebhooksIssuedDocumentsSupplierOrdersUpdate = 26,
+        IssuedDocumentsSupplierOrdersUpdate = 26,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsSupplierOrdersDelete for value: it.fattureincloud.webhooks.issued_documents.supplier_orders.delete
+        /// Enum IssuedDocumentsSupplierOrdersDelete for value: it.fattureincloud.webhooks.issued_documents.supplier_orders.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.supplier_orders.delete")]
-        ItFattureincloudWebhooksIssuedDocumentsSupplierOrdersDelete = 27,
+        IssuedDocumentsSupplierOrdersDelete = 27,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsSelfInvoicesCreate for value: it.fattureincloud.webhooks.issued_documents.self_invoices.create
+        /// Enum IssuedDocumentsSelfInvoicesCreate for value: it.fattureincloud.webhooks.issued_documents.self_invoices.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.self_invoices.create")]
-        ItFattureincloudWebhooksIssuedDocumentsSelfInvoicesCreate = 28,
+        IssuedDocumentsSelfInvoicesCreate = 28,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsSelfInvoicesUpdate for value: it.fattureincloud.webhooks.issued_documents.self_invoices.update
+        /// Enum IssuedDocumentsSelfInvoicesUpdate for value: it.fattureincloud.webhooks.issued_documents.self_invoices.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.self_invoices.update")]
-        ItFattureincloudWebhooksIssuedDocumentsSelfInvoicesUpdate = 29,
+        IssuedDocumentsSelfInvoicesUpdate = 29,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsSelfInvoicesDelete for value: it.fattureincloud.webhooks.issued_documents.self_invoices.delete
+        /// Enum IssuedDocumentsSelfInvoicesDelete for value: it.fattureincloud.webhooks.issued_documents.self_invoices.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.self_invoices.delete")]
-        ItFattureincloudWebhooksIssuedDocumentsSelfInvoicesDelete = 30,
+        IssuedDocumentsSelfInvoicesDelete = 30,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsAllCreate for value: it.fattureincloud.webhooks.issued_documents.all.create
+        /// Enum IssuedDocumentsAllCreate for value: it.fattureincloud.webhooks.issued_documents.all.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.all.create")]
-        ItFattureincloudWebhooksIssuedDocumentsAllCreate = 31,
+        IssuedDocumentsAllCreate = 31,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsAllUpdate for value: it.fattureincloud.webhooks.issued_documents.all.update
+        /// Enum IssuedDocumentsAllUpdate for value: it.fattureincloud.webhooks.issued_documents.all.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.all.update")]
-        ItFattureincloudWebhooksIssuedDocumentsAllUpdate = 32,
+        IssuedDocumentsAllUpdate = 32,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsAllDelete for value: it.fattureincloud.webhooks.issued_documents.all.delete
+        /// Enum IssuedDocumentsAllDelete for value: it.fattureincloud.webhooks.issued_documents.all.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.all.delete")]
-        ItFattureincloudWebhooksIssuedDocumentsAllDelete = 33,
+        IssuedDocumentsAllDelete = 33,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksReceivedDocumentsCreate for value: it.fattureincloud.webhooks.received_documents.create
+        /// Enum ReceivedDocumentsCreate for value: it.fattureincloud.webhooks.received_documents.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.received_documents.create")]
-        ItFattureincloudWebhooksReceivedDocumentsCreate = 34,
+        ReceivedDocumentsCreate = 34,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksReceivedDocumentsUpdate for value: it.fattureincloud.webhooks.received_documents.update
+        /// Enum ReceivedDocumentsUpdate for value: it.fattureincloud.webhooks.received_documents.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.received_documents.update")]
-        ItFattureincloudWebhooksReceivedDocumentsUpdate = 35,
+        ReceivedDocumentsUpdate = 35,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksReceivedDocumentsDelete for value: it.fattureincloud.webhooks.received_documents.delete
+        /// Enum ReceivedDocumentsDelete for value: it.fattureincloud.webhooks.received_documents.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.received_documents.delete")]
-        ItFattureincloudWebhooksReceivedDocumentsDelete = 36,
+        ReceivedDocumentsDelete = 36,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksReceiptsCreate for value: it.fattureincloud.webhooks.receipts.create
+        /// Enum ReceiptsCreate for value: it.fattureincloud.webhooks.receipts.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.receipts.create")]
-        ItFattureincloudWebhooksReceiptsCreate = 37,
+        ReceiptsCreate = 37,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksReceiptsUpdate for value: it.fattureincloud.webhooks.receipts.update
+        /// Enum ReceiptsUpdate for value: it.fattureincloud.webhooks.receipts.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.receipts.update")]
-        ItFattureincloudWebhooksReceiptsUpdate = 38,
+        ReceiptsUpdate = 38,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksReceiptsDelete for value: it.fattureincloud.webhooks.receipts.delete
+        /// Enum ReceiptsDelete for value: it.fattureincloud.webhooks.receipts.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.receipts.delete")]
-        ItFattureincloudWebhooksReceiptsDelete = 39,
+        ReceiptsDelete = 39,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksTaxesCreate for value: it.fattureincloud.webhooks.taxes.create
+        /// Enum TaxesCreate for value: it.fattureincloud.webhooks.taxes.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.taxes.create")]
-        ItFattureincloudWebhooksTaxesCreate = 40,
+        TaxesCreate = 40,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksTaxesUpdate for value: it.fattureincloud.webhooks.taxes.update
+        /// Enum TaxesUpdate for value: it.fattureincloud.webhooks.taxes.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.taxes.update")]
-        ItFattureincloudWebhooksTaxesUpdate = 41,
+        TaxesUpdate = 41,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksTaxesDelete for value: it.fattureincloud.webhooks.taxes.delete
+        /// Enum TaxesDelete for value: it.fattureincloud.webhooks.taxes.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.taxes.delete")]
-        ItFattureincloudWebhooksTaxesDelete = 42,
+        TaxesDelete = 42,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksArchiveDocumentsCreate for value: it.fattureincloud.webhooks.archive_documents.create
+        /// Enum ArchiveDocumentsCreate for value: it.fattureincloud.webhooks.archive_documents.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.archive_documents.create")]
-        ItFattureincloudWebhooksArchiveDocumentsCreate = 43,
+        ArchiveDocumentsCreate = 43,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksArchiveDocumentsUpdate for value: it.fattureincloud.webhooks.archive_documents.update
+        /// Enum ArchiveDocumentsUpdate for value: it.fattureincloud.webhooks.archive_documents.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.archive_documents.update")]
-        ItFattureincloudWebhooksArchiveDocumentsUpdate = 44,
+        ArchiveDocumentsUpdate = 44,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksArchiveDocumentsDelete for value: it.fattureincloud.webhooks.archive_documents.delete
+        /// Enum ArchiveDocumentsDelete for value: it.fattureincloud.webhooks.archive_documents.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.archive_documents.delete")]
-        ItFattureincloudWebhooksArchiveDocumentsDelete = 45,
+        ArchiveDocumentsDelete = 45,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksCashbookCreate for value: it.fattureincloud.webhooks.cashbook.create
+        /// Enum CashbookCreate for value: it.fattureincloud.webhooks.cashbook.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.cashbook.create")]
-        ItFattureincloudWebhooksCashbookCreate = 46,
+        CashbookCreate = 46,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksCashbookUpdate for value: it.fattureincloud.webhooks.cashbook.update
+        /// Enum CashbookUpdate for value: it.fattureincloud.webhooks.cashbook.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.cashbook.update")]
-        ItFattureincloudWebhooksCashbookUpdate = 47,
+        CashbookUpdate = 47,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksCashbookDelete for value: it.fattureincloud.webhooks.cashbook.delete
+        /// Enum CashbookDelete for value: it.fattureincloud.webhooks.cashbook.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.cashbook.delete")]
-        ItFattureincloudWebhooksCashbookDelete = 48,
+        CashbookDelete = 48,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksProductsCreate for value: it.fattureincloud.webhooks.products.create
+        /// Enum ProductsCreate for value: it.fattureincloud.webhooks.products.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.products.create")]
-        ItFattureincloudWebhooksProductsCreate = 49,
+        ProductsCreate = 49,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksProductsUpdate for value: it.fattureincloud.webhooks.products.update
+        /// Enum ProductsUpdate for value: it.fattureincloud.webhooks.products.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.products.update")]
-        ItFattureincloudWebhooksProductsUpdate = 50,
+        ProductsUpdate = 50,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksProductsDelete for value: it.fattureincloud.webhooks.products.delete
+        /// Enum ProductsDelete for value: it.fattureincloud.webhooks.products.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.products.delete")]
-        ItFattureincloudWebhooksProductsDelete = 51,
+        ProductsDelete = 51,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksProductsStockUpdate for value: it.fattureincloud.webhooks.products.stock_update
+        /// Enum ProductsStockUpdate for value: it.fattureincloud.webhooks.products.stock_update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.products.stock_update")]
-        ItFattureincloudWebhooksProductsStockUpdate = 52,
+        ProductsStockUpdate = 52,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksEntitiesClientsCreate for value: it.fattureincloud.webhooks.entities.clients.create
+        /// Enum EntitiesClientsCreate for value: it.fattureincloud.webhooks.entities.clients.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.entities.clients.create")]
-        ItFattureincloudWebhooksEntitiesClientsCreate = 53,
+        EntitiesClientsCreate = 53,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksEntitiesClientsUpdate for value: it.fattureincloud.webhooks.entities.clients.update
+        /// Enum EntitiesClientsUpdate for value: it.fattureincloud.webhooks.entities.clients.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.entities.clients.update")]
-        ItFattureincloudWebhooksEntitiesClientsUpdate = 54,
+        EntitiesClientsUpdate = 54,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksEntitiesClientsDelete for value: it.fattureincloud.webhooks.entities.clients.delete
+        /// Enum EntitiesClientsDelete for value: it.fattureincloud.webhooks.entities.clients.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.entities.clients.delete")]
-        ItFattureincloudWebhooksEntitiesClientsDelete = 55,
+        EntitiesClientsDelete = 55,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksEntitiesSuppliersCreate for value: it.fattureincloud.webhooks.entities.suppliers.create
+        /// Enum EntitiesSuppliersCreate for value: it.fattureincloud.webhooks.entities.suppliers.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.entities.suppliers.create")]
-        ItFattureincloudWebhooksEntitiesSuppliersCreate = 56,
+        EntitiesSuppliersCreate = 56,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksEntitiesSuppliersUpdate for value: it.fattureincloud.webhooks.entities.suppliers.update
+        /// Enum EntitiesSuppliersUpdate for value: it.fattureincloud.webhooks.entities.suppliers.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.entities.suppliers.update")]
-        ItFattureincloudWebhooksEntitiesSuppliersUpdate = 57,
+        EntitiesSuppliersUpdate = 57,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksEntitiesSuppliersDelete for value: it.fattureincloud.webhooks.entities.suppliers.delete
+        /// Enum EntitiesSuppliersDelete for value: it.fattureincloud.webhooks.entities.suppliers.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.entities.suppliers.delete")]
-        ItFattureincloudWebhooksEntitiesSuppliersDelete = 58,
+        EntitiesSuppliersDelete = 58,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksEntitiesAllCreate for value: it.fattureincloud.webhooks.entities.all.create
+        /// Enum EntitiesAllCreate for value: it.fattureincloud.webhooks.entities.all.create
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.entities.all.create")]
-        ItFattureincloudWebhooksEntitiesAllCreate = 59,
+        EntitiesAllCreate = 59,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksEntitiesAllUpdate for value: it.fattureincloud.webhooks.entities.all.update
+        /// Enum EntitiesAllUpdate for value: it.fattureincloud.webhooks.entities.all.update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.entities.all.update")]
-        ItFattureincloudWebhooksEntitiesAllUpdate = 60,
+        EntitiesAllUpdate = 60,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksEntitiesAllDelete for value: it.fattureincloud.webhooks.entities.all.delete
+        /// Enum EntitiesAllDelete for value: it.fattureincloud.webhooks.entities.all.delete
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.entities.all.delete")]
-        ItFattureincloudWebhooksEntitiesAllDelete = 61,
+        EntitiesAllDelete = 61,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsEInvoicesStatusUpdate for value: it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
+        /// Enum IssuedDocumentsEInvoicesStatusUpdate for value: it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.e_invoices.status_update")]
-        ItFattureincloudWebhooksIssuedDocumentsEInvoicesStatusUpdate = 62,
+        IssuedDocumentsEInvoicesStatusUpdate = 62,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksReceivedDocumentsEInvoicesReceive for value: it.fattureincloud.webhooks.received_documents.e_invoices.receive
+        /// Enum ReceivedDocumentsEInvoicesReceive for value: it.fattureincloud.webhooks.received_documents.e_invoices.receive
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.received_documents.e_invoices.receive")]
-        ItFattureincloudWebhooksReceivedDocumentsEInvoicesReceive = 63,
+        ReceivedDocumentsEInvoicesReceive = 63,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsInvoicesEmailSent for value: it.fattureincloud.webhooks.issued_documents.invoices.email_sent
+        /// Enum IssuedDocumentsInvoicesEmailSent for value: it.fattureincloud.webhooks.issued_documents.invoices.email_sent
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.invoices.email_sent")]
-        ItFattureincloudWebhooksIssuedDocumentsInvoicesEmailSent = 64,
+        IssuedDocumentsInvoicesEmailSent = 64,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsQuotesEmailSent for value: it.fattureincloud.webhooks.issued_documents.quotes.email_sent
+        /// Enum IssuedDocumentsQuotesEmailSent for value: it.fattureincloud.webhooks.issued_documents.quotes.email_sent
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.quotes.email_sent")]
-        ItFattureincloudWebhooksIssuedDocumentsQuotesEmailSent = 65,
+        IssuedDocumentsQuotesEmailSent = 65,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsProformasEmailSent for value: it.fattureincloud.webhooks.issued_documents.proformas.email_sent
+        /// Enum IssuedDocumentsProformasEmailSent for value: it.fattureincloud.webhooks.issued_documents.proformas.email_sent
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.proformas.email_sent")]
-        ItFattureincloudWebhooksIssuedDocumentsProformasEmailSent = 66,
+        IssuedDocumentsProformasEmailSent = 66,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsReceiptsEmailSent for value: it.fattureincloud.webhooks.issued_documents.receipts.email_sent
+        /// Enum IssuedDocumentsReceiptsEmailSent for value: it.fattureincloud.webhooks.issued_documents.receipts.email_sent
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.receipts.email_sent")]
-        ItFattureincloudWebhooksIssuedDocumentsReceiptsEmailSent = 67,
+        IssuedDocumentsReceiptsEmailSent = 67,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsDeliveryNotesEmailSent for value: it.fattureincloud.webhooks.issued_documents.delivery_notes.email_sent
+        /// Enum IssuedDocumentsDeliveryNotesEmailSent for value: it.fattureincloud.webhooks.issued_documents.delivery_notes.email_sent
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.delivery_notes.email_sent")]
-        ItFattureincloudWebhooksIssuedDocumentsDeliveryNotesEmailSent = 68,
+        IssuedDocumentsDeliveryNotesEmailSent = 68,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsCreditNotesEmailSent for value: it.fattureincloud.webhooks.issued_documents.credit_notes.email_sent
+        /// Enum IssuedDocumentsCreditNotesEmailSent for value: it.fattureincloud.webhooks.issued_documents.credit_notes.email_sent
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.credit_notes.email_sent")]
-        ItFattureincloudWebhooksIssuedDocumentsCreditNotesEmailSent = 69,
+        IssuedDocumentsCreditNotesEmailSent = 69,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsOrdersEmailSent for value: it.fattureincloud.webhooks.issued_documents.orders.email_sent
+        /// Enum IssuedDocumentsOrdersEmailSent for value: it.fattureincloud.webhooks.issued_documents.orders.email_sent
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.orders.email_sent")]
-        ItFattureincloudWebhooksIssuedDocumentsOrdersEmailSent = 70,
+        IssuedDocumentsOrdersEmailSent = 70,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsWorkReportsEmailSent for value: it.fattureincloud.webhooks.issued_documents.work_reports.email_sent
+        /// Enum IssuedDocumentsWorkReportsEmailSent for value: it.fattureincloud.webhooks.issued_documents.work_reports.email_sent
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.work_reports.email_sent")]
-        ItFattureincloudWebhooksIssuedDocumentsWorkReportsEmailSent = 71,
+        IssuedDocumentsWorkReportsEmailSent = 71,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsSupplierOrdersEmailSent for value: it.fattureincloud.webhooks.issued_documents.supplier_orders.email_sent
+        /// Enum IssuedDocumentsSupplierOrdersEmailSent for value: it.fattureincloud.webhooks.issued_documents.supplier_orders.email_sent
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.supplier_orders.email_sent")]
-        ItFattureincloudWebhooksIssuedDocumentsSupplierOrdersEmailSent = 72,
+        IssuedDocumentsSupplierOrdersEmailSent = 72,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsSelfInvoicesEmailSent for value: it.fattureincloud.webhooks.issued_documents.self_invoices.email_sent
+        /// Enum IssuedDocumentsSelfInvoicesEmailSent for value: it.fattureincloud.webhooks.issued_documents.self_invoices.email_sent
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.self_invoices.email_sent")]
-        ItFattureincloudWebhooksIssuedDocumentsSelfInvoicesEmailSent = 73,
+        IssuedDocumentsSelfInvoicesEmailSent = 73,
 
         /// <summary>
-        /// Enum ItFattureincloudWebhooksIssuedDocumentsAllEmailSent for value: it.fattureincloud.webhooks.issued_documents.all.email_sent
+        /// Enum IssuedDocumentsAllEmailSent for value: it.fattureincloud.webhooks.issued_documents.all.email_sent
         /// </summary>
         [EnumMember(Value = "it.fattureincloud.webhooks.issued_documents.all.email_sent")]
-        ItFattureincloudWebhooksIssuedDocumentsAllEmailSent = 74
+        IssuedDocumentsAllEmailSent = 74
     }
 
 }
