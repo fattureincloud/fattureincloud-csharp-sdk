@@ -31,13 +31,11 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class WebhooksSubscriptionVerificationMethodTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for WebhooksSubscriptionVerificationMethod
-        //private WebhooksSubscriptionVerificationMethod instance;
+        private WebhooksSubscriptionVerificationMethod instance;
 
         public WebhooksSubscriptionVerificationMethodTests()
         {
-            // TODO uncomment below to create an instance of WebhooksSubscriptionVerificationMethod
-            //instance = new WebhooksSubscriptionVerificationMethod();
+            instance = WebhooksSubscriptionVerificationMethod.Header;
         }
 
         public void Dispose()
@@ -51,8 +49,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void WebhooksSubscriptionVerificationMethodInstanceTest()
         {
-            // TODO uncomment below to test "IsType" WebhooksSubscriptionVerificationMethod
-            //Assert.IsType<WebhooksSubscriptionVerificationMethod>(instance);
+            Assert.IsType<WebhooksSubscriptionVerificationMethod>(instance);
         }
     }
 }

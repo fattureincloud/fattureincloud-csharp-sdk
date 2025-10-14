@@ -37,7 +37,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         {
             instance.Id = "SUB123";
             instance.Sink = "https://www.example.url";
-            instance.Types = new List<EventType>() { EventType.ItFattureincloudWebhooksEntitiesAllCreate, EventType.ItFattureincloudWebhooksCashbookCreate };
+            instance.Types = new List<EventType>() { EventType.EntitiesAllCreate, EventType.CashbookCreate };
             instance.Verified = true;
             instance.Config = new WebhooksSubscriptionConfig(WebhooksSubscriptionMapping.Structured);
         }

@@ -19,6 +19,9 @@ using Xunit;
 
 using It.FattureInCloud.Sdk.Client;
 using It.FattureInCloud.Sdk.Api;
+using Moq;
+using It.FattureInCloud.Sdk.Model;
+using Newtonsoft.Json.Linq;
 // uncomment below to import models
 //using It.FattureInCloud.Sdk.Model;
 
@@ -33,11 +36,23 @@ namespace It.FattureInCloud.Sdk.Test.Api
     /// </remarks>
     public class PriceListsApiTests : IDisposable
     {
-        private PriceListsApi instance;
+        Mock<IPriceListsApi> instance = new Mock<IPriceListsApi>();
+        string getPriceListsResponseBody;
+        string getPriceListItemsResponseBody;
 
         public PriceListsApiTests()
         {
-            instance = new PriceListsApi();
+            getPriceListsResponseBody = "{'data':[{'id':'10','name':'Listino 1','prices_type':'net','is_default':true,'valid_from':'2023-01-01','valid_to':'2023-12-31','type':'sell'}]}";
+            var getPriceListsResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<ListPriceListsResponse>(getPriceListsResponseBody);
+            instance
+                .Setup(p => p.GetPriceLists(Moq.It.IsAny<int>(), 0))
+                .Returns(getPriceListsResponse);
+
+            getPriceListItemsResponseBody = "{'data':{1:{'price':3.5}}}";
+            var getPriceListItemsResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<GetPriceListItemsResponse>(getPriceListItemsResponseBody);
+            instance
+                .Setup(p => p.GetPriceListItems(Moq.It.IsAny<int>(), Moq.It.IsAny<string>(), 0))
+                .Returns(getPriceListItemsResponse);
         }
 
         public void Dispose()
@@ -51,8 +66,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void InstanceTest()
         {
-            // TODO uncomment below to test 'IsType' PriceListsApi
-            //Assert.IsType<PriceListsApi>(instance);
+            Assert.IsType<Mock<IPriceListsApi>>(instance);
         }
 
         /// <summary>
@@ -61,11 +75,12 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void GetPriceListItemsTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //string priceListId = null;
-            //var response = instance.GetPriceListItems(companyId, priceListId);
-            //Assert.IsType<GetPriceListItemsResponse>(response);
+            int companyId = 2;
+            string priceListId = "10";
+            var response = instance.Object.GetPriceListItems(companyId, priceListId);
+            JObject obj = JObject.Parse(getPriceListItemsResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
 
         /// <summary>
@@ -74,10 +89,11 @@ namespace It.FattureInCloud.Sdk.Test.Api
         [Fact]
         public void GetPriceListsTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int companyId = null;
-            //var response = instance.GetPriceLists(companyId);
-            //Assert.IsType<ListPriceListsResponse>(response);
+            int companyId = 2;
+            var response = instance.Object.GetPriceLists(companyId);
+            JObject obj = JObject.Parse(getPriceListsResponseBody);
+
+            Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
         }
     }
 }

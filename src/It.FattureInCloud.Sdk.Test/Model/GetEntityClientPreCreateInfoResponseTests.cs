@@ -31,13 +31,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class GetEntityClientPreCreateInfoResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for GetEntityClientPreCreateInfoResponse
-        //private GetEntityClientPreCreateInfoResponse instance;
+        private GetEntityClientPreCreateInfoResponse instance;
 
         public GetEntityClientPreCreateInfoResponseTests()
         {
-            // TODO uncomment below to create an instance of GetEntityClientPreCreateInfoResponse
-            //instance = new GetEntityClientPreCreateInfoResponse();
+            var body = "{'data':{'countries_list':['Italia','Marocco'],'payment_methods_list':[{'id':1,'type':'standard'},{'id':2,'type':'standard'}],'payment_accounts_list':[{'id':1,'type':'standard'},{'id':2,'type':'standard'}],'vat_types_list':[{'id':1},{'id':2}],'price_lists':[{'id':'12345'}]}}";
+            instance = JsonConvert.DeserializeObject<GetEntityClientPreCreateInfoResponse>(body);
         }
 
         public void Dispose()
@@ -51,8 +50,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void GetEntityClientPreCreateInfoResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" GetEntityClientPreCreateInfoResponse
-            //Assert.IsType<GetEntityClientPreCreateInfoResponse>(instance);
+            Assert.IsType<GetEntityClientPreCreateInfoResponse>(instance);
         }
 
         /// <summary>
@@ -61,7 +59,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<EntityClientPreCreateInfo>(instance.Data);
         }
     }
 }

@@ -31,13 +31,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class VerifyWebhooksSubscriptionTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for VerifyWebhooksSubscription
-        //private VerifyWebhooksSubscription instance;
+        private VerifyWebhooksSubscription instance;
 
         public VerifyWebhooksSubscriptionTests()
         {
-            // TODO uncomment below to create an instance of VerifyWebhooksSubscription
-            //instance = new VerifyWebhooksSubscription();
+            var body = "{'id':'12345','verification_method':'header'}";
+            instance = JsonConvert.DeserializeObject<VerifyWebhooksSubscription>(body);
         }
 
         public void Dispose()
@@ -51,8 +50,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VerifyWebhooksSubscriptionInstanceTest()
         {
-            // TODO uncomment below to test "IsType" VerifyWebhooksSubscription
-            //Assert.IsType<VerifyWebhooksSubscription>(instance);
+            Assert.IsType<VerifyWebhooksSubscription>(instance);
         }
 
         /// <summary>
@@ -61,7 +59,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void IdTest()
         {
-            // TODO unit test for the property 'Id'
+            Assert.IsType<string>(instance.Id);
         }
 
         /// <summary>
@@ -70,7 +68,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VerificationMethodTest()
         {
-            // TODO unit test for the property 'VerificationMethod'
+            Assert.IsType<WebhooksSubscriptionVerificationMethod>(instance.VerificationMethod);
         }
     }
 }
