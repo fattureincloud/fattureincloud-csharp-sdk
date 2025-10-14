@@ -31,13 +31,13 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class EntityClientPreCreateInfoTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for EntityClientPreCreateInfo
-        //private EntityClientPreCreateInfo instance;
+
+        private EntityClientPreCreateInfo instance;
 
         public EntityClientPreCreateInfoTests()
         {
-            // TODO uncomment below to create an instance of EntityClientPreCreateInfo
-            //instance = new EntityClientPreCreateInfo();
+            var body = "{'countries_list':['Italia','Marocco'],'payment_methods_list':[{'id':1,'type':'standard'},{'id':2,'type':'standard'}],'payment_accounts_list':[{'id':1,'type':'standard'},{'id':2,'type':'standard'}],'vat_types_list':[{'id':1},{'id':2}],'price_lists':[{'id':'12345'}],'limit':5,'usage':7}";
+            instance = JsonConvert.DeserializeObject<EntityClientPreCreateInfo>(body);
         }
 
         public void Dispose()
@@ -51,8 +51,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void EntityClientPreCreateInfoInstanceTest()
         {
-            // TODO uncomment below to test "IsType" EntityClientPreCreateInfo
-            //Assert.IsType<EntityClientPreCreateInfo>(instance);
+            Assert.IsType<EntityClientPreCreateInfo>(instance);
         }
 
         /// <summary>
@@ -61,7 +60,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void CountriesListTest()
         {
-            // TODO unit test for the property 'CountriesList'
+            Assert.IsType<List<string>>(instance.CountriesList);
         }
 
         /// <summary>
@@ -70,7 +69,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PaymentMethodsListTest()
         {
-            // TODO unit test for the property 'PaymentMethodsList'
+            Assert.IsType<List<PaymentMethod>>(instance.PaymentMethodsList);
         }
 
         /// <summary>
@@ -79,7 +78,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PaymentAccountsListTest()
         {
-            // TODO unit test for the property 'PaymentAccountsList'
+            Assert.IsType<List<PaymentAccount>>(instance.PaymentAccountsList);
         }
 
         /// <summary>
@@ -88,7 +87,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void VatTypesListTest()
         {
-            // TODO unit test for the property 'VatTypesList'
+            Assert.IsType<List<VatType>>(instance.VatTypesList);
         }
 
         /// <summary>
@@ -97,7 +96,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void PriceListsTest()
         {
-            // TODO unit test for the property 'PriceLists'
+            Assert.IsType<List<PriceList>>(instance.PriceLists);
         }
 
         /// <summary>
@@ -106,7 +105,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void LimitTest()
         {
-            // TODO unit test for the property 'Limit'
+            Assert.IsType<decimal>(instance.Limit);
         }
 
         /// <summary>
@@ -115,7 +114,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void UsageTest()
         {
-            // TODO unit test for the property 'Usage'
+            Assert.IsType<decimal>(instance.Usage);
         }
     }
 }

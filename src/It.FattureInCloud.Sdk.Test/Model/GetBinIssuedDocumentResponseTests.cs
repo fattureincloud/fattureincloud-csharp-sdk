@@ -31,13 +31,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class GetBinIssuedDocumentResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for GetBinIssuedDocumentResponse
-        //private GetBinIssuedDocumentResponse instance;
+        private GetBinIssuedDocumentResponse instance;
 
         public GetBinIssuedDocumentResponseTests()
         {
-            // TODO uncomment below to create an instance of GetBinIssuedDocumentResponse
-            //instance = new GetBinIssuedDocumentResponse();
+            var body = "{'data':{'id':12345,'type':'invoice','show_totals':'all'}}";
+            instance = JsonConvert.DeserializeObject<GetBinIssuedDocumentResponse>(body);
         }
 
         public void Dispose()
@@ -51,8 +50,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void GetBinIssuedDocumentResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" GetBinIssuedDocumentResponse
-            //Assert.IsType<GetBinIssuedDocumentResponse>(instance);
+            Assert.IsType<GetBinIssuedDocumentResponse>(instance);
         }
 
         /// <summary>
@@ -61,7 +59,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<IssuedDocument>(instance.Data);
         }
     }
 }

@@ -31,13 +31,12 @@ namespace It.FattureInCloud.Sdk.Test.Model
     /// </remarks>
     public class GetBinReceivedDocumentResponseTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for GetBinReceivedDocumentResponse
-        //private GetBinReceivedDocumentResponse instance;
+        private GetBinReceivedDocumentResponse instance;
 
         public GetBinReceivedDocumentResponseTests()
         {
-            // TODO uncomment below to create an instance of GetBinReceivedDocumentResponse
-            //instance = new GetBinReceivedDocumentResponse();
+            var body = "{'data':{'id':12345,'type':'expense','entity':{'id':1,'name':'neim','default_payment_terms_type':'standard'},'date':'2021-12-25','category':'cat6','description':'Ricarica','amount_net':10,'amount_vat':0,'amount_withholding_tax':0,'amount_other_withholding_tax':0,'amortization':10,'rc_center':'bg','invoice_number':'in','is_marked':false,'is_detailed':false,'e_invoice':false,'currency':{'id':'EUR','exchange_rate':'1'},'tax_deductibility':50,'vat_deductibility':100,'items_list':[{'id':1}],'payments_list':[{'amount':592,'due_date':'2021-12-25','paid_date':'2021-12-25','payment_terms':{'days':0,'type':'standard'},'status':'paid','payment_account':{'id':21,'type':'standard'}}],'attachment_token':'dGdweHdjNjlieWFjY3BseGZ0cTZmbWN0Njhhb3R0cXQvZmlsZW5hbWVfZXhhbXBsZQ\\u003d\\u003d'}}";
+            instance = JsonConvert.DeserializeObject<GetBinReceivedDocumentResponse>(body);
         }
 
         public void Dispose()
@@ -51,8 +50,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void GetBinReceivedDocumentResponseInstanceTest()
         {
-            // TODO uncomment below to test "IsType" GetBinReceivedDocumentResponse
-            //Assert.IsType<GetBinReceivedDocumentResponse>(instance);
+            Assert.IsType<GetBinReceivedDocumentResponse>(instance);
         }
 
         /// <summary>
@@ -61,7 +59,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void DataTest()
         {
-            // TODO unit test for the property 'Data'
+            Assert.IsType<ReceivedDocument>(instance.Data);
         }
     }
 }

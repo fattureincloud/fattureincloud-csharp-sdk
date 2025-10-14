@@ -36,7 +36,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
 
         public IssuedDocumentPreCreateInfoTests()
         {
-            var body = "{'numerations':{'2018':{'AB123':2},'2019':{'123':3}},'dn_numerations':{'2017':{'':1000},'2018':{'':112}},'default_values':{'default_template':{'id':111,'type':'standard','name':'Light Smoke'},'dn_template':{'id':222,'type':'delivery_note','name':'DDT 1'},'ai_template':{'id':333,'type':'accompanying_invoice','name':'FT Accompagnatoria 1'},'notes':'','rivalsa':0,'cassa':0,'withholding_tax':0,'withholding_tax_taxable':100,'other_withholding_tax':0,'use_gross_prices':false,'payment_method':{'id':123321,'name':'Bonifico bancario','is_default':true,'details':[{'title':'Banca','description':'Indesa'},{'title':'IBAN','description':'IT17QA12345600000003498936'},{'title':'Intestatario','description':'Mario Rossi'}],'bank_iban':'IT17QA12345600000003498936','bank_name':'Indesa','bank_beneficiary':'Mario Rossi','ei_payment_method':'MP05'}},'extra_data_default_values':{'ts_communication':false,'ts_tipo_spesa':'SR','ts_flag_tipo_spesa':0,'ts_pagamento_tracciato':false},'items_default_values':{'vat':{'id':0,'value':22,'description':'','notes':'','e_invoice':true,'ei_type':'0','ei_description':'','is_disabled':false,'editable':false,'default':true}},'countries_list':['Italia','Afghanistan','Albania'],'currencies_list':[{'id':'AED','symbol':'AED','html_symbol':'AED','exchange_rate':'4.09500'},{'id':'ALL','symbol':'ALL','html_symbol':'ALL','exchange_rate':'121.50000'}],'templates_list':[{'id':10,'name':'New Standard S1'},{'id':11,'name':'New Standard S2'}],'dn_templates_list':[{'id':660,'name':'DDT 1'},{'id':680,'name':'DDT Prova'}],'ai_templates_list':[{'id':663,'name':'FT Accompagnatoria 1'}],'payment_methods_list':[{'id':123321,'name':'Bonifico bancario','is_default':true,'details':[{'title':'Banca','description':'Indesa'},{'title':'IBAN','description':'IT17QA12345600000003498936'},{'title':'Intestatario','description':'Mario Rossi'}],'bank_iban':'IT17QA12345600000003498936','bank_name':'Indesa','bank_beneficiary':'Mario Rossi','ei_payment_method':'MP05'}],'payment_accounts_list':[{'id':21,'name':'Indesa - Carta conto'},{'id':287,'name':'Bonifico_Bancario'}],'vat_types_list':[{'id':1409,'value':15,'description':'ALIQUOTA #1234#','ei_type':'0','is_disabled':false},{'id':1332,'value':0,'description':'Non imp. art. 17 c. 6 lett. A TER DPR 633/72','ei_type':'0','is_disabled':false}]}";
+            var body = "{'numerations':{'2022':{'cloud':1988,'in':2,'fatture':22},'2021':{'a':1,'b':2,'c':3}},'dn_numerations':{'2022':{'a':0,'b':11,'c':222},'2021':{'d':3333,'e':44444,'f':555555}},'default_values':{'default_template':{'id':1},'dn_template':{'id':1},'ai_template':{'id':1},'notes':'notes','rivalsa':1,'cassa':1,'withholding_tax':1,'withholding_tax_taxable':1,'other_withholding_tax':1,'use_gross_prices':true,'payment_method':{'id':1,'type':'standard'}},'extra_data_default_values':{'ts_communication':true,'ts_tipo_spesa':'ts','ts_flag_tipo_spesa':1,'ts_pagamento_tracciato':true},'items_default_values':{'vat':{'id':1}},'countries_list':['Italia','Marocco'],'currencies_list':[{'id':'EUR'},{'id':'DNR'}],'templates_list':[{'id':1},{'id':2}],'dn_templates_list':[{'id':1},{'id':2}],'ai_templates_list':[{'id':1},{'id':2}],'payment_methods_list':[{'id':1,'type':'standard'},{'id':2,'type':'standard'}],'payment_accounts_list':[{'id':1,'type':'standard'},{'id':2,'type':'standard'}],'vat_types_list':[{'id':1},{'id':2}],'price_lists':[{'id':'12345'}]}";
             instance = JsonConvert.DeserializeObject<IssuedDocumentPreCreateInfo>(body);
         }
 
@@ -158,6 +158,14 @@ namespace It.FattureInCloud.Sdk.Test.Model
         public void VatTypesListTest()
         {
             Assert.IsType<List<VatType>>(instance.VatTypesList);
+        }
+        /// <summary>
+        /// Test the property 'PriceLists'
+        /// </summary>
+        [Fact]
+        public void PriceListsTest()
+        {
+            Assert.IsType<List<PriceList>>(instance.PriceLists);
         }
 
     }
