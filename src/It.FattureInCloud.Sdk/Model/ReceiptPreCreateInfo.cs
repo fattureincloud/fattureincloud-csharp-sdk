@@ -41,7 +41,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// <param name="paymentAccountsList">Payment accounts list.</param>
         /// <param name="categoriesList">Receipt categories list.</param>
         /// <param name="vatTypesList">Vat types list.</param>
-        public ReceiptPreCreateInfo(Dictionary<string, Dictionary<string, Dictionary<string, int>>> numerations = default, List<string> numerationsList = default, List<string> rcCentersList = default, List<PaymentAccount> paymentAccountsList = default, List<string> categoriesList = default, List<VatType> vatTypesList = default)
+        public ReceiptPreCreateInfo(Dictionary<string, Dictionary<string, int>> numerations = default, List<string> numerationsList = default, List<string> rcCentersList = default, List<PaymentAccount> paymentAccountsList = default, List<string> categoriesList = default, List<VatType> vatTypesList = default)
         {
             this._Numerations = numerations;
             if (this.Numerations != null)
@@ -79,7 +79,7 @@ namespace It.FattureInCloud.Sdk.Model
         /// Gets or Sets Numerations
         /// </summary>
         [DataMember(Name = "numerations", EmitDefaultValue = false)]
-        public Dictionary<string, Dictionary<string, Dictionary<string, int>>> Numerations
+        public Dictionary<string, Dictionary<string, int>> Numerations
         {
             get { return _Numerations; }
             set
@@ -88,7 +88,7 @@ namespace It.FattureInCloud.Sdk.Model
                 _flagNumerations = true;
             }
         }
-        private Dictionary<string, Dictionary<string, Dictionary<string, int>>> _Numerations;
+        private Dictionary<string, Dictionary<string, int>> _Numerations;
         private bool _flagNumerations;
 
         /// <summary>
