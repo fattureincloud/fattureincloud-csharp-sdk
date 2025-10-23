@@ -34,7 +34,7 @@ namespace It.FattureInCloud.Sdk.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "2.1.2";
+        public const string Version = "2.1.3";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -535,7 +535,7 @@ namespace It.FattureInCloud.Sdk.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version + "\n";
             report += "    Version of the API: 2.1.5\n";
-            report += "    SDK Package Version: 2.1.2\n";
+            report += "    SDK Package Version: 2.1.3\n";
 
             return report;
         }
