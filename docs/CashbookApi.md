@@ -102,9 +102,11 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The created Cashbook Entry. |  -  |
+| **200** | The created Cashbook Entry. |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
 | **401** | Unauthorized |  -  |
+| **403** | Forbidden - Rate limit exceeded |  * Retry-After -  <br>  |
 | **404** | Not Found |  -  |
+| **429** | Too Many Requests |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -196,9 +198,11 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Document removed. |  -  |
+| **200** | Document removed. |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
 | **401** | Unauthorized |  -  |
+| **403** | Forbidden - Rate limit exceeded |  * Retry-After -  <br>  |
 | **404** | Not Found |  -  |
+| **429** | Too Many Requests |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -298,9 +302,11 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Cashbook Entry. |  -  |
+| **200** | Cashbook Entry. |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
 | **401** | Unauthorized |  -  |
+| **403** | Forbidden - Rate limit exceeded |  * Retry-After -  <br>  |
 | **404** | Not Found |  -  |
+| **429** | Too Many Requests |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -404,9 +410,11 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Results list. |  -  |
+| **200** | Results list. |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
 | **401** | Unauthorized |  -  |
+| **403** | Forbidden - Rate limit exceeded |  * Retry-After -  <br>  |
 | **404** | Not Found |  -  |
+| **429** | Too Many Requests |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -504,9 +512,11 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The modified Cashbook Entry |  -  |
+| **200** | The modified Cashbook Entry |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
 | **401** | Unauthorized |  -  |
+| **403** | Forbidden - Rate limit exceeded |  * Retry-After -  <br>  |
 | **404** | Not Found |  -  |
+| **429** | Too Many Requests |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
