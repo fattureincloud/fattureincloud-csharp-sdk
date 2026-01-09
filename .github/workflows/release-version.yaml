@@ -5,10 +5,12 @@ jobs:
   release-version:
     runs-on: ubuntu-latest
     name: Update NuGet package
+    permissions:
+      id-token: write # enable GitHub OIDC token issuance for this job
     steps:
       - id: checkout
         name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
 
@@ -20,11 +22,11 @@ jobs:
 
       - id: setup-node
         name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
 
       - id: setup-dot-net
         name: Setup .NET
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
 
       - id: setup-libraries
         name: Install libraries
@@ -68,7 +70,7 @@ jobs:
       - id: create-tag
         name: Create tag
         if: ${{ !env.ACT }}
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           github-token: ${{ github.token }}
           script: |
@@ -86,9 +88,14 @@ jobs:
           cd ./src/It.FattureInCloud.Sdk/
           dotnet pack -c Release -o out
 
+      # Get a short-lived NuGet API key
+      - name: NuGet login (OIDC → temp API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.FATTUREINCLOUD_NUGET_USER}}
+
       - id: publish
         name: Publish the package to nuget.org
         if: ${{ !env.ACT }}
-        run: dotnet nuget push ./src/It.FattureInCloud.Sdk/out/*.nupkg -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{ secrets.FATTUREINCLOUD_NUGET_API_KEY}}
+        run: dotnet nuget push ./src/It.FattureInCloud.Sdk/out/*.nupkg -k ${{ steps.login.outputs.NUGET_AUTH_TOKEN }} -s https://api.nuget.org/v3/index.json
