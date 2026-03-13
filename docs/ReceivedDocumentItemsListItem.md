@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Qty** | **decimal?** | Received document item quantity | [optional] 
 **Vat** | [**VatType**](VatType.md) |  | [optional] 
 **Stock** | **decimal?** | Received document item product number of items in stock | [optional] 
+**DeductibilityVatPercentage** | **decimal?** | Received document item deductibility vat percentage | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

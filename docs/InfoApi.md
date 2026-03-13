@@ -9,6 +9,7 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | [**ListCostCenters**](InfoApi.md#listcostcenters) | **GET** /c/{company_id}/info/cost_centers | List Cost Centers |
 | [**ListCountries**](InfoApi.md#listcountries) | **GET** /info/countries | List Countries |
 | [**ListCurrencies**](InfoApi.md#listcurrencies) | **GET** /info/currencies | List Currencies |
+| [**ListDefaultTemplates**](InfoApi.md#listdefaulttemplates) | **GET** /info/templates | List Default Templates |
 | [**ListDeliveryNotesDefaultCausals**](InfoApi.md#listdeliverynotesdefaultcausals) | **GET** /info/dn_causals | List Delivery Notes Default Causals |
 | [**ListDetailedCountries**](InfoApi.md#listdetailedcountries) | **GET** /info/detailed_countries | List Detailed Countries |
 | [**ListLanguages**](InfoApi.md#listlanguages) | **GET** /info/languages | List Languages |
@@ -17,7 +18,6 @@ All URIs are relative to *https://api-v2.fattureincloud.it*
 | [**ListProductCategories**](InfoApi.md#listproductcategories) | **GET** /c/{company_id}/info/product_categories | List Product Categories |
 | [**ListReceivedDocumentCategories**](InfoApi.md#listreceiveddocumentcategories) | **GET** /c/{company_id}/info/received_document_categories | List Received Document Categories |
 | [**ListRevenueCenters**](InfoApi.md#listrevenuecenters) | **GET** /c/{company_id}/info/revenue_centers | List Revenue Centers |
-| [**ListTemplates**](InfoApi.md#listtemplates) | **GET** /info/templates | List Templates |
 | [**ListUnitsOfMeasure**](InfoApi.md#listunitsofmeasure) | **GET** /info/measures | List Units of Measure |
 | [**ListVatTypes**](InfoApi.md#listvattypes) | **GET** /c/{company_id}/info/vat_types | List Vat Types |
 
@@ -111,9 +111,16 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Archive Categories list. |  -  |
-| **401** | Unauthorized |  -  |
-| **404** | Not Found |  -  |
+| **200** | Archive Categories list. |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -209,7 +216,16 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Cities List. |  -  |
+| **200** | Cities List. |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -303,9 +319,16 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | List of Cost Centers |  -  |
-| **401** | Unauthorized |  -  |
-| **404** | Not Found |  -  |
+| **200** | List of Cost Centers |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -394,8 +417,16 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | List of countries |  -  |
-| **401** | Unauthorized |  -  |
+| **200** | List of countries |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -484,8 +515,121 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Currencies List. |  -  |
-| **401** | Unauthorized |  -  |
+| **200** | Currencies List. |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listdefaulttemplates"></a>
+# **ListDefaultTemplates**
+> ListTemplatesResponse ListDefaultTemplates (string type = null, bool? byType = null)
+
+List Default Templates
+
+Lists the default available templates.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using It.FattureInCloud.Sdk.Api;
+using It.FattureInCloud.Sdk.Client;
+using It.FattureInCloud.Sdk.Model;
+
+namespace Example
+{
+    public class ListDefaultTemplatesExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api-v2.fattureincloud.it";
+            // Configure OAuth2 access token for authorization: OAuth2AuthenticationCodeFlow
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new InfoApi(config);
+            var type = "all";  // string | Type of the templates. (optional)  (default to all)
+            var byType = false;  // bool? | [Only if type=all] If true, splits the list in objects, grouping templates by type. (optional)  (default to false)
+
+            try
+            {
+                // List Default Templates
+                ListTemplatesResponse result = apiInstance.ListDefaultTemplates(type, byType);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling InfoApi.ListDefaultTemplates: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListDefaultTemplatesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Default Templates
+    ApiResponse<ListTemplatesResponse> response = apiInstance.ListDefaultTemplatesWithHttpInfo(type, byType);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling InfoApi.ListDefaultTemplatesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **type** | **string** | Type of the templates. | [optional] [default to all] |
+| **byType** | **bool?** | [Only if type&#x3D;all] If true, splits the list in objects, grouping templates by type. | [optional] [default to false] |
+
+### Return type
+
+[**ListTemplatesResponse**](ListTemplatesResponse.md)
+
+### Authorization
+
+[OAuth2AuthenticationCodeFlow](../README.md#OAuth2AuthenticationCodeFlow)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Templates list. |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -574,8 +718,16 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | List of Delivery Notes Default Causals |  -  |
-| **401** | Unauthorized |  -  |
+| **200** | List of Delivery Notes Default Causals |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -664,8 +816,16 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | List of detailed countries |  -  |
-| **401** | Unauthorized |  -  |
+| **200** | List of detailed countries |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -754,8 +914,16 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | LanguagesList |  -  |
-| **401** | Unauthorized |  -  |
+| **200** | LanguagesList |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -855,9 +1023,16 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Payment accounts list. |  -  |
-| **401** | Unauthorized |  -  |
-| **404** | Not Found |  -  |
+| **200** | Payment accounts list. |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -957,9 +1132,16 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Payment methods list. |  -  |
-| **401** | Unauthorized |  -  |
-| **404** | Not Found |  -  |
+| **200** | Payment methods list. |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1055,9 +1237,16 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Product Categories List |  -  |
-| **401** | Unauthorized |  -  |
-| **404** | Not Found |  -  |
+| **200** | Product Categories List |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1151,7 +1340,16 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Received Document Categories List |  -  |
+| **200** | Received Document Categories List |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1245,106 +1443,16 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | List of Revenue Centers |  -  |
-| **401** | Unauthorized |  -  |
-| **404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a id="listtemplates"></a>
-# **ListTemplates**
-> ListTemplatesResponse ListTemplates (string type = null, bool? byType = null)
-
-List Templates
-
-Lists the available templates.
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using It.FattureInCloud.Sdk.Api;
-using It.FattureInCloud.Sdk.Client;
-using It.FattureInCloud.Sdk.Model;
-
-namespace Example
-{
-    public class ListTemplatesExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api-v2.fattureincloud.it";
-            // Configure OAuth2 access token for authorization: OAuth2AuthenticationCodeFlow
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InfoApi(config);
-            var type = "all";  // string | Type of the templates. (optional)  (default to all)
-            var byType = false;  // bool? | [Only if type=all] If true, splits the list in objects, grouping templates by type. (optional)  (default to false)
-
-            try
-            {
-                // List Templates
-                ListTemplatesResponse result = apiInstance.ListTemplates(type, byType);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InfoApi.ListTemplates: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the ListTemplatesWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // List Templates
-    ApiResponse<ListTemplatesResponse> response = apiInstance.ListTemplatesWithHttpInfo(type, byType);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InfoApi.ListTemplatesWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **type** | **string** | Type of the templates. | [optional] [default to all] |
-| **byType** | **bool?** | [Only if type&#x3D;all] If true, splits the list in objects, grouping templates by type. | [optional] [default to false] |
-
-### Return type
-
-[**ListTemplatesResponse**](ListTemplatesResponse.md)
-
-### Authorization
-
-[OAuth2AuthenticationCodeFlow](../README.md#OAuth2AuthenticationCodeFlow)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Templates list. |  -  |
-| **401** | Unauthorized |  -  |
+| **200** | List of Revenue Centers |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1433,8 +1541,16 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Units of measure. |  -  |
-| **401** | Unauthorized |  -  |
+| **200** | Units of measure. |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1530,9 +1646,16 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | List of Vat Types. |  -  |
-| **401** | Unauthorized |  -  |
-| **404** | Not Found |  -  |
+| **200** | List of Vat Types. |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

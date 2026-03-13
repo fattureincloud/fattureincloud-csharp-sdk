@@ -104,9 +104,16 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The created F24 |  -  |
-| **401** | Unauthorized |  -  |
-| **404** | Not Found |  -  |
+| **200** | The created F24 |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -192,15 +199,22 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Document removed. |  -  |
-| **401** | Unauthorized |  -  |
-| **404** | Not Found |  -  |
+| **200** | Document removed. |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -286,15 +300,22 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | File Removed. |  -  |
-| **401** | Unauthorized |  -  |
-| **404** | Not Found |  -  |
+| **200** | File Removed. |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -394,9 +415,16 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The F24 |  -  |
-| **401** | Unauthorized |  -  |
-| **404** | Not Found |  -  |
+| **200** | The F24 |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -502,8 +530,16 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Results list. |  -  |
-| **401** | Unauthorized |  -  |
+| **200** | Results list. |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -601,9 +637,16 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The modified F24 |  -  |
-| **401** | Unauthorized |  -  |
-| **404** | Not Found |  -  |
+| **200** | The modified F24 |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -701,7 +744,16 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Attachment Token. |  -  |
+| **200** | Attachment Token. |  * RateLimit-HourlyRemaining -  <br>  * RateLimit-HourlyLimit -  <br>  * RateLimit-MonthlyRemaining -  <br>  * RateLimit-MonthlyLimit -  <br>  |
+| **400** | ErrorResponse |  * Retry-After -  <br>  |
+| **401** | ErrorResponse |  * Retry-After -  <br>  |
+| **403** | ErrorResponse |  * Retry-After -  <br>  |
+| **404** | ErrorResponse |  * Retry-After -  <br>  |
+| **405** | ErrorResponse |  * Retry-After -  <br>  |
+| **409** | ErrorResponse |  * Retry-After -  <br>  |
+| **422** | ErrorResponse |  * Retry-After -  <br>  |
+| **429** | ErrorResponse |  * Retry-After -  <br>  |
+| **500** | ErrorResponse |  * Retry-After -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

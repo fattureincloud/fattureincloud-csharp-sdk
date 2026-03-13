@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **TsSentDate** | **DateTime?** | Issued document ts sent date | [optional] 
 **TsFullAmount** | **bool?** | Issued document ts total amount | [optional] 
 **ImportedBy** | **string** | Issued document imported by software | [optional] 
+**DebtVatDetect** | **bool?** | Issued document debt VAT detect | [optional] 
+**RevenueDetect** | **bool?** | Issued document revenue detect | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
