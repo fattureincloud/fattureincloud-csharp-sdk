@@ -135,7 +135,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
             listTemplatesResponseBody = "{'data':[{'id':10,'name':'New Standard S1'},{'id':106,'name':'Minimalist'}]}";
             var listTemplatesResponse = JsonConvert.DeserializeObject<ListTemplatesResponse>(listTemplatesResponseBody);
             instance
-                .Setup(p => p.ListTemplates(Moq.It.IsAny<string>(), Moq.It.IsAny<bool>(), 0))
+                .Setup(p => p.ListDefaultTemplates(Moq.It.IsAny<string>(), Moq.It.IsAny<bool>(), 0))
                 .Returns(listTemplatesResponse);
 
             listUnitsOfMeasureResponseBody = "{'data':['pezzi','kg','litri','ore','giorni','km','mesi']}";
@@ -353,7 +353,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
             string type = "";
             bool? byType = true;
 
-            var response = instance.Object.ListTemplates(type, byType);
+            var response = instance.Object.ListDefaultTemplates(type, byType);
             JObject obj = JObject.Parse(listTemplatesResponseBody);
 
             Assert.True(JToken.DeepEquals(obj, JObject.FromObject(response)));
