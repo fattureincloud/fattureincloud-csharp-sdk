@@ -132,7 +132,7 @@ namespace It.FattureInCloud.Sdk.Test.Api
                 .Setup(p => p.ListRevenueCenters(Moq.It.IsAny<int>(), 0))
                 .Returns(listRevenueCentersResponse);
 
-            listTemplatesResponseBody = "{'data':[{'id':10,'name':'New Standard S1'},{'id':106,'name':'Minimalist'}]}";
+            listTemplatesResponseBody = "{'data':[{'id':10,'name':'New Standard S1','can_disable_watermark':false,'supports_custom_taxable':false},{'id':106,'name':'Minimalist','can_disable_watermark':false,'supports_custom_taxable':false}]}";
             var listTemplatesResponse = JsonConvert.DeserializeObject<ListTemplatesResponse>(listTemplatesResponseBody);
             instance
                 .Setup(p => p.ListDefaultTemplates(Moq.It.IsAny<string>(), Moq.It.IsAny<bool>(), 0))
