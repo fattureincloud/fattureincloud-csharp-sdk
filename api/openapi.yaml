@@ -52086,7 +52086,7 @@ paths:
           example: 12345
           type: integer
         style: simple
-      - description: The ID of the price
+      - description: The pricelist ID
         explode: false
         in: path
         name: price_list_id

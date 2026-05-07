@@ -36,7 +36,7 @@ namespace Example
 
             var apiInstance = new PriceListsApi(config);
             var companyId = 12345;  // int | The ID of the company.
-            var priceListId = "priceListId_example";  // string | The ID of the price
+            var priceListId = "priceListId_example";  // string | The pricelist ID
 
             try
             {
@@ -80,7 +80,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **companyId** | **int** | The ID of the company. |  |
-| **priceListId** | **string** | The ID of the price |  |
+| **priceListId** | **string** | The pricelist ID |  |
 
 ### Return type
 

@@ -35,7 +35,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// </remarks>
         /// <exception cref="It.FattureInCloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">The ID of the company.</param>
-        /// <param name="priceListId">The ID of the price</param>
+        /// <param name="priceListId">The pricelist ID</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetPriceListItemsResponse</returns>
         GetPriceListItemsResponse GetPriceListItems(int companyId, string priceListId, int operationIndex = 0);
@@ -48,7 +48,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// </remarks>
         /// <exception cref="It.FattureInCloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">The ID of the company.</param>
-        /// <param name="priceListId">The ID of the price</param>
+        /// <param name="priceListId">The pricelist ID</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetPriceListItemsResponse</returns>
         ApiResponse<GetPriceListItemsResponse> GetPriceListItemsWithHttpInfo(int companyId, string priceListId, int operationIndex = 0);
@@ -92,7 +92,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// </remarks>
         /// <exception cref="It.FattureInCloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">The ID of the company.</param>
-        /// <param name="priceListId">The ID of the price</param>
+        /// <param name="priceListId">The pricelist ID</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetPriceListItemsResponse</returns>
@@ -106,7 +106,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// </remarks>
         /// <exception cref="It.FattureInCloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">The ID of the company.</param>
-        /// <param name="priceListId">The ID of the price</param>
+        /// <param name="priceListId">The pricelist ID</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetPriceListItemsResponse)</returns>
@@ -261,7 +261,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// </summary>
         /// <exception cref="It.FattureInCloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">The ID of the company.</param>
-        /// <param name="priceListId">The ID of the price</param>
+        /// <param name="priceListId">The pricelist ID</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetPriceListItemsResponse</returns>
         public GetPriceListItemsResponse GetPriceListItems(int companyId, string priceListId, int operationIndex = 0)
@@ -275,7 +275,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// </summary>
         /// <exception cref="It.FattureInCloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">The ID of the company.</param>
-        /// <param name="priceListId">The ID of the price</param>
+        /// <param name="priceListId">The pricelist ID</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetPriceListItemsResponse</returns>
         public It.FattureInCloud.Sdk.Client.ApiResponse<GetPriceListItemsResponse> GetPriceListItemsWithHttpInfo(int companyId, string priceListId, int operationIndex = 0)
@@ -341,7 +341,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// </summary>
         /// <exception cref="It.FattureInCloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">The ID of the company.</param>
-        /// <param name="priceListId">The ID of the price</param>
+        /// <param name="priceListId">The pricelist ID</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetPriceListItemsResponse</returns>
@@ -356,7 +356,7 @@ namespace It.FattureInCloud.Sdk.Api
         /// </summary>
         /// <exception cref="It.FattureInCloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">The ID of the company.</param>
-        /// <param name="priceListId">The ID of the price</param>
+        /// <param name="priceListId">The pricelist ID</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetPriceListItemsResponse)</returns>
