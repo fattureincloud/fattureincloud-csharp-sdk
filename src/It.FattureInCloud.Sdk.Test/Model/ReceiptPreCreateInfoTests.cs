@@ -36,7 +36,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
 
         public ReceiptPreCreateInfoTests()
         {
-            var body = "{ 'numerations': { '2020': { 'REC001': 3 }, '2021': { 'REC005': 3, 'REC004': 2, 'REC003': 2, 'REC001': 7 } }, 'numerations_list': [ 'REC001', 'REC002', 'REC003', 'REC005', 'REC006' ], 'rc_centers_list': [ 'Sede generale', 'Negozio Bergamo', 'Negozio Milano' ], 'payment_accounts_list': [ { 'id': 111, 'name': 'Indesa - carta conto' }, { 'id': 222, 'name': 'Contanti' } ], 'categories_list': [ 'altro', 'arredamento' ], 'vat_types_list': [ { 'id': 1334, 'value': 0, 'description': 'Non imp. art. 17 c. 6 DPR 633/72 e s.m.i.', 'is_disabled': false }, { 'id': 1333, 'value': 0, 'description': 'Non sogg. art. 74 c. 7 e 8 DPR 633/72', 'is_disabled': false } ] }";
+            var body = "{ 'numerations': { '2020': { 'sales_receipt': { 'REC001': 3 } }, '2021': { 'sales_receipt': { 'REC005': 3, 'REC004': 2, 'REC003': 2, 'REC001': 7 } } }, 'numerations_list': [ 'REC001', 'REC002', 'REC003', 'REC005', 'REC006' ], 'rc_centers_list': [ 'Sede generale', 'Negozio Bergamo', 'Negozio Milano' ], 'payment_accounts_list': [ { 'id': 111, 'name': 'Indesa - carta conto' }, { 'id': 222, 'name': 'Contanti' } ], 'categories_list': [ 'altro', 'arredamento' ], 'vat_types_list': [ { 'id': 1334, 'value': 0, 'description': 'Non imp. art. 17 c. 6 DPR 633/72 e s.m.i.', 'is_disabled': false }, { 'id': 1333, 'value': 0, 'description': 'Non sogg. art. 74 c. 7 e 8 DPR 633/72', 'is_disabled': false } ] }";
             instance = JsonConvert.DeserializeObject<ReceiptPreCreateInfo>(body);
         }
 
@@ -61,7 +61,7 @@ namespace It.FattureInCloud.Sdk.Test.Model
         [Fact]
         public void NumerationsTest()
         {
-            Assert.IsType<Dictionary<string, Dictionary<string, int>>>(instance.Numerations);
+            Assert.IsType<Dictionary<string, Dictionary<string, Dictionary<string, int>>>>(instance.Numerations);
         }
         /// <summary>
         /// Test the property 'NumerationsList'
