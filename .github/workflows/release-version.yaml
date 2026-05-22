@@ -99,4 +99,4 @@ jobs:
       - id: publish
         name: Publish the package to nuget.org
         if: ${{ !env.ACT }}
-        run: dotnet nuget push ./src/It.FattureInCloud.Sdk/out/*.nupkg -s https://api.nuget.org/v3/index.json
+        run: dotnet nuget push ./src/It.FattureInCloud.Sdk/out/*.nupkg -k ${{steps.login.outputs.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json
