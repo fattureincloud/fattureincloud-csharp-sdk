@@ -2,23 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### 2.1.2 (2025-10-16)
-
 ### 2.1.2 (2025-10-14)
-
 
 ### Bug Fixes
 
-* fixed enum ([#129](https://github.com/fattureincloud/fattureincloud-csharp-sdk/issues/129)) ([04c58a8](https://github.com/fattureincloud/fattureincloud-csharp-sdk/commit/04c58a8d429b2a3b315d4c90c00c3c0613bae830))
+- fixed enum ([#129](https://github.com/fattureincloud/fattureincloud-csharp-sdk/issues/129)) ([04c58a8](https://github.com/fattureincloud/fattureincloud-csharp-sdk/commit/04c58a8d429b2a3b315d4c90c00c3c0613bae830))
 
 ### 2.1.1 (2024-10-31)
 
 ## 2.1.0 (2024-06-17)
 
-
 ### Features
 
-* added device code manager ([8266c5f](https://github.com/fattureincloud/fattureincloud-csharp-sdk/commit/8266c5fc6101e507f85e69a1426d17d6c85da6cd))
+- added device code manager ([8266c5f](https://github.com/fattureincloud/fattureincloud-csharp-sdk/commit/8266c5fc6101e507f85e69a1426d17d6c85da6cd))
 
 ### 2.0.26 (2024-05-27)
 
@@ -62,26 +58,23 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### 2.0.7 (2022-03-17)
 
-
 ### Bug Fixes
 
-* added filter parameter and detailed countries method ([#36](https://github.com/fattureincloud/fattureincloud-csharp-sdk/issues/36)) ([dbf9578](https://github.com/fattureincloud/fattureincloud-csharp-sdk/commit/dbf95787a7a5a72b9413a8f79d60dac8004bd3ec))
+- added filter parameter and detailed countries method ([#36](https://github.com/fattureincloud/fattureincloud-csharp-sdk/issues/36)) ([dbf9578](https://github.com/fattureincloud/fattureincloud-csharp-sdk/commit/dbf95787a7a5a72b9413a8f79d60dac8004bd3ec))
 
 ### 2.0.6 (2022-02-28)
 
-
 ### Bug Fixes
 
-* models are now nullable ([93e0850](https://github.com/fattureincloud/fattureincloud-csharp-sdk/commit/93e0850a21ed41d52b48fb7bdec4959b014b6013))
+- models are now nullable ([93e0850](https://github.com/fattureincloud/fattureincloud-csharp-sdk/commit/93e0850a21ed41d52b48fb7bdec4959b014b6013))
 
 ### 2.0.5 (2022-02-07)
 
 ### 2.0.4 (2022-01-25)
 
-
 ### Bug Fixes
 
-* added get xml method ([f58645d](https://github.com/fattureincloud/fattureincloud-csharp-sdk/commit/f58645dfcf8c061eb5eea38c77c92c2e0d76c64a))
+- added get xml method ([f58645d](https://github.com/fattureincloud/fattureincloud-csharp-sdk/commit/f58645dfcf8c061eb5eea38c77c92c2e0d76c64a))
 
 ### 2.0.3 (2022-01-10)
 
