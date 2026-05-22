@@ -34,6 +34,8 @@ Name | Type | Description | Notes
 **Locked** | **bool?** | Received Document can&#39;t be edited | [optional] 
 **CreatedAt** | **string** | Received document creation date | [optional] 
 **UpdatedAt** | **string** | Received document last update date | [optional] 
+**EiReceptionDate** | **string** | [Read Only] Received document e-invoice reception date, needs fic_view  fieldset | [optional] [readonly] 
+**IsFromPendingExpenses** | **bool?** | [Read Only] True if received document is generated from pending expenses,  needs fic_view fieldset | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
