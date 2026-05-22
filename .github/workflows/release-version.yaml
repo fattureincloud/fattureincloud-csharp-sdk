@@ -7,6 +7,7 @@ jobs:
     name: Update NuGet package
     permissions:
       id-token: write # enable GitHub OIDC token issuance for this job
+      contents: write # Required to push commits and tags to the repository
     steps:
       - id: checkout
         name: Checkout repo
